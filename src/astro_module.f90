@@ -405,7 +405,6 @@ double precision az, el, phi, ha, dec
 
 double precision sa, ca, se, ce, sp, cp, x, y, z, r
 
-
 !  Useful trig functions.
 sa = sin(az)
 ca = cos(az)
@@ -5755,7 +5754,6 @@ double precision epsa, rb(3,3), rp(3,3), rbp(3,3), rn(3,3), &
 
 !     DOUBLE PRECISION GMST00, EE00, SP00
 
-
 !  Form the celestial-to-true matrix for this TT.
 call PN00 ( tta, ttb, dpsi, deps, &
                 epsa, rb, rp, rbp, rn, rbpn )
@@ -5865,7 +5863,6 @@ double precision tta, ttb, uta, utb, x, y, xp, yp, rc2t(3,3)
 double precision rc2i(3,3), era, sp, rpom(3,3)
 
 !     DOUBLE PRECISION ERA00, SP00
-
 
 !  Form the celestial-to-intermediate matrix for this TT.
 call C2IXY ( tta, ttb, x, y, rc2i )
@@ -8040,7 +8037,6 @@ double precision rm(3,3), v1(3), v2(3), a, b
 
 !     DOUBLE PRECISION ANP, ANPM
 
-
 !  Spherical to Cartesian.
 call S2C ( dl, db, v1 )
 
@@ -8128,7 +8124,6 @@ double precision date1, date2, rm(3,3)
 
 double precision ob, bp(3,3), e(3,3)
 !     DOUBLE PRECISION OBL06
-
 
 !  Obliquity, IAU 2006.
 ob = OBL06 ( date1, date2 )
@@ -8795,7 +8790,6 @@ implicit none
 integer n
 double precision a, f
 integer j
-
 
 !  Preset the status to OK
 j = 0
@@ -11727,7 +11721,6 @@ double precision rm(3,3), v1(3), v2(3), a, b
 
 !     DOUBLE PRECISION ANP, ANPM
 
-
 !  Spherical to Cartesian.
 call S2C ( dr, dd, v1 )
 
@@ -13971,7 +13964,6 @@ integer j
 
 double precision a, f
 
-
 !  Obtain reference ellipsoid parameters.
 call EFORM ( n, a, f, j )
 
@@ -14058,7 +14050,6 @@ parameter ( dpi = 3.141592653589793238462643d0 )
 double precision aeps2, e2, e4t, ec2, ec, b, x, y, z, p2, absz, p, &
                  s0, pn, zc, c0, c02, c03, s02, s03, a02, a0, a03, &
                  d0, f0, b0, s1, cc, s12, cc2
-
 
 !  -------------
 !  Preliminaries
@@ -14215,7 +14206,6 @@ integer j
 
 double precision a, f
 
-
 !  Obtain reference ellipsoid parameters.
 call EFORM ( n, a, f, j )
 
@@ -14293,7 +14283,6 @@ double precision a, f, elong, phi, height, xyz(3)
 integer j
 
 double precision sp, cp, w, d, ac, as, r
-
 
 !  Functions of geodetic latitude.
 sp = sin(phi)
@@ -15220,7 +15209,6 @@ parameter ( d2pi = 6.283185307179586476925287d0 )
 
 double precision sh, ch, sd, cd, sp, cp, x, y, z, r, a
 
-
 !  Useful trig functions.
 sh = sin(ha)
 ch = cos(ha)
@@ -16143,7 +16131,6 @@ double precision rm(3,3), v1(3), v2(3), a, b
 
 !     DOUBLE PRECISION ANP, ANPM
 
-
 !  Spherical to Cartesian.
 call S2C ( dl, db, v1 )
 
@@ -16238,7 +16225,6 @@ parameter ( dx = -0.016617d0 * as2r, &
 
 double precision p(3), z(3), w(3), s, x(3), y(3)
 
-
 !  Equator pole.
 call LTPEQU ( epj, p )
 
@@ -16328,7 +16314,6 @@ double precision rm(3,3), v1(3), v2(3), a, b
 
 !     DOUBLE PRECISION ANP, ANPM
 
-
 !  Spherical to Cartesian.
 call S2C ( dr, dd, v1 )
 
@@ -16403,7 +16388,6 @@ double precision epj, rp(3,3)
 
 integer i
 double precision peqr(3), pecl(3), v(3), w, eqx(3)
-
 
 !  Equator pole (bottom row of matrix).
 call LTPEQU ( epj, peqr )
@@ -16494,7 +16478,6 @@ parameter ( dx = -0.016617d0 * das2r, &
 
 integer i
 double precision rp(3,3)
-
 
 !  Precession matrix.
 call LTP  ( epj, rp )
@@ -16607,7 +16590,6 @@ data ((pqpol(i,j),i=1,npol),j=1,2) / &
                -185.138669d0,    -34.744450d0, &
    547.00d0,     46.140315d0,    101.135679d0, &
                -120.972830d0,     22.885731d0 /
-
 
 !  Centuries since J2000.
 t = (epj-2000d0)/100d0
@@ -16755,7 +16737,6 @@ data ((xypol(i,j),i=1,npol),j=1,2) / &
                -210.157124d0,   -171.330180d0, &
   1200.00d0,     -9.814756d0,      9.344131d0, &
                 -44.919798d0,    -22.899655d0 /
-
 
 !  Centuries since J2000.
 t = (epj-2000d0)/100d0
@@ -21073,7 +21054,6 @@ integer i, j
 
 !     DOUBLE PRECISION ANPM
 
-
 !  ------------------------------------------------
 !  Table of multiples of arguments and coefficients
 !  ------------------------------------------------
@@ -22576,7 +22556,6 @@ data sl / &
  138606,-13478,-4964, 1441,-1319,-1482,  427, 1236, -9167,-1918, &
   71234,-41116, 5334,-4935,-1848,   66,  434,-1748,  3780, -701, &
  -47645, 11647, 2166, 3194,  679,    0, -244, -419, -2531,   48 /
-
 
 !  Validate the planet number.
 if ( np<1 .or. np>8 ) then
@@ -25052,7 +25031,6 @@ parameter ( om = 1.00273781191135448d0 * d2pi / d2s )
 
 integer j
 double precision xyzm(3), rpm(3,3), xyz(3), x, y, z, s, c
-
 
 !  Geodetic to geocentric transformation (WGS84).
 call GD2GC ( 1, elong, phi, hm, xyzm, j )
@@ -29832,6 +29810,9 @@ subroutine UTCUT1 ( utc1, utc2, dut1, ut11, ut12, j )
 !
 !  This revision:  2013 August 12
 !
+!  * 11/21/2019: for astro_module, renamed the local variable
+!    'dat' to 'd' so as not to conflict with the subroutine DAT.
+!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -29839,16 +29820,16 @@ double precision utc1, utc2, dut1, ut11, ut12
 integer j
 
 integer iy, im, id, js, jw
-double precision w, dat, dta, tai1, tai2
+double precision w, d, dta, tai1, tai2
 
 !  Look up TAI-UTC.
 call JD2CAL ( utc1, utc2, iy, im, id, w, js )
 if ( js/=0 ) go to 9
-call DAT ( iy, im, id, 0d0, dat, js )
+call DAT ( iy, im, id, 0d0, d, js )
 if ( js<0 ) go to 9
 
 !  Form UT1-TAI.
-dta = dut1 - dat
+dta = dut1 - d
 
 !  UTC to TAI to UT1.
 call UTCTAI ( utc1, utc2, tai1, tai2, jw )
