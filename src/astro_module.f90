@@ -1,25 +1,125 @@
-!***********************************************************************
-module sofa_module
-!***********************************************************************
+!********************************************************************************
+!>
+!  Modern Fortran implementations of standard models used in fundamental astronomy
 !
-! this file was automatically generated using SofaMerge.py
-! Generated on: Thu Nov 21 20:52:32 2019
+!### Notes
 !
-!***********************************************************************
+!  This library is based on the IAU SOFA library.
+!  The routines have been changed in the following ways:
+!
+!  * Conversion from Fixed-form (FORTRAN 77) to Free-form (Fortran 2008) format.
+!  * Removal of the "iau_" prefix on all routines.
+!  * All routines were combined into this module.
+!
+!### Original SOFA Copyright Notice
+!
+!  Copyright (C) 2019
+!  Standards Of Fundamental Astronomy Board
+!  of the International Astronomical Union.
+!
+!  =====================
+!  SOFA Software License
+!  =====================
+!
+!  NOTICE TO USER:
+!
+!  BY USING THIS SOFTWARE YOU ACCEPT THE FOLLOWING SIX TERMS AND
+!  CONDITIONS WHICH APPLY TO ITS USE.
+!
+!  1. The Software is owned by the IAU SOFA Board ("SOFA").
+!
+!  2. Permission is granted to anyone to use the SOFA software for any
+!     purpose, including commercial applications, free of charge and
+!     without payment of royalties, subject to the conditions and
+!     restrictions listed below.
+!
+!  3. You (the user) may copy and distribute SOFA source code to others,
+!     and use and adapt its code and algorithms in your own software,
+!     on a world-wide, royalty-free basis.  That portion of your
+!     distribution that does not consist of intact and unchanged copies
+!     of SOFA source code files is a "derived work" that must comply
+!     with the following requirements:
+!
+!     a) Your work shall be marked or carry a statement that it
+!        (i) uses routines and computations derived by you from
+!        software provided by SOFA under license to you; and
+!        (ii) does not itself constitute software provided by and/or
+!        endorsed by SOFA.
+!
+!     b) The source code of your derived work must contain descriptions
+!        of how the derived work is based upon, contains and/or differs
+!        from the original SOFA software.
+!
+!     c) The names of all routines in your derived work shall not
+!        include the prefix "iau" or "sofa" or trivial modifications
+!        thereof such as changes of case.
+!
+!     d) The origin of the SOFA components of your derived work must
+!        not be misrepresented;  you must not claim that you wrote the
+!        original software, nor file a patent application for SOFA
+!        software or algorithms embedded in the SOFA software.
+!
+!     e) These requirements must be reproduced intact in any source
+!        distribution and shall apply to anyone to whom you have
+!        granted a further right to modify the source code of your
+!        derived work.
+!
+!     Note that, as originally distributed, the SOFA software is
+!     intended to be a definitive implementation of the IAU standards,
+!     and consequently third-party modifications are discouraged.  All
+!     variations, no matter how minor, must be explicitly marked as
+!     such, as explained above.
+!
+!  4. You shall not cause the SOFA software to be brought into
+!     disrepute, either by misuse, or use for inappropriate tasks, or
+!     by inappropriate modification.
+!
+!  5. The SOFA software is provided "as is" and SOFA makes no warranty
+!     as to its use or performance.   SOFA does not and cannot warrant
+!     the performance or results which the user may obtain by using the
+!     SOFA software.  SOFA makes no warranties, express or implied, as
+!     to non-infringement of third party rights, merchantability, or
+!     fitness for any particular purpose.  In no event will SOFA be
+!     liable to the user for any consequential, incidental, or special
+!     damages, including any lost profits or lost savings, even if a
+!     SOFA representative has been advised of such damages, or for any
+!     claim by any third party.
+!
+!  6. The provision of any version of the SOFA software under the terms
+!     and conditions specified herein does not imply that future
+!     versions will also be made available under the same terms and
+!     conditions.
+!
+!  In any published work or commercial product which uses the SOFA
+!  software directly, acknowledgement (see www.iausofa.org) is
+!  appreciated.
+!
+!  Correspondence concerning SOFA software should be addressed as
+!  follows:
+!
+!      By email:  sofa@ukho.gov.uk
+!      By post:   IAU SOFA Center
+!                 HM Nautical Almanac Office
+!                 UK Hydrographic Office
+!                 Admiralty Way, Taunton
+!                 Somerset, TA1 2DN
+!                 United Kingdom
+!
+!********************************************************************************
+
+module astro_module
 
 implicit none
+
 public
+
 contains
+!********************************************************************************
 
-!***********************************************************************
-
-!***********************************************************************
-subroutine iau_A2AF ( ndp, angle, sign, idmsf )
+!-----------------------------------------------------------------------
+subroutine A2AF ( ndp, angle, sign, idmsf )
 !>
 !  Decompose radians into degrees, arcminutes, arcseconds, fraction.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -32,7 +132,7 @@ subroutine iau_A2AF ( ndp, angle, sign, idmsf )
 !     IDMSF     i(4)     degrees, arcminutes, arcseconds, fraction
 !
 !  Called:
-!     iau_D2TF     decompose days to hms
+!     D2TF     decompose days to hms
 !
 !  Notes:
 !
@@ -68,10 +168,6 @@ subroutine iau_A2AF ( ndp, angle, sign, idmsf )
 !
 !  This revision:  2007 December 3
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -90,18 +186,15 @@ double precision f
 parameter ( f = 15d0/d2pi )
 
 !  Scale then use days to h,m,s routine.
-call iau_D2TF ( ndp, angle*f, sign, idmsf )
+call D2TF ( ndp, angle*f, sign, idmsf )
 
-end subroutine iau_A2AF
-!***********************************************************************
+end subroutine A2AF
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_A2TF ( ndp, angle, sign, ihmsf )
+!-----------------------------------------------------------------------
+subroutine A2TF ( ndp, angle, sign, ihmsf )
 !>
 !  Decompose radians into hours, minutes, seconds, fraction.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -114,7 +207,7 @@ subroutine iau_A2TF ( ndp, angle, sign, ihmsf )
 !     IHMSF     i(4)     hours, minutes, seconds, fraction
 !
 !  Called:
-!     iau_D2TF     decompose days to hms
+!     D2TF     decompose days to hms
 !
 !  Notes:
 !
@@ -150,10 +243,6 @@ subroutine iau_A2TF ( ndp, angle, sign, ihmsf )
 !
 !  This revision:  2000 November 25
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -168,19 +257,16 @@ double precision d2pi
 parameter ( d2pi = 6.283185307179586476925287d0 )
 
 !  Scale then use days to h,m,s routine.
-call iau_D2TF ( ndp, angle/d2pi, sign, ihmsf )
+call D2TF ( ndp, angle/d2pi, sign, ihmsf )
 
-end subroutine iau_A2TF
-!***********************************************************************
+end subroutine A2TF
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_AB ( pnat, v, s, bm1, ppr )
+!-----------------------------------------------------------------------
+subroutine AB ( pnat, v, s, bm1, ppr )
 !>
 !  Apply aberration to transform natural direction into proper
 !  direction.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -207,7 +293,7 @@ subroutine iau_AB ( pnat, v, s, bm1, ppr )
 !        0.4 microarcsecond.
 !
 !  2) In almost all cases, the maximum accuracy will be limited by the
-!     supplied velocity.  For example, if the SOFA iau_EPV00 routine is
+!     supplied velocity.  For example, if the SOFA EPV00 routine is
 !     used, errors of up to 5 microarcseconds could occur.
 !
 !  References:
@@ -220,13 +306,9 @@ subroutine iau_AB ( pnat, v, s, bm1, ppr )
 !     arcsecond astrometry in space", Astr. J. 125, 1580-1597 (2003).
 !
 !  Called:
-!     iau_PDP      scalar product of two p-vectors
+!     PDP      scalar product of two p-vectors
 !
 !  This revision:   2013 August 31
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -241,7 +323,7 @@ parameter ( srs = 1.97412574336d-08 )
 integer i
 double precision pdv, w1, w2, r2, w, p(3), r
 
-call iau_PDP ( pnat, v, pdv )
+call PDP ( pnat, v, pdv )
 w1 = 1d0 + pdv/(1d0+bm1)
 w2 = srs / s
 r2 = 0d0
@@ -255,17 +337,14 @@ do 2 i=1,3
    ppr(i) = p(i) / r
 2 continue
 
-end subroutine iau_AB
-!***********************************************************************
+end subroutine AB
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_AE2HD (az, el, phi, ha, dec)
+!-----------------------------------------------------------------------
+subroutine AE2HD (az, el, phi, ha, dec)
 !>
 !  Horizon to equatorial coordinates:  transform azimuth and altitude
 !  to hour angle and declination.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -318,10 +397,6 @@ subroutine iau_AE2HD (az, el, phi, ha, dec)
 !
 !  Last revision:   2018 January 2
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -353,16 +428,13 @@ else
 end if
 dec = atan2(z,r)
 
-end subroutine iau_AE2HD
-!***********************************************************************
+end subroutine AE2HD
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_AF2A ( s, ideg, iamin, asec, rad, j )
+!-----------------------------------------------------------------------
+subroutine AF2A ( s, ideg, iamin, asec, rad, j )
 !>
 !  Convert degrees, arcminutes, arcseconds to radians.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -394,10 +466,6 @@ subroutine iau_AF2A ( s, ideg, iamin, asec, rad, j )
 !
 !
 !  This revision:  2013 December 2
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -433,16 +501,13 @@ if ( s == '-' ) w = -w
 !  Return the result.
 rad = w
 
-end subroutine iau_AF2A
-!***********************************************************************
+end subroutine AF2A
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_ANP ( a )
+!-----------------------------------------------------------------------
+double precision function ANP ( a )
 !>
 !  Normalize angle into the range 0 <= A < 2pi.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -450,13 +515,9 @@ double precision function iau_ANP ( a )
 !     A          d       angle (radians)
 !
 !  Returned:
-!     iau_ANP    d       angle in range 0-2pi
+!     ANP    d       angle in range 0-2pi
 !
 !  This revision:  2000 December 15
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -472,18 +533,15 @@ double precision w
 
 w = mod(a,d2pi)
 if ( w < 0d0 ) w = w + d2pi
-iau_ANP = w
+ANP = w
 
-end function iau_ANP
-!***********************************************************************
+end function ANP
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_ANPM ( a )
+!-----------------------------------------------------------------------
+double precision function ANPM ( a )
 !>
 !  Normalize angle into the range -pi <= A < +pi.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -491,13 +549,9 @@ double precision function iau_ANPM ( a )
 !     A          d       angle (radians)
 !
 !  Returned:
-!     iau_ANPM   d       angle in range +/-pi
+!     ANPM   d       angle in range +/-pi
 !
 !  This revision:  2000 November 25
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -517,13 +571,13 @@ double precision w
 
 w = mod(a,d2pi)
 if ( abs(w) >= dpi ) w = w - sign(d2pi,a)
-iau_ANPM = w
+ANPM = w
 
-end function iau_ANPM
-!***********************************************************************
+end function ANPM
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_APCG ( date1, date2, ebpv, ehp, astrom )
+!-----------------------------------------------------------------------
+subroutine APCG ( date1, date2, ebpv, ehp, astrom )
 !>
 !  For a geocentric observer, prepare star-independent astrometry
 !  parameters for transformations between ICRS and GCRS coordinates.
@@ -532,9 +586,6 @@ subroutine iau_APCG ( date1, date2, ebpv, ehp, astrom )
 !  The parameters produced by this routine are required in the parallax,
 !  light deflection and aberration parts of the astrometric
 !  transformation chain.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -600,12 +651,12 @@ subroutine iau_APCG ( date1, date2, ebpv, ehp, astrom )
 !
 !            routines           observer        transformation
 !
-!        iau_APCG iau_APCG13    geocentric      ICRS <-> GCRS
-!        iau_APCI iau_APCI13    terrestrial     ICRS <-> CIRS
-!        iau_APCO iau_APCO13    terrestrial     ICRS <-> observed
-!        iau_APCS iau_APCS13    space           ICRS <-> GCRS
-!        iau_APER iau_APER13    terrestrial     update Earth rotation
-!        iau_APIO iau_APIO13    terrestrial     CIRS <-> observed
+!        APCG APCG13    geocentric      ICRS <-> GCRS
+!        APCI APCI13    terrestrial     ICRS <-> CIRS
+!        APCO APCO13    terrestrial     ICRS <-> observed
+!        APCS APCS13    space           ICRS <-> GCRS
+!        APER APER13    terrestrial     update Earth rotation
+!        APIO APIO13    terrestrial     CIRS <-> observed
 !
 !     Those with names ending in "13" use contemporary SOFA models to
 !     compute the various ephemerides.  The others accept ephemerides
@@ -619,17 +670,13 @@ subroutine iau_APCG ( date1, date2, ebpv, ehp, astrom )
 !     transformation), and atmospheric refraction.
 !
 !  4) The context array ASTROM produced by this routine is used by
-!     iau_ATCIQ* and iau_ATICQ*.
+!     ATCIQ* and ATICQ*.
 !
 !  Called:
-!     iau_ZPV      zero pv-vector
-!     iau_APCS     astrometry parameters, ICRS-GCRS, space observer
+!     ZPV      zero pv-vector
+!     APCS     astrometry parameters, ICRS-GCRS, space observer
 !
 !  This revision:   2017 March 12
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -639,16 +686,16 @@ double precision date1, date2, ebpv(3,2), ehp(3), astrom(30)
 double precision pv(3,2)
 
 !  Geocentric observer.
-call iau_ZPV ( pv )
+call ZPV ( pv )
 
 !  Compute the star-independent astrometry parameters.
-call iau_APCS ( date1, date2, pv, ebpv, ehp, astrom )
+call APCS ( date1, date2, pv, ebpv, ehp, astrom )
 
-end subroutine iau_APCG
-!***********************************************************************
+end subroutine APCG
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_APCG13 ( date1, date2, astrom )
+!-----------------------------------------------------------------------
+subroutine APCG13 ( date1, date2, astrom )
 !>
 !  For a geocentric observer, prepare star-independent astrometry
 !  parameters for transformations between ICRS and GCRS coordinates.
@@ -658,9 +705,6 @@ subroutine iau_APCG13 ( date1, date2, astrom )
 !  The parameters produced by this routine are required in the
 !  parallax, light deflection and aberration parts of the astrometric
 !  transformation chain.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -716,7 +760,7 @@ subroutine iau_APCG13 ( date1, date2, astrom )
 !  2) All the vectors are with respect to BCRS axes.
 !
 !  3) In cases where the caller wishes to supply his own Earth
-!     ephemeris, the routine iau_APCG can be used instead of the present
+!     ephemeris, the routine APCG can be used instead of the present
 !     routine.
 !
 !  4) This is one of several routines that inserts into the ASTROM
@@ -728,12 +772,12 @@ subroutine iau_APCG13 ( date1, date2, astrom )
 !
 !            routines           observer        transformation
 !
-!        iau_APCG iau_APCG13    geocentric      ICRS <-> GCRS
-!        iau_APCI iau_APCI13    terrestrial     ICRS <-> CIRS
-!        iau_APCO iau_APCO13    terrestrial     ICRS <-> observed
-!        iau_APCS iau_APCS13    space           ICRS <-> GCRS
-!        iau_APER iau_APER13    terrestrial     update Earth rotation
-!        iau_APIO iau_APIO13    terrestrial     CIRS <-> observed
+!        APCG APCG13    geocentric      ICRS <-> GCRS
+!        APCI APCI13    terrestrial     ICRS <-> CIRS
+!        APCO APCO13    terrestrial     ICRS <-> observed
+!        APCS APCS13    space           ICRS <-> GCRS
+!        APER APER13    terrestrial     update Earth rotation
+!        APIO APIO13    terrestrial     CIRS <-> observed
 !
 !     Those with names ending in "13" use contemporary SOFA models to
 !     compute the various ephemerides.  The others accept ephemerides
@@ -747,17 +791,13 @@ subroutine iau_APCG13 ( date1, date2, astrom )
 !     transformation), and atmospheric refraction.
 !
 !  5) The context array ASTROM produced by this routine is used by
-!     iau_ATCIQ* and iau_ATICQ*.
+!     ATCIQ* and ATICQ*.
 !
 !  Called:
-!     iau_EPV00    Earth position and velocity
-!     iau_APCG     astrometry parameters, ICRS-GCRS, geocenter
+!     EPV00    Earth position and velocity
+!     APCG     astrometry parameters, ICRS-GCRS, geocenter
 !
 !  This revision:   2017 March 12
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -768,16 +808,16 @@ integer j
 double precision ehpv(3,2), ebpv(3,2)
 
 !  Earth barycentric & heliocentric position/velocity (au, au/d).
-call iau_EPV00 ( date1, date2, ehpv, ebpv, j )
+call EPV00 ( date1, date2, ehpv, ebpv, j )
 
 !  Compute the star-independent astrometry parameters.
-call iau_APCG ( date1, date2, ebpv, ehpv, astrom )
+call APCG ( date1, date2, ebpv, ehpv, astrom )
 
-end subroutine iau_APCG13
-!***********************************************************************
+end subroutine APCG13
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_APCI ( date1, date2, ebpv, ehp, x, y, s, astrom )
+!-----------------------------------------------------------------------
+subroutine APCI ( date1, date2, ebpv, ehp, x, y, s, astrom )
 !>
 !  For a terrestrial observer, prepare star-independent astrometry
 !  parameters for transformations between ICRS and geocentric CIRS
@@ -787,9 +827,6 @@ subroutine iau_APCI ( date1, date2, ebpv, ehp, x, y, s, astrom )
 !  The parameters produced by this routine are required in the parallax,
 !  light deflection, aberration, and bias-precession-nutation parts of
 !  the astrometric transformation chain.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -849,7 +886,7 @@ subroutine iau_APCI ( date1, date2, ebpv, ehp, x, y, s, astrom )
 !  2) All the vectors are with respect to BCRS axes.
 !
 !  3) In cases where the caller does not wish to provide the Earth
-!     ephemeris and CIP/CIO, the routine iau_APCI13 can be used instead
+!     ephemeris and CIP/CIO, the routine APCI13 can be used instead
 !     of the present routine.  This computes the required quantities
 !     using other SOFA routines.
 !
@@ -862,12 +899,12 @@ subroutine iau_APCI ( date1, date2, ebpv, ehp, x, y, s, astrom )
 !
 !            routines           observer        transformation
 !
-!        iau_APCG iau_APCG13    geocentric      ICRS <-> GCRS
-!        iau_APCI iau_APCI13    terrestrial     ICRS <-> CIRS
-!        iau_APCO iau_APCO13    terrestrial     ICRS <-> observed
-!        iau_APCS iau_APCS13    space           ICRS <-> GCRS
-!        iau_APER iau_APER13    terrestrial     update Earth rotation
-!        iau_APIO iau_APIO13    terrestrial     CIRS <-> observed
+!        APCG APCG13    geocentric      ICRS <-> GCRS
+!        APCI APCI13    terrestrial     ICRS <-> CIRS
+!        APCO APCO13    terrestrial     ICRS <-> observed
+!        APCS APCS13    space           ICRS <-> GCRS
+!        APER APER13    terrestrial     update Earth rotation
+!        APIO APIO13    terrestrial     CIRS <-> observed
 !
 !     Those with names ending in "13" use contemporary SOFA models to
 !     compute the various ephemerides.  The others accept ephemerides
@@ -881,17 +918,13 @@ subroutine iau_APCI ( date1, date2, ebpv, ehp, x, y, s, astrom )
 !     transformation), and atmospheric refraction.
 !
 !  5) The context array ASTROM produced by this routine is used by
-!     iau_ATCIQ* and iau_ATICQ*.
+!     ATCIQ* and ATICQ*.
 !
 !  Called:
-!     iau_APCG     astrometry parameters, ICRS-GCRS, geocenter
-!     iau_C2IXYS   celestial-to-intermediate matrix, given X,Y and s
+!     APCG     astrometry parameters, ICRS-GCRS, geocenter
+!     C2IXYS   celestial-to-intermediate matrix, given X,Y and s
 !
 !  This revision:   2017 March 12
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -900,16 +933,16 @@ double precision date1, date2, ebpv(3,2), ehp(3), x, y, s, &
                  astrom(30)
 
 !  Star-independent astrometry parameters for geocenter.
-call iau_APCG ( date1, date2, ebpv, ehp, astrom )
+call APCG ( date1, date2, ebpv, ehp, astrom )
 
 !  CIO based BPN matrix.
-call iau_C2IXYS ( x, y, s, astrom(13) )
+call C2IXYS ( x, y, s, astrom(13) )
 
-end subroutine iau_APCI
-!***********************************************************************
+end subroutine APCI
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_APCI13 ( date1, date2, astrom, eo )
+!-----------------------------------------------------------------------
+subroutine APCI13 ( date1, date2, astrom, eo )
 !>
 !  For a terrestrial observer, prepare star-independent astrometry
 !  parameters for transformations between ICRS and geocentric CIRS
@@ -919,9 +952,6 @@ subroutine iau_APCI13 ( date1, date2, astrom, eo )
 !  The parameters produced by this routine are required in the parallax,
 !  light deflection, aberration, and bias-precession-nutation parts of
 !  the astrometric transformation chain.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -978,7 +1008,7 @@ subroutine iau_APCI13 ( date1, date2, astrom, eo )
 !  2) All the vectors are with respect to BCRS axes.
 !
 !  3) In cases where the caller wishes to supply his own Earth
-!     ephemeris and CIP/CIO, the routine iau_APCI can be used instead of
+!     ephemeris and CIP/CIO, the routine APCI can be used instead of
 !     the present routine.
 !
 !  4) This is one of several routines that inserts into the ASTROM
@@ -990,12 +1020,12 @@ subroutine iau_APCI13 ( date1, date2, astrom, eo )
 !
 !            routines           observer        transformation
 !
-!        iau_APCG iau_APCG13    geocentric      ICRS <-> GCRS
-!        iau_APCI iau_APCI13    terrestrial     ICRS <-> CIRS
-!        iau_APCO iau_APCO13    terrestrial     ICRS <-> observed
-!        iau_APCS iau_APCS13    space           ICRS <-> GCRS
-!        iau_APER iau_APER13    terrestrial     update Earth rotation
-!        iau_APIO iau_APIO13    terrestrial     CIRS <-> observed
+!        APCG APCG13    geocentric      ICRS <-> GCRS
+!        APCI APCI13    terrestrial     ICRS <-> CIRS
+!        APCO APCO13    terrestrial     ICRS <-> observed
+!        APCS APCS13    space           ICRS <-> GCRS
+!        APER APER13    terrestrial     update Earth rotation
+!        APIO APIO13    terrestrial     CIRS <-> observed
 !
 !     Those with names ending in "13" use contemporary SOFA models to
 !     compute the various ephemerides.  The others accept ephemerides
@@ -1009,21 +1039,17 @@ subroutine iau_APCI13 ( date1, date2, astrom, eo )
 !     transformation), and atmospheric refraction.
 !
 !  5) The context array ASTROM produced by this routine is used by
-!     iau_ATCIQ* and iau_ATICQ*.
+!     ATCIQ* and ATICQ*.
 !
 !  Called:
-!     iau_EPV00    Earth position and velocity
-!     iau_PNM06A   classical NPB matrix, IAU 2006/2000A
-!     iau_BPN2XY   extract CIP X,Y coordinates from NPB matrix
-!     iau_S06      the CIO locator s, given X,Y, IAU 2006
-!     iau_APCI     astrometry parameters, ICRS-CIRS
-!     iau_EORS     equation of the origins, given NPB matrix and s
+!     EPV00    Earth position and velocity
+!     PNM06A   classical NPB matrix, IAU 2006/2000A
+!     BPN2XY   extract CIP X,Y coordinates from NPB matrix
+!     S06      the CIO locator s, given X,Y, IAU 2006
+!     APCI     astrometry parameters, ICRS-CIRS
+!     EORS     equation of the origins, given NPB matrix and s
 !
 !  This revision:   2017 March 12
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -1033,31 +1059,31 @@ double precision date1, date2, astrom(30), eo
 integer j
 double precision pvh(3,2), pvb(3,2), r(3,3), x, y, s
 
-!     DOUBLE PRECISION iau_S06, iau_EORS
+!     DOUBLE PRECISION S06, EORS
 
 !  Earth barycentric & heliocentric position/velocity (au, au/d).
-call iau_EPV00 ( date1, date2, pvh, pvb, j )
+call EPV00 ( date1, date2, pvh, pvb, j )
 
 !  Form the equinox based BPN matrix, IAU 2006/2000A.
-call iau_PNM06A ( date1, date2, r )
+call PNM06A ( date1, date2, r )
 
 !  Extract CIP X,Y.
-call iau_BPN2XY ( r, x, y )
+call BPN2XY ( r, x, y )
 
 !  Obtain CIO locator s.
-s = iau_S06 ( date1, date2, x, y )
+s = S06 ( date1, date2, x, y )
 
 !  Compute the star-independent astrometry parameters.
-call iau_APCI ( date1, date2, pvb, pvh, x, y, s, astrom )
+call APCI ( date1, date2, pvb, pvh, x, y, s, astrom )
 
 !  Equation of the origins.
-eo = iau_EORS ( r, s )
+eo = EORS ( r, s )
 
-end subroutine iau_APCI13
-!***********************************************************************
+end subroutine APCI13
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_APCO ( date1, date2, ebpv, ehp, x, y, s, &
+!-----------------------------------------------------------------------
+subroutine APCO ( date1, date2, ebpv, ehp, x, y, s, &
                       theta, elong, phi, hm, xp, yp, sp, &
                       refa, refb, astrom )
 !>
@@ -1066,9 +1092,6 @@ subroutine iau_APCO ( date1, date2, ebpv, ehp, x, y, s, &
 !  The caller supplies the Earth ephemeris, the Earth rotation
 !  information and the refraction constants as well as the site
 !  coordinates.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -1164,7 +1187,7 @@ subroutine iau_APCO ( date1, date2, ebpv, ehp, x, y, s, &
 !
 !  7) In cases where the caller does not wish to provide the Earth
 !     Ephemeris, the Earth rotation information and refraction
-!     constants, the routine iau_APCO13 can be used instead of the
+!     constants, the routine APCO13 can be used instead of the
 !     present routine.  This starts from UTC and weather readings etc.
 !     and computes suitable values using other SOFA routines.
 !
@@ -1177,12 +1200,12 @@ subroutine iau_APCO ( date1, date2, ebpv, ehp, x, y, s, &
 !
 !            routines           observer        transformation
 !
-!        iau_APCG iau_APCG13    geocentric      ICRS <-> GCRS
-!        iau_APCI iau_APCI13    terrestrial     ICRS <-> CIRS
-!        iau_APCO iau_APCO13    terrestrial     ICRS <-> observed
-!        iau_APCS iau_APCS13    space           ICRS <-> GCRS
-!        iau_APER iau_APER13    terrestrial     update Earth rotation
-!        iau_APIO iau_APIO13    terrestrial     CIRS <-> observed
+!        APCG APCG13    geocentric      ICRS <-> GCRS
+!        APCI APCI13    terrestrial     ICRS <-> CIRS
+!        APCO APCO13    terrestrial     ICRS <-> observed
+!        APCS APCS13    space           ICRS <-> GCRS
+!        APER APER13    terrestrial     update Earth rotation
+!        APIO APIO13    terrestrial     CIRS <-> observed
 !
 !     Those with names ending in "13" use contemporary SOFA models to
 !     compute the various ephemerides.  The others accept ephemerides
@@ -1196,21 +1219,17 @@ subroutine iau_APCO ( date1, date2, ebpv, ehp, x, y, s, &
 !     transformation), and atmospheric refraction.
 !
 !  9) The context array ASTROM produced by this routine is used by
-!     iau_ATIOQ, iau_ATOIQ, iau_ATCIQ*, and iau_ATICQ*.
+!     ATIOQ, ATOIQ, ATCIQ*, and ATICQ*.
 !
 !  Called:
-!     iau_APER     astrometry parameters: update ERA
-!     iau_C2IXYS   celestial-to-intermediate matrix, given X,Y and s
-!     iau_PVTOB    position/velocity of terrestrial station
-!     iau_TRXPV    product of transpose of r-matrix and pv-vector
-!     iau_APCS     astrometry parameters, ICRS-GCRS, space observer
-!     iau_CR       copy r-matrix
+!     APER     astrometry parameters: update ERA
+!     C2IXYS   celestial-to-intermediate matrix, given X,Y and s
+!     PVTOB    position/velocity of terrestrial station
+!     TRXPV    product of transpose of r-matrix and pv-vector
+!     APCS     astrometry parameters, ICRS-GCRS, space observer
+!     CR       copy r-matrix
 !
 !  This revision:   2017 March 12
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -1239,31 +1258,31 @@ astrom(29) = refa
 astrom(30) = refb
 
 !  Local Earth rotation angle.
-call iau_APER ( theta, astrom )
+call APER ( theta, astrom )
 
 !  Disable the (redundant) diurnal aberration step.
 astrom(27) = 0d0
 
 !  CIO based BPN matrix.
-call iau_C2IXYS ( x, y, s, r )
+call C2IXYS ( x, y, s, r )
 
 !  Observer's geocentric position and velocity (m, m/s, CIRS).
-call iau_PVTOB ( elong, phi, hm, xp, yp, sp, theta, pvc )
+call PVTOB ( elong, phi, hm, xp, yp, sp, theta, pvc )
 
 !  Rotate into GCRS.
-call iau_TRXPV ( r, pvc, pv )
+call TRXPV ( r, pvc, pv )
 
 !  ICRS <-> GCRS parameters.
-call iau_APCS ( date1, date2, pv, ebpv, ehp, astrom )
+call APCS ( date1, date2, pv, ebpv, ehp, astrom )
 
 !  Store the CIO based BPN matrix.
-call iau_CR ( r, astrom(13) )
+call CR ( r, astrom(13) )
 
-end subroutine iau_APCO
-!***********************************************************************
+end subroutine APCO
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_APCO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
+!-----------------------------------------------------------------------
+subroutine APCO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
                         phpa, tc, rh, wl, astrom, eo, j )
 !>
 !  For a terrestrial observer, prepare star-independent astrometry
@@ -1275,9 +1294,6 @@ subroutine iau_APCO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
 !  The parameters produced by this routine are required in the parallax,
 !  light deflection, aberration, and bias-precession-nutation parts of
 !  the ICRS/CIRS transformations.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -1328,14 +1344,14 @@ subroutine iau_APCO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
 !      present routine is that the JD day represents UTC days whether
 !      the length is 86399, 86400 or 86401 SI seconds.
 !
-!      Applications should use the routine iau_DTF2D to convert from
+!      Applications should use the routine DTF2D to convert from
 !      calendar date and time of day into 2-part quasi Julian Date, as
 !      it implements the leap-second-ambiguity convention just
 !      described.
 !
 !  2)  The warning status "dubious year" flags UTCs that predate the
 !      introduction of the time scale or that are too far in the
-!      future to be trusted.  See iau_DAT for further details.
+!      future to be trusted.  See DAT for further details.
 !
 !  3)  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
 !      one second at the end of each positive UTC leap second,
@@ -1387,7 +1403,7 @@ subroutine iau_APCO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
 !
 !  9)  In cases where the caller wishes to supply his own Earth
 !      ephemeris, Earth rotation information and refraction constants,
-!      the routine iau_APCO can be used instead of the present routine.
+!      the routine APCO can be used instead of the present routine.
 !
 !  10) This is one of several routines that inserts into the ASTROM
 !      array star-independent parameters needed for the chain of
@@ -1398,12 +1414,12 @@ subroutine iau_APCO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
 !
 !            routines           observer        transformation
 !
-!        iau_APCG iau_APCG13    geocentric      ICRS <-> GCRS
-!        iau_APCI iau_APCI13    terrestrial     ICRS <-> CIRS
-!        iau_APCO iau_APCO13    terrestrial     ICRS <-> observed
-!        iau_APCS iau_APCS13    space           ICRS <-> GCRS
-!        iau_APER iau_APER13    terrestrial     update Earth rotation
-!        iau_APIO iau_APIO13    terrestrial     CIRS <-> observed
+!        APCG APCG13    geocentric      ICRS <-> GCRS
+!        APCI APCI13    terrestrial     ICRS <-> CIRS
+!        APCO APCO13    terrestrial     ICRS <-> observed
+!        APCS APCS13    space           ICRS <-> GCRS
+!        APER APER13    terrestrial     update Earth rotation
+!        APIO APIO13    terrestrial     CIRS <-> observed
 !
 !      Those with names ending in "13" use contemporary SOFA models to
 !      compute the various ephemerides.  The others accept ephemerides
@@ -1417,27 +1433,23 @@ subroutine iau_APCO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
 !      transformation), and atmospheric refraction.
 !
 !  11) The context array ASTROM produced by this routine is used by
-!      iau_ATIOQ, iau_ATOIQ, iau_ATCIQ* and iau_ATICQ*.
+!      ATIOQ, ATOIQ, ATCIQ* and ATICQ*.
 !
 !  Called:
-!     iau_UTCTAI   UTC to TAI
-!     iau_TAITT    TAI to TT
-!     iau_UTCUT1   UTC to UT1
-!     iau_EPV00    Earth position and velocity
-!     iau_PNM06A   classical NPB matrix, IAU 2006/2000A
-!     iau_BPN2XY   extract CIP X,Y coordinates from NPB matrix
-!     iau_S06      the CIO locator s, given X,Y, IAU 2006
-!     iau_ERA00    Earth rotation angle, IAU 2000
-!     iau_SP00     the TIO locator s', IERS 2000
-!     iau_REFCO    refraction constants for given ambient conditions
-!     iau_APCO     astrometry parameters, ICRS-observed
-!     iau_EORS     equation of the origins, given NPB matrix and s
+!     UTCTAI   UTC to TAI
+!     TAITT    TAI to TT
+!     UTCUT1   UTC to UT1
+!     EPV00    Earth position and velocity
+!     PNM06A   classical NPB matrix, IAU 2006/2000A
+!     BPN2XY   extract CIP X,Y coordinates from NPB matrix
+!     S06      the CIO locator s, given X,Y, IAU 2006
+!     ERA00    Earth rotation angle, IAU 2000
+!     SP00     the TIO locator s', IERS 2000
+!     REFCO    refraction constants for given ambient conditions
+!     APCO     astrometry parameters, ICRS-observed
+!     EORS     equation of the origins, given NPB matrix and s
 !
 !  This revision:   2013 December 5
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -1451,53 +1463,53 @@ double precision tai1, tai2, tt1, tt2, ut11, ut12, &
                  ehpv(3,2), ebpv(3,2), r(3,3), x, y, s, theta, &
                  sp, refa, refb
 
-!     DOUBLE PRECISION iau_S06, iau_ERA00, iau_SP00, iau_EORS
+!     DOUBLE PRECISION S06, ERA00, SP00, EORS
 
 !  UTC to other time scales.
-call iau_UTCTAI ( utc1, utc2, tai1, tai2, js )
+call UTCTAI ( utc1, utc2, tai1, tai2, js )
 if ( js<0 ) go to 9
-call iau_TAITT ( tai1, tai2, tt1, tt2, js )
-call iau_UTCUT1 ( utc1, utc2, dut1, ut11, ut12, js )
+call TAITT ( tai1, tai2, tt1, tt2, js )
+call UTCUT1 ( utc1, utc2, dut1, ut11, ut12, js )
 if ( js<0 ) go to 9
 
 !  Earth barycentric & heliocentric position/velocity (au, au/d).
-call iau_EPV00 ( tt1, tt2, ehpv, ebpv, jw )
+call EPV00 ( tt1, tt2, ehpv, ebpv, jw )
 
 !  Form the equinox based BPN matrix, IAU 2006/2000A.
-call iau_PNM06A ( tt1, tt2, r )
+call PNM06A ( tt1, tt2, r )
 
 !  Extract CIP X,Y.
-call iau_BPN2XY ( r, x, y )
+call BPN2XY ( r, x, y )
 
 !  Obtain CIO locator s.
-s = iau_S06 ( tt1, tt2, x, y )
+s = S06 ( tt1, tt2, x, y )
 
 !  Earth rotation angle.
-theta = iau_ERA00 ( ut11, ut12 )
+theta = ERA00 ( ut11, ut12 )
 
 !  TIO locator s'.
-sp = iau_SP00 ( tt1, tt2 )
+sp = SP00 ( tt1, tt2 )
 
 !  Refraction constants A and B.
-call iau_REFCO ( phpa, tc, rh, wl, refa, refb )
+call REFCO ( phpa, tc, rh, wl, refa, refb )
 
 !  Compute the star-independent astrometry parameters.
-call iau_APCO ( tt1, tt2, ebpv, ehpv, x, y, s, theta, &
+call APCO ( tt1, tt2, ebpv, ehpv, x, y, s, theta, &
                 elong, phi, hm, xp, yp, sp, refa, refb, &
                 astrom )
 
 !  Equation of the origins.
-eo = iau_EORS ( r, s )
+eo = EORS ( r, s )
 
 !  Return the status.
 9 continue
 j = js
 
-end subroutine iau_APCO13
-!***********************************************************************
+end subroutine APCO13
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_APCS ( date1, date2, pv, ebpv, ehp, astrom )
+!-----------------------------------------------------------------------
+subroutine APCS ( date1, date2, pv, ebpv, ehp, astrom )
 !>
 !  For an observer whose geocentric position and velocity are known,
 !  prepare star-independent astrometry parameters for transformations
@@ -1507,9 +1519,6 @@ subroutine iau_APCS ( date1, date2, pv, ebpv, ehp, astrom )
 !  The parameters produced by this routine are required in the space
 !  motion, parallax, light deflection and aberration parts of the
 !  astrometric transformation chain.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -1578,9 +1587,9 @@ subroutine iau_APCS ( date1, date2, pv, ebpv, ehp, astrom )
 !     heliocentric and barycentric vectors.
 !
 !  4) In cases where the caller does not wish to provide the Earth
-!     ephemeris, the routine iau_APCS13 can be used instead of the
+!     ephemeris, the routine APCS13 can be used instead of the
 !     present routine.  This computes the Earth ephemeris using the
-!     SOFA routine iau_EPV00.
+!     SOFA routine EPV00.
 !
 !  5) This is one of several routines that inserts into the ASTROM
 !     array star-independent parameters needed for the chain of
@@ -1591,12 +1600,12 @@ subroutine iau_APCS ( date1, date2, pv, ebpv, ehp, astrom )
 !
 !            routines           observer        transformation
 !
-!        iau_APCG iau_APCG13    geocentric      ICRS <-> GCRS
-!        iau_APCI iau_APCI13    terrestrial     ICRS <-> CIRS
-!        iau_APCO iau_APCO13    terrestrial     ICRS <-> observed
-!        iau_APCS iau_APCS13    space           ICRS <-> GCRS
-!        iau_APER iau_APER13    terrestrial     update Earth rotation
-!        iau_APIO iau_APIO13    terrestrial     CIRS <-> observed
+!        APCG APCG13    geocentric      ICRS <-> GCRS
+!        APCI APCI13    terrestrial     ICRS <-> CIRS
+!        APCO APCO13    terrestrial     ICRS <-> observed
+!        APCS APCS13    space           ICRS <-> GCRS
+!        APER APER13    terrestrial     update Earth rotation
+!        APIO APIO13    terrestrial     CIRS <-> observed
 !
 !     Those with names ending in "13" use contemporary SOFA models to
 !     compute the various ephemerides.  The others accept ephemerides
@@ -1610,19 +1619,15 @@ subroutine iau_APCS ( date1, date2, pv, ebpv, ehp, astrom )
 !     transformation), and atmospheric refraction.
 !
 !  6) The context array ASTROM produced by this routine is used by
-!     iau_ATCIQ* and iau_ATICQ*.
+!     ATCIQ* and ATICQ*.
 !
 !  Called:
-!     iau_CP       copy p-vector
-!     iau_PM       modulus of p-vector
-!     iau_PN       decompose p-vector into modulus and direction
-!     iau_IR       initialize r-matrix to identity
+!     CP       copy p-vector
+!     PM       modulus of p-vector
+!     PN       decompose p-vector into modulus and direction
+!     IR       initialize r-matrix to identity
 !
 !  This revision:   2017 March 16
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -1678,10 +1683,10 @@ do 1 i=1,3
 1 continue
 
 !  Barycentric position of observer (au).
-call iau_CP ( pb, astrom(2) )
+call CP ( pb, astrom(2) )
 
 !  Heliocentric direction and distance (unit vector and au).
-call iau_PN ( ph, astrom(8), astrom(5) )
+call PN ( ph, astrom(8), astrom(5) )
 
 !  Barycentric vel. in units of c, and reciprocal of Lorenz factor.
 v2 = 0d0
@@ -1693,13 +1698,13 @@ do 3 i=1,3
 astrom(12) = sqrt ( 1d0 - v2 )
 
 !  Reset the NPB matrix.
-call iau_IR ( astrom(13) )
+call IR ( astrom(13) )
 
-end subroutine iau_APCS
-!***********************************************************************
+end subroutine APCS
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_APCS13 ( date1, date2, pv, astrom )
+!-----------------------------------------------------------------------
+subroutine APCS13 ( date1, date2, pv, astrom )
 !>
 !  For an observer whose geocentric position and velocity are known,
 !  prepare star-independent astrometry parameters for transformations
@@ -1708,9 +1713,6 @@ subroutine iau_APCS13 ( date1, date2, pv, astrom )
 !  The parameters produced by this routine are required in the space
 !  motion, parallax, light deflection and aberration parts of the
 !  astrometric transformation chain.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -1773,7 +1775,7 @@ subroutine iau_APCS13 ( date1, date2, pv, astrom )
 !     terrestrial.
 !
 !  4) In cases where the caller wishes to supply his own Earth
-!     ephemeris, the routine iau_APCS can be used instead of the present
+!     ephemeris, the routine APCS can be used instead of the present
 !     routine.
 !
 !  5) This is one of several routines that inserts into the ASTROM
@@ -1785,12 +1787,12 @@ subroutine iau_APCS13 ( date1, date2, pv, astrom )
 !
 !            routines           observer        transformation
 !
-!        iau_APCG iau_APCG13    geocentric      ICRS <-> GCRS
-!        iau_APCI iau_APCI13    terrestrial     ICRS <-> CIRS
-!        iau_APCO iau_APCO13    terrestrial     ICRS <-> observed
-!        iau_APCS iau_APCS13    space           ICRS <-> GCRS
-!        iau_APER iau_APER13    terrestrial     update Earth rotation
-!        iau_APIO iau_APIO13    terrestrial     CIRS <-> observed
+!        APCG APCG13    geocentric      ICRS <-> GCRS
+!        APCI APCI13    terrestrial     ICRS <-> CIRS
+!        APCO APCO13    terrestrial     ICRS <-> observed
+!        APCS APCS13    space           ICRS <-> GCRS
+!        APER APER13    terrestrial     update Earth rotation
+!        APIO APIO13    terrestrial     CIRS <-> observed
 !
 !     Those with names ending in "13" use contemporary SOFA models to
 !     compute the various ephemerides.  The others accept ephemerides
@@ -1804,17 +1806,13 @@ subroutine iau_APCS13 ( date1, date2, pv, astrom )
 !     transformation), and atmospheric refraction.
 !
 !  6) The context array ASTROM produced by this routine is used by
-!     iau_ATCIQ* and iau_ATICQ*.
+!     ATCIQ* and ATICQ*.
 !
 !  Called:
-!     iau_EPV00    Earth position and velocity
-!     iau_APCS     astrometry parameters, ICRS-GCRS, space observer
+!     EPV00    Earth position and velocity
+!     APCS     astrometry parameters, ICRS-GCRS, space observer
 !
 !  This revision:   2017 March 12
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -1825,22 +1823,19 @@ integer j
 double precision ehpv(3,2), ebpv(3,2)
 
 !  Earth barycentric & heliocentric position/velocity (au, au/d).
-call iau_EPV00 ( date1, date2, ehpv, ebpv, j )
+call EPV00 ( date1, date2, ehpv, ebpv, j )
 
 !  Compute the star-independent astrometry parameters.
-call iau_APCS ( date1, date2, pv, ebpv, ehpv, astrom )
+call APCS ( date1, date2, pv, ebpv, ehpv, astrom )
 
-end subroutine iau_APCS13
-!***********************************************************************
+end subroutine APCS13
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_APER ( theta, astrom )
+!-----------------------------------------------------------------------
+subroutine APER ( theta, astrom )
 !>
 !  In the star-independent astrometry parameters, update only the
 !  Earth rotation angle, supplied by the caller explicitly.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -1894,7 +1889,7 @@ subroutine iau_APER ( theta, astrom )
 !     Greenwich apparent sidereal time rather than Earth rotation
 !     angle.
 !
-!  3) The routine iau_APER13 can be used instead of the present routine,
+!  3) The routine APER13 can be used instead of the present routine,
 !     and starts from UT1 rather than ERA itself.
 !
 !  4) This is one of several routines that inserts into the ASTROM
@@ -1906,12 +1901,12 @@ subroutine iau_APER ( theta, astrom )
 !
 !            routines           observer        transformation
 !
-!        iau_APCG iau_APCG13    geocentric      ICRS <-> GCRS
-!        iau_APCI iau_APCI13    terrestrial     ICRS <-> CIRS
-!        iau_APCO iau_APCO13    terrestrial     ICRS <-> observed
-!        iau_APCS iau_APCS13    space           ICRS <-> GCRS
-!        iau_APER iau_APER13    terrestrial     update Earth rotation
-!        iau_APIO iau_APIO13    terrestrial     CIRS <-> observed
+!        APCG APCG13    geocentric      ICRS <-> GCRS
+!        APCI APCI13    terrestrial     ICRS <-> CIRS
+!        APCO APCO13    terrestrial     ICRS <-> observed
+!        APCS APCS13    space           ICRS <-> GCRS
+!        APER APER13    terrestrial     update Earth rotation
+!        APIO APIO13    terrestrial     CIRS <-> observed
 !
 !     Those with names ending in "13" use contemporary SOFA models to
 !     compute the various ephemerides.  The others accept ephemerides
@@ -1926,10 +1921,6 @@ subroutine iau_APER ( theta, astrom )
 !
 !  This revision:   2013 September 25
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -1937,17 +1928,14 @@ double precision theta, astrom(30)
 
 astrom(28) = theta + astrom(22)
 
-end subroutine iau_APER
-!***********************************************************************
+end subroutine APER
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_APER13 ( ut11, ut12, astrom )
+!-----------------------------------------------------------------------
+subroutine APER13 ( ut11, ut12, astrom )
 !>
 !  In the star-independent astrometry parameters, update only the
 !  Earth rotation angle.  The caller provides UT1 (n.b. not UTC).
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -2015,7 +2003,7 @@ subroutine iau_APER13 ( ut11, ut12, astrom )
 !     versa.
 !
 !  2) If the caller wishes to provide the Earth rotation angle itself,
-!     the routine iau_APER can be used instead.  One use of this
+!     the routine APER can be used instead.  One use of this
 !     technique is to substitute Greenwich apparent sidereal time and
 !     thereby to support equinox based transformations directly.
 !
@@ -2028,12 +2016,12 @@ subroutine iau_APER13 ( ut11, ut12, astrom )
 !
 !            routines           observer        transformation
 !
-!        iau_APCG iau_APCG13    geocentric      ICRS <-> GCRS
-!        iau_APCI iau_APCI13    terrestrial     ICRS <-> CIRS
-!        iau_APCO iau_APCO13    terrestrial     ICRS <-> observed
-!        iau_APCS iau_APCS13    space           ICRS <-> GCRS
-!        iau_APER iau_APER13    terrestrial     update Earth rotation
-!        iau_APIO iau_APIO13    terrestrial     CIRS <-> observed
+!        APCG APCG13    geocentric      ICRS <-> GCRS
+!        APCI APCI13    terrestrial     ICRS <-> CIRS
+!        APCO APCO13    terrestrial     ICRS <-> observed
+!        APCS APCS13    space           ICRS <-> GCRS
+!        APER APER13    terrestrial     update Earth rotation
+!        APIO APIO13    terrestrial     CIRS <-> observed
 !
 !     Those with names ending in "13" use contemporary SOFA models to
 !     compute the various ephemerides.  The others accept ephemerides
@@ -2047,38 +2035,31 @@ subroutine iau_APER13 ( ut11, ut12, astrom )
 !     transformation), and atmospheric refraction.
 !
 !  Called:
-!     iau_APER     astrometry parameters: update ERA
-!     iau_ERA00    Earth rotation angle, IAU 2000
+!     APER     astrometry parameters: update ERA
+!     ERA00    Earth rotation angle, IAU 2000
 !
 !  This revision:   2017 March 12
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
 implicit none
 double precision ut11, ut12, astrom(30)
 
-!     DOUBLE PRECISION iau_ERA00
+!     DOUBLE PRECISION ERA00
 
-call iau_APER ( iau_ERA00 ( ut11, ut12 ), astrom )
+call APER ( ERA00 ( ut11, ut12 ), astrom )
 
-end subroutine iau_APER13
-!***********************************************************************
+end subroutine APER13
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_APIO ( sp, theta, elong, phi, hm, xp, yp, &
+!-----------------------------------------------------------------------
+subroutine APIO ( sp, theta, elong, phi, hm, xp, yp, &
                       refa, refb, astrom )
 !>
 !  For a terrestrial observer, prepare star-independent astrometry
 !  parameters for transformations between CIRS and observed coordinates.
 !  The caller supplies the Earth orientation information and the
 !  refraction constants as well as the site coordinates.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -2115,7 +2096,7 @@ subroutine iau_APIO ( sp, theta, elong, phi, hm, xp, yp, &
 !
 !  1) SP, the TIO locator s', is a tiny quantity needed only by the most
 !     precise applications.  It can either be set to zero or predicted
-!     using the SOFA routine iau_SP00.
+!     using the SOFA routine SP00.
 !
 !  2) The geographical coordinates are with respect to the WGS84
 !     reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN:  the
@@ -2143,7 +2124,7 @@ subroutine iau_APIO ( sp, theta, elong, phi, hm, xp, yp, &
 !
 !  6) In cases where the caller does not wish to provide the Earth
 !     rotation information and refraction constants, the routine
-!     iau_APIO13 can be used instead of the present routine.  This
+!     APIO13 can be used instead of the present routine.  This
 !     starts from UTC and weather readings etc. and computes suitable
 !     values using other SOFA routines.
 !
@@ -2156,12 +2137,12 @@ subroutine iau_APIO ( sp, theta, elong, phi, hm, xp, yp, &
 !
 !            routines           observer        transformation
 !
-!        iau_APCG iau_APCG13    geocentric      ICRS <-> GCRS
-!        iau_APCI iau_APCI13    terrestrial     ICRS <-> CIRS
-!        iau_APCO iau_APCO13    terrestrial     ICRS <-> observed
-!        iau_APCS iau_APCS13    space           ICRS <-> GCRS
-!        iau_APER iau_APER13    terrestrial     update Earth rotation
-!        iau_APIO iau_APIO13    terrestrial     CIRS <-> observed
+!        APCG APCG13    geocentric      ICRS <-> GCRS
+!        APCI APCI13    terrestrial     ICRS <-> CIRS
+!        APCO APCO13    terrestrial     ICRS <-> observed
+!        APCS APCS13    space           ICRS <-> GCRS
+!        APER APER13    terrestrial     update Earth rotation
+!        APIO APIO13    terrestrial     CIRS <-> observed
 !
 !     Those with names ending in "13" use contemporary SOFA models to
 !     compute the various ephemerides.  The others accept ephemerides
@@ -2175,17 +2156,13 @@ subroutine iau_APIO ( sp, theta, elong, phi, hm, xp, yp, &
 !     transformation), and atmospheric refraction.
 !
 !  8) The context array ASTROM produced by this routine is used by
-!     iau_ATIOQ and iau_ATOIQ.
+!     ATIOQ and ATOIQ.
 !
 !  Called:
-!     iau_PVTOB    position/velocity of terrestrial station
-!     iau_APER     astrometry parameters: update ERA
+!     PVTOB    position/velocity of terrestrial station
+!     APER     astrometry parameters: update ERA
 !
 !  This revision:   2013 September 25
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -2213,7 +2190,7 @@ astrom(25) = sin(phi)
 astrom(26) = cos(phi)
 
 !  Observer's geocentric position and velocity (m, m/s, CIRS).
-call iau_PVTOB ( elong, phi, hm, xp, yp, sp, theta, pv )
+call PVTOB ( elong, phi, hm, xp, yp, sp, theta, pv )
 
 !  Magnitude of diurnal aberration vector.
 astrom(27) = sqrt ( pv(1,2)*pv(1,2) + pv(2,2)*pv(2,2) ) / cmps
@@ -2223,22 +2200,19 @@ astrom(29) = refa
 astrom(30) = refb
 
 !  Local Earth rotation angle.
-call iau_APER ( theta, astrom )
+call APER ( theta, astrom )
 
-end subroutine iau_APIO
-!***********************************************************************
+end subroutine APIO
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_APIO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
+!-----------------------------------------------------------------------
+subroutine APIO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
                         phpa, tc, rh, wl, astrom, j )
 !>
 !  For a terrestrial observer, prepare star-independent astrometry
 !  parameters for transformations between CIRS and observed coordinates.
 !  The caller supplies UTC, site coordinates, ambient air conditions and
 !  observing wavelength.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -2288,14 +2262,14 @@ subroutine iau_APIO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
 !      present routine is that the JD day represents UTC days whether
 !      the length is 86399, 86400 or 86401 SI seconds.
 !
-!      Applications should use the routine iau_DTF2D to convert from
+!      Applications should use the routine DTF2D to convert from
 !      calendar date and time of day into 2-part quasi Julian Date, as
 !      it implements the leap-second-ambiguity convention just
 !      described.
 !
 !  2)  The warning status "dubious year" flags UTCs that predate the
 !      introduction of the time scale or that are too far in the future
-!      to be trusted.  See iau_DAT for further details.
+!      to be trusted.  See DAT for further details.
 !
 !  3)  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
 !      one second at the end of each positive UTC leap second,
@@ -2347,7 +2321,7 @@ subroutine iau_APIO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
 !
 !  9)  In cases where the caller wishes to supply his own Earth
 !      rotation information and refraction constants, the routine
-!      iau_APC can be used instead of the present routine.
+!      APC can be used instead of the present routine.
 !
 !  10) This is one of several routines that inserts into the ASTROM
 !      array star-independent parameters needed for the chain of
@@ -2358,12 +2332,12 @@ subroutine iau_APIO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
 !
 !            routines           observer        transformation
 !
-!        iau_APCG iau_APCG13    geocentric      ICRS <-> GCRS
-!        iau_APCI iau_APCI13    terrestrial     ICRS <-> CIRS
-!        iau_APCO iau_APCO13    terrestrial     ICRS <-> observed
-!        iau_APCS iau_APCS13    space           ICRS <-> GCRS
-!        iau_APER iau_APER13    terrestrial     update Earth rotation
-!        iau_APIO iau_APIO13    terrestrial     CIRS <-> observed
+!        APCG APCG13    geocentric      ICRS <-> GCRS
+!        APCI APCI13    terrestrial     ICRS <-> CIRS
+!        APCO APCO13    terrestrial     ICRS <-> observed
+!        APCS APCS13    space           ICRS <-> GCRS
+!        APER APER13    terrestrial     update Earth rotation
+!        APIO APIO13    terrestrial     CIRS <-> observed
 !
 !      Those with names ending in "13" use contemporary SOFA models to
 !      compute the various ephemerides.  The others accept ephemerides
@@ -2377,22 +2351,18 @@ subroutine iau_APIO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
 !      transformation), and atmospheric refraction.
 !
 !  11) The context array ASTROM produced by this routine is used by
-!      iau_ATIOQ and iau_ATOIQ.
+!      ATIOQ and ATOIQ.
 !
 !  Called:
-!     iau_UTCTAI   UTC to TAI
-!     iau_TAITT    TAI to TT
-!     iau_UTCUT1   UTC to UT1
-!     iau_SP00     the TIO locator s', IERS 2000
-!     iau_ERA00    Earth rotation angle, IAU 2000
-!     iau_REFCO    refraction constants for given ambient conditions
-!     iau_APIO     astrometry parameters, CIRS-observed
+!     UTCTAI   UTC to TAI
+!     TAITT    TAI to TT
+!     UTCUT1   UTC to UT1
+!     SP00     the TIO locator s', IERS 2000
+!     ERA00    Earth rotation angle, IAU 2000
+!     REFCO    refraction constants for given ambient conditions
+!     APIO     astrometry parameters, CIRS-observed
 !
 !  This revision:   2013 September 25
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -2405,44 +2375,41 @@ integer js
 double precision tai1, tai2, tt1, tt2, ut11, ut12, sp, theta, &
                  refa, refb
 
-!     DOUBLE PRECISION iau_SP00, iau_ERA00
+!     DOUBLE PRECISION SP00, ERA00
 
 !  UTC to other time scales.
-call iau_UTCTAI ( utc1, utc2, tai1, tai2, js )
-call iau_TAITT ( tai1, tai2, tt1, tt2, js )
-call iau_UTCUT1 ( utc1, utc2, dut1, ut11, ut12, js )
+call UTCTAI ( utc1, utc2, tai1, tai2, js )
+call TAITT ( tai1, tai2, tt1, tt2, js )
+call UTCUT1 ( utc1, utc2, dut1, ut11, ut12, js )
 
 !  Abort if error.
 if ( js<0 ) go to 9
 
 !  TIO locator s'.
-sp = iau_SP00 ( tt1, tt2 )
+sp = SP00 ( tt1, tt2 )
 
 !  Earth rotation angle.
-theta = iau_ERA00 ( ut11, ut12 )
+theta = ERA00 ( ut11, ut12 )
 
 !  Refraction constants A and B.
-call iau_REFCO ( phpa, tc, rh, wl, refa, refb )
+call REFCO ( phpa, tc, rh, wl, refa, refb )
 
 !  CIRS <-> observed astrometry parameters.
-call iau_APIO ( sp, theta, elong, phi, hm, xp, yp, refa, refb, &
+call APIO ( sp, theta, elong, phi, hm, xp, yp, refa, refb, &
                 astrom )
 
 !  Return the status.
 9 continue
 j = js
 
-end subroutine iau_APIO13
-!***********************************************************************
+end subroutine APIO13
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_ATCI13 ( rc, dc, pr, pd, px, rv, date1, date2, &
+!-----------------------------------------------------------------------
+subroutine ATCI13 ( rc, dc, pr, pd, px, rv, date1, date2, &
                         ri, di, eo )
 !>
 !  Transform ICRS star data, epoch J2000.0, to CIRS.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -2464,7 +2431,7 @@ subroutine iau_ATCI13 ( rc, dc, pr, pd, px, rv, date1, date2, &
 !
 !  1) Star data for an epoch other than J2000.0 (for example from the
 !     Hipparcos catalog, which has an epoch of J1991.25) will require a
-!     preliminary call to iau_PMSAFE before use.
+!     preliminary call to PMSAFE before use.
 !
 !  2) The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
 !
@@ -2498,7 +2465,7 @@ subroutine iau_ATCI13 ( rc, dc, pr, pd, px, rv, date1, date2, &
 !     errors of up to several milliarcseconds can occur because of
 !     unmodeled light deflection;  however, the Sun's contribution is
 !     taken into account, to first order.  The accuracy limitations of
-!     the SOFA routine iau_EPV00 (used to compute Earth position and
+!     the SOFA routine EPV00 (used to compute Earth position and
 !     velocity) can contribute aberration errors of up to
 !     5 microarcseconds.  Light deflection at the Sun's limb is
 !     uncertain at the 0.4 mas level.
@@ -2506,18 +2473,14 @@ subroutine iau_ATCI13 ( rc, dc, pr, pd, px, rv, date1, date2, &
 !  5) Should the transformation to (equinox based) apparent place be
 !     required rather than (CIO based) intermediate place, subtract the
 !     equation of the origins from the returned right ascension:
-!     RA = RI - EO. (The iau_ANP routine can then be applied, as
+!     RA = RI - EO. (The ANP routine can then be applied, as
 !     required, to keep the result in the conventional 0-2pi range.)
 !
 !  Called:
-!     iau_APCI13   astrometry parameters, ICRS-CIRS, 2013
-!     iau_ATCIQ    quick ICRS to CIRS
+!     APCI13   astrometry parameters, ICRS-CIRS, 2013
+!     ATCIQ    quick ICRS to CIRS
 !
 !  This revision:   2017 March 12
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -2528,16 +2491,16 @@ double precision rc, dc, pr, pd, px, rv, date1, date2, ri, di, eo
 double precision astrom(30)
 
 !  The transformation parameters.
-call iau_APCI13 ( date1, date2, astrom, eo )
+call APCI13 ( date1, date2, astrom, eo )
 
 !  ICRS (epoch J2000.0) to CIRS.
-call iau_ATCIQ ( rc, dc, pr, pd, px, rv, astrom, ri, di )
+call ATCIQ ( rc, dc, pr, pd, px, rv, astrom, ri, di )
 
-end subroutine iau_ATCI13
-!***********************************************************************
+end subroutine ATCI13
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_ATCIQ ( rc, dc, pr, pd, px, rv, astrom, ri, di )
+!-----------------------------------------------------------------------
+subroutine ATCIQ ( rc, dc, pr, pd, px, rv, astrom, ri, di )
 !>
 !  Quick ICRS, epoch J2000.0, to CIRS transformation, given precomputed
 !  star-independent astrometry parameters.
@@ -2545,13 +2508,10 @@ subroutine iau_ATCIQ ( rc, dc, pr, pd, px, rv, astrom, ri, di )
 !  Use of this routine is appropriate when efficiency is important and
 !  where many star positions are to be transformed for one date.  The
 !  star-independent parameters can be obtained by calling one of the
-!  routines iau_APCI[13], iau_APCG[13], iau_APCO[13] or iau_APCS[13].
+!  routines APCI[13], APCG[13], APCO[13] or APCS[13].
 !
-!  If the parallax and proper motions are zero the iau_ATCIQZ routine
+!  If the parallax and proper motions are zero the ATCIQZ routine
 !  can be used instead.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -2588,23 +2548,19 @@ subroutine iau_ATCIQ ( rc, dc, pr, pd, px, rv, astrom, ri, di )
 !
 !  2) Star data for an epoch other than J2000.0 (for example from the
 !     Hipparcos catalog, which has an epoch of J1991.25) will require a
-!     preliminary call to iau_PMSAFE before use.
+!     preliminary call to PMSAFE before use.
 !
 !  3) The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
 !
 !  Called:
-!     iau_PMPX     proper motion and parallax
-!     iau_LDSUN    light deflection by the Sun
-!     iau_AB       stellar aberration
-!     iau_RXP      product of r-matrix and pv-vector
-!     iau_C2S      p-vector to spherical
-!     iau_ANP      normalize angle into range 0 to 2pi
+!     PMPX     proper motion and parallax
+!     LDSUN    light deflection by the Sun
+!     AB       stellar aberration
+!     RXP      product of r-matrix and pv-vector
+!     C2S      p-vector to spherical
+!     ANP      normalize angle into range 0 to 2pi
 !
 !  This revision:   2013 August 25
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -2613,30 +2569,30 @@ double precision rc, dc, pr, pd, px, rv, astrom(30), ri, di
 
 double precision pco(3), pnat(3), ppr(3), pi(3), w
 
-!     DOUBLE PRECISION iau_ANP
+!     DOUBLE PRECISION ANP
 
 !  Proper motion and parallax, giving BCRS coordinate direction.
-call iau_PMPX ( rc, dc, pr, pd, px, rv, astrom(1), astrom(2), &
+call PMPX ( rc, dc, pr, pd, px, rv, astrom(1), astrom(2), &
                 pco )
 
 !  Light deflection by the Sun, giving BCRS natural direction.
-call iau_LDSUN ( pco, astrom(5), astrom(8), pnat )
+call LDSUN ( pco, astrom(5), astrom(8), pnat )
 
 !  Aberration, giving GCRS proper direction.
-call iau_AB (pnat, astrom(9), astrom(8), astrom(12), ppr )
+call AB (pnat, astrom(9), astrom(8), astrom(12), ppr )
 
 !  Bias-precession-nutation, giving CIRS proper direction.
-call iau_RXP ( astrom(13), ppr, pi )
+call RXP ( astrom(13), ppr, pi )
 
 !  CIRS RA,Dec.
-call iau_C2S ( pi, w, di )
-ri = iau_ANP ( w )
+call C2S ( pi, w, di )
+ri = ANP ( w )
 
-end subroutine iau_ATCIQ
-!***********************************************************************
+end subroutine ATCIQ
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_ATCIQN ( rc, dc, pr, pd, px, rv, astrom, n, b, &
+!-----------------------------------------------------------------------
+subroutine ATCIQN ( rc, dc, pr, pd, px, rv, astrom, n, b, &
                         ri, di )
 !>
 !  Quick ICRS, epoch J2000.0, to CIRS transformation, given precomputed
@@ -2646,15 +2602,12 @@ subroutine iau_ATCIQN ( rc, dc, pr, pd, px, rv, astrom, n, b, &
 !  Use of this routine is appropriate when efficiency is important and
 !  where many star positions are to be transformed for one date.  The
 !  star-independent parameters can be obtained by calling one of the
-!  routines iau_APCI[13], iau_APCG[13], iau_APCO[13] or iau_APCS[13].
+!  routines APCI[13], APCG[13], APCO[13] or APCS[13].
 !
 !  If the only light-deflecting body to be taken into account is the
-!  Sun, the iau_ATCIQ routine can be used instead.  If in addition the
-!  parallax and proper motions are zero, the iau_ATCIQZ routine can be
+!  Sun, the ATCIQ routine can be used instead.  If in addition the
+!  parallax and proper motions are zero, the ATCIQZ routine can be
 !  used.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -2695,7 +2648,7 @@ subroutine iau_ATCIQN ( rc, dc, pr, pd, px, rv, astrom, n, b, &
 !
 !  1) Star data for an epoch other than J2000.0 (for example from the
 !     Hipparcos catalog, which has an epoch of J1991.25) will require a
-!     preliminary call to iau_PMSAFE before use.
+!     preliminary call to PMSAFE before use.
 !
 !  2) The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
 !
@@ -2730,18 +2683,14 @@ subroutine iau_ATCIQN ( rc, dc, pr, pd, px, rv, astrom, n, b, &
 !     greater than zero.
 !
 !  Called:
-!     iau_PMPX     proper motion and parallax
-!     iau_LDN      light deflection by n bodies
-!     iau_AB       stellar aberration
-!     iau_RXP      product of r-matrix and pv-vector
-!     iau_C2S      p-vector to spherical
-!     iau_ANP      normalize angle into range 0 to 2pi
+!     PMPX     proper motion and parallax
+!     LDN      light deflection by n bodies
+!     AB       stellar aberration
+!     RXP      product of r-matrix and pv-vector
+!     C2S      p-vector to spherical
+!     ANP      normalize angle into range 0 to 2pi
 !
 !  This revision:   2013 September 30
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -2752,30 +2701,30 @@ double precision b(8,n), ri, di
 
 double precision pco(3), pnat(3), ppr(3), pi(3), w
 
-!     DOUBLE PRECISION iau_ANP
+!     DOUBLE PRECISION ANP
 
 !  Proper motion and parallax, giving BCRS coordinate direction.
-call iau_PMPX ( rc, dc, pr, pd, px, rv, astrom(1), astrom(2), &
+call PMPX ( rc, dc, pr, pd, px, rv, astrom(1), astrom(2), &
                 pco )
 
 !  Light deflection, giving BCRS natural direction.
-call iau_LDN ( n, b, astrom(2), pco, pnat )
+call LDN ( n, b, astrom(2), pco, pnat )
 
 !  Aberration, giving GCRS proper direction.
-call iau_AB (pnat, astrom(9), astrom(8), astrom(12), ppr )
+call AB (pnat, astrom(9), astrom(8), astrom(12), ppr )
 
 !  Bias-precession-nutation, giving CIRS proper direction.
-call iau_RXP ( astrom(13), ppr, pi )
+call RXP ( astrom(13), ppr, pi )
 
 !  CIRS RA,Dec.
-call iau_C2S ( pi, w, di )
-ri = iau_ANP ( w )
+call C2S ( pi, w, di )
+ri = ANP ( w )
 
-end subroutine iau_ATCIQN
-!***********************************************************************
+end subroutine ATCIQN
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_ATCIQZ ( rc, dc, astrom, ri, di )
+!-----------------------------------------------------------------------
+subroutine ATCIQZ ( rc, dc, astrom, ri, di )
 !>
 !  Quick ICRS to CIRS transformation, given precomputed star-independent
 !  astrometry parameters, and assuming zero parallax and proper motion.
@@ -2783,13 +2732,10 @@ subroutine iau_ATCIQZ ( rc, dc, astrom, ri, di )
 !  Use of this routine is appropriate when efficiency is important and
 !  where many star positions are to be transformed for one date.  The
 !  star-independent parameters can be obtained by calling one of the
-!  routines iau_APCI[13], iau_APCG[13], iau_APCO[13] or iau_APCS[13].
+!  routines APCI[13], APCG[13], APCO[13] or APCS[13].
 !
 !  The corresponding routine for the case of non-zero parallax and
-!  proper motion is iau_ATCIQ.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
+!  proper motion is ATCIQ.
 !
 !  Status:  support routine.
 !
@@ -2830,18 +2776,14 @@ subroutine iau_ATCIQZ ( rc, dc, astrom, ri, di )
 !     arcsecond astrometry in space", Astr. J. 125, 1580-1597 (2003).
 !
 !  Called:
-!     iau_S2C      spherical coordinates to unit vector
-!     iau_LDSUN    light deflection due to Sun
-!     iau_AB       stellar aberration
-!     iau_RXP      product of r-matrix and p-vector
-!     iau_C2S      p-vector to spherical
-!     iau_ANP      normalize angle into range +/- pi
+!     S2C      spherical coordinates to unit vector
+!     LDSUN    light deflection due to Sun
+!     AB       stellar aberration
+!     RXP      product of r-matrix and p-vector
+!     C2S      p-vector to spherical
+!     ANP      normalize angle into range +/- pi
 !
 !  This revision:   2013 August 31
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -2850,38 +2792,35 @@ double precision rc, dc, astrom(30), ri, di
 
 double precision pco(3), pnat(3), ppr(3), pi(3), w
 
-!     DOUBLE PRECISION iau_ANP
+!     DOUBLE PRECISION ANP
 
 !  BCRS coordinate direction (unit vector).
-call iau_S2C ( rc, dc, pco )
+call S2C ( rc, dc, pco )
 
 !  Light deflection by the Sun, giving BCRS natural direction.
-call iau_LDSUN ( pco, astrom(5), astrom(8), pnat )
+call LDSUN ( pco, astrom(5), astrom(8), pnat )
 
 !  Aberration, giving GCRS proper direction.
-call iau_AB ( pnat, astrom(9), astrom(8), astrom(12), ppr )
+call AB ( pnat, astrom(9), astrom(8), astrom(12), ppr )
 
 !  Bias-precession-nutation, giving CIRS proper direction.
-call iau_RXP ( astrom(13), ppr, pi )
+call RXP ( astrom(13), ppr, pi )
 
 !  CIRS RA,Dec.
-call iau_C2S ( pi, w, di )
-ri = iau_ANP ( w )
+call C2S ( pi, w, di )
+ri = ANP ( w )
 
-end subroutine iau_ATCIQZ
-!***********************************************************************
+end subroutine ATCIQZ
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_ATCO13 ( rc, dc, pr, pd, px, rv, &
+!-----------------------------------------------------------------------
+subroutine ATCO13 ( rc, dc, pr, pd, px, rv, &
                         utc1, utc2, dut1, elong, phi, hm, xp, yp, &
                         phpa, tc, rh, wl, &
                         aob, zob, hob, dob, rob, eo, j )
 !>
 !  ICRS RA,Dec to observed place.  The caller supplies UTC, site
 !  coordinates, ambient air conditions and observing wavelength.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -2918,7 +2857,7 @@ subroutine iau_ATCO13 ( rc, dc, pr, pd, px, rv, &
 !
 !  1)  Star data for an epoch other than J2000.0 (for example from the
 !      Hipparcos catalog, which has an epoch of J1991.25) will require
-!      a preliminary call to iau_PMSAFE before use.
+!      a preliminary call to PMSAFE before use.
 !
 !  2)  The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
 !
@@ -2931,14 +2870,14 @@ subroutine iau_ATCO13 ( rc, dc, pr, pd, px, rv, &
 !      present routine is that the JD day represents UTC days whether
 !      the length is 86399, 86400 or 86401 SI seconds.
 !
-!      Applications should use the routine iau_DTF2D to convert from
+!      Applications should use the routine DTF2D to convert from
 !      calendar date and time of day into 2-part quasi Julian Date, as
 !      it implements the leap-second-ambiguity convention just
 !      described.
 !
 !  4)  The warning status "dubious year" flags UTCs that predate the
 !      introduction of the time scale or that are too far in the
-!      future to be trusted.  See iau_DAT for further details.
+!      future to be trusted.  See DAT for further details.
 !
 !  5)  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
 !      one second at the end of each positive UTC leap second,
@@ -2990,8 +2929,8 @@ subroutine iau_ATCO13 ( rc, dc, pr, pd, px, rv, &
 !      than 30 arcsec (optical or radio) at 85 degrees and better than
 !      20 arcmin (optical) or 30 arcmin (radio) at the horizon.
 !
-!      Without refraction, the complementary routines iau_ATCO13 and
-!      iau_ATOC13 are self-consistent to better than 1 microarcsecond
+!      Without refraction, the complementary routines ATCO13 and
+!      ATOC13 are self-consistent to better than 1 microarcsecond
 !      all over the celestial sphere.  With refraction included,
 !      consistency falls off at high zenith distances, but is still
 !      better than 0.05 arcsec at 85 degrees.
@@ -3012,15 +2951,11 @@ subroutine iau_ATCO13 ( rc, dc, pr, pd, px, rv, &
 !      accordance with the models used.
 !
 !  Called:
-!     iau_APCO13   astrometry parameters, ICRS-observed, 2013
-!     iau_ATCIQ    quick ICRS to CIRS
-!     iau_ATIOQ    quick CIRS to observed
+!     APCO13   astrometry parameters, ICRS-observed, 2013
+!     ATCIQ    quick ICRS to CIRS
+!     ATIOQ    quick CIRS to observed
 !
 !  This revision:   2016 February 2
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -3035,30 +2970,27 @@ double precision astrom(30)
 double precision ri, di
 
 !  Star-independent astrometry parameters.
-call iau_APCO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
+call APCO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
                   phpa, tc, rh, wl, astrom, eo, js )
 if ( js<0 ) go to 9
 
 !  Transform ICRS to CIRS.
-call iau_ATCIQ ( rc, dc, pr, pd, px, rv, astrom, ri, di )
+call ATCIQ ( rc, dc, pr, pd, px, rv, astrom, ri, di )
 
 !  Transform CIRS to observed.
-call iau_ATIOQ ( ri, di, astrom, aob, zob, hob, dob, rob )
+call ATIOQ ( ri, di, astrom, aob, zob, hob, dob, rob )
 
 !  Return OK/warning status.
 9 continue
 j = js
 
-end subroutine iau_ATCO13
-!***********************************************************************
+end subroutine ATCO13
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_ATIC13 ( ri, di, date1, date2, rc, dc, eo )
+!-----------------------------------------------------------------------
+subroutine ATIC13 ( ri, di, date1, date2, rc, dc, eo )
 !>
 !  Transform star RA,Dec from geocentric CIRS to ICRS astrometric.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -3098,8 +3030,8 @@ subroutine iau_ATIC13 ( ri, di, date1, date2, rc, dc, eo )
 !     accuracy.
 !
 !  2) Iterative techniques are used for the aberration and light
-!     deflection corrections so that the routines iau_ATIC13 (or
-!     iau_ATICQ) and iau_ATCI13 (or iau_ATCIQ) are accurate inverses;
+!     deflection corrections so that the routines ATIC13 (or
+!     ATICQ) and ATCI13 (or ATCIQ) are accurate inverses;
 !     even at the edge of the Sun's disk the discrepancy is only about
 !     1 nanoarcsecond.
 !
@@ -3109,7 +3041,7 @@ subroutine iau_ATIC13 ( ri, di, date1, date2, rc, dc, eo )
 !     errors of up to several milliarcseconds can occur because of
 !     unmodeled light deflection;  however, the Sun's contribution is
 !     taken into account, to first order.  The accuracy limitations of
-!     the SOFA routine iau_EPV00 (used to compute Earth position and
+!     the SOFA routine EPV00 (used to compute Earth position and
 !     velocity) can contribute aberration errors of up to
 !     5 microarcseconds.  Light deflection at the Sun's limb is
 !     uncertain at the 0.4 mas level.
@@ -3117,18 +3049,14 @@ subroutine iau_ATIC13 ( ri, di, date1, date2, rc, dc, eo )
 !  4) Should the transformation to (equinox based) J2000.0 mean place
 !     be required rather than (CIO based) ICRS coordinates, subtract the
 !     equation of the origins from the returned right ascension:
-!     RA = RI - EO.  (The iau_ANP routine can then be applied, as
+!     RA = RI - EO.  (The ANP routine can then be applied, as
 !     required, to keep the result in the conventional 0-2pi range.)
 !
 !  Called:
-!     iau_APCI13   astrometry parameters, ICRS-CIRS, 2013
-!     iau_ATICQ    quick CIRS to ICRS astrometric
+!     APCI13   astrometry parameters, ICRS-CIRS, 2013
+!     ATICQ    quick CIRS to ICRS astrometric
 !
 !  This revision:   2017 March 12
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -3139,16 +3067,16 @@ double precision ri, di, date1, date2, rc, dc, eo
 double precision astrom(30)
 
 !  Star-independent astrometry parameters.
-call iau_APCI13 ( date1, date2, astrom, eo )
+call APCI13 ( date1, date2, astrom, eo )
 
 !  CIRS to ICRS astrometric
-call iau_ATICQ ( ri, di, astrom, rc, dc )
+call ATICQ ( ri, di, astrom, rc, dc )
 
-end subroutine iau_ATIC13
-!***********************************************************************
+end subroutine ATIC13
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_ATICQ ( ri, di, astrom, rc, dc )
+!-----------------------------------------------------------------------
+subroutine ATICQ ( ri, di, astrom, rc, dc )
 !>
 !  Quick CIRS RA,Dec to ICRS astrometric place, given the star-
 !  independent astrometry parameters.
@@ -3156,11 +3084,8 @@ subroutine iau_ATICQ ( ri, di, astrom, rc, dc )
 !  Use of this routine is appropriate when efficiency is important and
 !  where many star positions are all to be transformed for one date.
 !  The star-independent astrometry parameters can be obtained by
-!  calling one of the routines iau_APCI[13], iau_APCG[13], iau_APCO[13]
-!  or iau_APCS[13].
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
+!  calling one of the routines APCI[13], APCG[13], APCO[13]
+!  or APCS[13].
 !
 !  Status:  support routine.
 !
@@ -3193,25 +3118,21 @@ subroutine iau_ATICQ ( ri, di, astrom, rc, dc )
 !     correction.
 !
 !  2) Iterative techniques are used for the aberration and light
-!     deflection corrections so that the routines iau_ATIC13 (or
-!     iau_ATICQ) and iau_ATCI13 (or iau_ATCIQ) are accurate inverses;
+!     deflection corrections so that the routines ATIC13 (or
+!     ATICQ) and ATCI13 (or ATCIQ) are accurate inverses;
 !     even at the edge of the Sun's disk the discrepancy is only about
 !     1 nanoarcsecond.
 !
 !  Called:
-!     iau_S2C      spherical coordinates to unit vector
-!     iau_TRXP     product of transpose of r-matrix and p-vector
-!     iau_ZP       zero p-vector
-!     iau_AB       stellar aberration
-!     iau_LDSUN    light deflection by the Sun
-!     iau_C2S      p-vector to spherical
-!     iau_ANP      normalize angle into range +/- pi
+!     S2C      spherical coordinates to unit vector
+!     TRXP     product of transpose of r-matrix and p-vector
+!     ZP       zero p-vector
+!     AB       stellar aberration
+!     LDSUN    light deflection by the Sun
+!     C2S      p-vector to spherical
+!     ANP      normalize angle into range +/- pi
 !
 !  This revision:   2013 August 3
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -3222,16 +3143,16 @@ integer j, i
 double precision pi(3), ppr(3), pnat(3), pco(3), w, d(3), &
                  before(3), r2, r, after(3)
 
-!     DOUBLE PRECISION iau_ANP
+!     DOUBLE PRECISION ANP
 
 !  CIRS RA,Dec to Cartesian.
-call iau_S2C ( ri, di, pi )
+call S2C ( ri, di, pi )
 
 !  Bias-precession-nutation, giving GCRS proper direction.
-call iau_TRXP ( astrom(13), pi, ppr )
+call TRXP ( astrom(13), pi, ppr )
 
 !  Aberration, giving GCRS natural direction.
-call iau_ZP ( d )
+call ZP ( d )
 do 50 j=1,2
    r2 = 0d0
    do 10 i=1,3
@@ -3243,7 +3164,7 @@ do 50 j=1,2
    do 20 i=1,3
       before(i) = before(i) / r
 20    continue
-   call iau_AB ( before, astrom(9), astrom(8), astrom(12), after )
+   call AB ( before, astrom(9), astrom(8), astrom(12), after )
    r2 = 0d0
    do 30 i=1,3
       d(i) = after(i) - before(i)
@@ -3258,7 +3179,7 @@ do 50 j=1,2
 50 continue
 
 !  Light deflection by the Sun, giving BCRS coordinate direction.
-call iau_ZP ( d )
+call ZP ( d )
 do 100 j=1,5
    r2 = 0d0
    do 60 i=1,3
@@ -3270,7 +3191,7 @@ do 100 j=1,5
    do 70 i=1,3
       before(i) = before(i) / r
 70    continue
-   call iau_LDSUN ( before, astrom(5), astrom(8), after )
+   call LDSUN ( before, astrom(5), astrom(8), after )
    r2 = 0d0
    do 80 i=1,3
       d(i) = after(i) - before(i)
@@ -3285,14 +3206,14 @@ do 100 j=1,5
 100 continue
 
 !  ICRS astrometric RA,Dec.
-call iau_C2S ( pco, w, dc )
-rc = iau_ANP ( w )
+call C2S ( pco, w, dc )
+rc = ANP ( w )
 
-end subroutine iau_ATICQ
-!***********************************************************************
+end subroutine ATICQ
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_ATICQN ( ri, di, astrom, n, b, rc, dc )
+!-----------------------------------------------------------------------
+subroutine ATICQN ( ri, di, astrom, n, b, rc, dc )
 !>
 !  Quick CIRS to ICRS astrometric place transformation, given the
 !  star-independent astrometry parameters plus a list of light-
@@ -3301,14 +3222,11 @@ subroutine iau_ATICQN ( ri, di, astrom, n, b, rc, dc )
 !  Use of this routine is appropriate when efficiency is important and
 !  where many star positions are all to be transformed for one date.
 !  The star-independent astrometry parameters can be obtained by
-!  calling one of the routines iau_APCI[13], iau_APCG[13], iau_APCO[13]
-!  or iau_APCS[13].
+!  calling one of the routines APCI[13], APCG[13], APCO[13]
+!  or APCS[13].
 !
 !  If the only light-deflecting body to be taken into account is the
-!  Sun, the iau_ATICQ routine can be used instead.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
+!  Sun, the ATICQ routine can be used instead.
 !
 !  Status:  support routine.
 !
@@ -3344,12 +3262,12 @@ subroutine iau_ATICQN ( ri, di, astrom, n, b, rc, dc )
 !  Notes:
 !
 !  1) Iterative techniques are used for the aberration and light
-!     deflection corrections so that the routines iau_ATICQN and
-!     iau_ATCIQN are accurate inverses; even at the edge of the Sun's
+!     deflection corrections so that the routines ATICQN and
+!     ATCIQN are accurate inverses; even at the edge of the Sun's
 !     disk the discrepancy is only about 1 nanoarcsecond.
 !
 !  2) If the only light-deflecting body to be taken into account is the
-!     Sun, the iau_ATICQ routine can be used instead.
+!     Sun, the ATICQ routine can be used instead.
 !
 !  3) The array B contains N entries, one for each body to be
 !     considered.  If N = 0, no gravitational light deflection will be
@@ -3382,19 +3300,15 @@ subroutine iau_ATICQN ( ri, di, astrom, n, b, rc, dc )
 !     limiter greater than zero.
 !
 !  Called:
-!     iau_S2C      spherical coordinates to unit vector
-!     iau_TRXP     product of transpose of r-matrix and p-vector
-!     iau_ZP       zero p-vector
-!     iau_AB       stellar aberration
-!     iau_LDN      light deflection by n bodies
-!     iau_C2S      p-vector to spherical
-!     iau_ANP      normalize angle into range +/- pi
+!     S2C      spherical coordinates to unit vector
+!     TRXP     product of transpose of r-matrix and p-vector
+!     ZP       zero p-vector
+!     AB       stellar aberration
+!     LDN      light deflection by n bodies
+!     C2S      p-vector to spherical
+!     ANP      normalize angle into range +/- pi
 !
 !  This revision:   2013 September 30
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -3407,16 +3321,16 @@ integer j, i
 double precision pi(3), ppr(3), pnat(3), pco(3), w, d(3), &
                  before(3), r2, r, after(3)
 
-!     DOUBLE PRECISION iau_ANP
+!     DOUBLE PRECISION ANP
 
 !  CIRS RA,Dec to Cartesian.
-call iau_S2C ( ri, di, pi )
+call S2C ( ri, di, pi )
 
 !  Bias-precession-nutation, giving GCRS proper direction.
-call iau_TRXP ( astrom(13), pi, ppr )
+call TRXP ( astrom(13), pi, ppr )
 
 !  Aberration, giving GCRS natural direction.
-call iau_ZP ( d )
+call ZP ( d )
 do 50 j=1,2
    r2 = 0d0
    do 10 i=1,3
@@ -3428,7 +3342,7 @@ do 50 j=1,2
    do 20 i=1,3
       before(i) = before(i) / r
 20    continue
-   call iau_AB ( before, astrom(9), astrom(8), astrom(12), after )
+   call AB ( before, astrom(9), astrom(8), astrom(12), after )
    r2 = 0d0
    do 30 i=1,3
       d(i) = after(i) - before(i)
@@ -3443,7 +3357,7 @@ do 50 j=1,2
 50 continue
 
 !  Light deflection, giving BCRS coordinate direction.
-call iau_ZP ( d )
+call ZP ( d )
 do 100 j=1,5
    r2 = 0d0
    do 60 i=1,3
@@ -3455,7 +3369,7 @@ do 100 j=1,5
    do 70 i=1,3
       before(i) = before(i) / r
 70    continue
-   call iau_LDN ( n, b, astrom(2), before, after )
+   call LDN ( n, b, astrom(2), before, after )
    r2 = 0d0
    do 80 i=1,3
       d(i) = after(i) - before(i)
@@ -3470,22 +3384,19 @@ do 100 j=1,5
 100 continue
 
 !  ICRS astrometric RA,Dec.
-call iau_C2S ( pco, w, dc )
-rc = iau_ANP ( w )
+call C2S ( pco, w, dc )
+rc = ANP ( w )
 
-end subroutine iau_ATICQN
-!***********************************************************************
+end subroutine ATICQN
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_ATIO13 ( ri, di, utc1, utc2, dut1, &
+!-----------------------------------------------------------------------
+subroutine ATIO13 ( ri, di, utc1, utc2, dut1, &
                         elong, phi, hm, xp, yp, phpa, tc, rh, wl, &
                         aob, zob, hob, dob, rob, j )
 !>
 !  CIRS RA,Dec to observed place.  The caller supplies UTC, site
 !  coordinates, ambient air conditions and observing wavelength.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -3525,14 +3436,14 @@ subroutine iau_ATIO13 ( ri, di, utc1, utc2, dut1, &
 !      present routine is that the JD day represents UTC days whether
 !      the length is 86399, 86400 or 86401 SI seconds.
 !
-!      Applications should use the routine iau_DTF2D to convert from
+!      Applications should use the routine DTF2D to convert from
 !      calendar date and time of day into 2-part quasi Julian Date, as
 !      it implements the leap-second-ambiguity convention just
 !      described.
 !
 !  2)  The warning status "dubious year" flags UTCs that predate the
 !      introduction of the time scale or that are too far in the
-!      future to be trusted.  See iau_DAT for further details.
+!      future to be trusted.  See DAT for further details.
 !
 !  3)  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
 !      one second at the end of each positive UTC leap second,
@@ -3595,7 +3506,7 @@ subroutine iau_ATIO13 ( ri, di, utc1, utc2, dut1, &
 !      than 30 arcsec (optical or radio) at 85 degrees and better
 !      than 20 arcmin (optical) or 30 arcmin (radio) at the horizon.
 !
-!  10) The complementary routines iau_ATIO13 and iau_ATOI13 are self-
+!  10) The complementary routines ATIO13 and ATOI13 are self-
 !      consistent to better than 1 microarcsecond all over the
 !      celestial sphere.
 !
@@ -3604,14 +3515,10 @@ subroutine iau_ATIO13 ( ri, di, utc1, utc2, dut1, &
 !      accordance with the models used.
 !
 !  Called:
-!     iau_APIO13   astrometry parameters, CIRS-observed, 2013
-!     iau_ATIOQ    quick CIRS to observed
+!     APIO13   astrometry parameters, CIRS-observed, 2013
+!     ATIOQ    quick CIRS to observed
 !
 !  This revision:   2016 February 2
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -3624,34 +3531,31 @@ integer js
 double precision astrom(30)
 
 !  Star-independent astrometry parameters for CIRS->observed.
-call iau_APIO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
+call APIO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
                   phpa, tc, rh, wl, astrom, js )
 
 !  Abort if bad UTC.
 if ( js<0 ) go to 9
 
 !  Transform CIRS to observed.
-call iau_ATIOQ ( ri, di, astrom, aob, zob, hob, dob, rob )
+call ATIOQ ( ri, di, astrom, aob, zob, hob, dob, rob )
 
 !  Return OK/warning status.
 9 continue
 j = js
 
-end subroutine iau_ATIO13
-!***********************************************************************
+end subroutine ATIO13
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_ATIOQ ( ri, di, astrom, aob, zob, hob, dob, rob )
+!-----------------------------------------------------------------------
+subroutine ATIOQ ( ri, di, astrom, aob, zob, hob, dob, rob )
 !>
 !  Quick CIRS to observed place transformation.
 !
 !  Use of this routine is appropriate when efficiency is important and
 !  where many star positions are all to be transformed for one date.
 !  The star-independent astrometry parameters can be obtained by
-!  calling iau_APIO[13] or iau_APCO[13].
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
+!  calling APIO[13] or APCO[13].
 !
 !  Status:  support routine.
 !
@@ -3698,8 +3602,8 @@ subroutine iau_ATIOQ ( ri, di, astrom, aob, zob, hob, dob, rob )
 !     than 30 arcsec (optical or radio) at 85 degrees and better than
 !     20 arcmin (optical) or 30 arcmin (radio) at the horizon.
 !
-!     Without refraction, the complementary routines iau_ATIOQ and
-!     iau_ATOIQ are self-consistent to better than 1 microarcsecond all
+!     Without refraction, the complementary routines ATIOQ and
+!     ATOIQ are self-consistent to better than 1 microarcsecond all
 !     over the celestial sphere.  With refraction included, consistency
 !     falls off at high zenith distances, but is still better than
 !     0.05 arcsec at 85 degrees.
@@ -3712,7 +3616,7 @@ subroutine iau_ATIOQ ( ri, di, astrom, aob, zob, hob, dob, rob )
 !     allowing for space motion, parallax, the Sun's gravitational lens
 !     effect, annual aberration and precession-nutation.  For star
 !     positions in the ICRS, these effects can be applied by means of
-!     the iau_ATCI13 (etc.) routines.  Starting from classical "mean
+!     the ATCI13 (etc.) routines.  Starting from classical "mean
 !     place" systems, additional transformations will be needed first.
 !
 !  5) "Observed" Az,El means the position that would be seen by a
@@ -3726,20 +3630,16 @@ subroutine iau_ATIOQ ( ri, di, astrom, aob, zob, hob, dob, rob )
 !     subtracting the HA from the local ERA.
 !
 !  6) The star-independent CIRS-to-observed-place parameters in ASTROM
-!     may be computed with iau_APIO[13] or iau_APCO[13].  If nothing has
-!     changed significantly except the time, iau_APER[13] may be used
+!     may be computed with APIO[13] or APCO[13].  If nothing has
+!     changed significantly except the time, APER[13] may be used
 !     to perform the requisite adjustment to the ASTROM array.
 !
 !  Called:
-!     iau_S2C      spherical coordinates to unit vector
-!     iau_C2S      p-vector to spherical
-!     iau_ANP      normalize angle into range 0 to 2pi
+!     S2C      spherical coordinates to unit vector
+!     C2S      p-vector to spherical
+!     ANP      normalize angle into range 0 to 2pi
 !
 !  This revision:   2017 July 10
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -3754,10 +3654,10 @@ double precision v(3), x, y, z, xhd, yhd, zhd, f, &
                  xhdt, yhdt, zhdt, xaet, yaet, zaet, azobs, &
                  r, tz, w, del, cosdel, xaeo, yaeo, zaeo, &
                  zdobs, hmobs, dcobs, raobs
-!     DOUBLE PRECISION iau_ANP
+!     DOUBLE PRECISION ANP
 
 !  CIRS RA,Dec to Cartesian -HA,Dec.
-call iau_S2C ( ri-astrom(28), di, v )
+call S2C ( ri-astrom(28), di, v )
 x = v(1)
 y = v(2)
 z = v(3)
@@ -3815,32 +3715,29 @@ v(2) = yaeo
 v(3) = - astrom(26)*xaeo + astrom(25)*zaeo
 
 !  To spherical -HA,Dec.
-call iau_C2S ( v, hmobs, dcobs )
+call C2S ( v, hmobs, dcobs )
 
 !  Right ascension (with respect to CIO).
 raobs = astrom(28) + hmobs
 
 !  Return the results.
-aob = iau_ANP(azobs)
+aob = ANP(azobs)
 zob = zdobs
 hob = -hmobs
 dob = dcobs
-rob = iau_ANP(raobs)
+rob = ANP(raobs)
 
-end subroutine iau_ATIOQ
-!***********************************************************************
+end subroutine ATIOQ
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_ATOC13 ( type, ob1, ob2, utc1, utc2, dut1, &
+!-----------------------------------------------------------------------
+subroutine ATOC13 ( type, ob1, ob2, utc1, utc2, dut1, &
                         elong, phi, hm, xp, yp, phpa, tc, rh, wl, &
                         rc, dc, j )
 !>
 !  Observed place at a groundbased site to to ICRS astrometric RA,Dec.
 !  The caller supplies UTC, site coordinates, ambient air conditions
 !  and observing wavelength.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -3895,14 +3792,14 @@ subroutine iau_ATOC13 ( type, ob1, ob2, utc1, utc2, dut1, &
 !      present routine is that the JD day represents UTC days whether
 !      the length is 86399, 86400 or 86401 SI seconds.
 !
-!      Applications should use the routine iau_DTF2D to convert from
+!      Applications should use the routine DTF2D to convert from
 !      calendar date and time of day into 2-part quasi Julian Date, as
 !      it implements the leap-second-ambiguity convention just
 !      described.
 !
 !  4)  The warning status "dubious year" flags UTCs that predate the
 !      introduction of the time scale or that are too far in the
-!      future to be trusted.  See iau_DAT for further details.
+!      future to be trusted.  See DAT for further details.
 !
 !  5)  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
 !      one second at the end of each positive UTC leap second,
@@ -3954,8 +3851,8 @@ subroutine iau_ATOC13 ( type, ob1, ob2, utc1, utc2, dut1, &
 !      than 30 arcsec (optical or radio) at 85 degrees and better
 !      than 20 arcmin (optical) or 30 arcmin (radio) at the horizon.
 !
-!      Without refraction, the complementary routines iau_ATCO13 and
-!      iau_ATOC13 are self-consistent to better than 1 microarcsecond
+!      Without refraction, the complementary routines ATCO13 and
+!      ATOC13 are self-consistent to better than 1 microarcsecond
 !      all over the celestial sphere.  With refraction included,
 !      consistency falls off at high zenith distances, but is still
 !      better than 0.05 arcsec at 85 degrees.
@@ -3965,15 +3862,11 @@ subroutine iau_ATOC13 ( type, ob1, ob2, utc1, utc2, dut1, &
 !      accordance with the models used.
 !
 !  Called:
-!     iau_APCO13   astrometry parameters, ICRS-observed
-!     iau_ATOIQ    quick observed to CIRS
-!     iau_ATICQ    quick CIRS to ICRS
+!     APCO13   astrometry parameters, ICRS-observed
+!     ATOIQ    quick observed to CIRS
+!     ATICQ    quick CIRS to ICRS
 !
 !  This revision:   2013 August 3
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -3987,35 +3880,32 @@ integer js
 double precision astrom(30), eo, ri, di
 
 !  Star-independent astrometry parameters.
-call iau_APCO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
+call APCO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
                   phpa, tc, rh, wl, astrom, eo, js )
 
 !  Abort if bad UTC.
 if ( js<0 ) go to 9
 
 !  Transform observed to CIRS.
-call iau_ATOIQ ( type, ob1, ob2, astrom, ri, di )
+call ATOIQ ( type, ob1, ob2, astrom, ri, di )
 
 !  Transform CIRS to ICRS.
-call iau_ATICQ ( ri, di, astrom, rc, dc )
+call ATICQ ( ri, di, astrom, rc, dc )
 
 !  Return OK/warning status.
 9 continue
 j = js
 
-end subroutine iau_ATOC13
-!***********************************************************************
+end subroutine ATOC13
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_ATOI13 ( type, ob1, ob2, utc1, utc2, dut1, &
+!-----------------------------------------------------------------------
+subroutine ATOI13 ( type, ob1, ob2, utc1, utc2, dut1, &
                         elong, phi, hm, xp, yp, phpa, tc, rh, wl, &
                         ri, di, j )
 !>
 !  Observed place to CIRS.  The caller supplies UTC, site coordinates,
 !  ambient air conditions and observing wavelength.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -4071,14 +3961,14 @@ subroutine iau_ATOI13 ( type, ob1, ob2, utc1, utc2, dut1, &
 !      present routine is that the JD day represents UTC days whether
 !      the length is 86399, 86400 or 86401 SI seconds.
 !
-!      Applications should use the routine iau_DTF2D to convert from
+!      Applications should use the routine DTF2D to convert from
 !      calendar date and time of day into 2-part quasi Julian Date, as
 !      it implements the leap-second-ambiguity convention just
 !      described.
 !
 !  4)  The warning status "dubious year" flags UTCs that predate the
 !      introduction of the time scale or that are too far in the
-!      future to be trusted.  See iau_DAT for further details.
+!      future to be trusted.  See DAT for further details.
 !
 !  5)  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
 !      one second at the end of each positive UTC leap second,
@@ -4130,8 +4020,8 @@ subroutine iau_ATOI13 ( type, ob1, ob2, utc1, utc2, dut1, &
 !      than 30 arcsec (optical or radio) at 85 degrees and better
 !      than 20 arcmin (optical) or 30 arcmin (radio) at the horizon.
 !
-!      Without refraction, the complementary routines iau_ATIO13 and
-!      iau_ATOI13 are self-consistent to better than 1 microarcsecond
+!      Without refraction, the complementary routines ATIO13 and
+!      ATOI13 are self-consistent to better than 1 microarcsecond
 !      all over the celestial sphere.  With refraction included,
 !      consistency falls off at high zenith distances, but is still
 !      better than 0.05 arcsec at 85 degrees.
@@ -4141,14 +4031,10 @@ subroutine iau_ATOI13 ( type, ob1, ob2, utc1, utc2, dut1, &
 !      accordance with the models used.
 !
 !  Called:
-!     iau_APIO13   astrometry parameters, CIRS-observed, 2013
-!     iau_ATOIQ    quick observed to CIRS
+!     APIO13   astrometry parameters, CIRS-observed, 2013
+!     ATOIQ    quick observed to CIRS
 !
 !  This revision:   2013 July 6
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -4162,24 +4048,24 @@ integer js
 double precision astrom(30)
 
 !  Star-independent astrometry parameters for CIRS->observed.
-call iau_APIO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
+call APIO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
                   phpa, tc, rh, wl, astrom, js )
 
 !  Abort if bad UTC.
 if ( js<0 ) go to 9
 
 !  Transform observed to CIRS.
-call iau_ATOIQ ( type, ob1, ob2, astrom, ri, di )
+call ATOIQ ( type, ob1, ob2, astrom, ri, di )
 
 !  Return OK/warning status.
 9 continue
 j = js
 
-end subroutine iau_ATOI13
-!***********************************************************************
+end subroutine ATOI13
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_ATOIQ ( type, ob1, ob2, astrom, ri, di )
+!-----------------------------------------------------------------------
+subroutine ATOIQ ( type, ob1, ob2, astrom, ri, di )
 !>
 !  Quick observed place to CIRS, given the star-independent astrometry
 !  parameters.
@@ -4187,7 +4073,7 @@ subroutine iau_ATOIQ ( type, ob1, ob2, astrom, ri, di )
 !  Use of this routine is appropriate when efficiency is important and
 !  where many star positions are all to be transformed for one date.
 !  The star-independent astrometry parameters can be obtained by calling
-!  iau_APIO[13] or iau_APCO[13].
+!  APIO[13] or APCO[13].
 !
 !  Status:  support routine.
 !
@@ -4248,8 +4134,8 @@ subroutine iau_ATOIQ ( type, ob1, ob2, astrom, ri, di )
 !     than 30 arcsec (optical or radio) at 85 degrees and better than
 !     20 arcmin (optical) or 30 arcmin (radio) at the horizon.
 !
-!     Without refraction, the complementary routines iau_ATIOQ and
-!     iau_ATOIQ are self-consistent to better than 1 microarcsecond all
+!     Without refraction, the complementary routines ATIOQ and
+!     ATOIQ are self-consistent to better than 1 microarcsecond all
 !     over the celestial sphere.  With refraction included, consistency
 !     falls off at high zenith distances, but is still better than
 !     0.05 arcsec at 85 degrees.
@@ -4259,20 +4145,16 @@ subroutine iau_ATOIQ ( type, ob1, ob2, astrom, ri, di )
 !     accordance with the models used.
 !
 !  5) The star-independent astrometry parameters in ASTROM may be
-!     computed with iau_APIO13 (or iau_APIO).  If nothing has changed
-!     significantly except the time, iau_APER13 (or iau_APER) may be
+!     computed with APIO13 (or APIO).  If nothing has changed
+!     significantly except the time, APER13 (or APER) may be
 !     used to perform the requisite adjustment to the ASTROM array.
 !
 !  Called:
-!     iau_S2C      spherical coordinates to unit vector
-!     iau_C2S      p-vector to spherical
-!     iau_ANP      normalize angle into range 0 to 2pi
+!     S2C      spherical coordinates to unit vector
+!     C2S      p-vector to spherical
+!     ANP      normalize angle into range 0 to 2pi
 !
 !  This revision:   2013 August 3
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -4287,7 +4169,7 @@ double precision c1, c2, sphi, cphi, ce, xaeo, yaeo, zaeo, v(3), &
                  xmhda, ymhda, zmhda, f, xhd, yhd, zhd, &
                  xpl, ypl, w, hma
 
-!     DOUBLE PRECISION iau_ANP
+!     DOUBLE PRECISION ANP
 
 !  Coordinate type.
 c = type(:1)
@@ -4321,7 +4203,7 @@ else
    if ( c=='R' ) c1 = astrom(28) - c1
 
 !     To Cartesian -HA,DeC.
-   call iau_S2C ( -c1, c2, v )
+   call S2C ( -c1, c2, v )
    xmhdo = v(1)
    ymhdo = v(2)
    zmhdo = v(3)
@@ -4380,22 +4262,19 @@ v(2) = yhd + ypl*w
 v(3) = w - ( xpl*xpl + ypl*ypl ) * zhd
 
 !  To spherical -HA,DeC.
-call iau_C2S ( v, hma, di )
+call C2S ( v, hma, di )
 
 !  Right ascension.
-ri = iau_ANP ( astrom(28) + hma )
+ri = ANP ( astrom(28) + hma )
 
-end subroutine iau_ATOIQ
-!***********************************************************************
+end subroutine ATOIQ
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_BI00 ( dpsibi, depsbi, dra )
+!-----------------------------------------------------------------------
+subroutine BI00 ( dpsibi, depsbi, dra )
 !>
 !  Frame bias components of IAU 2000 precession-nutation models (part of
 !  MHB2000 with additions).
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -4433,10 +4312,6 @@ subroutine iau_BI00 ( dpsibi, depsbi, dra )
 !
 !  This revision:  2009 December 15
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -4461,16 +4336,13 @@ dpsibi = dpbias
 depsbi = debias
 dra = dra0
 
-end subroutine iau_BI00
-!***********************************************************************
+end subroutine BI00
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_BP00 ( date1, date2, rb, rp, rbp )
+!-----------------------------------------------------------------------
+subroutine BP00 ( date1, date2, rb, rp, rbp )
 !>
 !  Frame bias and precession, IAU 2000.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -4515,14 +4387,14 @@ subroutine iau_BP00 ( date1, date2, rb, rp, rbp )
 !     product RP x RB.
 !
 !  Called:
-!     iau_BI00     frame bias components, IAU 2000
-!     iau_PR00     IAU 2000 precession adjustments
-!     iau_IR       initialize r-matrix to identity
-!     iau_RX       rotate around X-axis
-!     iau_RY       rotate around Y-axis
-!     iau_RZ       rotate around Z-axis
-!     iau_RXR      product of two r-matrices
-!     iau_CR       copy r-matrix
+!     BI00     frame bias components, IAU 2000
+!     PR00     IAU 2000 precession adjustments
+!     IR       initialize r-matrix to identity
+!     RX       rotate around X-axis
+!     RY       rotate around Y-axis
+!     RZ       rotate around Z-axis
+!     RXR      product of two r-matrices
+!     CR       copy r-matrix
 !
 !  Reference:
 !
@@ -4535,10 +4407,6 @@ subroutine iau_BP00 ( date1, date2, rb, rp, rbp )
 !          intermediate origin" (CIO) by IAU 2006 Resolution 2.
 !
 !  This revision:  2013 August 21
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -4569,7 +4437,7 @@ double precision t, dpsibi, depsbi, dra0, psia77, oma77, chia, &
 t = ( ( date1-dj00 ) + date2 ) / djc
 
 !  Frame bias.
-call iau_BI00 ( dpsibi, depsbi, dra0 )
+call BI00 ( dpsibi, depsbi, dra0 )
 
 !  Precession angles (Lieske et al. 1977)
 psia77 =        ( 5038.7784d0 + &
@@ -4583,37 +4451,34 @@ chia   =        (   10.5526d0 + &
                 (   -0.001125d0 ) * t ) * t ) * t * das2r
 
 !  Apply IAU 2000 precession corrections.
-call iau_PR00 ( date1, date2, dpsipr, depspr )
+call PR00 ( date1, date2, dpsipr, depspr )
 psia = psia77 + dpsipr
 oma  = oma77  + depspr
 
 !  Frame bias matrix: GCRS to J2000.0.
-call iau_IR ( rbw )
-call iau_RZ ( dra0, rbw )
-call iau_RY ( dpsibi*sin(eps0), rbw )
-call iau_RX ( -depsbi, rbw )
-call iau_CR ( rbw, rb )
+call IR ( rbw )
+call RZ ( dra0, rbw )
+call RY ( dpsibi*sin(eps0), rbw )
+call RX ( -depsbi, rbw )
+call CR ( rbw, rb )
 
 !  Precession matrix: J2000.0 to mean of date.
-call iau_IR ( rp )
-call iau_RX ( eps0, rp )
-call iau_RZ ( -psia, rp )
-call iau_RX ( -oma, rp )
-call iau_RZ ( chia, rp )
+call IR ( rp )
+call RX ( eps0, rp )
+call RZ ( -psia, rp )
+call RX ( -oma, rp )
+call RZ ( chia, rp )
 
 !  Bias-precession matrix: GCRS to mean of date.
-call iau_RXR ( rp, rbw, rbp )
+call RXR ( rp, rbw, rbp )
 
-end subroutine iau_BP00
-!***********************************************************************
+end subroutine BP00
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_BP06 ( date1, date2, rb, rp, rbp )
+!-----------------------------------------------------------------------
+subroutine BP06 ( date1, date2, rb, rp, rbp )
 !>
 !  Frame bias and precession, IAU 2006.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -4656,11 +4521,11 @@ subroutine iau_BP06 ( date1, date2, rb, rp, rbp )
 !     applying frame bias then precession.  It is the product RP x RB.
 !
 !  Called:
-!     iau_PFW06    bias-precession F-W angles, IAU 2006
-!     iau_FW2M     F-W angles to r-matrix
-!     iau_PMAT06   PB matrix, IAU 2006
-!     iau_TR       transpose r-matrix
-!     iau_RXR      product of two r-matrices
+!     PFW06    bias-precession F-W angles, IAU 2006
+!     FW2M     F-W angles to r-matrix
+!     PMAT06   PB matrix, IAU 2006
+!     TR       transpose r-matrix
+!     RXR      product of two r-matrices
 !
 !  References:
 !
@@ -4669,10 +4534,6 @@ subroutine iau_BP06 ( date1, date2, rb, rp, rbp )
 !     Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 !
 !  This revision:  2013 August 21
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -4691,30 +4552,27 @@ parameter ( djm00 = 51544.5d0 )
 double precision gamb, phib, psib, epsa, rbpw(3,3), rbt(3,3)
 
 !  B matrix.
-call iau_PFW06 ( djm0, djm00, gamb, phib, psib, epsa )
-call iau_FW2M ( gamb, phib, psib, epsa, rb )
+call PFW06 ( djm0, djm00, gamb, phib, psib, epsa )
+call FW2M ( gamb, phib, psib, epsa, rb )
 
 !  PxB matrix (temporary).
-call iau_PMAT06 ( date1, date2, rbpw )
+call PMAT06 ( date1, date2, rbpw )
 
 !  P matrix.
-call iau_TR ( rb, rbt )
-call iau_RXR ( rbpw, rbt, rp )
+call TR ( rb, rbt )
+call RXR ( rbpw, rbt, rp )
 
 !  PxB matrix.
-call iau_CR ( rbpw, rbp )
+call CR ( rbpw, rbp )
 
-end subroutine iau_BP06
-!***********************************************************************
+end subroutine BP06
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_BPN2XY ( rbpn, x, y )
+!-----------------------------------------------------------------------
+subroutine BPN2XY ( rbpn, x, y )
 !>
 !  Extract from the bias-precession-nutation matrix the X,Y coordinates
 !  of the Celestial Intermediate Pole.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -4745,10 +4603,6 @@ subroutine iau_BPN2XY ( rbpn, x, y )
 !
 !  This revision:  2010 January 18
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -4759,17 +4613,14 @@ double precision rbpn(3,3), x, y
 x = rbpn(3,1)
 y = rbpn(3,2)
 
-end subroutine iau_BPN2XY
-!***********************************************************************
+end subroutine BPN2XY
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_C2I00A ( date1, date2, rc2i )
+!-----------------------------------------------------------------------
+subroutine C2I00A ( date1, date2, rc2i )
 !>
 !  Form the celestial-to-intermediate matrix for a given date using the
 !  IAU 2000A precession-nutation model.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -4813,11 +4664,11 @@ subroutine iau_C2I00A ( date1, date2, rc2i )
 !     Rotation Angle and RPOM is the polar motion matrix.
 !
 !  3) A faster, but slightly less accurate result (about 1 mas), can be
-!     obtained by using instead the iau_C2I00B routine.
+!     obtained by using instead the C2I00B routine.
 !
 !  Called:
-!     iau_PNM00A   classical NPB matrix, IAU 2000A
-!     iau_C2IBPN   celestial-to-intermediate matrix, given NPB matrix
+!     PNM00A   classical NPB matrix, IAU 2000A
+!     C2IBPN   celestial-to-intermediate matrix, given NPB matrix
 !
 !  References:
 !
@@ -4834,10 +4685,6 @@ subroutine iau_C2I00A ( date1, date2, rc2i )
 !
 !  This revision:  2010 January 18
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -4847,22 +4694,19 @@ double precision date1, date2, rc2i(3,3)
 double precision rbpn(3,3)
 
 !  Obtain the celestial-to-true matrix (IAU 2000A).
-call iau_PNM00A ( date1, date2, rbpn )
+call PNM00A ( date1, date2, rbpn )
 
 !  Form the celestial-to-intermediate matrix.
-call iau_C2IBPN ( date1, date2, rbpn, rc2i )
+call C2IBPN ( date1, date2, rbpn, rc2i )
 
-end subroutine iau_C2I00A
-!***********************************************************************
+end subroutine C2I00A
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_C2I00B ( date1, date2, rc2i )
+!-----------------------------------------------------------------------
+subroutine C2I00B ( date1, date2, rc2i )
 !>
 !  Form the celestial-to-intermediate matrix for a given date using the
 !  IAU 2000B precession-nutation model.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -4906,11 +4750,11 @@ subroutine iau_C2I00B ( date1, date2, rc2i )
 !     Rotation Angle and RPOM is the polar motion matrix.
 !
 !  3) The present routine is faster, but slightly less accurate (about
-!     1 mas), than the iau_C2I00A routine.
+!     1 mas), than the C2I00A routine.
 !
 !  Called:
-!     iau_PNM00B   classical NPB matrix, IAU 2000B
-!     iau_C2IBPN   celestial-to-intermediate matrix, given NPB matrix
+!     PNM00B   classical NPB matrix, IAU 2000B
+!     C2IBPN   celestial-to-intermediate matrix, given NPB matrix
 !
 !  References:
 !
@@ -4927,10 +4771,6 @@ subroutine iau_C2I00B ( date1, date2, rc2i )
 !
 !  This revision:  2010 January 18
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -4940,22 +4780,19 @@ double precision date1, date2, rc2i(3,3)
 double precision rbpn(3,3)
 
 !  Obtain the celestial-to-true matrix (IAU 2000B).
-call iau_PNM00B ( date1, date2, rbpn )
+call PNM00B ( date1, date2, rbpn )
 
 !  Form the celestial-to-intermediate matrix.
-call iau_C2IBPN ( date1, date2, rbpn, rc2i )
+call C2IBPN ( date1, date2, rbpn, rc2i )
 
-end subroutine iau_C2I00B
-!***********************************************************************
+end subroutine C2I00B
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_C2I06A ( date1, date2, rc2i )
+!-----------------------------------------------------------------------
+subroutine C2I06A ( date1, date2, rc2i )
 !>
 !  Form the celestial-to-intermediate matrix for a given date using the
 !  IAU 2006 precession and IAU 2000A nutation models.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -4999,10 +4836,10 @@ subroutine iau_C2I06A ( date1, date2, rc2i )
 !     Rotation Angle and RPOM is the polar motion matrix.
 !
 !  Called:
-!     iau_PNM06A   classical NPB matrix, IAU 2006/2000A
-!     iau_BPN2XY   extract CIP X,Y coordinates from NPB matrix
-!     iau_S06      the CIO locator s, given X,Y, IAU 2006
-!     iau_C2IXYS   celestial-to-intermediate matrix, given X,Y and s
+!     PNM06A   classical NPB matrix, IAU 2006/2000A
+!     BPN2XY   extract CIP X,Y coordinates from NPB matrix
+!     S06      the CIO locator s, given X,Y, IAU 2006
+!     C2IXYS   celestial-to-intermediate matrix, given X,Y and s
 !
 !  References:
 !
@@ -5015,10 +4852,6 @@ subroutine iau_C2I06A ( date1, date2, rc2i )
 !
 !  This revision:  2007 May 11
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -5027,31 +4860,28 @@ double precision date1, date2, rc2i(3,3)
 
 double precision rbpn(3,3), x, y, s
 
-!     DOUBLE PRECISION iau_S06
+!     DOUBLE PRECISION S06
 
 !  Obtain the celestial-to-true matrix (IAU 2006/2000A).
-call iau_PNM06A ( date1, date2, rbpn )
+call PNM06A ( date1, date2, rbpn )
 
 !  Extract the X,Y coordinates.
-call iau_BPN2XY ( rbpn, x, y )
+call BPN2XY ( rbpn, x, y )
 
 !  Obtain the CIO locator.
-s = iau_S06 ( date1, date2, x, y )
+s = S06 ( date1, date2, x, y )
 
 !  Form the celestial-to-intermediate matrix.
-call iau_C2IXYS ( x, y, s, rc2i )
+call C2IXYS ( x, y, s, rc2i )
 
-end subroutine iau_C2I06A
-!***********************************************************************
+end subroutine C2I06A
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_C2IBPN ( date1, date2, rbpn, rc2i )
+!-----------------------------------------------------------------------
+subroutine C2IBPN ( date1, date2, rbpn, rc2i )
 !>
 !  Form the celestial-to-intermediate matrix for a given date given
 !  the bias-precession-nutation matrix.  IAU 2000.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -5102,8 +4932,8 @@ subroutine iau_C2IBPN ( date1, date2, rbpn, rc2i )
 !     specific to the IAU 2000 models.
 !
 !  Called:
-!     iau_BPN2XY   extract CIP X,Y coordinates from NPB matrix
-!     iau_C2IXY    celestial-to-intermediate matrix, given X,Y
+!     BPN2XY   extract CIP X,Y coordinates from NPB matrix
+!     C2IXY    celestial-to-intermediate matrix, given X,Y
 !
 !  References:
 !
@@ -5120,10 +4950,6 @@ subroutine iau_C2IBPN ( date1, date2, rbpn, rc2i )
 !
 !  This revision:  2010 January 18
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -5133,22 +4959,19 @@ double precision date1, date2, rbpn(3,3), rc2i(3,3)
 double precision x, y
 
 !  Extract the X,Y coordinates.
-call iau_BPN2XY ( rbpn, x, y )
+call BPN2XY ( rbpn, x, y )
 
 !  Form the celestial-to-intermediate matrix (n.b. IAU 2000 specific).
-call iau_C2IXY ( date1, date2, x, y, rc2i )
+call C2IXY ( date1, date2, x, y, rc2i )
 
-end subroutine iau_C2IBPN
-!***********************************************************************
+end subroutine C2IBPN
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_C2IXY ( date1, date2, x, y, rc2i )
+!-----------------------------------------------------------------------
+subroutine C2IXY ( date1, date2, x, y, rc2i )
 !>
 !  Form the celestial to intermediate-frame-of-date matrix for a given
 !  date when the CIP X,Y coordinates are known.  IAU 2000.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -5199,8 +5022,8 @@ subroutine iau_C2IXY ( date1, date2, x, y, rc2i )
 !     specific to the IAU 2000 models.
 !
 !  Called:
-!     iau_C2IXYS   celestial-to-intermediate matrix, given X,Y and s
-!     iau_S00      the CIO locator s, given X,Y, IAU 2000A
+!     C2IXYS   celestial-to-intermediate matrix, given X,Y and s
+!     S00      the CIO locator s, given X,Y, IAU 2000A
 !
 !  Reference:
 !
@@ -5209,32 +5032,25 @@ subroutine iau_C2IXY ( date1, date2, x, y, rc2i )
 !
 !  This revision:  2007 June 1
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
 
 double precision date1, date2, x, y, rc2i(3,3)
 
-!     DOUBLE PRECISION iau_S00
+!     DOUBLE PRECISION S00
 
 !  Compute s and then the matrix.
-call iau_C2IXYS ( x, y, iau_S00 ( date1, date2, x, y ), rc2i )
+call C2IXYS ( x, y, S00 ( date1, date2, x, y ), rc2i )
 
-end subroutine iau_C2IXY
-!***********************************************************************
+end subroutine C2IXY
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_C2IXYS ( x, y, s, rc2i )
+!-----------------------------------------------------------------------
+subroutine C2IXYS ( x, y, s, rc2i )
 !>
 !  Form the celestial to intermediate-frame-of-date matrix given the CIP
 !  X,Y and the CIO locator s.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -5266,9 +5082,9 @@ subroutine iau_C2IXYS ( x, y, s, rc2i )
 !     Rotation Angle and RPOM is the polar motion matrix.
 !
 !  Called:
-!     iau_IR       initialize r-matrix to identity
-!     iau_RZ       rotate around Z-axis
-!     iau_RY       rotate around Y-axis
+!     IR       initialize r-matrix to identity
+!     RZ       rotate around Z-axis
+!     RY       rotate around Y-axis
 !
 !  Reference:
 !
@@ -5276,10 +5092,6 @@ subroutine iau_C2IXYS ( x, y, s, rc2i )
 !     IERS Technical Note No. 32, BKG (2004)
 !
 !  This revision:  2014 November 7
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -5299,21 +5111,18 @@ end if
 d = atan ( sqrt ( r2 / (1d0-r2) ) )
 
 !  Form the matrix.
-call iau_IR ( rc2i )
-call iau_RZ ( e, rc2i )
-call iau_RY ( d, rc2i )
-call iau_RZ ( -(e+s), rc2i )
+call IR ( rc2i )
+call RZ ( e, rc2i )
+call RY ( d, rc2i )
+call RZ ( -(e+s), rc2i )
 
-end subroutine iau_C2IXYS
-!***********************************************************************
+end subroutine C2IXYS
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_C2S ( p, theta, phi )
+!-----------------------------------------------------------------------
+subroutine C2S ( p, theta, phi )
 !>
 !  P-vector to spherical coordinates.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -5333,10 +5142,6 @@ subroutine iau_C2S ( p, theta, phi )
 !  3) At either pole, zero THETA is returned.
 !
 !  This revision:  2007 April 11
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -5363,17 +5168,14 @@ else
    phi = atan2(z,sqrt(d2))
 end if
 
-end subroutine iau_C2S
-!***********************************************************************
+end subroutine C2S
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_C2T00A ( tta, ttb, uta, utb, xp, yp, rc2t )
+!-----------------------------------------------------------------------
+subroutine C2T00A ( tta, ttb, uta, utb, xp, yp, rc2t )
 !>
 !  Form the celestial to terrestrial matrix given the date, the UT1 and
 !  the polar motion, using the IAU 2000A nutation model.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -5428,14 +5230,14 @@ subroutine iau_C2T00A ( tta, ttb, uta, utb, xp, yp, rc2t )
 !     and RPOM is the polar motion matrix.
 !
 !  4) A faster, but slightly less accurate result (about 1 mas), can be
-!     obtained by using instead the iau_C2T00B routine.
+!     obtained by using instead the C2T00B routine.
 !
 !  Called:
-!     iau_C2I00A   celestial-to-intermediate matrix, IAU 2000A
-!     iau_ERA00    Earth rotation angle, IAU 2000
-!     iau_SP00     the TIO locator s', IERS 2000
-!     iau_POM00    polar motion matrix
-!     iau_C2TCIO   form CIO-based celestial-to-terrestrial matrix
+!     C2I00A   celestial-to-intermediate matrix, IAU 2000A
+!     ERA00    Earth rotation angle, IAU 2000
+!     SP00     the TIO locator s', IERS 2000
+!     POM00    polar motion matrix
+!     C2TCIO   form CIO-based celestial-to-terrestrial matrix
 !
 !  Reference:
 !
@@ -5443,10 +5245,6 @@ subroutine iau_C2T00A ( tta, ttb, uta, utb, xp, yp, rc2t )
 !     IERS Technical Note No. 32, BKG (2004)
 !
 !  This revision:  2009 April 1
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -5456,34 +5254,31 @@ double precision tta, ttb, uta, utb, xp, yp, rc2t(3,3)
 
 double precision rc2i(3,3), era, sp, rpom(3,3)
 
-!     DOUBLE PRECISION iau_ERA00, iau_SP00
+!     DOUBLE PRECISION ERA00, SP00
 
 !  Form the celestial-to-intermediate matrix for this TT (IAU 2000A).
-call iau_C2I00A ( tta, ttb, rc2i )
+call C2I00A ( tta, ttb, rc2i )
 
 !  Predict the Earth rotation angle for this UT1.
-era = iau_ERA00 ( uta, utb )
+era = ERA00 ( uta, utb )
 
 !  Estimate s'.
-sp = iau_SP00 ( tta, ttb )
+sp = SP00 ( tta, ttb )
 
 !  Form the polar motion matrix.
-call iau_POM00 ( xp, yp, sp, rpom )
+call POM00 ( xp, yp, sp, rpom )
 
 !  Combine to form the celestial-to-terrestrial matrix.
-call iau_C2TCIO ( rc2i, era, rpom, rc2t )
+call C2TCIO ( rc2i, era, rpom, rc2t )
 
-end subroutine iau_C2T00A
-!***********************************************************************
+end subroutine C2T00A
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_C2T00B ( tta, ttb, uta, utb, xp, yp, rc2t )
+!-----------------------------------------------------------------------
+subroutine C2T00B ( tta, ttb, uta, utb, xp, yp, rc2t )
 !>
 !  Form the celestial to terrestrial matrix given the date, the UT1 and
 !  the polar motion, using the IAU 2000B nutation model.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -5538,13 +5333,13 @@ subroutine iau_C2T00B ( tta, ttb, uta, utb, xp, yp, rc2t )
 !     and RPOM is the polar motion matrix.
 !
 !  4) The present routine is faster, but slightly less accurate (about
-!     1 mas), than the iau_C2T00A routine.
+!     1 mas), than the C2T00A routine.
 !
 !  Called:
-!     iau_C2I00B   celestial-to-intermediate matrix, IAU 2000B
-!     iau_ERA00    Earth rotation angle, IAU 2000
-!     iau_POM00    polar motion matrix
-!     iau_C2TCIO   form CIO-based celestial-to-terrestrial matrix
+!     C2I00B   celestial-to-intermediate matrix, IAU 2000B
+!     ERA00    Earth rotation angle, IAU 2000
+!     POM00    polar motion matrix
+!     C2TCIO   form CIO-based celestial-to-terrestrial matrix
 !
 !  Reference:
 !
@@ -5552,10 +5347,6 @@ subroutine iau_C2T00B ( tta, ttb, uta, utb, xp, yp, rc2t )
 !     IERS Technical Note No. 32, BKG (2004)
 !
 !  This revision:  2009 April 1
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -5565,32 +5356,29 @@ double precision tta, ttb, uta, utb, xp, yp, rc2t(3,3)
 
 double precision rc2i(3,3), era, rpom(3,3)
 
-!     DOUBLE PRECISION iau_ERA00
+!     DOUBLE PRECISION ERA00
 
 !  Form the celestial-to-intermediate matrix for this TT (IAU 2000B).
-call iau_C2I00B ( tta, ttb, rc2i )
+call C2I00B ( tta, ttb, rc2i )
 
 !  Predict the Earth rotation angle for this UT1.
-era = iau_ERA00 ( uta, utb )
+era = ERA00 ( uta, utb )
 
 !  Form the polar motion matrix (neglecting s').
-call iau_POM00 ( xp, yp, 0d0, rpom )
+call POM00 ( xp, yp, 0d0, rpom )
 
 !  Combine to form the celestial-to-terrestrial matrix.
-call iau_C2TCIO ( rc2i, era, rpom, rc2t )
+call C2TCIO ( rc2i, era, rpom, rc2t )
 
-end subroutine iau_C2T00B
-!***********************************************************************
+end subroutine C2T00B
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_C2T06A ( tta, ttb, uta, utb, xp, yp, rc2t )
+!-----------------------------------------------------------------------
+subroutine C2T06A ( tta, ttb, uta, utb, xp, yp, rc2t )
 !>
 !  Form the celestial to terrestrial matrix given the date, the UT1 and
 !  the polar motion, using the IAU 2006 precession and IAU 2000A
 !  nutation models.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -5645,11 +5433,11 @@ subroutine iau_C2T06A ( tta, ttb, uta, utb, xp, yp, rc2t )
 !     and RPOM is the polar motion matrix.
 !
 !  Called:
-!     iau_C2I06A   celestial-to-intermediate matrix, IAU 2006/2000A
-!     iau_ERA00    Earth rotation angle, IAU 2000
-!     iau_SP00     the TIO locator s', IERS 2000
-!     iau_POM00    polar motion matrix
-!     iau_C2TCIO   form CIO-based celestial-to-terrestrial matrix
+!     C2I06A   celestial-to-intermediate matrix, IAU 2006/2000A
+!     ERA00    Earth rotation angle, IAU 2000
+!     SP00     the TIO locator s', IERS 2000
+!     POM00    polar motion matrix
+!     C2TCIO   form CIO-based celestial-to-terrestrial matrix
 !
 !  Reference:
 !
@@ -5657,10 +5445,6 @@ subroutine iau_C2T06A ( tta, ttb, uta, utb, xp, yp, rc2t )
 !     IERS Technical Note No. 32, BKG
 !
 !  This revision:  2009 April 1
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -5670,35 +5454,32 @@ double precision tta, ttb, uta, utb, xp, yp, rc2t(3,3)
 
 double precision rc2i(3,3), era, sp, rpom(3,3)
 
-!     DOUBLE PRECISION iau_ERA00, iau_SP00
+!     DOUBLE PRECISION ERA00, SP00
 
 !  Form the celestial-to-intermediate matrix for this TT.
-call iau_C2I06A ( tta, ttb, rc2i )
+call C2I06A ( tta, ttb, rc2i )
 
 !  Predict the Earth rotation angle for this UT1.
-era = iau_ERA00 ( uta, utb )
+era = ERA00 ( uta, utb )
 
 !  Estimate s'.
-sp = iau_SP00 ( tta, ttb )
+sp = SP00 ( tta, ttb )
 
 !  Form the polar motion matrix.
-call iau_POM00 ( xp, yp, sp, rpom )
+call POM00 ( xp, yp, sp, rpom )
 
 !  Combine to form the celestial-to-terrestrial matrix.
-call iau_C2TCIO ( rc2i, era, rpom, rc2t )
+call C2TCIO ( rc2i, era, rpom, rc2t )
 
-end subroutine iau_C2T06A
-!***********************************************************************
+end subroutine C2T06A
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_C2TCEO ( rc2i, era, rpom, rc2t )
+!-----------------------------------------------------------------------
+subroutine C2TCEO ( rc2i, era, rpom, rc2t )
 !>
 !  Assemble the celestial to terrestrial matrix from CIO-based
 !  components (the celestial-to-intermediate matrix, the Earth Rotation
 !  Angle and the polar motion matrix).
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  obsolete routine.
 !
@@ -5712,14 +5493,14 @@ subroutine iau_C2TCEO ( rc2i, era, rpom, rc2t )
 !
 !  Notes:
 !
-!  1) The name of the present routine, iau_C2TCEO, reflects the original
+!  1) The name of the present routine, C2TCEO, reflects the original
 !     name of the celestial intermediate origin (CIO), which before the
 !     adoption of IAU 2006 Resolution 2 was called the "celestial
 !     ephemeris origin" (CEO).
 !
 !  2) When the name change from CEO to CIO occurred, a new SOFA routine
-!     called iau_C2TCIO was introduced as the successor to the existing
-!     iau_C2TCEO.  The present routine is merely a front end to the new
+!     called C2TCIO was introduced as the successor to the existing
+!     C2TCEO.  The present routine is merely a front end to the new
 !     one.
 !
 !  3) The present routine is included in the SOFA collection only to
@@ -5727,13 +5508,9 @@ subroutine iau_C2TCEO ( rc2i, era, rpom, rc2t )
 !     applications.
 !
 !  Called:
-!     iau_C2TCIO   form CIO-based celestial-to-terrestrial matrix
+!     C2TCIO   form CIO-based celestial-to-terrestrial matrix
 !
 !  This revision:  2007 May 9
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -5742,20 +5519,17 @@ implicit none
 double precision rc2i(3,3), era, rpom(3,3), rc2t(3,3)
 
 !  Call the renamed routine.
-call iau_C2TCIO ( rc2i, era, rpom, rc2t )
+call C2TCIO ( rc2i, era, rpom, rc2t )
 
-end subroutine iau_C2TCEO
-!***********************************************************************
+end subroutine C2TCEO
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_C2TCIO ( rc2i, era, rpom, rc2t )
+!-----------------------------------------------------------------------
+subroutine C2TCIO ( rc2i, era, rpom, rc2t )
 !>
 !  Assemble the celestial to terrestrial matrix from CIO-based
 !  components (the celestial-to-intermediate matrix, the Earth Rotation
 !  Angle and the polar motion matrix).
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -5791,9 +5565,9 @@ subroutine iau_C2TCIO ( rc2i, era, rpom, rc2t )
 !     Reference System (see IERS Conventions 2003).
 !
 !  Called:
-!     iau_CR       copy r-matrix
-!     iau_RZ       rotate around Z-axis
-!     iau_RXR      product of two r-matrices
+!     CR       copy r-matrix
+!     RZ       rotate around Z-axis
+!     RXR      product of two r-matrices
 !
 !  Reference:
 !
@@ -5801,10 +5575,6 @@ subroutine iau_C2TCIO ( rc2i, era, rpom, rc2t )
 !     IERS Technical Note No. 32, BKG
 !
 !  This revision:  2013 August 24
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -5815,22 +5585,19 @@ double precision rc2i(3,3), era, rpom(3,3), rc2t(3,3)
 double precision r(3,3)
 
 !  Construct the matrix.
-call iau_CR ( rc2i, r )
-call iau_RZ ( era, r )
-call iau_RXR ( rpom, r, rc2t )
+call CR ( rc2i, r )
+call RZ ( era, r )
+call RXR ( rpom, r, rc2t )
 
-end subroutine iau_C2TCIO
-!***********************************************************************
+end subroutine C2TCIO
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_C2TEQX ( rbpn, gst, rpom, rc2t )
+!-----------------------------------------------------------------------
+subroutine C2TEQX ( rbpn, gst, rpom, rc2t )
 !>
 !  Assemble the celestial to terrestrial matrix from equinox-based
 !  components (the celestial-to-true matrix, the Greenwich Apparent
 !  Sidereal Time and the polar motion matrix).
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -5866,9 +5633,9 @@ subroutine iau_C2TEQX ( rbpn, gst, rpom, rc2t )
 !     Reference System (see IERS Conventions 2003).
 !
 !  Called:
-!     iau_CR       copy r-matrix
-!     iau_RZ       rotate around Z-axis
-!     iau_RXR      product of two r-matrices
+!     CR       copy r-matrix
+!     RZ       rotate around Z-axis
+!     RXR      product of two r-matrices
 !
 !  Reference:
 !
@@ -5876,10 +5643,6 @@ subroutine iau_C2TEQX ( rbpn, gst, rpom, rc2t )
 !     IERS Technical Note No. 32, BKG (2004)
 !
 !  This revision:  2013 August 24
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -5890,22 +5653,19 @@ double precision rbpn(3,3), gst, rpom(3,3), rc2t(3,3)
 double precision r(3,3)
 
 !  Construct the matrix.
-call iau_CR ( rbpn, r )
-call iau_RZ ( gst, r )
-call iau_RXR ( rpom, r, rc2t )
+call CR ( rbpn, r )
+call RZ ( gst, r )
+call RXR ( rpom, r, rc2t )
 
-end subroutine iau_C2TEQX
-!***********************************************************************
+end subroutine C2TEQX
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_C2TPE ( tta, ttb, uta, utb, dpsi, deps, xp, yp, &
+!-----------------------------------------------------------------------
+subroutine C2TPE ( tta, ttb, uta, utb, dpsi, deps, xp, yp, &
                        rc2t )
 !>
 !  Form the celestial to terrestrial matrix given the date, the UT1, the
 !  nutation and the polar motion.  IAU 2000.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -5970,12 +5730,12 @@ subroutine iau_C2TPE ( tta, ttb, uta, utb, dpsi, deps, xp, yp, &
 !     specific to the IAU 2000 models.
 !
 !  Called:
-!     iau_PN00     bias/precession/nutation results, IAU 2000
-!     iau_GMST00   Greenwich mean sidereal time, IAU 2000
-!     iau_SP00     the TIO locator s', IERS 2000
-!     iau_EE00     equation of the equinoxes, IAU 2000
-!     iau_POM00    polar motion matrix
-!     iau_C2TEQX   form equinox-based celestial-to-terrestrial matrix
+!     PN00     bias/precession/nutation results, IAU 2000
+!     GMST00   Greenwich mean sidereal time, IAU 2000
+!     SP00     the TIO locator s', IERS 2000
+!     EE00     equation of the equinoxes, IAU 2000
+!     POM00    polar motion matrix
+!     C2TEQX   form equinox-based celestial-to-terrestrial matrix
 !
 !  Reference:
 !
@@ -5983,10 +5743,6 @@ subroutine iau_C2TPE ( tta, ttb, uta, utb, dpsi, deps, xp, yp, &
 !     IERS Technical Note No. 32, BKG (2004)
 !
 !  This revision:  2009 April 1
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -5997,39 +5753,36 @@ double precision tta, ttb, uta, utb, dpsi, deps, xp, yp, rc2t(3,3)
 double precision epsa, rb(3,3), rp(3,3), rbp(3,3), rn(3,3), &
                  rbpn(3,3), gmst, ee, sp, rpom(3,3)
 
-!     DOUBLE PRECISION iau_GMST00, iau_EE00, iau_SP00
+!     DOUBLE PRECISION GMST00, EE00, SP00
 
 
 !  Form the celestial-to-true matrix for this TT.
-call iau_PN00 ( tta, ttb, dpsi, deps, &
+call PN00 ( tta, ttb, dpsi, deps, &
                 epsa, rb, rp, rbp, rn, rbpn )
 
 !  Predict the Greenwich Mean Sidereal Time for this UT1 and TT.
-gmst = iau_GMST00 ( uta, utb, tta, ttb )
+gmst = GMST00 ( uta, utb, tta, ttb )
 
 !  Predict the equation of the equinoxes given TT and nutation.
-ee = iau_EE00 ( tta, ttb, epsa, dpsi)
+ee = EE00 ( tta, ttb, epsa, dpsi)
 
 !  Estimate s'.
-sp = iau_SP00 ( tta, ttb)
+sp = SP00 ( tta, ttb)
 
 !  Form the polar motion matrix.
-call iau_POM00 ( xp, yp, sp, rpom )
+call POM00 ( xp, yp, sp, rpom )
 
 !  Combine to form the celestial-to-terrestrial matrix.
-call iau_C2TEQX ( rbpn, gmst+ee, rpom, rc2t )
+call C2TEQX ( rbpn, gmst+ee, rpom, rc2t )
 
-end subroutine iau_C2TPE
-!***********************************************************************
+end subroutine C2TPE
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_C2TXY ( tta, ttb, uta, utb, x, y, xp, yp, rc2t )
+!-----------------------------------------------------------------------
+subroutine C2TXY ( tta, ttb, uta, utb, x, y, xp, yp, rc2t )
 !>
 !  Form the celestial to terrestrial matrix given the date, the UT1, the
 !  CIP coordinates and the polar motion.  IAU 2000.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -6090,11 +5843,11 @@ subroutine iau_C2TXY ( tta, ttb, uta, utb, x, y, xp, yp, rc2t )
 !     specific to the IAU 2000 models.
 !
 !  Called:
-!     iau_C2IXY    celestial-to-intermediate matrix, given X,Y
-!     iau_ERA00    Earth rotation angle, IAU 2000
-!     iau_SP00     the TIO locator s', IERS 2000
-!     iau_POM00    polar motion matrix
-!     iau_C2TCIO   form CIO-based celestial-to-terrestrial matrix
+!     C2IXY    celestial-to-intermediate matrix, given X,Y
+!     ERA00    Earth rotation angle, IAU 2000
+!     SP00     the TIO locator s', IERS 2000
+!     POM00    polar motion matrix
+!     C2TCIO   form CIO-based celestial-to-terrestrial matrix
 !
 ! Reference:
 !
@@ -6102,10 +5855,6 @@ subroutine iau_C2TXY ( tta, ttb, uta, utb, x, y, xp, yp, rc2t )
 !     IERS Technical Note No. 32, BKG (2004)
 !
 !  This revision:  2009 April 1
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -6115,34 +5864,31 @@ double precision tta, ttb, uta, utb, x, y, xp, yp, rc2t(3,3)
 
 double precision rc2i(3,3), era, sp, rpom(3,3)
 
-!     DOUBLE PRECISION iau_ERA00, iau_SP00
+!     DOUBLE PRECISION ERA00, SP00
 
 
 !  Form the celestial-to-intermediate matrix for this TT.
-call iau_C2IXY ( tta, ttb, x, y, rc2i )
+call C2IXY ( tta, ttb, x, y, rc2i )
 
 !  Predict the Earth rotation angle for this UT1.
-era = iau_ERA00 ( uta, utb )
+era = ERA00 ( uta, utb )
 
 !  Estimate s'.
-sp = iau_SP00 ( tta, ttb )
+sp = SP00 ( tta, ttb )
 
 !  Form the polar motion matrix.
-call iau_POM00 ( xp, yp, sp, rpom )
+call POM00 ( xp, yp, sp, rpom )
 
 !  Combine to form the celestial-to-terrestrial matrix.
-call iau_C2TCIO ( rc2i, era, rpom, rc2t )
+call C2TCIO ( rc2i, era, rpom, rc2t )
 
-end subroutine iau_C2TXY
-!***********************************************************************
+end subroutine C2TXY
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_CAL2JD ( iy, im, id, djm0, djm, j )
+!-----------------------------------------------------------------------
+subroutine CAL2JD ( iy, im, id, djm0, djm, j )
 !>
 !  Gregorian Calendar to Julian Date.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -6180,10 +5926,6 @@ subroutine iau_CAL2JD ( iy, im, id, djm0, djm, j )
 !     Section 12.92 (p604).
 !
 !  This revision:  2014 November 7
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -6241,16 +5983,13 @@ else
    end if
 end if
 
-end subroutine iau_CAL2JD
-!***********************************************************************
+end subroutine CAL2JD
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_CP ( p, c )
+!-----------------------------------------------------------------------
+subroutine CP ( p, c )
 !>
 !  Copy a p-vector.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -6261,10 +6000,6 @@ subroutine iau_CP ( p, c )
 !     C        d(3)     copy
 !
 !  This revision:  2000 November 25
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -6278,16 +6013,13 @@ do 1 i=1,3
    c(i) = p(i)
 1 continue
 
-end subroutine iau_CP
-!***********************************************************************
+end subroutine CP
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_CPV ( pv, c )
+!-----------------------------------------------------------------------
+subroutine CPV ( pv, c )
 !>
 !  Copy a position/velocity vector.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -6298,13 +6030,9 @@ subroutine iau_CPV ( pv, c )
 !     C        d(3,2)    copy
 !
 !  Called:
-!     iau_CP       copy p-vector
+!     CP       copy p-vector
 !
 !  This revision:  2000 November 25
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -6312,19 +6040,16 @@ implicit none
 
 double precision pv(3,2), c(3,2)
 
-call iau_CP ( pv(1,1), c(1,1) )
-call iau_CP ( pv(1,2), c(1,2) )
+call CP ( pv(1,1), c(1,1) )
+call CP ( pv(1,2), c(1,2) )
 
-end subroutine iau_CPV
-!***********************************************************************
+end subroutine CPV
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_CR ( r, c )
+!-----------------------------------------------------------------------
+subroutine CR ( r, c )
 !>
 !  Copy an r-matrix.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -6335,13 +6060,9 @@ subroutine iau_CR ( r, c )
 !     C        d(3,3)    copy
 !
 !  Called:
-!     iau_CP       copy p-vector
+!     CP       copy p-vector
 !
 !  This revision:  2000 November 25
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -6352,20 +6073,17 @@ double precision r(3,3), c(3,3)
 integer i
 
 do 1 i=1,3
-   call iau_CP ( r(1,i), c(1,i) )
+   call CP ( r(1,i), c(1,i) )
 1 continue
 
-end subroutine iau_CR
-!***********************************************************************
+end subroutine CR
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_D2DTF ( scale, ndp, d1, d2, iy, im, id, ihmsf, j )
+!-----------------------------------------------------------------------
+subroutine D2DTF ( scale, ndp, d1, d2, iy, im, id, ihmsf, j )
 !>
 !  Format for output a 2-part Julian Date (or in the case of UTC a
 !  quasi-JD form that includes special provision for leap seconds).
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -6418,20 +6136,16 @@ subroutine iau_D2DTF ( scale, ndp, d1, d2, iy, im, id, ihmsf, j )
 !
 !  5) The warning status "dubious year" flags UTCs that predate the
 !     introduction of the time scale or that are too far in the future
-!     to be trusted.  See iau_DAT for further details.
+!     to be trusted.  See DAT for further details.
 !
-!  6) For calendar conventions and limitations, see iau_CAL2JD.
+!  6) For calendar conventions and limitations, see CAL2JD.
 !
 !  Called:
-!     iau_JD2CAL   JD to Gregorian calendar
-!     iau_D2TF     decompose days to hms
-!     iau_DAT      delta(AT) = TAI-UTC
+!     JD2CAL   JD to Gregorian calendar
+!     D2TF     decompose days to hms
+!     DAT      delta(AT) = TAI-UTC
 !
 !  This revision:  2014 February 15
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -6455,7 +6169,7 @@ a1 = d1
 b1 = d2
 
 !  Provisional calendar date.
-call iau_JD2CAL ( a1, b1, iy1, im1, id1, fd, js )
+call JD2CAL ( a1, b1, iy1, im1, id1, fd, js )
 if ( js/=0 ) go to 9
 
 !  Is this a leap second day?
@@ -6463,17 +6177,17 @@ leap = .false.
 if ( scale=='UTC' ) then
 
 !     TAI-UTC at 0h today.
-   call iau_DAT ( iy1, im1, id1, 0d0, dat0, js )
+   call DAT ( iy1, im1, id1, 0d0, dat0, js )
    if ( js<0 ) go to 9
 
 !     TAI-UTC at 12h today (to detect drift).
-   call iau_DAT ( iy1, im1, id1, 0.5d0, dat12, js )
+   call DAT ( iy1, im1, id1, 0.5d0, dat12, js )
    if ( js<0 ) go to 9
 
 !     TAI-UTC at 0h tomorrow (to detect jumps).
-   call iau_JD2CAL ( a1+1.5d0, b1-fd, iy2, im2, id2, w, js )
+   call JD2CAL ( a1+1.5d0, b1-fd, iy2, im2, id2, w, js )
    if ( js/=0 ) go to 9
-   call iau_DAT ( iy2, im2, id2, 0d0, dat24, js )
+   call DAT ( iy2, im2, id2, 0d0, dat24, js )
    if ( js<0 ) go to 9
 
 !     Any sudden change in TAI-UTC (seconds).
@@ -6486,13 +6200,13 @@ if ( scale=='UTC' ) then
 end if
 
 !  Provisional time of day.
-call iau_D2TF ( ndp, fd, s, ihmsf1 )
+call D2TF ( ndp, fd, s, ihmsf1 )
 
 !  Has the (rounded) time gone past 24h?
 if ( ihmsf1(1)>23 ) then
 
 !     Yes.  We probably need tomorrow's calendar date.
-   call iau_JD2CAL ( a1+1.5d0, b1-fd, iy2, im2, id2, w, js )
+   call JD2CAL ( a1+1.5d0, b1-fd, iy2, im2, id2, w, js )
    if ( js<0 ) go to 9
 
 !     Is today a leap second day?
@@ -6551,16 +6265,13 @@ do 2 i=1,4
 9 continue
 j = js
 
-end subroutine iau_D2DTF
-!***********************************************************************
+end subroutine D2DTF
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_D2TF ( ndp, days, sign, ihmsf )
+!-----------------------------------------------------------------------
+subroutine D2TF ( ndp, days, sign, ihmsf )
 !>
 !  Decompose days to hours, minutes, seconds, fraction.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -6605,10 +6316,6 @@ subroutine iau_D2TF ( ndp, days, sign, ihmsf )
 !     by testing for IHMSF(1)=24 and setting IHMSF(1-4) to zero.
 !
 !  This revision:  2005 August 26
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -6676,11 +6383,11 @@ ihmsf(2) = nint(am)
 ihmsf(3) = nint(as)
 ihmsf(4) = nint(af)
 
-end subroutine iau_D2TF
-!***********************************************************************
+end subroutine D2TF
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_DAT ( iy, im, id, fd, deltat, j )
+!-----------------------------------------------------------------------
+subroutine DAT ( iy, im, id, fd, deltat, j )
 !>
 !  For a given UTC date, calculate Delta(AT) = TAI-UTC.
 !
@@ -6718,9 +6425,6 @@ subroutine iau_DAT ( iy, im, id, fd, deltat, j )
 !     :  Latest leap second:  2016 December 31   :
 !     :                                          :
 !     :__________________________________________:
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  user-replaceable support routine.
 !
@@ -6794,13 +6498,9 @@ subroutine iau_DAT ( iy, im, id, fd, deltat, j )
 !     the 1992 Explanatory Supplement.
 !
 !  Called:
-!     iau_CAL2JD   Gregorian calendar to JD
+!     CAL2JD   Gregorian calendar to JD
 !
 !  This revision:  2019 July 5
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -6810,7 +6510,7 @@ integer iy, im, id
 double precision fd, deltat
 integer j
 
-!  Release year for this version of iau_DAT
+!  Release year for this version of DAT
 integer iyv
 parameter ( iyv = 2019 )
 
@@ -6897,7 +6597,7 @@ if ( fd<0d0 .or. fd>1d0 ) then
 end if
 
 !  Convert the date into an MJD.
-call iau_CAL2JD ( iy, im, id, djm0, djm, js )
+call CAL2JD ( iy, im, id, djm0, djm, js )
 
 !  If invalid year, month, or day, give up.
 if ( js < 0 ) go to 9000
@@ -6942,11 +6642,11 @@ if ( is <= nera1 ) da = da + &
 deltat = da
 j = js
 
-end subroutine iau_DAT
-!***********************************************************************
+end subroutine DAT
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_DTDB ( date1, date2, &
+!-----------------------------------------------------------------------
+double precision function DTDB ( date1, date2, &
                                      ut, elong, u, v )
 !>
 !  An approximation to TDB-TT, the difference between barycentric
@@ -6965,7 +6665,7 @@ double precision function iau_DTDB ( date1, date2, &
 !             :
 !            TCG             <-  time scale for GCRS
 !             :
-!      "periodic" terms      <-  iau_DTDB is an implementation
+!      "periodic" terms      <-  DTDB is an implementation
 !             :
 !    rate adjustment (L_C)   <-  function of solar-system ephemeris
 !             :
@@ -6975,15 +6675,12 @@ double precision function iau_DTDB ( date1, date2, &
 !             :
 !            TDB             <-  TCB scaled to track TT
 !             :
-!      "periodic" terms      <-  -iau_DTDB is an approximation
+!      "periodic" terms      <-  -DTDB is an approximation
 !             :
 !            TT              <-  terrestrial time
 !
 !  Adopted values for the various constants can be found in the IERS
 !  Conventions (McCarthy & Petit 2003).
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -6995,7 +6692,7 @@ double precision function iau_DTDB ( date1, date2, &
 !     V               d    distance north of equatorial plane (km)
 !
 !  Returned:
-!    iau_DTDB         d    TDB-TT (seconds)
+!    DTDB         d    TDB-TT (seconds)
 !
 !  Notes:
 !
@@ -7105,10 +6802,6 @@ double precision function iau_DTDB ( date1, date2, &
 !     Francou, G. & Laskar, J., Astron.Astrophys., 282, 663-683 (1994).
 !
 !  This revision:  2010 July 29
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -8120,21 +7813,18 @@ wj =   0.00065d-6 * sin(6069.776754d0*t + 4.021194d0) + &
 !  ============
 
 !  TDB-TT in seconds.
-iau_DTDB = wt + wf + wj
+DTDB = wt + wf + wj
 
-end function iau_DTDB
-!***********************************************************************
+end function DTDB
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_DTF2D ( scale, iy, im, id, ihr, imn, sec, &
+!-----------------------------------------------------------------------
+subroutine DTF2D ( scale, iy, im, id, ihr, imn, sec, &
                        d1, d2, j )
 !>
 !  Encode date and time fields into 2-part Julian Date (or in the case
 !  of UTC a quasi-JD form that includes special provision for leap
 !  seconds).
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -8163,7 +7853,7 @@ subroutine iau_DTF2D ( scale, iy, im, id, ihr, imn, sec, &
 !     case) is significant, and enables handling of leap seconds (see
 !     Note 4).
 !
-!  2) For calendar conventions and limitations, see iau_CAL2JD.
+!  2) For calendar conventions and limitations, see CAL2JD.
 !
 !  3) The sum of the results, D1+D2, is Julian Date, where normally D1
 !     is the Julian Day Number and D2 is the fraction of a day.  In the
@@ -8185,7 +7875,7 @@ subroutine iau_DTF2D ( scale, iy, im, id, ihr, imn, sec, &
 !
 !  6) The warning status "dubious year" flags UTCs that predate the
 !     introduction of the time scale or that are too far in the future
-!     to be trusted.  See iau_DAT for further details.
+!     to be trusted.  See DAT for further details.
 !
 !  7) Only in the case of continuous and regular time scales (TAI, TT,
 !     TCG, TCB and TDB) is the result D1+D2 a Julian Date, strictly
@@ -8195,15 +7885,11 @@ subroutine iau_DTF2D ( scale, iy, im, id, ihr, imn, sec, &
 !     interval.
 !
 !  Called:
-!     iau_CAL2JD   Gregorian calendar to JD
-!     iau_DAT      delta(AT) = TAI-UTC
-!     iau_JD2CAL   JD to Gregorian calendar
+!     CAL2JD   Gregorian calendar to JD
+!     DAT      delta(AT) = TAI-UTC
+!     JD2CAL   JD to Gregorian calendar
 !
 !  This revision:  2013 July 26
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -8222,7 +7908,7 @@ double precision dj, w, day, seclim, dat0, dat12, dat24, &
                  dleap, time
 
 !  Today's Julian Day Number.
-call iau_CAL2JD ( iy, im, id, dj, w, js )
+call CAL2JD ( iy, im, id, dj, w, js )
 if ( js/=0 ) go to 9
 dj = dj + w
 
@@ -8234,17 +7920,17 @@ seclim = 60d0
 if ( scale=='UTC' ) then
 
 !     TAI-UTC at 0h today.
-   call iau_DAT ( iy, im, id, 0d0, dat0, js )
+   call DAT ( iy, im, id, 0d0, dat0, js )
    if ( js<0 ) go to 9
 
 !     TAI-UTC at 12h today (to detect drift).
-   call iau_DAT ( iy, im, id, 0.5d0, dat12, js )
+   call DAT ( iy, im, id, 0.5d0, dat12, js )
    if ( js<0 ) go to 9
 
 !     TAI-UTC at 0h tomorrow (to detect jumps).
-   call iau_JD2CAL ( dj, 1.5d0, iy2, im2, id2, w, js )
+   call JD2CAL ( dj, 1.5d0, iy2, im2, id2, w, js )
    if ( js/=0 ) go to 9
-   call iau_DAT ( iy2, im2, id2, 0d0, dat24, js )
+   call DAT ( iy2, im2, id2, 0d0, dat24, js )
    if ( js<0 ) go to 9
 
 !     Any sudden change in TAI-UTC between today and tomorrow.
@@ -8286,17 +7972,14 @@ d2 = time
 9 continue
 j = js
 
-end subroutine iau_DTF2D
-!***********************************************************************
+end subroutine DTF2D
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_ECEQ06 ( date1, date2, dl, db, dr, dd )
+!-----------------------------------------------------------------------
+subroutine ECEQ06 ( date1, date2, dl, db, dr, dd )
 !>
 !  Transformation from ecliptic coordinates (mean equinox and ecliptic
 !  of date) to ICRS RA,Dec, using the IAU 2006 precession model.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -8338,18 +8021,14 @@ subroutine iau_ECEQ06 ( date1, date2, dl, db, dr, dd )
 !     than 25 mas) to disturb this classical picture.
 !
 !  Called:
-!     iau_S2C      spherical coordinates to unit vector
-!     iau_ECM06    J2000.0 to ecliptic rotation matrix, IAU 2006
-!     iau_TRXP     product of transpose of r-matrix and p-vector
-!     iau_C2S      unit vector to spherical coordinates
-!     iau_ANP      normalize angle into range 0 to 2pi
-!     iau_ANPM     normalize angle into range +/- pi
+!     S2C      spherical coordinates to unit vector
+!     ECM06    J2000.0 to ecliptic rotation matrix, IAU 2006
+!     TRXP     product of transpose of r-matrix and p-vector
+!     C2S      unit vector to spherical coordinates
+!     ANP      normalize angle into range 0 to 2pi
+!     ANPM     normalize angle into range +/- pi
 !
 !  This revision:  2016 February 9
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -8359,35 +8038,32 @@ double precision date1, date2, dl, db, dr, dd
 
 double precision rm(3,3), v1(3), v2(3), a, b
 
-!     DOUBLE PRECISION iau_ANP, iau_ANPM
+!     DOUBLE PRECISION ANP, ANPM
 
 
 !  Spherical to Cartesian.
-call iau_S2C ( dl, db, v1 )
+call S2C ( dl, db, v1 )
 
 !  Rotation matrix, ICRS equatorial to ecliptic.
-call iau_ECM06 ( date1, date2, rm )
+call ECM06 ( date1, date2, rm )
 
 !  The transformation from ecliptic to ICRS.
-call iau_TRXP ( rm, v1, v2 )
+call TRXP ( rm, v1, v2 )
 
 !  Cartesian to spherical.
-call iau_C2S ( v2, a, b )
+call C2S ( v2, a, b )
 
 !  Express in conventional ranges.
-dr = iau_ANP ( a )
-dd = iau_ANPM ( b )
+dr = ANP ( a )
+dd = ANPM ( b )
 
-end subroutine iau_ECEQ06
-!***********************************************************************
+end subroutine ECEQ06
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_ECM06 ( date1, date2, rm )
+!-----------------------------------------------------------------------
+subroutine ECM06 ( date1, date2, rm )
 !>
 !  ICRS equatorial to ecliptic rotation matrix, IAU 2006.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -8436,17 +8112,13 @@ subroutine iau_ECM06 ( date1, date2, rm )
 !     25 mas) to disturb this classical picture.
 !
 !  Called:
-!     iau_OBL06    mean obliquity, IAU 2006
-!     iau_PMAT06   PB matrix, IAU 2006
-!     iau_IR       initialize r-matrix to identity
-!     iau_RX       rotate around X-axis
-!     iau_RXR      product of two r-matrices
+!     OBL06    mean obliquity, IAU 2006
+!     PMAT06   PB matrix, IAU 2006
+!     IR       initialize r-matrix to identity
+!     RX       rotate around X-axis
+!     RXR      product of two r-matrices
 !
 !  This revision:  2015 December 11
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -8455,33 +8127,30 @@ implicit none
 double precision date1, date2, rm(3,3)
 
 double precision ob, bp(3,3), e(3,3)
-!     DOUBLE PRECISION iau_OBL06
+!     DOUBLE PRECISION OBL06
 
 
 !  Obliquity, IAU 2006.
-ob = iau_OBL06 ( date1, date2 )
+ob = OBL06 ( date1, date2 )
 
 !  Precession-bias matrix, IAU 2006.
-call iau_PMAT06 ( date1, date2, bp )
+call PMAT06 ( date1, date2, bp )
 
 !  Equatorial of date to ecliptic matrix.
-call iau_IR ( e )
-call iau_RX ( ob, e )
+call IR ( e )
+call RX ( ob, e )
 
 !  ICRS to ecliptic coordinates rotation matrix, IAU 2006.
-call iau_RXR ( e, bp, rm )
+call RXR ( e, bp, rm )
 
-end subroutine iau_ECM06
-!***********************************************************************
+end subroutine ECM06
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_EE00 ( date1, date2, epsa, dpsi )
+!-----------------------------------------------------------------------
+double precision function EE00 ( date1, date2, epsa, dpsi )
 !>
 !  The equation of the equinoxes, compatible with IAU 2000 resolutions,
 !  given the nutation in longitude and the mean obliquity.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -8491,7 +8160,7 @@ double precision function iau_EE00 ( date1, date2, epsa, dpsi )
 !     DPSI           d      nutation in longitude (Note 3)
 !
 !  Returned:
-!     iau_EE00       d      equation of the equinoxes (Note 4)
+!     EE00       d      equation of the equinoxes (Note 4)
 !
 !  Notes:
 !
@@ -8525,7 +8194,7 @@ double precision function iau_EE00 ( date1, date2, epsa, dpsi )
 !     (2002).
 !
 !  Called:
-!     iau_EECT00   equation of the equinoxes complementary terms
+!     EECT00   equation of the equinoxes complementary terms
 !
 !  References:
 !
@@ -8538,31 +8207,24 @@ double precision function iau_EE00 ( date1, date2, epsa, dpsi )
 !
 !  This revision:  2006 November 13
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
 
 double precision date1, date2, epsa, dpsi
 
-!     DOUBLE PRECISION iau_EECT00
+!     DOUBLE PRECISION EECT00
 
 !  Equation of the equinoxes.
-iau_EE00 = dpsi * cos(epsa) + iau_EECT00 ( date1, date2 )
+EE00 = dpsi * cos(epsa) + EECT00 ( date1, date2 )
 
-end function iau_EE00
-!***********************************************************************
+end function EE00
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_EE00A ( date1, date2 )
+!-----------------------------------------------------------------------
+double precision function EE00A ( date1, date2 )
 !>
 !  Equation of the equinoxes, compatible with IAU 2000 resolutions.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -8570,7 +8232,7 @@ double precision function iau_EE00A ( date1, date2 )
 !     DATE1,DATE2    d      TT as a 2-part Julian Date (Note 1)
 !
 !  Returned:
-!     iau_EE00A      d      equation of the equinoxes (Note 2)
+!     EE00A      d      equation of the equinoxes (Note 2)
 !
 !  Notes:
 !
@@ -8602,10 +8264,10 @@ double precision function iau_EE00A ( date1, date2 )
 !     (2002).
 !
 !  Called:
-!     iau_PR00     IAU 2000 precession adjustments
-!     iau_OBL80    mean obliquity, IAU 1980
-!     iau_NUT00A   nutation, IAU 2000A
-!     iau_EE00     equation of the equinoxes, IAU 2000
+!     PR00     IAU 2000 precession adjustments
+!     OBL80    mean obliquity, IAU 1980
+!     NUT00A   nutation, IAU 2000A
+!     EE00     equation of the equinoxes, IAU 2000
 !
 !  References:
 !
@@ -8618,10 +8280,6 @@ double precision function iau_EE00A ( date1, date2 )
 !
 !  This revision:  2006 November 13
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -8630,31 +8288,28 @@ double precision date1, date2
 
 double precision dpsipr, depspr, epsa, dpsi, deps
 
-!     DOUBLE PRECISION iau_OBL80, iau_EE00
+!     DOUBLE PRECISION OBL80, EE00
 
 !  IAU 2000 precession-rate adjustments.
-call iau_PR00 ( date1, date2, dpsipr, depspr )
+call PR00 ( date1, date2, dpsipr, depspr )
 
 !  Mean obliquity, consistent with IAU 2000 precession-nutation.
-epsa = iau_OBL80 ( date1, date2 ) + depspr
+epsa = OBL80 ( date1, date2 ) + depspr
 
 !  Nutation in longitude.
-call iau_NUT00A ( date1, date2, dpsi, deps )
+call NUT00A ( date1, date2, dpsi, deps )
 
 !  Equation of the equinoxes.
-iau_EE00A = iau_EE00 ( date1, date2, epsa, dpsi )
+EE00A = EE00 ( date1, date2, epsa, dpsi )
 
-end function iau_EE00A
-!***********************************************************************
+end function EE00A
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_EE00B ( date1, date2 )
+!-----------------------------------------------------------------------
+double precision function EE00B ( date1, date2 )
 !>
 !  Equation of the equinoxes, compatible with IAU 2000 resolutions but
 !  using the truncated nutation model IAU 2000B.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -8662,7 +8317,7 @@ double precision function iau_EE00B ( date1, date2 )
 !     DATE1,DATE2   d     TT as a 2-part Julian Date (Note 1)
 !
 !  Returned:
-!     iau_EE00B     d     equation of the equinoxes (Note 2)
+!     EE00B     d     equation of the equinoxes (Note 2)
 !
 !  Notes:
 !
@@ -8695,10 +8350,10 @@ double precision function iau_EE00B ( date1, date2 )
 !     Capitaine et al. (2003).
 !
 !  Called:
-!     iau_PR00     IAU 2000 precession adjustments
-!     iau_OBL80    mean obliquity, IAU 1980
-!     iau_NUT00B   nutation, IAU 2000B
-!     iau_EE00     equation of the equinoxes, IAU 2000
+!     PR00     IAU 2000 precession adjustments
+!     OBL80    mean obliquity, IAU 1980
+!     NUT00B   nutation, IAU 2000B
+!     EE00     equation of the equinoxes, IAU 2000
 !
 !  References:
 !
@@ -8715,10 +8370,6 @@ double precision function iau_EE00B ( date1, date2 )
 !
 !  This revision:  2006 November 13
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -8727,31 +8378,28 @@ double precision date1, date2
 
 double precision dpsipr, depspr, epsa, dpsi, deps
 
-!     DOUBLE PRECISION iau_OBL80, iau_EE00
+!     DOUBLE PRECISION OBL80, EE00
 
 !  IAU 2000 precession-rate adjustments.
-call iau_PR00 ( date1, date2, dpsipr, depspr )
+call PR00 ( date1, date2, dpsipr, depspr )
 
 !  Mean obliquity, consistent with IAU 2000 precession-nutation.
-epsa = iau_OBL80 ( date1, date2 ) + depspr
+epsa = OBL80 ( date1, date2 ) + depspr
 
 !  Nutation in longitude.
-call iau_NUT00B ( date1, date2, dpsi, deps )
+call NUT00B ( date1, date2, dpsi, deps )
 
 !  Equation of the equinoxes.
-iau_EE00B = iau_EE00 ( date1, date2, epsa, dpsi )
+EE00B = EE00 ( date1, date2, epsa, dpsi )
 
-end function iau_EE00B
-!***********************************************************************
+end function EE00B
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_EE06A ( date1, date2 )
+!-----------------------------------------------------------------------
+double precision function EE06A ( date1, date2 )
 !>
 !  Equation of the equinoxes, compatible with IAU 2000 resolutions and
 !  IAU 2006/2000A precession-nutation.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -8759,7 +8407,7 @@ double precision function iau_EE06A ( date1, date2 )
 !     DATE1,DATE2    d      TT as a 2-part Julian Date (Note 1)
 !
 !  Returned:
-!     iau_EE06A      d      equation of the equinoxes (Note 2)
+!     EE06A      d      equation of the equinoxes (Note 2)
 !
 !  Notes:
 !
@@ -8787,9 +8435,9 @@ double precision function iau_EE06A ( date1, date2 )
 !        Greenwich apparent ST = GMST + equation of the equinoxes
 !
 !  Called:
-!     iau_ANPM     normalize angle into range +/- pi
-!     iau_GST06A   Greenwich apparent sidereal time, IAU 2006/2000A
-!     iau_GMST06   Greenwich mean sidereal time, IAU 2006
+!     ANPM     normalize angle into range +/- pi
+!     GST06A   Greenwich apparent sidereal time, IAU 2006/2000A
+!     GMST06   Greenwich mean sidereal time, IAU 2006
 !
 !  Reference:
 !
@@ -8798,33 +8446,26 @@ double precision function iau_EE06A ( date1, date2 )
 !
 !  This revision:  2006 October 31
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
 
 double precision date1, date2
 
-!     DOUBLE PRECISION iau_ANPM, iau_GST06A, iau_GMST06
+!     DOUBLE PRECISION ANPM, GST06A, GMST06
 
 !  Equation of the equinoxes.
-iau_EE06A = iau_ANPM ( iau_GST06A ( 0d0, 0d0, date1, date2 ) - &
-                       iau_GMST06 ( 0d0, 0d0, date1, date2 ) )
+EE06A = ANPM ( GST06A ( 0d0, 0d0, date1, date2 ) - &
+                       GMST06 ( 0d0, 0d0, date1, date2 ) )
 
-end function iau_EE06A
-!***********************************************************************
+end function EE06A
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_EECT00 ( date1, date2 )
+!-----------------------------------------------------------------------
+double precision function EECT00 ( date1, date2 )
 !>
 !  Equation of the equinoxes complementary terms, consistent with
 !  IAU 2000 resolutions.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -8832,7 +8473,7 @@ double precision function iau_EECT00 ( date1, date2 )
 !     DATE1,DATE2   d    TT as a 2-part Julian Date (Note 1)
 !
 !  Returned:
-!     iau_EECT00    d    complementary terms (Note 2)
+!     EECT00    d    complementary terms (Note 2)
 !
 !  Notes:
 !
@@ -8885,14 +8526,14 @@ double precision function iau_EECT00 ( date1, date2 )
 !     IERS Conventions 2003).
 !
 !  Called:
-!     iau_FAL03    mean anomaly of the Moon
-!     iau_FALP03   mean anomaly of the Sun
-!     iau_FAF03    mean argument of the latitude of the Moon
-!     iau_FAD03    mean elongation of the Moon from the Sun
-!     iau_FAOM03   mean longitude of the Moon's ascending node
-!     iau_FAVE03   mean longitude of Venus
-!     iau_FAE03    mean longitude of Earth
-!     iau_FAPA03   general accumulated precession in longitude
+!     FAL03    mean anomaly of the Moon
+!     FALP03   mean anomaly of the Sun
+!     FAF03    mean argument of the latitude of the Moon
+!     FAD03    mean elongation of the Moon from the Sun
+!     FAOM03   mean longitude of the Moon's ascending node
+!     FAVE03   mean longitude of Venus
+!     FAE03    mean longitude of Earth
+!     FAPA03   general accumulated precession in longitude
 !
 !  References:
 !
@@ -8909,10 +8550,6 @@ double precision function iau_EECT00 ( date1, date2 )
 !     IERS Technical Note No. 32, BKG (2004)
 !
 !  This revision:  2017 October 23
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -8938,9 +8575,9 @@ double precision t
 !  Miscellaneous
 integer i, j
 double precision a, s0, s1
-!     DOUBLE PRECISION iau_FAL03, iau_FALP03, iau_FAF03,
-!    :                 iau_FAD03, iau_FAOM03, iau_FAVE03, iau_FAE03,
-!    :                 iau_FAPA03
+!     DOUBLE PRECISION FAL03, FALP03, FAF03,
+!    :                 FAD03, FAOM03, FAVE03, FAE03,
+!    :                 FAPA03
 
 !  Fundamental arguments
 double precision fa(14)
@@ -9053,28 +8690,28 @@ t = ( ( date1-dj00 ) + date2 ) / djc
 !  Fundamental Arguments (from IERS Conventions 2003)
 
 !  Mean anomaly of the Moon.
-fa(1) = iau_FAL03 ( t )
+fa(1) = FAL03 ( t )
 
 !  Mean anomaly of the Sun.
-fa(2) = iau_FALP03 ( t )
+fa(2) = FALP03 ( t )
 
 !  Mean longitude of the Moon minus that of the ascending node.
-fa(3) = iau_FAF03 ( t )
+fa(3) = FAF03 ( t )
 
 !  Mean elongation of the Moon from the Sun.
-fa(4) = iau_FAD03 ( t )
+fa(4) = FAD03 ( t )
 
 !  Mean longitude of the ascending node of the Moon.
-fa(5) = iau_FAOM03 ( t )
+fa(5) = FAOM03 ( t )
 
 !  Mean longitude of Venus.
-fa(6) = iau_FAVE03 ( t )
+fa(6) = FAVE03 ( t )
 
 !  Mean longitude of Earth.
-fa(7) = iau_FAE03 ( t )
+fa(7) = FAE03 ( t )
 
 !  General precession in longitude.
-fa(8) = iau_FAPA03 ( t )
+fa(8) = FAPA03 ( t )
 
 !  Evaluate the EE complementary terms.
 s0 = 0d0
@@ -9094,18 +8731,15 @@ do 4 i = ne1,1,-1
 3    continue
    s1 = s1 + ( se1(1,i)*sin(a) + se1(2,i)*cos(a) )
 4 continue
-iau_EECT00 = ( s0 + s1 * t ) * das2r
+EECT00 = ( s0 + s1 * t ) * das2r
 
-end function iau_EECT00
-!***********************************************************************
+end function EECT00
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_EFORM ( n, a, f, j )
+!-----------------------------------------------------------------------
+subroutine EFORM ( n, a, f, j )
 !>
 !  Earth reference ellipsoids.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical.
 !
@@ -9154,10 +8788,6 @@ subroutine iau_EFORM ( n, a, f, j )
 !
 !  This revision:  2010 January 18
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -9199,16 +8829,13 @@ else
 
 end if
 
-end subroutine iau_EFORM
-!***********************************************************************
+end subroutine EFORM
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_EO06A ( date1, date2 )
+!-----------------------------------------------------------------------
+double precision function EO06A ( date1, date2 )
 !>
 !  Equation of the origins, IAU 2006 precession and IAU 2000A nutation.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -9216,7 +8843,7 @@ double precision function iau_EO06A ( date1, date2 )
 !     DATE1,DATE2    d      TT as a 2-part Julian Date (Note 1)
 !
 !  Returned:
-!     iau_EO06A      d      equation of the origins in radians
+!     EO06A      d      equation of the origins in radians
 !
 !  Notes:
 !
@@ -9247,10 +8874,10 @@ double precision function iau_EO06A ( date1, date2 )
 !     equinoxes (including the small correction terms).
 !
 !  Called:
-!     iau_PNM06A   classical NPB matrix, IAU 2006/2000A
-!     iau_BPN2XY   extract CIP X,Y coordinates from NPB matrix
-!     iau_S06      the CIO locator s, given X,Y, IAU 2006
-!     iau_EORS     equation of the origins, given NPB matrix and s
+!     PNM06A   classical NPB matrix, IAU 2006/2000A
+!     BPN2XY   extract CIP X,Y coordinates from NPB matrix
+!     S06      the CIO locator s, given X,Y, IAU 2006
+!     EORS     equation of the origins, given NPB matrix and s
 !
 !  References:
 !
@@ -9260,10 +8887,6 @@ double precision function iau_EO06A ( date1, date2 )
 !
 !  This revision:  2007 February 13
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -9271,31 +8894,28 @@ implicit none
 double precision date1, date2
 
 double precision r(3,3), x, y, s
-!     DOUBLE PRECISION iau_S06, iau_EORS
+!     DOUBLE PRECISION S06, EORS
 
 !  Classical nutation x precession x bias matrix.
-call iau_PNM06A ( date1, date2, r )
+call PNM06A ( date1, date2, r )
 
 !  Extract CIP coordinates.
-call iau_BPN2XY ( r, x, y )
+call BPN2XY ( r, x, y )
 
 !  The CIO locator, s.
-s = iau_S06 ( date1, date2, x, y )
+s = S06 ( date1, date2, x, y )
 
 !  Solve for the EO.
-iau_EO06A = iau_EORS ( r, s )
+EO06A = EORS ( r, s )
 
-end function iau_EO06A
-!***********************************************************************
+end function EO06A
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_EORS ( rnpb, s )
+!-----------------------------------------------------------------------
+double precision function EORS ( rnpb, s )
 !>
 !  Equation of the origins, given the classical NPB matrix and the
 !  quantity s.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -9304,7 +8924,7 @@ double precision function iau_EORS ( rnpb, s )
 !     S         d       the quantity s (the CIO locator)
 !
 !  Returned:
-!     iau_EORS  d       the equation of the origins in radians.
+!     EORS  d       the equation of the origins in radians.
 !
 !  Notes:
 !
@@ -9325,10 +8945,6 @@ double precision function iau_EORS ( rnpb, s )
 !
 !  This revision:  2008 February 24
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -9346,21 +8962,18 @@ zs = -x
 p = rnpb(1,1)*xs + rnpb(1,2)*ys + rnpb(1,3)*zs
 q = rnpb(2,1)*xs + rnpb(2,2)*ys + rnpb(2,3)*zs
 if ( p/=0d0 .or. q/=0d0 ) then
-   iau_EORS = s - atan2 ( q, p )
+   EORS = s - atan2 ( q, p )
 else
-   iau_EORS = s
+   EORS = s
 end if
 
-end function iau_EORS
-!***********************************************************************
+end function EORS
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_EPB ( dj1, dj2 )
+!-----------------------------------------------------------------------
+double precision function EPB ( dj1, dj2 )
 !>
 !  Julian Date to Besselian Epoch.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -9383,10 +8996,6 @@ double precision function iau_EPB ( dj1, dj2 )
 !
 !  This revision:  2013 August 7
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -9405,18 +9014,15 @@ parameter ( d1900 = 36524.68648d0 )
 double precision ty
 parameter ( ty = 365.242198781d0 )
 
-iau_EPB = 1900d0 + ( ( dj1-dj00 ) + ( dj2+d1900 ) ) / ty
+EPB = 1900d0 + ( ( dj1-dj00 ) + ( dj2+d1900 ) ) / ty
 
-end function iau_EPB
-!***********************************************************************
+end function EPB
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_EPB2JD ( epb, djm0, djm )
+!-----------------------------------------------------------------------
+subroutine EPB2JD ( epb, djm0, djm )
 !>
 !  Besselian Epoch to Julian Date.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -9440,10 +9046,6 @@ subroutine iau_EPB2JD ( epb, djm0, djm )
 !
 !  This revision:  2008 May 11
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -9457,16 +9059,13 @@ parameter ( ty = 365.242198781d0 )
 djm0 = 2400000.5d0
 djm  =   15019.81352d0 + ( epb-1900d0 ) * ty
 
-end subroutine iau_EPB2JD
-!***********************************************************************
+end subroutine EPB2JD
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_EPJ ( dj1, dj2 )
+!-----------------------------------------------------------------------
+double precision function EPJ ( dj1, dj2 )
 !>
 !  Julian Date to Julian Epoch.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -9489,10 +9088,6 @@ double precision function iau_EPJ ( dj1, dj2 )
 !
 !  This revision:  2009 December 15
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -9507,18 +9102,15 @@ parameter ( dj00 = 2451545d0 )
 double precision djy
 parameter ( djy = 365.25d0 )
 
-iau_EPJ = 2000d0 + ( ( dj1-dj00 ) + dj2 ) / djy
+EPJ = 2000d0 + ( ( dj1-dj00 ) + dj2 ) / djy
 
-end function iau_EPJ
-!***********************************************************************
+end function EPJ
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_EPJ2JD ( epj, djm0, djm )
+!-----------------------------------------------------------------------
+subroutine EPJ2JD ( epj, djm0, djm )
 !>
 !  Julian Epoch to Julian Date.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -9542,10 +9134,6 @@ subroutine iau_EPJ2JD ( epj, djm0, djm )
 !
 !  This revision:  2008 May 11
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -9555,17 +9143,14 @@ double precision epj, djm0, djm
 djm0 = 2400000.5d0
 djm  =   51544.5d0 + ( epj-2000d0 ) * 365.25d0
 
-end subroutine iau_EPJ2JD
-!***********************************************************************
+end subroutine EPJ2JD
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_EPV00 ( date1, date2, pvh, pvb, jstat )
+!-----------------------------------------------------------------------
+subroutine EPV00 ( date1, date2, pvh, pvb, jstat )
 !>
 !  Earth position and velocity, heliocentric and barycentric, with
 !  respect to the Barycentric Celestial Reference System.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -9648,10 +9233,6 @@ subroutine iau_EPV00 ( date1, date2, pvh, pvb, jstat )
 !     about half that rate.
 !
 !  This revision:  2017 March 16
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -12077,18 +11658,15 @@ pvb(1,2) =      x + am12*y + am13*z
 pvb(2,2) = am21*x + am22*y + am23*z
 pvb(3,2) =          am32*y + am33*z
 
-end subroutine iau_EPV00
-!***********************************************************************
+end subroutine EPV00
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_EQEC06 ( date1, date2, dr, dd, dl, db )
+!-----------------------------------------------------------------------
+subroutine EQEC06 ( date1, date2, dr, dd, dl, db )
 !>
 !  Transformation from ICRS equatorial coordinates to ecliptic
 !  coordinates (mean equinox and ecliptic of date) using IAU 2006
 !  precession model.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -12130,18 +11708,14 @@ subroutine iau_EQEC06 ( date1, date2, dr, dd, dl, db )
 !     than 25 mas) to disturb this classical picture.
 !
 !  Called:
-!     iau_S2C      spherical coordinates to unit vector
-!     iau_ECM06    J2000.0 to ecliptic rotation matrix, IAU 2006
-!     iau_RXP      product of r-matrix and p-vector
-!     iau_C2S      unit vector to spherical coordinates
-!     iau_ANP      normalize angle into range 0 to 2pi
-!     iau_ANPM     normalize angle into range +/- pi
+!     S2C      spherical coordinates to unit vector
+!     ECM06    J2000.0 to ecliptic rotation matrix, IAU 2006
+!     RXP      product of r-matrix and p-vector
+!     C2S      unit vector to spherical coordinates
+!     ANP      normalize angle into range 0 to 2pi
+!     ANPM     normalize angle into range +/- pi
 !
 !  This revision:  2016 February 9
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -12151,35 +11725,32 @@ double precision date1, date2, dr, dd, dl, db
 
 double precision rm(3,3), v1(3), v2(3), a, b
 
-!     DOUBLE PRECISION iau_ANP, iau_ANPM
+!     DOUBLE PRECISION ANP, ANPM
 
 
 !  Spherical to Cartesian.
-call iau_S2C ( dr, dd, v1 )
+call S2C ( dr, dd, v1 )
 
 !  Rotation matrix, ICRS equatorial to ecliptic.
-call iau_ECM06 ( date1, date2, rm )
+call ECM06 ( date1, date2, rm )
 
 !  The transformation from ICRS to ecliptic.
-call iau_RXP ( rm, v1, v2 )
+call RXP ( rm, v1, v2 )
 
 !  Cartesian to spherical.
-call iau_C2S ( v2, a, b )
+call C2S ( v2, a, b )
 
 !  Express in conventional ranges.
-dl = iau_ANP ( a )
-db = iau_ANPM ( b )
+dl = ANP ( a )
+db = ANPM ( b )
 
-end subroutine iau_EQEC06
-!***********************************************************************
+end subroutine EQEC06
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_EQEQ94 ( date1, date2 )
+!-----------------------------------------------------------------------
+double precision function EQEQ94 ( date1, date2 )
 !>
 !  Equation of the equinoxes, IAU 1994 model.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -12187,7 +11758,7 @@ double precision function iau_EQEQ94 ( date1, date2 )
 !     DATE1,DATE2     d         TDB date (Note 1)
 !
 !  Returned:
-!     iau_EQEQ94      d         equation of the equinoxes (Note 2)
+!     EQEQ94      d         equation of the equinoxes (Note 2)
 !
 !  Notes:
 !
@@ -12215,9 +11786,9 @@ double precision function iau_EQEQ94 ( date1, date2 )
 !        Greenwich apparent ST = GMST + equation of the equinoxes
 !
 !  Called:
-!     iau_ANPM     normalize angle into range +/- pi
-!     iau_NUT80    nutation, IAU 1980
-!     iau_OBL80    mean obliquity, IAU 1980
+!     ANPM     normalize angle into range +/- pi
+!     NUT80    nutation, IAU 1980
+!     OBL80    mean obliquity, IAU 1980
 !
 !  References:
 !
@@ -12227,10 +11798,6 @@ double precision function iau_EQEQ94 ( date1, date2 )
 !     645-650 (1993)
 !
 !  This revision:  2017 October 12
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -12255,35 +11822,32 @@ double precision djc
 parameter ( djc = 36525d0 )
 
 double precision t, om, dpsi, deps, eps0
-!     DOUBLE PRECISION iau_ANPM, iau_OBL80
+!     DOUBLE PRECISION ANPM, OBL80
 
 !  Interval between fundamental epoch J2000.0 and given date (JC).
 t = ( ( date1-dj00 ) + date2 ) / djc
 
 !  Longitude of the mean ascending node of the lunar orbit on the
 !  ecliptic, measured from the mean equinox of date.
-om = iau_ANPM( ( 450160.280d0 + ( -482890.539d0 + &
+om = ANPM( ( 450160.280d0 + ( -482890.539d0 + &
                  ( 7.455d0 + 0.008d0 * t ) * t ) * t ) * das2r &
                + mod(-5d0*t,1d0) * d2pi )
 
 !  Nutation components and mean obliquity.
-call iau_NUT80 ( date1, date2, dpsi, deps )
-eps0 = iau_OBL80 ( date1, date2 )
+call NUT80 ( date1, date2, dpsi, deps )
+eps0 = OBL80 ( date1, date2 )
 
 !  Equation of the equinoxes.
-iau_EQEQ94 = dpsi * cos(eps0) + das2r * ( 0.00264d0 * sin(om) + &
+EQEQ94 = dpsi * cos(eps0) + das2r * ( 0.00264d0 * sin(om) + &
                                           0.000063d0 * sin(om+om))
 
-end function iau_EQEQ94
-!***********************************************************************
+end function EQEQ94
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_ERA00 ( dj1, dj2 )
+!-----------------------------------------------------------------------
+double precision function ERA00 ( dj1, dj2 )
 !>
 !  Earth rotation angle (IAU 2000 model).
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -12323,7 +11887,7 @@ double precision function iau_ERA00 ( dj1, dj2 )
 !     (2003), Chap. 5, Eq. 14.
 !
 !  Called:
-!     iau_ANP      normalize angle into range 0 to 2pi
+!     ANP      normalize angle into range 0 to 2pi
 !
 !  References:
 !
@@ -12334,10 +11898,6 @@ double precision function iau_ERA00 ( dj1, dj2 )
 !     IERS Technical Note No. 32, BKG (2004)
 !
 !  This revision:  2009 December 15
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -12355,7 +11915,7 @@ parameter ( dj00 = 2451545d0 )
 
 double precision d1, d2, t, f
 
-!     DOUBLE PRECISION iau_ANP
+!     DOUBLE PRECISION ANP
 
 !  Days since fundamental epoch.
 if ( dj1 < dj2 ) then
@@ -12371,20 +11931,17 @@ t = d1 + ( d2-dj00 )
 f = mod ( d1, 1d0 ) + mod ( d2, 1d0 )
 
 !  Earth rotation angle at this UT1.
-iau_ERA00 = iau_ANP ( d2pi * ( f + 0.7790572732640d0 &
+ERA00 = ANP ( d2pi * ( f + 0.7790572732640d0 &
                                  + 0.00273781191135448d0 * t ) )
 
-end function iau_ERA00
-!***********************************************************************
+end function ERA00
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_FAD03 ( t )
+!-----------------------------------------------------------------------
+double precision function FAD03 ( t )
 !>
 !  Fundamental argument, IERS Conventions (2003):
 !  mean elongation of the Moon from the Sun.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -12392,7 +11949,7 @@ double precision function iau_FAD03 ( t )
 !     T           d    TDB, Julian centuries since J2000.0 (Note 1)
 !
 !  Returned:
-!     iau_FAD03   d    D, radians (Note 2)
+!     FAD03   d    D, radians (Note 2)
 !
 !  Notes:
 !
@@ -12412,10 +11969,6 @@ double precision function iau_FAD03 ( t )
 !
 !  This revision:  2009 December 15
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -12431,23 +11984,20 @@ double precision turnas
 parameter ( turnas = 1296000d0 )
 
 !  Mean elongation of the Moon from the Sun (IERS Conventions 2003).
-iau_FAD03 = mod (      1072260.703692d0 + &
+FAD03 = mod (      1072260.703692d0 + &
                   t*( 1602961601.2090d0 + &
                   t*(        - 6.3706d0 + &
                   t*(          0.006593d0 + &
                   t*(        - 0.00003169d0 )))), turnas ) * das2r
 
-end function iau_FAD03
-!***********************************************************************
+end function FAD03
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_FAE03 ( t )
+!-----------------------------------------------------------------------
+double precision function FAE03 ( t )
 !>
 !  Fundamental argument, IERS Conventions (2003):
 !  mean longitude of Earth.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -12455,7 +12005,7 @@ double precision function iau_FAE03 ( t )
 !     T           d    TDB, Julian centuries since J2000.0 (Note 1)
 !
 !  Returned:
-!     iau_FAE03   d    mean longitude of Earth, radians (Note 2)
+!     FAE03   d    mean longitude of Earth, radians (Note 2)
 !
 !  Notes:
 !
@@ -12478,10 +12028,6 @@ double precision function iau_FAE03 ( t )
 !
 !  This revision:  2009 December 15
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -12493,20 +12039,17 @@ double precision d2pi
 parameter ( d2pi = 6.283185307179586476925287d0 )
 
 !  Mean longitude of Earth (IERS Conventions 2003).
-iau_FAE03= mod ( 1.753470314d0 + 628.3075849991d0 * t, d2pi )
+FAE03= mod ( 1.753470314d0 + 628.3075849991d0 * t, d2pi )
 
-end function iau_FAE03
-!***********************************************************************
+end function FAE03
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_FAF03 ( t )
+!-----------------------------------------------------------------------
+double precision function FAF03 ( t )
 !>
 !  Fundamental argument, IERS Conventions (2003):
 !  mean longitude of the Moon minus mean longitude of the ascending
 !  node.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -12514,7 +12057,7 @@ double precision function iau_FAF03 ( t )
 !     T           d    TDB, Julian centuries since J2000.0 (Note 1)
 !
 !  Returned:
-!     iau_FAF03   d    F, radians (Note 2)
+!     FAF03   d    F, radians (Note 2)
 !
 !  Notes:
 !
@@ -12533,10 +12076,6 @@ double precision function iau_FAF03 ( t )
 !     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 !
 !  This revision:  2009 December 15
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -12554,23 +12093,20 @@ parameter ( turnas = 1296000d0 )
 
 !  Mean longitude of the Moon minus that of the ascending node
 !  (IERS Conventions 2003).
-iau_FAF03 = mod (       335779.526232d0 + &
+FAF03 = mod (       335779.526232d0 + &
                   t*( 1739527262.8478d0 + &
                   t*(       - 12.7512d0 + &
                   t*(       -  0.001037d0 + &
                   t*(          0.00000417d0 )))), turnas ) * das2r
 
-end function iau_FAF03
-!***********************************************************************
+end function FAF03
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_FAJU03 ( t )
+!-----------------------------------------------------------------------
+double precision function FAJU03 ( t )
 !>
 !  Fundamental argument, IERS Conventions (2003):
 !  mean longitude of Jupiter.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -12578,7 +12114,7 @@ double precision function iau_FAJU03 ( t )
 !     T           d    TDB, Julian centuries since J2000.0 (Note 1)
 !
 !  Returned:
-!     iau_FAJU03  d    mean longitude of Jupiter, radians (Note 2)
+!     FAJU03  d    mean longitude of Jupiter, radians (Note 2)
 !
 !  Notes:
 !
@@ -12601,10 +12137,6 @@ double precision function iau_FAJU03 ( t )
 !
 !  This revision:  2009 December 15
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -12616,19 +12148,16 @@ double precision d2pi
 parameter ( d2pi = 6.283185307179586476925287d0 )
 
 !  Mean longitude of Jupiter (IERS Conventions 2003).
-iau_FAJU03= mod ( 0.599546497d0 + 52.9690962641d0 * t, d2pi )
+FAJU03= mod ( 0.599546497d0 + 52.9690962641d0 * t, d2pi )
 
-end function iau_FAJU03
-!***********************************************************************
+end function FAJU03
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_FAL03 ( t )
+!-----------------------------------------------------------------------
+double precision function FAL03 ( t )
 !>
 !  Fundamental argument, IERS Conventions (2003):
 !  mean anomaly of the Moon.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -12636,7 +12165,7 @@ double precision function iau_FAL03 ( t )
 !     T           d    TDB, Julian centuries since J2000.0 (Note 1)
 !
 !  Returned:
-!     iau_FAL03   d    l, radians (Note 2)
+!     FAL03   d    l, radians (Note 2)
 !
 !  Notes:
 !
@@ -12655,10 +12184,6 @@ double precision function iau_FAL03 ( t )
 !     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 !
 !  This revision:  2009 December 15
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -12675,23 +12200,20 @@ double precision turnas
 parameter ( turnas = 1296000d0 )
 
 !  Mean anomaly of the Moon (IERS Conventions 2003).
-iau_FAL03 = mod (       485868.249036d0 + &
+FAL03 = mod (       485868.249036d0 + &
                   t*( 1717915923.2178d0 + &
                   t*(         31.8792d0 + &
                   t*(          0.051635d0 + &
                   t*(        - 0.00024470d0 )))), turnas ) * das2r
 
-end function iau_FAL03
-!***********************************************************************
+end function FAL03
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_FALP03 ( t )
+!-----------------------------------------------------------------------
+double precision function FALP03 ( t )
 !>
 !  Fundamental argument, IERS Conventions (2003):
 !  mean anomaly of the Sun.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -12699,7 +12221,7 @@ double precision function iau_FALP03 ( t )
 !     T           d    TDB, Julian centuries since J2000.0 (Note 1)
 !
 !  Returned:
-!     iau_FALP03  d    l', radians (Note 2)
+!     FALP03  d    l', radians (Note 2)
 !
 !  Notes:
 !
@@ -12719,10 +12241,6 @@ double precision function iau_FALP03 ( t )
 !
 !  This revision:  2009 December 15
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -12738,23 +12256,20 @@ double precision turnas
 parameter ( turnas = 1296000d0 )
 
 !  Mean anomaly of the Sun (IERS Conventions 2003).
-iau_FALP03 = mod (     1287104.793048d0 + &
+FALP03 = mod (     1287104.793048d0 + &
                    t*( 129596581.0481d0 + &
                    t*(       - 0.5532d0 + &
                    t*(         0.000136d0 + &
                    t*(       - 0.00001149d0 )))), turnas ) * das2r
 
-end function iau_FALP03
-!***********************************************************************
+end function FALP03
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_FAMA03 ( t )
+!-----------------------------------------------------------------------
+double precision function FAMA03 ( t )
 !>
 !  Fundamental argument, IERS Conventions (2003):
 !  mean longitude of Mars.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -12762,7 +12277,7 @@ double precision function iau_FAMA03 ( t )
 !     T           d    TDB, Julian centuries since J2000.0 (Note 1)
 !
 !  Returned:
-!     iau_FAMA03  d    mean longitude of Mars, radians (Note 2)
+!     FAMA03  d    mean longitude of Mars, radians (Note 2)
 !
 !  Notes:
 !
@@ -12784,10 +12299,6 @@ double precision function iau_FAMA03 ( t )
 !     Astron.Astrophys.Supp.Ser. 135, 111
 !
 !  This revision:  2009 December 15
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -12800,19 +12311,16 @@ double precision d2pi
 parameter ( d2pi = 6.283185307179586476925287d0 )
 
 !  Mean longitude of Mars (IERS Conventions 2003).
-iau_FAMA03= mod ( 6.203480913d0 + 334.0612426700d0 * t, d2pi )
+FAMA03= mod ( 6.203480913d0 + 334.0612426700d0 * t, d2pi )
 
-end function iau_FAMA03
-!***********************************************************************
+end function FAMA03
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_FAME03 ( t )
+!-----------------------------------------------------------------------
+double precision function FAME03 ( t )
 !>
 !  Fundamental argument, IERS Conventions (2003):
 !  mean longitude of Mercury.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -12820,7 +12328,7 @@ double precision function iau_FAME03 ( t )
 !     T           d    TDB, Julian centuries since J2000.0 (Note 1)
 !
 !  Returned:
-!     iau_FAME03  d    mean longitude of Mercury, radians (Note 2)
+!     FAME03  d    mean longitude of Mercury, radians (Note 2)
 !
 !  Notes:
 !
@@ -12843,10 +12351,6 @@ double precision function iau_FAME03 ( t )
 !
 !  This revision:  2009 December 15
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -12858,19 +12362,16 @@ double precision d2pi
 parameter ( d2pi = 6.283185307179586476925287d0 )
 
 !  Mean longitude of Mercury (IERS Conventions 2003).
-iau_FAME03 = mod ( 4.402608842d0 + 2608.7903141574d0 * t, d2pi )
+FAME03 = mod ( 4.402608842d0 + 2608.7903141574d0 * t, d2pi )
 
-end function iau_FAME03
-!***********************************************************************
+end function FAME03
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_FANE03 ( t )
+!-----------------------------------------------------------------------
+double precision function FANE03 ( t )
 !>
 !  Fundamental argument, IERS Conventions (2003):
 !  mean longitude of Neptune.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -12878,7 +12379,7 @@ double precision function iau_FANE03 ( t )
 !     T           d    TDB, Julian centuries since J2000.0 (Note 1)
 !
 !  Returned:
-!     iau_FANE03  d    mean longitude of Neptune, radians (Note 2)
+!     FANE03  d    mean longitude of Neptune, radians (Note 2)
 !
 !  Notes:
 !
@@ -12898,10 +12399,6 @@ double precision function iau_FANE03 ( t )
 !
 !  This revision:  2009 December 15
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -12913,19 +12410,16 @@ double precision d2pi
 parameter ( d2pi = 6.283185307179586476925287d0 )
 
 !  Mean longitude of Neptune (IERS Conventions 2003).
-iau_FANE03= mod ( 5.311886287d0 + 3.8133035638d0 * t, d2pi )
+FANE03= mod ( 5.311886287d0 + 3.8133035638d0 * t, d2pi )
 
-end function iau_FANE03
-!***********************************************************************
+end function FANE03
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_FAOM03 ( t )
+!-----------------------------------------------------------------------
+double precision function FAOM03 ( t )
 !>
 !  Fundamental argument, IERS Conventions (2003):
 !  mean longitude of the Moon's ascending node.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -12933,7 +12427,7 @@ double precision function iau_FAOM03 ( t )
 !     T           d    TDB, Julian centuries since J2000.0 (Note 1)
 !
 !  Returned:
-!     iau_FAOM03  d    Omega, radians (Note 2)
+!     FAOM03  d    Omega, radians (Note 2)
 !
 !  Notes:
 !
@@ -12953,10 +12447,6 @@ double precision function iau_FAOM03 ( t )
 !
 !  This revision:  2009 December 15
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -12972,23 +12462,20 @@ double precision turnas
 parameter ( turnas = 1296000d0 )
 
 !  Mean longitude of the Moon's ascending node (IERS Conventions 2003).
-iau_FAOM03 = mod (      450160.398036d0 + &
+FAOM03 = mod (      450160.398036d0 + &
                    t*( - 6962890.5431d0 + &
                    t*(         7.4722d0 + &
                    t*(         0.007702d0 + &
                    t*(       - 0.00005939d0 )))), turnas ) * das2r
 
-end function iau_FAOM03
-!***********************************************************************
+end function FAOM03
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_FAPA03 ( t )
+!-----------------------------------------------------------------------
+double precision function FAPA03 ( t )
 !>
 !  Fundamental argument, IERS Conventions (2003):
 !  general accumulated precession in longitude.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -12996,7 +12483,7 @@ double precision function iau_FAPA03 ( t )
 !     T           d    TDB, Julian centuries since J2000.0 (Note 1)
 !
 !  Returned:
-!     iau_FAPA03  d    general precession in longitude, radians (Note 2)
+!     FAPA03  d    general precession in longitude, radians (Note 2)
 !
 !  Notes:
 !
@@ -13020,10 +12507,6 @@ double precision function iau_FAPA03 ( t )
 !
 !  This revision:  2009 December 15
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -13031,19 +12514,16 @@ implicit none
 double precision t
 
 !  General accumulated precession in longitude.
-iau_FAPA03= ( 0.024381750d0 + 0.00000538691d0 * t ) * t
+FAPA03= ( 0.024381750d0 + 0.00000538691d0 * t ) * t
 
-end function iau_FAPA03
-!***********************************************************************
+end function FAPA03
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_FASA03 ( t )
+!-----------------------------------------------------------------------
+double precision function FASA03 ( t )
 !>
 !  Fundamental argument, IERS Conventions (2003):
 !  mean longitude of Saturn.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -13051,7 +12531,7 @@ double precision function iau_FASA03 ( t )
 !     T           d    TDB, Julian centuries since J2000.0 (Note 1)
 !
 !  Returned:
-!     iau_FASA03  d    mean longitude of Saturn, radians (Note 2)
+!     FASA03  d    mean longitude of Saturn, radians (Note 2)
 !
 !  Notes:
 !
@@ -13074,10 +12554,6 @@ double precision function iau_FASA03 ( t )
 !
 !  This revision:  2009 December 15
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -13089,19 +12565,16 @@ double precision d2pi
 parameter ( d2pi = 6.283185307179586476925287d0 )
 
 !  Mean longitude of Saturn (IERS Conventions 2003).
-iau_FASA03= mod ( 0.874016757d0 + 21.3299104960d0 * t, d2pi )
+FASA03= mod ( 0.874016757d0 + 21.3299104960d0 * t, d2pi )
 
-end function iau_FASA03
-!***********************************************************************
+end function FASA03
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_FAUR03 ( t )
+!-----------------------------------------------------------------------
+double precision function FAUR03 ( t )
 !>
 !  Fundamental argument, IERS Conventions (2003):
 !  mean longitude of Uranus.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -13109,7 +12582,7 @@ double precision function iau_FAUR03 ( t )
 !     T           d    TDB, Julian centuries since J2000.0 (Note 1)
 !
 !  Returned:
-!     iau_FAUR03  d    mean longitude of Uranus, radians (Note 2)
+!     FAUR03  d    mean longitude of Uranus, radians (Note 2)
 !
 !  Notes:
 !
@@ -13129,10 +12602,6 @@ double precision function iau_FAUR03 ( t )
 !
 !  This revision:  2009 December 15
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -13144,19 +12613,16 @@ double precision d2pi
 parameter ( d2pi = 6.283185307179586476925287d0 )
 
 !  Mean longitude of Uranus (IERS Conventions 2003).
-iau_FAUR03= mod ( 5.481293872d0 + 7.4781598567d0 * t, d2pi )
+FAUR03= mod ( 5.481293872d0 + 7.4781598567d0 * t, d2pi )
 
-end function iau_FAUR03
-!***********************************************************************
+end function FAUR03
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_FAVE03 ( t )
+!-----------------------------------------------------------------------
+double precision function FAVE03 ( t )
 !>
 !  Fundamental argument, IERS Conventions (2003):
 !  mean longitude of Venus.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -13164,7 +12630,7 @@ double precision function iau_FAVE03 ( t )
 !     T           d    TDB, Julian centuries since J2000.0 (Note 1)
 !
 !  Returned:
-!     iau_FAVE03  d    mean longitude of Venus, radians (Note 2)
+!     FAVE03  d    mean longitude of Venus, radians (Note 2)
 !
 !  Notes:
 !
@@ -13187,10 +12653,6 @@ double precision function iau_FAVE03 ( t )
 !
 !  This revision:  2009 December 15
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -13202,21 +12664,18 @@ double precision d2pi
 parameter ( d2pi = 6.283185307179586476925287d0 )
 
 !  Mean longitude of Venus (IERS Conventions 2003).
-iau_FAVE03= mod ( 3.176146697d0 + 1021.3285546211d0 * t, d2pi )
+FAVE03= mod ( 3.176146697d0 + 1021.3285546211d0 * t, d2pi )
 
-end function iau_FAVE03
-!***********************************************************************
+end function FAVE03
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_FK425 ( r1950, d1950, &
+!-----------------------------------------------------------------------
+subroutine FK425 ( r1950, d1950, &
                        dr1950, dd1950, p1950, v1950, &
                        r2000, d2000, &
                        dr2000, dd2000, p2000, v2000 )
 !>
 !  Convert B1950.0 FK4 star catalog data to J2000.0 FK5.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -13286,13 +12745,13 @@ subroutine iau_FK425 ( r1950, d1950, &
 !     position and 1 milliarcsecond per century in proper motion.
 !
 !  Called:
-!     iau_ANP      normalize angle into range 0 to 2pi
-!     iau_PV2S     pv-vector to spherical coordinates
-!     iau_PDP      scalar product of two p-vectors
-!     iau_PVMPV    pv-vector minus pv_vector
-!     iau_PVPPV    pv-vector plus pv_vector
-!     iau_S2PV     spherical coordinates to pv-vector
-!     iau_SXP      multiply p-vector by scalar
+!     ANP      normalize angle into range 0 to 2pi
+!     PV2S     pv-vector to spherical coordinates
+!     PDP      scalar product of two p-vectors
+!     PVMPV    pv-vector minus pv_vector
+!     PVPPV    pv-vector plus pv_vector
+!     S2PV     spherical coordinates to pv-vector
+!     SXP      multiply p-vector by scalar
 !
 !  References:
 !
@@ -13316,10 +12775,6 @@ subroutine iau_FK425 ( r1950, d1950, &
 !     Astron.J. 97, 274.
 !
 !  This revision:   2018 January 11
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -13348,7 +12803,7 @@ integer l, k, j, i
 double precision r0(3,2), pv1(3,2), pv2(3,2), pv3(3,2)
 
 !  Functions
-!     DOUBLE PRECISION iau_ANP
+!     DOUBLE PRECISION ANP
 
 !
 !  CANONICAL CONSTANTS  (Seidelmann 1992)
@@ -13392,15 +12847,15 @@ rv = v1950
 !  Express as a pv-vector.
 pxvf = px*vf
 w = rv*pxvf
-call iau_S2PV ( r, d, 1d0, ur, ud, w, r0 )
+call S2PV ( r, d, 1d0, ur, ud, w, r0 )
 
 !  Allow for E-terms (cf. Seidelmann 3.591-2).
-call iau_PVMPV ( r0, a, pv1 )
-call iau_PDP ( r0, a, w )
-call iau_SXP ( w, r0, pv2 )
-call iau_PDP ( r0, a(1,2), w )
-call iau_SXP ( w, r0, pv2(1,2) )
-call iau_PVPPV ( pv1, pv2, pv3 )
+call PVMPV ( r0, a, pv1 )
+call PDP ( r0, a, w )
+call SXP ( w, r0, pv2 )
+call PDP ( r0, a(1,2), w )
+call SXP ( w, r0, pv2(1,2) )
+call PVPPV ( pv1, pv2, pv3 )
 
 !  Convert pv-vector to Fricke system (cf. Seidelmann 3.591-3).
 do 4 l = 1,2
@@ -13416,31 +12871,28 @@ do 4 l = 1,2
 4 continue
 
 !  Revert to catalog form.
-call iau_PV2S ( pv1, r, d, w, ur, ud, rd )
+call PV2S ( pv1, r, d, w, ur, ud, rd )
 if ( px>tiny ) then
    rv = rd/pxvf
    px = px/w
 end if
 
 !  Return the results.
-r2000 = iau_ANP(r)
+r2000 = ANP(r)
 d2000 = d
 dr2000 = ur/pmf
 dd2000 = ud/pmf
 v2000 = rv
 p2000 = px
 
-end subroutine iau_FK425
-!***********************************************************************
+end subroutine FK425
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_FK45Z ( r1950, d1950, bepoch, r2000, d2000 )
+!-----------------------------------------------------------------------
+subroutine FK45Z ( r1950, d1950, bepoch, r2000, d2000 )
 !>
 !  Convert a B1950.0 FK4 star position to J2000.0 FK5, assuming zero
 !  proper motion in the FK5 system.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -13465,7 +12917,7 @@ subroutine iau_FK45Z ( r1950, d1950, bepoch, r2000, d2000 )
 !     extent.
 !
 !  2) The method is from Appendix 2 of Aoki et al. (1983), but using the
-!     constants of Seidelmann (1992).  See the routine iau_FK425 for a
+!     constants of Seidelmann (1992).  See the routine FK425 for a
 !     general introduction to the FK4 to FK5 conversion.
 !
 !  3) Conversion from equinox B1950.0 FK4 to equinox J2000.0 FK5 only is
@@ -13501,21 +12953,17 @@ subroutine iau_FK45Z ( r1950, d1950, bepoch, r2000, d2000 )
 !     Astronomical Almanac", ISBN 0-935702-68-7.
 !
 !  Called:
-!     iau_ANP      normalize angle into range 0 to 2pi
-!     iau_C2S      p-vector to spherical
-!     iau_EPB2JD   Besselian epoch to Julian date
-!     iau_EPJ      Julian date to Julian epoch
-!     iau_PDP      scalar product of two p-vectors
-!     iau_PMP      p-vector minus p-vector
-!     iau_PPSP     p-vector plus scaled p-vector
-!     iau_PVU      update a pv-vector
-!     iau_S2C      spherical to p-vector
+!     ANP      normalize angle into range 0 to 2pi
+!     C2S      p-vector to spherical
+!     EPB2JD   Besselian epoch to Julian date
+!     EPJ      Julian date to Julian epoch
+!     PDP      scalar product of two p-vectors
+!     PMP      p-vector minus p-vector
+!     PPSP     p-vector plus scaled p-vector
+!     PVU      update a pv-vector
+!     S2C      spherical to p-vector
 !
 !  This revision:   2018 January 11
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -13539,7 +12987,7 @@ double precision w, djm0, djm
 integer k, j, i
 
 !  Functions
-!     DOUBLE PRECISION iau_EPJ, iau_ANP
+!     DOUBLE PRECISION EPJ, ANP
 
 !
 !  CANONICAL CONSTANTS
@@ -13562,16 +13010,16 @@ data em / &
         /
 
 !  Spherical coordinates to p-vector.
-call iau_S2C ( r1950, d1950, r0 )
+call S2C ( r1950, d1950, r0 )
 
 !  Adjust p-vector A to give zero proper motion in FK5.
 w = ( bepoch - 1950d0 ) / pmf
-call iau_PPSP ( a, w, ad, a1 )
+call PPSP ( a, w, ad, a1 )
 
 !  Remove E-terms.
-call iau_PDP ( r0, a1, w )
-call iau_PPSP ( a1, -w, r0, p1 )
-call iau_PMP ( r0, p1, p2 )
+call PDP ( r0, a1, w )
+call PPSP ( a1, -w, r0, p1 )
+call PMP ( r0, p1, p2 )
 
 !  Convert to Fricke system pv-vector (cf. Seidelmann 3.591-3).
 do 3 k = 1,2
@@ -13585,27 +13033,24 @@ do 3 k = 1,2
 3 continue
 
 !  Allow for fictitious proper motion.
-call iau_EPB2JD ( bepoch, djm0, djm )
-w = ( iau_EPJ(djm0,djm) - 2000d0 ) / pmf
-call iau_PVU ( w, pv1, pv2 )
+call EPB2JD ( bepoch, djm0, djm )
+w = ( EPJ(djm0,djm) - 2000d0 ) / pmf
+call PVU ( w, pv1, pv2 )
 
 !  Revert to spherical coordinates.
-call iau_C2S ( pv2, w, d2000 )
-r2000 = iau_ANP ( w )
+call C2S ( pv2, w, d2000 )
+r2000 = ANP ( w )
 
-end subroutine iau_FK45Z
-!***********************************************************************
+end subroutine FK45Z
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_FK524 ( r2000, d2000, &
+!-----------------------------------------------------------------------
+subroutine FK524 ( r2000, d2000, &
                        dr2000, dd2000, p2000, v2000, &
                        r1950, d1950, &
                        dr1950, dd1950, p1950, v1950 )
 !>
 !  Convert J2000.0 FK5 star catalog data to B1950.0 FK4.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -13668,14 +13113,14 @@ subroutine iau_FK524 ( r2000, d2000, &
 !     position and 1 milliarcsecond per century in proper motion.
 !
 !  Called:
-!     iau_ANP      normalize angle into range 0 to 2pi
-!     iau_PDP      scalar product of two p-vectors
-!     iau_PM       modulus of p-vector
-!     iau_PMP      p-vector minus p-vector
-!     iau_PPP      p-vector pluus p-vector
-!     iau_PV2S     pv-vector to spherical coordinates
-!     iau_S2PV     spherical coordinates to pv-vector
-!     iau_SXP      multiply p-vector by scalar
+!     ANP      normalize angle into range 0 to 2pi
+!     PDP      scalar product of two p-vectors
+!     PM       modulus of p-vector
+!     PMP      p-vector minus p-vector
+!     PPP      p-vector pluus p-vector
+!     PV2S     pv-vector to spherical coordinates
+!     S2PV     spherical coordinates to pv-vector
+!     SXP      multiply p-vector by scalar
 !
 !  References:
 !
@@ -13699,10 +13144,6 @@ subroutine iau_FK524 ( r2000, d2000, &
 !     Astron.J. 97, 274.
 !
 !  This revision:   2018 January 11
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -13731,7 +13172,7 @@ integer l, k, j, i
 double precision r0(3,2), r1(3,2), p1(3), p2(3), p3(3), pv(3,2)
 
 !  Functions
-!     DOUBLE PRECISION iau_ANP
+!     DOUBLE PRECISION ANP
 
 !
 !  CANONICAL CONSTANTS  (Seidelmann 1992)
@@ -13775,7 +13216,7 @@ rv = v2000
 !  Express as a pv-vector.
 pxvf = px*vf
 w = rv*pxvf
-call iau_S2PV ( r, d, 1d0, ur, ud, w, r0 )
+call S2PV ( r, d, 1d0, ur, ud, w, r0 )
 
 !  Convert pv-vector to Bessel-Newcomb system (cf. Seidelmann 3.592-1).
 do 4 l = 1,2
@@ -13793,56 +13234,53 @@ do 4 l = 1,2
 !  Apply E-terms (equivalent to Seidelmann 3.592-3, two iterations).
 
 !  Direction.
-call iau_PM ( r1, wr )
-call iau_PDP ( r1, a, w )
-call iau_SXP ( w, r1, p1 )
-call iau_SXP ( wr, a, p2 )
-call iau_PMP ( p2, p1, p3 )
-call iau_PPP ( r1, p3, p1 )
+call PM ( r1, wr )
+call PDP ( r1, a, w )
+call SXP ( w, r1, p1 )
+call SXP ( wr, a, p2 )
+call PMP ( p2, p1, p3 )
+call PPP ( r1, p3, p1 )
 
 !  Recompute length.
-call iau_PM ( p1, wr )
+call PM ( p1, wr )
 
 !  Direction.
-call iau_PDP ( r1, a, w )
-call iau_SXP ( w, r1, p1 )
-call iau_SXP ( wr, a, p2 )
-call iau_PMP ( p2, p1, p3 )
-call iau_PPP ( r1, p3, pv )
+call PDP ( r1, a, w )
+call SXP ( w, r1, p1 )
+call SXP ( wr, a, p2 )
+call PMP ( p2, p1, p3 )
+call PPP ( r1, p3, pv )
 
 !  Derivative.
-call iau_PDP ( r1, a(1,2), w )
-call iau_SXP ( w, pv, p1 )
-call iau_SXP ( wr, a(1,2), p2 )
-call iau_PMP ( p2, p1, p3 )
-call iau_PPP ( r1(1,2), p3, pv(1,2) )
+call PDP ( r1, a(1,2), w )
+call SXP ( w, pv, p1 )
+call SXP ( wr, a(1,2), p2 )
+call PMP ( p2, p1, p3 )
+call PPP ( r1(1,2), p3, pv(1,2) )
 
 !  Revert to catalog form.
-call iau_PV2S ( pv, r, d, w, ur, ud, rd )
+call PV2S ( pv, r, d, w, ur, ud, rd )
 if ( px>tiny ) then
    rv = rd/pxvf
    px = px/w
 end if
 
 !  Return the results.
-r1950 = iau_ANP(r)
+r1950 = ANP(r)
 d1950 = d
 dr1950 = ur/pmf
 dd1950 = ud/pmf
 p1950 = px
 v1950 = rv
 
-end subroutine iau_FK524
-!***********************************************************************
+end subroutine FK524
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_FK52H ( r5, d5, dr5, dd5, px5, rv5, &
+!-----------------------------------------------------------------------
+subroutine FK52H ( r5, d5, dr5, dd5, px5, rv5, &
                        rh, dh, drh, ddh, pxh, rvh )
 !>
 !  Transform FK5 (J2000.0) star data into the Hipparcos system.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -13874,25 +13312,21 @@ subroutine iau_FK52H ( r5, d5, dr5, dd5, px5, rv5, &
 !     and spin;  zonal errors in the FK5 catalog are not taken into
 !     account.
 !
-!  4) See also iau_H2FK5, iau_FK5HZ, iau_HFK5Z.
+!  4) See also H2FK5, FK5HZ, HFK5Z.
 !
 !  Called:
-!     iau_STARPV   star catalog data to space motion pv-vector
-!     iau_FK5HIP   FK5 to Hipparcos rotation and spin
-!     iau_RXP      product of r-matrix and p-vector
-!     iau_PXP      vector product of two p-vectors
-!     iau_PPP      p-vector plus p-vector
-!     iau_PVSTAR   space motion pv-vector to star catalog data
+!     STARPV   star catalog data to space motion pv-vector
+!     FK5HIP   FK5 to Hipparcos rotation and spin
+!     RXP      product of r-matrix and p-vector
+!     PXP      vector product of two p-vectors
+!     PPP      p-vector plus p-vector
+!     PVSTAR   space motion pv-vector to star catalog data
 !
 !  Reference:
 !
 !     F.Mignard & M.Froeschle, Astron.Astrophys., 354, 732-739 (2000).
 !
 !  This revision:  2017 October 12
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -13906,10 +13340,10 @@ double precision pv5(3,2), r5h(3,3), s5h(3), wxp(3), vv(3), &
 integer j, i
 
 !  FK5 barycentric position/velocity pv-vector (normalized).
-call iau_STARPV ( r5, d5, dr5, dd5, px5, rv5, pv5, j )
+call STARPV ( r5, d5, dr5, dd5, px5, rv5, pv5, j )
 
 !  FK5 to Hipparcos orientation matrix and spin vector.
-call iau_FK5HIP ( r5h, s5h )
+call FK5HIP ( r5h, s5h )
 
 !  Make spin units per day instead of per year.
 do 1 i=1,3
@@ -13917,32 +13351,29 @@ do 1 i=1,3
 1 continue
 
 !  Orient the FK5 position into the Hipparcos system.
-call iau_RXP ( r5h, pv5(1,1), pvh(1,1) )
+call RXP ( r5h, pv5(1,1), pvh(1,1) )
 
 !  Apply spin to the position giving an extra space motion component.
-call iau_PXP ( pv5(1,1), s5h, wxp )
+call PXP ( pv5(1,1), s5h, wxp )
 
 !  Add this component to the FK5 space motion.
-call iau_PPP ( wxp, pv5(1,2), vv )
+call PPP ( wxp, pv5(1,2), vv )
 
 !  Orient the FK5 space motion into the Hipparcos system.
-call iau_RXP ( r5h, vv, pvh(1,2) )
+call RXP ( r5h, vv, pvh(1,2) )
 
 !  Hipparcos pv-vector to spherical.
-call iau_PVSTAR ( pvh, rh, dh, drh, ddh, pxh, rvh, j )
+call PVSTAR ( pvh, rh, dh, drh, ddh, pxh, rvh, j )
 
-end subroutine iau_FK52H
-!***********************************************************************
+end subroutine FK52H
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_FK54Z ( r2000, d2000, bepoch, &
+!-----------------------------------------------------------------------
+subroutine FK54Z ( r2000, d2000, bepoch, &
                        r1950, d1950, dr1950, dd1950 )
 !>
 !  Convert a J2000.0 FK5 star position to B1950.0 FK4, assuming zero
 !  proper motion in FK5 and parallax.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -13956,7 +13387,7 @@ subroutine iau_FK54Z ( r2000, d2000, bepoch, &
 !
 !  Notes:
 !
-!  1) In contrast to the iau_FK524 routine, here the FK5 proper motions,
+!  1) In contrast to the FK524 routine, here the FK5 proper motions,
 !     the parallax and the radial velocity are presumed zero.
 !
 !  2) This routine converts a star position from the IAU 1976 FK5
@@ -13981,16 +13412,12 @@ subroutine iau_FK54Z ( r2000, d2000, bepoch, &
 !     dRA/dt rather than cos(Dec)*dRA/dt.
 !
 !  Called:
-!     iau_ANP      normalize angle into range 0 to 2pi
-!     iau_C2S      p-vector to spherical
-!     iau_FK524    FK4 to FK5
-!     iau_S2C      spherical to p-vector
+!     ANP      normalize angle into range 0 to 2pi
+!     C2S      p-vector to spherical
+!     FK524    FK4 to FK5
+!     S2C      spherical to p-vector
 !
 !  This revision:   2018 January 11
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -14002,14 +13429,14 @@ double precision r2000, d2000, bepoch, &
 double precision r, d, pr, pd, px, rv, p(3), w, v(3)
 integer i
 
-!     DOUBLE PRECISION iau_ANP
+!     DOUBLE PRECISION ANP
 
 !  FK5 equinox J2000.0 to FK4 equinox B1950.0.
-call iau_FK524 ( r2000, d2000, 0d0, 0d0, 0d0, 0d0, &
+call FK524 ( r2000, d2000, 0d0, 0d0, 0d0, 0d0, &
                  r, d, pr, pd, px, rv )
 
 !  Spherical to Cartesian.
-call iau_S2C ( r, d, p )
+call S2C ( r, d, p )
 
 !  Fictitious proper motion (radians per year).
 v(1) = - pr*p(2) - pd*cos(r)*sin(d)
@@ -14023,23 +13450,20 @@ do 1 i=1,3
 1 continue
 
 !  Cartesian to spherical.
-call iau_C2S ( p, w, d1950 )
-r1950 = iau_ANP ( w )
+call C2S ( p, w, d1950 )
+r1950 = ANP ( w )
 
 !  Fictitious proper motion.
 dr1950 = pr
 dd1950 = pd
 
-end subroutine iau_FK54Z
-!***********************************************************************
+end subroutine FK54Z
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_FK5HIP ( r5h, s5h )
+!-----------------------------------------------------------------------
+subroutine FK5HIP ( r5h, s5h )
 !>
 !  FK5 to Hipparcos rotation and spin.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -14065,17 +13489,13 @@ subroutine iau_FK5HIP ( r5h, s5h )
 !     TDB).
 !
 !  Called:
-!     iau_RV2M     r-vector to r-matrix
+!     RV2M     r-vector to r-matrix
 !
 !  Reference:
 !
 !     F.Mignard & M.Froeschle, Astron.Astrophys., 354, 732-739 (2000).
 !
 !  This revision:  2017 October 12
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -14107,24 +13527,21 @@ v(2) = epy
 v(3) = epz
 
 !  Re-express as an r-matrix.
-call iau_RV2M ( v, r5h )
+call RV2M ( v, r5h )
 
 !  Hipparcos wrt FK5 spin expressed as an r-vector.
 s5h(1) = omx
 s5h(2) = omy
 s5h(3) = omz
 
-end subroutine iau_FK5HIP
-!***********************************************************************
+end subroutine FK5HIP
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_FK5HZ ( r5, d5, date1, date2, rh, dh )
+!-----------------------------------------------------------------------
+subroutine FK5HZ ( r5, d5, date1, date2, rh, dh )
 !>
 !  Transform an FK5 (J2000.0) star position into the system of the
 !  Hipparcos catalogue, assuming zero Hipparcos proper motion.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -14171,27 +13588,23 @@ subroutine iau_FK5HZ ( r5, d5, date1, date2, rh, dh )
 !  4) The position returned by this routine is in the Hipparcos
 !     reference system but at date DATE1+DATE2.
 !
-!  5) See also iau_FK52H, iau_H2FK5, iau_HFK5Z.
+!  5) See also FK52H, H2FK5, HFK5Z.
 !
 !  Called:
-!     iau_S2C      spherical coordinates to unit vector
-!     iau_FK5HIP   FK5 to Hipparcos rotation and spin
-!     iau_SXP      multiply p-vector by scalar
-!     iau_RV2M     r-vector to r-matrix
-!     iau_TRXP     product of transpose of r-matrix and p-vector
-!     iau_PXP      vector product of two p-vectors
-!     iau_C2S      p-vector to spherical
-!     iau_ANP      normalize angle into range 0 to 2pi
+!     S2C      spherical coordinates to unit vector
+!     FK5HIP   FK5 to Hipparcos rotation and spin
+!     SXP      multiply p-vector by scalar
+!     RV2M     r-vector to r-matrix
+!     TRXP     product of transpose of r-matrix and p-vector
+!     PXP      vector product of two p-vectors
+!     C2S      p-vector to spherical
+!     ANP      normalize angle into range 0 to 2pi
 !
 !  Reference:
 !
 !     F.Mignard & M.Froeschle, Astron. Astrophys. 354, 732-739 (2000).
 !
 !  This revision:  2012 September 5
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -14210,43 +13623,40 @@ parameter ( djy = 365.25d0 )
 double precision t, p5e(3), r5h(3,3), s5h(3), vst(3), rst(3,3), &
                  p5(3), ph(3), w
 
-!     DOUBLE PRECISION iau_ANP
+!     DOUBLE PRECISION ANP
 
 !  Interval from given date to fundamental epoch J2000.0 (JY).
 t = - ( ( date1-dj00 ) + date2 ) / djy
 
 !  FK5 barycentric position vector.
-call iau_S2C ( r5, d5, p5e )
+call S2C ( r5, d5, p5e )
 
 !  FK5 to Hipparcos orientation matrix and spin vector.
-call iau_FK5HIP ( r5h, s5h )
+call FK5HIP ( r5h, s5h )
 
 !  Accumulated Hipparcos wrt FK5 spin over that interval.
-call iau_SXP ( t, s5h, vst )
+call SXP ( t, s5h, vst )
 
 !  Express the accumulated spin as a rotation matrix.
-call iau_RV2M ( vst, rst )
+call RV2M ( vst, rst )
 
 !  Derotate the vector's FK5 axes back to date.
-call iau_TRXP ( rst, p5e, p5 )
+call TRXP ( rst, p5e, p5 )
 
 !  Rotate the vector into the Hipparcos system.
-call iau_RXP ( r5h, p5, ph )
+call RXP ( r5h, p5, ph )
 
 !  Hipparcos vector to spherical.
-call iau_C2S ( ph, w, dh )
-rh = iau_ANP ( w )
+call C2S ( ph, w, dh )
+rh = ANP ( w )
 
-end subroutine iau_FK5HZ
-!***********************************************************************
+end subroutine FK5HZ
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_FW2M ( gamb, phib, psi, eps, r )
+!-----------------------------------------------------------------------
+subroutine FW2M ( gamb, phib, psi, eps, r )
 !>
 !  Form rotation matrix given the Fukushima-Williams angles.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -14298,19 +13708,15 @@ subroutine iau_FW2M ( gamb, phib, psi, eps, r )
 !     be obtained by combining these three appropriately.
 !
 !  Called:
-!     iau_IR       initialize r-matrix to identity
-!     iau_RZ       rotate around Z-axis
-!     iau_RX       rotate around X-axis
+!     IR       initialize r-matrix to identity
+!     RZ       rotate around Z-axis
+!     RX       rotate around X-axis
 !
 !  Reference:
 !
 !     Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
 !
 !  This revision:   2009 December 15
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -14319,22 +13725,19 @@ implicit none
 double precision gamb, phib, psi, eps, r(3,3)
 
 !  Construct the matrix.
-call iau_IR ( r )
-call iau_RZ ( gamb, r )
-call iau_RX ( phib, r )
-call iau_RZ ( -psi, r )
-call iau_RX ( -eps, r )
+call IR ( r )
+call RZ ( gamb, r )
+call RX ( phib, r )
+call RZ ( -psi, r )
+call RX ( -eps, r )
 
-end subroutine iau_FW2M
-!***********************************************************************
+end subroutine FW2M
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_FW2XY ( gamb, phib, psi, eps, x, y )
+!-----------------------------------------------------------------------
+subroutine FW2XY ( gamb, phib, psi, eps, x, y )
 !>
 !  CIP X,Y given Fukushima-Williams bias-precession-nutation angles.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -14372,18 +13775,14 @@ subroutine iau_FW2XY ( gamb, phib, psi, eps, x, y )
 !     matrix.  Near J2000.0, they are essentially angles in radians.
 !
 !  Called:
-!     iau_FW2M     F-W angles to r-matrix
-!     iau_BPN2XY   extract CIP X,Y coordinates from NPB matrix
+!     FW2M     F-W angles to r-matrix
+!     BPN2XY   extract CIP X,Y coordinates from NPB matrix
 !
 !  Reference:
 !
 !     Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
 !
 !  This revision:   2013 September 2
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -14394,21 +13793,18 @@ double precision gamb, phib, psi, eps, x, y
 double precision r(3,3)
 
 !  Form NxPxB matrix.
-call iau_FW2M ( gamb, phib, psi, eps, r )
+call FW2M ( gamb, phib, psi, eps, r )
 
 !  Extract CIP X,Y.
-call iau_BPN2XY ( r, x, y )
+call BPN2XY ( r, x, y )
 
-end subroutine iau_FW2XY
-!***********************************************************************
+end subroutine FW2XY
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_G2ICRS ( dl, db, dr, dd )
+!-----------------------------------------------------------------------
+subroutine G2ICRS ( dl, db, dr, dd )
 !>
 !  Transformation from Galactic Coordinates to ICRS.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -14449,14 +13845,14 @@ subroutine iau_G2ICRS ( dl, db, dr, dd )
 !     present SOFA routine the matrix elements have been recomputed from
 !     the canonical three angles and are given to 30 decimal places.
 !
-!  2) The inverse transformation is performed by the routine iau_ICRS2G.
+!  2) The inverse transformation is performed by the routine ICRS2G.
 !
 !  Called:
-!     iau_ANP      normalize angle into range 0 to 2pi
-!     iau_ANPM     normalize angle into range +/- pi
-!     iau_S2C      spherical coordinates to unit vector
-!     iau_TRXP     product of transpose of r-matrix and p-vector
-!     iau_C2S      p-vector to spherical
+!     ANP      normalize angle into range 0 to 2pi
+!     ANPM     normalize angle into range +/- pi
+!     S2C      spherical coordinates to unit vector
+!     TRXP     product of transpose of r-matrix and p-vector
+!     C2S      p-vector to spherical
 !
 !  Reference:
 !     Perryman M.A.C. & ESA, 1997, ESA SP-1200, The Hipparcos and Tycho
@@ -14466,16 +13862,12 @@ subroutine iau_G2ICRS ( dl, db, dr, dd )
 !
 !  This revision:   2015 January 9
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
 double precision dl, db, dr, dd
 
-!     DOUBLE PRECISION iau_ANP, iau_ANPM
+!     DOUBLE PRECISION ANP, ANPM
 
 double precision v1(3), v2(3)
 
@@ -14506,29 +13898,26 @@ data r(1,1), r(1,2), r(1,3), &
     +0.455983776175066922272100478348d0 /
 
 !  Spherical to Cartesian.
-call iau_S2C ( dl, db, v1 )
+call S2C ( dl, db, v1 )
 
 !  Galactic to ICRS.
-call iau_TRXP ( r, v1, v2 )
+call TRXP ( r, v1, v2 )
 
 !  Cartesian to spherical.
-call iau_C2S ( v2, dr, dd )
+call C2S ( v2, dr, dd )
 
 !  Express in conventional ranges.
-dr = iau_ANP ( dr )
-dd = iau_ANPM ( dd )
+dr = ANP ( dr )
+dd = ANPM ( dd )
 
-end subroutine iau_G2ICRS
-!***********************************************************************
+end subroutine G2ICRS
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_GC2GD ( n, xyz, elong, phi, height, j )
+!-----------------------------------------------------------------------
+subroutine GC2GD ( n, xyz, elong, phi, height, j )
 !>
 !  Transform geocentric coordinates to geodetic using the specified
 !  reference ellipsoid.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical transformation.
 !
@@ -14564,17 +13953,13 @@ subroutine iau_GC2GD ( n, xyz, elong, phi, height, j )
 !     error status J=-2 is theoretically impossible.  In all error
 !     cases, all three results are set to -1D9.
 !
-!  4) The inverse transformation is performed in the routine iau_GD2GC.
+!  4) The inverse transformation is performed in the routine GD2GC.
 !
 !  Called:
-!     iau_EFORM    Earth reference ellipsoids
-!     iau_GC2GDE   geocentric to geodetic transformation, general
+!     EFORM    Earth reference ellipsoids
+!     GC2GDE   geocentric to geodetic transformation, general
 !
 !  This revision:  2013 September 1
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -14588,11 +13973,11 @@ double precision a, f
 
 
 !  Obtain reference ellipsoid parameters.
-call iau_EFORM ( n, a, f, j )
+call EFORM ( n, a, f, j )
 
 !  If OK, transform x,y,z to longitude, geodetic latitude, height.
 if ( j==0 ) then
-   call iau_GC2GDE ( a, f, xyz, elong, phi, height, j )
+   call GC2GDE ( a, f, xyz, elong, phi, height, j )
    if ( j<0 ) j=-2
 end if
 
@@ -14603,17 +13988,14 @@ if ( j<0 ) then
    height = -1d9
 end if
 
-end subroutine iau_GC2GD
-!***********************************************************************
+end subroutine GC2GD
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_GC2GDE ( a, f, xyz, elong, phi, height, j )
+!-----------------------------------------------------------------------
+subroutine GC2GDE ( a, f, xyz, elong, phi, height, j )
 !>
 !  Transform geocentric coordinates to geodetic for a reference
 !  ellipsoid of specified form.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -14647,10 +14029,10 @@ subroutine iau_GC2GDE ( a, f, xyz, elong, phi, height, j )
 !
 !  5) If an error occurs (J<0), ELONG, PHI and HEIGHT are unchanged.
 !
-!  6) The inverse transformation is performed in the routine iau_GD2GCE.
+!  6) The inverse transformation is performed in the routine GD2GCE.
 !
 !  7) The transformation for a standard ellipsoid (such as WGS84) can
-!     more conveniently be performed by calling iau_GC2GD, which uses a
+!     more conveniently be performed by calling GC2GD, which uses a
 !     numerical code (1 for WGS84) to identify the required A and F
 !     values.
 !
@@ -14661,10 +14043,6 @@ subroutine iau_GC2GDE ( a, f, xyz, elong, phi, height, j )
 !     79: 689-693
 !
 !  This revision:  2014 November 7
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -14774,17 +14152,14 @@ j = 0
 !  Finished.
 9999 continue
 
-end subroutine iau_GC2GDE
-!***********************************************************************
+end subroutine GC2GDE
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_GD2GC ( n, elong, phi, height, xyz, j )
+!-----------------------------------------------------------------------
+subroutine GD2GC ( n, elong, phi, height, xyz, j )
 !>
 !  Transform geodetic coordinates to geocentric using the specified
 !  reference ellipsoid.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical transformation.
 !
@@ -14821,18 +14196,14 @@ subroutine iau_GD2GC ( n, elong, phi, height, xyz, j )
 !     error status J=-2 protects against cases that would lead to
 !     arithmetic exceptions.  In all error cases, XYZ is set to zeros.
 !
-!  4) The inverse transformation is performed in the routine iau_GC2GD.
+!  4) The inverse transformation is performed in the routine GC2GD.
 !
 !  Called:
-!     iau_EFORM    Earth reference ellipsoids
-!     iau_GD2GCE   geodetic to geocentric transformation, general
-!     iau_ZP       zero p-vector
+!     EFORM    Earth reference ellipsoids
+!     GD2GCE   geodetic to geocentric transformation, general
+!     ZP       zero p-vector
 !
 !  This revision:  2010 January 18
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -14846,28 +14217,25 @@ double precision a, f
 
 
 !  Obtain reference ellipsoid parameters.
-call iau_EFORM ( n, a, f, j )
+call EFORM ( n, a, f, j )
 
 !  If OK, transform longitude, geodetic latitude, height to x,y,z.
 if ( j==0 ) then
-   call iau_GD2GCE ( a, f, elong, phi, height, xyz, j )
+   call GD2GCE ( a, f, elong, phi, height, xyz, j )
    if ( j/=0 ) j=-2
 end if
 
 !  Deal with any errors.
-if ( j/=0 ) call iau_ZP ( xyz )
+if ( j/=0 ) call ZP ( xyz )
 
-end subroutine iau_GD2GC
-!***********************************************************************
+end subroutine GD2GC
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_GD2GCE ( a, f, elong, phi, height, xyz, j )
+!-----------------------------------------------------------------------
+subroutine GD2GCE ( a, f, elong, phi, height, xyz, j )
 !>
 !  Transform geodetic coordinates to geocentric for a reference
 !  ellipsoid of specified form.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -14899,10 +14267,10 @@ subroutine iau_GD2GCE ( a, f, elong, phi, height, xyz, j )
 !     status J=-1 protects against (unrealistic) cases that would lead
 !     to arithmetic exceptions.  If an error occurs, XYZ is unchanged.
 !
-!  5) The inverse transformation is performed in the routine iau_GC2GDE.
+!  5) The inverse transformation is performed in the routine GC2GDE.
 !
 !  6) The transformation for a standard ellipsoid (such as WGS84) can
-!     more conveniently be performed by calling iau_GD2GC, which uses a
+!     more conveniently be performed by calling GD2GC, which uses a
 !     numerical code (1 for WGS84) to identify the required A and F
 !     values.
 !
@@ -14916,10 +14284,6 @@ subroutine iau_GD2GCE ( a, f, elong, phi, height, xyz, j )
 !     Section 4.22, p202.
 !
 !  This revision:  2009 November 2
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -14955,17 +14319,14 @@ else
    j = -1
 end if
 
-end subroutine iau_GD2GCE
-!***********************************************************************
+end subroutine GD2GCE
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_GMST00 ( uta, utb, tta, ttb )
+!-----------------------------------------------------------------------
+double precision function GMST00 ( uta, utb, tta, ttb )
 !>
 !  Greenwich Mean Sidereal Time (model consistent with IAU 2000
 !  resolutions).
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -14974,7 +14335,7 @@ double precision function iau_GMST00 ( uta, utb, tta, ttb )
 !     TTA, TTB     d      TT as a 2-part Julian Date (Notes 1,2)
 !
 !  Returned:
-!     iau_GMST00   d      Greenwich mean sidereal time (radians)
+!     GMST00   d      Greenwich mean sidereal time (radians)
 !
 !  Notes:
 !
@@ -15015,8 +14376,8 @@ double precision function iau_GMST00 ( uta, utb, tta, ttb )
 !     2003.
 !
 !  Called:
-!     iau_ERA00    Earth rotation angle, IAU 2000
-!     iau_ANP      normalize angle into range 0 to 2pi
+!     ERA00    Earth rotation angle, IAU 2000
+!     ANP      normalize angle into range 0 to 2pi
 !
 !  References:
 !
@@ -15028,10 +14389,6 @@ double precision function iau_GMST00 ( uta, utb, tta, ttb )
 !     IERS Technical Note No. 32, BKG (2004)
 !
 !  This revision:  2009 December 15
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -15053,13 +14410,13 @@ parameter ( djc = 36525d0 )
 
 double precision t
 
-!     DOUBLE PRECISION iau_ANP, iau_ERA00
+!     DOUBLE PRECISION ANP, ERA00
 
 !  TT Julian centuries since J2000.0.
 t = ( ( tta-dj00 ) + ttb ) / djc
 
 !  Greenwich Mean Sidereal Time, IAU 2000.
-iau_GMST00 = iau_ANP ( iau_ERA00 ( uta, utb ) + &
+GMST00 = ANP ( ERA00 ( uta, utb ) + &
                        (    0.014506d0   + &
                        ( 4612.15739966d0 + &
                        (  + 1.39667721d0 + &
@@ -15067,16 +14424,13 @@ iau_GMST00 = iau_ANP ( iau_ERA00 ( uta, utb ) + &
                        (  + 0.00001882d0 ) &
                                  * t ) * t ) * t ) * t ) * das2r )
 
-end function iau_GMST00
-!***********************************************************************
+end function GMST00
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_GMST06 ( uta, utb, tta, ttb )
+!-----------------------------------------------------------------------
+double precision function GMST06 ( uta, utb, tta, ttb )
 !>
 !  Greenwich mean sidereal time (consistent with IAU 2006 precession).
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -15085,7 +14439,7 @@ double precision function iau_GMST06 ( uta, utb, tta, ttb )
 !     TTA, TTB     d      TT as a 2-part Julian Date (Notes 1,2)
 !
 !  Returned:
-!     iau_GMST06   d      Greenwich mean sidereal time (radians)
+!     GMST06   d      Greenwich mean sidereal time (radians)
 !
 !  Notes:
 !
@@ -15122,8 +14476,8 @@ double precision function iau_GMST06 ( uta, utb, tta, ttb )
 !  4) The result is returned in the range 0 to 2pi.
 !
 !  Called:
-!     iau_ERA00    Earth rotation angle, IAU 2000
-!     iau_ANP      normalize angle into range 0 to 2pi
+!     ERA00    Earth rotation angle, IAU 2000
+!     ANP      normalize angle into range 0 to 2pi
 !
 !  Reference:
 !
@@ -15131,10 +14485,6 @@ double precision function iau_GMST06 ( uta, utb, tta, ttb )
 !     Astron.Astrophys. 432, 355
 !
 !  This revision:  2010 March 9
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -15156,13 +14506,13 @@ parameter ( djc = 36525d0 )
 
 double precision t
 
-!     DOUBLE PRECISION iau_ANP, iau_ERA00
+!     DOUBLE PRECISION ANP, ERA00
 
 !  TT Julian centuries since J2000.0.
 t = ( ( tta-dj00 ) + ttb ) / djc
 
 !  Greenwich mean sidereal time, IAU 2006.
-iau_GMST06 = iau_ANP ( iau_ERA00 ( uta, utb ) + &
+GMST06 = ANP ( ERA00 ( uta, utb ) + &
                        (    0.014506d0    + &
                        ( 4612.156534d0    + &
                        (    1.3915817d0   + &
@@ -15171,16 +14521,13 @@ iau_GMST06 = iau_ANP ( iau_ERA00 ( uta, utb ) + &
                        (  - 0.0000000368d0 ) &
                            * t ) * t ) * t ) * t ) * t ) * das2r )
 
-end function iau_GMST06
-!***********************************************************************
+end function GMST06
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_GMST82 ( dj1, dj2 )
+!-----------------------------------------------------------------------
+double precision function GMST82 ( dj1, dj2 )
 !>
 !  Universal Time to Greenwich Mean Sidereal Time (IAU 1982 model).
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -15188,7 +14535,7 @@ double precision function iau_GMST82 ( dj1, dj2 )
 !     DJ1, DJ2     d      UT1 Julian Date (see note)
 !
 !  Returned:
-!     iau_GMST82   d      Greenwich mean sidereal time (radians)
+!     GMST82   d      Greenwich mean sidereal time (radians)
 !
 !  Notes:
 !
@@ -15228,7 +14575,7 @@ double precision function iau_GMST82 ( dj1, dj2 )
 !  4) The result is returned in the range 0 to 2pi.
 !
 !  Called:
-!     iau_ANP      normalize angle into range 0 to 2pi
+!     ANP      normalize angle into range 0 to 2pi
 !
 !  References:
 !
@@ -15238,10 +14585,6 @@ double precision function iau_GMST82 ( dj1, dj2 )
 !     Aoki et al., Astron.Astrophys., 105, 359-361 (1982).
 !
 !  This revision:  2017 October 12
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -15273,7 +14616,7 @@ parameter ( a = 24110.54841d0 - d2s/2d0, &
 
 double precision d1, d2, t, f
 
-!     DOUBLE PRECISION iau_ANP
+!     DOUBLE PRECISION ANP
 
 !  Julian centuries since fundamental epoch.
 if ( dj1 < dj2 ) then
@@ -15289,19 +14632,16 @@ t = ( d1 + ( d2-dj00 ) ) / djc
 f = d2s * ( mod(d1,1d0) + mod(d2,1d0) )
 
 !  GMST at this UT1.
-iau_GMST82 = iau_ANP ( ds2r * ( (a+(b+(c+d*t)*t)*t) + f ) )
+GMST82 = ANP ( ds2r * ( (a+(b+(c+d*t)*t)*t) + f ) )
 
-end function iau_GMST82
-!***********************************************************************
+end function GMST82
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_GST00A ( uta, utb, tta, ttb )
+!-----------------------------------------------------------------------
+double precision function GST00A ( uta, utb, tta, ttb )
 !>
 !  Greenwich Apparent Sidereal Time (consistent with IAU 2000
 !  resolutions).
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -15310,7 +14650,7 @@ double precision function iau_GST00A ( uta, utb, tta, ttb )
 !     TTA, TTB     d      TT as a 2-part Julian Date (Notes 1,2)
 !
 !  Returned:
-!     iau_GST00A   d      Greenwich apparent sidereal time (radians)
+!     GST00A   d      Greenwich apparent sidereal time (radians)
 !
 !  Notes:
 !
@@ -15352,9 +14692,9 @@ double precision function iau_GST00A ( uta, utb, tta, ttb )
 !     2003.
 !
 !  Called:
-!     iau_GMST00   Greenwich mean sidereal time, IAU 2000
-!     iau_EE00A    equation of the equinoxes, IAU 2000A
-!     iau_ANP      normalize angle into range 0 to 2pi
+!     GMST00   Greenwich mean sidereal time, IAU 2000
+!     EE00A    equation of the equinoxes, IAU 2000A
+!     ANP      normalize angle into range 0 to 2pi
 !
 !  References:
 !
@@ -15367,32 +14707,25 @@ double precision function iau_GST00A ( uta, utb, tta, ttb )
 !
 !  This revision:  2007 December 8
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
 
 double precision uta, utb, tta, ttb
 
-!     DOUBLE PRECISION iau_ANP, iau_GMST00, iau_EE00A
+!     DOUBLE PRECISION ANP, GMST00, EE00A
 
-iau_GST00A = iau_ANP ( iau_GMST00 ( uta,utb, tta,ttb ) + &
-                       iau_EE00A ( tta,ttb ) )
+GST00A = ANP ( GMST00 ( uta,utb, tta,ttb ) + &
+                       EE00A ( tta,ttb ) )
 
-end function iau_GST00A
-!***********************************************************************
+end function GST00A
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_GST00B ( uta, utb )
+!-----------------------------------------------------------------------
+double precision function GST00B ( uta, utb )
 !>
 !  Greenwich Apparent Sidereal Time (consistent with IAU 2000
 !  resolutions but using the truncated nutation model IAU 2000B).
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -15400,7 +14733,7 @@ double precision function iau_GST00B ( uta, utb )
 !     UTA, UTB     d      UT1 as a 2-part Julian Date (Notes 1,2)
 !
 !  Returned:
-!     iau_GST00B   d      Greenwich apparent sidereal time (radians)
+!     GST00B   d      Greenwich apparent sidereal time (radians)
 !
 !  Notes:
 !
@@ -15447,9 +14780,9 @@ double precision function iau_GST00B ( uta, utb )
 !     2003.
 !
 !  Called:
-!     iau_GMST00   Greenwich mean sidereal time, IAU 2000
-!     iau_EE00B    equation of the equinoxes, IAU 2000B
-!     iau_ANP      normalize angle into range 0 to 2pi
+!     GMST00   Greenwich mean sidereal time, IAU 2000
+!     EE00B    equation of the equinoxes, IAU 2000B
+!     ANP      normalize angle into range 0 to 2pi
 !
 !  References:
 !
@@ -15466,31 +14799,24 @@ double precision function iau_GST00B ( uta, utb )
 !
 !  This revision:  2007 December 8
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
 
 double precision uta, utb
 
-!     DOUBLE PRECISION iau_ANP, iau_GMST00, iau_EE00B
+!     DOUBLE PRECISION ANP, GMST00, EE00B
 
-iau_GST00B = iau_ANP ( iau_GMST00 ( uta,utb, uta,utb ) + &
-                       iau_EE00B ( uta,utb ) )
+GST00B = ANP ( GMST00 ( uta,utb, uta,utb ) + &
+                       EE00B ( uta,utb ) )
 
-end function iau_GST00B
-!***********************************************************************
+end function GST00B
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_GST06 ( uta, utb, tta, ttb, rnpb )
+!-----------------------------------------------------------------------
+double precision function GST06 ( uta, utb, tta, ttb, rnpb )
 !>
 !  Greenwich apparent sidereal time, IAU 2006, given the NPB matrix.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -15500,7 +14826,7 @@ double precision function iau_GST06 ( uta, utb, tta, ttb, rnpb )
 !     RNPB       d(3,3)   nutation x precession x bias matrix
 !
 !  Returned:
-!     iau_GST06    d      Greenwich apparent sidereal time (radians)
+!     GST06    d      Greenwich apparent sidereal time (radians)
 !
 !  Notes:
 !
@@ -15539,21 +14865,17 @@ double precision function iau_GST06 ( uta, utb, tta, ttb, rnpb )
 !  4) The result is returned in the range 0 to 2pi.
 !
 !  Called:
-!     iau_BPN2XY   extract CIP X,Y coordinates from NPB matrix
-!     iau_S06      the CIO locator s, given X,Y, IAU 2006
-!     iau_ANP      normalize angle into range 0 to 2pi
-!     iau_ERA00    Earth rotation angle, IAU 2000
-!     iau_EORS     equation of the origins, given NPB matrix and s
+!     BPN2XY   extract CIP X,Y coordinates from NPB matrix
+!     S06      the CIO locator s, given X,Y, IAU 2006
+!     ANP      normalize angle into range 0 to 2pi
+!     ERA00    Earth rotation angle, IAU 2000
+!     EORS     equation of the origins, given NPB matrix and s
 !
 !  Reference:
 !
 !     Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 !
 !  This revision:  2008 January 2
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -15563,29 +14885,26 @@ double precision uta, utb, tta, ttb, rnpb(3,3)
 
 double precision x, y, s
 
-!     DOUBLE PRECISION iau_S06, iau_ANP, iau_ERA00, iau_EORS
+!     DOUBLE PRECISION S06, ANP, ERA00, EORS
 
 !  Extract CIP coordinates.
-call iau_BPN2XY ( rnpb, x, y )
+call BPN2XY ( rnpb, x, y )
 
 !  The CIO locator, s.
-s = iau_S06 ( tta, ttb, x, y )
+s = S06 ( tta, ttb, x, y )
 
 !  Greenwich apparent sidereal time.
-iau_GST06 = iau_ANP ( iau_ERA00 ( uta, utb ) - &
-                      iau_EORS ( rnpb, s ) )
+GST06 = ANP ( ERA00 ( uta, utb ) - &
+                      EORS ( rnpb, s ) )
 
-end function iau_GST06
-!***********************************************************************
+end function GST06
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_GST06A ( uta, utb, tta, ttb )
+!-----------------------------------------------------------------------
+double precision function GST06A ( uta, utb, tta, ttb )
 !>
 !  Greenwich apparent sidereal time (consistent with IAU 2000 and 2006
 !  resolutions).
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -15594,7 +14913,7 @@ double precision function iau_GST06A ( uta, utb, tta, ttb )
 !     TTA, TTB     d      TT as a 2-part Julian Date (Notes 1,2)
 !
 !  Returned:
-!     iau_GST06A   d      Greenwich apparent sidereal time (radians)
+!     GST06A   d      Greenwich apparent sidereal time (radians)
 !
 !  Notes:
 !
@@ -15633,18 +14952,14 @@ double precision function iau_GST06A ( uta, utb, tta, ttb )
 !  4) The result is returned in the range 0 to 2pi.
 !
 !  Called:
-!     iau_PNM06A   classical NPB matrix, IAU 2006/2000A
-!     iau_GST06    Greenwich apparent ST, IAU 2006, given NPB matrix
+!     PNM06A   classical NPB matrix, IAU 2006/2000A
+!     GST06    Greenwich apparent ST, IAU 2006, given NPB matrix
 !
 !  Reference:
 !
 !     Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 !
 !  This revision:  2010 March 5
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -15654,25 +14969,22 @@ double precision uta, utb, tta, ttb
 
 double precision rnpb(3,3)
 
-!     DOUBLE PRECISION iau_GST06
+!     DOUBLE PRECISION GST06
 
 !  Classical nutation x precession x bias matrix, IAU 2000A/2006.
-call iau_PNM06A ( tta, ttb, rnpb )
+call PNM06A ( tta, ttb, rnpb )
 
 !  Greenwich apparent sidereal time.
-iau_GST06A = iau_GST06 ( uta, utb, tta, ttb, rnpb )
+GST06A = GST06 ( uta, utb, tta, ttb, rnpb )
 
-end function iau_GST06A
-!***********************************************************************
+end function GST06A
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_GST94 ( uta, utb )
+!-----------------------------------------------------------------------
+double precision function GST94 ( uta, utb )
 !>
 !  Greenwich Apparent Sidereal Time (consistent with IAU 1982/94
 !  resolutions).
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -15680,7 +14992,7 @@ double precision function iau_GST94 ( uta, utb )
 !     UTA, UTB     d      UT1 as a 2-part Julian Date (Notes 1,2)
 !
 !  Returned:
-!     iau_GST94    d      Greenwich apparent sidereal time (radians)
+!     GST94    d      Greenwich apparent sidereal time (radians)
 !
 !  Notes:
 !
@@ -15718,9 +15030,9 @@ double precision function iau_GST94 ( uta, utb )
 !  4) The result is returned in the range 0 to 2pi.
 !
 !  Called:
-!     iau_GMST82   Greenwich mean sidereal time, IAU 1982
-!     iau_EQEQ94   equation of the equinoxes, IAU 1994
-!     iau_ANP      normalize angle into range 0 to 2pi
+!     GMST82   Greenwich mean sidereal time, IAU 1982
+!     EQEQ94   equation of the equinoxes, IAU 1994
+!     ANP      normalize angle into range 0 to 2pi
 !
 !  References:
 !
@@ -15731,32 +15043,25 @@ double precision function iau_GST94 ( uta, utb )
 !
 !  This revision:  2007 December 8
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
 
 double precision uta, utb
 
-!     DOUBLE PRECISION iau_ANP, iau_GMST82, iau_EQEQ94
+!     DOUBLE PRECISION ANP, GMST82, EQEQ94
 
-iau_GST94 = iau_ANP ( iau_GMST82 ( uta, utb ) + &
-                      iau_EQEQ94 ( uta, utb ) )
+GST94 = ANP ( GMST82 ( uta, utb ) + &
+                      EQEQ94 ( uta, utb ) )
 
-end function iau_GST94
-!***********************************************************************
+end function GST94
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_H2FK5 ( rh, dh, drh, ddh, pxh, rvh, &
+!-----------------------------------------------------------------------
+subroutine H2FK5 ( rh, dh, drh, ddh, pxh, rvh, &
                        r5, d5, dr5, dd5, px5, rv5 )
 !>
 !  Transform Hipparcos star data into the FK5 (J2000.0) system.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -15788,27 +15093,23 @@ subroutine iau_H2FK5 ( rh, dh, drh, ddh, pxh, rvh, &
 !     and spin;  zonal errors in the FK5 catalog are not taken into
 !     account.
 !
-!  4) See also iau_FK52H, iau_FK5HZ, iau_HFK5Z.
+!  4) See also FK52H, FK5HZ, HFK5Z.
 !
 !  Called:
-!     iau_STARPV   star catalog data to space motion pv-vector
-!     iau_FK5HIP   FK5 to Hipparcos rotation and spin
-!     iau_RV2M     r-vector to r-matrix
-!     iau_RXP      product of r-matrix and p-vector
-!     iau_TRXP     product of transpose of r-matrix and p-vector
-!     iau_PXP      vector product of two p-vectors
-!     iau_PMP      p-vector minus p-vector
-!     iau_PVSTAR   space motion pv-vector to star catalog data
+!     STARPV   star catalog data to space motion pv-vector
+!     FK5HIP   FK5 to Hipparcos rotation and spin
+!     RV2M     r-vector to r-matrix
+!     RXP      product of r-matrix and p-vector
+!     TRXP     product of transpose of r-matrix and p-vector
+!     PXP      vector product of two p-vectors
+!     PMP      p-vector minus p-vector
+!     PVSTAR   space motion pv-vector to star catalog data
 !
 !  Reference:
 !
 !     F.Mignard & M.Froeschle, Astron.Astrophys., 354, 732-739 (2000).
 !
 !  This revision:  2017 October 12
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -15822,10 +15123,10 @@ double precision pvh(3,2), r5h(3,3), s5h(3), sh(3), wxp(3), &
 integer j, i
 
 !  Hipparcos barycentric position/velocity pv-vector (normalized).
-call iau_STARPV ( rh, dh, drh, ddh, pxh, rvh, pvh, j )
+call STARPV ( rh, dh, drh, ddh, pxh, rvh, pvh, j )
 
 !  FK5 to Hipparcos orientation matrix and spin vector.
-call iau_FK5HIP ( r5h, s5h )
+call FK5HIP ( r5h, s5h )
 
 !  Make spin units per day instead of per year.
 do 1 i=1,3
@@ -15833,34 +15134,31 @@ do 1 i=1,3
 1 continue
 
 !  Orient the spin into the Hipparcos system.
-call iau_RXP ( r5h, s5h, sh )
+call RXP ( r5h, s5h, sh )
 
 !  De-orient the Hipparcos position into the FK5 system.
-call iau_TRXP ( r5h, pvh(1,1), pv5(1,1) )
+call TRXP ( r5h, pvh(1,1), pv5(1,1) )
 
 !  Apply spin to the position giving an extra space motion component.
-call iau_PXP ( pvh(1,1), sh, wxp )
+call PXP ( pvh(1,1), sh, wxp )
 
 !  Subtract this component from the Hipparcos space motion.
-call iau_PMP ( pvh(1,2), wxp, vv )
+call PMP ( pvh(1,2), wxp, vv )
 
 !  De-orient the Hipparcos space motion into the FK5 system.
-call iau_TRXP ( r5h, vv, pv5(1,2) )
+call TRXP ( r5h, vv, pv5(1,2) )
 
 !  FK5 pv-vector to spherical.
-call iau_PVSTAR ( pv5, r5, d5, dr5, dd5, px5, rv5, j )
+call PVSTAR ( pv5, r5, d5, dr5, dd5, px5, rv5, j )
 
-end subroutine iau_H2FK5
-!***********************************************************************
+end subroutine H2FK5
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_HD2AE ( ha, dec, phi, az, el )
+!-----------------------------------------------------------------------
+subroutine HD2AE ( ha, dec, phi, az, el )
 !>
 !  Equatorial to horizon coordinates:  transform hour angle and
 !  declination to azimuth and altitude.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -15911,10 +15209,6 @@ subroutine iau_HD2AE ( ha, dec, phi, az, el )
 !
 !  Last revision:   2018 January 2
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -15951,11 +15245,11 @@ if ( a<0d0 ) a = a+d2pi
 az = a
 el = atan2(z,r)
 
-end subroutine iau_HD2AE
-!***********************************************************************
+end subroutine HD2AE
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_HD2PA ( ha, dec, phi )
+!-----------------------------------------------------------------------
+double precision function HD2PA ( ha, dec, phi )
 !>
 !  Parallactic angle for a given hour angle and declination.
 !
@@ -15965,7 +15259,7 @@ double precision function iau_HD2PA ( ha, dec, phi )
 !     PHI         d     site latitude
 !
 !  Returned:
-!     iau_HD2PA   d     parallactic angle
+!     HD2PA   d     parallactic angle
 !
 !  Notes:
 !
@@ -15996,10 +15290,6 @@ double precision function iau_HD2PA ( ha, dec, phi )
 !
 !  This revision:   2017 September 12
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -16012,19 +15302,16 @@ cp = cos(phi)
 sqsz = cp*sin(ha)
 cqsz = sin(phi)*cos(dec) - cp*sin(dec)*cos(ha)
 if ( sqsz==0d0 .and. cqsz==0d0 ) cqsz = 1d0
-iau_HD2PA = atan2(sqsz,cqsz)
+HD2PA = atan2(sqsz,cqsz)
 
-end function iau_HD2PA
-!***********************************************************************
+end function HD2PA
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_HFK5Z ( rh, dh, date1, date2, r5, d5, dr5, dd5 )
+!-----------------------------------------------------------------------
+subroutine HFK5Z ( rh, dh, date1, date2, r5, d5, dr5, dd5 )
 !>
 !  Transform a Hipparcos star position into FK5 J2000.0, assuming
 !  zero Hipparcos proper motion.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -16075,28 +15362,24 @@ subroutine iau_HFK5Z ( rh, dh, date1, date2, r5, d5, dr5, dd5 )
 !  5) The position returned by this routine is in the FK5 J2000.0
 !     reference system but at date DATE1+DATE2.
 !
-!  6) See also iau_FK52H, iau_H2FK5, iau_FK5ZHZ.
+!  6) See also FK52H, H2FK5, FK5ZHZ.
 !
 !  Called:
-!     iau_S2C      spherical coordinates to unit vector
-!     iau_FK5HIP   FK5 to Hipparcos rotation and spin
-!     iau_RXP      product of r-matrix and p-vector
-!     iau_SXP      multiply p-vector by scalar
-!     iau_RXR      product of two r-matrices
-!     iau_TRXP     product of transpose of r-matrix and p-vector
-!     iau_PXP      vector product of two p-vectors
-!     iau_PV2S     pv-vector to spherical
-!     iau_ANP      normalize angle into range 0 to 2pi
+!     S2C      spherical coordinates to unit vector
+!     FK5HIP   FK5 to Hipparcos rotation and spin
+!     RXP      product of r-matrix and p-vector
+!     SXP      multiply p-vector by scalar
+!     RXR      product of two r-matrices
+!     TRXP     product of transpose of r-matrix and p-vector
+!     PXP      vector product of two p-vectors
+!     PV2S     pv-vector to spherical
+!     ANP      normalize angle into range 0 to 2pi
 !
 !  Reference:
 !
 !     F.Mignard & M.Froeschle, Astron. Astrophys. 354, 732-739 (2000).
 !
 !  This revision:  2012 September 5
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -16116,52 +15399,49 @@ double precision t, ph(3), r5h(3,3), s5h(3), sh(3), vst(3), &
                  rst(3,3), r5ht(3,3), pv5e(3,2), vv(3), &
                  w, r, v
 
-!     DOUBLE PRECISION iau_ANP
+!     DOUBLE PRECISION ANP
 
 !  Time interval from fundamental epoch J2000.0 to given date (JY).
 t = ( ( date1-dj00 ) + date2 ) / djy
 
 !  Hipparcos barycentric position vector (normalized).
-call iau_S2C ( rh, dh, ph )
+call S2C ( rh, dh, ph )
 
 !  FK5 to Hipparcos orientation matrix and spin vector.
-call iau_FK5HIP ( r5h, s5h )
+call FK5HIP ( r5h, s5h )
 
 !  Rotate the spin into the Hipparcos system.
-call iau_RXP ( r5h, s5h, sh )
+call RXP ( r5h, s5h, sh )
 
 !  Accumulated Hipparcos wrt FK5 spin over that interval.
-call iau_SXP ( t, s5h, vst )
+call SXP ( t, s5h, vst )
 
 !  Express the accumulated spin as a rotation matrix.
-call iau_RV2M ( vst, rst )
+call RV2M ( vst, rst )
 
 !  Rotation matrix:  accumulated spin, then FK5 to Hipparcos.
-call iau_RXR ( r5h, rst, r5ht )
+call RXR ( r5h, rst, r5ht )
 
 !  De-orient & de-spin the Hipparcos position into FK5 J2000.0.
-call iau_TRXP ( r5ht, ph, pv5e )
+call TRXP ( r5ht, ph, pv5e )
 
 !  Apply spin to the position giving a space motion.
-call iau_PXP ( sh, ph, vv )
+call PXP ( sh, ph, vv )
 
 !  De-orient & de-spin the Hipparcos space motion into FK5 J2000.0.
-call iau_TRXP ( r5ht, vv, pv5e(1,2) )
+call TRXP ( r5ht, vv, pv5e(1,2) )
 
 !  FK5 position/velocity pv-vector to spherical.
-call iau_PV2S ( pv5e, w, d5, r, dr5, dd5, v )
-r5 = iau_ANP ( w )
+call PV2S ( pv5e, w, d5, r, dr5, dd5, v )
+r5 = ANP ( w )
 
-end subroutine iau_HFK5Z
-!***********************************************************************
+end subroutine HFK5Z
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_ICRS2G ( dr, dd, dl, db  )
+!-----------------------------------------------------------------------
+subroutine ICRS2G ( dr, dd, dl, db  )
 !>
 !  Transformation from ICRS to Galactic Coordinates.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -16202,14 +15482,14 @@ subroutine iau_ICRS2G ( dr, dd, dl, db  )
 !     present SOFA routine the matrix elements have been recomputed from
 !     the canonical three angles and are given to 30 decimal places.
 !
-!  2) The inverse transformation is performed by the routine iau_G2ICRS.
+!  2) The inverse transformation is performed by the routine G2ICRS.
 !
 !  Called:
-!     iau_ANP      normalize angle into range 0 to 2pi
-!     iau_ANPM     normalize angle into range +/- pi
-!     iau_S2C      spherical coordinates to unit vector
-!     iau_RXP      product of r-matrix and p-vector
-!     iau_C2S      p-vector to spherical
+!     ANP      normalize angle into range 0 to 2pi
+!     ANPM     normalize angle into range +/- pi
+!     S2C      spherical coordinates to unit vector
+!     RXP      product of r-matrix and p-vector
+!     C2S      p-vector to spherical
 !
 !  Reference:
 !     Perryman M.A.C. & ESA, 1997, ESA SP-1200, The Hipparcos and Tycho
@@ -16219,16 +15499,12 @@ subroutine iau_ICRS2G ( dr, dd, dl, db  )
 !
 !  This revision:   2015 January 9
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
 double precision dr, dd, dl, db
 
-!     DOUBLE PRECISION iau_ANP, iau_ANPM
+!     DOUBLE PRECISION ANP, ANPM
 
 double precision v1(3), v2(3)
 
@@ -16259,28 +15535,25 @@ data r(1,1), r(1,2), r(1,3), &
     +0.455983776175066922272100478348d0 /
 
 !  Spherical to Cartesian.
-call iau_S2C ( dr, dd, v1 )
+call S2C ( dr, dd, v1 )
 
 !  ICRS to Galactic.
-call iau_RXP ( r, v1, v2 )
+call RXP ( r, v1, v2 )
 
 !  Cartesian to spherical.
-call iau_C2S ( v2, dl, db )
+call C2S ( v2, dl, db )
 
 !  Express in conventional ranges.
-dl = iau_ANP ( dl )
-db = iau_ANPM ( db )
+dl = ANP ( dl )
+db = ANPM ( db )
 
-end subroutine iau_ICRS2G
-!***********************************************************************
+end subroutine ICRS2G
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_IR ( r )
+!-----------------------------------------------------------------------
+subroutine IR ( r )
 !>
 !  Initialize an r-matrix to the identity matrix.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -16288,10 +15561,6 @@ subroutine iau_IR ( r )
 !     R        d(3,3)    r-matrix
 !
 !  This revision:  2012 April 3
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -16309,16 +15578,13 @@ r(3,1) = 0d0
 r(3,2) = 0d0
 r(3,3) = 1d0
 
-end subroutine iau_IR
-!***********************************************************************
+end subroutine IR
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_JD2CAL ( dj1, dj2, iy, im, id, fd, j )
+!-----------------------------------------------------------------------
+subroutine JD2CAL ( dj1, dj2, iy, im, id, fd, j )
 !>
 !  Julian Date to Gregorian year, month, day, and fraction of a day.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -16362,10 +15628,6 @@ subroutine iau_JD2CAL ( dj1, dj2, iy, im, id, fd, j )
 !     Section 12.92 (p604).
 !
 !  This revision:  2019 June 20
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -16423,18 +15685,15 @@ else
    fd = f
 end if
 
-end subroutine iau_JD2CAL
-!***********************************************************************
+end subroutine JD2CAL
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_JDCALF ( ndp, dj1, dj2, iymdf, j )
+!-----------------------------------------------------------------------
+subroutine JDCALF ( ndp, dj1, dj2, iymdf, j )
 !>
 !  Julian Date to Gregorian Calendar, expressed in a form convenient
 !  for formatting messages:  rounded to a specified precision, and with
 !  the fields stored in a single array.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -16468,13 +15727,13 @@ subroutine iau_JDCALF ( ndp, dj1, dj2, iymdf, j )
 !     the Gregorian Calendar, nor is the AD/BC numbering convention
 !     observed.
 !
-!  3) Refer to the routine iau_JD2CAL.
+!  3) Refer to the routine JD2CAL.
 !
 !  4) NDP should be 4 or less if internal overflows are to be
 !     avoided on machines which use 16-bit integers.
 !
 !  Called:
-!     iau_JD2CAL   JD to Gregorian calendar
+!     JD2CAL   JD to Gregorian calendar
 !
 !  Reference:
 !
@@ -16483,10 +15742,6 @@ subroutine iau_JDCALF ( ndp, dj1, dj2, iymdf, j )
 !     Section 12.92 (p604).
 !
 !  This revision:  2019 June 20
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -16531,24 +15786,21 @@ f = anint(( f1+f2 ) * denom) / denom
 d2 = d2 + f + 0.5d0
 
 !  Convert to Gregorian calendar.
-call iau_JD2CAL ( d1, d2, iymdf(1), iymdf(2), iymdf(3), f, js )
+call JD2CAL ( d1, d2, iymdf(1), iymdf(2), iymdf(3), f, js )
 if ( js == 0 ) then
    iymdf(4) = nint(f*denom)
 else
    j = js
 end if
 
-end subroutine iau_JDCALF
-!***********************************************************************
+end subroutine JDCALF
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_LD ( bm, p, q, e, em, dlim, p1 )
+!-----------------------------------------------------------------------
+subroutine LD ( bm, p, q, e, em, dlim, p1 )
 !>
 !  Apply light deflection by a solar-system body, as part of
 !  transforming coordinate direction into natural direction.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -16604,14 +15856,10 @@ subroutine iau_LD ( bm, p, q, e, em, dlim, p1 )
 !     arcsecond astrometry in space", Astr. J. 125, 1580-1597 (2003).
 !
 !  Called:
-!     iau_PDP      scalar product of two p-vectors
-!     iau_PXP      vector product of two p-vectors
+!     PDP      scalar product of two p-vectors
+!     PXP      vector product of two p-vectors
 !
 !  This revision:   2013 September 3
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -16630,31 +15878,28 @@ double precision qpe(3), qdqpe, w, eq(3), peq(3)
 do 1 i=1,3
    qpe(i) = q(i) + e(i)
 1 continue
-call iau_PDP ( q, qpe, qdqpe )
+call PDP ( q, qpe, qdqpe )
 
 !  2 x G x BM / ( EM x c^2 x ( Q . (Q + E) ) ).
 w = bm * srs / em / max ( qdqpe, dlim )
 
 !  P x (E x Q).
-call iau_PXP ( e, q, eq )
-call iau_PXP ( p, eq, peq )
+call PXP ( e, q, eq )
+call PXP ( p, eq, peq )
 
 !  Apply the deflection.
 do 2 i = 1,3
    p1(i) = p(i) + w*peq(i)
 2 continue
 
-end subroutine iau_LD
-!***********************************************************************
+end subroutine LD
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_LDN ( n, b, ob, sc, sn )
+!-----------------------------------------------------------------------
+subroutine LDN ( n, b, ob, sc, sn )
 !>
 !  For a star, apply light deflection by multiple solar-system bodies,
 !  as part of transforming coordinate direction into natural direction.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -16701,7 +15946,7 @@ subroutine iau_LDN ( n, b, ob, sc, sn )
 !     the light time from that point to the observer.  For cases where
 !     the body is "behind" the observer no such shift is applied.  If
 !     a different treatment is preferred, the user has the option of
-!     instead using the iau_LD routine.  Similarly, iau_LD can be used
+!     instead using the LD routine.  Similarly, LD can be used
 !     for cases where the source is nearby, not a star.
 !
 !  6) The returned vector SN is not normalized, but the consequential
@@ -16718,18 +15963,14 @@ subroutine iau_LDN ( n, b, ob, sc, sn )
 !     (2013), Section 7.2.4.
 !
 !  Called:
-!     iau_CP       copy p-vector
-!     iau_PDP      scalar product of two p-vectors
-!     iau_PMP      p-vector minus p-vector
-!     iau_PPSP     p-vector plus scaled p-vector
-!     iau_PN       decompose p-vector into modulus and direction
-!     iau_LD       light deflection by a solar-system body
+!     CP       copy p-vector
+!     PDP      scalar product of two p-vectors
+!     PMP      p-vector minus p-vector
+!     PPSP     p-vector plus scaled p-vector
+!     PN       decompose p-vector into modulus and direction
+!     LD       light deflection by a solar-system body
 !
 !  This revision:   2017 March 16
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -16757,49 +15998,46 @@ integer i
 double precision s(3), v(3), d , dt, ev(3), em, e(3)
 
 !  Star direction prior to deflection.
-call iau_CP ( sc, s )
+call CP ( sc, s )
 
 !  Body by body.
 do 1 i=1,n
 
 !     Body to observer vector at epoch of observation (au).
-   call iau_PMP ( ob, b(3,i), v )
+   call PMP ( ob, b(3,i), v )
 
 !     Minus the time since the light passed the body (days).
-   call iau_PDP ( s, v, d )
+   call PDP ( s, v, d )
    dt = d * cr
 
 !     Neutralize if the star is "behind" the observer.
    dt = min ( dt, 0d0 )
 
 !     Backtrack the body to the time the light was passing the body.
-   call iau_PPSP ( v, -dt, b(6,i), ev )
+   call PPSP ( v, -dt, b(6,i), ev )
 
 !     Separate the body to observer vector into magnitude and direction.
-   call iau_PN ( ev, em, e )
+   call PN ( ev, em, e )
 
 !     Apply light deflection for this body.
-   call iau_LD ( b(1,i), s, s, e, em, b(2,i), v )
+   call LD ( b(1,i), s, s, e, em, b(2,i), v )
 
 !     Update the star direction.
-   call iau_CP ( v, s )
+   call CP ( v, s )
 
 !     Next body.
 1 continue
 
 !  Return the deflected star direction.
-call iau_CP ( s, sn )
+call CP ( s, sn )
 
-end subroutine iau_LDN
-!***********************************************************************
+end subroutine LDN
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_LDSUN ( p, e, em, p1 )
+!-----------------------------------------------------------------------
+subroutine LDSUN ( p, e, em, p1 )
 !>
 !  Deflection of starlight by the Sun.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -16824,13 +16062,9 @@ subroutine iau_LDSUN ( p, e, em, p1 )
 !     is about 5 arcminutes for the case of a terrestrial observer.
 !
 !  Called:
-!     iau_LD       light deflection by a solar-system body
+!     LD       light deflection by a solar-system body
 !
 !  This revision:   2016 June 16
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -16843,19 +16077,16 @@ double precision dlim
 dlim = 1d-6 / max(em*em,1d0)
 
 !  Apply the deflection.
-call iau_LD ( 1d0, p, p, e, em, dlim, p1 )
+call LD ( 1d0, p, p, e, em, dlim, p1 )
 
-end subroutine iau_LDSUN
-!***********************************************************************
+end subroutine LDSUN
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_LTECEQ ( epj, dl, db, dr, dd )
+!-----------------------------------------------------------------------
+subroutine LTECEQ ( epj, dl, db, dr, dd )
 !>
 !  Transformation from ecliptic coordinates (mean equinox and ecliptic
 !  of date) to ICRS RA,Dec, using a long-term precession model.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -16883,12 +16114,12 @@ subroutine iau_LTECEQ ( epj, dl, db, dr, dd )
 !     +/- 200,000 year time span.
 !
 !  Called:
-!     iau_S2C      spherical coordinates to unit vector
-!     iau_LTECM    J2000.0 to ecliptic rotation matrix, long term
-!     iau_TRXP     product of transpose of r-matrix and p-vector
-!     iau_C2S      unit vector to spherical coordinates
-!     iau_ANP      normalize angle into range 0 to 2pi
-!     iau_ANPM     normalize angle into range +/- pi
+!     S2C      spherical coordinates to unit vector
+!     LTECM    J2000.0 to ecliptic rotation matrix, long term
+!     TRXP     product of transpose of r-matrix and p-vector
+!     C2S      unit vector to spherical coordinates
+!     ANP      normalize angle into range 0 to 2pi
+!     ANPM     normalize angle into range +/- pi
 !
 !  References:
 !
@@ -16902,10 +16133,6 @@ subroutine iau_LTECEQ ( epj, dl, db, dr, dd )
 !
 !  This revision:  2016 February 9
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -16914,35 +16141,32 @@ double precision epj, dl, db, dr, dd
 
 double precision rm(3,3), v1(3), v2(3), a, b
 
-!     DOUBLE PRECISION iau_ANP, iau_ANPM
+!     DOUBLE PRECISION ANP, ANPM
 
 
 !  Spherical to Cartesian.
-call iau_S2C ( dl, db, v1 )
+call S2C ( dl, db, v1 )
 
 !  Rotation matrix, ICRS equatorial to ecliptic.
-call iau_LTECM ( epj, rm )
+call LTECM ( epj, rm )
 
 !  The transformation from ecliptic to ICRS.
-call iau_TRXP ( rm, v1, v2 )
+call TRXP ( rm, v1, v2 )
 
 !  Cartesian to spherical.
-call iau_C2S ( v2, a, b )
+call C2S ( v2, a, b )
 
 !  Express in conventional ranges.
-dr = iau_ANP ( a )
-dd = iau_ANPM ( b )
+dr = ANP ( a )
+dd = ANPM ( b )
 
-end subroutine iau_LTECEQ
-!***********************************************************************
+end subroutine LTECEQ
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_LTECM ( epj, rm )
+!-----------------------------------------------------------------------
+subroutine LTECM ( epj, rm )
 !>
 !  ICRS equatorial to ecliptic rotation matrix, long-term.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -16979,10 +16203,10 @@ subroutine iau_LTECM ( epj, rm )
 !     +/- 200,000 year time span.
 !
 !  Called:
-!     iau_LTPEQU   equator pole, long term
-!     iau_LTPECL   ecliptic pole, long term
-!     iau_PXP      vector product
-!     iau_PN       normalize vector
+!     LTPEQU   equator pole, long term
+!     LTPECL   ecliptic pole, long term
+!     PXP      vector product
+!     PN       normalize vector
 !
 !  References:
 !
@@ -16995,10 +16219,6 @@ subroutine iau_LTECM ( epj, rm )
 !     Astron.Astrophys. 541, C1
 !
 !  This revision:  2015 December 6
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -17020,17 +16240,17 @@ double precision p(3), z(3), w(3), s, x(3), y(3)
 
 
 !  Equator pole.
-call iau_LTPEQU ( epj, p )
+call LTPEQU ( epj, p )
 
 !  Ecliptic pole (bottom row of equatorial to ecliptic matrix).
-call iau_LTPECL ( epj, z )
+call LTPECL ( epj, z )
 
 !  Equinox (top row of matrix).
-call iau_PXP ( p, z, w )
-call iau_PN ( w, s, x )
+call PXP ( p, z, w )
+call PN ( w, s, x )
 
 !  Middle row of matrix.
-call iau_PXP ( z, x, y )
+call PXP ( z, x, y )
 
 !  Combine with frame bias.
 rm(1,1) =   x(1)    - x(2)*dr + x(3)*dx
@@ -17043,18 +16263,15 @@ rm(3,1) =   z(1)    - z(2)*dr + z(3)*dx
 rm(3,2) =   z(1)*dr + z(2)    + z(3)*de
 rm(3,3) = - z(1)*dx - z(2)*de + z(3)
 
-end subroutine iau_LTECM
-!***********************************************************************
+end subroutine LTECM
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_LTEQEC ( epj, dr, dd, dl, db )
+!-----------------------------------------------------------------------
+subroutine LTEQEC ( epj, dr, dd, dl, db )
 !>
 !  Transformation from ICRS equatorial coordinates to ecliptic
 !  coordinates (mean equinox and ecliptic of date), using a long-term
 !  precession model.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -17082,12 +16299,12 @@ subroutine iau_LTEQEC ( epj, dr, dd, dl, db )
 !     +/- 200,000 year time span.
 !
 !  Called:
-!     iau_S2C      spherical coordinates to unit vector
-!     iau_LTECM    J2000.0 to ecliptic rotation matrix, long term
-!     iau_RXP      product of r-matrix and p-vector
-!     iau_C2S      unit vector to spherical coordinates
-!     iau_ANP      normalize angle into range 0 to 2pi
-!     iau_ANPM     normalize angle into range +/- pi
+!     S2C      spherical coordinates to unit vector
+!     LTECM    J2000.0 to ecliptic rotation matrix, long term
+!     RXP      product of r-matrix and p-vector
+!     C2S      unit vector to spherical coordinates
+!     ANP      normalize angle into range 0 to 2pi
+!     ANPM     normalize angle into range +/- pi
 !
 !  References:
 !
@@ -17101,10 +16318,6 @@ subroutine iau_LTEQEC ( epj, dr, dd, dl, db )
 !
 !  This revision:  2016 February 9
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -17113,35 +16326,32 @@ double precision epj, dr, dd, dl, db
 
 double precision rm(3,3), v1(3), v2(3), a, b
 
-!     DOUBLE PRECISION iau_ANP, iau_ANPM
+!     DOUBLE PRECISION ANP, ANPM
 
 
 !  Spherical to Cartesian.
-call iau_S2C ( dr, dd, v1 )
+call S2C ( dr, dd, v1 )
 
 !  Rotation matrix, ICRS equatorial to ecliptic.
-call iau_LTECM ( epj, rm )
+call LTECM ( epj, rm )
 
 !  The transformation from ICRS to ecliptic.
-call iau_RXP ( rm, v1, v2 )
+call RXP ( rm, v1, v2 )
 
 !  Cartesian to spherical.
-call iau_C2S ( v2, a, b )
+call C2S ( v2, a, b )
 
 !  Express in conventional ranges.
-dl = iau_ANP ( a )
-db = iau_ANPM ( b )
+dl = ANP ( a )
+db = ANPM ( b )
 
-end subroutine iau_LTEQEC
-!***********************************************************************
+end subroutine LTEQEC
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_LTP ( epj, rp )
+!-----------------------------------------------------------------------
+subroutine LTP ( epj, rp )
 !>
 !  Long-term precession matrix.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -17169,10 +16379,10 @@ subroutine iau_LTP ( epj, rp )
 !     +/- 200,000 year time span.
 !
 !  Called:
-!     iau_LTPEQU   equator pole, long term
-!     iau_LTPECL   ecliptic pole, long term
-!     iau_PXP      vector product
-!     iau_PN       normalize vector
+!     LTPEQU   equator pole, long term
+!     LTPECL   ecliptic pole, long term
+!     PXP      vector product
+!     PN       normalize vector
 !
 !  References:
 !
@@ -17186,10 +16396,6 @@ subroutine iau_LTP ( epj, rp )
 !
 !  This revision:  2015 December 6
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -17200,17 +16406,17 @@ double precision peqr(3), pecl(3), v(3), w, eqx(3)
 
 
 !  Equator pole (bottom row of matrix).
-call iau_LTPEQU ( epj, peqr )
+call LTPEQU ( epj, peqr )
 
 !  Ecliptic pole.
-call iau_LTPECL ( epj, pecl )
+call LTPECL ( epj, pecl )
 
 !  Equinox (top row of matrix).
-call iau_PXP ( peqr, pecl, v )
-call iau_PN ( v, w, eqx )
+call PXP ( peqr, pecl, v )
+call PN ( v, w, eqx )
 
 !  Middle row of matrix.
-call iau_PXP ( peqr, eqx, v )
+call PXP ( peqr, eqx, v )
 
 !  Assemble the matrix.
 do 1 i=1,3
@@ -17219,16 +16425,13 @@ do 1 i=1,3
    rp(3,i) = peqr(i)
 1 continue
 
-end subroutine iau_LTP
-!***********************************************************************
+end subroutine LTP
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_LTPB ( epj, rpb )
+!-----------------------------------------------------------------------
+subroutine LTPB ( epj, rpb )
 !>
 !  Long-term precession matrix, including ICRS frame bias.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -17260,7 +16463,7 @@ subroutine iau_LTPB ( epj, rpb )
 !     +/- 200,000 year time span.
 !
 !  Called:
-!     iau_LTP      precession matrix, long term
+!     LTP      precession matrix, long term
 !
 !  References:
 !
@@ -17273,10 +16476,6 @@ subroutine iau_LTPB ( epj, rpb )
 !     Astron.Astrophys. 541, C1
 !
 !  This revision:  2015 December 6
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -17298,7 +16497,7 @@ double precision rp(3,3)
 
 
 !  Precession matrix.
-call iau_LTP  ( epj, rp )
+call LTP  ( epj, rp )
 
 !  Apply the bias.
 do 1 i=1,3
@@ -17307,16 +16506,13 @@ do 1 i=1,3
    rpb(i,3) = - rp(i,1)*dx - rp(i,2)*de + rp(i,3)
 1 continue
 
-end subroutine iau_LTPB
-!***********************************************************************
+end subroutine LTPB
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_LTPECL ( epj, vec )
+!-----------------------------------------------------------------------
+subroutine LTPECL ( epj, vec )
 !>
 !  Long-term precession of the ecliptic.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -17349,10 +16545,6 @@ subroutine iau_LTPECL ( epj, vec )
 !     Astron.Astrophys. 541, C1
 !
 !  This revision:  2016 February 9
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -17454,16 +16646,13 @@ vec(1) = p
 vec(2) = - q*c - w*s
 vec(3) = - q*s + w*c
 
-end subroutine iau_LTPECL
-!***********************************************************************
+end subroutine LTPECL
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_LTPEQU ( epj, veq )
+!-----------------------------------------------------------------------
+subroutine LTPEQU ( epj, veq )
 !>
 !  Long-term precession of the equator.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -17496,10 +16685,6 @@ subroutine iau_LTPEQU ( epj, veq )
 !     Astron.Astrophys. 541, C1
 !
 !  This revision:  2016 February 9
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -17606,16 +16791,13 @@ veq(1) = x
 veq(2) = y
 veq(3) = sqrt(max(1d0-x*x-y*y,0d0))
 
-end subroutine iau_LTPEQU
-!***********************************************************************
+end subroutine LTPEQU
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_NUM00A ( date1, date2, rmatn )
+!-----------------------------------------------------------------------
+subroutine NUM00A ( date1, date2, rmatn )
 !>
 !  Form the matrix of nutation for a given date, IAU 2000A model.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -17652,10 +16834,10 @@ subroutine iau_NUM00A ( date1, date2, rmatn )
 !     respect to the mean equatorial triad of date.
 !
 !  3) A faster, but slightly less accurate result (about 1 mas), can be
-!     obtained by using instead the iau_NUM00B routine.
+!     obtained by using instead the NUM00B routine.
 !
 !  Called:
-!     iau_PN00A    bias/precession/nutation, IAU 2000A
+!     PN00A    bias/precession/nutation, IAU 2000A
 !
 !  Reference:
 !
@@ -17664,10 +16846,6 @@ subroutine iau_NUM00A ( date1, date2, rmatn )
 !     Section 3.222-3 (p114).
 !
 !  This revision:  2006 November 13
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -17679,19 +16857,16 @@ double precision dpsi, deps, epsa, &
                  rb(3,3), rp(3,3), rbp(3,3), rbpn(3,3)
 
 !  Obtain the required matrix (discarding other results).
-call iau_PN00A ( date1, date2, &
+call PN00A ( date1, date2, &
                  dpsi, deps, epsa, rb, rp, rbp, rmatn, rbpn )
 
-end subroutine iau_NUM00A
-!***********************************************************************
+end subroutine NUM00A
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_NUM00B ( date1, date2, rmatn )
+!-----------------------------------------------------------------------
+subroutine NUM00B ( date1, date2, rmatn )
 !>
 !  Form the matrix of nutation for a given date, IAU 2000B model.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -17728,10 +16903,10 @@ subroutine iau_NUM00B ( date1, date2, rmatn )
 !     respect to the mean equatorial triad of date.
 !
 !  3) The present routine is faster, but slightly less accurate (about
-!     1 mas), than the iau_NUM00A routine.
+!     1 mas), than the NUM00A routine.
 !
 !  Called:
-!     iau_PN00B    bias/precession/nutation, IAU 2000B
+!     PN00B    bias/precession/nutation, IAU 2000B
 !
 !  Reference:
 !
@@ -17740,10 +16915,6 @@ subroutine iau_NUM00B ( date1, date2, rmatn )
 !     Section 3.222-3 (p114).
 !
 !  This revision:  2006 November 13
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -17755,19 +16926,16 @@ double precision dpsi, deps, epsa, &
                  rb(3,3), rp(3,3), rbp(3,3), rbpn(3,3)
 
 !  Obtain the required matrix (discarding other results).
-call iau_PN00B ( date1, date2, &
+call PN00B ( date1, date2, &
                  dpsi, deps, epsa, rb, rp, rbp, rmatn, rbpn )
 
-end subroutine iau_NUM00B
-!***********************************************************************
+end subroutine NUM00B
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_NUM06A ( date1, date2, rmatn )
+!-----------------------------------------------------------------------
+subroutine NUM06A ( date1, date2, rmatn )
 !>
 !  Form the matrix of nutation for a given date, IAU 2006/2000A model.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -17804,9 +16972,9 @@ subroutine iau_NUM06A ( date1, date2, rmatn )
 !     respect to the mean equatorial triad of date.
 !
 !  Called:
-!     iau_OBL06    mean obliquity, IAU 2006
-!     iau_NUT06A   nutation, IAU 2006/2000A
-!     iau_NUMAT    form nutation matrix
+!     OBL06    mean obliquity, IAU 2006
+!     NUT06A   nutation, IAU 2006/2000A
+!     NUMAT    form nutation matrix
 !
 !  References:
 !
@@ -17817,10 +16985,6 @@ subroutine iau_NUM06A ( date1, date2, rmatn )
 !
 !  This revision:  2007 May 11
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -17829,27 +16993,24 @@ double precision date1, date2, rmatn(3,3)
 
 double precision eps, dp, de
 
-!     DOUBLE PRECISION iau_OBL06
+!     DOUBLE PRECISION OBL06
 
 !  Mean obliquity.
-eps = iau_OBL06 ( date1, date2 )
+eps = OBL06 ( date1, date2 )
 
 !  Nutation components.
-call iau_NUT06A ( date1, date2, dp, de )
+call NUT06A ( date1, date2, dp, de )
 
 !  Nutation matrix.
-call iau_NUMAT ( eps, dp, de, rmatn )
+call NUMAT ( eps, dp, de, rmatn )
 
-end subroutine iau_NUM06A
-!***********************************************************************
+end subroutine NUM06A
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_NUMAT ( epsa, dpsi, deps, rmatn )
+!-----------------------------------------------------------------------
+subroutine NUMAT ( epsa, dpsi, deps, rmatn )
 !>
 !  Form the matrix of nutation.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -17876,9 +17037,9 @@ subroutine iau_NUMAT ( epsa, dpsi, deps, rmatn )
 !     respect to the mean equatorial triad of date.
 !
 !  Called:
-!     iau_IR       initialize r-matrix to identity
-!     iau_RX       rotate around X-axis
-!     iau_RZ       rotate around Z-axis
+!     IR       initialize r-matrix to identity
+!     RX       rotate around X-axis
+!     RZ       rotate around Z-axis
 !
 !  Reference:
 !
@@ -17888,10 +17049,6 @@ subroutine iau_NUMAT ( epsa, dpsi, deps, rmatn )
 !
 !  This revision:  2006 November 13
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -17899,22 +17056,19 @@ implicit none
 double precision epsa, dpsi, deps, rmatn(3,3)
 
 !  Build the rotation matrix.
-call iau_IR ( rmatn )
-call iau_RX ( epsa, rmatn )
-call iau_RZ ( -dpsi, rmatn )
-call iau_RX ( -(epsa+deps), rmatn )
+call IR ( rmatn )
+call RX ( epsa, rmatn )
+call RZ ( -dpsi, rmatn )
+call RX ( -(epsa+deps), rmatn )
 
-end subroutine iau_NUMAT
-!***********************************************************************
+end subroutine NUMAT
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_NUT00A ( date1, date2, dpsi, deps )
+!-----------------------------------------------------------------------
+subroutine NUT00A ( date1, date2, dpsi, deps )
 !>
 !  Nutation, IAU 2000A model (MHB2000 luni-solar and planetary nutation
 !  with free core nutation omitted).
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -17976,14 +17130,14 @@ subroutine iau_NUT00A ( date1, date2, dpsi, deps )
 !     offsets between the GCRS and mean poles and (ii) the adjustments
 !     in longitude and obliquity due to the changed precession rates.
 !     These additional functions, namely frame bias and precession
-!     adjustments, are supported by the SOFA routines iau_BI00 and
-!     iau_PR00.
+!     adjustments, are supported by the SOFA routines BI00 and
+!     PR00.
 !
 !  6) The MHB2000 algorithm also provides "total" nutations, comprising
 !     the arithmetic sum of the frame bias, precession adjustments,
 !     luni-solar nutation and planetary nutation.  These total nutations
 !     can be used in combination with an existing IAU 1976 precession
-!     implementation, such as iau_PMAT76, to deliver GCRS-to-true
+!     implementation, such as PMAT76, to deliver GCRS-to-true
 !     predictions of sub-mas accuracy at current epochs.  However, there
 !     are three shortcomings in the MHB2000 model that must be taken
 !     into account if more accurate or definitive results are required
@@ -18014,7 +17168,7 @@ subroutine iau_NUT00A ( date1, date2, dpsi, deps )
 !
 !     For these reasons, the SOFA routines do not generate the "total
 !     nutations" directly, though they can of course easily be generated
-!     by calling iau_BI00, iau_PR00 and the present routine and adding
+!     by calling BI00, PR00 and the present routine and adding
 !     the results.
 !
 !  7) The MHB2000 model contains 41 instances where the same frequency
@@ -18023,17 +17177,17 @@ subroutine iau_NUT00A ( date1, date2, dpsi, deps )
 !     algorithm, this small inefficiency has not been corrected.
 !
 !  Called:
-!     iau_FAL03    mean anomaly of the Moon
-!     iau_FAF03    mean argument of the latitude of the Moon
-!     iau_FAOM03   mean longitude of the Moon's ascending node
-!     iau_FAME03   mean longitude of Mercury
-!     iau_FAVE03   mean longitude of Venus
-!     iau_FAE03    mean longitude of Earth
-!     iau_FAMA03   mean longitude of Mars
-!     iau_FAJU03   mean longitude of Jupiter
-!     iau_FASA03   mean longitude of Saturn
-!     iau_FAUR03   mean longitude of Uranus
-!     iau_FAPA03   general accumulated precession in longitude
+!     FAL03    mean anomaly of the Moon
+!     FAF03    mean argument of the latitude of the Moon
+!     FAOM03   mean longitude of the Moon's ascending node
+!     FAME03   mean longitude of Mercury
+!     FAVE03   mean longitude of Venus
+!     FAE03    mean longitude of Earth
+!     FAMA03   mean longitude of Mars
+!     FAJU03   mean longitude of Jupiter
+!     FASA03   mean longitude of Saturn
+!     FAUR03   mean longitude of Uranus
+!     FAPA03   general accumulated precession in longitude
 !
 !  References:
 !
@@ -18057,10 +17211,6 @@ subroutine iau_NUT00A ( date1, date2, dpsi, deps )
 !     Resolutions", in IERS Workshop 5.1 (2002)
 !
 !  This revision:  2009 December 15
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -18098,9 +17248,9 @@ double precision t, el, elp, f, d, om, arg, dp, de, sarg, carg, &
                  al, alsu, af, ad, aom, alme, alve, alea, alma, &
                  alju, alsa, alur, alne, apa, dpsils, depsls, &
                  dpsipl, depspl
-!     DOUBLE PRECISION iau_FAL03, iau_FAF03, iau_FAOM03, iau_FAME03,
-!    :                 iau_FAVE03, iau_FAE03, iau_FAMA03, iau_FAJU03,
-!    :                 iau_FASA03, iau_FAUR03, iau_FAPA03
+!     DOUBLE PRECISION FAL03, FAF03, FAOM03, FAME03,
+!    :                 FAVE03, FAE03, FAMA03, FAJU03,
+!    :                 FASA03, FAUR03, FAPA03
 
 !  -------------------------
 !  Luni-Solar nutation model
@@ -21172,7 +20322,7 @@ t = ( ( date1-dj00 ) + date2 ) / djc
 !
 
 !  Mean anomaly of the Moon (IERS 2003).
-el = iau_FAL03 ( t )
+el = FAL03 ( t )
 
 !  Mean anomaly of the Sun (MHB2000).
 elp = mod (       1287104.79305d0 + &
@@ -21183,7 +20333,7 @@ elp = mod (       1287104.79305d0 + &
 
 !  Mean longitude of the Moon minus that of the ascending node
 !  (IERS 2003.
-f = iau_FAF03 ( t )
+f = FAF03 ( t )
 
 !  Mean elongation of the Moon from the Sun (MHB2000).
 d = mod (        1072260.70369d0 + &
@@ -21193,7 +20343,7 @@ d = mod (        1072260.70369d0 + &
           t*(        - 0.00003169d0 )))), turnas ) * das2r
 
 !  Mean longitude of the ascending node of the Moon (IERS 2003).
-om = iau_FAOM03 ( t )
+om = FAOM03 ( t )
 
 !  Initialize the nutation values.
 dp = 0d0
@@ -21251,16 +20401,16 @@ ad = mod ( 5.198466741d0 + 7771.3771468121d0 * t, d2pi )
 aom = mod ( 2.18243920d0 - 33.757045d0 * t, d2pi )
 
 !  General accumulated precession in longitude (IERS 2003).
-apa = iau_FAPA03 ( t )
+apa = FAPA03 ( t )
 
 !  Planetary longitudes, Mercury through Uranus (IERS 2003).
-alme = iau_FAME03 ( t )
-alve = iau_FAVE03 ( t )
-alea = iau_FAE03 ( t )
-alma = iau_FAMA03 ( t )
-alju = iau_FAJU03 ( t )
-alsa = iau_FASA03 ( t )
-alur = iau_FAUR03 ( t )
+alme = FAME03 ( t )
+alve = FAVE03 ( t )
+alea = FAE03 ( t )
+alma = FAMA03 ( t )
+alju = FAJU03 ( t )
+alsa = FASA03 ( t )
+alur = FAUR03 ( t )
 
 !  Neptune longitude (MHB2000).
 alne = mod ( 5.321159000d0 + 3.8127774000d0 * t, d2pi )
@@ -21308,16 +20458,13 @@ depspl = de * u2r
 dpsi = dpsils + dpsipl
 deps = depsls + depspl
 
-end subroutine iau_NUT00A
-!***********************************************************************
+end subroutine NUT00A
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_NUT00B ( date1, date2, dpsi, deps )
+!-----------------------------------------------------------------------
+subroutine NUT00B ( date1, date2, dpsi, deps )
 !>
 !  Nutation, IAU 2000B model.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -21376,7 +20523,7 @@ subroutine iau_NUT00B ( date1, date2, dpsi, deps )
 !     The routine delivers a pole accurate to 1 mas from 1900 to 2100
 !     (usually better than 1 mas, very occasionally just outside 1 mas).
 !     The full IAU 2000A model, which is implemented in the routine
-!     iau_NUT00A (q.v.), delivers considerably greater accuracy at
+!     NUT00A (q.v.), delivers considerably greater accuracy at
 !     current epochs;  however, to realize this improved accuracy,
 !     corrections for the essentially unpredictable free-core-nutation
 !     (FCN) must also be included.
@@ -21387,18 +20534,18 @@ subroutine iau_NUT00B ( date1, date2, dpsi, deps )
 !     adjustments in longitude and obliquity due to the changed
 !     precession rates.  These additional functions, namely frame bias
 !     and precession adjustments, are supported by the SOFA routines
-!     iau_BI00 and iau_PR00.
+!     BI00 and PR00.
 !
 !  6) The MHB_2000_SHORT algorithm also provides "total" nutations,
 !     comprising the arithmetic sum of the frame bias, precession
 !     adjustments, and nutation (luni-solar + planetary).  These total
 !     nutations can be used in combination with an existing IAU 1976
-!     precession implementation, such as iau_PMAT76, to deliver GCRS-to-
+!     precession implementation, such as PMAT76, to deliver GCRS-to-
 !     true predictions of mas accuracy at current epochs.  However, for
-!     symmetry with the iau_NUT00A routine (q.v. for the reasons), the
+!     symmetry with the NUT00A routine (q.v. for the reasons), the
 !     SOFA routines do not generate the "total nutations" directly.
 !     Should they be required, they could of course easily be generated
-!     by calling iau_BI00, iau_PR00 and the present routine and adding
+!     by calling BI00, PR00 and the present routine and adding
 !     the results.
 !
 !  7) The IAU 2000B model includes "planetary bias" terms that are fixed
@@ -21429,10 +20576,6 @@ subroutine iau_NUT00B ( date1, date2, dpsi, deps )
 !     Francou, G., Laskar, J., Astron.Astrophys. 282, 663-683 (1994)
 !
 !  This revision:  2009 December 15
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -21756,11 +20899,11 @@ depspl = deplan
 dpsi = dpsils + dpsipl
 deps = depsls + depspl
 
-end subroutine iau_NUT00B
-!***********************************************************************
+end subroutine NUT00B
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_NUT06A ( date1, date2, dpsi, deps )
+!-----------------------------------------------------------------------
+subroutine NUT06A ( date1, date2, dpsi, deps )
 !>
 !  IAU 2000A nutation with adjustments to match the IAU 2006 precession.
 !
@@ -21809,17 +20952,13 @@ subroutine iau_NUT06A ( date1, date2, dpsi, deps )
 !     microarcseconds, apart from the free core nutation.
 !
 !  Called:
-!     iau_NUT00A   nutation, IAU 2000A
+!     NUT00A   nutation, IAU 2000A
 !
 !  Reference:
 !
 !     Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 !
 !  This revision:  2011 April 3
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -21845,22 +20984,19 @@ t = ( ( date1-dj00 ) + date2 ) / djc
 fj2 = -2.7774d-6 * t
 
 !  Obtain IAU 2000A nutation.
-call iau_NUT00A ( date1, date2, dp, de )
+call NUT00A ( date1, date2, dp, de )
 
 !  Apply P03 adjustments (Wallace & Capitaine, 2006, Eqs.5).
 dpsi = dp + dp * ( 0.4697d-6 + fj2 )
 deps = de + de * fj2
 
-end subroutine iau_NUT06A
-!***********************************************************************
+end subroutine NUT06A
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_NUT80 ( date1, date2, dpsi, deps )
+!-----------------------------------------------------------------------
+subroutine NUT80 ( date1, date2, dpsi, deps )
 !>
 !  Nutation, IAU 1980 model.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -21896,7 +21032,7 @@ subroutine iau_NUT80 ( date1, date2, dpsi, deps )
 !     date.
 !
 !  Called:
-!     iau_ANPM     normalize angle into range +/- pi
+!     ANPM     normalize angle into range +/- pi
 !
 !  Reference:
 !
@@ -21905,10 +21041,6 @@ subroutine iau_NUT80 ( date1, date2, dpsi, deps )
 !     Section 3.222 (p111).
 !
 !  This revision:  2009 December 15
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -21939,7 +21071,7 @@ parameter ( djc = 36525d0 )
 double precision t, el, elp, f, d, om, dp, de, arg, s, c
 integer i, j
 
-!     DOUBLE PRECISION iau_ANPM
+!     DOUBLE PRECISION ANPM
 
 
 !  ------------------------------------------------
@@ -22082,28 +21214,28 @@ t = ( ( date1-dj00 ) + date2 ) / djc
 
 !  Mean longitude of the Moon minus mean longitude of the Moon's
 !  perigee.
-el = iau_ANPM ( ( 485866.733d0 + ( 715922.633d0 + &
+el = ANPM ( ( 485866.733d0 + ( 715922.633d0 + &
                   ( 31.310d0 + 0.064d0 * t ) * t ) * t ) * das2r &
                 + mod(1325d0*t, 1d0) * d2pi )
 
 !  Mean longitude of the Sun minus mean longitude of the Sun's perigee.
-elp = iau_ANPM ( ( 1287099.804d0 + ( 1292581.224d0 + &
+elp = ANPM ( ( 1287099.804d0 + ( 1292581.224d0 + &
                    ( -0.577d0 -0.012d0 * t ) * t ) * t ) * das2r &
                  + mod(99d0*t, 1d0) * d2pi )
 
 !  Mean longitude of the Moon minus mean longitude of the Moon's node.
-f = iau_ANPM ( ( 335778.877d0 + ( 295263.137d0 + &
+f = ANPM ( ( 335778.877d0 + ( 295263.137d0 + &
                  ( -13.257d0 + 0.011d0 * t ) * t ) * t ) * das2r &
                + mod(1342d0*t, 1d0) * d2pi )
 
 !  Mean elongation of the Moon from the Sun.
-d = iau_ANPM ( ( 1072261.307d0 + ( 1105601.328d0 + &
+d = ANPM ( ( 1072261.307d0 + ( 1105601.328d0 + &
                  ( -6.891d0 + 0.019d0 * t ) * t ) * t ) * das2r &
                + mod(1236d0*t, 1d0) * d2pi )
 
 !  Longitude of the mean ascending node of the lunar orbit on the
 !  ecliptic, measured from the mean equinox of date.
-om = iau_ANPM( ( 450160.280d0 + ( -482890.539d0 + &
+om = ANPM( ( 450160.280d0 + ( -482890.539d0 + &
                  ( 7.455d0 + 0.008d0 * t ) * t ) * t ) * das2r &
                + mod( -5d0*t, 1d0) * d2pi )
 
@@ -22141,16 +21273,13 @@ do 1 j=106,1,-1
 dpsi = dp * u2r
 deps = de * u2r
 
-end subroutine iau_NUT80
-!***********************************************************************
+end subroutine NUT80
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_NUTM80 ( date1, date2, rmatn )
+!-----------------------------------------------------------------------
+subroutine NUTM80 ( date1, date2, rmatn )
 !>
 !  Form the matrix of nutation for a given date, IAU 1980 model.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -22187,15 +21316,11 @@ subroutine iau_NUTM80 ( date1, date2, rmatn )
 !     respect to the mean equatorial triad of date.
 !
 !  Called:
-!     iau_NUT80    nutation, IAU 1980
-!     iau_OBL80    mean obliquity, IAU 1980
-!     iau_NUMAT    form nutation matrix
+!     NUT80    nutation, IAU 1980
+!     OBL80    mean obliquity, IAU 1980
+!     NUMAT    form nutation matrix
 !
 !  This revision:  2012 September 5
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -22204,25 +21329,22 @@ implicit none
 double precision date1, date2, rmatn(3,3)
 
 double precision dpsi, deps, epsa
-!     DOUBLE PRECISION iau_OBL80
+!     DOUBLE PRECISION OBL80
 
 !  Nutation components and mean obliquity.
-call iau_NUT80 ( date1, date2, dpsi, deps )
-epsa = iau_OBL80 ( date1, date2 )
+call NUT80 ( date1, date2, dpsi, deps )
+epsa = OBL80 ( date1, date2 )
 
 !  Build the rotation matrix.
-call iau_NUMAT ( epsa, dpsi, deps, rmatn )
+call NUMAT ( epsa, dpsi, deps, rmatn )
 
-end subroutine iau_NUTM80
-!***********************************************************************
+end subroutine NUTM80
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_OBL06 ( date1, date2 )
+!-----------------------------------------------------------------------
+double precision function OBL06 ( date1, date2 )
 !>
 !  Mean obliquity of the ecliptic, IAU 2006 precession model.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -22230,7 +21352,7 @@ double precision function iau_OBL06 ( date1, date2 )
 !     DATE1,DATE2    d     TT as a 2-part Julian Date (Note 1)
 !
 !  Returned:
-!     iau_OBL06      d     obliquity of the ecliptic (radians, Note 2)
+!     OBL06      d     obliquity of the ecliptic (radians, Note 2)
 !
 !  Notes:
 !
@@ -22262,10 +21384,6 @@ double precision function iau_OBL06 ( date1, date2 )
 !
 !  This revision:  2009 December 15
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -22290,7 +21408,7 @@ double precision t
 t = ( ( date1-dj00 ) + date2 ) / djc
 
 !  Mean obliquity.
-iau_OBL06 = ( 84381.406d0       + &
+OBL06 = ( 84381.406d0       + &
             (   -46.836769d0    + &
             (    -0.0001831d0   + &
             (     0.00200340d0  + &
@@ -22298,16 +21416,13 @@ iau_OBL06 = ( 84381.406d0       + &
             (    -0.0000000434d0 ) &
                              * t ) * t ) * t ) * t ) * t ) * das2r
 
-end function iau_OBL06
-!***********************************************************************
+end function OBL06
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_OBL80 ( date1, date2 )
+!-----------------------------------------------------------------------
+double precision function OBL80 ( date1, date2 )
 !>
 !  Mean obliquity of the ecliptic, IAU 1980 model.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -22315,7 +21430,7 @@ double precision function iau_OBL80 ( date1, date2 )
 !     DATE1,DATE2     d      TT as a 2-part Julian Date (Note 1)
 !
 !  Returned:
-!     iau_OBL80       d      obliquity of the ecliptic (radians, Note 2)
+!     OBL80       d      obliquity of the ecliptic (radians, Note 2)
 !
 !  Notes:
 !
@@ -22349,10 +21464,6 @@ double precision function iau_OBL80 ( date1, date2 )
 !
 !  This revision:  2009 December 15
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -22377,24 +21488,21 @@ double precision t
 t = ( ( date1-dj00 ) + date2 ) / djc
 
 !  Mean obliquity of date.
-iau_OBL80 = das2r * ( 84381.448d0 + &
+OBL80 = das2r * ( 84381.448d0 + &
                       ( -46.8150d0 + &
                        ( -0.00059d0 + &
                           0.001813d0 * t ) * t ) * t )
 
-end function iau_OBL80
-!***********************************************************************
+end function OBL80
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_P06E ( date1, date2, &
+!-----------------------------------------------------------------------
+subroutine P06E ( date1, date2, &
                       eps0, psia, oma, bpa, bqa, pia, bpia, &
                       epsa, chia, za, zetaa, thetaa, pa, &
                       gam, phi, psi )
 !>
 !  Precession angles, IAU 2006, equinox based.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical models.
 !
@@ -22468,11 +21576,11 @@ subroutine iau_P06E ( date1, date2, &
 !     IAU 2000A frame bias and nutation.  The quoted polynomials are
 !     used in other SOFA routines:
 !
-!     . iau_XY06 contains the polynomial parts of the X and Y series.
+!     . XY06 contains the polynomial parts of the X and Y series.
 !
-!     . iau_S06 contains the polynomial part of the s+XY/2 series.
+!     . S06 contains the polynomial part of the s+XY/2 series.
 !
-!     . iau_PFW06 implements the series for the Fukushima-Williams
+!     . PFW06 implements the series for the Fukushima-Williams
 !       angles that are with respect to the GCRS pole (i.e. the variants
 !       that include frame bias).
 !
@@ -22483,9 +21591,9 @@ subroutine iau_P06E ( date1, date2, &
 !
 !  5) The parameterization used by SOFA is the version of the Fukushima-
 !     Williams angles that refers directly to the GCRS pole.  These
-!     angles may be calculated by calling the routine iau_PFW06.  SOFA
+!     angles may be calculated by calling the routine PFW06.  SOFA
 !     also supports the direct computation of the CIP GCRS X,Y by
-!     series, available by calling iau_XY06.
+!     series, available by calling XY06.
 !
 !  6) The agreement between the different parameterizations is at the
 !     1 microarcsecond level in the present era.
@@ -22500,13 +21608,9 @@ subroutine iau_P06E ( date1, date2, &
 !     Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
 !
 !  Called:
-!     iau_OBL06    mean obliquity, IAU 2006
+!     OBL06    mean obliquity, IAU 2006
 !
 !  This revision:  2011 December 6
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -22531,7 +21635,7 @@ parameter ( djc = 36525d0 )
 
 double precision t
 
-!     DOUBLE PRECISION iau_OBL06
+!     DOUBLE PRECISION OBL06
 
 !  Interval between fundamental date J2000.0 and given date (JC).
 t = ( ( date1-dj00 ) + date2 ) / djc
@@ -22597,7 +21701,7 @@ bpia = ( 629546.7936d0      + &
 
 !  Mean obliquity of the ecliptic.
 
-epsa = iau_OBL06 ( date1, date2 )
+epsa = OBL06 ( date1, date2 )
 
 !  Planetary precession.
 
@@ -22669,16 +21773,13 @@ psi = ( 5038.481507d0     + &
       (   -0.0000000148d0 ) &
       * t ) * t ) * t ) * t ) * t * das2r
 
-end subroutine iau_P06E
-!***********************************************************************
+end subroutine P06E
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_P2PV ( p, pv )
+!-----------------------------------------------------------------------
+subroutine P2PV ( p, pv )
 !>
 !  Extend a p-vector to a pv-vector by appending a zero velocity.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -22689,14 +21790,10 @@ subroutine iau_P2PV ( p, pv )
 !     PV       d(3,2)    pv-vector
 !
 !  Called:
-!     iau_CP       copy p-vector
-!     iau_ZP       zero p-vector
+!     CP       copy p-vector
+!     ZP       zero p-vector
 !
 !  This revision:  2000 November 25
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -22704,19 +21801,16 @@ implicit none
 
 double precision p(3), pv(3,2)
 
-call iau_CP ( p, pv(1,1) )
-call iau_ZP ( pv(1,2) )
+call CP ( p, pv(1,1) )
+call ZP ( pv(1,2) )
 
-end subroutine iau_P2PV
-!***********************************************************************
+end subroutine P2PV
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_P2S ( p, theta, phi, r )
+!-----------------------------------------------------------------------
+subroutine P2S ( p, theta, phi, r )
 !>
 !  P-vector to spherical polar coordinates.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -22735,14 +21829,10 @@ subroutine iau_P2S ( p, theta, phi, r )
 !  2) At either pole, zero THETA is returned.
 !
 !  Called:
-!     iau_C2S      p-vector to spherical
-!     iau_PM       modulus of p-vector
+!     C2S      p-vector to spherical
+!     PM       modulus of p-vector
 !
 !  This revision:  2006 November 13
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -22750,19 +21840,16 @@ implicit none
 
 double precision p(3), theta, phi, r
 
-call iau_C2S ( p, theta, phi )
-call iau_PM ( p, r )
+call C2S ( p, theta, phi )
+call PM ( p, r )
 
-end subroutine iau_P2S
-!***********************************************************************
+end subroutine P2S
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PAP ( a, b, theta )
+!-----------------------------------------------------------------------
+subroutine PAP ( a, b, theta )
 !>
 !  Position-angle from two p-vectors.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -22789,17 +21876,13 @@ subroutine iau_PAP ( a, b, theta )
 !  4) If A is at a pole, the result is ill-defined.
 !
 !  Called:
-!     iau_PN       decompose p-vector into modulus and direction
-!     iau_PM       modulus of p-vector
-!     iau_PXP      vector product of two p-vectors
-!     iau_PMP      p-vector minus p-vector
-!     iau_PDP      scalar product of two p-vectors
+!     PN       decompose p-vector into modulus and direction
+!     PM       modulus of p-vector
+!     PXP      vector product of two p-vectors
+!     PMP      p-vector minus p-vector
+!     PDP      scalar product of two p-vectors
 !
 !  This revision:  2006 November 13
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -22811,10 +21894,10 @@ double precision am, au(3), bm, st, ct, xa, ya, za, eta(3), &
                  xi(3), a2b(3)
 
 !  Modulus and direction of the A vector.
-call iau_PN ( a, am, au )
+call PN ( a, am, au )
 
 !  Modulus of the B vector.
-call iau_PM ( b, bm )
+call PM ( b, bm )
 
 !  Deal with the case of a null vector.
 if ( am==0d0 .or. bm==0d0 ) then
@@ -22831,14 +21914,14 @@ else
    eta(3) = xa*xa + ya*ya
 
 !     The "east" axis tangential from A (same length).
-   call iau_PXP ( eta, au, xi )
+   call PXP ( eta, au, xi )
 
 !     The vector from A to B.
-   call iau_PMP ( b, a, a2b )
+   call PMP ( b, a, a2b )
 
 !     Resolve into components along the north and east axes.
-   call iau_PDP ( a2b, xi, st )
-   call iau_PDP ( a2b, eta, ct )
+   call PDP ( a2b, xi, st )
+   call PDP ( a2b, eta, ct )
 
 !     Deal with degenerate cases.
    if ( st==0d0 .and. ct==0d0 ) ct = 1d0
@@ -22848,16 +21931,13 @@ end if
 !  Position angle.
 theta = atan2(st,ct)
 
-end subroutine iau_PAP
-!***********************************************************************
+end subroutine PAP
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PAS ( al, ap, bl, bp, theta )
+!-----------------------------------------------------------------------
+subroutine PAS ( al, ap, bl, bp, theta )
 !>
 !  Position-angle from spherical coordinates.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -22881,10 +21961,6 @@ subroutine iau_PAS ( al, ap, bl, bp, theta )
 !
 !  This revision:  2000 November 25
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -22902,18 +21978,15 @@ else
    theta = 0d0
 end if
 
-end subroutine iau_PAS
-!***********************************************************************
+end subroutine PAS
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PB06 ( date1, date2, bzeta, bz, btheta )
+!-----------------------------------------------------------------------
+subroutine PB06 ( date1, date2, bzeta, bz, btheta )
 !>
 !  This routine forms three Euler angles which implement general
 !  precession from epoch J2000.0, using the IAU 2006 model.  Frame
 !  bias (the offset between ICRS and mean J2000.0) is included.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -22962,17 +22035,13 @@ subroutine iau_PB06 ( date1, date2, bzeta, bz, btheta )
 !
 !  4) Should zeta_A, z_A, theta_A angles be required that do not contain
 !     frame bias, they are available by calling the SOFA routine
-!     iau_P06E.
+!     P06E.
 !
 !  Called:
-!     iau_PMAT06   PB matrix, IAU 2006
-!     iau_RZ       rotate around Z-axis
+!     PMAT06   PB matrix, IAU 2006
+!     RZ       rotate around Z-axis
 !
 !  This revision:  2007 June 8
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -22983,13 +22052,13 @@ double precision date1, date2, bzeta, bz, btheta
 double precision r(3,3), r31, r32
 
 !  Precession matrix via Fukushima-Williams angles.
-call iau_PMAT06 ( date1, date2, r )
+call PMAT06 ( date1, date2, r )
 
 !  Solve for z.
 bz = atan2 ( r(2,3), r(1,3) )
 
 !  Remove it from the matrix.
-call iau_RZ ( bz, r )
+call RZ ( bz, r )
 
 !  Solve for the remaining two angles.
 bzeta = atan2 ( r(2,1), r(2,2) )
@@ -22997,16 +22066,13 @@ r31 = r(3,1)
 r32 = r(3,2)
 btheta = atan2 ( -sign(sqrt(r31*r31+r32*r32),r(1,3)), r(3,3) )
 
-end subroutine iau_PB06
-!***********************************************************************
+end subroutine PB06
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PDP ( a, b, adb )
+!-----------------------------------------------------------------------
+subroutine PDP ( a, b, adb )
 !>
 !  p-vector inner (=scalar=dot) product.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -23018,10 +22084,6 @@ subroutine iau_PDP ( a, b, adb )
 !     ADB      d         A . B
 !
 !  This revision:  2000 November 25
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -23038,16 +22100,13 @@ do 1 i=1,3
 1 continue
 adb = w
 
-end subroutine iau_PDP
-!***********************************************************************
+end subroutine PDP
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PFW06 ( date1, date2, gamb, phib, psib, epsa )
+!-----------------------------------------------------------------------
+subroutine PFW06 ( date1, date2, gamb, phib, psib, epsa )
 !>
 !  Precession angles, IAU 2006 (Fukushima-Williams 4-angle formulation).
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -23113,13 +22172,9 @@ subroutine iau_PFW06 ( date1, date2, gamb, phib, psib, epsa )
 !     Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
 !
 !  Called:
-!     iau_OBL06    mean obliquity, IAU 2006
+!     OBL06    mean obliquity, IAU 2006
 !
 !  This revision:  2009 December 15
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -23141,7 +22196,7 @@ parameter ( djc = 36525d0 )
 
 double precision t
 
-!     DOUBLE PRECISION iau_OBL06
+!     DOUBLE PRECISION OBL06
 
 !  Interval between fundamental date J2000.0 and given date (JC).
 t = ( ( date1-dj00 ) + date2 ) / djc
@@ -23168,13 +22223,13 @@ psib =        (    -0.041775d0    + &
               (    -0.000026452d0 + &
               (    -0.0000000148d0 ) &
                              * t ) * t ) * t ) * t ) * t ) * das2r
-epsa = iau_OBL06 ( date1, date2 )
+epsa = OBL06 ( date1, date2 )
 
-end subroutine iau_PFW06
-!***********************************************************************
+end subroutine PFW06
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PLAN94 ( date1, date2, np, pv, j )
+!-----------------------------------------------------------------------
+subroutine PLAN94 ( date1, date2, np, pv, j )
 !>
 !  This routine is part of the International Astronomical Union's
 !  SOFA (Standards of Fundamental Astronomy) software collection.
@@ -23225,7 +22280,7 @@ subroutine iau_PLAN94 ( date1, date2, np, pv, j )
 !
 !  3) For NP=3 the result is for the Earth-Moon Barycenter.  To
 !     obtain the heliocentric position and velocity of the Earth,
-!     use instead the SOFA routine iau_EPV00.
+!     use instead the SOFA routine EPV00.
 !
 !  4) On successful return, the array PV contains the following:
 !
@@ -23325,17 +22380,13 @@ subroutine iau_PLAN94 ( date1, date2, np, pv, j )
 !     which in turn takes precedence over the remote epoch warning.
 !
 !  Called:
-!     iau_ANP      normalize angle into range 0 to 2pi
+!     ANP      normalize angle into range 0 to 2pi
 !
 !  Reference:  Simon, J.L, Bretagnon, P., Chapront, J.,
 !              Chapront-Touze, M., Francou, G., and Laskar, J.,
 !              Astron.Astrophys., 282, 663 (1994).
 !
 !  This revision:  2017 October 12
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -23384,7 +22435,7 @@ double precision amas(8), a(3,8), dlm(3,8), e(3,8), &
                  ae, dae, ae2, at, r, v, si2, xq, xp, tl, xsw, &
                  xcw, xm2, xf, ci2, xms, xmc, xpxq2, x, y, z
 
-!     DOUBLE PRECISION iau_ANPM
+!     DOUBLE PRECISION ANPM
 
 !  Planetary inverse masses
 data amas / 6023600d0, 408523.5d0, 328900.5d0, 3098710d0, &
@@ -23559,13 +22610,13 @@ else
    de = e(1,np) + &
       ( e(2,np) + &
         e(3,np) * t ) * t
-   dp = iau_ANPM ( ( 3600d0 * pi(1,np) + &
+   dp = ANPM ( ( 3600d0 * pi(1,np) + &
                             ( pi(2,np) + &
                               pi(3,np) * t ) * t ) * das2r )
    di = ( 3600d0 * dinc(1,np) + &
                  ( dinc(2,np) + &
                    dinc(3,np) * t ) * t ) * das2r
-   dom = iau_ANPM ( ( 3600d0 * omega(1,np) &
+   dom = ANPM ( ( 3600d0 * omega(1,np) &
                            + ( omega(2,np) &
                              + omega(3,np) * t ) * t ) * das2r )
 
@@ -23647,16 +22698,13 @@ end if
 !  Return the status.
 j = jstat
 
-end subroutine iau_PLAN94
-!***********************************************************************
+end subroutine PLAN94
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PM ( p, r )
+!-----------------------------------------------------------------------
+subroutine PM ( p, r )
 !>
 !  Modulus of p-vector.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -23667,10 +22715,6 @@ subroutine iau_PM ( p, r )
 !     R        d         modulus
 !
 !  This revision:  2000 November 25
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -23688,17 +22732,14 @@ do 1 i=1,3
 1 continue
 r = sqrt(w)
 
-end subroutine iau_PM
-!***********************************************************************
+end subroutine PM
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PMAT00 ( date1, date2, rbp )
+!-----------------------------------------------------------------------
+subroutine PMAT00 ( date1, date2, rbp )
 !>
 !  Precession matrix (including frame bias) from GCRS to a specified
 !  date, IAU 2000 model.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -23735,7 +22776,7 @@ subroutine iau_PMAT00 ( date1, date2, rbp )
 !     respect to the mean equatorial triad of the given date.
 !
 !  Called:
-!     iau_BP00     frame bias and precession matrices, IAU 2000
+!     BP00     frame bias and precession matrices, IAU 2000
 !
 !  Reference:
 !
@@ -23744,10 +22785,6 @@ subroutine iau_PMAT00 ( date1, date2, rbp )
 !     (2000)
 !
 !  This revision:  2009 December 21
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -23758,19 +22795,16 @@ double precision date1, date2, rbp(3,3)
 double precision rb(3,3), rp(3,3)
 
 !  Obtain the required matrix (discarding others).
-call iau_BP00 ( date1, date2, rb, rp, rbp )
+call BP00 ( date1, date2, rb, rp, rbp )
 
-end subroutine iau_PMAT00
-!***********************************************************************
+end subroutine PMAT00
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PMAT06 ( date1, date2, rbp )
+!-----------------------------------------------------------------------
+subroutine PMAT06 ( date1, date2, rbp )
 !>
 !  Precession matrix (including frame bias) from GCRS to a specified
 !  date, IAU 2006 model.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -23807,8 +22841,8 @@ subroutine iau_PMAT06 ( date1, date2, rbp )
 !     respect to the mean equatorial triad of the given date.
 !
 !  Called:
-!     iau_PFW06    bias-precession F-W angles, IAU 2006
-!     iau_FW2M     F-W angles to r-matrix
+!     PFW06    bias-precession F-W angles, IAU 2006
+!     FW2M     F-W angles to r-matrix
 !
 !  References:
 !
@@ -23817,10 +22851,6 @@ subroutine iau_PMAT06 ( date1, date2, rbp )
 !     Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 !
 !  This revision:  2009 December 21
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -23831,21 +22861,18 @@ double precision date1, date2, rbp(3,3)
 double precision gamb, phib, psib, epsa
 
 !  Bias-precession Fukushima-Williams angles.
-call iau_PFW06 ( date1, date2, gamb, phib, psib, epsa )
+call PFW06 ( date1, date2, gamb, phib, psib, epsa )
 
 !  Form the matrix.
-call iau_FW2M ( gamb, phib, psib, epsa, rbp )
+call FW2M ( gamb, phib, psib, epsa, rbp )
 
-end subroutine iau_PMAT06
-!***********************************************************************
+end subroutine PMAT06
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PMAT76 ( date1, date2, rmatp )
+!-----------------------------------------------------------------------
+subroutine PMAT76 ( date1, date2, rmatp )
 !>
 !  Precession matrix from J2000.0 to a specified date, IAU 1976 model.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -23894,11 +22921,11 @@ subroutine iau_PMAT76 ( date1, date2, rmatp )
 !     5600AD and exceed 1000 arcsec outside 6800BC to 8200AD.
 !
 !  Called:
-!     iau_PREC76   accumulated precession angles, IAU 1976
-!     iau_IR       initialize r-matrix to identity
-!     iau_RZ       rotate around Z-axis
-!     iau_RY       rotate around Y-axis
-!     iau_CR       copy r-matrix
+!     PREC76   accumulated precession angles, IAU 1976
+!     IR       initialize r-matrix to identity
+!     RZ       rotate around Z-axis
+!     RY       rotate around Y-axis
+!     CR       copy r-matrix
 !
 !  References:
 !
@@ -23908,10 +22935,6 @@ subroutine iau_PMAT76 ( date1, date2, rmatp )
 !     Kaplan, G.H., 1981, USNO circular no. 163, pA2.
 !
 !  This revision:  2009 December 18
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -23926,25 +22949,22 @@ parameter ( dj00 = 2451545d0 )
 double precision zeta, z, theta, wmat(3,3)
 
 !  Precession Euler angles, J2000.0 to specified date.
-call iau_PREC76 ( dj00, 0d0, date1, date2, zeta, z, theta )
+call PREC76 ( dj00, 0d0, date1, date2, zeta, z, theta )
 
 !  Form the rotation matrix.
-call iau_IR ( wmat )
-call iau_RZ ( -zeta, wmat )
-call iau_RY ( theta, wmat )
-call iau_RZ ( -z, wmat )
-call iau_CR ( wmat, rmatp )
+call IR ( wmat )
+call RZ ( -zeta, wmat )
+call RY ( theta, wmat )
+call RZ ( -z, wmat )
+call CR ( wmat, rmatp )
 
-end subroutine iau_PMAT76
-!***********************************************************************
+end subroutine PMAT76
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PMP ( a, b, amb )
+!-----------------------------------------------------------------------
+subroutine PMP ( a, b, amb )
 !>
 !  P-vector subtraction.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -23956,10 +22976,6 @@ subroutine iau_PMP ( a, b, amb )
 !     AMB      d(3)      A - B
 !
 !  This revision:  2000 November 25
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -23973,16 +22989,13 @@ do 1 i=1,3
    amb(i) = a(i) - b(i)
 1 continue
 
-end subroutine iau_PMP
-!***********************************************************************
+end subroutine PMP
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PMPX ( rc, dc, pr, pd, px, rv, pmt, pob, pco )
+!-----------------------------------------------------------------------
+subroutine PMPX ( rc, dc, pr, pd, px, rv, pmt, pob, pco )
 !>
 !  Proper motion and parallax.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -24019,14 +23032,10 @@ subroutine iau_PMPX ( rc, dc, pr, pd, px, rv, pmt, pob, pco )
 !     (2013), Section 7.2.
 !
 !  Called:
-!     iau_PDP      scalar product of two p-vectors
-!     iau_PN       decompose p-vector into modulus and direction
+!     PDP      scalar product of two p-vectors
+!     PN       decompose p-vector into modulus and direction
 !
 !  This revision:   2017 March 11
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -24082,7 +23091,7 @@ p(2) = y
 p(3) = z
 
 !  Component of observer vector in star direction.
-call iau_PDP ( p, pob, pdb )
+call PDP ( p, pob, pdb )
 
 !  Proper motion time interval (y), including Roemer effect.
 dt = pmt + pdb*aulty
@@ -24099,21 +23108,18 @@ pm(3) =          pd*cd  + w*z
 do 1 i=1,3
    p(i) = p(i) + dt*pm(i) - pxr*pob(i)
 1 continue
-call iau_PN ( p, w, pco )
+call PN ( p, w, pco )
 
-end subroutine iau_PMPX
-!***********************************************************************
+end subroutine PMPX
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PMSAFE ( ra1, dec1, pmr1, pmd1, px1, rv1, &
+!-----------------------------------------------------------------------
+subroutine PMSAFE ( ra1, dec1, pmr1, pmd1, px1, rv1, &
                         ep1a, ep1b, ep2a, ep2b, &
                         ra2, dec2, pmr2, pmd2, px2, rv2, j )
 !>
 !  Star proper motion:  update star catalog data for space motion, with
 !  special handling to handle the zero parallax case.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -24195,23 +23201,19 @@ subroutine iau_PMSAFE ( ra1, dec1, pmr1, pmd1, px1, rv1, &
 !     status of 1 is added to the status if this action has been taken.
 !
 !  7) If the space velocity is a significant fraction of c (see the
-!     constant VMAX in the routine iau_STARPV), it is arbitrarily set to
+!     constant VMAX in the routine STARPV), it is arbitrarily set to
 !     zero.  When this action occurs, 2 is added to the status.
 !
-!  8) The relativistic adjustment carried out in the iau_STARPV routine
+!  8) The relativistic adjustment carried out in the STARPV routine
 !     involves an iterative calculation.  If the process fails to
 !     converge within a set number of iterations, 4 is added to the
 !     status.
 !
 !  Called:
-!     iau_SEPS     angle between two points
-!     iau_STARPM   update star catalog data for space motion
+!     SEPS     angle between two points
+!     STARPM   update star catalog data for space motion
 !
 !  This revision:   2013 June 6
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -24233,7 +23235,7 @@ integer jpx
 double precision pm, px1a
 
 !  Proper motion in one year (radians).
-call iau_SEPS ( ra1, dec1, ra1+pmr1, dec1+pmd1, pm )
+call SEPS ( ra1, dec1, ra1+pmr1, dec1+pmd1, pm )
 
 !  Override the parallax to reduce the chances of a warning status.
 jpx = 0
@@ -24249,23 +23251,20 @@ if ( px1a < pxmin ) then
 end if
 
 !  Carry out the transformation using the modified parallax.
-call iau_STARPM ( ra1, dec1, pmr1, pmd1, px1a, rv1, &
+call STARPM ( ra1, dec1, pmr1, pmd1, px1a, rv1, &
                   ep1a, ep1b, ep2a, ep2b, &
                   ra2, dec2, pmr2, pmd2, px2, rv2, j )
 
 !  Revise the status.
 if ( mod(j,2) == 0 ) j = j + jpx
 
-end subroutine iau_PMSAFE
-!***********************************************************************
+end subroutine PMSAFE
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PN ( p, r, u )
+!-----------------------------------------------------------------------
+subroutine PN ( p, r, u )
 !>
 !  Convert a p-vector into modulus and unit vector.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -24281,15 +23280,11 @@ subroutine iau_PN ( p, r, u )
 !     a unit vector.
 !
 !  Called:
-!     iau_PM       modulus of p-vector
-!     iau_ZP       zero p-vector
-!     iau_SXP      multiply p-vector by scalar
+!     PM       modulus of p-vector
+!     ZP       zero p-vector
+!     SXP      multiply p-vector by scalar
 !
 !  This revision:  2006 November 13
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -24300,33 +23295,30 @@ double precision p(3), r, u(3)
 double precision w
 
 !  Obtain the modulus and test for zero.
-call iau_PM ( p, w )
+call PM ( p, w )
 if ( w == 0d0 ) then
 
 !     Null vector.
-   call iau_ZP ( u )
+   call ZP ( u )
 else
 
 !     Unit vector.
-   call iau_SXP ( 1d0/w, p, u )
+   call SXP ( 1d0/w, p, u )
 end if
 
 !  Return the modulus.
 r = w
 
-end subroutine iau_PN
-!***********************************************************************
+end subroutine PN
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PN00 ( date1, date2, dpsi, deps, &
+!-----------------------------------------------------------------------
+subroutine PN00 ( date1, date2, dpsi, deps, &
                       epsa, rb, rp, rbp, rn, rbpn )
 !>
 !  Precession-nutation, IAU 2000 model:  a multi-purpose routine,
 !  supporting classical (equinox-based) use directly and CIO-based
 !  use indirectly.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -24392,11 +23384,11 @@ subroutine iau_PN00 ( date1, date2, dpsi, deps, &
 !     precession and nutation in that order.
 !
 !  Called:
-!     iau_PR00     IAU 2000 precession adjustments
-!     iau_OBL80    mean obliquity, IAU 1980
-!     iau_BP00     frame bias and precession matrices, IAU 2000
-!     iau_NUMAT    form nutation matrix
-!     iau_RXR      product of two r-matrices
+!     PR00     IAU 2000 precession adjustments
+!     OBL80    mean obliquity, IAU 1980
+!     BP00     frame bias and precession matrices, IAU 2000
+!     NUMAT    form nutation matrix
+!     RXR      product of two r-matrices
 !
 !  Reference:
 !
@@ -24410,10 +23402,6 @@ subroutine iau_PN00 ( date1, date2, dpsi, deps, &
 !
 !  This revision:  2010 January 18
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -24424,36 +23412,33 @@ double precision date1, date2, dpsi, deps, &
 
 double precision dpsipr, depspr
 
-!     DOUBLE PRECISION iau_OBL80
+!     DOUBLE PRECISION OBL80
 
 !  IAU 2000 precession-rate adjustments.
-call iau_PR00 ( date1, date2, dpsipr, depspr )
+call PR00 ( date1, date2, dpsipr, depspr )
 
 !  Mean obliquity, consistent with IAU 2000 precession-nutation.
-epsa = iau_OBL80 ( date1, date2 ) + depspr
+epsa = OBL80 ( date1, date2 ) + depspr
 
 !  Frame bias and precession matrices and their product.
-call iau_BP00 ( date1, date2, rb, rp, rbp )
+call BP00 ( date1, date2, rb, rp, rbp )
 
 !  Nutation matrix.
-call iau_NUMAT ( epsa, dpsi, deps, rn )
+call NUMAT ( epsa, dpsi, deps, rn )
 
 !  Bias-precession-nutation matrix (classical).
-call iau_RXR ( rn, rbp, rbpn )
+call RXR ( rn, rbp, rbpn )
 
-end subroutine iau_PN00
-!***********************************************************************
+end subroutine PN00
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PN00A ( date1, date2, &
+!-----------------------------------------------------------------------
+subroutine PN00A ( date1, date2, &
                        dpsi, deps, epsa, rb, rp, rbp, rn, rbpn )
 !>
 !  Precession-nutation, IAU 2000A model:  a multi-purpose routine,
 !  supporting classical (equinox-based) use directly and CIO-based
 !  use indirectly.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -24493,9 +23478,9 @@ subroutine iau_PN00A ( date1, date2, &
 !  2) The nutation components (luni-solar + planetary, IAU 2000A) in
 !     longitude and obliquity are in radians and with respect to the
 !     equinox and ecliptic of date.  Free core nutation is omitted;  for
-!     the utmost accuracy, use the iau_PN00 routine, where the nutation
+!     the utmost accuracy, use the PN00 routine, where the nutation
 !     components are caller-specified.  For faster but slightly less
-!     accurate results, use the iau_PN00B routine.
+!     accurate results, use the PN00B routine.
 !
 !  3) The mean obliquity is consistent with the IAU 2000 precession.
 !
@@ -24522,8 +23507,8 @@ subroutine iau_PN00A ( date1, date2, &
 !     are elements (3,1-3) of the matrix RBPN.
 !
 !  Called:
-!     iau_NUT00A   nutation, IAU 2000A
-!     iau_PN00     bias/precession/nutation results, IAU 2000
+!     NUT00A   nutation, IAU 2000A
+!     PN00     bias/precession/nutation results, IAU 2000
 !
 !  Reference:
 !
@@ -24537,10 +23522,6 @@ subroutine iau_PN00A ( date1, date2, &
 !
 !  This revision:  2010 January 18
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -24549,25 +23530,22 @@ double precision date1, date2, dpsi, deps, epsa, &
                  rb(3,3), rp(3,3), rbp(3,3), rn(3,3), rbpn(3,3)
 
 !  Nutation.
-call iau_NUT00A ( date1, date2, dpsi, deps )
+call NUT00A ( date1, date2, dpsi, deps )
 
 !  Remaining results.
-call iau_PN00 ( date1, date2, dpsi, deps, &
+call PN00 ( date1, date2, dpsi, deps, &
                 epsa, rb, rp, rbp, rn, rbpn )
 
-end subroutine iau_PN00A
-!***********************************************************************
+end subroutine PN00A
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PN00B ( date1, date2, &
+!-----------------------------------------------------------------------
+subroutine PN00B ( date1, date2, &
                        dpsi, deps, epsa, rb, rp, rbp, rn, rbpn )
 !>
 !  Precession-nutation, IAU 2000B model:  a multi-purpose routine,
 !  supporting classical (equinox-based) use directly and CIO-based
 !  use indirectly.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -24607,8 +23585,8 @@ subroutine iau_PN00B ( date1, date2, &
 !  2) The nutation components (luni-solar + planetary, IAU 2000B) in
 !     longitude and obliquity are in radians and with respect to the
 !     equinox and ecliptic of date.  For more accurate results, but
-!     at the cost of increased computation, use the iau_PN00A routine.
-!     For the utmost accuracy, use the iau_PN00 routine, where the
+!     at the cost of increased computation, use the PN00A routine.
+!     For the utmost accuracy, use the PN00 routine, where the
 !     nutation components are caller-specified.
 !
 !  3) The mean obliquity is consistent with the IAU 2000 precession.
@@ -24636,8 +23614,8 @@ subroutine iau_PN00B ( date1, date2, &
 !     are elements (3,1-3) of the matrix RBPN.
 !
 !  Called:
-!     iau_NUT00B   nutation, IAU 2000B
-!     iau_PN00     bias/precession/nutation results, IAU 2000
+!     NUT00B   nutation, IAU 2000B
+!     PN00     bias/precession/nutation results, IAU 2000
 !
 !  Reference:
 !
@@ -24651,10 +23629,6 @@ subroutine iau_PN00B ( date1, date2, &
 !
 !  This revision:  2010 January 18
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -24663,25 +23637,22 @@ double precision date1, date2, dpsi, deps, epsa, &
                  rb(3,3), rp(3,3), rbp(3,3), rn(3,3), rbpn(3,3)
 
 !  Nutation.
-call iau_NUT00B ( date1, date2, dpsi, deps )
+call NUT00B ( date1, date2, dpsi, deps )
 
 !  Remaining results.
-call iau_PN00 ( date1, date2, dpsi, deps, &
+call PN00 ( date1, date2, dpsi, deps, &
                 epsa, rb, rp, rbp, rn, rbpn )
 
-end subroutine iau_PN00B
-!***********************************************************************
+end subroutine PN00B
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PN06 ( date1, date2, dpsi, deps, &
+!-----------------------------------------------------------------------
+subroutine PN06 ( date1, date2, dpsi, deps, &
                       epsa, rb, rp, rbp, rn, rbpn )
 !>
 !  Precession-nutation, IAU 2006 model:  a multi-purpose routine,
 !  supporting classical (equinox-based) use directly and CIO-based use
 !  indirectly.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -24747,10 +23718,10 @@ subroutine iau_PN06 ( date1, date2, dpsi, deps, &
 !     elements (3,1-3) of the matrix RBPN.
 !
 !  Called:
-!     iau_PFW06    bias-precession F-W angles, IAU 2006
-!     iau_FW2M     F-W angles to r-matrix
-!     iau_TR       transpose r-matrix
-!     iau_RXR      product of two r-matrices
+!     PFW06    bias-precession F-W angles, IAU 2006
+!     FW2M     F-W angles to r-matrix
+!     TR       transpose r-matrix
+!     RXR      product of two r-matrices
 !
 !  References:
 !
@@ -24759,10 +23730,6 @@ subroutine iau_PN06 ( date1, date2, dpsi, deps, &
 !     Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 !
 !  This revision:  2013 November 14
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -24783,44 +23750,41 @@ parameter ( djm00 = 51544.5d0 )
 double precision gamb, phib, psib, eps, rt(3,3)
 
 !  Bias-precession Fukushima-Williams angles of J2000.0 = frame bias.
-call iau_PFW06 ( djm0, djm00, gamb, phib, psib, eps )
+call PFW06 ( djm0, djm00, gamb, phib, psib, eps )
 
 !  B matrix.
-call iau_FW2M ( gamb, phib, psib, eps, rb )
+call FW2M ( gamb, phib, psib, eps, rb )
 
 !  Bias-precession Fukushima-Williams angles of date.
-call iau_PFW06 ( date1, date2, gamb, phib, psib, eps )
+call PFW06 ( date1, date2, gamb, phib, psib, eps )
 
 !  Bias-precession matrix.
-call iau_FW2M ( gamb, phib, psib, eps, rbp )
+call FW2M ( gamb, phib, psib, eps, rbp )
 
 !  Solve for precession matrix.
-call iau_TR ( rb, rt )
-call iau_RXR ( rbp, rt, rp )
+call TR ( rb, rt )
+call RXR ( rbp, rt, rp )
 
 !  Equinox-based bias-precession-nutation matrix.
-call iau_FW2M ( gamb, phib, psib+dpsi, eps+deps, rbpn )
+call FW2M ( gamb, phib, psib+dpsi, eps+deps, rbpn )
 
 !  Solve for nutation matrix.
-call iau_TR ( rbp, rt )
-call iau_RXR ( rbpn, rt, rn )
+call TR ( rbp, rt )
+call RXR ( rbpn, rt, rn )
 
 !  Obliquity, mean of date.
 epsa = eps
 
-end subroutine iau_PN06
-!***********************************************************************
+end subroutine PN06
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PN06A ( date1, date2, &
+!-----------------------------------------------------------------------
+subroutine PN06A ( date1, date2, &
                        dpsi, deps, epsa, rb, rp, rbp, rn, rbpn )
 !>
 !  Precession-nutation, IAU 2006/2000A models:  a multi-purpose routine,
 !  supporting classical (equinox-based) use directly and CIO-based use
 !  indirectly.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -24860,7 +23824,7 @@ subroutine iau_PN06A ( date1, date2, &
 !  2) The nutation components (luni-solar + planetary, IAU 2000A) in
 !     longitude and obliquity are in radians and with respect to the
 !     equinox and ecliptic of date.  Free core nutation is omitted;  for
-!     the utmost accuracy, use the iau_PN06 routine, where the nutation
+!     the utmost accuracy, use the PN06 routine, where the nutation
 !     components are caller-specified.
 !
 !  3) The mean obliquity is consistent with the IAU 2006 precession.
@@ -24885,18 +23849,14 @@ subroutine iau_PN06A ( date1, date2, &
 !     Pole are elements (3,1-3) of the matrix RBPN.
 !
 !  Called:
-!     iau_NUT06A   nutation, IAU 2006/2000A
-!     iau_PN06     bias/precession/nutation results, IAU 2006
+!     NUT06A   nutation, IAU 2006/2000A
+!     PN06     bias/precession/nutation results, IAU 2006
 !
 !  Reference:
 !
 !     Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 !
 !  This revision:  2009 December 15
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -24906,23 +23866,20 @@ double precision date1, date2, dpsi, deps, epsa, &
                  rb(3,3), rp(3,3), rbp(3,3), rn(3,3), rbpn(3,3)
 
 !  Nutation.
-call iau_NUT06A ( date1, date2, dpsi, deps )
+call NUT06A ( date1, date2, dpsi, deps )
 
 !  Remaining results.
-call iau_PN06 ( date1, date2, dpsi, deps, &
+call PN06 ( date1, date2, dpsi, deps, &
                 epsa, rb, rp, rbp, rn, rbpn )
 
-end subroutine iau_PN06A
-!***********************************************************************
+end subroutine PN06A
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PNM00A ( date1, date2, rbpn )
+!-----------------------------------------------------------------------
+subroutine PNM00A ( date1, date2, rbpn )
 !>
 !  Form the matrix of precession-nutation for a given date (including
 !  frame bias), equinox-based, IAU 2000A model.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -24959,10 +23916,10 @@ subroutine iau_PNM00A ( date1, date2, rbpn )
 !     the Geocentric Celestial Reference System (IAU, 2000).
 !
 !  3) A faster, but slightly less accurate result (about 1 mas), can be
-!     obtained by using instead the iau_PNM00B routine.
+!     obtained by using instead the PNM00B routine.
 !
 !  Called:
-!     iau_PN00A    bias/precession/nutation, IAU 2000A
+!     PN00A    bias/precession/nutation, IAU 2000A
 !
 !  Reference:
 !
@@ -24971,10 +23928,6 @@ subroutine iau_PNM00A ( date1, date2, rbpn )
 !     (2000)
 !
 !  This revision:  2009 December 21
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -24986,20 +23939,17 @@ double precision dpsi, deps, epsa, rb(3,3), rp(3,3), rbp(3,3), &
                  rn(3,3)
 
 !  Obtain the required matrix (discarding other results).
-call iau_PN00A ( date1, date2, &
+call PN00A ( date1, date2, &
                  dpsi, deps, epsa, rb, rp, rbp, rn, rbpn )
 
-end subroutine iau_PNM00A
-!***********************************************************************
+end subroutine PNM00A
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PNM00B ( date1, date2, rbpn )
+!-----------------------------------------------------------------------
+subroutine PNM00B ( date1, date2, rbpn )
 !>
 !  Form the matrix of precession-nutation for a given date (including
 !  frame bias), equinox-based, IAU 2000B model.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -25036,10 +23986,10 @@ subroutine iau_PNM00B ( date1, date2, rbpn )
 !     the Geocentric Celestial Reference System (IAU, 2000).
 !
 !  3) The present routine is faster, but slightly less accurate (about
-!     1 mas), than the iau_PNM00A routine.
+!     1 mas), than the PNM00A routine.
 !
 !  Called:
-!     iau_PN00B    bias/precession/nutation, IAU 2000B
+!     PN00B    bias/precession/nutation, IAU 2000B
 !
 !  Reference:
 !
@@ -25048,10 +23998,6 @@ subroutine iau_PNM00B ( date1, date2, rbpn )
 !     (2000)
 !
 !  This revision:  2009 December 21
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -25063,20 +24009,17 @@ double precision  dpsi, deps, epsa, &
                   rb(3,3), rp(3,3), rbp(3,3), rn(3,3)
 
 !  Obtain the required matrix (discarding other results).
-call iau_PN00B ( date1, date2, &
+call PN00B ( date1, date2, &
                  dpsi, deps, epsa, rb, rp, rbp, rn, rbpn )
 
-end subroutine iau_PNM00B
-!***********************************************************************
+end subroutine PNM00B
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PNM06A ( date1, date2, rnpb )
+!-----------------------------------------------------------------------
+subroutine PNM06A ( date1, date2, rnpb )
 !>
 !  Form the matrix of precession-nutation for a given date (including
 !  frame bias), IAU 2006 precession and IAU 2000A nutation models.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -25113,19 +24056,15 @@ subroutine iau_PNM06A ( date1, date2, rnpb )
 !     the Geocentric Celestial Reference System (IAU, 2000).
 !
 !  Called:
-!     iau_PFW06    bias-precession F-W angles, IAU 2006
-!     iau_NUT06A   nutation, IAU 2006/2000A
-!     iau_FW2M     F-W angles to r-matrix
+!     PFW06    bias-precession F-W angles, IAU 2006
+!     NUT06A   nutation, IAU 2006/2000A
+!     FW2M     F-W angles to r-matrix
 !
 !  Reference:
 !
 !     Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855.
 !
 !  This revision:  2009 December 21
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -25136,25 +24075,22 @@ double precision date1, date2, rnpb(3,3)
 double precision gamb, phib, psib, epsa, dp, de
 
 !  Fukushima-Williams angles for frame bias and precession.
-call iau_PFW06 ( date1, date2, gamb, phib, psib, epsa )
+call PFW06 ( date1, date2, gamb, phib, psib, epsa )
 
 !  Nutation components.
-call iau_NUT06A ( date1, date2, dp, de )
+call NUT06A ( date1, date2, dp, de )
 
 !  Equinox based nutation x precession x bias matrix.
-call iau_FW2M ( gamb, phib, psib+dp, epsa+de, rnpb )
+call FW2M ( gamb, phib, psib+dp, epsa+de, rnpb )
 
-end subroutine iau_PNM06A
-!***********************************************************************
+end subroutine PNM06A
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PNM80 ( date1, date2, rmatpn )
+!-----------------------------------------------------------------------
+subroutine PNM80 ( date1, date2, rmatpn )
 !>
 !  Form the matrix of precession/nutation for a given date, IAU 1976
 !  precession model, IAU 1980 nutation model.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -25192,9 +24128,9 @@ subroutine iau_PNM80 ( date1, date2, rmatpn )
 !     epoch J2000.0.
 !
 !  Called:
-!     iau_PMAT76   precession matrix, IAU 1976
-!     iau_NUTM80   nutation matrix, IAU 1980
-!     iau_RXR      product of two r-matrices
+!     PMAT76   precession matrix, IAU 1976
+!     NUTM80   nutation matrix, IAU 1980
+!     RXR      product of two r-matrices
 !
 !  Reference:
 !
@@ -25203,10 +24139,6 @@ subroutine iau_PNM80 ( date1, date2, rmatpn )
 !     Section 3.3 (p145).
 !
 !  This revision:  2012 September 5
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -25217,24 +24149,21 @@ double precision date1, date2, rmatpn(3,3)
 double precision rmatp(3,3), rmatn(3,3)
 
 !  Precession matrix, J2000.0 to date.
-call iau_PMAT76 ( date1, date2, rmatp )
+call PMAT76 ( date1, date2, rmatp )
 
 !  Nutation matrix.
-call iau_NUTM80 ( date1, date2, rmatn )
+call NUTM80 ( date1, date2, rmatn )
 
 !  Combine the matrices:  PN = N x P.
-call iau_RXR ( rmatn, rmatp, rmatpn )
+call RXR ( rmatn, rmatp, rmatpn )
 
-end subroutine iau_PNM80
-!***********************************************************************
+end subroutine PNM80
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_POM00 ( xp, yp, sp, rpom )
+!-----------------------------------------------------------------------
+subroutine POM00 ( xp, yp, sp, rpom )
 !>
 !  Form the matrix of polar motion for a given date, IAU 2000.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -25258,17 +24187,17 @@ subroutine iau_POM00 ( xp, yp, sp, rpom )
 !     in essence unpredictable.  However, it is dominated by a secular
 !     drift of about 47 microarcseconds per century, and so can be taken
 !     into account by using s' = -47*t, where t is centuries since
-!     J2000.0.  The routine iau_SP00 implements this approximation.
+!     J2000.0.  The routine SP00 implements this approximation.
 !
 !  3) The matrix operates in the sense V(TRS) = RPOM * V(CIP), meaning
 !     that it is the final rotation when computing the pointing
 !     direction to a celestial source.
 !
 !  Called:
-!     iau_IR       initialize r-matrix to identity
-!     iau_RZ       rotate around Z-axis
-!     iau_RY       rotate around Y-axis
-!     iau_RX       rotate around X-axis
+!     IR       initialize r-matrix to identity
+!     RZ       rotate around Z-axis
+!     RY       rotate around Y-axis
+!     RX       rotate around X-axis
 !
 !  Reference:
 !
@@ -25277,10 +24206,6 @@ subroutine iau_POM00 ( xp, yp, sp, rpom )
 !
 !  This revision:  2009 December 15
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -25288,21 +24213,18 @@ implicit none
 double precision xp, yp, sp, rpom(3,3)
 
 !  Construct the matrix.
-call iau_IR ( rpom )
-call iau_RZ ( sp, rpom )
-call iau_RY ( -xp, rpom )
-call iau_RX ( -yp, rpom )
+call IR ( rpom )
+call RZ ( sp, rpom )
+call RY ( -xp, rpom )
+call RX ( -yp, rpom )
 
-end subroutine iau_POM00
-!***********************************************************************
+end subroutine POM00
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PPP ( a, b, apb )
+!-----------------------------------------------------------------------
+subroutine PPP ( a, b, apb )
 !>
 !  P-vector addition.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -25314,10 +24236,6 @@ subroutine iau_PPP ( a, b, apb )
 !     APB      d(3)      A + B
 !
 !  This revision:  2000 November 25
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -25331,16 +24249,13 @@ do 1 i=1,3
    apb(i) = a(i) + b(i)
 1 continue
 
-end subroutine iau_PPP
-!***********************************************************************
+end subroutine PPP
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PPSP ( a, s, b, apsb )
+!-----------------------------------------------------------------------
+subroutine PPSP ( a, s, b, apsb )
 !>
 !  P-vector plus scaled p-vector.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -25354,10 +24269,6 @@ subroutine iau_PPSP ( a, s, b, apsb )
 !
 !  This revision:  2007 August 18
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -25370,17 +24281,14 @@ do 1 i=1,3
    apsb(i) = a(i) + s*b(i)
 1 continue
 
-end subroutine iau_PPSP
-!***********************************************************************
+end subroutine PPSP
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PR00 ( date1, date2, dpsipr, depspr )
+!-----------------------------------------------------------------------
+subroutine PR00 ( date1, date2, dpsipr, depspr )
 !>
 !  Precession-rate part of the IAU 2000 precession-nutation models
 !  (part of MHB2000).
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -25443,10 +24351,6 @@ subroutine iau_PR00 ( date1, date2, dpsipr, depspr )
 !
 !  This revision:  2009 December 15
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -25482,11 +24386,11 @@ t = ( ( date1-dj00 ) + date2 ) / djc
 dpsipr = precor * t
 depspr = oblcor * t
 
-end subroutine iau_PR00
-!***********************************************************************
+end subroutine PR00
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PREC76 ( date01, date02, date11, date12, &
+!-----------------------------------------------------------------------
+subroutine PREC76 ( date01, date02, date11, date12, &
                         zeta, z, theta )
 !>
 !  IAU 1976 precession model.
@@ -25494,9 +24398,6 @@ subroutine iau_PREC76 ( date01, date02, date11, date12, &
 !  This routine forms the three Euler angles which implement general
 !  precession between two dates, using the IAU 1976 model (as for
 !  the FK5 catalog).
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -25553,10 +24454,6 @@ subroutine iau_PREC76 ( date01, date02, date11, date12, &
 !
 !  This revision:  2013 November 19
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -25604,16 +24501,13 @@ theta = ( ( 2004.3109d0 + ( &
              - 0.000217d0 * t0 ) &
              - 0.041833d0 * t ) * t ) * tas2r
 
-end subroutine iau_PREC76
-!***********************************************************************
+end subroutine PREC76
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PV2P ( pv, p )
+!-----------------------------------------------------------------------
+subroutine PV2P ( pv, p )
 !>
 !  Discard velocity component of a pv-vector.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -25624,13 +24518,9 @@ subroutine iau_PV2P ( pv, p )
 !     P        d(3)        p-vector
 !
 !  Called:
-!     iau_CP       copy p-vector
+!     CP       copy p-vector
 !
 !  This revision:  2000 November 25
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -25638,18 +24528,15 @@ implicit none
 
 double precision pv(3,2), p(3)
 
-call iau_CP ( pv, p )
+call CP ( pv, p )
 
-end subroutine iau_PV2P
-!***********************************************************************
+end subroutine PV2P
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PV2S ( pv, theta, phi, r, td, pd, rd )
+!-----------------------------------------------------------------------
+subroutine PV2S ( pv, theta, phi, r, td, pd, rd )
 !>
 !  Convert position/velocity from Cartesian to spherical coordinates.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -25678,10 +24565,6 @@ subroutine iau_PV2S ( pv, theta, phi, r, td, pd, rd )
 !     In such cases zeroes are returned for all three.
 !
 !  This revision:  2008 May 10
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -25745,16 +24628,13 @@ else
    rd = 0d0
 end if
 
-end subroutine iau_PV2S
-!***********************************************************************
+end subroutine PV2S
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PVDPV ( a, b, adb )
+!-----------------------------------------------------------------------
+subroutine PVDPV ( a, b, adb )
 !>
 !  Inner (=scalar=dot) product of two pv-vectors.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -25773,13 +24653,9 @@ subroutine iau_PVDPV ( a, b, adb )
 !     dot-product of the two p-vectors and its derivative.
 !
 !  Called:
-!     iau_PDP      scalar product of two p-vectors
+!     PDP      scalar product of two p-vectors
 !
 !  This revision:  2006 November 13
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -25790,27 +24666,24 @@ double precision a(3,2), b(3,2), adb(2)
 double precision adbd, addb
 
 !  A . B = constant part of result.
-call iau_PDP ( a(1,1), b(1,1), adb(1) )
+call PDP ( a(1,1), b(1,1), adb(1) )
 
 !  A . Bdot
-call iau_PDP ( a(1,1), b(1,2), adbd )
+call PDP ( a(1,1), b(1,2), adbd )
 
 !  Adot . B
-call iau_PDP ( a(1,2), b(1,1), addb )
+call PDP ( a(1,2), b(1,1), addb )
 
 !  Velocity part of result.
 adb(2) = adbd + addb
 
-end subroutine iau_PVDPV
-!***********************************************************************
+end subroutine PVDPV
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PVM ( pv, r, s )
+!-----------------------------------------------------------------------
+subroutine PVM ( pv, r, s )
 !>
 !  Modulus of pv-vector.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -25822,13 +24695,9 @@ subroutine iau_PVM ( pv, r, s )
 !     S        d         modulus of velocity component
 !
 !  Called:
-!     iau_PM       modulus of p-vector
+!     PM       modulus of p-vector
 !
 !  This revision:  2000 November 25
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -25837,21 +24706,18 @@ implicit none
 double precision pv(3,2), r, s
 
 !  Distance.
-call iau_PM ( pv(1,1), r )
+call PM ( pv(1,1), r )
 
 !  Speed.
-call iau_PM ( pv(1,2), s )
+call PM ( pv(1,2), s )
 
-end subroutine iau_PVM
-!***********************************************************************
+end subroutine PVM
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PVMPV ( a, b, amb )
+!-----------------------------------------------------------------------
+subroutine PVMPV ( a, b, amb )
 !>
 !  Subtract one pv-vector from another.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -25863,13 +24729,9 @@ subroutine iau_PVMPV ( a, b, amb )
 !     AMB      d(3,2)      A - B
 !
 !  Called:
-!     iau_PMP      p-vector minus p-vector
+!     PMP      p-vector minus p-vector
 !
 !  This revision:  2006 November 13
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -25880,19 +24742,16 @@ double precision a(3,2), b(3,2), amb(3,2)
 integer i
 
 do 1 i=1,2
-   call iau_PMP ( a(1,i), b(1,i), amb(1,i) )
+   call PMP ( a(1,i), b(1,i), amb(1,i) )
 1 continue
 
-end subroutine iau_PVMPV
-!***********************************************************************
+end subroutine PVMPV
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PVPPV ( a, b, apb )
+!-----------------------------------------------------------------------
+subroutine PVPPV ( a, b, apb )
 !>
 !  Add one pv-vector to another.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -25904,13 +24763,9 @@ subroutine iau_PVPPV ( a, b, apb )
 !     APB      d(3,2)      A + B
 !
 !  Called:
-!     iau_PPP      p-vector plus p-vector
+!     PPP      p-vector plus p-vector
 !
 !  This revision:  2006 November 13
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -25921,19 +24776,16 @@ double precision a(3,2), b(3,2), apb(3,2)
 integer i
 
 do 1 i=1,2
-   call iau_PPP ( a(1,i), b(1,i), apb(1,i) )
+   call PPP ( a(1,i), b(1,i), apb(1,i) )
 1 continue
 
-end subroutine iau_PVPPV
-!***********************************************************************
+end subroutine PVPPV
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PVSTAR ( pv, ra, dec, pmr, pmd, px, rv, j )
+!-----------------------------------------------------------------------
+subroutine PVSTAR ( pv, ra, dec, pmr, pmd, px, rv, j )
 !>
 !  Convert star position+velocity vector to catalog coordinates.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -25967,7 +24819,7 @@ subroutine iau_PVSTAR ( pv, ra, dec, pmr, pmd, px, rv, j )
 !     limited by the intrinsic accuracy of the proper-motion and radial-
 !     velocity data;  moreover, the supplied pv-vector is likely to be
 !     merely an intermediate result (for example generated by the
-!     routine iau_STARPV), so that a change of time unit will cancel
+!     routine STARPV), so that a change of time unit will cancel
 !     out overall.
 !
 !     In accordance with normal star-catalog conventions, the object's
@@ -26003,27 +24855,23 @@ subroutine iau_PVSTAR ( pv, ra, dec, pmr, pmd, px, rv, j )
 !     assumed.  If the speed is greater than or equal to the speed of
 !     light, the routine aborts with an error status.
 !
-!  6) The inverse transformation is performed by the routine iau_STARPV.
+!  6) The inverse transformation is performed by the routine STARPV.
 !
 !  Called:
-!     iau_PN       decompose p-vector into modulus and direction
-!     iau_PDP      scalar product of two p-vectors
-!     iau_SXP      multiply p-vector by scalar
-!     iau_PMP      p-vector minus p-vector
-!     iau_PM       modulus of p-vector
-!     iau_PPP      p-vector plus p-vector
-!     iau_PV2S     pv-vector to spherical
-!     iau_ANP      normalize angle into range 0 to 2pi
+!     PN       decompose p-vector into modulus and direction
+!     PDP      scalar product of two p-vectors
+!     SXP      multiply p-vector by scalar
+!     PMP      p-vector minus p-vector
+!     PM       modulus of p-vector
+!     PPP      p-vector plus p-vector
+!     PV2S     pv-vector to spherical
+!     ANP      normalize angle into range 0 to 2pi
 !
 !  Reference:
 !
 !     Stumpff, P., Astron.Astrophys. 144, 232-240 (1985).
 !
 !  This revision:  2017 March 16
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -26058,16 +24906,16 @@ parameter ( c = d2s*cmps/aum )
 
 double precision r, x(3), vr, ur(3), vt, ut(3), bett, betr, d, w, &
                  del, usr(3), ust(3), a, rad, decd, rd
-!     DOUBLE PRECISION iau_ANP
+!     DOUBLE PRECISION ANP
 
 !  Isolate the radial component of the velocity (au/day, inertial).
-call iau_PN ( pv(1,1), r, x )
-call iau_PDP ( x, pv(1,2), vr )
-call iau_SXP ( vr, x, ur )
+call PN ( pv(1,1), r, x )
+call PDP ( x, pv(1,2), vr )
+call SXP ( vr, x, ur )
 
 !  Isolate the transverse component of the velocity (au/day, inertial).
-call iau_PMP ( pv(1,2), ur, ut )
-call iau_PM ( ut, vt )
+call PMP ( pv(1,2), ur, ut )
+call PM ( ut, vt )
 
 !  Special-relativity dimensionless parameters.
 bett = vt / c
@@ -26088,23 +24936,23 @@ if ( betr/=0d0 ) then
 else
    w = 1d0
 end if
-call iau_SXP ( w, ur, usr )
+call SXP ( w, ur, usr )
 
 !  Apply relativistic correction factor to tangential velocity component.
-call iau_SXP ( 1d0/d, ut, ust )
+call SXP ( 1d0/d, ut, ust )
 
 !  Combine the two to obtain the observed velocity vector (au/day).
-call iau_PPP ( usr, ust, pv(1,2) )
+call PPP ( usr, ust, pv(1,2) )
 
 !  Cartesian to spherical.
-call iau_PV2S ( pv, a, dec, r, rad, decd, rd )
+call PV2S ( pv, a, dec, r, rad, decd, rd )
 if ( r == 0d0 ) then
    j = -2
    go to 9
 end if
 
 !  Return RA in range 0 to 2pi.
-ra = iau_ANP ( a )
+ra = ANP ( a )
 
 !  Return proper motions in radians per year.
 pmr = rad * y2d
@@ -26122,16 +24970,13 @@ j = 0
 !  Exit.
 9 continue
 
-end subroutine iau_PVSTAR
-!***********************************************************************
+end subroutine PVSTAR
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PVTOB ( elong, phi, hm, xp, yp, sp, theta, pv )
+!-----------------------------------------------------------------------
+subroutine PVTOB ( elong, phi, hm, xp, yp, sp, theta, pv )
 !>
 !  Position and velocity of a terrestrial observing station.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -26169,7 +25014,7 @@ subroutine iau_PVTOB ( elong, phi, hm, xp, yp, sp, theta, pv )
 !     era.
 !
 !  5) No validation is performed on the arguments.  Error cases that
-!     could lead to arithmetic exceptions are trapped by the iau_GD2GC
+!     could lead to arithmetic exceptions are trapped by the GD2GC
 !     routine, and the result set to zeros.
 !
 !  References:
@@ -26182,15 +25027,11 @@ subroutine iau_PVTOB ( elong, phi, hm, xp, yp, sp, theta, pv )
 !     (2013), Section 7.4.3.3.
 !
 !  Called:
-!     iau_GD2GC    geodetic to geocentric transformation
-!     iau_POM00    polar motion matrix
-!     iau_TRXP     product of transpose of r-matrix and p-vector
+!     GD2GC    geodetic to geocentric transformation
+!     POM00    polar motion matrix
+!     TRXP     product of transpose of r-matrix and p-vector
 !
 !  This revision:   2013 June 25
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -26214,11 +25055,11 @@ double precision xyzm(3), rpm(3,3), xyz(3), x, y, z, s, c
 
 
 !  Geodetic to geocentric transformation (WGS84).
-call iau_GD2GC ( 1, elong, phi, hm, xyzm, j )
+call GD2GC ( 1, elong, phi, hm, xyzm, j )
 
 !  Polar motion and TIO position.
-call iau_POM00 ( xp, yp, sp, rpm )
-call iau_TRXP ( rpm, xyzm, xyz )
+call POM00 ( xp, yp, sp, rpm )
+call TRXP ( rpm, xyzm, xyz )
 x = xyz(1)
 y = xyz(2)
 z = xyz(3)
@@ -26237,16 +25078,13 @@ pv(1,2) = om * ( -s*x - c*y )
 pv(2,2) = om * (  c*x - s*y )
 pv(3,2) = 0d0
 
-end subroutine iau_PVTOB
-!***********************************************************************
+end subroutine PVTOB
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PVU ( dt, pv, upv )
+!-----------------------------------------------------------------------
+subroutine PVU ( dt, pv, upv )
 !>
 !  Update a pv-vector.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -26265,14 +25103,10 @@ subroutine iau_PVU ( dt, pv, upv )
 !  2) The time units of DT must match those of the velocity.
 !
 !  Called:
-!     iau_PPSP     p-vector plus scaled p-vector
-!     iau_CP       copy p-vector
+!     PPSP     p-vector plus scaled p-vector
+!     CP       copy p-vector
 !
 !  This revision:  2003 January 14
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -26280,19 +25114,16 @@ implicit none
 
 double precision dt, pv(3,2), upv(3,2)
 
-call iau_PPSP ( pv(1,1), dt, pv(1,2), upv(1,1) )
-call iau_CP ( pv(1,2), upv(1,2) )
+call PPSP ( pv(1,1), dt, pv(1,2), upv(1,1) )
+call CP ( pv(1,2), upv(1,2) )
 
-end subroutine iau_PVU
-!***********************************************************************
+end subroutine PVU
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PVUP ( dt, pv, p )
+!-----------------------------------------------------------------------
+subroutine PVUP ( dt, pv, p )
 !>
 !  Update a pv-vector, discarding the velocity component.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -26312,10 +25143,6 @@ subroutine iau_PVUP ( dt, pv, p )
 !
 !  This revision:  2008 May 8
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -26328,16 +25155,13 @@ do 1 i=1,3
    p(i) = pv(i,1) + pv(i,2)*dt
 1 continue
 
-end subroutine iau_PVUP
-!***********************************************************************
+end subroutine PVUP
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PVXPV ( a, b, axb )
+!-----------------------------------------------------------------------
+subroutine PVXPV ( a, b, axb )
 !>
 !  Outer (=vector=cross) product of two pv-vectors.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -26356,15 +25180,11 @@ subroutine iau_PVXPV ( a, b, axb )
 !     cross-product of the two p-vectors and its derivative.
 !
 !  Called:
-!     iau_CPV      copy pv-vector
-!     iau_PXP      vector product of two p-vectors
-!     iau_PPP      p-vector plus p-vector
+!     CPV      copy pv-vector
+!     PXP      vector product of two p-vectors
+!     PPP      p-vector plus p-vector
 !
 !  This revision:  2006 November 13
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -26375,27 +25195,24 @@ double precision a(3,2), b(3,2), axb(3,2)
 double precision wa(3,2), wb(3,2), axbd(3), adxb(3)
 
 !  Make copies of the inputs.
-call iau_CPV ( a, wa )
-call iau_CPV ( b, wb )
+call CPV ( a, wa )
+call CPV ( b, wb )
 
 !  A x B = position part of result.
-call iau_PXP ( wa(1,1), wb(1,1), axb(1,1) )
+call PXP ( wa(1,1), wb(1,1), axb(1,1) )
 
 !  A x Bdot + Adot x B = velocity part of result.
-call iau_PXP ( wa(1,1), wb(1,2), axbd )
-call iau_PXP ( wa(1,2), wb(1,1), adxb )
-call iau_PPP ( axbd, adxb, axb(1,2) )
+call PXP ( wa(1,1), wb(1,2), axbd )
+call PXP ( wa(1,2), wb(1,1), adxb )
+call PPP ( axbd, adxb, axb(1,2) )
 
-end subroutine iau_PVXPV
-!***********************************************************************
+end subroutine PVXPV
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_PXP ( a, b, axb )
+!-----------------------------------------------------------------------
+subroutine PXP ( a, b, axb )
 !>
 !  p-vector outer (=vector=cross) product.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -26407,10 +25224,6 @@ subroutine iau_PXP ( a, b, axb )
 !     AXB      d(3)      A x B
 !
 !  This revision:  2000 November 25
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -26430,11 +25243,11 @@ axb(1) = ya*zb - za*yb
 axb(2) = za*xb - xa*zb
 axb(3) = xa*yb - ya*xb
 
-end subroutine iau_PXP
-!***********************************************************************
+end subroutine PXP
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_REFCO ( phpa, tc, rh, wl, refa, refb )
+!-----------------------------------------------------------------------
+subroutine REFCO ( phpa, tc, rh, wl, refa, refb )
 !>
 !  Determine the constants A and B in the atmospheric refraction model
 !  dZ = A tan Z + B tan^3 Z.
@@ -26442,9 +25255,6 @@ subroutine iau_REFCO ( phpa, tc, rh, wl, refa, refb )
 !  Z is the "observed" zenith distance (i.e. affected by refraction)
 !  and dZ is what to add to Z to give the "topocentric" (i.e. in vacuo)
 !  zenith distance.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -26501,7 +25311,7 @@ subroutine iau_REFCO ( phpa, tc, rh, wl, refa, refb )
 !
 !     the results were as follows:
 !
-!       ZD       raytrace     iau_REFCO  Saastamoinen
+!       ZD       raytrace     REFCO  Saastamoinen
 !
 !       10         10.27        10.27        10.27
 !       20         21.19        21.20        21.19
@@ -26581,10 +25391,6 @@ subroutine iau_REFCO ( phpa, tc, rh, wl, refa, refb )
 !
 !  This revision:  2016 December 20
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -26629,16 +25435,13 @@ if (.not.optic) beta=beta-0.0074d0*pw*beta
 refa = gamma*(1d0-beta)
 refb = -gamma*(beta-gamma/2d0)
 
-end subroutine iau_REFCO
-!***********************************************************************
+end subroutine REFCO
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_RM2V ( r, w )
+!-----------------------------------------------------------------------
+subroutine RM2V ( r, w )
 !>
 !  Express an r-matrix as an r-vector.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -26654,7 +25457,7 @@ subroutine iau_RM2V ( r, w )
 !     some arbitrary axis called the Euler axis.  The "rotation vector"
 !     returned by this routine has the same direction as the Euler axis,
 !     and its magnitude is the angle in radians.  (The magnitude and
-!     direction can be separated by means of the routine iau_PN.)
+!     direction can be separated by means of the routine PN.)
 !
 !  2) If R is null, so is the result.  If R is not a rotation matrix
 !     the result is undefined.  R must be proper (i.e. have a positive
@@ -26664,10 +25467,6 @@ subroutine iau_RM2V ( r, w )
 !     the rotation vector from the origin.
 !
 !  This revision:  2015 January 30
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -26694,16 +25493,13 @@ else
    w(3) = 0d0
 end if
 
-end subroutine iau_RM2V
-!***********************************************************************
+end subroutine RM2V
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_RV2M ( w, r )
+!-----------------------------------------------------------------------
+subroutine RV2M ( w, r )
 !>
 !  Form the r-matrix corresponding to a given r-vector.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -26726,10 +25522,6 @@ subroutine iau_RV2M ( w, r )
 !     rotation vector from the origin.
 !
 !  This revision:  2015 January 30
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -26766,16 +25558,13 @@ r(3,1) = z*x*f + y*s
 r(3,2) = z*y*f - x*s
 r(3,3) = z*z*f + c
 
-end subroutine iau_RV2M
-!***********************************************************************
+end subroutine RV2M
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_RX ( phi, r )
+!-----------------------------------------------------------------------
+subroutine RX ( phi, r )
 !>
 !  Rotate an r-matrix about the x-axis.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -26800,10 +25589,6 @@ subroutine iau_RX ( phi, r )
 !         (  0   - sin(PHI)   + cos(PHI)  )
 !
 !  This revision:  2012 April 3
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -26830,16 +25615,13 @@ r(3,1) = a31
 r(3,2) = a32
 r(3,3) = a33
 
-end subroutine iau_RX
-!***********************************************************************
+end subroutine RX
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_RXP ( r, p, rp )
+!-----------------------------------------------------------------------
+subroutine RXP ( r, p, rp )
 !>
 !  Multiply a p-vector by an r-matrix.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -26851,13 +25633,9 @@ subroutine iau_RXP ( r, p, rp )
 !     RP       d(3)      R * P
 !
 !  Called:
-!     iau_CP       copy p-vector
+!     CP       copy p-vector
 !
 !  This revision:  2006 November 13
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -26879,18 +25657,15 @@ do 2 j=1,3
 2 continue
 
 !  Return the result.
-call iau_CP ( wrp, rp )
+call CP ( wrp, rp )
 
-end subroutine iau_RXP
-!***********************************************************************
+end subroutine RXP
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_RXPV ( r, pv, rpv )
+!-----------------------------------------------------------------------
+subroutine RXPV ( r, pv, rpv )
 !>
 !  Multiply a pv-vector by an r-matrix.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -26902,13 +25677,9 @@ subroutine iau_RXPV ( r, pv, rpv )
 !     RPV      d(3,2)    R * PV
 !
 !  Called:
-!     iau_RXP      product of r-matrix and p-vector
+!     RXP      product of r-matrix and p-vector
 !
 !  This revision:  2006 November 13
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -26916,19 +25687,16 @@ implicit none
 
 double precision r(3,3), pv(3,2), rpv(3,2)
 
-call iau_RXP ( r, pv(1,1), rpv(1,1) )
-call iau_RXP ( r, pv(1,2), rpv(1,2) )
+call RXP ( r, pv(1,1), rpv(1,1) )
+call RXP ( r, pv(1,2), rpv(1,2) )
 
-end subroutine iau_RXPV
-!***********************************************************************
+end subroutine RXPV
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_RXR ( a, b, atb )
+!-----------------------------------------------------------------------
+subroutine RXR ( a, b, atb )
 !>
 !  Multiply two r-matrices.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -26940,13 +25708,9 @@ subroutine iau_RXR ( a, b, atb )
 !     ATB      d(3,3)    A * B
 !
 !  Called:
-!     iau_CR       copy r-matrix
+!     CR       copy r-matrix
 !
 !  This revision:  2000 November 25
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -26966,18 +25730,15 @@ do 3 i=1,3
       wm(i,j) = w
 2    continue
 3 continue
-call iau_CR ( wm, atb )
+call CR ( wm, atb )
 
-end subroutine iau_RXR
-!***********************************************************************
+end subroutine RXR
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_RY ( theta, r )
+!-----------------------------------------------------------------------
+subroutine RY ( theta, r )
 !>
 !  Rotate an r-matrix about the y-axis.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -27002,10 +25763,6 @@ subroutine iau_RY ( theta, r )
 !         (  + sin(THETA)     0      + cos(THETA)  )
 !
 !  This revision:  2012 April 3
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -27032,16 +25789,13 @@ r(3,1) = a31
 r(3,2) = a32
 r(3,3) = a33
 
-end subroutine iau_RY
-!***********************************************************************
+end subroutine RY
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_RZ ( psi, r )
+!-----------------------------------------------------------------------
+subroutine RZ ( psi, r )
 !>
 !  Rotate an r-matrix about the z-axis.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -27066,10 +25820,6 @@ subroutine iau_RZ ( psi, r )
 !         (       0            0         1  )
 !
 !  This revision:  2012 April 3
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -27096,18 +25846,15 @@ r(2,1) = a21
 r(2,2) = a22
 r(2,3) = a23
 
-end subroutine iau_RZ
-!***********************************************************************
+end subroutine RZ
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_S00 ( date1, date2, x, y )
+!-----------------------------------------------------------------------
+double precision function S00 ( date1, date2, x, y )
 !>
 !  The CIO locator s, positioning the Celestial Intermediate Origin on
 !  the equator of the Celestial Intermediate Pole, given the CIP's X,Y
 !  coordinates.  Compatible with IAU 2000A precession-nutation.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -27116,7 +25863,7 @@ double precision function iau_S00 ( date1, date2, x, y )
 !     X,Y            d      CIP coordinates (Note 3)
 !
 !  Returned:
-!     iau_S00        d      the CIO locator s in radians (Note 2)
+!     S00        d      the CIO locator s in radians (Note 2)
 !
 !  Notes:
 !
@@ -27154,14 +25901,14 @@ double precision function iau_S00 ( date1, date2, x, y )
 !  4) The model is consistent with the IAU 2000A precession-nutation.
 !
 !  Called:
-!     iau_FAL03    mean anomaly of the Moon
-!     iau_FALP03   mean anomaly of the Sun
-!     iau_FAF03    mean argument of the latitude of the Moon
-!     iau_FAD03    mean elongation of the Moon from the Sun
-!     iau_FAOM03   mean longitude of the Moon's ascending node
-!     iau_FAVE03   mean longitude of Venus
-!     iau_FAE03    mean longitude of Earth
-!     iau_FAPA03   general accumulated precession in longitude
+!     FAL03    mean anomaly of the Moon
+!     FALP03   mean anomaly of the Sun
+!     FAF03    mean argument of the latitude of the Moon
+!     FAD03    mean elongation of the Moon from the Sun
+!     FAOM03   mean longitude of the Moon's ascending node
+!     FAVE03   mean longitude of Venus
+!     FAE03    mean longitude of Earth
+!     FAPA03   general accumulated precession in longitude
 !
 !  References:
 !
@@ -27177,10 +25924,6 @@ double precision function iau_S00 ( date1, date2, x, y )
 !     IERS Technical Note No. 32, BKG (2004)
 !
 !  This revision:  2010 January 18
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -27206,9 +25949,9 @@ double precision t
 !  Miscellaneous
 integer i, j
 double precision a, s0, s1, s2, s3, s4, s5
-!     DOUBLE PRECISION iau_FAL03, iau_FALP03, iau_FAF03,
-!    :                 iau_FAD03, iau_FAOM03, iau_FAVE03, iau_FAE03,
-!    :                 iau_FAPA03
+!     DOUBLE PRECISION FAL03, FALP03, FAF03,
+!    :                 FAD03, FAOM03, FAVE03, FAE03,
+!    :                 FAPA03
 
 !  Fundamental arguments
 double precision fa(8)
@@ -27424,28 +26167,28 @@ t = ( ( date1-dj00 ) + date2 ) / djc
 !  Fundamental Arguments (from IERS Conventions 2003)
 
 !  Mean anomaly of the Moon.
-fa(1) = iau_FAL03 ( t )
+fa(1) = FAL03 ( t )
 
 !  Mean anomaly of the Sun.
-fa(2) = iau_FALP03 ( t )
+fa(2) = FALP03 ( t )
 
 !  Mean longitude of the Moon minus that of the ascending node.
-fa(3) = iau_FAF03 ( t )
+fa(3) = FAF03 ( t )
 
 !  Mean elongation of the Moon from the Sun.
-fa(4) = iau_FAD03 ( t )
+fa(4) = FAD03 ( t )
 
 !  Mean longitude of the ascending node of the Moon.
-fa(5) = iau_FAOM03 ( t )
+fa(5) = FAOM03 ( t )
 
 !  Mean longitude of Venus.
-fa(6) = iau_FAVE03 ( t )
+fa(6) = FAVE03 ( t )
 
 !  Mean longitude of Earth.
-fa(7) = iau_FAE03 ( t )
+fa(7) = FAE03 ( t )
 
 !  General precession in longitude.
-fa(8) = iau_FAPA03 ( t )
+fa(8) = FAPA03 ( t )
 
 !  Evaluate s.
 s0 = sp(1)
@@ -27495,25 +26238,22 @@ do 10 i = ns4,1,-1
    s4 = s4 + ( ss4(1,i)*sin(a) + ss4(2,i)*cos(a) )
 10 continue
 
-iau_S00 = ( s0 + &
+S00 = ( s0 + &
           ( s1 + &
           ( s2 + &
           ( s3 + &
           ( s4 + &
             s5 * t ) * t ) * t ) * t ) * t ) * das2r - x*y/2d0
 
-end function iau_S00
-!***********************************************************************
+end function S00
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_S00A ( date1, date2 )
+!-----------------------------------------------------------------------
+double precision function S00A ( date1, date2 )
 !>
 !  The CIO locator s, positioning the Celestial Intermediate Origin on
 !  the equator of the Celestial Intermediate Pole, using the IAU 2000A
 !  precession-nutation model.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -27521,7 +26261,7 @@ double precision function iau_S00A ( date1, date2 )
 !     DATE1,DATE2    d      TT as a 2-part Julian Date (Note 1)
 !
 !  Returned:
-!     iau_S00A       d      the CIO locator s in radians (Note 2)
+!     S00A       d      the CIO locator s in radians (Note 2)
 !
 !  Notes:
 !
@@ -27555,13 +26295,13 @@ double precision function iau_S00A ( date1, date2 )
 !     more compact than a direct series for s would be.  The present
 !     routine uses the full IAU 2000A nutation model when predicting the
 !     CIP position.  Faster results, with no significant loss of
-!     accuracy, can be obtained via the routine iau_S00B, which uses
+!     accuracy, can be obtained via the routine S00B, which uses
 !     instead the IAU 2000B truncated model.
 !
 !  Called:
-!     iau_PNM00A   classical NPB matrix, IAU 2000A
-!     iau_BNP2XY    extract CIP X,Y from the BPN matrix
-!     iau_S00      the CIO locator s, given X,Y, IAU 2000A
+!     PNM00A   classical NPB matrix, IAU 2000A
+!     BNP2XY    extract CIP X,Y from the BPN matrix
+!     S00      the CIO locator s, given X,Y, IAU 2000A
 !
 !  References:
 !
@@ -27578,10 +26318,6 @@ double precision function iau_S00A ( date1, date2 )
 !
 !  This revision:  2010 January 18
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -27590,29 +26326,26 @@ double precision date1, date2
 
 double precision rbpn(3,3), x, y
 
-!     DOUBLE PRECISION iau_S00
+!     DOUBLE PRECISION S00
 
 !  Bias-precession-nutation-matrix, IAU 2000A.
-call iau_PNM00A ( date1, date2, rbpn )
+call PNM00A ( date1, date2, rbpn )
 
 !  Extract the CIP coordinates.
-call iau_BPN2XY ( rbpn, x, y )
+call BPN2XY ( rbpn, x, y )
 
 !  Compute the CIO locator s, given the CIP coordinates.
-iau_S00A = iau_S00 ( date1, date2, x, y )
+S00A = S00 ( date1, date2, x, y )
 
-end function iau_S00A
-!***********************************************************************
+end function S00A
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_S00B ( date1, date2 )
+!-----------------------------------------------------------------------
+double precision function S00B ( date1, date2 )
 !>
 !  The CIO locator s, positioning the Celestial Intermediate Origin on
 !  the equator of the Celestial Intermediate Pole, using the IAU 2000B
 !  precession-nutation model.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -27620,7 +26353,7 @@ double precision function iau_S00B ( date1, date2 )
 !     DATE1,DATE2    d      TT as a 2-part Julian Date (Note 1)
 !
 !  Returned:
-!     iau_S00B       d      the CIO locator s in radians (Note 2)
+!     S00B       d      the CIO locator s in radians (Note 2)
 !
 !  Notes:
 !
@@ -27653,14 +26386,14 @@ double precision function iau_S00B ( date1, date2 )
 !     are the x and y components of the CIP unit vector;  this series is
 !     more compact than a direct series for s would be.  The present
 !     routine uses the IAU 2000B truncated nutation model when
-!     predicting the CIP position.  The routine iau_S00A uses instead
+!     predicting the CIP position.  The routine S00A uses instead
 !     the full IAU 2000A model, but with no significant increase in
 !     accuracy and at some cost in speed.
 !
 !  Called:
-!     iau_PNM00B   classical NPB matrix, IAU 2000B
-!     iau_BNP2XY    extract CIP X,Y from the BPN matrix
-!     iau_S00      the CIO locator s, given X,Y, IAU 2000A
+!     PNM00B   classical NPB matrix, IAU 2000B
+!     BNP2XY    extract CIP X,Y from the BPN matrix
+!     S00      the CIO locator s, given X,Y, IAU 2000A
 !
 !  References:
 !
@@ -27677,10 +26410,6 @@ double precision function iau_S00B ( date1, date2 )
 !
 !  This revision:  2010 January 18
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -27689,29 +26418,26 @@ double precision date1, date2
 
 double precision rbpn(3,3), x, y
 
-!     DOUBLE PRECISION iau_S00
+!     DOUBLE PRECISION S00
 
 !  Bias-precession-nutation-matrix, IAU 2000B.
-call iau_PNM00B ( date1, date2, rbpn )
+call PNM00B ( date1, date2, rbpn )
 
 !  Extract the CIP coordinates.
-call iau_BPN2XY ( rbpn, x, y )
+call BPN2XY ( rbpn, x, y )
 
 !  Compute the CIO locator s, given the CIP coordinates.
-iau_S00B = iau_S00 ( date1, date2, x, y )
+S00B = S00 ( date1, date2, x, y )
 
-end function iau_S00B
-!***********************************************************************
+end function S00B
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_S06 ( date1, date2, x, y )
+!-----------------------------------------------------------------------
+double precision function S06 ( date1, date2, x, y )
 !>
 !  The CIO locator s, positioning the Celestial Intermediate Origin on
 !  the equator of the Celestial Intermediate Pole, given the CIP's X,Y
 !  coordinates.  Compatible with IAU 2006/2000A precession-nutation.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -27720,7 +26446,7 @@ double precision function iau_S06 ( date1, date2, x, y )
 !     X,Y            d      CIP coordinates (Note 3)
 !
 !  Returned:
-!     iau_S06        d      the CIO locator s in radians (Note 2)
+!     S06        d      the CIO locator s in radians (Note 2)
 !
 !  Notes:
 !
@@ -27760,14 +26486,14 @@ double precision function iau_S06 ( date1, date2, x, y )
 !     IAU 2000A nutation (with P03 adjustments).
 !
 !  Called:
-!     iau_FAL03    mean anomaly of the Moon
-!     iau_FALP03   mean anomaly of the Sun
-!     iau_FAF03    mean argument of the latitude of the Moon
-!     iau_FAD03    mean elongation of the Moon from the Sun
-!     iau_FAOM03   mean longitude of the Moon's ascending node
-!     iau_FAVE03   mean longitude of Venus
-!     iau_FAE03    mean longitude of Earth
-!     iau_FAPA03   general accumulated precession in longitude
+!     FAL03    mean anomaly of the Moon
+!     FALP03   mean anomaly of the Sun
+!     FAF03    mean argument of the latitude of the Moon
+!     FAD03    mean elongation of the Moon from the Sun
+!     FAOM03   mean longitude of the Moon's ascending node
+!     FAVE03   mean longitude of Venus
+!     FAE03    mean longitude of Earth
+!     FAPA03   general accumulated precession in longitude
 !
 !  References:
 !
@@ -27778,10 +26504,6 @@ double precision function iau_S06 ( date1, date2, x, y )
 !     IERS Technical Note No. 32, BKG
 !
 !  This revision:   2009 December 15
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -27807,9 +26529,9 @@ double precision t
 !  Miscellaneous
 integer i, j
 double precision a, s0, s1, s2, s3, s4, s5
-!     DOUBLE PRECISION iau_FAL03, iau_FALP03, iau_FAF03,
-!    :                 iau_FAD03, iau_FAOM03, iau_FAVE03, iau_FAE03,
-!    :                 iau_FAPA03
+!     DOUBLE PRECISION FAL03, FALP03, FAF03,
+!    :                 FAD03, FAOM03, FAVE03, FAE03,
+!    :                 FAPA03
 
 !  Fundamental arguments
 double precision fa(8)
@@ -28025,28 +26747,28 @@ t = ( ( date1-dj00 ) + date2 ) / djc
 !  Fundamental Arguments (from IERS Conventions 2003)
 
 !  Mean anomaly of the Moon.
-fa(1) = iau_FAL03 ( t )
+fa(1) = FAL03 ( t )
 
 !  Mean anomaly of the Sun.
-fa(2) = iau_FALP03 ( t )
+fa(2) = FALP03 ( t )
 
 !  Mean longitude of the Moon minus that of the ascending node.
-fa(3) = iau_FAF03 ( t )
+fa(3) = FAF03 ( t )
 
 !  Mean elongation of the Moon from the Sun.
-fa(4) = iau_FAD03 ( t )
+fa(4) = FAD03 ( t )
 
 !  Mean longitude of the ascending node of the Moon.
-fa(5) = iau_FAOM03 ( t )
+fa(5) = FAOM03 ( t )
 
 !  Mean longitude of Venus.
-fa(6) = iau_FAVE03 ( t )
+fa(6) = FAVE03 ( t )
 
 !  Mean longitude of Earth.
-fa(7) = iau_FAE03 ( t )
+fa(7) = FAE03 ( t )
 
 !  General precession in longitude.
-fa(8) = iau_FAPA03 ( t )
+fa(8) = FAPA03 ( t )
 
 !  Evaluate s.
 s0 = sp(1)
@@ -28096,25 +26818,22 @@ do 10 i = ns4,1,-1
    s4 = s4 + ( ss4(1,i)*sin(a) + ss4(2,i)*cos(a) )
 10 continue
 
-iau_S06 = ( s0 + &
+S06 = ( s0 + &
           ( s1 + &
           ( s2 + &
           ( s3 + &
           ( s4 + &
             s5 * t ) * t ) * t ) * t ) * t ) * das2r - x*y/2d0
 
-end function iau_S06
-!***********************************************************************
+end function S06
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_S06A ( date1, date2 )
+!-----------------------------------------------------------------------
+double precision function S06A ( date1, date2 )
 !>
 !  The CIO locator s, positioning the Celestial Intermediate Origin on
 !  the equator of the Celestial Intermediate Pole, using the IAU 2006
 !  precession and IAU 2000A nutation models.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -28122,7 +26841,7 @@ double precision function iau_S06A ( date1, date2 )
 !     DATE1,DATE2    d      TT as a 2-part Julian Date (Note 1)
 !
 !  Returned:
-!     iau_S06A       d      the CIO locator s in radians (Note 2)
+!     S06A       d      the CIO locator s in radians (Note 2)
 !
 !  Notes:
 !
@@ -28158,9 +26877,9 @@ double precision function iau_S06A ( date1, date2 )
 !     CIP position.
 !
 !  Called:
-!     iau_PNM06A   classical NPB matrix, IAU 2006/2000A
-!     iau_BPN2XY   extract CIP X,Y coordinates from NPB matrix
-!     iau_S06      the CIO locator s, given X,Y, IAU 2006
+!     PNM06A   classical NPB matrix, IAU 2006/2000A
+!     BPN2XY   extract CIP X,Y coordinates from NPB matrix
+!     S06      the CIO locator s, given X,Y, IAU 2006
 !
 !  References:
 !
@@ -28181,10 +26900,6 @@ double precision function iau_S06A ( date1, date2 )
 !
 !  This revision:  2010 January 18
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -28193,27 +26908,24 @@ double precision date1, date2
 
 double precision rnpb(3,3), x, y
 
-!     DOUBLE PRECISION iau_S06
+!     DOUBLE PRECISION S06
 
 !  Bias-precession-nutation-matrix, IAU 20006/2000A.
-call iau_PNM06A ( date1, date2, rnpb )
+call PNM06A ( date1, date2, rnpb )
 
 !  Extract the CIP coordinates.
-call iau_BPN2XY ( rnpb, x, y )
+call BPN2XY ( rnpb, x, y )
 
 !  Compute the CIO locator s, given the CIP coordinates.
-iau_S06A = iau_S06 ( date1, date2, x, y )
+S06A = S06 ( date1, date2, x, y )
 
-end function iau_S06A
-!***********************************************************************
+end function S06A
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_S2C ( theta, phi, c )
+!-----------------------------------------------------------------------
+subroutine S2C ( theta, phi, c )
 !>
 !  Convert spherical coordinates to Cartesian.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -28225,10 +26937,6 @@ subroutine iau_S2C ( theta, phi, c )
 !     C        d(3)      direction cosines
 !
 !  This revision:  2000 November 25
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -28243,16 +26951,13 @@ c(1) = cos(theta) * cp
 c(2) = sin(theta) * cp
 c(3) = sin(phi)
 
-end subroutine iau_S2C
-!***********************************************************************
+end subroutine S2C
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_S2P ( theta, phi, r, p )
+!-----------------------------------------------------------------------
+subroutine S2P ( theta, phi, r, p )
 !>
 !  Convert spherical polar coordinates to p-vector.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -28265,14 +26970,10 @@ subroutine iau_S2P ( theta, phi, r, p )
 !     P        d(3)      Cartesian coordinates
 !
 !  Called:
-!     iau_S2C      spherical coordinates to unit vector
-!     iau_SXP      multiply p-vector by scalar
+!     S2C      spherical coordinates to unit vector
+!     SXP      multiply p-vector by scalar
 !
 !  This revision:  2006 November 13
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -28282,19 +26983,16 @@ double precision theta, phi, r, p(3)
 
 double precision u(3)
 
-call iau_S2C ( theta, phi, u )
-call iau_SXP ( r, u, p )
+call S2C ( theta, phi, u )
+call SXP ( r, u, p )
 
-end subroutine iau_S2P
-!***********************************************************************
+end subroutine S2P
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_S2PV ( theta, phi, r, td, pd, rd, pv )
+!-----------------------------------------------------------------------
+subroutine S2PV ( theta, phi, r, td, pd, rd, pv )
 !>
 !  Convert position/velocity from spherical to Cartesian coordinates.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -28310,10 +27008,6 @@ subroutine iau_S2PV ( theta, phi, r, td, pd, rd, pv )
 !     PV       d(3,2)    pv-vector
 !
 !  This revision:  2000 November 25
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -28340,16 +27034,13 @@ pv(1,2) = - y*td - w*ct
 pv(2,2) =   x*td - w*st
 pv(3,2) = rpd*cp + sp*rd
 
-end subroutine iau_S2PV
-!***********************************************************************
+end subroutine S2PV
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_S2XPV ( s1, s2, pv, spv )
+!-----------------------------------------------------------------------
+subroutine S2XPV ( s1, s2, pv, spv )
 !>
 !  Multiply a pv-vector by two scalars.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -28362,13 +27053,9 @@ subroutine iau_S2XPV ( s1, s2, pv, spv )
 !     SPV      d(3,2)    pv-vector: p scaled by S1, v scaled by S2
 !
 !  Called:
-!     iau_SXP      multiply p-vector by scalar
+!     SXP      multiply p-vector by scalar
 !
 !  This revision:  2006 November 13
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -28376,19 +27063,16 @@ implicit none
 
 double precision s1, s2, pv(3,2), spv(3,2)
 
-call iau_SXP ( s1, pv(1,1), spv(1,1) )
-call iau_SXP ( s2, pv(1,2), spv(1,2) )
+call SXP ( s1, pv(1,1), spv(1,1) )
+call SXP ( s2, pv(1,2), spv(1,2) )
 
-end subroutine iau_S2XPV
-!***********************************************************************
+end subroutine S2XPV
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_SEPP ( a, b, s )
+!-----------------------------------------------------------------------
+subroutine SEPP ( a, b, s )
 !>
 !  Angular separation between two p-vectors.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -28410,15 +27094,11 @@ subroutine iau_SEPP ( a, b, s )
 !     the angle.
 !
 !  Called:
-!     iau_PXP      vector product of two p-vectors
-!     iau_PM       modulus of p-vector
-!     iau_PDP      scalar product of two p-vectors
+!     PXP      vector product of two p-vectors
+!     PM       modulus of p-vector
+!     PDP      scalar product of two p-vectors
 !
 !  This revision:  2006 November 13
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -28429,11 +27109,11 @@ double precision a(3), b(3), s
 double precision axb(3), ss, cs
 
 !  Sine of the angle between the vectors, multiplied by the two moduli.
-call iau_PXP ( a, b, axb )
-call iau_PM ( axb, ss )
+call PXP ( a, b, axb )
+call PM ( axb, ss )
 
 !  Cosine of the angle, multiplied by the two moduli.
-call iau_PDP ( a, b, cs )
+call PDP ( a, b, cs )
 
 !  The angle.
 if ( ss/=0d0 .or. cs/=0d0 ) then
@@ -28442,16 +27122,13 @@ else
    s = 0d0
 end if
 
-end subroutine iau_SEPP
-!***********************************************************************
+end subroutine SEPP
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_SEPS ( al, ap, bl, bp, s )
+!-----------------------------------------------------------------------
+subroutine SEPS ( al, ap, bl, bp, s )
 !>
 !  Angular separation between two sets of spherical coordinates.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -28465,14 +27142,10 @@ subroutine iau_SEPS ( al, ap, bl, bp, s )
 !     S        d         angular separation (radians)
 !
 !  Called:
-!     iau_S2C      spherical coordinates to unit vector
-!     iau_SEPP     angular separation between two p-vectors
+!     S2C      spherical coordinates to unit vector
+!     SEPP     angular separation between two p-vectors
 !
 !  This revision:  2006 November 13
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -28483,23 +27156,20 @@ double precision al, ap, bl, bp, s
 double precision ac(3), bc(3)
 
 !  Spherical to Cartesian.
-call iau_S2C ( al, ap, ac )
-call iau_S2C ( bl, bp, bc )
+call S2C ( al, ap, ac )
+call S2C ( bl, bp, bc )
 
 !  Angle between the vectors.
-call iau_SEPP ( ac, bc, s )
+call SEPP ( ac, bc, s )
 
-end subroutine iau_SEPS
-!***********************************************************************
+end subroutine SEPS
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-double precision function iau_SP00 ( date1, date2 )
+!-----------------------------------------------------------------------
+double precision function SP00 ( date1, date2 )
 !>
 !  The TIO locator s', positioning the Terrestrial Intermediate Origin
 !  on the equator of the Celestial Intermediate Pole.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -28507,7 +27177,7 @@ double precision function iau_SP00 ( date1, date2 )
 !     DATE1,DATE2    d      TT as a 2-part Julian Date (Note 1)
 !
 !  Returned:
-!     iau_SP00       d      the TIO locator s' in radians (Note 2)
+!     SP00       d      the TIO locator s' in radians (Note 2)
 !
 !  Notes:
 !
@@ -28543,10 +27213,6 @@ double precision function iau_SP00 ( date1, date2 )
 !
 !  This revision:  2009 December 15
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -28572,20 +27238,17 @@ double precision t
 t = ( ( date1-dj00 ) + date2 ) / djc
 
 !  Approximate s'.
-iau_SP00 = -47d-6 * t * das2r
+SP00 = -47d-6 * t * das2r
 
-end function iau_SP00
-!***********************************************************************
+end function SP00
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_STARPM ( ra1, dec1, pmr1, pmd1, px1, rv1, &
+!-----------------------------------------------------------------------
+subroutine STARPM ( ra1, dec1, pmr1, pmd1, px1, rv1, &
                         ep1a, ep1b, ep2a, ep2b, &
                         ra2, dec2, pmr2, pmd2, px2, rv2, j )
 !>
 !  Star proper motion:  update star catalog data for space motion.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -28662,30 +27325,26 @@ subroutine iau_STARPM ( ra1, dec1, pmr1, pmd1, px1, rv1, &
 !
 !  6) An extremely small (or zero or negative) parallax is interpreted
 !     to mean that the object is on the "celestial sphere", the radius
-!     of which is an arbitrary (large) value (see the iau_STARPV routine
+!     of which is an arbitrary (large) value (see the STARPV routine
 !     for the value used).  When the distance is overridden in this way,
 !     the status, initially zero, has 1 added to it.
 !
 !  7) If the space velocity is a significant fraction of c (see the
-!     constant VMAX in the routine iau_STARPV), it is arbitrarily set to
+!     constant VMAX in the routine STARPV), it is arbitrarily set to
 !     zero.  When this action occurs, 2 is added to the status.
 !
-!  8) The relativistic adjustment carried out in the iau_STARPV routine
+!  8) The relativistic adjustment carried out in the STARPV routine
 !     involves an iterative calculation.  If the process fails to
 !     converge within a set number of iterations, 4 is added to the
 !     status.
 !
 !  Called:
-!     iau_STARPV   star catalog data to space motion pv-vector
-!     iau_PVU      update a pv-vector
-!     iau_PDP      scalar product of two p-vectors
-!     iau_PVSTAR   space motion pv-vector to star catalog data
+!     STARPV   star catalog data to space motion pv-vector
+!     PVU      update a pv-vector
+!     PDP      scalar product of two p-vectors
+!     PVSTAR   space motion pv-vector to star catalog data
 !
 !  This revision:  2017 March 16
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -28717,10 +27376,10 @@ double precision pv1(3,2), r, tl1, dt, pv(3,2), r2, rdv, v2, &
 integer j1, j2
 
 !  RA,Dec etc. at the "before" epoch to space motion pv-vector.
-call iau_STARPV ( ra1, dec1, pmr1, pmd1, px1, rv1, pv1, j1 )
+call STARPV ( ra1, dec1, pmr1, pmd1, px1, rv1, pv1, j1 )
 
 !  Light time when observed (days).
-call iau_PM ( pv1, r )
+call PM ( pv1, r )
 tl1 = r / c
 
 !  Time interval, "before" to "after" (days).
@@ -28728,13 +27387,13 @@ dt = ( ep2a-ep1a ) + ( ep2b-ep1b )
 
 !  Move star along track from the "before" observed position to the
 !  "after" geometric position.
-call iau_PVU ( dt+tl1, pv1, pv )
+call PVU ( dt+tl1, pv1, pv )
 
 !  From this geometric position, deduce the observed light time (days)
 !  at the "after" epoch (with theoretically unneccessary error check).
-call iau_PDP ( pv(1,1), pv(1,1), r2 )
-call iau_PDP ( pv(1,1), pv(1,2), rdv )
-call iau_PDP ( pv(1,2), pv(1,2), v2 )
+call PDP ( pv(1,1), pv(1,1), r2 )
+call PDP ( pv(1,1), pv(1,2), rdv )
+call PDP ( pv(1,2), pv(1,2), v2 )
 c2mv2 = c*c - v2
 if ( c2mv2 <= 0d0 ) then
    j = -1
@@ -28744,10 +27403,10 @@ tl2 = ( - rdv + sqrt(rdv*rdv + c2mv2*r2) ) / c2mv2
 
 !  Move the position along track from the observed place at the
 !  "before" epoch to the observed place at the "after" epoch.
-call iau_PVU ( dt + ( tl1-tl2 ), pv1, pv2 )
+call PVU ( dt + ( tl1-tl2 ), pv1, pv2 )
 
 !  Space motion pv-vector to RA,Dec etc. at the "after" epoch.
-call iau_PVSTAR ( pv2, ra2, dec2, pmr2, pmd2, px2, rv2, j2 )
+call PVSTAR ( pv2, ra2, dec2, pmr2, pmd2, px2, rv2, j2 )
 
 !  Return the status.
 if ( j2 /= 0 ) j1 = -1
@@ -28756,16 +27415,13 @@ j = j1
 !  Exit.
 9 continue
 
-end subroutine iau_STARPM
-!***********************************************************************
+end subroutine STARPM
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_STARPV ( ra, dec, pmr, pmd, px, rv, pv, j )
+!-----------------------------------------------------------------------
+subroutine STARPV ( ra, dec, pmr, pmd, px, rv, pv, j )
 !>
 !  Convert star catalog coordinates to position+velocity vector.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -28852,27 +27508,23 @@ subroutine iau_STARPV ( ra, dec, pmr, pmd, px, rv, pv, j )
 !     If the process fails to converge within a set number (IMAX) of
 !     iterations, 4 is added to the status.
 !
-!  9) The inverse transformation is performed by the routine iau_PVSTAR.
+!  9) The inverse transformation is performed by the routine PVSTAR.
 !
 !  Called:
-!     iau_S2PV     spherical coordinates to pv-vector
-!     iau_PM       modulus of p-vector
-!     iau_ZP       zero p-vector
-!     iau_PN       decompose p-vector into modulus and direction
-!     iau_PDP      scalar product of two p-vectors
-!     iau_SXP      multiply p-vector by scalar
-!     iau_PMP      p-vector minus p-vector
-!     iau_PPP      p-vector plus p-vector
+!     S2PV     spherical coordinates to pv-vector
+!     PM       modulus of p-vector
+!     ZP       zero p-vector
+!     PN       decompose p-vector into modulus and direction
+!     PDP      scalar product of two p-vectors
+!     SXP      multiply p-vector by scalar
+!     PMP      p-vector minus p-vector
+!     PPP      p-vector plus p-vector
 !
 !  Reference:
 !
 !     Stumpff, P., Astron.Astrophys. 144, 232-240 (1985).
 !
 !  This revision:  2017 March 16
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -28940,23 +27592,23 @@ rad = pmr / y2d
 decd = pmd / y2d
 
 !  To pv-vector (au,au/day).
-call iau_S2PV ( ra, dec, r, rad, decd, rd, pv )
+call S2PV ( ra, dec, r, rad, decd, rd, pv )
 
 !  If excessive velocity, arbitrarily set it to zero.
-call iau_PM ( pv(1,2), v )
+call PM ( pv(1,2), v )
 if ( v/c > vmax ) then
-   call iau_ZP ( pv(1,2) )
+   call ZP ( pv(1,2) )
    iwarn = iwarn + 2
 end if
 
 !  Isolate the radial component of the velocity (au/day).
-call iau_PN ( pv(1,1), w, x )
-call iau_PDP ( x, pv(1,2), vsr )
-call iau_SXP ( vsr, x, usr )
+call PN ( pv(1,1), w, x )
+call PDP ( x, pv(1,2), vsr )
+call SXP ( vsr, x, usr )
 
 !  Isolate the transverse component of the velocity (au/day).
-call iau_PMP ( pv(1,2), usr, ust )
-call iau_PM ( ust, vst )
+call PMP ( pv(1,2), usr, ust )
+call PM ( ust, vst )
 
 !  Special-relativity dimensionless parameters.
 betsr = vsr / c
@@ -28996,27 +27648,24 @@ if ( betsr /= 0d0 ) then
 else
    w = 1d0
 end if
-call iau_SXP ( w, usr, ur )
+call SXP ( w, usr, ur )
 
 !  Replace observed tangential velocity with inertial value.
-call iau_SXP ( d, ust, ut )
+call SXP ( d, ust, ut )
 
 !  Combine the two to obtain the inertial space velocity.
-call iau_PPP ( ur, ut, pv(1,2) )
+call PPP ( ur, ut, pv(1,2) )
 
 !  Return the status.
 j = iwarn
 
-end subroutine iau_STARPV
-!***********************************************************************
+end subroutine STARPV
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_SXP ( s, p, sp )
+!-----------------------------------------------------------------------
+subroutine SXP ( s, p, sp )
 !>
 !  Multiply a p-vector by a scalar.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -29028,10 +27677,6 @@ subroutine iau_SXP ( s, p, sp )
 !     SP       d(3)      S * P
 !
 !  This revision:  2000 November 25
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -29045,16 +27690,13 @@ do 1 i=1,3
    sp(i) = s * p(i)
 1 continue
 
-end subroutine iau_SXP
-!***********************************************************************
+end subroutine SXP
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_SXPV ( s, pv, spv )
+!-----------------------------------------------------------------------
+subroutine SXPV ( s, pv, spv )
 !>
 !  Multiply a pv-vector by a scalar.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -29066,13 +27708,9 @@ subroutine iau_SXPV ( s, pv, spv )
 !     SPV      d(3,2)    S * PV
 !
 !  Called:
-!     iau_S2XPV    multiply pv-vector by two scalars
+!     S2XPV    multiply pv-vector by two scalars
 !
 !  This revision:  2006 November 13
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -29080,19 +27718,16 @@ implicit none
 
 double precision s, pv(3,2), spv(3,2)
 
-call iau_S2XPV ( s, s, pv, spv )
+call S2XPV ( s, s, pv, spv )
 
-end subroutine iau_SXPV
-!***********************************************************************
+end subroutine SXPV
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_TAITT ( tai1, tai2, tt1, tt2, j )
+!-----------------------------------------------------------------------
+subroutine TAITT ( tai1, tai2, tt1, tt2, j )
 !>
 !  Time scale transformation:  International Atomic Time, TAI, to
 !  Terrestrial Time, TT.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical.
 !
@@ -29120,10 +27755,6 @@ subroutine iau_TAITT ( tai1, tai2, tt1, tt2, j )
 !
 !  This revision:  2019 June 20
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -29146,17 +27777,14 @@ end if
 !  Status (always OK).
 j = 0
 
-end subroutine iau_TAITT
-!***********************************************************************
+end subroutine TAITT
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_TAIUT1 ( tai1, tai2, dta, ut11, ut12, j )
+!-----------------------------------------------------------------------
+subroutine TAIUT1 ( tai1, tai2, dta, ut11, ut12, j )
 !>
 !  Time scale transformation:  International Atomic Time, TAI, to
 !  Universal Time, UT1.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical.
 !
@@ -29185,10 +27813,6 @@ subroutine iau_TAIUT1 ( tai1, tai2, dta, ut11, ut12, j )
 !
 !  This revision:  2019 June 20
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -29214,17 +27838,14 @@ end if
 !  Status (always OK).
 j = 0
 
-end subroutine iau_TAIUT1
-!***********************************************************************
+end subroutine TAIUT1
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_TAIUTC ( tai1, tai2, utc1, utc2, j )
+!-----------------------------------------------------------------------
+subroutine TAIUTC ( tai1, tai2, utc1, utc2, j )
 !>
 !  Time scale transformation:  International Atomic Time, TAI, to
 !  Coordinated Universal Time, UTC.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical.
 !
@@ -29254,16 +27875,16 @@ subroutine iau_TAIUTC ( tai1, tai2, utc1, utc2, j )
 !     expression was changed, and these "mini-leaps" are also included
 !     in the SOFA convention.
 !
-!  3) The routine iau_D2DTF can be used to transform the UTC quasi-JD
+!  3) The routine D2DTF can be used to transform the UTC quasi-JD
 !     into calendar date and clock time, including UTC leap second
 !     handling.
 !
 !  4) The warning status "dubious year" flags UTCs that predate the
 !     introduction of the time scale or that are too far in the future
-!     to be trusted.  See iau_DAT for further details.
+!     to be trusted.  See DAT for further details.
 !
 !  Called:
-!     iau_UTCTAI   UTC to TAI
+!     UTCTAI   UTC to TAI
 !
 !  References:
 !
@@ -29274,10 +27895,6 @@ subroutine iau_TAIUTC ( tai1, tai2, utc1, utc2, j )
 !     P. Kenneth Seidelmann (ed), University Science Books (1992)
 !
 !  This revision:  2019 June 20
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -29307,7 +27924,7 @@ u2 = a2
 do i=1,3
 
 !     Guessed UTC to TAI.
-   call iau_UTCTAI ( u1, u2, g1, g2, js )
+   call UTCTAI ( u1, u2, g1, g2, js )
    if ( js<0 ) go to 9
 
 !     Adjust guessed UTC.
@@ -29329,17 +27946,14 @@ end if
 9 continue
 j = js
 
-end subroutine iau_TAIUTC
-!***********************************************************************
+end subroutine TAIUTC
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_TCBTDB ( tcb1, tcb2, tdb1, tdb2, j )
+!-----------------------------------------------------------------------
+subroutine TCBTDB ( tcb1, tcb2, tdb1, tdb2, j )
 !>
 !  Time scale transformation:  Barycentric Coordinate Time, TCB, to
 !  Barycentric Dynamical Time, TDB.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical.
 !
@@ -29381,10 +27995,6 @@ subroutine iau_TCBTDB ( tcb1, tcb2, tdb1, tdb2, j )
 !
 !  This revision:  2019 June 20
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -29417,17 +28027,14 @@ end if
 !  Status (always OK).
 j = 0
 
-end subroutine iau_TCBTDB
-!***********************************************************************
+end subroutine TCBTDB
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_TCGTT ( tcg1, tcg2, tt1, tt2, j )
+!-----------------------------------------------------------------------
+subroutine TCGTT ( tcg1, tcg2, tt1, tt2, j )
 !>
 !  Time scale transformation:  Geocentric Coordinate Time, TCG, to
 !  Terrestrial Time, TT.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical.
 !
@@ -29453,10 +28060,6 @@ subroutine iau_TCGTT ( tcg1, tcg2, tt1, tt2, j )
 !     IAU 2000 Resolution B1.9
 !
 !  This revision:  2019 June 20
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -29488,18 +28091,15 @@ end if
 !  Status (always OK).
 j = 0
 
-end subroutine iau_TCGTT
-!***********************************************************************
+end subroutine TCGTT
+!-----------------------------------------------------------------------
 
-!***********************************************************************
+!-----------------------------------------------------------------------
 
-subroutine iau_TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
+subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 !>
 !  Time scale transformation:  Barycentric Dynamical Time, TDB, to
 !  Barycentric Coordinate Time, TCB.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical.
 !
@@ -29541,10 +28141,6 @@ subroutine iau_TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 !
 !  This revision:  2019 June 20
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -29583,17 +28179,14 @@ end if
 !  Status (always OK).
 j = 0
 
-end subroutine iau_TDBTCB
-!***********************************************************************
+end subroutine TDBTCB
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_TDBTT ( tdb1, tdb2, dtr, tt1, tt2, j )
+!-----------------------------------------------------------------------
+subroutine TDBTT ( tdb1, tdb2, dtr, tt1, tt2, j )
 !>
 !  Time scale transformation:  Barycentric Dynamical Time, TDB, to
 !  Terrestrial Time, TT.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical.
 !
@@ -29617,7 +28210,7 @@ subroutine iau_TDBTT ( tdb1, tdb2, dtr, tt1, tt2, j )
 !     adopted solar-system ephemeris, and can be obtained by numerical
 !     integration, by interrogating a precomputed time ephemeris or by
 !     evaluating a model such as that implemented in the SOFA routine
-!     iau_DTDB.  The quantity is dominated by an annual term of 1.7 ms
+!     DTDB.  The quantity is dominated by an annual term of 1.7 ms
 !     amplitude.
 !
 !  3) TDB is essentially the same as Teph, the time argument for the
@@ -29631,10 +28224,6 @@ subroutine iau_TDBTT ( tdb1, tdb2, dtr, tt1, tt2, j )
 !     IAU 2006 Resolution 3
 !
 !  This revision:  2019 June 20
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -29661,16 +28250,13 @@ end if
 !  Status (always OK).
 j = 0
 
-end subroutine iau_TDBTT
-!***********************************************************************
+end subroutine TDBTT
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_TF2A ( s, ihour, imin, sec, rad, j )
+!-----------------------------------------------------------------------
+subroutine TF2A ( s, ihour, imin, sec, rad, j )
 !>
 !  Convert hours, minutes, seconds to radians.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -29701,10 +28287,6 @@ subroutine iau_TF2A ( s, ihour, imin, sec, rad, j )
 !      first, the smallest taking precedence.
 !
 !  This revision:  2013 December 2
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -29740,16 +28322,13 @@ if ( s == '-' ) w = -w
 !  Return the result.
 rad = w
 
-end subroutine iau_TF2A
-!***********************************************************************
+end subroutine TF2A
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_TF2D ( s, ihour, imin, sec, days, j )
+!-----------------------------------------------------------------------
+subroutine TF2D ( s, ihour, imin, sec, days, j )
 !>
 !  Convert hours, minutes, seconds to days.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -29780,10 +28359,6 @@ subroutine iau_TF2D ( s, ihour, imin, sec, days, j )
 !      first, the smallest taking precedence.
 !
 !  This revision:  2013 December 2
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -29819,18 +28394,15 @@ if ( s == '-' ) w = -w
 !  Return the result.
 days = w
 
-end subroutine iau_TF2D
-!***********************************************************************
+end subroutine TF2D
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_TPORS ( xi, eta, a, b, a01, b01, a02, b02, n )
+!-----------------------------------------------------------------------
+subroutine TPORS ( xi, eta, a, b, a01, b01, a02, b02, n )
 !>
 !  In the tangent plane projection, given the rectangular coordinates
 !  of a star and its spherical coordinates, determine the spherical
 !  coordinates of the tangent point.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -29888,12 +28460,12 @@ subroutine iau_TPORS ( xi, eta, a, b, a01, b01, a02, b02, n )
 !
 !         spherical       vector       solve for
 !
-!         iau_TPXES      iau_TPXEV      xi,eta
-!         iau_TPSTS      iau_TPSTV       star
-!       > iau_TPORS <    iau_TPORV      origin
+!         TPXES      TPXEV      xi,eta
+!         TPSTS      TPSTV       star
+!       > TPORS <    TPORV      origin
 !
 !  Called:
-!     iau_ANP      normalize angle into range 0 to 2pi
+!     ANP      normalize angle into range 0 to 2pi
 !
 !  References:
 !
@@ -29905,10 +28477,6 @@ subroutine iau_TPORS ( xi, eta, a, b, a01, b01, a02, b02, n )
 !
 !  This revision:   2018 January 2
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -29918,7 +28486,7 @@ integer n
 
 double precision xi2, r, sb, cb, rsb, rcb, w2, w, s, c
 
-!     DOUBLE PRECISION iau_ANP
+!     DOUBLE PRECISION ANP
 
 xi2 = xi*xi
 r = sqrt(1d0+xi2+eta*eta)
@@ -29932,12 +28500,12 @@ if ( w2 >= 0d0 ) then
    s = rsb - eta*w
    c = rsb*eta + w
    if ( xi == 0d0 .and. w == 0d0 ) w = 1d0
-   a01 = iau_ANP(a - atan2(xi,w))
+   a01 = ANP(a - atan2(xi,w))
    b01 = atan2(s,c)
    w = -w
    s = rsb - eta*w
    c = rsb*eta + w
-   a02 = iau_ANP(a - atan2(xi,w))
+   a02 = ANP(a - atan2(xi,w))
    b02 = atan2(s,c)
    if ( abs(rsb) < 1d0 ) then
       n = 1
@@ -29948,18 +28516,15 @@ else
    n = 0
 end if
 
-end subroutine iau_TPORS
-!***********************************************************************
+end subroutine TPORS
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_TPORV ( xi, eta, v, v01, v02, n )
+!-----------------------------------------------------------------------
+subroutine TPORV ( xi, eta, v, v01, v02, n )
 !>
 !  In the tangent plane projection, given the rectangular coordinates
 !  of a star and its direction cosines, determine the direction
 !  cosines of the tangent point.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -30015,9 +28580,9 @@ subroutine iau_TPORV ( xi, eta, v, v01, v02, n )
 !
 !         spherical       vector       solve for
 !
-!         iau_TPXES      iau_TPXEV      xi,eta
-!         iau_TPSTS      iau_TPSTV       star
-!         iau_TPORS    > iau_TPORV <    origin
+!         TPXES      TPXEV      xi,eta
+!         TPSTS      TPSTV       star
+!         TPORS    > TPORV <    origin
 !
 !  References:
 !
@@ -30028,10 +28593,6 @@ subroutine iau_TPORV ( xi, eta, v, v01, v02, n )
 !     1987, Chapter 13.
 !
 !  This revision:   2018 January 2
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -30072,18 +28633,15 @@ else
    n = 0
 end if
 
-end subroutine iau_TPORV
-!***********************************************************************
+end subroutine TPORV
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_TPSTS ( xi, eta, a0, b0, a, b )
+!-----------------------------------------------------------------------
+subroutine TPSTS ( xi, eta, a0, b0, a, b )
 !>
 !  In the tangent plane projection, given the star's rectangular
 !  coordinates and the spherical coordinates of the tangent point,
 !  solve for the spherical coordinates of the star.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -30110,12 +28668,12 @@ subroutine iau_TPSTS ( xi, eta, a0, b0, a, b )
 !
 !         spherical       vector       solve for
 !
-!         iau_TPXES      iau_TPXEV      xi,eta
-!       > iau_TPSTS <    iau_TPSTV       star
-!         iau_TPORS      iau_TPORV      origin
+!         TPXES      TPXEV      xi,eta
+!       > TPSTS <    TPSTV       star
+!         TPORS      TPORV      origin
 !
 !  Called:
-!     iau_ANP      normalize angle into range 0 to 2pi
+!     ANP      normalize angle into range 0 to 2pi
 !
 !  References:
 !
@@ -30127,10 +28685,6 @@ subroutine iau_TPSTS ( xi, eta, a0, b0, a, b )
 !
 !  This revision:   2018 January 2
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -30139,26 +28693,23 @@ double precision xi, eta, a0, b0, a, b
 
 double precision sb0, cb0, d
 
-!     DOUBLE PRECISION iau_ANP
+!     DOUBLE PRECISION ANP
 
 sb0 = sin(b0)
 cb0 = cos(b0)
 d = cb0 - eta*sb0
-a = iau_ANP(atan2(xi,d)+a0)
+a = ANP(atan2(xi,d)+a0)
 b = atan2(sb0+eta*cb0,sqrt(xi*xi+d*d))
 
-end subroutine iau_TPSTS
-!***********************************************************************
+end subroutine TPSTS
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_TPSTV ( xi, eta, v0, v )
+!-----------------------------------------------------------------------
+subroutine TPSTV ( xi, eta, v0, v )
 !>
 !  In the tangent plane projection, given the star's rectangular
 !  coordinates and the direction cosines of the tangent point, solve
 !  for the direction cosines of the star.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -30198,9 +28749,9 @@ subroutine iau_TPSTV ( xi, eta, v0, v )
 !
 !         spherical       vector       solve for
 !
-!         iau_TPXES      iau_TPXEV      xi,eta
-!         iau_TPSTS    > iau_TPSTV <     star
-!         iau_TPORS      iau_TPORV      origin
+!         TPXES      TPXEV      xi,eta
+!         TPSTS    > TPSTV <     star
+!         TPORS      TPORV      origin
 !
 !  References:
 !
@@ -30211,10 +28762,6 @@ subroutine iau_TPSTV ( xi, eta, v0, v )
 !     1987, Chapter 13.
 !
 !  This revision:   2018 January 2
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -30244,18 +28791,15 @@ v(1) = ( x - (xi*y+eta*x*z) / r ) / f
 v(2) = ( y + (xi*x-eta*y*z) / r ) / f
 v(3) = ( z + eta*r ) / f
 
-end subroutine iau_TPSTV
-!***********************************************************************
+end subroutine TPSTV
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_TPXES ( a, b, a0, b0, xi, eta, j )
+!-----------------------------------------------------------------------
+subroutine TPXES ( a, b, a0, b0, xi, eta, j )
 !>
 !  In the tangent plane projection, given celestial spherical
 !  coordinates for a star and the tangent point, solve for the star's
 !  rectangular coordinates in the tangent plane.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -30288,9 +28832,9 @@ subroutine iau_TPXES ( a, b, a0, b0, xi, eta, j )
 !
 !         spherical       vector       solve for
 !
-!       > iau_TPXES <    iau_TPXEV       xi,eta
-!         iau_TPSTS      iau_TPSTV        star
-!         iau_TPORS      iau_TPORV       origin
+!       > TPXES <    TPXEV       xi,eta
+!         TPSTS      TPSTV        star
+!         TPORS      TPORV       origin
 !
 !  References:
 !
@@ -30301,10 +28845,6 @@ subroutine iau_TPXES ( a, b, a0, b0, xi, eta, j )
 !     1987, Chapter 13.
 !
 !  This revision:   2018 January 2
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -30347,18 +28887,15 @@ end if
 xi = cb*sda / d
 eta = ( sb*cb0 - cb*sb0*cda ) / d
 
-end subroutine iau_TPXES
-!***********************************************************************
+end subroutine TPXES
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_TPXEV ( v, v0, xi, eta, j )
+!-----------------------------------------------------------------------
+subroutine TPXEV ( v, v0, xi, eta, j )
 !>
 !  In the tangent plane projection, given celestial direction cosines
 !  for a star and the tangent point, solve for the star's rectangular
 !  coordinates in the tangent plane.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -30402,9 +28939,9 @@ subroutine iau_TPXEV ( v, v0, xi, eta, j )
 !
 !         spherical       vector       solve for
 !
-!         iau_TPXES    > iau_TPXEV <    xi,eta
-!         iau_TPSTS      iau_TPSTV       star
-!         iau_TPORS      iau_TPORV      origin
+!         TPXES    > TPXEV <    xi,eta
+!         TPSTS      TPSTV       star
+!         TPORS      TPORV      origin
 !
 !  References:
 !
@@ -30415,10 +28952,6 @@ subroutine iau_TPXEV ( v, v0, xi, eta, j )
 !     1987, Chapter 13.
 !
 !  This revision:   2018 January 2
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -30470,16 +29003,13 @@ d = r*d
 xi = ( y*x0 - x*y0 ) / d
 eta = ( z*r2 - z0*w ) / d
 
-end subroutine iau_TPXEV
-!***********************************************************************
+end subroutine TPXEV
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_TR ( r, rt )
+!-----------------------------------------------------------------------
+subroutine TR ( r, rt )
 !>
 !  Transpose an r-matrix.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -30490,13 +29020,9 @@ subroutine iau_TR ( r, rt )
 !     RT       d(3,3)    transpose
 !
 !  Called:
-!     iau_CR       copy r-matrix
+!     CR       copy r-matrix
 !
 !  This revision:  2000 November 25
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -30512,18 +29038,15 @@ do 2 i=1,3
       wm(i,j) = r(j,i)
 1    continue
 2 continue
-call iau_CR ( wm, rt )
+call CR ( wm, rt )
 
-end subroutine iau_TR
-!***********************************************************************
+end subroutine TR
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_TRXP ( r, p, trp )
+!-----------------------------------------------------------------------
+subroutine TRXP ( r, p, trp )
 !>
 !  Multiply a p-vector by the transpose of an r-matrix.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -30535,14 +29058,10 @@ subroutine iau_TRXP ( r, p, trp )
 !     TRP      d(3)      R * P
 !
 !  Called:
-!     iau_TR       transpose r-matrix
-!     iau_RXP      product of r-matrix and p-vector
+!     TR       transpose r-matrix
+!     RXP      product of r-matrix and p-vector
 !
 !  This revision:  2009 July 11
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -30553,21 +29072,18 @@ double precision r(3,3), p(3), trp(3)
 double precision ri(3,3)
 
 !  Transpose of matrix R.
-call iau_TR ( r, ri )
+call TR ( r, ri )
 
 !  Matrix RI * vector P -> vector TRP.
-call iau_RXP ( ri, p, trp )
+call RXP ( ri, p, trp )
 
-end subroutine iau_TRXP
-!***********************************************************************
+end subroutine TRXP
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_TRXPV ( r, pv, trpv )
+!-----------------------------------------------------------------------
+subroutine TRXPV ( r, pv, trpv )
 !>
 !  Multiply a pv-vector by the transpose of an r-matrix.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -30579,14 +29095,10 @@ subroutine iau_TRXPV ( r, pv, trpv )
 !     TRPV     d(3,2)    R * PV
 !
 !  Called:
-!     iau_TR       transpose r-matrix
-!     iau_RXPV     product of r-matrix and pv-vector
+!     TR       transpose r-matrix
+!     RXPV     product of r-matrix and pv-vector
 !
 !  This revision:  2009 July 11
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -30597,22 +29109,19 @@ double precision r(3,3), pv(3,2), trpv(3,2)
 double precision ri(3,3)
 
 !  Transpose of matrix R.
-call iau_TR ( r, ri )
+call TR ( r, ri )
 
 !  Matrix RI * vector PV -> vector TRPV.
-call iau_RXPV ( ri, pv, trpv )
+call RXPV ( ri, pv, trpv )
 
-end subroutine iau_TRXPV
-!***********************************************************************
+end subroutine TRXPV
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_TTTAI ( tt1, tt2, tai1, tai2, j )
+!-----------------------------------------------------------------------
+subroutine TTTAI ( tt1, tt2, tai1, tai2, j )
 !>
 !  Time scale transformation:  Terrestrial Time, TT, to International
 !  Atomic Time, TAI.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical.
 !
@@ -30640,10 +29149,6 @@ subroutine iau_TTTAI ( tt1, tt2, tai1, tai2, j )
 !
 !  This revision:  2019 June 20
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -30666,17 +29171,14 @@ end if
 !  Status (always OK).
 j = 0
 
-end subroutine iau_TTTAI
-!***********************************************************************
+end subroutine TTTAI
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_TTTCG ( tt1, tt2, tcg1, tcg2, j )
+!-----------------------------------------------------------------------
+subroutine TTTCG ( tt1, tt2, tcg1, tcg2, j )
 !>
 !  Time scale transformation:  Terrestrial Time, TT, to Geocentric
 !  Coordinate Time, TCG.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical.
 !
@@ -30702,10 +29204,6 @@ subroutine iau_TTTCG ( tt1, tt2, tcg1, tcg2, j )
 !     IAU 2000 Resolution B1.9
 !
 !  This revision:  2019 June 20
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -30741,17 +29239,14 @@ end if
 !  Status (always OK).
 j = 0
 
-end subroutine iau_TTTCG
-!***********************************************************************
+end subroutine TTTCG
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_TTTDB ( tt1, tt2, dtr, tdb1, tdb2, j )
+!-----------------------------------------------------------------------
+subroutine TTTDB ( tt1, tt2, dtr, tdb1, tdb2, j )
 !>
 !  Time scale transformation:  Terrestrial Time, TT, to Barycentric
 !  Dynamical Time, TDB.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical.
 !
@@ -30775,7 +29270,7 @@ subroutine iau_TTTDB ( tt1, tt2, dtr, tdb1, tdb2, j )
 !     adopted solar-system ephemeris, and can be obtained by numerical
 !     integration, by interrogating a precomputed time ephemeris or by
 !     evaluating a model such as that implemented in the SOFA routine
-!     iau_DTDB.  The quantity is dominated by an annual term of 1.7 ms
+!     DTDB.  The quantity is dominated by an annual term of 1.7 ms
 !     amplitude.
 !
 !  3) TDB is essentially the same as Teph, the time argument for the JPL
@@ -30789,10 +29284,6 @@ subroutine iau_TTTDB ( tt1, tt2, dtr, tdb1, tdb2, j )
 !     IAU 2006 Resolution 3
 !
 !  This revision:  2019 June 20
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -30819,17 +29310,14 @@ end if
 !  Status (always OK).
 j = 0
 
-end subroutine iau_TTTDB
-!***********************************************************************
+end subroutine TTTDB
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_TTUT1 ( tt1, tt2, dt, ut11, ut12, j )
+!-----------------------------------------------------------------------
+subroutine TTUT1 ( tt1, tt2, dt, ut11, ut12, j )
 !>
 !  Time scale transformation:  Terrestrial Time, TT, to Universal Time,
 !  UT1.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical.
 !
@@ -30857,10 +29345,6 @@ subroutine iau_TTUT1 ( tt1, tt2, dt, ut11, ut12, j )
 !
 !  This revision:  2019 June 20
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -30886,17 +29370,14 @@ end if
 !  Status (always OK).
 j = 0
 
-end subroutine iau_TTUT1
-!***********************************************************************
+end subroutine TTUT1
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_UT1TAI ( ut11, ut12, dta, tai1, tai2, j )
+!-----------------------------------------------------------------------
+subroutine UT1TAI ( ut11, ut12, dta, tai1, tai2, j )
 !>
 !  Time scale transformation:  Universal Time, UT1, to International
 !  Atomic Time, TAI.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical.
 !
@@ -30925,10 +29406,6 @@ subroutine iau_UT1TAI ( ut11, ut12, dta, tai1, tai2, j )
 !
 !  This revision:  2019 June 20
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -30954,17 +29431,14 @@ end if
 !  Status (always OK).
 j = 0
 
-end subroutine iau_UT1TAI
-!***********************************************************************
+end subroutine UT1TAI
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_UT1TT ( ut11, ut12, dt, tt1, tt2, j )
+!-----------------------------------------------------------------------
+subroutine UT1TT ( ut11, ut12, dt, tt1, tt2, j )
 !>
 !  Time scale transformation:  Universal Time, UT1, to Terrestrial Time,
 !  TT.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical.
 !
@@ -30992,10 +29466,6 @@ subroutine iau_UT1TT ( ut11, ut12, dt, tt1, tt2, j )
 !
 !  This revision:  2019 June 20
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -31021,17 +29491,14 @@ end if
 !  Status (always OK).
 j = 0
 
-end subroutine iau_UT1TT
-!***********************************************************************
+end subroutine UT1TT
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_UT1UTC ( ut11, ut12, dut1, utc1, utc2, j )
+!-----------------------------------------------------------------------
+subroutine UT1UTC ( ut11, ut12, dut1, utc1, utc2, j )
 !>
 !  Time scale transformation:  Universal Time, UT1, to Coordinated
 !  Universal Time, UTC.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical.
 !
@@ -31064,18 +29531,18 @@ subroutine iau_UT1UTC ( ut11, ut12, dut1, utc1, utc2, j )
 !     is that the returned quasi JD day UTC1+UTC2 represents UTC days
 !     whether the length is 86399, 86400 or 86401 SI seconds.
 !
-!  4) The routine iau_D2DTF can be used to transform the UTC quasi-JD
+!  4) The routine D2DTF can be used to transform the UTC quasi-JD
 !     into calendar date and clock time, including UTC leap second
 !     handling.
 !
 !  5) The warning status "dubious year" flags UTCs that predate the
 !     introduction of the time scale or that are too far in the future
-!     to be trusted.  See iau_DAT for further details.
+!     to be trusted.  See DAT for further details.
 !
 !  Called:
-!     iau_JD2CAL   JD to Gregorian calendar
-!     iau_DAT      delta(AT) = TAI-UTC
-!     iau_CAL2JD   Gregorian calendar to JD
+!     JD2CAL   JD to Gregorian calendar
+!     DAT      delta(AT) = TAI-UTC
+!     CAL2JD   Gregorian calendar to JD
 !
 !  References:
 !
@@ -31086,10 +29553,6 @@ subroutine iau_UT1UTC ( ut11, ut12, dut1, utc1, utc2, j )
 !     P. Kenneth Seidelmann (ed), University Science Books (1992)
 !
 !  This revision:  2019 June 20
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -31124,9 +29587,9 @@ d1 = u1
 dats1 = 0d0
 do 1 i=-1,3
    d2 = u2 + dble(i)
-   call iau_JD2CAL ( d1, d2, iy, im, id, fd, js )
+   call JD2CAL ( d1, d2, iy, im, id, fd, js )
    if ( js/=0 ) go to 9
-   call iau_DAT ( iy, im, id, 0d0, dats2, js )
+   call DAT ( iy, im, id, 0d0, dats2, js )
    if ( js<0 ) go to 9
    if ( i==-1 ) dats1 = dats2
    ddats = dats2 - dats1
@@ -31136,7 +29599,7 @@ do 1 i=-1,3
       if ( ddats*duts>=0d0 ) duts = duts-ddats
 
 !        UT1 for the start of the UTC day that ends in a leap.
-      call iau_CAL2JD ( iy, im, id, d1, d2, js )
+      call CAL2JD ( iy, im, id, d1, d2, js )
       us1 = d1
       us2 = d2 - 1d0 + duts/d2s
 
@@ -31175,17 +29638,14 @@ end if
 9 continue
 j = js
 
-end subroutine iau_UT1UTC
-!***********************************************************************
+end subroutine UT1UTC
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_UTCTAI ( utc1, utc2, tai1, tai2, j )
+!-----------------------------------------------------------------------
+subroutine UTCTAI ( utc1, utc2, tai1, tai2, j )
 !>
 !  Time scale transformation:  Coordinated Universal Time, UTC, to
 !  International Atomic Time, TAI.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical.
 !
@@ -31214,9 +29674,9 @@ subroutine iau_UTCTAI ( utc1, utc2, tai1, tai2, j )
 !
 !  3) The warning status "dubious year" flags UTCs that predate the
 !     introduction of the time scale or that are too far in the future
-!     to be trusted.  See iau_DAT for further details.
+!     to be trusted.  See DAT for further details.
 !
-!  4) The routine iau_DTF2D converts from calendar date and time of day
+!  4) The routine DTF2D converts from calendar date and time of day
 !     into 2-part Julian Date, and in the case of UTC implements the
 !     leap-second-ambiguity convention described above.
 !
@@ -31224,9 +29684,9 @@ subroutine iau_UTCTAI ( utc1, utc2, tai1, tai2, j )
 !     Date.
 !
 !  Called:
-!     iau_JD2CAL   JD to Gregorian calendar
-!     iau_DAT      delta(AT) = TAI-UTC
-!     iau_CAL2JD   Gregorian calendar to JD
+!     JD2CAL   JD to Gregorian calendar
+!     DAT      delta(AT) = TAI-UTC
+!     CAL2JD   Gregorian calendar to JD
 !
 !  References:
 !
@@ -31237,10 +29697,6 @@ subroutine iau_UTCTAI ( utc1, utc2, tai1, tai2, j )
 !     P. Kenneth Seidelmann (ed), University Science Books (1992)
 !
 !  This revision:  2019 June 20
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -31268,19 +29724,19 @@ else
 end if
 
 !  Get TAI-UTC at 0h today.
-call iau_JD2CAL ( u1, u2, iy, im, id, fd, js )
+call JD2CAL ( u1, u2, iy, im, id, fd, js )
 if ( js/=0 ) go to 9
-call iau_DAT ( iy, im, id, 0d0, dat0, js )
+call DAT ( iy, im, id, 0d0, dat0, js )
 if ( js<0 ) go to 9
 
 !  Get TAI-UTC at 12h today (to detect drift).
-call iau_DAT ( iy, im, id, 0.5d0, dat12, js )
+call DAT ( iy, im, id, 0.5d0, dat12, js )
 if ( js<0 ) go to 9
 
 !  Get TAI-UTC at 0h tomorrow (to detect jumps).
-call iau_JD2CAL ( u1+1.5d0, u2-fd, iyt, imt, idt, w, js )
+call JD2CAL ( u1+1.5d0, u2-fd, iyt, imt, idt, w, js )
 if ( js/=0 ) go to 9
-call iau_DAT ( iyt, imt, idt, 0d0, dat24, js )
+call DAT ( iyt, imt, idt, 0d0, dat24, js )
 if ( js<0 ) go to 9
 
 !  Separate TAI-UTC change into per-day (DLOD) and any jump (DLEAP).
@@ -31294,7 +29750,7 @@ fd = fd * (d2s+dleap)/d2s
 fd = fd * (d2s+dlod)/d2s
 
 !  Today's calendar date to 2-part JD.
-call iau_CAL2JD ( iy, im, id, z1, z2, js )
+call CAL2JD ( iy, im, id, z1, z2, js )
 if ( js/=0 ) go to 9
 
 !  Assemble the TAI result, preserving the UTC split and order.
@@ -31312,17 +29768,14 @@ end if
 9 continue
 j = js
 
-end subroutine iau_UTCTAI
-!***********************************************************************
+end subroutine UTCTAI
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_UTCUT1 ( utc1, utc2, dut1, ut11, ut12, j )
+!-----------------------------------------------------------------------
+subroutine UTCUT1 ( utc1, utc2, dut1, ut11, ut12, j )
 !>
 !  Time scale transformation:  Coordinated Universal Time, UTC, to
 !  Universal Time, UT1.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical.
 !
@@ -31349,9 +29802,9 @@ subroutine iau_UTCUT1 ( utc1, utc2, dut1, ut11, ut12, j )
 !
 !  3) The warning status "dubious year" flags UTCs that predate the
 !     introduction of the time scale or that are too far in the future
-!     to be trusted.  See iau_DAT for further details.
+!     to be trusted.  See DAT for further details.
 !
-!  4) The routine iau_DTF2D converts from calendar date and time of day
+!  4) The routine DTF2D converts from calendar date and time of day
 !     into 2-part Julian Date, and in the case of UTC implements the
 !     leap-second-ambiguity convention described above.
 !
@@ -31372,16 +29825,12 @@ subroutine iau_UTCUT1 ( utc1, utc2, dut1, ut11, ut12, j )
 !     P. Kenneth Seidelmann (ed), University Science Books (1992)
 !
 !  Called:
-!     iau_JD2CAL   JD to Gregorian calendar
-!     iau_DAT      delta(AT) = TAI-UTC
-!     iau_UTCTAI   UTC to TAI
-!     iau_TAIUT1   TAI to UT1
+!     JD2CAL   JD to Gregorian calendar
+!     DAT      delta(AT) = TAI-UTC
+!     UTCTAI   UTC to TAI
+!     TAIUT1   TAI to UT1
 !
 !  This revision:  2013 August 12
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -31393,37 +29842,34 @@ integer iy, im, id, js, jw
 double precision w, dat, dta, tai1, tai2
 
 !  Look up TAI-UTC.
-call iau_JD2CAL ( utc1, utc2, iy, im, id, w, js )
+call JD2CAL ( utc1, utc2, iy, im, id, w, js )
 if ( js/=0 ) go to 9
-call iau_DAT ( iy, im, id, 0d0, dat, js )
+call DAT ( iy, im, id, 0d0, dat, js )
 if ( js<0 ) go to 9
 
 !  Form UT1-TAI.
 dta = dut1 - dat
 
 !  UTC to TAI to UT1.
-call iau_UTCTAI ( utc1, utc2, tai1, tai2, jw )
+call UTCTAI ( utc1, utc2, tai1, tai2, jw )
 if ( jw<0 ) then
    js = jw
    go to 9
 end if
-call iau_TAIUT1 ( tai1, tai2, dta, ut11, ut12, jw )
+call TAIUT1 ( tai1, tai2, dta, ut11, ut12, jw )
 
 !  Return the status.
 9 continue
 j = js
 
-end subroutine iau_UTCUT1
-!***********************************************************************
+end subroutine UTCUT1
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_XY06 ( date1, date2, x, y )
+!-----------------------------------------------------------------------
+subroutine XY06 ( date1, date2, x, y )
 !>
 !  X,Y coordinates of celestial intermediate pole from series based
 !  on IAU 2006 precession and IAU 2000A nutation.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  canonical model.
 !
@@ -31462,27 +29908,27 @@ subroutine iau_XY06 ( date1, date2, x, y )
 !     (2003) and are from Simon et al. (1994) and Souchay et al. (1999).
 !
 !  4) This is an alternative to the angles-based method, via the SOFA
-!     routine iau_FW2XY and as used in iau_XYS06A for example.  The
+!     routine FW2XY and as used in XYS06A for example.  The
 !     two methods agree at the 1 microarcsecond level (at present),
 !     a negligible amount compared with the intrinsic accuracy of the
 !     models.  However, it would be unwise to mix the two methods
 !     (angles-based and series-based) in a single application.
 !
 !  Called:
-!     iau_FAL03    mean anomaly of the Moon
-!     iau_FALP03   mean anomaly of the Sun
-!     iau_FAF03    mean argument of the latitude of the Moon
-!     iau_FAD03    mean elongation of the Moon from the Sun
-!     iau_FAOM03   mean longitude of the Moon's ascending node
-!     iau_FAME03   mean longitude of Mercury
-!     iau_FAVE03   mean longitude of Venus
-!     iau_FAE03    mean longitude of Earth
-!     iau_FAMA03   mean longitude of Mars
-!     iau_FAJU03   mean longitude of Jupiter
-!     iau_FASA03   mean longitude of Saturn
-!     iau_FAUR03   mean longitude of Uranus
-!     iau_FANE03   mean longitude of Neptune
-!     iau_FAPA03   general accumulated precession in longitude
+!     FAL03    mean anomaly of the Moon
+!     FALP03   mean anomaly of the Sun
+!     FAF03    mean argument of the latitude of the Moon
+!     FAD03    mean elongation of the Moon from the Sun
+!     FAOM03   mean longitude of the Moon's ascending node
+!     FAME03   mean longitude of Mercury
+!     FAVE03   mean longitude of Venus
+!     FAE03    mean longitude of Earth
+!     FAMA03   mean longitude of Mars
+!     FAJU03   mean longitude of Jupiter
+!     FASA03   mean longitude of Saturn
+!     FAUR03   mean longitude of Uranus
+!     FANE03   mean longitude of Neptune
+!     FAPA03   general accumulated precession in longitude
 !
 !  References:
 !
@@ -31503,10 +29949,6 @@ subroutine iau_XY06 ( date1, date2, x, y )
 !     Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 !
 !  This revision:  2013 December 2
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -31559,10 +30001,10 @@ double precision t, w, pt(0:maxpt), fa(14), xypr(0:1), xypl(0:1), &
 integer jpt, i, j, jxy, ialast, ifreq, m, ia, jsc
 
 !  Functions
-!     DOUBLE PRECISION iau_FAL03, iau_FALP03, iau_FAF03, iau_FAD03,
-!    :                 iau_FAOM03, iau_FAME03, iau_FAVE03, iau_FAE03,
-!    :                 iau_FAMA03, iau_FAJU03, iau_FASA03, iau_FAUR03,
-!    :                 iau_FANE03, iau_FAPA03
+!     DOUBLE PRECISION FAL03, FALP03, FAF03, FAD03,
+!    :                 FAOM03, FAME03, FAVE03, FAE03,
+!    :                 FAMA03, FAJU03, FASA03, FAUR03,
+!    :                 FANE03, FAPA03
 
 !  Polynomial coefficients (arcsec).
 data ((xyp(i,jxy),i=0,maxpt),jxy=0,1) / &
@@ -33826,32 +32268,32 @@ do 1 jpt=0,maxpt
 !
 
 !  Mean anomaly of the Moon.
-fa(1) = iau_FAL03 ( t )
+fa(1) = FAL03 ( t )
 
 !  Mean anomaly of the Sun.
-fa(2) = iau_FALP03 ( t )
+fa(2) = FALP03 ( t )
 
 !  Mean argument of the latitude of the Moon.
-fa(3) = iau_FAF03 ( t )
+fa(3) = FAF03 ( t )
 
 !  Mean elongation of the Moon from the Sun.
-fa(4) = iau_FAD03 ( t )
+fa(4) = FAD03 ( t )
 
 !  Mean longitude of the ascending node of the Moon.
-fa(5) = iau_FAOM03 ( t )
+fa(5) = FAOM03 ( t )
 
 !  Planetary longitudes, Mercury through Neptune.
-fa(6)  = iau_FAME03 ( t )
-fa(7)  = iau_FAVE03 ( t )
-fa(8)  = iau_FAE03 ( t )
-fa(9)  = iau_FAMA03 ( t )
-fa(10) = iau_FAJU03 ( t )
-fa(11) = iau_FASA03 ( t )
-fa(12) = iau_FAUR03 ( t )
-fa(13) = iau_FANE03 ( t )
+fa(6)  = FAME03 ( t )
+fa(7)  = FAVE03 ( t )
+fa(8)  = FAE03 ( t )
+fa(9)  = FAMA03 ( t )
+fa(10) = FAJU03 ( t )
+fa(11) = FASA03 ( t )
+fa(12) = FAUR03 ( t )
+fa(13) = FANE03 ( t )
 
 !  General accumulated precession in longitude.
-fa(14) = iau_FAPA03 ( t )
+fa(14) = FAPA03 ( t )
 
 !  --------------------------------------
 !  Polynomial part of precession-nutation
@@ -33959,18 +32401,15 @@ do 11 ifreq=nfls,1,-1
 x = das2r * ( xypr(0) + ( xyls(0) + xypl(0) )/1d6 )
 y = das2r * ( xypr(1) + ( xyls(1) + xypl(1) )/1d6 )
 
-end subroutine iau_XY06
-!***********************************************************************
+end subroutine XY06
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_XYS00A ( date1, date2, x, y, s )
+!-----------------------------------------------------------------------
+subroutine XYS00A ( date1, date2, x, y, s )
 !>
 !  For a given TT date, compute the X,Y coordinates of the Celestial
 !  Intermediate Pole and the CIO locator s, using the IAU 2000A
 !  precession-nutation model.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -34009,12 +32448,12 @@ subroutine iau_XYS00A ( date1, date2, x, y, s )
 !     Intermediate Origin on the equator of the CIP.
 !
 !  4) A faster, but slightly less accurate result (about 1 mas for X,Y),
-!     can be obtained by using instead the iau_XYS00B routine.
+!     can be obtained by using instead the XYS00B routine.
 !
 !  Called:
-!     iau_PNM00A   classical NPB matrix, IAU 2000A
-!     iau_BPN2XY   extract CIP X,Y coordinates from NPB matrix
-!     iau_S00      the CIO locator s, given X,Y, IAU 2000A
+!     PNM00A   classical NPB matrix, IAU 2000A
+!     BPN2XY   extract CIP X,Y coordinates from NPB matrix
+!     S00      the CIO locator s, given X,Y, IAU 2000A
 !
 !  Reference:
 !
@@ -34022,10 +32461,6 @@ subroutine iau_XYS00A ( date1, date2, x, y, s )
 !     IERS Technical Note No. 32, BKG (2004)
 !
 !  This revision:  2006 November 13
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -34035,29 +32470,26 @@ double precision date1, date2, x, y, s
 
 double precision rbpn(3,3)
 
-!     DOUBLE PRECISION iau_S00
+!     DOUBLE PRECISION S00
 
 !  Form the bias-precession-nutation matrix, IAU 2000A.
-call iau_PNM00A ( date1, date2, rbpn )
+call PNM00A ( date1, date2, rbpn )
 
 !  Extract X,Y.
-call iau_BPN2XY ( rbpn, x, y )
+call BPN2XY ( rbpn, x, y )
 
 !  Obtain s.
-s = iau_S00 ( date1, date2, x, y )
+s = S00 ( date1, date2, x, y )
 
-end subroutine iau_XYS00A
-!***********************************************************************
+end subroutine XYS00A
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_XYS00B ( date1, date2, x, y, s )
+!-----------------------------------------------------------------------
+subroutine XYS00B ( date1, date2, x, y, s )
 !>
 !  For a given TT date, compute the X,Y coordinates of the Celestial
 !  Intermediate Pole and the CIO locator s, using the IAU 2000B
 !  precession-nutation model.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -34096,12 +32528,12 @@ subroutine iau_XYS00B ( date1, date2, x, y, s )
 !     Intermediate Origin on the equator of the CIP.
 !
 !  4) The present routine is faster, but slightly less accurate (about
-!     1 mas in X,Y), than the iau_XYS00A routine.
+!     1 mas in X,Y), than the XYS00A routine.
 !
 !  Called:
-!     iau_PNM00B   classical NPB matrix, IAU 2000B
-!     iau_BPN2XY   extract CIP X,Y coordinates from NPB matrix
-!     iau_S00      the CIO locator s, given X,Y, IAU 2000A
+!     PNM00B   classical NPB matrix, IAU 2000B
+!     BPN2XY   extract CIP X,Y coordinates from NPB matrix
+!     S00      the CIO locator s, given X,Y, IAU 2000A
 !
 !  Reference:
 !
@@ -34109,10 +32541,6 @@ subroutine iau_XYS00B ( date1, date2, x, y, s )
 !     IERS Technical Note No. 32, BKG (2004)
 !
 !  This revision:  2006 November 13
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -34122,29 +32550,26 @@ double precision date1, date2, x, y, s
 
 double precision rbpn(3,3)
 
-!     DOUBLE PRECISION iau_S00
+!     DOUBLE PRECISION S00
 
 !  Form the bias-precession-nutation matrix, IAU 2000A.
-call iau_PNM00B ( date1, date2, rbpn )
+call PNM00B ( date1, date2, rbpn )
 
 !  Extract X,Y.
-call iau_BPN2XY ( rbpn, x, y )
+call BPN2XY ( rbpn, x, y )
 
 !  Obtain s.
-s = iau_S00 ( date1, date2, x, y )
+s = S00 ( date1, date2, x, y )
 
-end subroutine iau_XYS00B
-!***********************************************************************
+end subroutine XYS00B
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_XYS06A ( date1, date2, x, y, s )
+!-----------------------------------------------------------------------
+subroutine XYS06A ( date1, date2, x, y, s )
 !>
 !  For a given TT date, compute the X,Y coordinates of the Celestial
 !  Intermediate Pole and the CIO locator s, using the IAU 2006
 !  precession and IAU 2000A nutation models.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  support routine.
 !
@@ -34183,12 +32608,12 @@ subroutine iau_XYS06A ( date1, date2, x, y, s )
 !     Intermediate Origin on the equator of the CIP.
 !
 !  4) Series-based solutions for generating X and Y are also available:
-!     see Capitaine & Wallace (2006) and iau_XY06.
+!     see Capitaine & Wallace (2006) and XY06.
 !
 !  Called:
-!     iau_PNM06A   classical NPB matrix, IAU 2006/2000A
-!     iau_BPN2XY   extract CIP X,Y coordinates from NPB matrix
-!     iau_S06      the CIO locator s, given X,Y, IAU 2006
+!     PNM06A   classical NPB matrix, IAU 2006/2000A
+!     BPN2XY   extract CIP X,Y coordinates from NPB matrix
+!     S06      the CIO locator s, given X,Y, IAU 2006
 !
 !  References:
 !
@@ -34198,10 +32623,6 @@ subroutine iau_XYS06A ( date1, date2, x, y, s )
 !
 !  This revision:  2013 May 14
 !
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
-!
 !-----------------------------------------------------------------------
 
 implicit none
@@ -34210,27 +32631,24 @@ double precision date1, date2, x, y, s
 
 double precision rbpn(3,3)
 
-!     DOUBLE PRECISION iau_S06
+!     DOUBLE PRECISION S06
 
 !  Form the bias-precession-nutation matrix, IAU 2006/2000A.
-call iau_PNM06A ( date1, date2, rbpn )
+call PNM06A ( date1, date2, rbpn )
 
 !  Extract X,Y.
-call iau_BPN2XY ( rbpn, x, y )
+call BPN2XY ( rbpn, x, y )
 
 !  Obtain s.
-s = iau_S06 ( date1, date2, x, y )
+s = S06 ( date1, date2, x, y )
 
-end subroutine iau_XYS06A
-!***********************************************************************
+end subroutine XYS06A
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_ZP ( p )
+!-----------------------------------------------------------------------
+subroutine ZP ( p )
 !>
 !  Zero a p-vector.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -34238,10 +32656,6 @@ subroutine iau_ZP ( p )
 !     P        d(3)      p-vector
 !
 !  This revision:  2000 November 25
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -34255,16 +32669,13 @@ do 1 i=1,3
    p(i) = 0d0
 1 continue
 
-end subroutine iau_ZP
-!***********************************************************************
+end subroutine ZP
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_ZPV ( pv )
+!-----------------------------------------------------------------------
+subroutine ZPV ( pv )
 !>
 !  Zero a pv-vector.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -34272,13 +32683,9 @@ subroutine iau_ZPV ( pv )
 !     PV       d(3,2)      pv-vector
 !
 !  Called:
-!     iau_ZP       zero p-vector
+!     ZP       zero p-vector
 !
 !  This revision:  2006 November 13
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -34289,19 +32696,16 @@ double precision pv(3,2)
 integer i
 
 do 1 i=1,2
-   call iau_ZP ( pv(1,i) )
+   call ZP ( pv(1,i) )
 1 continue
 
-end subroutine iau_ZPV
-!***********************************************************************
+end subroutine ZPV
+!-----------------------------------------------------------------------
 
-!***********************************************************************
-subroutine iau_ZR ( r )
+!-----------------------------------------------------------------------
+subroutine ZR ( r )
 !>
 !  Initialize an r-matrix to the null matrix.
-!
-!  This routine is part of the International Astronomical Union's
-!  SOFA (Standards of Fundamental Astronomy) software collection.
 !
 !  Status:  vector/matrix support routine.
 !
@@ -34309,10 +32713,6 @@ subroutine iau_ZR ( r )
 !     R        d(3,3)    r-matrix
 !
 !  This revision:  2012 April 3
-!
-!  SOFA release 2019-07-22
-!
-!  Copyright (C) 2019 IAU SOFA Board.  See notes at end.
 !
 !-----------------------------------------------------------------------
 
@@ -34330,108 +32730,10 @@ r(3,1) = 0d0
 r(3,2) = 0d0
 r(3,3) = 0d0
 
-end subroutine iau_ZR
-!***********************************************************************
-
-
-!***********************************************************************
-end module sofa_module
-!***********************************************************************
-
-
-!+----------------------------------------------------------------------
-!
-!  Copyright (C) 2019
-!  Standards Of Fundamental Astronomy Board
-!  of the International Astronomical Union.
-!
-!  =====================
-!  SOFA Software License
-!  =====================
-!
-!  NOTICE TO USER:
-!
-!  BY USING THIS SOFTWARE YOU ACCEPT THE FOLLOWING SIX TERMS AND
-!  CONDITIONS WHICH APPLY TO ITS USE.
-!
-!  1. The Software is owned by the IAU SOFA Board ("SOFA").
-!
-!  2. Permission is granted to anyone to use the SOFA software for any
-!     purpose, including commercial applications, free of charge and
-!     without payment of royalties, subject to the conditions and
-!     restrictions listed below.
-!
-!  3. You (the user) may copy and distribute SOFA source code to others,
-!     and use and adapt its code and algorithms in your own software,
-!     on a world-wide, royalty-free basis.  That portion of your
-!     distribution that does not consist of intact and unchanged copies
-!     of SOFA source code files is a "derived work" that must comply
-!     with the following requirements:
-!
-!     a) Your work shall be marked or carry a statement that it
-!        (i) uses routines and computations derived by you from
-!        software provided by SOFA under license to you; and
-!        (ii) does not itself constitute software provided by and/or
-!        endorsed by SOFA.
-!
-!     b) The source code of your derived work must contain descriptions
-!        of how the derived work is based upon, contains and/or differs
-!        from the original SOFA software.
-!
-!     c) The names of all routines in your derived work shall not
-!        include the prefix "iau" or "sofa" or trivial modifications
-!        thereof such as changes of case.
-!
-!     d) The origin of the SOFA components of your derived work must
-!        not be misrepresented;  you must not claim that you wrote the
-!        original software, nor file a patent application for SOFA
-!        software or algorithms embedded in the SOFA software.
-!
-!     e) These requirements must be reproduced intact in any source
-!        distribution and shall apply to anyone to whom you have
-!        granted a further right to modify the source code of your
-!        derived work.
-!
-!     Note that, as originally distributed, the SOFA software is
-!     intended to be a definitive implementation of the IAU standards,
-!     and consequently third-party modifications are discouraged.  All
-!     variations, no matter how minor, must be explicitly marked as
-!     such, as explained above.
-!
-!  4. You shall not cause the SOFA software to be brought into
-!     disrepute, either by misuse, or use for inappropriate tasks, or
-!     by inappropriate modification.
-!
-!  5. The SOFA software is provided "as is" and SOFA makes no warranty
-!     as to its use or performance.   SOFA does not and cannot warrant
-!     the performance or results which the user may obtain by using the
-!     SOFA software.  SOFA makes no warranties, express or implied, as
-!     to non-infringement of third party rights, merchantability, or
-!     fitness for any particular purpose.  In no event will SOFA be
-!     liable to the user for any consequential, incidental, or special
-!     damages, including any lost profits or lost savings, even if a
-!     SOFA representative has been advised of such damages, or for any
-!     claim by any third party.
-!
-!  6. The provision of any version of the SOFA software under the terms
-!     and conditions specified herein does not imply that future
-!     versions will also be made available under the same terms and
-!     conditions.
-!
-!  In any published work or commercial product which uses the SOFA
-!  software directly, acknowledgement (see www.iausofa.org) is
-!  appreciated.
-!
-!  Correspondence concerning SOFA software should be addressed as
-!  follows:
-!
-!      By email:  sofa@ukho.gov.uk
-!      By post:   IAU SOFA Center
-!                 HM Nautical Almanac Office
-!                 UK Hydrographic Office
-!                 Admiralty Way, Taunton
-!                 Somerset, TA1 2DN
-!                 United Kingdom
-!
+end subroutine ZR
 !-----------------------------------------------------------------------
+
+!********************************************************************************
+end module astro_module
+!********************************************************************************
 
