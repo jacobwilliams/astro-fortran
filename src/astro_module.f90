@@ -11,6 +11,13 @@
 !  * Removal of the "iau_" prefix on all routines.
 !  * All routines were combined into this module.
 !
+!  in progress...
+!   * moved headers before code in prep for FORD syntax.
+!   * replaced DOUBLE PRECISION with REAL(WP)
+!   * replaced old style PARAMETER and DATA declarations
+!   * moved duplicated parameter declarations to the top of the module ...
+!   * eliminate line numbers (replace with do...end do)
+!
 !### Original SOFA Copyright Notice
 !
 !  Copyright (C) 2019
@@ -108,9 +115,15 @@
 !********************************************************************************
     module astro_module
 
+    use iso_fortran_env, only: wp => real64
+
     implicit none
 
     public
+
+    real(wp),parameter,private :: d2pi  = 6.283185307179586476925287_wp     !! 2Pi
+    real(wp),parameter,private :: das2r = 4.848136811095359935899141e-6_wp  !!  Arcseconds to radians
+    real(wp),parameter,private :: dpi   = 3.141592653589793238462643_wp     !!  Pi
 
     contains
 !********************************************************************************
@@ -152,7 +165,7 @@
 !      :            0 00 00.000...
 !
 !  2) The largest positive useful value for NDP is determined by the
-!     size of ANGLE, the format of DOUBLE PRECISION floating-point
+!     size of ANGLE, the format of REAL(WP) floating-point
 !     numbers on the target platform, and the risk of overflowing
 !     IDMSF(4).  On a typical platform, for ANGLE up to 2pi, the
 !     available floating-point precision might correspond to NDP=12.
@@ -171,17 +184,12 @@
     implicit none
 
     integer ndp
-    double precision angle
+    real(wp) angle
     character sign*(*)
     integer idmsf(4)
 
-    !  2Pi
-    double precision d2pi
-    parameter ( d2pi = 6.283185307179586476925287d0 )
-
     !  Hours to degrees * radians to turns
-    double precision f
-    parameter ( f = 15d0/d2pi )
+    real(wp),parameter :: f = 15d0/d2pi
 
     !  Scale then use days to h,m,s routine.
     call D2TF ( ndp, angle*f, sign, idmsf )
@@ -226,7 +234,7 @@
 !      :            0 00 00.000...
 !
 !  2) The largest useful value for NDP is determined by the size
-!     of ANGLE, the format of DOUBLE PRECISION floating-point numbers
+!     of ANGLE, the format of REAL(WP) floating-point numbers
 !     on the target platform, and the risk of overflowing IHMSF(4).
 !     On a typical platform, for ANGLE up to 2pi, the available
 !     floating-point precision might correspond to NDP=12.  However,
@@ -245,13 +253,9 @@
     implicit none
 
     integer ndp
-    double precision angle
+    real(wp) angle
     character sign*(*)
     integer ihmsf(4)
-
-    !  2Pi
-    double precision d2pi
-    parameter ( d2pi = 6.283185307179586476925287d0 )
 
     !  Scale then use days to h,m,s routine.
     call D2TF ( ndp, angle/d2pi, sign, ihmsf )
@@ -309,15 +313,14 @@
     subroutine AB ( pnat, v, s, bm1, ppr )
 
     implicit none
-    double precision pnat(3), v(3), s, bm1, ppr(3)
+    real(wp) pnat(3), v(3), s, bm1, ppr(3)
 
     !  Schwarzschild radius of the Sun (au)
     !  = 2 * 1.32712440041 D20 / (2.99792458 D8)^2 / 1.49597870700 D11
-    double precision srs
-    parameter ( srs = 1.97412574336d-08 )
+    real(wp),parameter :: srs = 1.97412574336d-08
 
     integer i
-    double precision pdv, w1, w2, r2, w, p(3), r
+    real(wp) pdv, w1, w2, r2, w, p(3), r
 
     call PDP ( pnat, v, pdv )
     w1 = 1d0 + pdv/(1d0+bm1)
@@ -396,9 +399,9 @@
 
     implicit none
 
-    double precision az, el, phi, ha, dec
+    real(wp) az, el, phi, ha, dec
 
-    double precision sa, ca, se, ce, sp, cp, x, y, z, r
+    real(wp) sa, ca, se, ce, sp, cp, x, y, z, r
 
     !  Useful trig functions.
     sa = sin(az)
@@ -466,14 +469,10 @@
 
     character s
     integer ideg, iamin
-    double precision asec, rad
+    real(wp) asec, rad
     integer j
 
-    !  Arcseconds to radians
-    double precision das2r
-    parameter ( das2r = 4.848136811095359935899141d-6 )
-
-    double precision w
+    real(wp) w
 
     !  Preset the status.
     j = 0
@@ -511,17 +510,13 @@
 !
 !  This revision:  2000 December 15
 !
-    double precision function ANP ( a )
+    real(wp) function ANP ( a )
 
     implicit none
 
-    double precision a
+    real(wp) a
 
-    !  2Pi
-    double precision d2pi
-    parameter ( d2pi = 6.283185307179586476925287d0 )
-
-    double precision w
+    real(wp) w
 
     w = mod(a,d2pi)
     if ( w < 0d0 ) w = w + d2pi
@@ -544,21 +539,13 @@
 !
 !  This revision:  2000 November 25
 !
-    double precision function ANPM ( a )
+    real(wp) function ANPM ( a )
 
     implicit none
 
-    double precision a
+    real(wp) a
 
-    !  Pi
-    double precision dpi
-    parameter ( dpi = 3.141592653589793238462643d0 )
-
-    !  2Pi
-    double precision d2pi
-    parameter ( d2pi = 6.283185307179586476925287d0 )
-
-    double precision w
+    real(wp) w
 
     w = mod(a,d2pi)
     if ( abs(w) >= dpi ) w = w - sign(d2pi,a)
@@ -671,9 +658,9 @@
     subroutine APCG ( date1, date2, ebpv, ehp, astrom )
 
     implicit none
-    double precision date1, date2, ebpv(3,2), ehp(3), astrom(30)
+    real(wp) date1, date2, ebpv(3,2), ehp(3), astrom(30)
 
-    double precision pv(3,2)
+    real(wp) pv(3,2)
 
     !  Geocentric observer.
     call ZPV ( pv )
@@ -791,10 +778,10 @@
     subroutine APCG13 ( date1, date2, astrom )
 
     implicit none
-    double precision date1, date2, astrom(30)
+    real(wp) date1, date2, astrom(30)
 
     integer j
-    double precision ehpv(3,2), ebpv(3,2)
+    real(wp) ehpv(3,2), ebpv(3,2)
 
     !  Earth barycentric & heliocentric position/velocity (au, au/d).
     call EPV00 ( date1, date2, ehpv, ebpv, j )
@@ -917,7 +904,7 @@
     subroutine APCI ( date1, date2, ebpv, ehp, x, y, s, astrom )
 
     implicit none
-    double precision date1, date2, ebpv(3,2), ehp(3), x, y, s, &
+    real(wp) date1, date2, ebpv(3,2), ehp(3), x, y, s, &
                      astrom(30)
 
     !  Star-independent astrometry parameters for geocenter.
@@ -1041,14 +1028,12 @@
     subroutine APCI13 ( date1, date2, astrom, eo )
 
     implicit none
-    double precision date1, date2, astrom(30), eo
+    real(wp) date1, date2, astrom(30), eo
 
     integer j
-    double precision pvh(3,2), pvb(3,2), r(3,3), x, y, s
+    real(wp) pvh(3,2), pvb(3,2), r(3,3), x, y, s
 
-    !     DOUBLE PRECISION S06, EORS
-
-    !  Earth barycentric & heliocentric position/velocity (au, au/d).
+        !  Earth barycentric & heliocentric position/velocity (au, au/d).
     call EPV00 ( date1, date2, pvh, pvb, j )
 
     !  Form the equinox based BPN matrix, IAU 2006/2000A.
@@ -1220,11 +1205,11 @@
                       refa, refb, astrom )
 
     implicit none
-    double precision date1, date2, ebpv(3,2), ehp(3), x, y, s, &
+    real(wp) date1, date2, ebpv(3,2), ehp(3), x, y, s, &
                      theta, elong, phi, hm, xp, yp, sp, refa, refb, &
                      astrom(30)
 
-    double precision sl, cl, r(3,3), pvc(3,2), pv(3,2)
+    real(wp) sl, cl, r(3,3), pvc(3,2), pv(3,2)
 
     !  Longitude with adjustment for TIO locator s'.
     astrom(22) = elong + sp
@@ -1439,18 +1424,16 @@
                         phpa, tc, rh, wl, astrom, eo, j )
 
     implicit none
-    double precision utc1, utc2, dut1, elong, phi, hm, xp, yp, &
+    real(wp) utc1, utc2, dut1, elong, phi, hm, xp, yp, &
                      phpa, tc, rh, wl, astrom(30), eo
     integer j
 
     integer js, jw
-    double precision tai1, tai2, tt1, tt2, ut11, ut12, &
+    real(wp) tai1, tai2, tt1, tt2, ut11, ut12, &
                      ehpv(3,2), ebpv(3,2), r(3,3), x, y, s, theta, &
                      sp, refa, refb
 
-    !     DOUBLE PRECISION S06, ERA00, SP00, EORS
-
-    !  UTC to other time scales.
+        !  UTC to other time scales.
     call UTCTAI ( utc1, utc2, tai1, tai2, js )
     if ( js<0 ) go to 9
     call TAITT ( tai1, tai2, tt1, tt2, js )
@@ -1616,43 +1599,35 @@
     subroutine APCS ( date1, date2, pv, ebpv, ehp, astrom )
 
     implicit none
-    double precision date1, date2, pv(3,2), ebpv(3,2), ehp(3), &
+    real(wp) date1, date2, pv(3,2), ebpv(3,2), ehp(3), &
                      astrom(30)
 
     !  Reference epoch (J2000.0), JD
-    double precision dj00
-    parameter ( dj00 = 2451545d0 )
+    real(wp),parameter :: dj00 = 2451545d0
 
     !  Days per Julian year
-    double precision djy
-    parameter ( djy = 365.25d0 )
+    real(wp),parameter :: djy = 365.25d0
 
     !  Seconds per day
-    double precision daysec
-    parameter ( daysec = 86400d0 )
+    real(wp),parameter :: daysec = 86400d0
 
     !  Speed of light (m/s)
-    double precision cmps
-    parameter ( cmps = 299792458d0 )
+    real(wp),parameter :: cmps = 299792458d0
 
     !  Astronomical unit (m, IAU 2012)
-    double precision aum
-    parameter ( aum = 149597870.7d3 )
+    real(wp),parameter :: aum = 149597870.7d3
 
     !  Light time for 1 au (s)
-    double precision ault
-    parameter ( ault = aum/cmps )
+    real(wp),parameter :: ault = aum/cmps
 
     !  au/d to m/s
-    double precision audms
-    parameter ( audms = aum/daysec )
+    real(wp),parameter :: audms = aum/daysec
 
     !  Light time for 1 au (day)
-    double precision cr
-    parameter ( cr = ault/daysec )
+    real(wp),parameter :: cr = ault/daysec
 
     integer i
-    double precision dp, dv, pb(3), vb(3), ph(3), v2, w
+    real(wp) dp, dv, pb(3), vb(3), ph(3), v2, w
 
     !  Time since reference epoch, years (for proper motion calculation).
     astrom(1) = ( ( date1 - dj00 ) + date2 ) / djy
@@ -1800,10 +1775,10 @@
     subroutine APCS13 ( date1, date2, pv, astrom )
 
     implicit none
-    double precision date1, date2, pv(3,2), astrom(30)
+    real(wp) date1, date2, pv(3,2), astrom(30)
 
     integer j
-    double precision ehpv(3,2), ebpv(3,2)
+    real(wp) ehpv(3,2), ebpv(3,2)
 
     !  Earth barycentric & heliocentric position/velocity (au, au/d).
     call EPV00 ( date1, date2, ehpv, ebpv, j )
@@ -1906,7 +1881,7 @@
     subroutine APER ( theta, astrom )
 
     implicit none
-    double precision theta, astrom(30)
+    real(wp) theta, astrom(30)
 
     astrom(28) = theta + astrom(22)
 
@@ -2024,11 +1999,9 @@
     subroutine APER13 ( ut11, ut12, astrom )
 
     implicit none
-    double precision ut11, ut12, astrom(30)
+    real(wp) ut11, ut12, astrom(30)
 
-    !     DOUBLE PRECISION ERA00
-
-    call APER ( ERA00 ( ut11, ut12 ), astrom )
+        call APER ( ERA00 ( ut11, ut12 ), astrom )
 
     end subroutine APER13
 !***********************************************************************
@@ -2147,14 +2120,13 @@
                       refa, refb, astrom )
 
     implicit none
-    double precision sp, theta, elong, phi, hm, xp, yp, refa, refb, &
+    real(wp) sp, theta, elong, phi, hm, xp, yp, refa, refb, &
                      astrom(30)
 
     ! Speed of light (m/s)
-    double precision cmps
-    parameter ( cmps = 299792458d0 )
+    real(wp),parameter :: cmps = 299792458d0
 
-    double precision sl, cl, pv(3,2)
+    real(wp) sl, cl, pv(3,2)
 
     !  Longitude with adjustment for TIO locator s'.
     astrom(22) = elong + sp
@@ -2346,17 +2318,15 @@
                         phpa, tc, rh, wl, astrom, j )
 
     implicit none
-    double precision utc1, utc2, dut1, elong, phi, hm, xp, yp, &
+    real(wp) utc1, utc2, dut1, elong, phi, hm, xp, yp, &
                      phpa, tc, rh, wl, astrom(30)
     integer j
 
     integer js
-    double precision tai1, tai2, tt1, tt2, ut11, ut12, sp, theta, &
+    real(wp) tai1, tai2, tt1, tt2, ut11, ut12, sp, theta, &
                      refa, refb
 
-    !     DOUBLE PRECISION SP00, ERA00
-
-    !  UTC to other time scales.
+        !  UTC to other time scales.
     call UTCTAI ( utc1, utc2, tai1, tai2, js )
     call TAITT ( tai1, tai2, tt1, tt2, js )
     call UTCUT1 ( utc1, utc2, dut1, ut11, ut12, js )
@@ -2463,10 +2433,10 @@
                         ri, di, eo )
 
     implicit none
-    double precision rc, dc, pr, pd, px, rv, date1, date2, ri, di, eo
+    real(wp) rc, dc, pr, pd, px, rv, date1, date2, ri, di, eo
 
     !  Star-independent astrometry parameters
-    double precision astrom(30)
+    real(wp) astrom(30)
 
     !  The transformation parameters.
     call APCI13 ( date1, date2, astrom, eo )
@@ -2542,13 +2512,11 @@
     subroutine ATCIQ ( rc, dc, pr, pd, px, rv, astrom, ri, di )
 
     implicit none
-    double precision rc, dc, pr, pd, px, rv, astrom(30), ri, di
+    real(wp) rc, dc, pr, pd, px, rv, astrom(30), ri, di
 
-    double precision pco(3), pnat(3), ppr(3), pi(3), w
+    real(wp) pco(3), pnat(3), ppr(3), pi(3), w
 
-    !     DOUBLE PRECISION ANP
-
-    !  Proper motion and parallax, giving BCRS coordinate direction.
+        !  Proper motion and parallax, giving BCRS coordinate direction.
     call PMPX ( rc, dc, pr, pd, px, rv, astrom(1), astrom(2), &
                     pco )
 
@@ -2671,15 +2639,13 @@
                         ri, di )
 
     implicit none
-    double precision rc, dc, pr, pd, px, rv, astrom(30)
+    real(wp) rc, dc, pr, pd, px, rv, astrom(30)
     integer n
-    double precision b(8,n), ri, di
+    real(wp) b(8,n), ri, di
 
-    double precision pco(3), pnat(3), ppr(3), pi(3), w
+    real(wp) pco(3), pnat(3), ppr(3), pi(3), w
 
-    !     DOUBLE PRECISION ANP
-
-    !  Proper motion and parallax, giving BCRS coordinate direction.
+        !  Proper motion and parallax, giving BCRS coordinate direction.
     call PMPX ( rc, dc, pr, pd, px, rv, astrom(1), astrom(2), &
                     pco )
 
@@ -2763,13 +2729,11 @@
     subroutine ATCIQZ ( rc, dc, astrom, ri, di )
 
     implicit none
-    double precision rc, dc, astrom(30), ri, di
+    real(wp) rc, dc, astrom(30), ri, di
 
-    double precision pco(3), pnat(3), ppr(3), pi(3), w
+    real(wp) pco(3), pnat(3), ppr(3), pi(3), w
 
-    !     DOUBLE PRECISION ANP
-
-    !  BCRS coordinate direction (unit vector).
+        !  BCRS coordinate direction (unit vector).
     call S2C ( rc, dc, pco )
 
     !  Light deflection by the Sun, giving BCRS natural direction.
@@ -2934,14 +2898,14 @@
                         aob, zob, hob, dob, rob, eo, j )
 
     implicit none
-    double precision rc, dc, pr, pd, px, rv, utc1, utc2, dut1, &
+    real(wp) rc, dc, pr, pd, px, rv, utc1, utc2, dut1, &
                      elong, phi, hm, xp, yp, phpa, tc, rh, wl, &
                      aob, zob, hob, dob, rob, eo
     integer j
 
     integer js
-    double precision astrom(30)
-    double precision ri, di
+    real(wp) astrom(30)
+    real(wp) ri, di
 
     !  Star-independent astrometry parameters.
     call APCO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
@@ -3034,10 +2998,10 @@
     subroutine ATIC13 ( ri, di, date1, date2, rc, dc, eo )
 
     implicit none
-    double precision ri, di, date1, date2, rc, dc, eo
+    real(wp) ri, di, date1, date2, rc, dc, eo
 
     !  Star-independent astrometry parameters
-    double precision astrom(30)
+    real(wp) astrom(30)
 
     !  Star-independent astrometry parameters.
     call APCI13 ( date1, date2, astrom, eo )
@@ -3109,15 +3073,13 @@
     subroutine ATICQ ( ri, di, astrom, rc, dc )
 
     implicit none
-    double precision ri, di, astrom(30), rc, dc
+    real(wp) ri, di, astrom(30), rc, dc
 
     integer j, i
-    double precision pi(3), ppr(3), pnat(3), pco(3), w, d(3), &
+    real(wp) pi(3), ppr(3), pnat(3), pco(3), w, d(3), &
                      before(3), r2, r, after(3)
 
-    !     DOUBLE PRECISION ANP
-
-    !  CIRS RA,Dec to Cartesian.
+        !  CIRS RA,Dec to Cartesian.
     call S2C ( ri, di, pi )
 
     !  Bias-precession-nutation, giving GCRS proper direction.
@@ -3284,17 +3246,15 @@
     subroutine ATICQN ( ri, di, astrom, n, b, rc, dc )
 
     implicit none
-    double precision ri, di, astrom(30)
+    real(wp) ri, di, astrom(30)
     integer n
-    double precision b(8,n), rc, dc
+    real(wp) b(8,n), rc, dc
 
     integer j, i
-    double precision pi(3), ppr(3), pnat(3), pco(3), w, d(3), &
+    real(wp) pi(3), ppr(3), pnat(3), pco(3), w, d(3), &
                      before(3), r2, r, after(3)
 
-    !     DOUBLE PRECISION ANP
-
-    !  CIRS RA,Dec to Cartesian.
+        !  CIRS RA,Dec to Cartesian.
     call S2C ( ri, di, pi )
 
     !  Bias-precession-nutation, giving GCRS proper direction.
@@ -3493,12 +3453,12 @@
                         aob, zob, hob, dob, rob, j )
 
     implicit none
-    double precision ri, di, utc1, utc2, dut1, elong, phi, hm, xp, yp, &
+    real(wp) ri, di, utc1, utc2, dut1, elong, phi, hm, xp, yp, &
                      phpa, tc, rh, wl, aob, zob, hob, dob, rob
     integer j
 
     integer js
-    double precision astrom(30)
+    real(wp) astrom(30)
 
     !  Star-independent astrometry parameters for CIRS->observed.
     call APIO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
@@ -3613,19 +3573,17 @@
     subroutine ATIOQ ( ri, di, astrom, aob, zob, hob, dob, rob )
 
     implicit none
-    double precision ri, di, astrom(30), aob, zob, hob, dob, rob
+    real(wp) ri, di, astrom(30), aob, zob, hob, dob, rob
 
     !  Minimum sine and cosine of altitude for refraction purposes
-    double precision selmin, celmin
-    parameter ( selmin = 0.05d0, celmin = 1d-6 )
+    real(wp),parameter :: selmin = 0.05d0
+    real(wp),parameter :: celmin = 1d-6
 
-    double precision v(3), x, y, z, xhd, yhd, zhd, f, &
+    real(wp) v(3), x, y, z, xhd, yhd, zhd, f, &
                      xhdt, yhdt, zhdt, xaet, yaet, zaet, azobs, &
                      r, tz, w, del, cosdel, xaeo, yaeo, zaeo, &
                      zdobs, hmobs, dcobs, raobs
-    !     DOUBLE PRECISION ANP
-
-    !  CIRS RA,Dec to Cartesian -HA,Dec.
+        !  CIRS RA,Dec to Cartesian -HA,Dec.
     call S2C ( ri-astrom(28), di, v )
     x = v(1)
     y = v(2)
@@ -3840,12 +3798,12 @@
 
     implicit none
     character*(*) type
-    double precision ob1, ob2, utc1, utc2, dut1, &
+    real(wp) ob1, ob2, utc1, utc2, dut1, &
                      elong, phi, hm, xp, yp, phpa, tc, rh, wl, rc, dc
     integer j
 
     integer js
-    double precision astrom(30), eo, ri, di
+    real(wp) astrom(30), eo, ri, di
 
     !  Star-independent astrometry parameters.
     call APCO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
@@ -4007,12 +3965,12 @@
 
     implicit none
     character*(*) type
-    double precision ob1, ob2, utc1, utc2, dut1, elong, phi, hm, &
+    real(wp) ob1, ob2, utc1, utc2, dut1, elong, phi, hm, &
                      xp, yp, phpa, tc, rh, wl, ri, di
     integer j
 
     integer js
-    double precision astrom(30)
+    real(wp) astrom(30)
 
     !  Star-independent astrometry parameters for CIRS->observed.
     call APIO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
@@ -4126,18 +4084,16 @@
 
     implicit none
     character*(*) type
-    double precision ob1, ob2, astrom(30), ri, di
+    real(wp) ob1, ob2, astrom(30), ri, di
 
     character c
-    double precision c1, c2, sphi, cphi, ce, xaeo, yaeo, zaeo, v(3), &
+    real(wp) c1, c2, sphi, cphi, ce, xaeo, yaeo, zaeo, v(3), &
                      xmhdo, ymhdo, zmhdo, az, sz, zdo, refa, refb, &
                      tz, dref, zdt, xaet, yaet, zaet, &
                      xmhda, ymhda, zmhda, f, xhd, yhd, zhd, &
                      xpl, ypl, w, hma
 
-    !     DOUBLE PRECISION ANP
-
-    !  Coordinate type.
+        !  Coordinate type.
     c = type(:1)
 
     !  Coordinates.
@@ -4281,20 +4237,14 @@
 
     implicit none
 
-    double precision dpsibi, depsbi, dra
-
-    !  Arcseconds to radians
-    double precision das2r
-    parameter ( das2r = 4.848136811095359935899141d-6 )
+    real(wp) dpsibi, depsbi, dra
 
     !  The frame bias corrections in longitude and obliquity
-    double precision dpbias, debias
-    parameter ( dpbias = -0.041775d0 * das2r, &
-                debias = -0.0068192d0 * das2r )
+    real(wp),parameter :: dpbias = -0.041775d0 * das2r
+    real(wp),parameter :: debias = -0.0068192d0 * das2r
 
     !  The ICRS RA of the J2000.0 equinox (Chapront et al., 2002)
-    double precision dra0
-    parameter ( dra0 = -0.0146d0 * das2r )
+    real(wp),parameter :: dra0 = -0.0146d0 * das2r
 
     !  Return the results (which are fixed).
     dpsibi = dpbias
@@ -4376,25 +4326,18 @@
 
     implicit none
 
-    double precision date1, date2, rb(3,3), rp(3,3), rbp(3,3)
-
-    !  Arcseconds to radians
-    double precision das2r
-    parameter ( das2r = 4.848136811095359935899141d-6 )
+    real(wp) date1, date2, rb(3,3), rp(3,3), rbp(3,3)
 
     !  Reference epoch (J2000.0), JD
-    double precision dj00
-    parameter ( dj00 = 2451545d0 )
+    real(wp),parameter :: dj00 = 2451545d0
 
     !  Days per Julian century
-    double precision djc
-    parameter ( djc = 36525d0 )
+    real(wp),parameter :: djc = 36525d0
 
     !  J2000.0 obliquity (Lieske et al. 1977)
-    double precision eps0
-    parameter ( eps0 = 84381.448d0 * das2r )
+    real(wp),parameter :: eps0 = 84381.448d0 * das2r
 
-    double precision t, dpsibi, depsbi, dra0, psia77, oma77, chia, &
+    real(wp) t, dpsibi, depsbi, dra0, psia77, oma77, chia, &
                      dpsipr, depspr, psia, oma, rbw(3,3)
 
     !  Interval between fundamental epoch J2000.0 and current date (JC).
@@ -4502,17 +4445,15 @@
 
     implicit none
 
-    double precision date1, date2, rb(3,3), rp(3,3), rbp(3,3)
+    real(wp) date1, date2, rb(3,3), rp(3,3), rbp(3,3)
 
     !  JD for MJD 0
-    double precision djm0
-    parameter (djm0 = 2400000.5d0 )
+    real(wp),parameter :: djm0 = 2400000.5d0
 
     !  Reference epoch (J2000.0), MJD
-    double precision djm00
-    parameter ( djm00 = 51544.5d0 )
+    real(wp),parameter :: djm00 = 51544.5d0
 
-    double precision gamb, phib, psib, epsa, rbpw(3,3), rbt(3,3)
+    real(wp) gamb, phib, psib, epsa, rbpw(3,3), rbt(3,3)
 
     !  B matrix.
     call PFW06 ( djm0, djm00, gamb, phib, psib, epsa )
@@ -4569,7 +4510,7 @@
 
     implicit none
 
-    double precision rbpn(3,3), x, y
+    real(wp) rbpn(3,3), x, y
 
     !  Extract the X,Y coordinates.
     x = rbpn(3,1)
@@ -4650,9 +4591,9 @@
 
     implicit none
 
-    double precision date1, date2, rc2i(3,3)
+    real(wp) date1, date2, rc2i(3,3)
 
-    double precision rbpn(3,3)
+    real(wp) rbpn(3,3)
 
     !  Obtain the celestial-to-true matrix (IAU 2000A).
     call PNM00A ( date1, date2, rbpn )
@@ -4735,9 +4676,9 @@
 
     implicit none
 
-    double precision date1, date2, rc2i(3,3)
+    real(wp) date1, date2, rc2i(3,3)
 
-    double precision rbpn(3,3)
+    real(wp) rbpn(3,3)
 
     !  Obtain the celestial-to-true matrix (IAU 2000B).
     call PNM00B ( date1, date2, rbpn )
@@ -4815,13 +4756,11 @@
 
     implicit none
 
-    double precision date1, date2, rc2i(3,3)
+    real(wp) date1, date2, rc2i(3,3)
 
-    double precision rbpn(3,3), x, y, s
+    real(wp) rbpn(3,3), x, y, s
 
-    !     DOUBLE PRECISION S06
-
-    !  Obtain the celestial-to-true matrix (IAU 2006/2000A).
+        !  Obtain the celestial-to-true matrix (IAU 2006/2000A).
     call PNM06A ( date1, date2, rbpn )
 
     !  Extract the X,Y coordinates.
@@ -4912,9 +4851,9 @@
 
     implicit none
 
-    double precision date1, date2, rbpn(3,3), rc2i(3,3)
+    real(wp) date1, date2, rbpn(3,3), rc2i(3,3)
 
-    double precision x, y
+    real(wp) x, y
 
     !  Extract the X,Y coordinates.
     call BPN2XY ( rbpn, x, y )
@@ -4993,11 +4932,9 @@
 
     implicit none
 
-    double precision date1, date2, x, y, rc2i(3,3)
+    real(wp) date1, date2, x, y, rc2i(3,3)
 
-    !     DOUBLE PRECISION S00
-
-    !  Compute s and then the matrix.
+        !  Compute s and then the matrix.
     call C2IXYS ( x, y, S00 ( date1, date2, x, y ), rc2i )
 
     end subroutine C2IXY
@@ -5053,9 +4990,9 @@
 
     implicit none
 
-    double precision x, y, s, rc2i(3,3)
+    real(wp) x, y, s, rc2i(3,3)
 
-    double precision r2, e, d
+    real(wp) r2, e, d
 
     !  Obtain the spherical angles E and d.
     r2 = x*x+y*y
@@ -5102,9 +5039,9 @@
 
     implicit none
 
-    double precision p(3), theta, phi
+    real(wp) p(3), theta, phi
 
-    double precision x, y, z, d2
+    real(wp) x, y, z, d2
 
     x = p(1)
     y = p(2)
@@ -5204,13 +5141,11 @@
 
     implicit none
 
-    double precision tta, ttb, uta, utb, xp, yp, rc2t(3,3)
+    real(wp) tta, ttb, uta, utb, xp, yp, rc2t(3,3)
 
-    double precision rc2i(3,3), era, sp, rpom(3,3)
+    real(wp) rc2i(3,3), era, sp, rpom(3,3)
 
-    !     DOUBLE PRECISION ERA00, SP00
-
-    !  Form the celestial-to-intermediate matrix for this TT (IAU 2000A).
+        !  Form the celestial-to-intermediate matrix for this TT (IAU 2000A).
     call C2I00A ( tta, ttb, rc2i )
 
     !  Predict the Earth rotation angle for this UT1.
@@ -5305,13 +5240,11 @@
 
     implicit none
 
-    double precision tta, ttb, uta, utb, xp, yp, rc2t(3,3)
+    real(wp) tta, ttb, uta, utb, xp, yp, rc2t(3,3)
 
-    double precision rc2i(3,3), era, rpom(3,3)
+    real(wp) rc2i(3,3), era, rpom(3,3)
 
-    !     DOUBLE PRECISION ERA00
-
-    !  Form the celestial-to-intermediate matrix for this TT (IAU 2000B).
+        !  Form the celestial-to-intermediate matrix for this TT (IAU 2000B).
     call C2I00B ( tta, ttb, rc2i )
 
     !  Predict the Earth rotation angle for this UT1.
@@ -5402,13 +5335,11 @@
 
     implicit none
 
-    double precision tta, ttb, uta, utb, xp, yp, rc2t(3,3)
+    real(wp) tta, ttb, uta, utb, xp, yp, rc2t(3,3)
 
-    double precision rc2i(3,3), era, sp, rpom(3,3)
+    real(wp) rc2i(3,3), era, sp, rpom(3,3)
 
-    !     DOUBLE PRECISION ERA00, SP00
-
-    !  Form the celestial-to-intermediate matrix for this TT.
+        !  Form the celestial-to-intermediate matrix for this TT.
     call C2I06A ( tta, ttb, rc2i )
 
     !  Predict the Earth rotation angle for this UT1.
@@ -5467,7 +5398,7 @@
 
     implicit none
 
-    double precision rc2i(3,3), era, rpom(3,3), rc2t(3,3)
+    real(wp) rc2i(3,3), era, rpom(3,3), rc2t(3,3)
 
     !  Call the renamed routine.
     call C2TCIO ( rc2i, era, rpom, rc2t )
@@ -5530,9 +5461,9 @@
 
     implicit none
 
-    double precision rc2i(3,3), era, rpom(3,3), rc2t(3,3)
+    real(wp) rc2i(3,3), era, rpom(3,3), rc2t(3,3)
 
-    double precision r(3,3)
+    real(wp) r(3,3)
 
     !  Construct the matrix.
     call CR ( rc2i, r )
@@ -5597,9 +5528,9 @@
 
     implicit none
 
-    double precision rbpn(3,3), gst, rpom(3,3), rc2t(3,3)
+    real(wp) rbpn(3,3), gst, rpom(3,3), rc2t(3,3)
 
-    double precision r(3,3)
+    real(wp) r(3,3)
 
     !  Construct the matrix.
     call CR ( rbpn, r )
@@ -5696,14 +5627,12 @@
 
     implicit none
 
-    double precision tta, ttb, uta, utb, dpsi, deps, xp, yp, rc2t(3,3)
+    real(wp) tta, ttb, uta, utb, dpsi, deps, xp, yp, rc2t(3,3)
 
-    double precision epsa, rb(3,3), rp(3,3), rbp(3,3), rn(3,3), &
+    real(wp) epsa, rb(3,3), rp(3,3), rbp(3,3), rn(3,3), &
                      rbpn(3,3), gmst, ee, sp, rpom(3,3)
 
-    !     DOUBLE PRECISION GMST00, EE00, SP00
-
-    !  Form the celestial-to-true matrix for this TT.
+        !  Form the celestial-to-true matrix for this TT.
     call PN00 ( tta, ttb, dpsi, deps, &
                     epsa, rb, rp, rbp, rn, rbpn )
 
@@ -5806,13 +5735,11 @@
 
     implicit none
 
-    double precision tta, ttb, uta, utb, x, y, xp, yp, rc2t(3,3)
+    real(wp) tta, ttb, uta, utb, x, y, xp, yp, rc2t(3,3)
 
-    double precision rc2i(3,3), era, sp, rpom(3,3)
+    real(wp) rc2i(3,3), era, sp, rpom(3,3)
 
-    !     DOUBLE PRECISION ERA00, SP00
-
-    !  Form the celestial-to-intermediate matrix for this TT.
+        !  Form the celestial-to-intermediate matrix for this TT.
     call C2IXY ( tta, ttb, x, y, rc2i )
 
     !  Predict the Earth rotation angle for this UT1.
@@ -5876,13 +5803,12 @@
     implicit none
 
     integer iy, im, id
-    double precision djm0, djm
+    real(wp) djm0, djm
 
     integer j, ndays, my, iypmy
 
     !  Earliest year allowed (4800BC)
-    integer iymin
-    parameter ( iymin = -4799 )
+    integer,parameter :: iymin = -4799
 
     !  Month lengths in days
     integer mtab(12)
@@ -5948,7 +5874,7 @@
 
     implicit none
 
-    double precision p(3), c(3)
+    real(wp) p(3), c(3)
 
     integer i
 
@@ -5980,7 +5906,7 @@
 
     implicit none
 
-    double precision pv(3,2), c(3,2)
+    real(wp) pv(3,2), c(3,2)
 
     call CP ( pv(1,1), c(1,1) )
     call CP ( pv(1,2), c(1,2) )
@@ -6009,7 +5935,7 @@
 
     implicit none
 
-    double precision r(3,3), c(3,3)
+    real(wp) r(3,3), c(3,3)
 
     integer i
 
@@ -6092,17 +6018,16 @@
     implicit none
     character*(*) scale
     integer ndp
-    double precision d1, d2
+    real(wp) d1, d2
     integer iy, im, id, ihmsf(4), j
 
     !  Days to seconds
-    double precision d2s
-    parameter ( d2s = 86400d0 )
+    real(wp),parameter :: d2s = 86400d0
 
     logical leap
     character s
     integer iy1, im1, id1, js, iy2, im2, id2, ihmsf1(4), i
-    double precision a1, b1, fd, dat0, dat12, w, dat24, dleap
+    real(wp) a1, b1, fd, dat0, dat12, w, dat24, dleap
 
     !  The two-part JD.
     a1 = d1
@@ -6242,7 +6167,7 @@
 !      :            0 00 00.000...
 !
 !  2) The largest positive useful value for NDP is determined by the
-!     size of DAYS, the format of DOUBLE PRECISION floating-point
+!     size of DAYS, the format of REAL(WP) floating-point
 !     numbers on the target platform, and the risk of overflowing
 !     IHMSF(4).  On a typical platform, for DAYS up to 1D0, the
 !     available floating-point precision might correspond to NDP=12.
@@ -6261,16 +6186,15 @@
     implicit none
 
     integer ndp
-    double precision days
+    real(wp) days
     character sign*(*)
     integer ihmsf(4)
 
     !  Days to seconds
-    double precision d2s
-    parameter ( d2s = 86400d0 )
+    real(wp),parameter :: d2s = 86400d0
 
     integer nrs, n
-    double precision rs, rm, rh, a, ah, am, as, af
+    real(wp) rs, rm, rh, a, ah, am, as, af
 
     !  Handle sign.
     if ( days >= 0d0 ) then
@@ -6445,34 +6369,31 @@
     implicit none
 
     integer iy, im, id
-    double precision fd, deltat
+    real(wp) fd, deltat
     integer j
 
     !  Release year for this version of DAT
-    integer iyv
-    parameter ( iyv = 2019 )
+    integer,parameter :: iyv = 2019
 
     !  Number of Delta(AT) changes (increase by 1 for each new leap second)
-    integer ndat
-    parameter ( ndat = 42 )
+    integer,parameter :: ndat = 42
 
     !  Number of Delta(AT) expressions before leap seconds were introduced
-    integer nera1
-    parameter ( nera1 = 14 )
+    integer,parameter :: nera1 = 14
 
     !  Dates (year, month) on which new Delta(AT) came into force
     integer idat(2,ndat)
 
     !  New Delta(AT) which came into force on the given dates
-    double precision dats(ndat)
+    real(wp) dats(ndat)
 
     !  Reference dates (MJD) and drift rates (s/day), pre leap seconds
-    double precision drift(2,nera1)
+    real(wp) drift(2,nera1)
 
     !  Miscellaneous local variables
     logical more
     integer js, m, n, is
-    double precision da, djm0, djm
+    real(wp) da, djm0, djm
 
     !  Dates, Delta(AT)s, reference dates, and drift rates
     data ((idat(m,n),m=1,2),dats(n),(drift(m,n),m=1,2),n=1,14) &
@@ -6739,30 +6660,23 @@
 !
 !  This revision:  2010 July 29
 !
-    double precision function DTDB ( date1, date2, &
+    real(wp) function DTDB ( date1, date2, &
                                      ut, elong, u, v )
 
     implicit none
 
-    double precision date1, date2, ut, elong, u, v
-
-    !  2Pi
-    double precision d2pi
-    parameter ( d2pi = 6.283185307179586476925287d0 )
+    real(wp) date1, date2, ut, elong, u, v
 
     !  Degrees to radians
-    double precision dd2r
-    parameter ( dd2r = 1.745329251994329576923691d-2 )
+    real(wp),parameter :: dd2r = 1.745329251994329576923691d-2
 
     !  Reference epoch (J2000.0), JD
-    double precision dj00
-    parameter ( dj00 = 2451545d0 )
+    real(wp),parameter :: dj00 = 2451545d0
 
     !  Days per Julian millennium
-    double precision djm
-    parameter ( djm = 365250d0 )
+    real(wp),parameter :: djm = 365250d0
 
-    double precision t, tsol, w, elsun, emsun, d, elj, els, &
+    real(wp) t, tsol, w, elsun, emsun, d, elj, els, &
                      wt, w0, w1, w2, w3, w4, wf, wj
 
     !
@@ -6782,7 +6696,7 @@
     !   "   765-784  "   "  T**3   "
     !   "   785-787  "   "  T**4   "  .
     !
-    double precision fairhd(3,787)
+    real(wp) fairhd(3,787)
     integer i,j
     data ((fairhd(i,j),i=1,3),j=  1, 10) / &
      1656.674564d-6,    6283.075849991d0, 6.240054195d0, &
@@ -7832,15 +7746,14 @@
     implicit none
     character*(*) scale
     integer iy, im, id, ihr, imn
-    double precision sec, d1, d2
+    real(wp) sec, d1, d2
     integer j
 
     !  Days to seconds
-    double precision d2s
-    parameter ( d2s = 86400d0 )
+    real(wp),parameter :: d2s = 86400d0
 
     integer js, iy2, im2, id2
-    double precision dj, w, day, seclim, dat0, dat12, dat24, &
+    real(wp) dj, w, day, seclim, dat0, dat12, dat24, &
                      dleap, time
 
     !  Today's Julian Day Number.
@@ -7969,13 +7882,11 @@
 
     implicit none
 
-    double precision date1, date2, dl, db, dr, dd
+    real(wp) date1, date2, dl, db, dr, dd
 
-    double precision rm(3,3), v1(3), v2(3), a, b
+    real(wp) rm(3,3), v1(3), v2(3), a, b
 
-    !     DOUBLE PRECISION ANP, ANPM
-
-    !  Spherical to Cartesian.
+        !  Spherical to Cartesian.
     call S2C ( dl, db, v1 )
 
     !  Rotation matrix, ICRS equatorial to ecliptic.
@@ -8057,12 +7968,10 @@
 
     implicit none
 
-    double precision date1, date2, rm(3,3)
+    real(wp) date1, date2, rm(3,3)
 
-    double precision ob, bp(3,3), e(3,3)
-    !     DOUBLE PRECISION OBL06
-
-    !  Obliquity, IAU 2006.
+    real(wp) ob, bp(3,3), e(3,3)
+        !  Obliquity, IAU 2006.
     ob = OBL06 ( date1, date2 )
 
     !  Precession-bias matrix, IAU 2006.
@@ -8138,15 +8047,13 @@
 !
 !  This revision:  2006 November 13
 !
-    double precision function EE00 ( date1, date2, epsa, dpsi )
+    real(wp) function EE00 ( date1, date2, epsa, dpsi )
 
     implicit none
 
-    double precision date1, date2, epsa, dpsi
+    real(wp) date1, date2, epsa, dpsi
 
-    !     DOUBLE PRECISION EECT00
-
-    !  Equation of the equinoxes.
+        !  Equation of the equinoxes.
     EE00 = dpsi * cos(epsa) + EECT00 ( date1, date2 )
 
     end function EE00
@@ -8210,17 +8117,15 @@
 !
 !  This revision:  2006 November 13
 !
-    double precision function EE00A ( date1, date2 )
+    real(wp) function EE00A ( date1, date2 )
 
     implicit none
 
-    double precision date1, date2
+    real(wp) date1, date2
 
-    double precision dpsipr, depspr, epsa, dpsi, deps
+    real(wp) dpsipr, depspr, epsa, dpsi, deps
 
-    !     DOUBLE PRECISION OBL80, EE00
-
-    !  IAU 2000 precession-rate adjustments.
+        !  IAU 2000 precession-rate adjustments.
     call PR00 ( date1, date2, dpsipr, depspr )
 
     !  Mean obliquity, consistent with IAU 2000 precession-nutation.
@@ -8299,17 +8204,15 @@
 !
 !  This revision:  2006 November 13
 !
-    double precision function EE00B ( date1, date2 )
+    real(wp) function EE00B ( date1, date2 )
 
     implicit none
 
-    double precision date1, date2
+    real(wp) date1, date2
 
-    double precision dpsipr, depspr, epsa, dpsi, deps
+    real(wp) dpsipr, depspr, epsa, dpsi, deps
 
-    !     DOUBLE PRECISION OBL80, EE00
-
-    !  IAU 2000 precession-rate adjustments.
+        !  IAU 2000 precession-rate adjustments.
     call PR00 ( date1, date2, dpsipr, depspr )
 
     !  Mean obliquity, consistent with IAU 2000 precession-nutation.
@@ -8374,15 +8277,13 @@
 !
 !  This revision:  2006 October 31
 !
-    double precision function EE06A ( date1, date2 )
+    real(wp) function EE06A ( date1, date2 )
 
     implicit none
 
-    double precision date1, date2
+    real(wp) date1, date2
 
-    !     DOUBLE PRECISION ANPM, GST06A, GMST06
-
-    !  Equation of the equinoxes.
+        !  Equation of the equinoxes.
     EE06A = ANPM ( GST06A ( 0d0, 0d0, date1, date2 ) - &
                            GMST06 ( 0d0, 0d0, date1, date2 ) )
 
@@ -8478,51 +8379,42 @@
 !
 !  This revision:  2017 October 23
 !
-    double precision function EECT00 ( date1, date2 )
+    real(wp) function EECT00 ( date1, date2 )
 
     implicit none
 
-    double precision date1, date2
-
-    !  Arcseconds to radians
-    double precision das2r
-    parameter ( das2r = 4.848136811095359935899141d-6 )
+    real(wp) date1, date2
 
     !  Reference epoch (J2000.0), JD
-    double precision dj00
-    parameter ( dj00 = 2451545d0 )
+    real(wp),parameter :: dj00 = 2451545d0
 
     !  Days per Julian century
-    double precision djc
-    parameter ( djc = 36525d0 )
+    real(wp),parameter :: djc = 36525d0
 
     !  Time since J2000.0, in Julian centuries
-    double precision t
+    real(wp) t
 
     !  Miscellaneous
     integer i, j
-    double precision a, s0, s1
-    !     DOUBLE PRECISION FAL03, FALP03, FAF03,
-    !    :                 FAD03, FAOM03, FAVE03, FAE03,
-    !    :                 FAPA03
+    real(wp) a, s0, s1
 
     !  Fundamental arguments
-    double precision fa(14)
+    real(wp) fa(14)
 
     !  -----------------------------------------
     !  The series for the EE complementary terms
     !  -----------------------------------------
 
     !  Number of terms in the series
-    integer ne0, ne1
-    parameter ( ne0=33, ne1=1 )
+    integer,parameter :: ne0 = 33
+    integer,parameter :: ne1 = 1
 
     !  Coefficients of l,l',F,D,Om,LVe,LE,pA
     integer ke0 ( 8, ne0 ), &
             ke1 ( 8, ne1 )
 
     !  Sine and cosine coefficients
-    double precision se0 ( 2, ne0 ), &
+    real(wp) se0 ( 2, ne0 ), &
                      se1 ( 2, ne1 )
 
     !  Argument coefficients for t^0
@@ -8719,7 +8611,7 @@
     implicit none
 
     integer n
-    double precision a, f
+    real(wp) a, f
     integer j
 
     !  Preset the status to OK
@@ -8811,16 +8703,14 @@
 !
 !  This revision:  2007 February 13
 !
-    double precision function EO06A ( date1, date2 )
+    real(wp) function EO06A ( date1, date2 )
 
     implicit none
 
-    double precision date1, date2
+    real(wp) date1, date2
 
-    double precision r(3,3), x, y, s
-    !     DOUBLE PRECISION S06, EORS
-
-    !  Classical nutation x precession x bias matrix.
+    real(wp) r(3,3), x, y, s
+        !  Classical nutation x precession x bias matrix.
     call PNM06A ( date1, date2, r )
 
     !  Extract CIP coordinates.
@@ -8868,13 +8758,13 @@
 !
 !  This revision:  2008 February 24
 !
-    double precision function EORS ( rnpb, s )
+    real(wp) function EORS ( rnpb, s )
 
     implicit none
 
-    double precision rnpb(3,3), s
+    real(wp) rnpb(3,3), s
 
-    double precision x, ax, xs, ys, zs, p, q
+    real(wp) x, ax, xs, ys, zs, p, q
 
     !  Evaluate Wallace & Capitaine (2006) expression (16).
     x = rnpb(3,1)
@@ -8918,23 +8808,20 @@
 !
 !  This revision:  2013 August 7
 !
-    double precision function EPB ( dj1, dj2 )
+    real(wp) function EPB ( dj1, dj2 )
 
     implicit none
 
-    double precision dj1, dj2
+    real(wp) dj1, dj2
 
     !  J2000.0 as a Julian Date
-    double precision dj00
-    parameter ( dj00 = 2451545d0 )
+    real(wp),parameter :: dj00 = 2451545d0
 
     !  J2000.0 minus B1900.0 (2415019.81352) in days
-    double precision d1900
-    parameter ( d1900 = 36524.68648d0 )
+    real(wp),parameter :: d1900 = 36524.68648d0
 
     !  Length of tropical year B1900 (days)
-    double precision ty
-    parameter ( ty = 365.242198781d0 )
+    real(wp),parameter :: ty = 365.242198781d0
 
     EPB = 1900d0 + ( ( dj1-dj00 ) + ( dj2+d1900 ) ) / ty
 
@@ -8971,11 +8858,10 @@
 
     implicit none
 
-    double precision epb, djm0, djm
+    real(wp) epb, djm0, djm
 
     !  Length of tropical year B1900 (days)
-    double precision ty
-    parameter ( ty = 365.242198781d0 )
+    real(wp),parameter :: ty = 365.242198781d0
 
     djm0 = 2400000.5d0
     djm  =   15019.81352d0 + ( epb-1900d0 ) * ty
@@ -9008,19 +8894,17 @@
 !
 !  This revision:  2009 December 15
 !
-    double precision function EPJ ( dj1, dj2 )
+    real(wp) function EPJ ( dj1, dj2 )
 
     implicit none
 
-    double precision dj1, dj2
+    real(wp) dj1, dj2
 
     !  Reference epoch (J2000.0), JD
-    double precision dj00
-    parameter ( dj00 = 2451545d0 )
+    real(wp),parameter :: dj00 = 2451545d0
 
     !  Days per Julian year
-    double precision djy
-    parameter ( djy = 365.25d0 )
+    real(wp),parameter :: djy = 365.25d0
 
     EPJ = 2000d0 + ( ( dj1-dj00 ) + dj2 ) / djy
 
@@ -9057,7 +8941,7 @@
 
     implicit none
 
-    double precision epj, djm0, djm
+    real(wp) epj, djm0, djm
 
     djm0 = 2400000.5d0
     djm  =   51544.5d0 + ( epj-2000d0 ) * 365.25d0
@@ -9156,21 +9040,19 @@
 
     implicit none
 
-    double precision date1, date2, pvh(3,2), pvb(3,2)
+    real(wp) date1, date2, pvh(3,2), pvb(3,2)
     integer jstat
 
-    double precision t, t2, xyz, xyzd, a, b, c, ct, p, cp, &
+    real(wp) t, t2, xyz, xyzd, a, b, c, ct, p, cp, &
                      ph(3), vh(3), pb(3), vb(3), x, y, z
 
     integer i, j, k
 
     !  Days per Julian year
-    double precision djy
-    parameter ( djy = 365.25d0 )
+    real(wp),parameter :: djy = 365.25d0
 
     !  Reference epoch (J2000.0), JD
-    double precision dj00
-    parameter ( dj00 = 2451545d0 )
+    real(wp),parameter :: dj00 = 2451545d0
     !
     !  Matrix elements for orienting the analytical model to DE405/ICRF.
     !
@@ -9183,14 +9065,13 @@
     !  These were obtained empirically, by comparisons with DE405 over
     !  1900-2100.
     !
-    double precision am12, am13, am21, am22, am23, am32, am33
-    parameter ( am12 = +0.000000211284d0, &
-                am13 = -0.000000091603d0, &
-                am21 = -0.000000230286d0, &
-                am22 = +0.917482137087d0, &
-                am23 = -0.397776982902d0, &
-                am32 = +0.397776982902d0, &
-                am33 = +0.917482137087d0 )
+    real(wp),parameter :: am12 = +0.000000211284d0
+    real(wp),parameter :: am13 = -0.000000091603d0
+    real(wp),parameter :: am21 = -0.000000230286d0
+    real(wp),parameter :: am22 = +0.917482137087d0
+    real(wp),parameter :: am23 = -0.397776982902d0
+    real(wp),parameter :: am32 = +0.397776982902d0
+    real(wp),parameter :: am33 = +0.917482137087d0
 
     !  ----------------------
     !  Ephemeris Coefficients
@@ -9211,7 +9092,7 @@
     !
     !  The naming scheme is such that a block
     !
-    !     DOUBLE PRECISION bn(3,Mbn,3)
+    !     REAL(WP) bn(3,Mbn,3)
     !
     !  applies to body b and time exponent n:
     !
@@ -9231,29 +9112,39 @@
     !  initialized and are never accessed.
     !
 
-    integer ne0(3), ne0x, ne0y, ne0z, me0, &
-            ne1(3), ne1x, ne1y, ne1z, me1, &
-            ne2(3), ne2x, ne2y, ne2z, me2, &
-            ns0(3), ns0x, ns0y, ns0z, ms0, &
-            ns1(3), ns1x, ns1y, ns1z, ms1, &
-            ns2(3), ns2x, ns2y, ns2z, ms2
+    integer, parameter :: ne0x = 501
+    integer, parameter :: ne0y = 501
+    integer, parameter :: ne0z = 137
+    integer, parameter :: me0 = ne0x
+    integer, parameter :: ne1x =  79
+    integer, parameter :: ne1y =  80
+    integer, parameter :: ne1z =  12
+    integer, parameter :: me1 = ne1y
+    integer, parameter :: ne2x =   5
+    integer, parameter :: ne2y =   5
+    integer, parameter :: ne2z =   3
+    integer, parameter :: me2 = ne2x
+    integer, parameter :: ns0x = 212
+    integer, parameter :: ns0y = 213
+    integer, parameter :: ns0z =  69
+    integer, parameter :: ms0 = ns0y
+    integer, parameter :: ns1x =  50
+    integer, parameter :: ns1y =  50
+    integer, parameter :: ns1z =  14
+    integer, parameter :: ms1 = ns1x
+    integer, parameter :: ns2x =   9
+    integer, parameter :: ns2y =   9
+    integer, parameter :: ns2z =   2
+    integer, parameter :: ms2 = ns2x
+    integer,dimension(3),parameter :: ne0 = [ ne0x, ne0y, ne0z ]
+    integer,dimension(3),parameter :: ne1 = [ ne1x, ne1y, ne1z ]
+    integer,dimension(3),parameter :: ne2 = [ ne2x, ne2y, ne2z ]
+    integer,dimension(3),parameter :: ns0 = [ ns0x, ns0y, ns0z ]
+    integer,dimension(3),parameter :: ns1 = [ ns1x, ns1y, ns1z ]
+    integer,dimension(3),parameter :: ns2 = [ ns2x, ns2y, ns2z ]
 
-    parameter ( ne0x = 501, ne0y = 501, ne0z = 137, me0 = ne0x, &
-                ne1x =  79, ne1y =  80, ne1z =  12, me1 = ne1y, &
-                ne2x =   5, ne2y =   5, ne2z =   3, me2 = ne2x, &
-                ns0x = 212, ns0y = 213, ns0z =  69, ms0 = ns0y, &
-                ns1x =  50, ns1y =  50, ns1z =  14, ms1 = ns1x, &
-                ns2x =   9, ns2y =   9, ns2z =   2, ms2 = ns2x )
-
-    double precision e0(3,me0,3), e1(3,me1,3), e2(3,me2,3), &
-                     s0(3,ms0,3), s1(3,ms1,3), s2(3,ms2,3)
-
-    data ne0 / ne0x, ne0y, ne0z /
-    data ne1 / ne1x, ne1y, ne1z /
-    data ne2 / ne2x, ne2y, ne2z /
-    data ns0 / ns0x, ns0y, ns0z /
-    data ns1 / ns1x, ns1y, ns1z /
-    data ns2 / ns2x, ns2y, ns2z /
+    real(wp) e0(3,me0,3), e1(3,me1,3), e2(3,me2,3), &
+             s0(3,ms0,3), s1(3,ms1,3), s2(3,ms2,3)
 
     !  Sun-to-Earth, T^0, X
     data ((e0(i,j,1),i=1,3),j=  1, 10) / &
@@ -11638,13 +11529,11 @@
 
     implicit none
 
-    double precision date1, date2, dr, dd, dl, db
+    real(wp) date1, date2, dr, dd, dl, db
 
-    double precision rm(3,3), v1(3), v2(3), a, b
+    real(wp) rm(3,3), v1(3), v2(3), a, b
 
-    !     DOUBLE PRECISION ANP, ANPM
-
-    !  Spherical to Cartesian.
+        !  Spherical to Cartesian.
     call S2C ( dr, dd, v1 )
 
     !  Rotation matrix, ICRS equatorial to ecliptic.
@@ -11714,32 +11603,20 @@
 !
 !  This revision:  2017 October 12
 !
-    double precision function EQEQ94 ( date1, date2 )
+    real(wp) function EQEQ94 ( date1, date2 )
 
     implicit none
 
-    double precision date1, date2
-
-    !  Arcseconds to radians
-    double precision das2r
-    parameter ( das2r = 4.848136811095359935899141d-6 )
-
-    !  2Pi
-    double precision d2pi
-    parameter (d2pi = 6.283185307179586476925287d0)
+    real(wp) date1, date2
 
     !  Reference epoch (J2000.0), JD
-    double precision dj00
-    parameter ( dj00 = 2451545d0 )
+    real(wp),parameter :: dj00 = 2451545d0
 
     !  Days per Julian century
-    double precision djc
-    parameter ( djc = 36525d0 )
+    real(wp),parameter :: djc = 36525d0
 
-    double precision t, om, dpsi, deps, eps0
-    !     DOUBLE PRECISION ANPM, OBL80
-
-    !  Interval between fundamental epoch J2000.0 and given date (JC).
+    real(wp) t, om, dpsi, deps, eps0
+        !  Interval between fundamental epoch J2000.0 and given date (JC).
     t = ( ( date1-dj00 ) + date2 ) / djc
 
     !  Longitude of the mean ascending node of the lunar orbit on the
@@ -11813,25 +11690,18 @@
 !
 !  This revision:  2009 December 15
 !
-    double precision function ERA00 ( dj1, dj2 )
+    real(wp) function ERA00 ( dj1, dj2 )
 
     implicit none
 
-    double precision dj1, dj2
-
-    !  2Pi
-    double precision d2pi
-    parameter ( d2pi = 6.283185307179586476925287d0 )
+    real(wp) dj1, dj2
 
     !  Reference epoch (J2000.0), JD
-    double precision dj00
-    parameter ( dj00 = 2451545d0 )
+    real(wp),parameter :: dj00 = 2451545d0
 
-    double precision d1, d2, t, f
+    real(wp) d1, d2, t, f
 
-    !     DOUBLE PRECISION ANP
-
-    !  Days since fundamental epoch.
+        !  Days since fundamental epoch.
     if ( dj1 < dj2 ) then
        d1 = dj1
        d2 = dj2
@@ -11882,19 +11752,14 @@
 !
 !  This revision:  2009 December 15
 !
-    double precision function FAD03 ( t )
+    real(wp) function FAD03 ( t )
 
     implicit none
 
-    double precision t
-
-    !  Arcseconds to radians.
-    double precision das2r
-    parameter ( das2r = 4.848136811095359935899141d-6 )
+    real(wp) t
 
     !  Arcseconds in a full circle.
-    double precision turnas
-    parameter ( turnas = 1296000d0 )
+    real(wp),parameter :: turnas = 1296000d0
 
     !  Mean elongation of the Moon from the Sun (IERS Conventions 2003).
     FAD03 = mod (      1072260.703692d0 + &
@@ -11940,15 +11805,11 @@
 !
 !  This revision:  2009 December 15
 !
-    double precision function FAE03 ( t )
+    real(wp) function FAE03 ( t )
 
     implicit none
 
-    double precision t
-
-    !  2Pi.
-    double precision d2pi
-    parameter ( d2pi = 6.283185307179586476925287d0 )
+    real(wp) t
 
     !  Mean longitude of Earth (IERS Conventions 2003).
     FAE03= mod ( 1.753470314d0 + 628.3075849991d0 * t, d2pi )
@@ -11988,19 +11849,14 @@
 !
 !  This revision:  2009 December 15
 !
-    double precision function FAF03 ( t )
+    real(wp) function FAF03 ( t )
 
     implicit none
 
-    double precision t
-
-    !  Arcseconds to radians.
-    double precision das2r
-    parameter ( das2r = 4.848136811095359935899141d-6 )
+    real(wp) t
 
     !  Arcseconds in a full circle.
-    double precision turnas
-    parameter ( turnas = 1296000d0 )
+    real(wp),parameter :: turnas = 1296000d0
 
     !  Mean longitude of the Moon minus that of the ascending node
     !  (IERS Conventions 2003).
@@ -12047,15 +11903,11 @@
 !
 !  This revision:  2009 December 15
 !
-    double precision function FAJU03 ( t )
+    real(wp) function FAJU03 ( t )
 
     implicit none
 
-    double precision t
-
-    !  2Pi.
-    double precision d2pi
-    parameter ( d2pi = 6.283185307179586476925287d0 )
+    real(wp) t
 
     !  Mean longitude of Jupiter (IERS Conventions 2003).
     FAJU03= mod ( 0.599546497d0 + 52.9690962641d0 * t, d2pi )
@@ -12094,19 +11946,14 @@
 !
 !  This revision:  2009 December 15
 !
-    double precision function FAL03 ( t )
+    real(wp) function FAL03 ( t )
 
     implicit none
 
-    double precision t
-
-    !  Arcseconds to radians.
-    double precision das2r
-    parameter ( das2r = 4.848136811095359935899141d-6 )
+    real(wp) t
 
     !  Arcseconds in a full circle.
-    double precision turnas
-    parameter ( turnas = 1296000d0 )
+    real(wp),parameter :: turnas = 1296000d0
 
     !  Mean anomaly of the Moon (IERS Conventions 2003).
     FAL03 = mod (       485868.249036d0 + &
@@ -12149,19 +11996,14 @@
 !
 !  This revision:  2009 December 15
 !
-    double precision function FALP03 ( t )
+    real(wp) function FALP03 ( t )
 
     implicit none
 
-    double precision t
-
-    !  Arcseconds to radians.
-    double precision das2r
-    parameter ( das2r = 4.848136811095359935899141d-6 )
+    real(wp) t
 
     !  Arcseconds in a full circle.
-    double precision turnas
-    parameter ( turnas = 1296000d0 )
+    real(wp),parameter :: turnas = 1296000d0
 
     !  Mean anomaly of the Sun (IERS Conventions 2003).
     FALP03 = mod (     1287104.793048d0 + &
@@ -12207,15 +12049,11 @@
 !
 !  This revision:  2009 December 15
 !
-    double precision function FAMA03 ( t )
+    real(wp) function FAMA03 ( t )
 
     implicit none
 
-    double precision t
-
-    !  2Pi.
-    double precision d2pi
-    parameter ( d2pi = 6.283185307179586476925287d0 )
+    real(wp) t
 
     !  Mean longitude of Mars (IERS Conventions 2003).
     FAMA03= mod ( 6.203480913d0 + 334.0612426700d0 * t, d2pi )
@@ -12257,15 +12095,11 @@
 !
 !  This revision:  2009 December 15
 !
-    double precision function FAME03 ( t )
+    real(wp) function FAME03 ( t )
 
     implicit none
 
-    double precision t
-
-    !  2Pi.
-    double precision d2pi
-    parameter ( d2pi = 6.283185307179586476925287d0 )
+    real(wp) t
 
     !  Mean longitude of Mercury (IERS Conventions 2003).
     FAME03 = mod ( 4.402608842d0 + 2608.7903141574d0 * t, d2pi )
@@ -12304,15 +12138,11 @@
 !
 !  This revision:  2009 December 15
 !
-    double precision function FANE03 ( t )
+    real(wp) function FANE03 ( t )
 
     implicit none
 
-    double precision t
-
-    !  2Pi.
-    double precision d2pi
-    parameter ( d2pi = 6.283185307179586476925287d0 )
+    real(wp) t
 
     !  Mean longitude of Neptune (IERS Conventions 2003).
     FANE03= mod ( 5.311886287d0 + 3.8133035638d0 * t, d2pi )
@@ -12351,19 +12181,14 @@
 !
 !  This revision:  2009 December 15
 !
-    double precision function FAOM03 ( t )
+    real(wp) function FAOM03 ( t )
 
     implicit none
 
-    double precision t
-
-    !  Arcseconds to radians.
-    double precision das2r
-    parameter ( das2r = 4.848136811095359935899141d-6 )
+    real(wp) t
 
     !  Arcseconds in a full circle.
-    double precision turnas
-    parameter ( turnas = 1296000d0 )
+    real(wp),parameter :: turnas = 1296000d0
 
     !  Mean longitude of the Moon's ascending node (IERS Conventions 2003).
     FAOM03 = mod (      450160.398036d0 + &
@@ -12410,11 +12235,11 @@
 !
 !  This revision:  2009 December 15
 !
-    double precision function FAPA03 ( t )
+    real(wp) function FAPA03 ( t )
 
     implicit none
 
-    double precision t
+    real(wp) t
 
     !  General accumulated precession in longitude.
     FAPA03= ( 0.024381750d0 + 0.00000538691d0 * t ) * t
@@ -12456,15 +12281,11 @@
 !
 !  This revision:  2009 December 15
 !
-    double precision function FASA03 ( t )
+    real(wp) function FASA03 ( t )
 
     implicit none
 
-    double precision t
-
-    !  2Pi.
-    double precision d2pi
-    parameter ( d2pi = 6.283185307179586476925287d0 )
+    real(wp) t
 
     !  Mean longitude of Saturn (IERS Conventions 2003).
     FASA03= mod ( 0.874016757d0 + 21.3299104960d0 * t, d2pi )
@@ -12503,15 +12324,11 @@
 !
 !  This revision:  2009 December 15
 !
-    double precision function FAUR03 ( t )
+    real(wp) function FAUR03 ( t )
 
     implicit none
 
-    double precision t
-
-    !  2Pi.
-    double precision d2pi
-    parameter ( d2pi = 6.283185307179586476925287d0 )
+    real(wp) t
 
     !  Mean longitude of Uranus (IERS Conventions 2003).
     FAUR03= mod ( 5.481293872d0 + 7.4781598567d0 * t, d2pi )
@@ -12553,15 +12370,11 @@
 !
 !  This revision:  2009 December 15
 !
-    double precision function FAVE03 ( t )
+    real(wp) function FAVE03 ( t )
 
     implicit none
 
-    double precision t
-
-    !  2Pi.
-    double precision d2pi
-    parameter ( d2pi = 6.283185307179586476925287d0 )
+    real(wp) t
 
     !  Mean longitude of Venus (IERS Conventions 2003).
     FAVE03= mod ( 3.176146697d0 + 1021.3285546211d0 * t, d2pi )
@@ -12679,47 +12492,38 @@
 
     implicit none
 
-    double precision r1950, d1950, dr1950, dd1950, p1950, v1950, &
+    real(wp) r1950, d1950, dr1950, dd1950, p1950, v1950, &
                      r2000, d2000, dr2000, dd2000, p2000, v2000
 
-    !  2Pi
-    double precision d2pi
-    parameter ( d2pi = 6.283185307179586476925287d0 )
-
     !  Radians per year to arcsec per century
-    double precision pmf
-    parameter ( pmf = 100d0*60d0*60d0*360d0/d2pi )
+    real(wp),parameter :: pmf = 100d0*60d0*60d0*360d0/d2pi
 
     !  Small number to avoid arithmetic problems
-    double precision tiny
-    parameter ( tiny = 1d-30 )
+    real(wp),parameter :: tiny = 1d-30
 
     !  Miscellaneous
-    double precision r, d, ur, ud, px, rv, pxvf, w, rd
+    real(wp) r, d, ur, ud, px, rv, pxvf, w, rd
     integer l, k, j, i
 
     !  Pv-vectors
-    double precision r0(3,2), pv1(3,2), pv2(3,2), pv3(3,2)
+    real(wp) r0(3,2), pv1(3,2), pv2(3,2), pv3(3,2)
 
     !  Functions
-    !     DOUBLE PRECISION ANP
-
-    !
+        !
     !  CANONICAL CONSTANTS  (Seidelmann 1992)
     !
 
     !  Km per sec to AU per tropical century
     !  = 86400 * 36524.2198782 / 149597870.7
-    double precision vf
-    parameter ( vf = 21.095d0 )
+    real(wp),parameter :: vf = 21.095d0
 
     !  Constant pv-vector (cf. Seidelmann 3.591-2, vectors A and Adot)
-    double precision a(3,2)
+    real(wp) a(3,2)
     data a / -1.62557d-6, -0.31919d-6, -0.13843d-6, &
              +1.245d-3,   -1.580d-3,   -0.659d-3 /
 
     !  3x2 matrix of pv-vectors (cf. Seidelmann 3.591-4, matrix M)
-    double precision em(3,2,3,2)
+    real(wp) em(3,2,3,2)
     data em / &
        +0.9999256782d0,     -0.0111820611d0,     -0.0048579477d0, &
        +0.00000242395018d0, -0.00000002710663d0, -0.00000001177656d0, &
@@ -12867,37 +12671,30 @@
 
     implicit none
 
-    double precision r1950, d1950, bepoch, r2000, d2000
-
-    !  2pi
-    double precision d2pi
-    parameter ( d2pi = 6.283185307179586476925287d0 )
+    real(wp) r1950, d1950, bepoch, r2000, d2000
 
     !  Radians per year to arcsec per century
-    double precision pmf
-    parameter ( pmf = 100d0*60d0*60d0*360d0/d2pi )
+    real(wp),parameter :: pmf = 100d0*60d0*60d0*360d0/d2pi
 
     !  Position and position+velocity vectors
-    double precision r0(3), a1(3), p1(3), p2(3), pv1(3,2), pv2(3,2)
+    real(wp) r0(3), a1(3), p1(3), p2(3), pv1(3,2), pv2(3,2)
 
     !  Miscellaneous
-    double precision w, djm0, djm
+    real(wp) w, djm0, djm
     integer k, j, i
 
     !  Functions
-    !     DOUBLE PRECISION EPJ, ANP
-
-    !
+        !
     !  CANONICAL CONSTANTS
     !
 
     !  Vectors A and Adot (Seidelmann 3.591-2)
-    double precision a(3), ad(3)
+    real(wp) a(3), ad(3)
     data a,ad/ -1.62557d-6,  -0.31919d-6, -0.13843d-6, &
                +1.245d-3,    -1.580d-3,   -0.659d-3 /
 
     !  3x2 matrix of p-vectors (cf. Seidelmann 3.591-4, matrix M)
-    double precision em(3,3,2)
+    real(wp) em(3,3,2)
     data em / &
        +0.9999256782d0,     -0.0111820611d0,     -0.0048579477d0, &
        +0.0111820610d0,     +0.9999374784d0,     -0.0000271765d0, &
@@ -13046,47 +12843,38 @@
 
     implicit none
 
-    double precision r2000, d2000, dr2000, dd2000, p2000, v2000, &
+    real(wp) r2000, d2000, dr2000, dd2000, p2000, v2000, &
                      r1950, d1950, dr1950, dd1950, p1950, v1950
 
-    !  2Pi
-    double precision d2pi
-    parameter ( d2pi = 6.283185307179586476925287d0 )
-
     !  Radians per year to arcsec per century
-    double precision pmf
-    parameter ( pmf = 100d0*60d0*60d0*360d0/d2pi )
+    real(wp),parameter :: pmf = 100d0*60d0*60d0*360d0/d2pi
 
     !  Small number to avoid arithmetic problems
-    double precision tiny
-    parameter ( tiny = 1d-30 )
+    real(wp),parameter :: tiny = 1d-30
 
     !  Miscellaneous
-    double precision r, d, ur, ud, px, rv, pxvf, w, wr, rd
+    real(wp) r, d, ur, ud, px, rv, pxvf, w, wr, rd
     integer l, k, j, i
 
     !  Vectors, p and pv
-    double precision r0(3,2), r1(3,2), p1(3), p2(3), p3(3), pv(3,2)
+    real(wp) r0(3,2), r1(3,2), p1(3), p2(3), p3(3), pv(3,2)
 
     !  Functions
-    !     DOUBLE PRECISION ANP
-
-    !
+        !
     !  CANONICAL CONSTANTS  (Seidelmann 1992)
     !
 
     !  Km per sec to AU per tropical century
     !  = 86400 * 36524.2198782 / 149597870
-    double precision vf
-    parameter ( vf = 21.095d0 )
+    real(wp),parameter :: vf = 21.095d0
 
     !  Constant pv-vector (cf. Seidelmann 3.591-2, vectors A and Adot)
-    double precision a(3,2)
+    real(wp) a(3,2)
     data a/ -1.62557d-6,  -0.31919d-6, -0.13843d-6, &
             +1.245d-3,    -1.580d-3,   -0.659d-3 /
 
     !  3x2 matrix of pv-vectors (cf. Seidelmann 3.592-1, matrix M^-1)
-    double precision emi(3,2,3,2)
+    real(wp) emi(3,2,3,2)
     data emi / &
        +0.9999256795d0,     +0.0111814828d0,     +0.0048590039d0, &
        -0.00000242389840d0, -0.00000002710544d0, -0.00000001177742d0, &
@@ -13228,10 +13016,10 @@
 
     implicit none
 
-    double precision r5, d5, dr5, dd5, px5, rv5, &
+    real(wp) r5, d5, dr5, dd5, px5, rv5, &
                      rh, dh, drh, ddh, pxh, rvh
 
-    double precision pv5(3,2), r5h(3,3), s5h(3), wxp(3), vv(3), &
+    real(wp) pv5(3,2), r5h(3,3), s5h(3), wxp(3), vv(3), &
                      pvh(3,2)
     integer j, i
 
@@ -13318,15 +13106,13 @@
 
     implicit none
 
-    double precision r2000, d2000, bepoch, &
+    real(wp) r2000, d2000, bepoch, &
                      r1950, d1950, dr1950, dd1950
 
-    double precision r, d, pr, pd, px, rv, p(3), w, v(3)
+    real(wp) r, d, pr, pd, px, rv, p(3), w, v(3)
     integer i
 
-    !     DOUBLE PRECISION ANP
-
-    !  FK5 equinox J2000.0 to FK4 equinox B1950.0.
+        !  FK5 equinox J2000.0 to FK4 equinox B1950.0.
     call FK524 ( r2000, d2000, 0d0, 0d0, 0d0, 0d0, &
                      r, d, pr, pd, px, rv )
 
@@ -13395,25 +13181,17 @@
 
     implicit none
 
-    double precision r5h(3,3), s5h(3)
-
-    !  Arcseconds to radians
-    double precision das2r
-    parameter ( das2r = 4.848136811095359935899141d-6 )
+    real(wp) r5h(3,3), s5h(3)
 
     !  FK5 to Hipparcos orientation and spin (radians, radians/year)
-    double precision epx, epy, epz
-    double precision omx, omy, omz
+    real(wp),parameter :: epx = -19.9d-3 * das2r
+    real(wp),parameter :: epy =  -9.1d-3 * das2r
+    real(wp),parameter :: epz = +22.9d-3 * das2r
+    real(wp),parameter :: omx = -0.30d-3 * das2r
+    real(wp),parameter :: omy = +0.60d-3 * das2r
+    real(wp),parameter :: omz = +0.70d-3 * das2r
 
-    parameter ( epx = -19.9d-3 * das2r, &
-                epy =  -9.1d-3 * das2r, &
-                epz = +22.9d-3 * das2r )
-
-    parameter ( omx = -0.30d-3 * das2r, &
-                omy = +0.60d-3 * das2r, &
-                omz = +0.70d-3 * das2r )
-
-    double precision v(3)
+    real(wp) v(3)
 
     !  FK5 to Hipparcos orientation expressed as an r-vector.
     v(1) = epx
@@ -13503,22 +13281,18 @@
 
     implicit none
 
-    double precision r5, d5, date1, date2, rh, dh
+    real(wp) r5, d5, date1, date2, rh, dh
 
     !  Reference epoch (J2000.0), JD
-    double precision dj00
-    parameter ( dj00 = 2451545d0 )
+    real(wp),parameter :: dj00 = 2451545d0
 
     !  Days per Julian year
-    double precision djy
-    parameter ( djy = 365.25d0 )
+    real(wp),parameter :: djy = 365.25d0
 
-    double precision t, p5e(3), r5h(3,3), s5h(3), vst(3), rst(3,3), &
+    real(wp) t, p5e(3), r5h(3,3), s5h(3), vst(3), rst(3,3), &
                      p5(3), ph(3), w
 
-    !     DOUBLE PRECISION ANP
-
-    !  Interval from given date to fundamental epoch J2000.0 (JY).
+        !  Interval from given date to fundamental epoch J2000.0 (JY).
     t = - ( ( date1-dj00 ) + date2 ) / djy
 
     !  FK5 barycentric position vector.
@@ -13614,7 +13388,7 @@
 
     implicit none
 
-    double precision gamb, phib, psi, eps, r(3,3)
+    real(wp) gamb, phib, psi, eps, r(3,3)
 
     !  Construct the matrix.
     call IR ( r )
@@ -13679,9 +13453,9 @@
 
     implicit none
 
-    double precision gamb, phib, psi, eps, x, y
+    real(wp) gamb, phib, psi, eps, x, y
 
-    double precision r(3,3)
+    real(wp) r(3,3)
 
     !  Form NxPxB matrix.
     call FW2M ( gamb, phib, psi, eps, r )
@@ -13755,11 +13529,9 @@
     subroutine G2ICRS ( dl, db, dr, dd )
 
     implicit none
-    double precision dl, db, dr, dd
+    real(wp) dl, db, dr, dd
 
-    !     DOUBLE PRECISION ANP, ANPM
-
-    double precision v1(3), v2(3)
+        real(wp) v1(3), v2(3)
 
     !
     !  L2,B2 system of galactic coordinates in the form presented in the
@@ -13773,7 +13545,7 @@
     !  ICRS to galactic rotation matrix, obtained by computing
     !  R_3(-R) R_1(pi/2-Q) R_3(pi/2+P) to the full precision shown:
     !
-    double precision r(3,3)
+    real(wp) r(3,3)
     data r(1,1), r(1,2), r(1,3), &
          r(2,1), r(2,2), r(2,3), &
          r(3,1), r(3,2), r(3,3) / &
@@ -13855,10 +13627,10 @@
     implicit none
 
     integer n
-    double precision xyz(3), elong, phi, height
+    real(wp) xyz(3), elong, phi, height
     integer j
 
-    double precision a, f
+    real(wp) a, f
 
     !  Obtain reference ellipsoid parameters.
     call EFORM ( n, a, f, j )
@@ -13935,14 +13707,10 @@
 
     implicit none
 
-    double precision a, f, xyz(3), elong, phi, height
+    real(wp) a, f, xyz(3), elong, phi, height
     integer j
 
-    !  Pi
-    double precision dpi
-    parameter ( dpi = 3.141592653589793238462643d0 )
-
-    double precision aeps2, e2, e4t, ec2, ec, b, x, y, z, p2, absz, p, &
+    real(wp) aeps2, e2, e4t, ec2, ec, b, x, y, z, p2, absz, p, &
                      s0, pn, zc, c0, c02, c03, s02, s03, a02, a0, a03, &
                      d0, f0, b0, s1, cc, s12, cc2
 
@@ -14095,10 +13863,10 @@
     implicit none
 
     integer n
-    double precision elong, phi, height, xyz(3)
+    real(wp) elong, phi, height, xyz(3)
     integer j
 
-    double precision a, f
+    real(wp) a, f
 
     !  Obtain reference ellipsoid parameters.
     call EFORM ( n, a, f, j )
@@ -14172,10 +13940,10 @@
 
     implicit none
 
-    double precision a, f, elong, phi, height, xyz(3)
+    real(wp) a, f, elong, phi, height, xyz(3)
     integer j
 
-    double precision sp, cp, w, d, ac, as, r
+    real(wp) sp, cp, w, d, ac, as, r
 
     !  Functions of geodetic latitude.
     sp = sin(phi)
@@ -14271,29 +14039,21 @@
 !
 !  This revision:  2009 December 15
 !
-    double precision function GMST00 ( uta, utb, tta, ttb )
+    real(wp) function GMST00 ( uta, utb, tta, ttb )
 
     implicit none
 
-    double precision uta, utb, tta, ttb
-
-    !  Arcseconds to radians
-    double precision das2r
-    parameter ( das2r = 4.848136811095359935899141d-6 )
+    real(wp) uta, utb, tta, ttb
 
     !  Reference epoch (J2000.0), JD
-    double precision dj00
-    parameter ( dj00 = 2451545d0 )
+    real(wp),parameter :: dj00 = 2451545d0
 
     !  Days per Julian century
-    double precision djc
-    parameter ( djc = 36525d0 )
+    real(wp),parameter :: djc = 36525d0
 
-    double precision t
+    real(wp) t
 
-    !     DOUBLE PRECISION ANP, ERA00
-
-    !  TT Julian centuries since J2000.0.
+        !  TT Julian centuries since J2000.0.
     t = ( ( tta-dj00 ) + ttb ) / djc
 
     !  Greenwich Mean Sidereal Time, IAU 2000.
@@ -14366,29 +14126,21 @@
 !
 !  This revision:  2010 March 9
 !
-    double precision function GMST06 ( uta, utb, tta, ttb )
+    real(wp) function GMST06 ( uta, utb, tta, ttb )
 
     implicit none
 
-    double precision uta, utb, tta, ttb
-
-    !  Arcseconds to radians
-    double precision das2r
-    parameter ( das2r = 4.848136811095359935899141d-6 )
+    real(wp) uta, utb, tta, ttb
 
     !  Reference epoch (J2000.0), JD
-    double precision dj00
-    parameter ( dj00 = 2451545d0 )
+    real(wp),parameter :: dj00 = 2451545d0
 
     !  Days per Julian century
-    double precision djc
-    parameter ( djc = 36525d0 )
+    real(wp),parameter :: djc = 36525d0
 
-    double precision t
+    real(wp) t
 
-    !     DOUBLE PRECISION ANP, ERA00
-
-    !  TT Julian centuries since J2000.0.
+        !  TT Julian centuries since J2000.0.
     t = ( ( tta-dj00 ) + ttb ) / djc
 
     !  Greenwich mean sidereal time, IAU 2006.
@@ -14465,39 +14217,34 @@
 !
 !  This revision:  2017 October 12
 !
-    double precision function GMST82 ( dj1, dj2 )
+    real(wp) function GMST82 ( dj1, dj2 )
 
     implicit none
 
-    double precision dj1, dj2
+    real(wp) dj1, dj2
 
     !  Seconds of time to radians
-    double precision ds2r
-    parameter ( ds2r = 7.272205216643039903848712d-5 )
+    real(wp),parameter :: ds2r = 7.272205216643039903848712d-5
 
     !  Reference epoch (J2000.0), JD
-    double precision dj00
-    parameter ( dj00 = 2451545d0 )
+    real(wp),parameter :: dj00 = 2451545d0
 
     !  Seconds per day, days per Julian century
-    double precision d2s, djc
-    parameter ( d2s = 86400d0, djc = 36525d0 )
+    real(wp),parameter :: d2s = 86400d0
+    real(wp),parameter :: djc = 36525d0
 
     !  Coefficients of IAU 1982 GMST-UT1 model
-    double precision a, b, c, d
-    parameter ( a = 24110.54841d0 - d2s/2d0, &
-                b = 8640184.812866d0, &
-                c = 0.093104d0, &
-                d = -6.2d-6 )
+    real(wp),parameter :: a = 24110.54841d0 - d2s/2d0
+    real(wp),parameter :: b = 8640184.812866d0
+    real(wp),parameter :: c = 0.093104d0
+    real(wp),parameter :: d = -6.2d-6
 
     !  Note: the first constant, A, has to be adjusted by 12 hours because
     !  the UT1 is supplied as a Julian date, which begins at noon.
 
-    double precision d1, d2, t, f
+    real(wp) d1, d2, t, f
 
-    !     DOUBLE PRECISION ANP
-
-    !  Julian centuries since fundamental epoch.
+        !  Julian centuries since fundamental epoch.
     if ( dj1 < dj2 ) then
        d1 = dj1
        d2 = dj2
@@ -14585,15 +14332,13 @@
 !
 !  This revision:  2007 December 8
 !
-    double precision function GST00A ( uta, utb, tta, ttb )
+    real(wp) function GST00A ( uta, utb, tta, ttb )
 
     implicit none
 
-    double precision uta, utb, tta, ttb
+    real(wp) uta, utb, tta, ttb
 
-    !     DOUBLE PRECISION ANP, GMST00, EE00A
-
-    GST00A = ANP ( GMST00 ( uta,utb, tta,ttb ) + &
+        GST00A = ANP ( GMST00 ( uta,utb, tta,ttb ) + &
                            EE00A ( tta,ttb ) )
 
     end function GST00A
@@ -14676,15 +14421,13 @@
 !
 !  This revision:  2007 December 8
 !
-    double precision function GST00B ( uta, utb )
+    real(wp) function GST00B ( uta, utb )
 
     implicit none
 
-    double precision uta, utb
+    real(wp) uta, utb
 
-    !     DOUBLE PRECISION ANP, GMST00, EE00B
-
-    GST00B = ANP ( GMST00 ( uta,utb, uta,utb ) + &
+        GST00B = ANP ( GMST00 ( uta,utb, uta,utb ) + &
                            EE00B ( uta,utb ) )
 
     end function GST00B
@@ -14753,17 +14496,15 @@
 !
 !  This revision:  2008 January 2
 !
-    double precision function GST06 ( uta, utb, tta, ttb, rnpb )
+    real(wp) function GST06 ( uta, utb, tta, ttb, rnpb )
 
     implicit none
 
-    double precision uta, utb, tta, ttb, rnpb(3,3)
+    real(wp) uta, utb, tta, ttb, rnpb(3,3)
 
-    double precision x, y, s
+    real(wp) x, y, s
 
-    !     DOUBLE PRECISION S06, ANP, ERA00, EORS
-
-    !  Extract CIP coordinates.
+        !  Extract CIP coordinates.
     call BPN2XY ( rnpb, x, y )
 
     !  The CIO locator, s.
@@ -14836,17 +14577,15 @@
 !
 !  This revision:  2010 March 5
 !
-    double precision function GST06A ( uta, utb, tta, ttb )
+    real(wp) function GST06A ( uta, utb, tta, ttb )
 
     implicit none
 
-    double precision uta, utb, tta, ttb
+    real(wp) uta, utb, tta, ttb
 
-    double precision rnpb(3,3)
+    real(wp) rnpb(3,3)
 
-    !     DOUBLE PRECISION GST06
-
-    !  Classical nutation x precession x bias matrix, IAU 2000A/2006.
+        !  Classical nutation x precession x bias matrix, IAU 2000A/2006.
     call PNM06A ( tta, ttb, rnpb )
 
     !  Greenwich apparent sidereal time.
@@ -14917,15 +14656,13 @@
 !
 !  This revision:  2007 December 8
 !
-    double precision function GST94 ( uta, utb )
+    real(wp) function GST94 ( uta, utb )
 
     implicit none
 
-    double precision uta, utb
+    real(wp) uta, utb
 
-    !     DOUBLE PRECISION ANP, GMST82, EQEQ94
-
-    GST94 = ANP ( GMST82 ( uta, utb ) + &
+        GST94 = ANP ( GMST82 ( uta, utb ) + &
                           EQEQ94 ( uta, utb ) )
 
     end function GST94
@@ -14988,10 +14725,10 @@
 
     implicit none
 
-    double precision rh, dh, drh, ddh, pxh, rvh, &
+    real(wp) rh, dh, drh, ddh, pxh, rvh, &
                      r5, d5, dr5, dd5, px5, rv5
 
-    double precision pvh(3,2), r5h(3,3), s5h(3), sh(3), wxp(3), &
+    real(wp) pvh(3,2), r5h(3,3), s5h(3), sh(3), wxp(3), &
                      vv(3), pv5(3,2)
     integer j, i
 
@@ -15085,12 +14822,9 @@
 
     implicit none
 
-    double precision ha, dec, phi, az, el
+    real(wp) ha, dec, phi, az, el
 
-    double precision d2pi
-    parameter ( d2pi = 6.283185307179586476925287d0 )
-
-    double precision sh, ch, sd, cd, sp, cp, x, y, z, r, a
+    real(wp) sh, ch, sd, cd, sp, cp, x, y, z, r, a
 
     !  Useful trig functions.
     sh = sin(ha)
@@ -15160,13 +14894,13 @@
 !
 !  This revision:   2017 September 12
 !
-    double precision function HD2PA ( ha, dec, phi )
+    real(wp) function HD2PA ( ha, dec, phi )
 
     implicit none
 
-    double precision ha, dec, phi
+    real(wp) ha, dec, phi
 
-    double precision cp, sqsz, cqsz
+    real(wp) cp, sqsz, cqsz
 
     cp = cos(phi)
     sqsz = cp*sin(ha)
@@ -15254,23 +14988,19 @@
 
     implicit none
 
-    double precision rh, dh, date1, date2, r5, d5, dr5, dd5
+    real(wp) rh, dh, date1, date2, r5, d5, dr5, dd5
 
     !  Reference epoch (J2000.0), JD
-    double precision dj00
-    parameter ( dj00 = 2451545d0 )
+    real(wp),parameter :: dj00 = 2451545d0
 
     !  Days per Julian year
-    double precision djy
-    parameter ( djy = 365.25d0 )
+    real(wp),parameter :: djy = 365.25d0
 
-    double precision t, ph(3), r5h(3,3), s5h(3), sh(3), vst(3), &
+    real(wp) t, ph(3), r5h(3,3), s5h(3), sh(3), vst(3), &
                      rst(3,3), r5ht(3,3), pv5e(3,2), vv(3), &
                      w, r, v
 
-    !     DOUBLE PRECISION ANP
-
-    !  Time interval from fundamental epoch J2000.0 to given date (JY).
+        !  Time interval from fundamental epoch J2000.0 to given date (JY).
     t = ( ( date1-dj00 ) + date2 ) / djy
 
     !  Hipparcos barycentric position vector (normalized).
@@ -15370,11 +15100,9 @@
     subroutine ICRS2G ( dr, dd, dl, db  )
 
     implicit none
-    double precision dr, dd, dl, db
+    real(wp) dr, dd, dl, db
 
-    !     DOUBLE PRECISION ANP, ANPM
-
-    double precision v1(3), v2(3)
+        real(wp) v1(3), v2(3)
 
     !
     !  L2,B2 system of galactic coordinates in the form presented in the
@@ -15388,7 +15116,7 @@
     !  ICRS to galactic rotation matrix, obtained by computing
     !  R_3(-R) R_1(pi/2-Q) R_3(pi/2+P) to the full precision shown:
     !
-    double precision r(3,3)
+    real(wp) r(3,3)
     data r(1,1), r(1,2), r(1,3), &
          r(2,1), r(2,2), r(2,3), &
          r(3,1), r(3,2), r(3,3) / &
@@ -15433,7 +15161,7 @@
 
     implicit none
 
-    double precision r(3,3)
+    real(wp) r(3,3)
 
     r(1,1) = 1d0
     r(1,2) = 0d0
@@ -15499,17 +15227,17 @@
 
     implicit none
 
-    double precision dj1, dj2
+    real(wp) dj1, dj2
     integer iy, im, id
-    double precision fd
+    real(wp) fd
     integer j
 
     !  Minimum and maximum allowed JD
-    double precision djmin, djmax
-    parameter ( djmin = -68569.5d0, djmax = 1d9 )
+    real(wp),parameter :: djmin = -68569.5d0
+    real(wp),parameter :: djmax = 1d9
 
     integer jd, l, n, i, k
-    double precision dj, d1, d2, f1, f2, f, d
+    real(wp) dj, d1, d2, f1, f2, f, d
 
     !  Check if date is acceptable.
     dj = dj1 + dj2
@@ -15613,11 +15341,11 @@
     implicit none
 
     integer ndp
-    double precision dj1, dj2
+    real(wp) dj1, dj2
     integer iymdf(4), j
 
     integer js
-    double precision denom, d1, d2, f1, f2, f
+    real(wp) denom, d1, d2, f1, f2, f
 
     !  Denominator of fraction (e.g. 100 for 2 decimal places).
     if ( ndp>=0 .and. ndp<=9 ) then
@@ -15728,15 +15456,14 @@
     subroutine LD ( bm, p, q, e, em, dlim, p1 )
 
     implicit none
-    double precision bm, p(3), q(3), e(3), em, dlim, p1(3)
+    real(wp) bm, p(3), q(3), e(3), em, dlim, p1(3)
 
     !  Schwarzschild radius of the Sun (au)
     !  = 2 * 1.32712440041 D20 / (2.99792458 D8)^2 / 1.49597870700 D11
-    double precision srs
-    parameter ( srs = 1.97412574336d-08 )
+    real(wp),parameter :: srs = 1.97412574336d-08
 
     integer i
-    double precision qpe(3), qdqpe, w, eq(3), peq(3)
+    real(wp) qpe(3), qdqpe, w, eq(3), peq(3)
 
     !  Q . (Q + E).
     do 1 i=1,3
@@ -15839,26 +15566,22 @@
 
     implicit none
     integer n
-    double precision b(8,n), ob(3), sc(3), sn(3)
+    real(wp) b(8,n), ob(3), sc(3), sn(3)
 
     !  Seconds per day.
-    double precision daysec
-    parameter ( daysec = 86400d0 )
+    real(wp),parameter :: daysec = 86400d0
 
     !  Speed of light (m/s)
-    double precision cmps
-    parameter ( cmps = 299792458d0 )
+    real(wp),parameter :: cmps = 299792458d0
 
     !  Astronomical unit (m, IAU 2012)
-    double precision aum
-    parameter ( aum = 149597870.7d3 )
+    real(wp),parameter :: aum = 149597870.7d3
 
     !  Light time for 1 au (day)
-    double precision cr
-    parameter ( cr = aum/cmps/daysec )
+    real(wp),parameter :: cr = aum/cmps/daysec
 
     integer i
-    double precision s(3), v(3), d , dt, ev(3), em, e(3)
+    real(wp) s(3), v(3), d , dt, ev(3), em, e(3)
 
     !  Star direction prior to deflection.
     call CP ( sc, s )
@@ -15931,9 +15654,9 @@
     subroutine LDSUN ( p, e, em, p1 )
 
     implicit none
-    double precision p(3), e(3), em, p1(3)
+    real(wp) p(3), e(3), em, p1(3)
 
-    double precision dlim
+    real(wp) dlim
 
     !  Deflection limiter (smaller for distant observers).
     dlim = 1d-6 / max(em*em,1d0)
@@ -15998,13 +15721,11 @@
 
     implicit none
 
-    double precision epj, dl, db, dr, dd
+    real(wp) epj, dl, db, dr, dd
 
-    double precision rm(3,3), v1(3), v2(3), a, b
+    real(wp) rm(3,3), v1(3), v2(3), a, b
 
-    !     DOUBLE PRECISION ANP, ANPM
-
-    !  Spherical to Cartesian.
+        !  Spherical to Cartesian.
     call S2C ( dl, db, v1 )
 
     !  Rotation matrix, ICRS equatorial to ecliptic.
@@ -16083,19 +15804,17 @@
 
     implicit none
 
-    double precision epj, rm(3,3)
+    real(wp) epj, rm(3,3)
 
     !  Arcseconds to radians
-    double precision as2r
-    parameter ( as2r = 4.848136811095359935899141d-6 )
+    real(wp),parameter :: as2r = 4.848136811095359935899141d-6
 
     !  Frame bias (IERS Conventions 2010, Eqs. 5.21 and 5.33)
-    double precision dx, de, dr
-    parameter ( dx = -0.016617d0 * as2r, &
-                de = -0.0068192d0 * as2r, &
-                dr = -0.0146d0 * as2r )
+    real(wp),parameter :: dx = -0.016617d0 * as2r
+    real(wp),parameter :: de = -0.0068192d0 * as2r
+    real(wp),parameter :: dr = -0.0146d0 * as2r
 
-    double precision p(3), z(3), w(3), s, x(3), y(3)
+    real(wp) p(3), z(3), w(3), s, x(3), y(3)
 
     !  Equator pole.
     call LTPEQU ( epj, p )
@@ -16179,13 +15898,11 @@
 
     implicit none
 
-    double precision epj, dr, dd, dl, db
+    real(wp) epj, dr, dd, dl, db
 
-    double precision rm(3,3), v1(3), v2(3), a, b
+    real(wp) rm(3,3), v1(3), v2(3), a, b
 
-    !     DOUBLE PRECISION ANP, ANPM
-
-    !  Spherical to Cartesian.
+        !  Spherical to Cartesian.
     call S2C ( dr, dd, v1 )
 
     !  Rotation matrix, ICRS equatorial to ecliptic.
@@ -16254,10 +15971,10 @@
     subroutine LTP ( epj, rp )
 
     implicit none
-    double precision epj, rp(3,3)
+    real(wp) epj, rp(3,3)
 
     integer i
-    double precision peqr(3), pecl(3), v(3), w, eqx(3)
+    real(wp) peqr(3), pecl(3), v(3), w, eqx(3)
 
     !  Equator pole (bottom row of matrix).
     call LTPEQU ( epj, peqr )
@@ -16333,20 +16050,15 @@
     subroutine LTPB ( epj, rpb )
 
     implicit none
-    double precision epj, rpb(3,3)
-
-    !  Arcseconds to radians
-    double precision das2r
-    parameter ( das2r = 4.848136811095359935899141d-6 )
+    real(wp) epj, rpb(3,3)
 
     !  Frame bias (IERS Conventions 2010, Eqs. 5.21 and 5.33)
-    double precision dx, de, dr
-    parameter ( dx = -0.016617d0 * das2r, &
-                de = -0.0068192d0 * das2r, &
-                dr = -0.0146d0 * das2r )
+    real(wp),parameter :: dx = -0.016617d0 * das2r
+    real(wp),parameter :: de = -0.0068192d0 * das2r
+    real(wp),parameter :: dr = -0.0146d0 * das2r
 
     integer i
-    double precision rp(3,3)
+    real(wp) rp(3,3)
 
     !  Precession matrix.
     call LTP  ( epj, rp )
@@ -16400,34 +16112,23 @@
     subroutine LTPECL ( epj, vec )
 
     implicit none
-    double precision epj, vec(3)
-
-    !  Arcseconds to radians
-    double precision das2r
-    parameter ( das2r = 4.848136811095359935899141d-6 )
-
-    !  2Pi
-    double precision d2pi
-    parameter ( d2pi = 6.283185307179586476925287d0 )
+    real(wp) epj, vec(3)
 
     !  Obliquity at J2000.0 (radians).
-    double precision eps0
-    parameter ( eps0 = 84381.406d0 * das2r )
+    real(wp),parameter :: eps0 = 84381.406d0 * das2r
 
     !  Number of polynomial terms
-    integer npol
-    parameter ( npol = 4 )
+    integer,parameter :: npol = 4
 
     !  Number of periodic terms
-    integer nper
-    parameter ( nper = 8 )
+    integer,parameter :: nper = 8
 
     !  Miscellaneous
     integer i, j
-    double precision t, p, q, w, a, s, c
+    real(wp) t, p, q, w, a, s, c
 
     !  Polynomial and periodic coefficients
-    double precision pqpol(npol,2), pqper(5,nper)
+    real(wp) pqpol(npol,2), pqper(5,nper)
 
     !  Polynomials
     data ((pqpol(i,j),i=1,npol),j=1,2) / &
@@ -16538,30 +16239,23 @@
     subroutine LTPEQU ( epj, veq )
 
     implicit none
-    double precision epj, veq(3)
+    real(wp) epj, veq(3)
 
     !  Arcseconds to radians
-    double precision as2r
-    parameter ( as2r = 4.848136811095359935899141d-6 )
-
-    !  2Pi
-    double precision d2pi
-    parameter ( d2pi = 6.283185307179586476925287d0 )
+    real(wp),parameter :: as2r = 4.848136811095359935899141d-6
 
     !  Number of polynomial terms
-    integer npol
-    parameter ( npol = 4 )
+    integer,parameter :: npol = 4
 
     !  Number of periodic terms
-    integer nper
-    parameter ( nper = 14 )
+    integer,parameter :: nper = 14
 
     !  Miscellaneous
     integer i, j
-    double precision t, x, y, w, a, s, c
+    real(wp) t, x, y, w, a, s, c
 
     !  Polynomial and periodic coefficients
-    double precision xypol(npol,2), xyper(5,nper)
+    real(wp) xypol(npol,2), xyper(5,nper)
 
     !  Polynomials
     data ((xypol(i,j),i=1,npol),j=1,2) / &
@@ -16698,9 +16392,9 @@
 
     implicit none
 
-    double precision date1, date2, rmatn(3,3)
+    real(wp) date1, date2, rmatn(3,3)
 
-    double precision dpsi, deps, epsa, &
+    real(wp) dpsi, deps, epsa, &
                      rb(3,3), rp(3,3), rbp(3,3), rbpn(3,3)
 
     !  Obtain the required matrix (discarding other results).
@@ -16766,9 +16460,9 @@
 
     implicit none
 
-    double precision date1, date2, rmatn(3,3)
+    real(wp) date1, date2, rmatn(3,3)
 
-    double precision dpsi, deps, epsa, &
+    real(wp) dpsi, deps, epsa, &
                      rb(3,3), rp(3,3), rbp(3,3), rbpn(3,3)
 
     !  Obtain the required matrix (discarding other results).
@@ -16834,13 +16528,11 @@
 
     implicit none
 
-    double precision date1, date2, rmatn(3,3)
+    real(wp) date1, date2, rmatn(3,3)
 
-    double precision eps, dp, de
+    real(wp) eps, dp, de
 
-    !     DOUBLE PRECISION OBL06
-
-    !  Mean obliquity.
+        !  Mean obliquity.
     eps = OBL06 ( date1, date2 )
 
     !  Nutation components.
@@ -16897,7 +16589,7 @@
 
     implicit none
 
-    double precision epsa, dpsi, deps, rmatn(3,3)
+    real(wp) epsa, dpsi, deps, rmatn(3,3)
 
     !  Build the rotation matrix.
     call IR ( rmatn )
@@ -17059,63 +16751,46 @@
 
     implicit none
 
-    double precision date1, date2, dpsi, deps
-
-    !  Arcseconds to radians
-    double precision das2r
-    parameter ( das2r = 4.848136811095359935899141d-6 )
+    real(wp) date1, date2, dpsi, deps
 
     !  Arcseconds in a full circle
-    double precision turnas
-    parameter ( turnas = 1296000d0 )
-
-    !  2Pi
-    double precision d2pi
-    parameter ( d2pi = 6.283185307179586476925287d0 )
+    real(wp),parameter :: turnas = 1296000d0
 
     !  Units of 0.1 microarcsecond to radians
-    double precision u2r
-    parameter ( u2r = das2r/1d7 )
+    real(wp),parameter :: u2r = das2r/1d7
 
     !  Reference epoch (J2000.0), JD
-    double precision dj00
-    parameter ( dj00 = 2451545d0 )
+    real(wp),parameter :: dj00 = 2451545d0
 
     !  Days per Julian century
-    double precision djc
-    parameter ( djc = 36525d0 )
+    real(wp),parameter :: djc = 36525d0
 
     !  Miscellaneous
     integer i, j
-    double precision t, el, elp, f, d, om, arg, dp, de, sarg, carg, &
+    real(wp) t, el, elp, f, d, om, arg, dp, de, sarg, carg, &
                      al, alsu, af, ad, aom, alme, alve, alea, alma, &
                      alju, alsa, alur, alne, apa, dpsils, depsls, &
                      dpsipl, depspl
-    !     DOUBLE PRECISION FAL03, FAF03, FAOM03, FAME03,
-    !    :                 FAVE03, FAE03, FAMA03, FAJU03,
-    !    :                 FASA03, FAUR03, FAPA03
 
     !  -------------------------
     !  Luni-Solar nutation model
     !  -------------------------
 
     !  Number of terms in the luni-solar nutation model
-    integer nls
-    parameter ( nls = 678 )
+    integer,parameter :: nls = 678
 
     !  Coefficients for fundamental arguments
     integer nals(5,nls)
 
     !  Longitude and obliquity coefficients
-    double precision cls(6,nls)
+    real(wp) cls(6,nls)
 
     !  ---------------
     !  Planetary terms
     !  ---------------
 
     !  Number of terms in the planetary nutation model
-    integer npl
-    parameter ( npl = 687 )
+    integer,parameter :: npl = 687
 
     !  Coefficients for fundamental arguments
     integer napl(14,npl)
@@ -20423,38 +20098,25 @@
 
     implicit none
 
-    double precision date1, date2, dpsi, deps
-
-    !  Arcseconds to radians
-    double precision das2r
-    parameter ( das2r = 4.848136811095359935899141d-6 )
+    real(wp) date1, date2, dpsi, deps
 
     !  Milliarcseconds to radians
-    double precision dmas2r
-    parameter ( dmas2r = das2r / 1d3 )
+    real(wp),parameter :: dmas2r = das2r / 1d3
 
     !  Arcseconds in a full circle
-    double precision turnas
-    parameter ( turnas = 1296000d0 )
-
-    !  2Pi
-    double precision d2pi
-    parameter ( d2pi = 6.283185307179586476925287d0 )
+    real(wp),parameter :: turnas = 1296000d0
 
     !  Units of 0.1 microarcsecond to radians
-    double precision u2r
-    parameter ( u2r = das2r/1d7 )
+    real(wp),parameter :: u2r = das2r/1d7
 
     !  Reference epoch (J2000.0), JD
-    double precision dj00
-    parameter ( dj00 = 2451545d0 )
+    real(wp),parameter :: dj00 = 2451545d0
 
     !  Days per Julian century
-    double precision djc
-    parameter ( djc = 36525d0 )
+    real(wp),parameter :: djc = 36525d0
 
     !  Miscellaneous
-    double precision t, el, elp, f, d, om, arg, dp, de, sarg, carg, &
+    real(wp) t, el, elp, f, d, om, arg, dp, de, sarg, carg, &
                      dpsils, depsls, dpsipl, depspl
     integer i, j
 
@@ -20463,22 +20125,20 @@
     !  -------------------------
 
     !  Number of terms in the luni-solar nutation model
-    integer nls
-    parameter ( nls = 77 )
+    integer,parameter :: nls = 77
 
     !  Coefficients for fundamental arguments
     integer nals(5,nls)
 
     !  Longitude and obliquity coefficients
-    double precision cls(6,nls)
+    real(wp) cls(6,nls)
 
     !  ---------------------------------------
     !  Fixed offset in lieu of planetary terms (radians)
     !  ---------------------------------------
 
-    double precision dpplan, deplan
-    parameter ( dpplan = - 0.135d0 * dmas2r, &
-                deplan = + 0.388d0 * dmas2r )
+    real(wp),parameter :: dpplan = - 0.135d0 * dmas2r
+    real(wp),parameter :: deplan = + 0.388d0 * dmas2r
 
     !  ----------------------------------------
     !  Tables of argument and term coefficients
@@ -20805,18 +20465,16 @@
 
     implicit none
 
-    double precision date1, date2, dpsi, deps
+    real(wp) date1, date2, dpsi, deps
 
     !  Reference epoch (J2000.0), JD
-    double precision dj00
-    parameter ( dj00 = 2451545d0 )
+    real(wp),parameter :: dj00 = 2451545d0
 
     !  Days per Julian century
-    double precision djc
-    parameter ( djc = 36525d0 )
+    real(wp),parameter :: djc = 36525d0
 
     !  Miscellaneous
-    double precision t, fj2, dp, de
+    real(wp) t, fj2, dp, de
 
     !  Interval between fundamental date J2000.0 and given date (JC).
     t = ( ( date1-dj00 ) + date2 ) / djc
@@ -20886,34 +20544,21 @@
 
     implicit none
 
-    double precision date1, date2, dpsi, deps
-
-    !  Arcseconds to radians
-    double precision das2r
-    parameter ( das2r = 4.848136811095359935899141d-6 )
-
-    !  2Pi
-    double precision d2pi
-    parameter ( d2pi = 6.283185307179586476925287d0 )
+    real(wp) date1, date2, dpsi, deps
 
     !  Units of 0.1 milliarcsecond to radians
-    double precision u2r
-    parameter ( u2r = das2r/1d4 )
+    real(wp),parameter :: u2r = das2r/1d4
 
     !  Reference epoch (J2000.0), JD
-    double precision dj00
-    parameter ( dj00 = 2451545d0 )
+    real(wp),parameter :: dj00 = 2451545d0
 
     !  Days per Julian century
-    double precision djc
-    parameter ( djc = 36525d0 )
+    real(wp),parameter :: djc = 36525d0
 
-    double precision t, el, elp, f, d, om, dp, de, arg, s, c
+    real(wp) t, el, elp, f, d, om, dp, de, arg, s, c
     integer i, j
 
-    !     DOUBLE PRECISION ANPM
-
-    !  ------------------------------------------------
+        !  ------------------------------------------------
     !  Table of multiples of arguments and coefficients
     !  ------------------------------------------------
     !
@@ -21164,12 +20809,10 @@
 
     implicit none
 
-    double precision date1, date2, rmatn(3,3)
+    real(wp) date1, date2, rmatn(3,3)
 
-    double precision dpsi, deps, epsa
-    !     DOUBLE PRECISION OBL80
-
-    !  Nutation components and mean obliquity.
+    real(wp) dpsi, deps, epsa
+        !  Nutation components and mean obliquity.
     call NUT80 ( date1, date2, dpsi, deps )
     epsa = OBL80 ( date1, date2 )
 
@@ -21221,25 +20864,19 @@
 !
 !  This revision:  2009 December 15
 !
-    double precision function OBL06 ( date1, date2 )
+    real(wp) function OBL06 ( date1, date2 )
 
     implicit none
 
-    double precision date1, date2
-
-    !  Arcseconds to radians
-    double precision das2r
-    parameter ( das2r = 4.848136811095359935899141d-6 )
+    real(wp) date1, date2
 
     !  Reference epoch (J2000.0), JD
-    double precision dj00
-    parameter ( dj00 = 2451545d0 )
+    real(wp),parameter :: dj00 = 2451545d0
 
     !  Days per Julian century
-    double precision djc
-    parameter ( djc = 36525d0 )
+    real(wp),parameter :: djc = 36525d0
 
-    double precision t
+    real(wp) t
 
     !  Interval between fundamental date J2000.0 and given date (JC).
     t = ( ( date1-dj00 ) + date2 ) / djc
@@ -21300,25 +20937,19 @@
 !
 !  This revision:  2009 December 15
 !
-    double precision function OBL80 ( date1, date2 )
+    real(wp) function OBL80 ( date1, date2 )
 
     implicit none
 
-    double precision date1, date2
-
-    !  Arcseconds to radians
-    double precision das2r
-    parameter ( das2r = 4.848136811095359935899141d-6 )
+    real(wp) date1, date2
 
     !  Reference epoch (J2000.0), JD
-    double precision dj00
-    parameter ( dj00 = 2451545d0 )
+    real(wp),parameter :: dj00 = 2451545d0
 
     !  Days per Julian century
-    double precision djc
-    parameter ( djc = 36525d0 )
+    real(wp),parameter :: djc = 36525d0
 
-    double precision t
+    real(wp) t
 
     !  Interval between fundamental epoch J2000.0 and given date (JC).
     t = ( ( date1-dj00 ) + date2 ) / djc
@@ -21451,28 +21082,20 @@
 
     implicit none
 
-    double precision date1, date2, &
+    real(wp) date1, date2, &
                      eps0, psia, oma, bpa, bqa, pia, bpia, &
                      epsa, chia, za, zetaa, thetaa, pa, &
                      gam, phi, psi
 
-    !  Arcseconds to radians
-    double precision das2r
-    parameter ( das2r = 4.848136811095359935899141d-6 )
-
     !  Reference epoch (J2000.0), JD
-    double precision dj00
-    parameter ( dj00 = 2451545d0 )
+    real(wp),parameter :: dj00 = 2451545d0
 
     !  Days per Julian century
-    double precision djc
-    parameter ( djc = 36525d0 )
+    real(wp),parameter :: djc = 36525d0
 
-    double precision t
+    real(wp) t
 
-    !     DOUBLE PRECISION OBL06
-
-    !  Interval between fundamental date J2000.0 and given date (JC).
+        !  Interval between fundamental date J2000.0 and given date (JC).
     t = ( ( date1-dj00 ) + date2 ) / djc
 
     !  Obliquity at J2000.0.
@@ -21633,7 +21256,7 @@
 
     implicit none
 
-    double precision p(3), pv(3,2)
+    real(wp) p(3), pv(3,2)
 
     call CP ( p, pv(1,1) )
     call ZP ( pv(1,2) )
@@ -21671,7 +21294,7 @@
 
     implicit none
 
-    double precision p(3), theta, phi, r
+    real(wp) p(3), theta, phi, r
 
     call C2S ( p, theta, phi )
     call PM ( p, r )
@@ -21720,9 +21343,9 @@
 
     implicit none
 
-    double precision a(3), b(3), theta
+    real(wp) a(3), b(3), theta
 
-    double precision am, au(3), bm, st, ct, xa, ya, za, eta(3), &
+    real(wp) am, au(3), bm, st, ct, xa, ya, za, eta(3), &
                      xi(3), a2b(3)
 
     !  Modulus and direction of the A vector.
@@ -21796,9 +21419,9 @@
 
     implicit none
 
-    double precision al, ap, bl, bp, theta
+    real(wp) al, ap, bl, bp, theta
 
-    double precision dl, x, y
+    real(wp) dl, x, y
 
     dl = bl - al
     y = sin(dl)*cos(bp)
@@ -21877,9 +21500,9 @@
 
     implicit none
 
-    double precision date1, date2, bzeta, bz, btheta
+    real(wp) date1, date2, bzeta, bz, btheta
 
-    double precision r(3,3), r31, r32
+    real(wp) r(3,3), r31, r32
 
     !  Precession matrix via Fukushima-Williams angles.
     call PMAT06 ( date1, date2, r )
@@ -21918,9 +21541,9 @@
 
     implicit none
 
-    double precision a(3), b(3), adb
+    real(wp) a(3), b(3), adb
 
-    double precision w
+    real(wp) w
     integer i
 
     w = 0d0
@@ -22008,25 +21631,17 @@
 
     implicit none
 
-    double precision date1, date2, gamb, phib, psib, epsa
-
-    !  Arcseconds to radians
-    double precision das2r
-    parameter ( das2r = 4.848136811095359935899141d-6 )
+    real(wp) date1, date2, gamb, phib, psib, epsa
 
     !  Reference epoch (J2000.0), JD
-    double precision dj00
-    parameter ( dj00 = 2451545d0 )
+    real(wp),parameter :: dj00 = 2451545d0
 
     !  Days per Julian century
-    double precision djc
-    parameter ( djc = 36525d0 )
+    real(wp),parameter :: djc = 36525d0
 
-    double precision t
+    real(wp) t
 
-    !     DOUBLE PRECISION OBL06
-
-    !  Interval between fundamental date J2000.0 and given date (JC).
+        !  Interval between fundamental date J2000.0 and given date (JC).
     t = ( ( date1-dj00 ) + date2 ) / djc
 
     !  P03 bias+precession angles.
@@ -22219,42 +21834,29 @@
 
     implicit none
 
-    double precision date1, date2
+    real(wp) date1, date2
     integer np
-    double precision pv(3,2)
+    real(wp) pv(3,2)
     integer j
 
     !  Maximum number of iterations allowed to solve Kepler's equation
-    integer kmax
-    parameter ( kmax = 10 )
-
-    !  2Pi
-    double precision d2pi
-    parameter ( d2pi = 6.283185307179586476925287d0 )
-
-    !  Arcseconds to radians
-    double precision das2r
-    parameter ( das2r = 4.848136811095359935899141d-6 )
+    integer,parameter :: kmax = 10
 
     !  Reference epoch (J2000.0), JD
-    double precision dj00
-    parameter ( dj00 = 2451545d0 )
+    real(wp),parameter :: dj00 = 2451545d0
 
     !  Days per Julian millennium
-    double precision djm
-    parameter ( djm = 365250d0 )
+    real(wp),parameter :: djm = 365250d0
 
     !  Sin and cos of J2000.0 mean obliquity (IAU 1976)
-    double precision sineps, coseps
-    parameter ( sineps = 0.3977771559319137d0, &
-                coseps = 0.9174820620691818d0 )
+    real(wp),parameter :: sineps = 0.3977771559319137d0
+    real(wp),parameter :: coseps = 0.9174820620691818d0
 
     !  Gaussian constant
-    double precision gk
-    parameter ( gk = 0.017202098950d0 )
+    real(wp),parameter :: gk = 0.017202098950d0
 
     integer jstat, i, k
-    double precision amas(8), a(3,8), dlm(3,8), e(3,8), &
+    real(wp) amas(8), a(3,8), dlm(3,8), e(3,8), &
                      pi(3,8), dinc(3,8), omega(3,8), &
                      kp(9,8), ca(9,8), sa(9,8), &
                      kq(10,8), cl(10,8), sl(10,8), &
@@ -22262,9 +21864,7 @@
                      ae, dae, ae2, at, r, v, si2, xq, xp, tl, xsw, &
                      xcw, xm2, xf, ci2, xms, xmc, xpxq2, x, y, z
 
-    !     DOUBLE PRECISION ANPM
-
-    !  Planetary inverse masses
+        !  Planetary inverse masses
     data amas / 6023600d0, 408523.5d0, 328900.5d0, 3098710d0, &
                 1047.355d0, 3498.5d0, 22869d0, 19314d0 /
 
@@ -22545,10 +22145,10 @@
 
     implicit none
 
-    double precision p(3), r
+    real(wp) p(3), r
 
     integer i
-    double precision w, c
+    real(wp) w, c
 
     w = 0d0
     do 1 i=1,3
@@ -22614,9 +22214,9 @@
 
     implicit none
 
-    double precision date1, date2, rbp(3,3)
+    real(wp) date1, date2, rbp(3,3)
 
-    double precision rb(3,3), rp(3,3)
+    real(wp) rb(3,3), rp(3,3)
 
     !  Obtain the required matrix (discarding others).
     call BP00 ( date1, date2, rb, rp, rbp )
@@ -22679,9 +22279,9 @@
 
     implicit none
 
-    double precision date1, date2, rbp(3,3)
+    real(wp) date1, date2, rbp(3,3)
 
-    double precision gamb, phib, psib, epsa
+    real(wp) gamb, phib, psib, epsa
 
     !  Bias-precession Fukushima-Williams angles.
     call PFW06 ( date1, date2, gamb, phib, psib, epsa )
@@ -22762,13 +22362,12 @@
 
     implicit none
 
-    double precision date1, date2, rmatp(3,3)
+    real(wp) date1, date2, rmatp(3,3)
 
     !  Reference epoch (J2000.0), JD
-    double precision dj00
-    parameter ( dj00 = 2451545d0 )
+    real(wp),parameter :: dj00 = 2451545d0
 
-    double precision zeta, z, theta, wmat(3,3)
+    real(wp) zeta, z, theta, wmat(3,3)
 
     !  Precession Euler angles, J2000.0 to specified date.
     call PREC76 ( dj00, 0d0, date1, date2, zeta, z, theta )
@@ -22802,7 +22401,7 @@
 
     implicit none
 
-    double precision a(3), b(3), amb(3)
+    real(wp) a(3), b(3), amb(3)
 
     integer i
 
@@ -22860,42 +22459,31 @@
     subroutine PMPX ( rc, dc, pr, pd, px, rv, pmt, pob, pco )
 
     implicit none
-    double precision rc, dc, pr, pd, px, rv, pmt, pob(3), pco(3)
+    real(wp) rc, dc, pr, pd, px, rv, pmt, pob(3), pco(3)
 
     !  Days to seconds
-    double precision d2s
-    parameter ( d2s = 86400d0 )
+    real(wp),parameter :: d2s = 86400d0
 
     !  Days per Julian year
-    double precision djy
-    parameter ( djy = 365.25d0 )
+    real(wp),parameter :: djy = 365.25d0
 
     !  Days per Julian millennium
-    double precision djm
-    parameter ( djm = 365250d0 )
+    real(wp),parameter :: djm = 365250d0
 
     !  Speed of light (m/s)
-    double precision cmps
-    parameter ( cmps = 299792458d0 )
+    real(wp),parameter :: cmps = 299792458d0
 
     !  Astronomical unit (m, IAU 2012)
-    double precision aum
-    parameter ( aum = 149597870.7d3 )
+    real(wp),parameter :: aum = 149597870.7d3
 
     !  Light time for 1 au, Julian years
-    double precision aulty
-    parameter ( aulty = aum/cmps/d2s/djy )
+    real(wp),parameter :: aulty = aum/cmps/d2s/djy
 
     !  Km/s to au/year
-    double precision vf
-    parameter ( vf = d2s*djm/aum )
-
-    !  Arcseconds to radians
-    double precision das2r
-    parameter ( das2r = 4.848136811095359935899141d-6 )
+    real(wp),parameter :: vf = d2s*djm/aum
 
     integer i
-    double precision sr, cr, sd, cd, x, y, z, p(3), pdb, &
+    real(wp) sr, cr, sd, cd, x, y, z, p(3), pdb, &
                      dt, pxr, w, pdz, pm(3)
 
     !  Catalog spherical coordinates to unit vector (and useful functions).
@@ -23037,21 +22625,19 @@
                         ra2, dec2, pmr2, pmd2, px2, rv2, j )
 
     implicit none
-    double precision ra1, dec1, pmr1, pmd1, px1, rv1, &
+    real(wp) ra1, dec1, pmr1, pmd1, px1, rv1, &
                      ep1a, ep1b, ep2a, ep2b, &
                      ra2, dec2, pmr2, pmd2, px2, rv2
     integer j
 
     !  Minimum allowed parallax (arcsec)
-    double precision pxmin
-    parameter ( pxmin = 5d-7 )
+    real(wp),parameter :: pxmin = 5d-7
 
     !  Factor giving maximum allowed transverse speed of about 1% c
-    double precision f
-    parameter ( f = 326d0 )
+    real(wp),parameter :: f = 326d0
 
     integer jpx
-    double precision pm, px1a
+    real(wp) pm, px1a
 
     !  Proper motion in one year (radians).
     call SEPS ( ra1, dec1, ra1+pmr1, dec1+pmd1, pm )
@@ -23108,9 +22694,9 @@
 
     implicit none
 
-    double precision p(3), r, u(3)
+    real(wp) p(3), r, u(3)
 
-    double precision w
+    real(wp) w
 
     !  Obtain the modulus and test for zero.
     call PM ( p, w )
@@ -23223,15 +22809,13 @@
 
     implicit none
 
-    double precision date1, date2, dpsi, deps, &
+    real(wp) date1, date2, dpsi, deps, &
                      epsa, rb(3,3), rp(3,3), rbp(3,3), &
                      rn(3,3), rbpn(3,3)
 
-    double precision dpsipr, depspr
+    real(wp) dpsipr, depspr
 
-    !     DOUBLE PRECISION OBL80
-
-    !  IAU 2000 precession-rate adjustments.
+        !  IAU 2000 precession-rate adjustments.
     call PR00 ( date1, date2, dpsipr, depspr )
 
     !  Mean obliquity, consistent with IAU 2000 precession-nutation.
@@ -23342,7 +22926,7 @@
 
     implicit none
 
-    double precision date1, date2, dpsi, deps, epsa, &
+    real(wp) date1, date2, dpsi, deps, epsa, &
                      rb(3,3), rp(3,3), rbp(3,3), rn(3,3), rbpn(3,3)
 
     !  Nutation.
@@ -23448,7 +23032,7 @@
 
     implicit none
 
-    double precision date1, date2, dpsi, deps, epsa, &
+    real(wp) date1, date2, dpsi, deps, epsa, &
                      rb(3,3), rp(3,3), rbp(3,3), rn(3,3), rbpn(3,3)
 
     !  Nutation.
@@ -23549,19 +23133,17 @@
 
     implicit none
 
-    double precision date1, date2, dpsi, deps, &
+    real(wp) date1, date2, dpsi, deps, &
                      epsa, rb(3,3), rp(3,3), rbp(3,3), &
                      rn(3,3), rbpn(3,3)
 
     !  JD for MJD 0
-    double precision djm0
-    parameter (djm0 = 2400000.5d0 )
+    real(wp),parameter :: djm0 = 2400000.5d0
 
     !  Reference epoch (J2000.0), MJD
-    double precision djm00
-    parameter ( djm00 = 51544.5d0 )
+    real(wp),parameter :: djm00 = 51544.5d0
 
-    double precision gamb, phib, psib, eps, rt(3,3)
+    real(wp) gamb, phib, psib, eps, rt(3,3)
 
     !  Bias-precession Fukushima-Williams angles of J2000.0 = frame bias.
     call PFW06 ( djm0, djm00, gamb, phib, psib, eps )
@@ -23675,7 +23257,7 @@
 
     implicit none
 
-    double precision date1, date2, dpsi, deps, epsa, &
+    real(wp) date1, date2, dpsi, deps, epsa, &
                      rb(3,3), rp(3,3), rbp(3,3), rn(3,3), rbpn(3,3)
 
     !  Nutation.
@@ -23745,9 +23327,9 @@
 
     implicit none
 
-    double precision date1, date2, rbpn(3,3)
+    real(wp) date1, date2, rbpn(3,3)
 
-    double precision dpsi, deps, epsa, rb(3,3), rp(3,3), rbp(3,3), &
+    real(wp) dpsi, deps, epsa, rb(3,3), rp(3,3), rbp(3,3), &
                      rn(3,3)
 
     !  Obtain the required matrix (discarding other results).
@@ -23814,9 +23396,9 @@
 
     implicit none
 
-    double precision date1, date2, rbpn(3,3)
+    real(wp) date1, date2, rbpn(3,3)
 
-    double precision  dpsi, deps, epsa, &
+    real(wp)  dpsi, deps, epsa, &
                       rb(3,3), rp(3,3), rbp(3,3), rn(3,3)
 
     !  Obtain the required matrix (discarding other results).
@@ -23880,9 +23462,9 @@
 
     implicit none
 
-    double precision date1, date2, rnpb(3,3)
+    real(wp) date1, date2, rnpb(3,3)
 
-    double precision gamb, phib, psib, epsa, dp, de
+    real(wp) gamb, phib, psib, epsa, dp, de
 
     !  Fukushima-Williams angles for frame bias and precession.
     call PFW06 ( date1, date2, gamb, phib, psib, epsa )
@@ -23953,9 +23535,9 @@
 
     implicit none
 
-    double precision date1, date2, rmatpn(3,3)
+    real(wp) date1, date2, rmatpn(3,3)
 
-    double precision rmatp(3,3), rmatn(3,3)
+    real(wp) rmatp(3,3), rmatn(3,3)
 
     !  Precession matrix, J2000.0 to date.
     call PMAT76 ( date1, date2, rmatp )
@@ -24018,7 +23600,7 @@
 
     implicit none
 
-    double precision xp, yp, sp, rpom(3,3)
+    real(wp) xp, yp, sp, rpom(3,3)
 
     !  Construct the matrix.
     call IR ( rpom )
@@ -24048,7 +23630,7 @@
 
     implicit none
 
-    double precision a(3), b(3), apb(3)
+    real(wp) a(3), b(3), apb(3)
 
     integer i
 
@@ -24079,7 +23661,7 @@
 
     implicit none
 
-    double precision a(3), s, b(3), apsb(3)
+    real(wp) a(3), s, b(3), apsb(3)
 
     integer i
 
@@ -24160,29 +23742,22 @@
 
     implicit none
 
-    double precision date1, date2, dpsipr, depspr
-
-    !  Arcseconds to radians
-    double precision das2r
-    parameter ( das2r = 4.848136811095359935899141d-6 )
+    real(wp) date1, date2, dpsipr, depspr
 
     !  Reference epoch (J2000.0), JD
-    double precision dj00
-    parameter ( dj00 = 2451545d0 )
+    real(wp),parameter :: dj00 = 2451545d0
 
     !  Days per Julian century
-    double precision djc
-    parameter ( djc = 36525d0 )
+    real(wp),parameter :: djc = 36525d0
 
-    double precision t
+    real(wp) t
 
     !  ------------------------------------
     !  Precession and obliquity corrections (radians per century)
     !  ------------------------------------
 
-    double precision precor, oblcor
-    parameter ( precor = -0.29965d0 * das2r, &
-                oblcor = -0.02524d0 * das2r )
+    real(wp),parameter :: precor = -0.29965d0 * das2r
+    real(wp),parameter :: oblcor = -0.02524d0 * das2r
 
     !  Interval between fundamental epoch J2000.0 and given date (JC).
     t = ( ( date1-dj00 ) + date2 ) / djc
@@ -24262,21 +23837,15 @@
 
     implicit none
 
-    double precision date01, date02, date11, date12, zeta, z, theta
-
-    !  Arcseconds to radians
-    double precision das2r
-    parameter ( das2r = 4.848136811095359935899141d-6 )
+    real(wp) date01, date02, date11, date12, zeta, z, theta
 
     !  Reference epoch (J2000.0), JD
-    double precision dj00
-    parameter ( dj00 = 2451545d0 )
+    real(wp),parameter :: dj00 = 2451545d0
 
     !  Days per Julian century
-    double precision djc
-    parameter ( djc = 36525d0 )
+    real(wp),parameter :: djc = 36525d0
 
-    double precision t0, t, tas2r, w
+    real(wp) t0, t, tas2r, w
 
     !  Interval between fundamental epoch J2000.0 and start date (JC).
     t0 = ( ( date01-dj00 ) + date02 ) / djc
@@ -24329,7 +23898,7 @@
 
     implicit none
 
-    double precision pv(3,2), p(3)
+    real(wp) pv(3,2), p(3)
 
     call CP ( pv, p )
 
@@ -24372,9 +23941,9 @@
 
     implicit none
 
-    double precision pv(3,2), theta, phi, r, td, pd, rd
+    real(wp) pv(3,2), theta, phi, r, td, pd, rd
 
-    double precision x, y, z, xd, yd, zd, rxy2, rxy, r2, &
+    real(wp) x, y, z, xd, yd, zd, rxy2, rxy, r2, &
                      rtrue, rw, xyp
 
     !  Components of position/velocity vector.
@@ -24462,9 +24031,9 @@
 
     implicit none
 
-    double precision a(3,2), b(3,2), adb(2)
+    real(wp) a(3,2), b(3,2), adb(2)
 
-    double precision adbd, addb
+    real(wp) adbd, addb
 
     !  A . B = constant part of result.
     call PDP ( a(1,1), b(1,1), adb(1) )
@@ -24503,7 +24072,7 @@
 
     implicit none
 
-    double precision pv(3,2), r, s
+    real(wp) pv(3,2), r, s
 
     !  Distance.
     call PM ( pv(1,1), r )
@@ -24536,7 +24105,7 @@
 
     implicit none
 
-    double precision a(3,2), b(3,2), amb(3,2)
+    real(wp) a(3,2), b(3,2), amb(3,2)
 
     integer i
 
@@ -24569,7 +24138,7 @@
 
     implicit none
 
-    double precision a(3,2), b(3,2), apb(3,2)
+    real(wp) a(3,2), b(3,2), apb(3,2)
 
     integer i
 
@@ -24674,38 +24243,30 @@
 
     implicit none
 
-    double precision pv(3,2), ra, dec, pmr, pmd, px, rv
+    real(wp) pv(3,2), ra, dec, pmr, pmd, px, rv
     integer j
 
     !  Julian years to days
-    double precision y2d
-    parameter ( y2d = 365.25d0 )
+    real(wp),parameter :: y2d = 365.25d0
 
     !  Radians to arcseconds
-    double precision dr2as
-    parameter ( dr2as = 206264.8062470963551564734d0 )
+    real(wp),parameter :: dr2as = 206264.8062470963551564734d0
 
     !  Days to seconds
-    double precision d2s
-    parameter ( d2s = 86400d0 )
+    real(wp),parameter :: d2s = 86400d0
 
     !  Speed of light (m/s)
-    double precision cmps
-    parameter ( cmps = 299792458d0 )
+    real(wp),parameter :: cmps = 299792458d0
 
     !  Astronomical unit (m, IAU 2012)
-    double precision aum
-    parameter ( aum = 149597870.7d3 )
+    real(wp),parameter :: aum = 149597870.7d3
 
     !  Speed of light (au per day)
-    double precision c
-    parameter ( c = d2s*cmps/aum )
+    real(wp),parameter :: c = d2s*cmps/aum
 
-    double precision r, x(3), vr, ur(3), vt, ut(3), bett, betr, d, w, &
+    real(wp) r, x(3), vr, ur(3), vt, ut(3), bett, betr, d, w, &
                      del, usr(3), ust(3), a, rad, decd, rd
-    !     DOUBLE PRECISION ANP
-
-    !  Isolate the radial component of the velocity (au/day, inertial).
+        !  Isolate the radial component of the velocity (au/day, inertial).
     call PN ( pv(1,1), r, x )
     call PDP ( x, pv(1,2), vr )
     call SXP ( vr, x, ur )
@@ -24832,22 +24393,16 @@
     subroutine PVTOB ( elong, phi, hm, xp, yp, sp, theta, pv )
 
     implicit none
-    double precision elong, phi, hm, xp, yp, sp, theta, pv(3,2)
+    real(wp) elong, phi, hm, xp, yp, sp, theta, pv(3,2)
 
     !  Days to seconds
-    double precision d2s
-    parameter ( d2s = 86400d0 )
-
-    !  2Pi
-    double precision d2pi
-    parameter ( d2pi = 6.283185307179586476925287d0 )
+    real(wp),parameter :: d2s = 86400d0
 
     !  Earth rotation rate in radians per UT1 second
-    double precision om
-    parameter ( om = 1.00273781191135448d0 * d2pi / d2s )
+    real(wp),parameter :: om = 1.00273781191135448d0 * d2pi / d2s
 
     integer j
-    double precision xyzm(3), rpm(3,3), xyz(3), x, y, z, s, c
+    real(wp) xyzm(3), rpm(3,3), xyz(3), x, y, z, s, c
 
     !  Geodetic to geocentric transformation (WGS84).
     call GD2GC ( 1, elong, phi, hm, xyzm, j )
@@ -24906,7 +24461,7 @@
 
     implicit none
 
-    double precision dt, pv(3,2), upv(3,2)
+    real(wp) dt, pv(3,2), upv(3,2)
 
     call PPSP ( pv(1,1), dt, pv(1,2), upv(1,1) )
     call CP ( pv(1,2), upv(1,2) )
@@ -24940,7 +24495,7 @@
 
     implicit none
 
-    double precision dt, pv(3,2), p(3)
+    real(wp) dt, pv(3,2), p(3)
 
     integer i
 
@@ -24982,9 +24537,9 @@
 
     implicit none
 
-    double precision a(3,2), b(3,2), axb(3,2)
+    real(wp) a(3,2), b(3,2), axb(3,2)
 
-    double precision wa(3,2), wb(3,2), axbd(3), adxb(3)
+    real(wp) wa(3,2), wb(3,2), axbd(3), adxb(3)
 
     !  Make copies of the inputs.
     call CPV ( a, wa )
@@ -25020,9 +24575,9 @@
 
     implicit none
 
-    double precision a(3), b(3), axb(3)
+    real(wp) a(3), b(3), axb(3)
 
-    double precision xa, ya, za, xb, yb, zb
+    real(wp) xa, ya, za, xb, yb, zb
 
     xa = a(1)
     ya = a(2)
@@ -25184,10 +24739,10 @@
     subroutine REFCO ( phpa, tc, rh, wl, refa, refb )
 
     implicit none
-    double precision phpa, tc, rh, wl, refa, refb
+    real(wp) phpa, tc, rh, wl, refa, refb
 
     logical optic
-    double precision p, t, r, w, ps, pw, tk, wlsq, gamma, beta
+    real(wp) p, t, r, w, ps, pw, tk, wlsq, gamma, beta
 
     !  Decide whether optical/IR or radio case:  switch at 100 microns.
     optic = wl<=100d0
@@ -25261,9 +24816,9 @@
 
     implicit none
 
-    double precision r(3,3), w(3)
+    real(wp) r(3,3), w(3)
 
-    double precision x, y, z, s2, c2, phi, f
+    real(wp) x, y, z, s2, c2, phi, f
 
     x = r(2,3) - r(3,2)
     y = r(3,1) - r(1,3)
@@ -25315,9 +24870,9 @@
 
     implicit none
 
-    double precision w(3), r(3,3)
+    real(wp) w(3), r(3,3)
 
-    double precision x, y, z, phi, s, c, f
+    real(wp) x, y, z, phi, s, c, f
 
     !  Euler angle (magnitude of rotation vector) and functions.
     x = w(1)
@@ -25381,9 +24936,9 @@
 
     implicit none
 
-    double precision phi, r(3,3)
+    real(wp) phi, r(3,3)
 
-    double precision s, c, a21, a22, a23, a31, a32, a33
+    real(wp) s, c, a21, a22, a23, a31, a32, a33
 
     s = sin(phi)
     c = cos(phi)
@@ -25427,9 +24982,9 @@
 
     implicit none
 
-    double precision r(3,3), p(3), rp(3)
+    real(wp) r(3,3), p(3), rp(3)
 
-    double precision w, wrp(3)
+    real(wp) w, wrp(3)
 
     integer i, j
 
@@ -25470,7 +25025,7 @@
 
     implicit none
 
-    double precision r(3,3), pv(3,2), rpv(3,2)
+    real(wp) r(3,3), pv(3,2), rpv(3,2)
 
     call RXP ( r, pv(1,1), rpv(1,1) )
     call RXP ( r, pv(1,2), rpv(1,2) )
@@ -25500,10 +25055,10 @@
 
     implicit none
 
-    double precision a(3,3), b(3,3), atb(3,3)
+    real(wp) a(3,3), b(3,3), atb(3,3)
 
     integer i, j, k
-    double precision w, wm(3,3)
+    real(wp) w, wm(3,3)
 
     do 3 i=1,3
        do 2 j=1,3
@@ -25551,9 +25106,9 @@
 
     implicit none
 
-    double precision theta, r(3,3)
+    real(wp) theta, r(3,3)
 
-    double precision s, c, a11, a12, a13, a31, a32, a33
+    real(wp) s, c, a11, a12, a13, a31, a32, a33
 
     s = sin(theta)
     c = cos(theta)
@@ -25607,9 +25162,9 @@
 
     implicit none
 
-    double precision psi, r(3,3)
+    real(wp) psi, r(3,3)
 
-    double precision s, c, a11, a12, a13, a21, a22, a23
+    real(wp) s, c, a11, a12, a13, a21, a22, a23
 
     s = sin(psi)
     c = cos(psi)
@@ -25706,47 +25261,42 @@
 !
 !  This revision:  2010 January 18
 !
-    double precision function S00 ( date1, date2, x, y )
+    real(wp) function S00 ( date1, date2, x, y )
 
     implicit none
 
-    double precision date1, date2, x, y
-
-    !  Arcseconds to radians
-    double precision das2r
-    parameter ( das2r = 4.848136811095359935899141d-6 )
+    real(wp) date1, date2, x, y
 
     !  Reference epoch (J2000.0), JD
-    double precision dj00
-    parameter ( dj00 = 2451545d0 )
+    real(wp),parameter :: dj00 = 2451545d0
 
     !  Days per Julian century
-    double precision djc
-    parameter ( djc = 36525d0 )
+    real(wp),parameter :: djc = 36525d0
 
     !  Time since J2000.0, in Julian centuries
-    double precision t
+    real(wp) t
 
     !  Miscellaneous
     integer i, j
-    double precision a, s0, s1, s2, s3, s4, s5
-    !     DOUBLE PRECISION FAL03, FALP03, FAF03,
-    !    :                 FAD03, FAOM03, FAVE03, FAE03,
-    !    :                 FAPA03
+    real(wp) a, s0, s1, s2, s3, s4, s5
 
     !  Fundamental arguments
-    double precision fa(8)
+    real(wp) fa(8)
 
     !  ---------------------
     !  The series for s+XY/2
     !  ---------------------
 
     !  Number of terms in the series
-    integer nsp, ns0, ns1, ns2, ns3, ns4
-    parameter ( nsp=6, ns0=33, ns1=3, ns2=25, ns3=4, ns4=1 )
+    integer,parameter :: nsp=6
+    integer,parameter :: ns0=33
+    integer,parameter :: ns1=3
+    integer,parameter :: ns2=25
+    integer,parameter :: ns3=4
+    integer,parameter :: ns4=1
 
     !  Polynomial coefficients
-    double precision sp ( nsp )
+    real(wp) sp ( nsp )
 
     !  Coefficients of l,l',F,D,Om,LVe,LE,pA
     integer ks0 ( 8, ns0 ), &
@@ -25756,7 +25306,7 @@
             ks4 ( 8, ns4 )
 
     !  Sine and cosine coefficients
-    double precision ss0 ( 2, ns0 ), &
+    real(wp) ss0 ( 2, ns0 ), &
                      ss1 ( 2, ns1 ), &
                      ss2 ( 2, ns2 ), &
                      ss3 ( 2, ns3 ), &
@@ -26098,17 +25648,15 @@
 !
 !  This revision:  2010 January 18
 !
-    double precision function S00A ( date1, date2 )
+    real(wp) function S00A ( date1, date2 )
 
     implicit none
 
-    double precision date1, date2
+    real(wp) date1, date2
 
-    double precision rbpn(3,3), x, y
+    real(wp) rbpn(3,3), x, y
 
-    !     DOUBLE PRECISION S00
-
-    !  Bias-precession-nutation-matrix, IAU 2000A.
+        !  Bias-precession-nutation-matrix, IAU 2000A.
     call PNM00A ( date1, date2, rbpn )
 
     !  Extract the CIP coordinates.
@@ -26189,17 +25737,15 @@
 !
 !  This revision:  2010 January 18
 !
-    double precision function S00B ( date1, date2 )
+    real(wp) function S00B ( date1, date2 )
 
     implicit none
 
-    double precision date1, date2
+    real(wp) date1, date2
 
-    double precision rbpn(3,3), x, y
+    real(wp) rbpn(3,3), x, y
 
-    !     DOUBLE PRECISION S00
-
-    !  Bias-precession-nutation-matrix, IAU 2000B.
+        !  Bias-precession-nutation-matrix, IAU 2000B.
     call PNM00B ( date1, date2, rbpn )
 
     !  Extract the CIP coordinates.
@@ -26283,47 +25829,42 @@
 !
 !  This revision:   2009 December 15
 !
-    double precision function S06 ( date1, date2, x, y )
+    real(wp) function S06 ( date1, date2, x, y )
 
     implicit none
 
-    double precision date1, date2, x, y
-
-    !  Arcseconds to radians
-    double precision das2r
-    parameter ( das2r = 4.848136811095359935899141d-6 )
+    real(wp) date1, date2, x, y
 
     !  Reference epoch (J2000.0), JD
-    double precision dj00
-    parameter ( dj00 = 2451545d0 )
+    real(wp),parameter :: dj00 = 2451545d0
 
     !  Days per Julian century
-    double precision djc
-    parameter ( djc = 36525d0 )
+    real(wp),parameter :: djc = 36525d0
 
     !  Time since J2000.0, in Julian centuries
-    double precision t
+    real(wp) t
 
     !  Miscellaneous
     integer i, j
-    double precision a, s0, s1, s2, s3, s4, s5
-    !     DOUBLE PRECISION FAL03, FALP03, FAF03,
-    !    :                 FAD03, FAOM03, FAVE03, FAE03,
-    !    :                 FAPA03
+    real(wp) a, s0, s1, s2, s3, s4, s5
 
     !  Fundamental arguments
-    double precision fa(8)
+    real(wp) fa(8)
 
     !  ---------------------
     !  The series for s+XY/2
     !  ---------------------
 
     !  Number of terms in the series
-    integer nsp, ns0, ns1, ns2, ns3, ns4
-    parameter ( nsp=6, ns0=33, ns1=3, ns2=25, ns3=4, ns4=1 )
+    integer,parameter :: nsp = 6
+    integer,parameter :: ns0 = 33
+    integer,parameter :: ns1 = 3
+    integer,parameter :: ns2 = 25
+    integer,parameter :: ns3 = 4
+    integer,parameter :: ns4 = 1
 
     !  Polynomial coefficients
-    double precision sp ( nsp )
+    real(wp) sp ( nsp )
 
     !  Coefficients of l,l',F,D,Om,LVe,LE,pA
     integer ks0 ( 8, ns0 ), &
@@ -26333,7 +25874,7 @@
             ks4 ( 8, ns4 )
 
     !  Sine and cosine coefficients
-    double precision ss0 ( 2, ns0 ), &
+    real(wp) ss0 ( 2, ns0 ), &
                      ss1 ( 2, ns1 ), &
                      ss2 ( 2, ns2 ), &
                      ss3 ( 2, ns3 ), &
@@ -26677,17 +26218,15 @@
 !
 !  This revision:  2010 January 18
 !
-    double precision function S06A ( date1, date2 )
+    real(wp) function S06A ( date1, date2 )
 
     implicit none
 
-    double precision date1, date2
+    real(wp) date1, date2
 
-    double precision rnpb(3,3), x, y
+    real(wp) rnpb(3,3), x, y
 
-    !     DOUBLE PRECISION S06
-
-    !  Bias-precession-nutation-matrix, IAU 20006/2000A.
+        !  Bias-precession-nutation-matrix, IAU 20006/2000A.
     call PNM06A ( date1, date2, rnpb )
 
     !  Extract the CIP coordinates.
@@ -26718,9 +26257,9 @@
 
     implicit none
 
-    double precision theta, phi, c(3)
+    real(wp) theta, phi, c(3)
 
-    double precision cp
+    real(wp) cp
 
     cp = cos(phi)
     c(1) = cos(theta) * cp
@@ -26754,9 +26293,9 @@
 
     implicit none
 
-    double precision theta, phi, r, p(3)
+    real(wp) theta, phi, r, p(3)
 
-    double precision u(3)
+    real(wp) u(3)
 
     call S2C ( theta, phi, u )
     call SXP ( r, u, p )
@@ -26787,9 +26326,9 @@
 
     implicit none
 
-    double precision theta, phi, r, td, pd, rd, pv(3,2)
+    real(wp) theta, phi, r, td, pd, rd, pv(3,2)
 
-    double precision st, ct, sp, cp, rcp, x, y, rpd, w
+    real(wp) st, ct, sp, cp, rcp, x, y, rpd, w
 
     st = sin(theta)
     ct = cos(theta)
@@ -26834,7 +26373,7 @@
 
     implicit none
 
-    double precision s1, s2, pv(3,2), spv(3,2)
+    real(wp) s1, s2, pv(3,2), spv(3,2)
 
     call SXP ( s1, pv(1,1), spv(1,1) )
     call SXP ( s2, pv(1,2), spv(1,2) )
@@ -26876,9 +26415,9 @@
 
     implicit none
 
-    double precision a(3), b(3), s
+    real(wp) a(3), b(3), s
 
-    double precision axb(3), ss, cs
+    real(wp) axb(3), ss, cs
 
     !  Sine of the angle between the vectors, multiplied by the two moduli.
     call PXP ( a, b, axb )
@@ -26922,9 +26461,9 @@
 
     implicit none
 
-    double precision al, ap, bl, bp, s
+    real(wp) al, ap, bl, bp, s
 
-    double precision ac(3), bc(3)
+    real(wp) ac(3), bc(3)
 
     !  Spherical to Cartesian.
     call S2C ( al, ap, ac )
@@ -26983,26 +26522,20 @@
 !
 !  This revision:  2009 December 15
 !
-    double precision function SP00 ( date1, date2 )
+    real(wp) function SP00 ( date1, date2 )
 
     implicit none
 
-    double precision date1, date2
-
-    !  Arcseconds to radians
-    double precision das2r
-    parameter ( das2r = 4.848136811095359935899141d-6 )
+    real(wp) date1, date2
 
     !  Reference epoch (J2000.0), JD
-    double precision dj00
-    parameter ( dj00 = 2451545d0 )
+    real(wp),parameter :: dj00 = 2451545d0
 
     !  Days per Julian century
-    double precision djc
-    parameter ( djc = 36525d0 )
+    real(wp),parameter :: djc = 36525d0
 
     !  Time since J2000.0, in Julian centuries
-    double precision t
+    real(wp) t
 
     !  Interval between fundamental epoch J2000.0 and current date (JC).
     t = ( ( date1-dj00 ) + date2 ) / djc
@@ -27119,28 +26652,24 @@
 
     implicit none
 
-    double precision ra1, dec1, pmr1, pmd1, px1, rv1, &
+    real(wp) ra1, dec1, pmr1, pmd1, px1, rv1, &
                      ep1a, ep1b, ep2a, ep2b, &
                      ra2, dec2, pmr2, pmd2, px2, rv2
     integer j
 
     !  Days to seconds
-    double precision d2s
-    parameter ( d2s = 86400d0 )
+    real(wp),parameter :: d2s = 86400d0
 
     !  Speed of light (m/s)
-    double precision cmps
-    parameter ( cmps = 299792458d0 )
+    real(wp),parameter :: cmps = 299792458d0
 
     !  Astronomical unit (m, IAU 2012)
-    double precision aum
-    parameter ( aum = 149597870.7d3 )
+    real(wp),parameter :: aum = 149597870.7d3
 
     !  Speed of light (au per day)
-    double precision c
-    parameter ( c = d2s*cmps/aum )
+    real(wp),parameter :: c = d2s*cmps/aum
 
-    double precision pv1(3,2), r, tl1, dt, pv(3,2), r2, rdv, v2, &
+    real(wp) pv1(3,2), r, tl1, dt, pv(3,2), r2, rdv, v2, &
                      c2mv2, tl2, pv2(3,2)
     integer j1, j2
 
@@ -27298,47 +26827,39 @@
 
     implicit none
 
-    double precision ra, dec, pmr, pmd, px, rv, pv(3,2)
+    real(wp) ra, dec, pmr, pmd, px, rv, pv(3,2)
     integer j
 
     !  Smallest allowed parallax
-    double precision pxmin
-    parameter ( pxmin = 1d-7 )
+    real(wp),parameter :: pxmin = 1d-7
 
     !  Largest allowed speed (fraction of c)
-    double precision vmax
-    parameter ( vmax = 0.5d0 )
+    real(wp),parameter :: vmax = 0.5d0
 
     !  Julian years to days
-    double precision y2d
-    parameter ( y2d = 365.25d0 )
+    real(wp),parameter :: y2d = 365.25d0
 
     !  Radians to arcseconds
-    double precision dr2as
-    parameter ( dr2as = 206264.8062470963551564734d0 )
+    real(wp),parameter :: dr2as = 206264.8062470963551564734d0
 
     !  Days to seconds
-    double precision d2s
-    parameter ( d2s = 86400d0 )
+    real(wp),parameter :: d2s = 86400d0
 
     !  Speed of light (m/s)
-    double precision cmps
-    parameter ( cmps = 299792458d0 )
+    real(wp),parameter :: cmps = 299792458d0
 
     !  Astronomical unit (m, IAU 2012)
-    double precision aum
-    parameter ( aum = 149597870.7d3 )
+    real(wp),parameter :: aum = 149597870.7d3
 
     !  Speed of light (au per day)
-    double precision c
-    parameter ( c = d2s*cmps/aum )
+    real(wp),parameter :: c = d2s*cmps/aum
 
     !  Maximum number of iterations for relativistic solution
-    integer i,imax
-    parameter ( imax = 100 )
+    integer,parameter :: imax = 100
 
+    integer i
     integer iwarn
-    double precision w, r, rd, rad, decd, v, x(3), usr(3), ust(3), &
+    real(wp) w, r, rd, rad, decd, v, x(3), usr(3), ust(3), &
                      vsr, vst, betst, betsr, bett, betr, od, odel, &
                      dd, ddel, odd, oddel, d, del, ur(3), ut(3)
 
@@ -27449,7 +26970,7 @@
 
     implicit none
 
-    double precision s, p(3), sp(3)
+    real(wp) s, p(3), sp(3)
 
     integer i
 
@@ -27482,7 +27003,7 @@
 
     implicit none
 
-    double precision s, pv(3,2), spv(3,2)
+    real(wp) s, pv(3,2), spv(3,2)
 
     call S2XPV ( s, s, pv, spv )
 
@@ -27523,12 +27044,11 @@
     subroutine TAITT ( tai1, tai2, tt1, tt2, j )
 
     implicit none
-    double precision tai1, tai2, tt1, tt2
+    real(wp) tai1, tai2, tt1, tt2
     integer j
 
     !  TT minus TAI (days).
-    double precision dtat
-    parameter ( dtat = 32.184d0/86400d0 )
+    real(wp),parameter :: dtat = 32.184d0/86400d0
 
     !  Result, safeguarding precision.
     if ( abs(tai1)>abs(tai2) ) then
@@ -27580,14 +27100,13 @@
     subroutine TAIUT1 ( tai1, tai2, dta, ut11, ut12, j )
 
     implicit none
-    double precision tai1, tai2, dta, ut11, ut12
+    real(wp) tai1, tai2, dta, ut11, ut12
     integer j
 
     !  Days to seconds
-    double precision d2s
-    parameter ( d2s = 86400d0 )
+    real(wp),parameter :: d2s = 86400d0
 
-    double precision dtad
+    real(wp) dtad
 
     !  Result, safeguarding precision.
     dtad = dta/d2s
@@ -27662,12 +27181,12 @@
     subroutine TAIUTC ( tai1, tai2, utc1, utc2, j )
 
     implicit none
-    double precision tai1, tai2, utc1, utc2
+    real(wp) tai1, tai2, utc1, utc2
     integer j
 
     logical big1
     integer i, js
-    double precision a1, a2, u1, u2, g1, g2
+    real(wp) a1, a2, u1, u2, g1, g2
 
     !  Put the two parts of the TAI into big-first order.
     big1 = abs(tai1) >= abs(tai2)
@@ -27760,20 +27279,18 @@
     subroutine TCBTDB ( tcb1, tcb2, tdb1, tdb2, j )
 
     implicit none
-    double precision tcb1, tcb2, tdb1, tdb2
+    real(wp) tcb1, tcb2, tdb1, tdb2
     integer j
 
     !  1977 Jan 1.0 TAI = 1977/1/1 00:00:32.184 TCB, as two-part JD
-    double precision t77td, t77tf
-    parameter ( t77td = 2443144d0, &
-                t77tf = 0.5003725d0 )
+    real(wp),parameter :: t77td = 2443144d0
+    real(wp),parameter :: t77tf = 0.5003725d0
 
     !  L_B, and TDB0 (d)
-    double precision elb, tdb0
-    parameter ( elb = 1.550519768d-8, &
-                tdb0 = -6.55d-5/86400d0 )
+    real(wp),parameter :: elb = 1.550519768d-8
+    real(wp),parameter :: tdb0 = -6.55d-5/86400d0
 
-    double precision d
+    real(wp) d
 
     !  Result, safeguarding precision.
     if ( abs(tcb1)>abs(tcb2) ) then
@@ -27825,20 +27342,17 @@
     subroutine TCGTT ( tcg1, tcg2, tt1, tt2, j )
 
     implicit none
-    double precision tcg1, tcg2, tt1, tt2
+    real(wp) tcg1, tcg2, tt1, tt2
     integer j
 
     !  JD for MJD 0
-    double precision djm0
-    parameter (djm0 = 2400000.5d0 )
+    real(wp),parameter :: djm0 = 2400000.5d0
 
     !  1977 Jan 1 00:00:32.184 TT, as MJD
-    double precision t77t
-    parameter ( t77t = 43144.0003725d0 )
+    real(wp),parameter :: t77t = 43144.0003725d0
 
     !  L_G = 1 - dTT/dTCG
-    double precision elg
-    parameter ( elg = 6.969290134d-10 )
+    real(wp),parameter :: elg = 6.969290134d-10
 
     !  Result, safeguarding precision.
     if ( abs(tcg1)>abs(tcg2) ) then
@@ -27904,24 +27418,21 @@
 subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     implicit none
-    double precision tdb1, tdb2, tcb1, tcb2
+    real(wp) tdb1, tdb2, tcb1, tcb2
     integer j
 
     !  1977 Jan 1.0 TAI = 1977/1/1 00:00:32.184 TCB, as two-part JD
-    double precision t77td, t77tf
-    parameter ( t77td = 2443144d0, &
-                t77tf = 0.5003725d0 )
+    real(wp),parameter :: t77td = 2443144d0
+    real(wp),parameter :: t77tf = 0.5003725d0
 
     !  L_B, and TDB0 (d)
-    double precision elb, tdb0
-    parameter ( elb = 1.550519768d-8, &
-                tdb0 = -6.55d-5/86400d0 )
+    real(wp),parameter :: elb = 1.550519768d-8
+    real(wp),parameter :: tdb0 = -6.55d-5/86400d0
 
     !  TDB to TCB rate
-    double precision elbb
-    parameter ( elbb = elb/(1d0-elb) )
+    real(wp),parameter :: elbb = elb/(1d0-elb)
 
-    double precision d, f
+    real(wp) d, f
 
     !  Result, preserving date format but safeguarding precision.
     if ( abs(tdb1)>abs(tdb2) ) then
@@ -27987,14 +27498,13 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     subroutine TDBTT ( tdb1, tdb2, dtr, tt1, tt2, j )
 
     implicit none
-    double precision tdb1, tdb2, dtr, tt1, tt2
+    real(wp) tdb1, tdb2, dtr, tt1, tt2
     integer j
 
     !  Days to seconds
-    double precision d2s
-    parameter ( d2s = 86400d0 )
+    real(wp),parameter :: d2s = 86400d0
 
-    double precision dtrd
+    real(wp) dtrd
 
     !  Result, safeguarding precision.
     dtrd = dtr/d2s
@@ -28052,14 +27562,13 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     character s
     integer ihour, imin
-    double precision sec, rad
+    real(wp) sec, rad
     integer j
 
     !  Seconds of time to radians
-    double precision ds2r
-    parameter ( ds2r = 7.272205216643039903848712d-5 )
+    real(wp),parameter :: ds2r = 7.272205216643039903848712d-5
 
-    double precision w
+    real(wp) w
 
     !  Preset the status.
     j = 0
@@ -28123,14 +27632,13 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     character s
     integer ihour, imin
-    double precision sec, days
+    real(wp) sec, days
     integer j
 
     !  Days to seconds
-    double precision d2s
-    parameter ( d2s = 86400d0 )
+    real(wp),parameter :: d2s = 86400d0
 
-    double precision w
+    real(wp) w
 
     !  Preset the status.
     j = 0
@@ -28237,14 +27745,12 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     implicit none
 
-    double precision xi, eta, a, b, a01, b01, a02, b02
+    real(wp) xi, eta, a, b, a01, b01, a02, b02
     integer n
 
-    double precision xi2, r, sb, cb, rsb, rcb, w2, w, s, c
+    real(wp) xi2, r, sb, cb, rsb, rcb, w2, w, s, c
 
-    !     DOUBLE PRECISION ANP
-
-    xi2 = xi*xi
+        xi2 = xi*xi
     r = sqrt(1d0+xi2+eta*eta)
     sb = sin(b)
     cb = cos(b)
@@ -28353,10 +27859,10 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     implicit none
 
-    double precision xi, eta, v(3), v01(3), v02(3)
+    real(wp) xi, eta, v(3), v01(3), v02(3)
     integer n
 
-    double precision x, y, z, rxy2, xi2, eta2p1, r, rsb, rcb, w2, w, c
+    real(wp) x, y, z, rxy2, xi2, eta2p1, r, rsb, rcb, w2, w, c
 
     x = v(1)
     y = v(2)
@@ -28443,13 +27949,11 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     implicit none
 
-    double precision xi, eta, a0, b0, a, b
+    real(wp) xi, eta, a0, b0, a, b
 
-    double precision sb0, cb0, d
+    real(wp) sb0, cb0, d
 
-    !     DOUBLE PRECISION ANP
-
-    sb0 = sin(b0)
+        sb0 = sin(b0)
     cb0 = cos(b0)
     d = cb0 - eta*sb0
     a = ANP(atan2(xi,d)+a0)
@@ -28520,9 +28024,9 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     implicit none
 
-    double precision xi, eta, v0(3), v(3)
+    real(wp) xi, eta, v0(3), v(3)
 
-    double precision x, y, z, r, f
+    real(wp) x, y, z, r, f
 
     !  Tangent point.
     x = v0(1)
@@ -28602,13 +28106,12 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     implicit none
 
-    double precision a, b, a0, b0, xi, eta
+    real(wp) a, b, a0, b0, xi, eta
     integer j
 
-    double precision tiny
-    parameter ( tiny = 1d-6 )
+    real(wp),parameter :: tiny = 1d-6
 
-    double precision sb0, sb, cb0, cb, da, sda, cda, d
+    real(wp) sb0, sb, cb0, cb, da, sda, cda, d
 
     !  Functions of the spherical coordinates.
     sb0 = sin(b0)
@@ -28708,13 +28211,12 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     implicit none
 
-    double precision v(3), v0(3), xi, eta
+    real(wp) v(3), v0(3), xi, eta
     integer j
 
-    double precision tiny
-    parameter ( tiny = 1d-6 )
+    real(wp),parameter :: tiny = 1d-6
 
-    double precision x, y, z, x0, y0, z0, r2, r, w, d
+    real(wp) x, y, z, x0, y0, z0, r2, r, w, d
 
     !  Star and tangent point.
     x = v(1)
@@ -28778,9 +28280,9 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     implicit none
 
-    double precision r(3,3), rt(3,3)
+    real(wp) r(3,3), rt(3,3)
 
-    double precision wm(3,3)
+    real(wp) wm(3,3)
     integer i, j
 
     do 2 i=1,3
@@ -28816,9 +28318,9 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     implicit none
 
-    double precision r(3,3), p(3), trp(3)
+    real(wp) r(3,3), p(3), trp(3)
 
-    double precision ri(3,3)
+    real(wp) ri(3,3)
 
     !  Transpose of matrix R.
     call TR ( r, ri )
@@ -28852,9 +28354,9 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     implicit none
 
-    double precision r(3,3), pv(3,2), trpv(3,2)
+    real(wp) r(3,3), pv(3,2), trpv(3,2)
 
-    double precision ri(3,3)
+    real(wp) ri(3,3)
 
     !  Transpose of matrix R.
     call TR ( r, ri )
@@ -28899,12 +28401,11 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     subroutine TTTAI ( tt1, tt2, tai1, tai2, j )
 
     implicit none
-    double precision tt1, tt2, tai1, tai2
+    real(wp) tt1, tt2, tai1, tai2
     integer j
 
     !  TT minus TAI (days).
-    double precision dtat
-    parameter ( dtat = 32.184d0/86400d0 )
+    real(wp),parameter :: dtat = 32.184d0/86400d0
 
     !  Result, safeguarding precision.
     if ( abs(tt1)>abs(tt2) ) then
@@ -28954,24 +28455,20 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     subroutine TTTCG ( tt1, tt2, tcg1, tcg2, j )
 
     implicit none
-    double precision tt1, tt2, tcg1, tcg2
+    real(wp) tt1, tt2, tcg1, tcg2
     integer j
 
     !  JD for MJD 0
-    double precision djm0
-    parameter (djm0 = 2400000.5d0 )
+    real(wp),parameter :: djm0 = 2400000.5d0
 
     !  1977 Jan 1 00:00:32.184 TT, as MJD
-    double precision t77t
-    parameter ( t77t = 43144.0003725d0 )
+    real(wp),parameter :: t77t = 43144.0003725d0
 
     !  L_G = 1 - dTT/dTCG
-    double precision elg
-    parameter ( elg = 6.969290134d-10 )
+    real(wp),parameter :: elg = 6.969290134d-10
 
     !  TT to TCG rate
-    double precision elgg
-    parameter ( elgg = elg/(1d0-elg) )
+    real(wp),parameter :: elgg = elg/(1d0-elg)
 
     !  Result, safeguarding precision.
     if ( abs(tt1)>abs(tt2) ) then
@@ -29033,14 +28530,13 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     subroutine TTTDB ( tt1, tt2, dtr, tdb1, tdb2, j )
 
     implicit none
-    double precision tt1, tt2, dtr, tdb1, tdb2
+    real(wp) tt1, tt2, dtr, tdb1, tdb2
     integer j
 
     !  Days to seconds
-    double precision d2s
-    parameter ( d2s = 86400d0 )
+    real(wp),parameter :: d2s = 86400d0
 
-    double precision dtrd
+    real(wp) dtrd
 
     !  Result, safeguarding precision.
     dtrd = dtr/d2s
@@ -29092,14 +28588,13 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     subroutine TTUT1 ( tt1, tt2, dt, ut11, ut12, j )
 
     implicit none
-    double precision tt1, tt2, dt, ut11, ut12
+    real(wp) tt1, tt2, dt, ut11, ut12
     integer j
 
     !  Days to seconds
-    double precision d2s
-    parameter ( d2s = 86400d0 )
+    real(wp),parameter :: d2s = 86400d0
 
-    double precision dtd
+    real(wp) dtd
 
     !  Result, safeguarding precision.
     dtd = dt/d2s
@@ -29152,14 +28647,13 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     subroutine UT1TAI ( ut11, ut12, dta, tai1, tai2, j )
 
     implicit none
-    double precision ut11, ut12, dta, tai1, tai2
+    real(wp) ut11, ut12, dta, tai1, tai2
     integer j
 
     !  Days to seconds
-    double precision d2s
-    parameter ( d2s = 86400d0 )
+    real(wp),parameter :: d2s = 86400d0
 
-    double precision dtad
+    real(wp) dtad
 
     !  Result, safeguarding precision.
     dtad = dta/d2s
@@ -29211,14 +28705,13 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     subroutine UT1TT ( ut11, ut12, dt, tt1, tt2, j )
 
     implicit none
-    double precision ut11, ut12, dt, tt1, tt2
+    real(wp) ut11, ut12, dt, tt1, tt2
     integer j
 
     !  Days to seconds
-    double precision d2s
-    parameter ( d2s = 86400d0 )
+    real(wp),parameter :: d2s = 86400d0
 
-    double precision dtd
+    real(wp) dtd
 
     !  Result, safeguarding precision.
     dtd = dt/d2s
@@ -29298,16 +28791,15 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     subroutine UT1UTC ( ut11, ut12, dut1, utc1, utc2, j )
 
     implicit none
-    double precision ut11, ut12, dut1, utc1, utc2
+    real(wp) ut11, ut12, dut1, utc1, utc2
     integer j
 
     !  Days to seconds
-    double precision d2s
-    parameter ( d2s = 86400d0 )
+    real(wp),parameter :: d2s = 86400d0
 
     logical big1
     integer i, iy, im, id, js
-    double precision duts, u1, u2, d1, dats1, d2, fd, dats2, ddats, &
+    real(wp) duts, u1, u2, d1, dats1, d2, fd, dats2, ddats, &
                      us1, us2, du
 
     !  UT1-UTC in seconds.
@@ -29441,16 +28933,15 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     subroutine UTCTAI ( utc1, utc2, tai1, tai2, j )
 
     implicit none
-    double precision utc1, utc2, tai1, tai2
+    real(wp) utc1, utc2, tai1, tai2
     integer j
 
     !  Days to seconds
-    double precision d2s
-    parameter ( d2s = 86400d0 )
+    real(wp),parameter :: d2s = 86400d0
 
     logical big1
     integer iy, im, id, js, iyt, imt, idt
-    double precision u1, u2, fd, dat0, dat12, w, dat24, dlod, dleap, &
+    real(wp) u1, u2, fd, dat0, dat12, w, dat24, dlod, dleap, &
                      z1, z2, a2
 
     !  Put the two parts of the UTC into big-first order.
@@ -29577,11 +29068,11 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     subroutine UTCUT1 ( utc1, utc2, dut1, ut11, ut12, j )
 
     implicit none
-    double precision utc1, utc2, dut1, ut11, ut12
+    real(wp) utc1, utc2, dut1, ut11, ut12
     integer j
 
     integer iy, im, id, js, jw
-    double precision w, d, dta, tai1, tai2
+    real(wp) w, d, dta, tai1, tai2
 
     !  Look up TAI-UTC.
     call JD2CAL ( utc1, utc2, iy, im, id, w, js )
@@ -29695,34 +29186,27 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     implicit none
 
-    double precision date1, date2, x, y
-
-    !  Arcseconds to radians
-    double precision das2r
-    parameter ( das2r = 4.848136811095359935899141d-6 )
+    real(wp) date1, date2, x, y
 
     !  Reference epoch (J2000.0), JD
-    double precision dj00
-    parameter ( dj00 = 2451545d0 )
+    real(wp),parameter :: dj00 = 2451545d0
 
     !  Days per Julian century
-    double precision djc
-    parameter ( djc = 36525d0 )
+    real(wp),parameter :: djc = 36525d0
 
     !  Maximum power of T in the polynomials for X and Y
-    integer maxpt
-    parameter ( maxpt = 5 )
+    integer,parameter :: maxpt = 5
 
     !  Numbers of frequencies:  luni-solar, planetary, total
-    integer nfls, nfpl, nf
-    parameter ( nfls = 653, nfpl = 656, nf = nfls+nfpl )
+    integer,parameter :: nfls = 653
+    integer,parameter :: nfpl = 656
+    integer,parameter :: nf = nfls+nfpl
 
     !  Number of amplitude coefficients
-    integer na
-    parameter ( na = 4755 )
+    integer,parameter :: na = 4755
 
     !  Polynomial coefficients
-    double precision xyp(0:maxpt,0:1)
+    real(wp) xyp(0:maxpt,0:1)
 
     !  Fundamental-argument multipliers:  luni-solar and planetary terms
     integer mfals(5,nfls), mfapl(14,nfpl)
@@ -29731,21 +29215,15 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     integer nc(nf)
 
     !  Amplitude coefficients (microarcsec);  indexed using the NC array
-    double precision a(na)
+    real(wp) a(na)
 
     !  Amplitude usage
     integer jaxy(0:maxpt*4-1), jasc(0:maxpt*4-1), japt(0:maxpt*4-1)
 
     !  Miscellaneous
-    double precision t, w, pt(0:maxpt), fa(14), xypr(0:1), xypl(0:1), &
+    real(wp) t, w, pt(0:maxpt), fa(14), xypr(0:1), xypl(0:1), &
                      xyls(0:1), arg, sc(0:1)
     integer jpt, i, j, jxy, ialast, ifreq, m, ia, jsc
-
-    !  Functions
-    !     DOUBLE PRECISION FAL03, FALP03, FAF03, FAD03,
-    !    :                 FAOM03, FAME03, FAVE03, FAE03,
-    !    :                 FAMA03, FAJU03, FASA03, FAUR03,
-    !    :                 FANE03, FAPA03
 
     !  Polynomial coefficients (arcsec).
     data ((xyp(i,jxy),i=0,maxpt),jxy=0,1) / &
@@ -32206,13 +31684,11 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     implicit none
 
-    double precision date1, date2, x, y, s
+    real(wp) date1, date2, x, y, s
 
-    double precision rbpn(3,3)
+    real(wp) rbpn(3,3)
 
-    !     DOUBLE PRECISION S00
-
-    !  Form the bias-precession-nutation matrix, IAU 2000A.
+        !  Form the bias-precession-nutation matrix, IAU 2000A.
     call PNM00A ( date1, date2, rbpn )
 
     !  Extract X,Y.
@@ -32285,13 +31761,11 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     implicit none
 
-    double precision date1, date2, x, y, s
+    real(wp) date1, date2, x, y, s
 
-    double precision rbpn(3,3)
+    real(wp) rbpn(3,3)
 
-    !     DOUBLE PRECISION S00
-
-    !  Form the bias-precession-nutation matrix, IAU 2000A.
+        !  Form the bias-precession-nutation matrix, IAU 2000A.
     call PNM00B ( date1, date2, rbpn )
 
     !  Extract X,Y.
@@ -32365,13 +31839,11 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     implicit none
 
-    double precision date1, date2, x, y, s
+    real(wp) date1, date2, x, y, s
 
-    double precision rbpn(3,3)
+    real(wp) rbpn(3,3)
 
-    !     DOUBLE PRECISION S06
-
-    !  Form the bias-precession-nutation matrix, IAU 2006/2000A.
+        !  Form the bias-precession-nutation matrix, IAU 2006/2000A.
     call PNM06A ( date1, date2, rbpn )
 
     !  Extract X,Y.
@@ -32398,7 +31870,7 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     implicit none
 
-    double precision p(3)
+    real(wp) p(3)
 
     integer i
 
@@ -32427,7 +31899,7 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     implicit none
 
-    double precision pv(3,2)
+    real(wp) pv(3,2)
 
     integer i
 
@@ -32453,7 +31925,7 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     implicit none
 
-    double precision r(3,3)
+    real(wp) r(3,3)
 
     r(1,1) = 0d0
     r(1,2) = 0d0
