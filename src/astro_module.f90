@@ -7629,27 +7629,27 @@
 
     !  T**1
     w1 = 0d0
-    do 11 j=679,475,-1
+    do j=679,475,-1
        w1 = w1 + fairhd(1,j) * sin(fairhd(2,j)*t + fairhd(3,j))
-    11 continue
+    end do
 
     !  T**2
     w2 = 0d0
-    do 12 j=764,680,-1
+    do j=764,680,-1
        w2 = w2 + fairhd(1,j) * sin(fairhd(2,j)*t + fairhd(3,j))
-    12 continue
+    end do
 
     !  T**3
     w3 = 0d0
-    do 13 j=784,765,-1
+    do j=784,765,-1
        w3 = w3 + fairhd(1,j) * sin(fairhd(2,j)*t + fairhd(3,j))
-    13 continue
+    end do
 
     !  T**4
     w4 = 0d0
-    do 14 j=787,785,-1
+    do j=787,785,-1
        w4 = w4 + fairhd(1,j) * sin(fairhd(2,j)*t + fairhd(3,j))
-    14 continue
+    end do
 
     !  Multiply by powers of T and combine.
     wf = t * ( t * ( t * ( t * w4 + w3 ) + w2 ) + w1 ) + w0
@@ -11351,7 +11351,7 @@
     end if
 
     !  X then Y then Z.
-    do 7 k=1,3
+    do k=1,3
 
     !     Initialize position and velocity component.
        xyz = 0d0
@@ -11404,14 +11404,14 @@
     !     ------------------------------------------------
 
     !     SSB to Sun, T^0 terms.
-       do 4 j=1,ns0(k)
+       do j=1,ns0(k)
           a = s0(1,j,k)
           b = s0(2,j,k)
           c = s0(3,j,k)
           p = b + c*t
           xyz  = xyz  + a*cos(p)
           xyzd = xyzd - a*c*sin(p)
-    4    continue
+       end do
 
     !     SSB to Sun, T^1 terms.
        do j=1,ns1(k)
@@ -11426,7 +11426,7 @@
        end do
 
     !     SSB to Sun, T^2 terms.
-       do 6 j=1,ns2(k)
+       do j=1,ns2(k)
           a = s2(1,j,k)
           b = s2(2,j,k)
           c = s2(3,j,k)
@@ -11435,14 +11435,14 @@
           cp = cos(p)
           xyz  = xyz  + a*t2*cp
           xyzd = xyzd + a*t*(2d0*cp-ct*sin(p))
-    6    continue
+       end do
 
     !     Barycentric Earth position and velocity component.
        pb(k) = xyz
        vb(k) = xyzd / djy
 
     !     Next Cartesian component.
-    7 continue
+    end do
 
     !  Rotate from ecliptic to ICRF coordinates and return the results.
     x = ph(1)
@@ -12567,11 +12567,11 @@
     do l = 1,2
        do k=1,3
           w = 0d0
-          do 2 j=1,2
-             do 1 i=1,3
+          do j=1,2
+             do i=1,3
                 w = w + em(i,j,k,l)*pv3(i,j)
-    1          continue
-    2       continue
+             end do
+          end do
           pv1(k,l) = w
        end do
     end do
@@ -12723,9 +12723,9 @@
     do k = 1,2
        do j=1,3
           w = 0d0
-          do 1 i=1,3
+          do i=1,3
              w = w + em(i,j,k)*p2(i)
-    1       continue
+          end do
           pv1(j,k) = w
        end do
     end do
@@ -12910,11 +12910,11 @@
     do l = 1,2
        do k=1,3
           w = 0d0
-          do 2 j=1,2
-             do 1 i=1,3
+          do j=1,2
+             do i=1,3
                 w = w + emi(i,j,k,l)*r0(i,j)
-    1          continue
-    2       continue
+             end do
+          end do
           r1(k,l) = w
        end do
     end do
@@ -22007,9 +22007,9 @@
 
     !     Reset the result in case of failure.
        do k=1,2
-          do 1 i=1,3
+          do i=1,3
              pv(i,k) = 0d0
-    1       continue
+          end do
        end do
     else
 
@@ -22056,11 +22056,11 @@
        arga = kp(9,np) * dmu
        da = da + t * ( ca(9,np) * cos(arga) + &
                        sa(9,np) * sin(arga) ) * 1d-7
-       do 4 k=9,10
+       do k=9,10
           argl = kq(k,np) * dmu
           dl = dl + t * ( cl(k,np) * cos(argl) + &
                           sl(k,np) * sin(argl) ) * 1d-7
-    4    continue
+       end do
        dl = mod(dl, d2pi)
 
     !     Iterative solution of Kepler's equation to get eccentric anomaly.
@@ -25060,9 +25060,9 @@
     do i=1,3
        do j=1,3
           w = 0d0
-          do 1 k=1,3
+          do k=1,3
              w = w + a(i,k)*b(k,j)
-    1       continue
+          end do
           wm(i,j) = w
        end do
     end do
@@ -31531,7 +31531,7 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     !  Work backwards through the coefficients per frequency list.
     ialast = na
-    do 7 ifreq=nfpl,1,-1
+    do ifreq=nfpl,1,-1
 
     !     Obtain the argument functions.
        arg = 0d0
@@ -31544,7 +31544,7 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     !     Work backwards through the amplitudes at this frequency.
        ia = nc(ifreq+nfls)
-       do 6 i=ialast,ia,-1
+       do i=ialast,ia,-1
 
     !        Coefficient number (0 = 1st).
           j = i-ia
@@ -31560,9 +31560,9 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     !        Accumulate the component.
           xypl(jxy) = xypl(jxy) + a(i)*sc(jsc)*pt(jpt)
-    6    continue
+       end do
        ialast = ia-1
-    7 continue
+    end do
 
     !  -----------------------------------
     !  Nutation periodic terms, luni-solar
@@ -31574,7 +31574,7 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     end do
 
     !  Continue working backwards through the number of coefficients list.
-    do 11 ifreq=nfls,1,-1
+    do ifreq=nfls,1,-1
 
     !     Obtain the argument functions.
        arg = 0d0
@@ -31605,7 +31605,7 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
           xyls(jxy) = xyls(jxy) + a(i)*sc(jsc)*pt(jpt)
        end do
        ialast = ia-1
-    11 continue
+    end do
 
     !  -------
     !  Results
