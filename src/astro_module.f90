@@ -16,7 +16,7 @@
 !   * replaced DOUBLE PRECISION with REAL(WP)
 !   * replaced old style PARAMETER and DATA declarations
 !   * moved duplicated parameter declarations to the top of the module ...
-!   * eliminate line numbers (replace with do...end do)
+!   * eliminate line numbers (replace with do...end do, replaced some with exit statements)
 !
 !### Original SOFA Copyright Notice
 !
@@ -122,8 +122,8 @@
     public
 
     real(wp),parameter,private :: d2pi  = 6.283185307179586476925287_wp     !! 2Pi
-    real(wp),parameter,private :: das2r = 4.848136811095359935899141e-6_wp  !!  Arcseconds to radians
-    real(wp),parameter,private :: dpi   = 3.141592653589793238462643_wp     !!  Pi
+    real(wp),parameter,private :: das2r = 4.848136811095359935899141e-6_wp  !! Arcseconds to radians
+    real(wp),parameter,private :: dpi   = 3.141592653589793238462643_wp     !! Pi
 
     contains
 !********************************************************************************
@@ -326,15 +326,15 @@
     w1 = 1d0 + pdv/(1d0+bm1)
     w2 = srs / s
     r2 = 0d0
-    do 1 i=1,3
+    do i=1,3
        w = pnat(i)*bm1 + w1*v(i) + w2*(v(i)-pdv*pnat(i))
        p(i) = w
        r2 = r2 + w*w
-    1 continue
+    end do
     r = sqrt ( r2 )
-    do 2 i=1,3
+    do i=1,3
        ppr(i) = p(i) / r
-    2 continue
+    end do
 
     end subroutine AB
 !***********************************************************************
@@ -1033,7 +1033,7 @@
     integer j
     real(wp) pvh(3,2), pvb(3,2), r(3,3), x, y, s
 
-        !  Earth barycentric & heliocentric position/velocity (au, au/d).
+    !  Earth barycentric & heliocentric position/velocity (au, au/d).
     call EPV00 ( date1, date2, pvh, pvb, j )
 
     !  Form the equinox based BPN matrix, IAU 2006/2000A.
@@ -1433,7 +1433,7 @@
                      ehpv(3,2), ebpv(3,2), r(3,3), x, y, s, theta, &
                      sp, refa, refb
 
-        !  UTC to other time scales.
+    !  UTC to other time scales.
     call UTCTAI ( utc1, utc2, tai1, tai2, js )
     if ( js<0 ) go to 9
     call TAITT ( tai1, tai2, tt1, tt2, js )
@@ -1633,13 +1633,13 @@
     astrom(1) = ( ( date1 - dj00 ) + date2 ) / djy
 
     !  Adjust Earth ephemeris to observer.
-    do 1 i=1,3
+    do i=1,3
        dp = pv(i,1) / aum
        dv = pv(i,2) / audms
        pb(i) = ebpv(i,1) + dp
        vb(i) = ebpv(i,2) + dv
        ph(i) = ehp(i) + dp
-    1 continue
+    end do
 
     !  Barycentric position of observer (au).
     call CP ( pb, astrom(2) )
@@ -2326,7 +2326,7 @@
     real(wp) tai1, tai2, tt1, tt2, ut11, ut12, sp, theta, &
                      refa, refb
 
-        !  UTC to other time scales.
+    !  UTC to other time scales.
     call UTCTAI ( utc1, utc2, tai1, tai2, js )
     call TAITT ( tai1, tai2, tt1, tt2, js )
     call UTCUT1 ( utc1, utc2, dut1, ut11, ut12, js )
@@ -2516,7 +2516,7 @@
 
     real(wp) pco(3), pnat(3), ppr(3), pi(3), w
 
-        !  Proper motion and parallax, giving BCRS coordinate direction.
+    !  Proper motion and parallax, giving BCRS coordinate direction.
     call PMPX ( rc, dc, pr, pd, px, rv, astrom(1), astrom(2), &
                     pco )
 
@@ -2645,7 +2645,7 @@
 
     real(wp) pco(3), pnat(3), ppr(3), pi(3), w
 
-        !  Proper motion and parallax, giving BCRS coordinate direction.
+    !  Proper motion and parallax, giving BCRS coordinate direction.
     call PMPX ( rc, dc, pr, pd, px, rv, astrom(1), astrom(2), &
                     pco )
 
@@ -2733,7 +2733,7 @@
 
     real(wp) pco(3), pnat(3), ppr(3), pi(3), w
 
-        !  BCRS coordinate direction (unit vector).
+    !  BCRS coordinate direction (unit vector).
     call S2C ( rc, dc, pco )
 
     !  Light deflection by the Sun, giving BCRS natural direction.
@@ -3079,7 +3079,7 @@
     real(wp) pi(3), ppr(3), pnat(3), pco(3), w, d(3), &
                      before(3), r2, r, after(3)
 
-        !  CIRS RA,Dec to Cartesian.
+    !  CIRS RA,Dec to Cartesian.
     call S2C ( ri, di, pi )
 
     !  Bias-precession-nutation, giving GCRS proper direction.
@@ -3254,7 +3254,7 @@
     real(wp) pi(3), ppr(3), pnat(3), pco(3), w, d(3), &
                      before(3), r2, r, after(3)
 
-        !  CIRS RA,Dec to Cartesian.
+    !  CIRS RA,Dec to Cartesian.
     call S2C ( ri, di, pi )
 
     !  Bias-precession-nutation, giving GCRS proper direction.
@@ -3583,7 +3583,7 @@
                      xhdt, yhdt, zhdt, xaet, yaet, zaet, azobs, &
                      r, tz, w, del, cosdel, xaeo, yaeo, zaeo, &
                      zdobs, hmobs, dcobs, raobs
-        !  CIRS RA,Dec to Cartesian -HA,Dec.
+    !  CIRS RA,Dec to Cartesian -HA,Dec.
     call S2C ( ri-astrom(28), di, v )
     x = v(1)
     y = v(2)
@@ -4093,7 +4093,7 @@
                      xmhda, ymhda, zmhda, f, xhd, yhd, zhd, &
                      xpl, ypl, w, hma
 
-        !  Coordinate type.
+    !  Coordinate type.
     c = type(:1)
 
     !  Coordinates.
@@ -4760,7 +4760,7 @@
 
     real(wp) rbpn(3,3), x, y, s
 
-        !  Obtain the celestial-to-true matrix (IAU 2006/2000A).
+    !  Obtain the celestial-to-true matrix (IAU 2006/2000A).
     call PNM06A ( date1, date2, rbpn )
 
     !  Extract the X,Y coordinates.
@@ -4934,7 +4934,7 @@
 
     real(wp) date1, date2, x, y, rc2i(3,3)
 
-        !  Compute s and then the matrix.
+    !  Compute s and then the matrix.
     call C2IXYS ( x, y, S00 ( date1, date2, x, y ), rc2i )
 
     end subroutine C2IXY
@@ -5145,7 +5145,7 @@
 
     real(wp) rc2i(3,3), era, sp, rpom(3,3)
 
-        !  Form the celestial-to-intermediate matrix for this TT (IAU 2000A).
+    !  Form the celestial-to-intermediate matrix for this TT (IAU 2000A).
     call C2I00A ( tta, ttb, rc2i )
 
     !  Predict the Earth rotation angle for this UT1.
@@ -5244,7 +5244,7 @@
 
     real(wp) rc2i(3,3), era, rpom(3,3)
 
-        !  Form the celestial-to-intermediate matrix for this TT (IAU 2000B).
+    !  Form the celestial-to-intermediate matrix for this TT (IAU 2000B).
     call C2I00B ( tta, ttb, rc2i )
 
     !  Predict the Earth rotation angle for this UT1.
@@ -5339,7 +5339,7 @@
 
     real(wp) rc2i(3,3), era, sp, rpom(3,3)
 
-        !  Form the celestial-to-intermediate matrix for this TT.
+    !  Form the celestial-to-intermediate matrix for this TT.
     call C2I06A ( tta, ttb, rc2i )
 
     !  Predict the Earth rotation angle for this UT1.
@@ -5632,7 +5632,7 @@
     real(wp) epsa, rb(3,3), rp(3,3), rbp(3,3), rn(3,3), &
                      rbpn(3,3), gmst, ee, sp, rpom(3,3)
 
-        !  Form the celestial-to-true matrix for this TT.
+    !  Form the celestial-to-true matrix for this TT.
     call PN00 ( tta, ttb, dpsi, deps, &
                     epsa, rb, rp, rbp, rn, rbpn )
 
@@ -5739,7 +5739,7 @@
 
     real(wp) rc2i(3,3), era, sp, rpom(3,3)
 
-        !  Form the celestial-to-intermediate matrix for this TT.
+    !  Form the celestial-to-intermediate matrix for this TT.
     call C2IXY ( tta, ttb, x, y, rc2i )
 
     !  Predict the Earth rotation angle for this UT1.
@@ -5878,9 +5878,9 @@
 
     integer i
 
-    do 1 i=1,3
+    do i=1,3
        c(i) = p(i)
-    1 continue
+    end do
 
     end subroutine CP
 !***********************************************************************
@@ -5939,9 +5939,9 @@
 
     integer i
 
-    do 1 i=1,3
+    do i=1,3
        call CP ( r(1,i), c(1,i) )
-    1 continue
+    end do
 
     end subroutine CR
 !***********************************************************************
@@ -6122,9 +6122,9 @@
     iy = iy1
     im = im1
     id = id1
-    do 2 i=1,4
+    do i=1,4
        ihmsf(i) = ihmsf1(i)
-    2 continue
+    end do
 
     !  Status.
     9 continue
@@ -6209,22 +6209,22 @@
     !  Pre-round if resolution coarser than 1 second (then pretend NDP=1).
     if ( ndp < 0 ) then
        nrs = 1
-       do 1 n=1,-ndp
+       do n=1,-ndp
           if ( n==2 .or. n==4 ) then
              nrs = nrs * 6
           else
              nrs = nrs * 10
           end if
-    1    continue
+       end do
        rs = dble(nrs)
        a = rs * anint(a/rs)
     end if
 
     !  Express the unit of each field in resolution units.
     nrs = 1
-    do 2 n=1,ndp
+    do n=1,ndp
        nrs = nrs * 10
-    2 continue
+    end do
     rs = dble(nrs)
     rm = rs * 60d0
     rh = rm * 60d0
@@ -6476,12 +6476,12 @@
     !  Find the most recent table entry.
     is = 0
     more = .true.
-    do 1 n=ndat,1,-1
+    do n=ndat,1,-1
        if ( more ) then
           is = n
           more = m < ( 12*idat(1,n) + idat(2,n) )
        end if
-    1 continue
+    end do
 
     !  Prevent underflow warnings.
     if ( is < 1 ) then
@@ -7886,7 +7886,7 @@
 
     real(wp) rm(3,3), v1(3), v2(3), a, b
 
-        !  Spherical to Cartesian.
+    !  Spherical to Cartesian.
     call S2C ( dl, db, v1 )
 
     !  Rotation matrix, ICRS equatorial to ecliptic.
@@ -7971,7 +7971,7 @@
     real(wp) date1, date2, rm(3,3)
 
     real(wp) ob, bp(3,3), e(3,3)
-        !  Obliquity, IAU 2006.
+    !  Obliquity, IAU 2006.
     ob = OBL06 ( date1, date2 )
 
     !  Precession-bias matrix, IAU 2006.
@@ -8053,7 +8053,7 @@
 
     real(wp) date1, date2, epsa, dpsi
 
-        !  Equation of the equinoxes.
+    !  Equation of the equinoxes.
     EE00 = dpsi * cos(epsa) + EECT00 ( date1, date2 )
 
     end function EE00
@@ -8125,7 +8125,7 @@
 
     real(wp) dpsipr, depspr, epsa, dpsi, deps
 
-        !  IAU 2000 precession-rate adjustments.
+    !  IAU 2000 precession-rate adjustments.
     call PR00 ( date1, date2, dpsipr, depspr )
 
     !  Mean obliquity, consistent with IAU 2000 precession-nutation.
@@ -8212,7 +8212,7 @@
 
     real(wp) dpsipr, depspr, epsa, dpsi, deps
 
-        !  IAU 2000 precession-rate adjustments.
+    !  IAU 2000 precession-rate adjustments.
     call PR00 ( date1, date2, dpsipr, depspr )
 
     !  Mean obliquity, consistent with IAU 2000 precession-nutation.
@@ -8283,7 +8283,7 @@
 
     real(wp) date1, date2
 
-        !  Equation of the equinoxes.
+    !  Equation of the equinoxes.
     EE06A = ANPM ( GST06A ( 0d0, 0d0, date1, date2 ) - &
                            GMST06 ( 0d0, 0d0, date1, date2 ) )
 
@@ -8536,13 +8536,13 @@
     s0 = 0d0
     s1 = 0d0
 
-    do 2 i = ne0,1,-1
+    do i = ne0,1,-1
        a = 0d0
-       do 1 j=1,8
+       do j=1,8
           a = a + dble(ke0(j,i))*fa(j)
-    1    continue
+       end do
        s0 = s0 + ( se0(1,i)*sin(a) + se0(2,i)*cos(a) )
-    2 continue
+    end do
     do 4 i = ne1,1,-1
        a = 0d0
        do 3 j=1,8
@@ -8710,7 +8710,7 @@
     real(wp) date1, date2
 
     real(wp) r(3,3), x, y, s
-        !  Classical nutation x precession x bias matrix.
+    !  Classical nutation x precession x bias matrix.
     call PNM06A ( date1, date2, r )
 
     !  Extract CIP coordinates.
@@ -11359,14 +11359,14 @@
     !     ------------------------------------------------
 
     !     Sun to Earth, T^0 terms.
-       do 1 j=1,ne0(k)
+       do j=1,ne0(k)
           a = e0(1,j,k)
           b = e0(2,j,k)
           c = e0(3,j,k)
           p = b + c*t
           xyz  = xyz  + a*cos(p)
           xyzd = xyzd - a*c*sin(p)
-    1    continue
+       end do
 
     !     Sun to Earth, T^1 terms.
        do 2 j=1,ne1(k)
@@ -11533,7 +11533,7 @@
 
     real(wp) rm(3,3), v1(3), v2(3), a, b
 
-        !  Spherical to Cartesian.
+    !  Spherical to Cartesian.
     call S2C ( dr, dd, v1 )
 
     !  Rotation matrix, ICRS equatorial to ecliptic.
@@ -11616,7 +11616,7 @@
     real(wp),parameter :: djc = 36525d0
 
     real(wp) t, om, dpsi, deps, eps0
-        !  Interval between fundamental epoch J2000.0 and given date (JC).
+    !  Interval between fundamental epoch J2000.0 and given date (JC).
     t = ( ( date1-dj00 ) + date2 ) / djc
 
     !  Longitude of the mean ascending node of the lunar orbit on the
@@ -11701,7 +11701,7 @@
 
     real(wp) d1, d2, t, f
 
-        !  Days since fundamental epoch.
+    !  Days since fundamental epoch.
     if ( dj1 < dj2 ) then
        d1 = dj1
        d2 = dj2
@@ -13030,9 +13030,9 @@
     call FK5HIP ( r5h, s5h )
 
     !  Make spin units per day instead of per year.
-    do 1 i=1,3
+    do i=1,3
        s5h(i) = s5h(i) / 365.25d0
-    1 continue
+    end do
 
     !  Orient the FK5 position into the Hipparcos system.
     call RXP ( r5h, pv5(1,1), pvh(1,1) )
@@ -13112,7 +13112,7 @@
     real(wp) r, d, pr, pd, px, rv, p(3), w, v(3)
     integer i
 
-        !  FK5 equinox J2000.0 to FK4 equinox B1950.0.
+    !  FK5 equinox J2000.0 to FK4 equinox B1950.0.
     call FK524 ( r2000, d2000, 0d0, 0d0, 0d0, 0d0, &
                      r, d, pr, pd, px, rv )
 
@@ -13126,9 +13126,9 @@
 
     !  Apply the motion.
     w = bepoch - 1950d0
-    do 1 i=1,3
+    do i=1,3
        p(i) = p(i) + w*v(i)
-    1 continue
+    end do
 
     !  Cartesian to spherical.
     call C2S ( p, w, d1950 )
@@ -13292,7 +13292,7 @@
     real(wp) t, p5e(3), r5h(3,3), s5h(3), vst(3), rst(3,3), &
                      p5(3), ph(3), w
 
-        !  Interval from given date to fundamental epoch J2000.0 (JY).
+    !  Interval from given date to fundamental epoch J2000.0 (JY).
     t = - ( ( date1-dj00 ) + date2 ) / djy
 
     !  FK5 barycentric position vector.
@@ -14053,7 +14053,7 @@
 
     real(wp) t
 
-        !  TT Julian centuries since J2000.0.
+    !  TT Julian centuries since J2000.0.
     t = ( ( tta-dj00 ) + ttb ) / djc
 
     !  Greenwich Mean Sidereal Time, IAU 2000.
@@ -14140,7 +14140,7 @@
 
     real(wp) t
 
-        !  TT Julian centuries since J2000.0.
+    !  TT Julian centuries since J2000.0.
     t = ( ( tta-dj00 ) + ttb ) / djc
 
     !  Greenwich mean sidereal time, IAU 2006.
@@ -14244,7 +14244,7 @@
 
     real(wp) d1, d2, t, f
 
-        !  Julian centuries since fundamental epoch.
+    !  Julian centuries since fundamental epoch.
     if ( dj1 < dj2 ) then
        d1 = dj1
        d2 = dj2
@@ -14504,7 +14504,7 @@
 
     real(wp) x, y, s
 
-        !  Extract CIP coordinates.
+    !  Extract CIP coordinates.
     call BPN2XY ( rnpb, x, y )
 
     !  The CIO locator, s.
@@ -14585,7 +14585,7 @@
 
     real(wp) rnpb(3,3)
 
-        !  Classical nutation x precession x bias matrix, IAU 2000A/2006.
+    !  Classical nutation x precession x bias matrix, IAU 2000A/2006.
     call PNM06A ( tta, ttb, rnpb )
 
     !  Greenwich apparent sidereal time.
@@ -14739,9 +14739,9 @@
     call FK5HIP ( r5h, s5h )
 
     !  Make spin units per day instead of per year.
-    do 1 i=1,3
+    do i=1,3
        s5h(i) = s5h(i) / 365.25d0
-    1 continue
+    end do
 
     !  Orient the spin into the Hipparcos system.
     call RXP ( r5h, s5h, sh )
@@ -15000,7 +15000,7 @@
                      rst(3,3), r5ht(3,3), pv5e(3,2), vv(3), &
                      w, r, v
 
-        !  Time interval from fundamental epoch J2000.0 to given date (JY).
+    !  Time interval from fundamental epoch J2000.0 to given date (JY).
     t = ( ( date1-dj00 ) + date2 ) / djy
 
     !  Hipparcos barycentric position vector (normalized).
@@ -15466,9 +15466,9 @@
     real(wp) qpe(3), qdqpe, w, eq(3), peq(3)
 
     !  Q . (Q + E).
-    do 1 i=1,3
+    do i=1,3
        qpe(i) = q(i) + e(i)
-    1 continue
+    end do
     call PDP ( q, qpe, qdqpe )
 
     !  2 x G x BM / ( EM x c^2 x ( Q . (Q + E) ) ).
@@ -15479,9 +15479,9 @@
     call PXP ( p, eq, peq )
 
     !  Apply the deflection.
-    do 2 i = 1,3
+    do i = 1,3
        p1(i) = p(i) + w*peq(i)
-    2 continue
+    end do
 
     end subroutine LD
 !***********************************************************************
@@ -15587,7 +15587,7 @@
     call CP ( sc, s )
 
     !  Body by body.
-    do 1 i=1,n
+    do i=1,n
 
     !     Body to observer vector at epoch of observation (au).
        call PMP ( ob, b(3,i), v )
@@ -15612,7 +15612,7 @@
        call CP ( v, s )
 
     !     Next body.
-    1 continue
+    end do
 
     !  Return the deflected star direction.
     call CP ( s, sn )
@@ -15725,7 +15725,7 @@
 
     real(wp) rm(3,3), v1(3), v2(3), a, b
 
-        !  Spherical to Cartesian.
+    !  Spherical to Cartesian.
     call S2C ( dl, db, v1 )
 
     !  Rotation matrix, ICRS equatorial to ecliptic.
@@ -15806,13 +15806,10 @@
 
     real(wp) epj, rm(3,3)
 
-    !  Arcseconds to radians
-    real(wp),parameter :: as2r = 4.848136811095359935899141d-6
-
     !  Frame bias (IERS Conventions 2010, Eqs. 5.21 and 5.33)
-    real(wp),parameter :: dx = -0.016617d0 * as2r
-    real(wp),parameter :: de = -0.0068192d0 * as2r
-    real(wp),parameter :: dr = -0.0146d0 * as2r
+    real(wp),parameter :: dx = -0.016617d0 * das2r
+    real(wp),parameter :: de = -0.0068192d0 * das2r
+    real(wp),parameter :: dr = -0.0146d0 * das2r
 
     real(wp) p(3), z(3), w(3), s, x(3), y(3)
 
@@ -15902,7 +15899,7 @@
 
     real(wp) rm(3,3), v1(3), v2(3), a, b
 
-        !  Spherical to Cartesian.
+    !  Spherical to Cartesian.
     call S2C ( dr, dd, v1 )
 
     !  Rotation matrix, ICRS equatorial to ecliptic.
@@ -15990,11 +15987,11 @@
     call PXP ( peqr, eqx, v )
 
     !  Assemble the matrix.
-    do 1 i=1,3
+    do i=1,3
        rp(1,i) = eqx(i)
        rp(2,i) = v(i)
        rp(3,i) = peqr(i)
-    1 continue
+    end do
 
     end subroutine LTP
 !***********************************************************************
@@ -16064,11 +16061,11 @@
     call LTP  ( epj, rp )
 
     !  Apply the bias.
-    do 1 i=1,3
+    do i=1,3
        rpb(i,1) =   rp(i,1)    - rp(i,2)*dr + rp(i,3)*dx
        rpb(i,2) =   rp(i,1)*dr + rp(i,2)    + rp(i,3)*de
        rpb(i,3) = - rp(i,1)*dx - rp(i,2)*de + rp(i,3)
-    1 continue
+    end do
 
     end subroutine LTPB
 !***********************************************************************
@@ -16169,21 +16166,21 @@
 
     !  Periodic terms.
     w = d2pi*t
-    do 1 i=1,nper
+    do i=1,nper
        a = w/pqper(1,i)
        s = sin(a)
        c = cos(a)
        p = p + c*pqper(2,i) + s*pqper(4,i)
        q = q + c*pqper(3,i) + s*pqper(5,i)
-    1 continue
+    end do
 
     !  Polynomial terms.
     w = 1d0
-    do 2 i=1,npol
+    do i=1,npol
        p = p + pqpol(i,1)*w
        q = q + pqpol(i,2)*w
        w = w*t
-    2 continue
+    end do
 
     !  P_A and Q_A (radians).
     p = p*das2r
@@ -16240,9 +16237,6 @@
 
     implicit none
     real(wp) epj, veq(3)
-
-    !  Arcseconds to radians
-    real(wp),parameter :: as2r = 4.848136811095359935899141d-6
 
     !  Number of polynomial terms
     integer,parameter :: npol = 4
@@ -16308,25 +16302,25 @@
 
     !  Periodic terms.
     w = d2pi*t
-    do 1 i=1,nper
+    do i=1,nper
        a = w/xyper(1,i)
        s = sin(a)
        c = cos(a)
        x = x + c*xyper(2,i) + s*xyper(4,i)
        y = y + c*xyper(3,i) + s*xyper(5,i)
-    1 continue
+    end do
 
     !  Polynomial terms.
     w = 1d0
-    do 2 i=1,npol
+    do i=1,npol
        x = x + xypol(i,1)*w
        y = y + xypol(i,2)*w
        w = w*t
-    2 continue
+    end do
 
     !  X and Y (direction cosines).
-    x = x*as2r
-    y = y*as2r
+    x = x*das2r
+    y = y*das2r
 
     !  Form the equator pole vector.
     veq(1) = x
@@ -16532,7 +16526,7 @@
 
     real(wp) eps, dp, de
 
-        !  Mean obliquity.
+    !  Mean obliquity.
     eps = OBL06 ( date1, date2 )
 
     !  Nutation components.
@@ -20558,7 +20552,7 @@
     real(wp) t, el, elp, f, d, om, dp, de, arg, s, c
     integer i, j
 
-        !  ------------------------------------------------
+    !  ------------------------------------------------
     !  Table of multiples of arguments and coefficients
     !  ------------------------------------------------
     !
@@ -20735,7 +20729,7 @@
     de = 0d0
 
     !  Sum the nutation terms, ending with the biggest.
-    do 1 j=106,1,-1
+    do j=106,1,-1
 
     !     Form argument for current term.
        arg = dble(x(1,j)) * el &
@@ -20751,7 +20745,7 @@
        if ( c /= 0d0 ) de = de + c * cos(arg)
 
     !     Next term.
-    1 continue
+    end do
 
     !  Convert results from 0.1 mas units to radians.
     dpsi = dp * u2r
@@ -20812,7 +20806,7 @@
     real(wp) date1, date2, rmatn(3,3)
 
     real(wp) dpsi, deps, epsa
-        !  Nutation components and mean obliquity.
+    !  Nutation components and mean obliquity.
     call NUT80 ( date1, date2, dpsi, deps )
     epsa = OBL80 ( date1, date2 )
 
@@ -21095,7 +21089,7 @@
 
     real(wp) t
 
-        !  Interval between fundamental date J2000.0 and given date (JC).
+    !  Interval between fundamental date J2000.0 and given date (JC).
     t = ( ( date1-dj00 ) + date2 ) / djc
 
     !  Obliquity at J2000.0.
@@ -21547,9 +21541,9 @@
     integer i
 
     w = 0d0
-    do 1 i=1,3
+    do i=1,3
        w = w + a(i)*b(i)
-    1 continue
+    end do
     adb = w
 
     end subroutine PDP
@@ -21641,7 +21635,7 @@
 
     real(wp) t
 
-        !  Interval between fundamental date J2000.0 and given date (JC).
+    !  Interval between fundamental date J2000.0 and given date (JC).
     t = ( ( date1-dj00 ) + date2 ) / djc
 
     !  P03 bias+precession angles.
@@ -21864,7 +21858,7 @@
                      ae, dae, ae2, at, r, v, si2, xq, xp, tl, xsw, &
                      xcw, xm2, xf, ci2, xms, xmc, xpxq2, x, y, z
 
-        !  Planetary inverse masses
+    !  Planetary inverse masses
     data amas / 6023600d0, 408523.5d0, 328900.5d0, 3098710d0, &
                 1047.355d0, 3498.5d0, 22869d0, 19314d0 /
 
@@ -22151,10 +22145,10 @@
     real(wp) w, c
 
     w = 0d0
-    do 1 i=1,3
+    do i=1,3
        c = p(i)
        w = w + c*c
-    1 continue
+    end do
     r = sqrt(w)
 
     end subroutine PM
@@ -22405,9 +22399,9 @@
 
     integer i
 
-    do 1 i=1,3
+    do i=1,3
        amb(i) = a(i) - b(i)
-    1 continue
+    end do
 
     end subroutine PMP
 !***********************************************************************
@@ -22513,9 +22507,9 @@
     pm(3) =          pd*cd  + w*z
 
     !  Coordinate direction of star (unit vector, BCRS).
-    do 1 i=1,3
+    do i=1,3
        p(i) = p(i) + dt*pm(i) - pxr*pob(i)
-    1 continue
+    end do
     call PN ( p, w, pco )
 
     end subroutine PMPX
@@ -22815,7 +22809,7 @@
 
     real(wp) dpsipr, depspr
 
-        !  IAU 2000 precession-rate adjustments.
+    !  IAU 2000 precession-rate adjustments.
     call PR00 ( date1, date2, dpsipr, depspr )
 
     !  Mean obliquity, consistent with IAU 2000 precession-nutation.
@@ -23634,9 +23628,9 @@
 
     integer i
 
-    do 1 i=1,3
+    do i=1,3
        apb(i) = a(i) + b(i)
-    1 continue
+    end do
 
     end subroutine PPP
 !***********************************************************************
@@ -23665,9 +23659,9 @@
 
     integer i
 
-    do 1 i=1,3
+    do i=1,3
        apsb(i) = a(i) + s*b(i)
-    1 continue
+    end do
 
     end subroutine PPSP
 !***********************************************************************
@@ -24109,9 +24103,9 @@
 
     integer i
 
-    do 1 i=1,2
+    do i=1,2
        call PMP ( a(1,i), b(1,i), amb(1,i) )
-    1 continue
+    end do
 
     end subroutine PVMPV
 !***********************************************************************
@@ -24142,9 +24136,9 @@
 
     integer i
 
-    do 1 i=1,2
+    do i=1,2
        call PPP ( a(1,i), b(1,i), apb(1,i) )
-    1 continue
+    end do
 
     end subroutine PVPPV
 !***********************************************************************
@@ -24266,7 +24260,7 @@
 
     real(wp) r, x(3), vr, ur(3), vt, ut(3), bett, betr, d, w, &
                      del, usr(3), ust(3), a, rad, decd, rd
-        !  Isolate the radial component of the velocity (au/day, inertial).
+    !  Isolate the radial component of the velocity (au/day, inertial).
     call PN ( pv(1,1), r, x )
     call PDP ( x, pv(1,2), vr )
     call SXP ( vr, x, ur )
@@ -24499,9 +24493,9 @@
 
     integer i
 
-    do 1 i=1,3
+    do i=1,3
        p(i) = pv(i,1) + pv(i,2)*dt
-    1 continue
+    end do
 
     end subroutine PVUP
 !***********************************************************************
@@ -24989,13 +24983,13 @@
     integer i, j
 
     !  Matrix R * vector P.
-    do 2 j=1,3
+    do j=1,3
        w = 0d0
-       do 1 i=1,3
+       do i=1,3
           w = w + r(j,i)*p(i)
-    1    continue
+       end do
        wrp(j) = w
-    2 continue
+    end do
 
     !  Return the result.
     call CP ( wrp, rp )
@@ -25529,13 +25523,13 @@
     s4 = sp(5)
     s5 = sp(6)
 
-    do 2 i = ns0,1,-1
+    do i = ns0,1,-1
        a = 0d0
-       do 1 j=1,8
+       do j=1,8
           a = a + dble(ks0(j,i))*fa(j)
-    1    continue
+       end do
        s0 = s0 + ( ss0(1,i)*sin(a) + ss0(2,i)*cos(a) )
-    2 continue
+    end do
 
     do 4 i = ns1,1,-1
        a = 0d0
@@ -25656,7 +25650,7 @@
 
     real(wp) rbpn(3,3), x, y
 
-        !  Bias-precession-nutation-matrix, IAU 2000A.
+    !  Bias-precession-nutation-matrix, IAU 2000A.
     call PNM00A ( date1, date2, rbpn )
 
     !  Extract the CIP coordinates.
@@ -25745,7 +25739,7 @@
 
     real(wp) rbpn(3,3), x, y
 
-        !  Bias-precession-nutation-matrix, IAU 2000B.
+    !  Bias-precession-nutation-matrix, IAU 2000B.
     call PNM00B ( date1, date2, rbpn )
 
     !  Extract the CIP coordinates.
@@ -26097,13 +26091,13 @@
     s4 = sp(5)
     s5 = sp(6)
 
-    do 2 i = ns0,1,-1
+    do i = ns0,1,-1
        a = 0d0
-       do 1 j=1,8
+       do j=1,8
           a = a + dble(ks0(j,i))*fa(j)
-    1    continue
+       end do
        s0 = s0 + ( ss0(1,i)*sin(a) + ss0(2,i)*cos(a) )
-    2 continue
+    end do
 
     do 4 i = ns1,1,-1
        a = 0d0
@@ -26226,7 +26220,7 @@
 
     real(wp) rnpb(3,3), x, y
 
-        !  Bias-precession-nutation-matrix, IAU 20006/2000A.
+    !  Bias-precession-nutation-matrix, IAU 20006/2000A.
     call PNM06A ( date1, date2, rnpb )
 
     !  Extract the CIP coordinates.
@@ -26910,7 +26904,7 @@
     oddel = 0d0
     bett = betst
     betr = betsr
-    do 1 i=1,imax
+    do i=1,imax
        d = 1d0 + betr
        w = betr*betr + bett*bett
        del = - w / ( sqrt(1d0-w) + 1d0 )
@@ -26921,15 +26915,14 @@
           ddel = abs(del-odel)
           if ( i>2 .and. &
                dd>=odd .and. &
-               ddel>=oddel ) go to 2
+               ddel>=oddel ) exit
           if ( i >= imax ) iwarn = iwarn + 4
           odd = dd
           oddel = ddel
        end if
        od = d
        odel = del
-    1 continue
-    2 continue
+    end do
 
     !  Replace observed radial velocity with inertial value.
     if ( betsr /= 0d0 ) then
@@ -26974,9 +26967,9 @@
 
     integer i
 
-    do 1 i=1,3
+    do i=1,3
        sp(i) = s * p(i)
-    1 continue
+    end do
 
     end subroutine SXP
 !***********************************************************************
@@ -28285,11 +28278,11 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     real(wp) wm(3,3)
     integer i, j
 
-    do 2 i=1,3
-       do 1 j=1,3
+    do i=1,3
+       do j=1,3
           wm(i,j) = r(j,i)
-    1    continue
-    2 continue
+       end do
+    end do
     call CR ( wm, rt )
 
     end subroutine TR
@@ -28818,7 +28811,7 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     !  See if the UT1 can possibly be in a leap-second day.
     d1 = u1
     dats1 = 0d0
-    do 1 i=-1,3
+    do i=-1,3
        d2 = u2 + dble(i)
        call JD2CAL ( d1, d2, iy, im, id, fd, js )
        if ( js/=0 ) go to 9
@@ -28849,11 +28842,10 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
           end if
 
     !        Break.
-          go to 2
+          exit
        end if
        dats1 = dats2
-    1 continue
-    2 continue
+    end do
 
     !  Subtract the (possibly adjusted) UT1-UTC from UT1 to give UTC.
     u2 = u2 - duts/d2s
@@ -31477,10 +31469,10 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     !  Powers of T.
     w = 1d0
-    do 1 jpt=0,maxpt
+    do jpt=0,maxpt
        pt(jpt) = w
        w = w*t
-    1 continue
+    end do
 
     !
     !  Luni-solar fundamental (Delaunay) arguments (IERS 2003)
@@ -31688,7 +31680,7 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     real(wp) rbpn(3,3)
 
-        !  Form the bias-precession-nutation matrix, IAU 2000A.
+    !  Form the bias-precession-nutation matrix, IAU 2000A.
     call PNM00A ( date1, date2, rbpn )
 
     !  Extract X,Y.
@@ -31765,7 +31757,7 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     real(wp) rbpn(3,3)
 
-        !  Form the bias-precession-nutation matrix, IAU 2000A.
+    !  Form the bias-precession-nutation matrix, IAU 2000A.
     call PNM00B ( date1, date2, rbpn )
 
     !  Extract X,Y.
@@ -31843,7 +31835,7 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     real(wp) rbpn(3,3)
 
-        !  Form the bias-precession-nutation matrix, IAU 2006/2000A.
+    !  Form the bias-precession-nutation matrix, IAU 2006/2000A.
     call PNM06A ( date1, date2, rbpn )
 
     !  Extract X,Y.
@@ -31874,9 +31866,9 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     integer i
 
-    do 1 i=1,3
+    do i=1,3
        p(i) = 0d0
-    1 continue
+    end do
 
     end subroutine ZP
 !***********************************************************************
@@ -31903,9 +31895,9 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     integer i
 
-    do 1 i=1,2
+    do i=1,2
        call ZP ( pv(1,i) )
-    1 continue
+    end do
 
     end subroutine ZPV
 !***********************************************************************
