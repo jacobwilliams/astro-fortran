@@ -18,6 +18,8 @@
 !   * moved duplicated parameter declarations to the top of the module ...
 !   * eliminate line numbers (replace with do...end do, replaced some with exit statements)
 !
+!   * replace DBLE(.) with real(x,wp)
+!
 !### Original SOFA Copyright Notice
 !
 !  Copyright (C) 2019
@@ -1649,11 +1651,11 @@
 
     !  Barycentric vel. in units of c, and reciprocal of Lorenz factor.
     v2 = 0d0
-    do 3 i=1,3
+    do i=1,3
        w = vb(i) * cr
        astrom(8+i) = w
        v2 = v2 + w*w
-    3 continue
+    end do
     astrom(12) = sqrt ( 1d0 - v2 )
 
     !  Reset the NPB matrix.
@@ -3087,57 +3089,57 @@
 
     !  Aberration, giving GCRS natural direction.
     call ZP ( d )
-    do 50 j=1,2
+    do j=1,2
        r2 = 0d0
-       do 10 i=1,3
+       do i=1,3
           w = ppr(i) - d(i)
           before(i) = w
           r2 = r2 + w*w
-    10    continue
+       end do
        r = sqrt ( r2 )
-       do 20 i=1,3
+       do i=1,3
           before(i) = before(i) / r
-    20    continue
+       end do
        call AB ( before, astrom(9), astrom(8), astrom(12), after )
        r2 = 0d0
-       do 30 i=1,3
+       do i=1,3
           d(i) = after(i) - before(i)
           w = ppr(i) - d(i)
           pnat(i) = w
           r2 = r2 + w*w
-    30    continue
+       end do
        r = sqrt ( r2 )
-       do 40 i=1,3
+       do i=1,3
           pnat(i) = pnat(i) / r
-    40    continue
-    50 continue
+       end do
+    end do
 
     !  Light deflection by the Sun, giving BCRS coordinate direction.
     call ZP ( d )
-    do 100 j=1,5
+    do j=1,5
        r2 = 0d0
-       do 60 i=1,3
+       do i=1,3
           w = pnat(i) - d(i)
           before(i) = w
           r2 = r2 + w*w
-    60    continue
+       end do
        r = sqrt ( r2 )
-       do 70 i=1,3
+       do i=1,3
           before(i) = before(i) / r
-    70    continue
+       end do
        call LDSUN ( before, astrom(5), astrom(8), after )
        r2 = 0d0
-       do 80 i=1,3
+       do i=1,3
           d(i) = after(i) - before(i)
           w = pnat(i) - d(i)
           pco(i) = w
           r2 = r2 + w*w
-    80    continue
+       end do
        r = sqrt ( r2 )
-       do 90 i=1,3
+       do i=1,3
           pco(i) = pco(i) / r
-    90    continue
-    100 continue
+       end do
+    end do
 
     !  ICRS astrometric RA,Dec.
     call C2S ( pco, w, dc )
@@ -3262,57 +3264,57 @@
 
     !  Aberration, giving GCRS natural direction.
     call ZP ( d )
-    do 50 j=1,2
+    do j=1,2
        r2 = 0d0
-       do 10 i=1,3
+       do i=1,3
           w = ppr(i) - d(i)
           before(i) = w
           r2 = r2 + w*w
-    10    continue
+       end do
        r = sqrt ( r2 )
-       do 20 i=1,3
+       do i=1,3
           before(i) = before(i) / r
-    20    continue
+       end do
        call AB ( before, astrom(9), astrom(8), astrom(12), after )
        r2 = 0d0
-       do 30 i=1,3
+       do i=1,3
           d(i) = after(i) - before(i)
           w = ppr(i) - d(i)
           pnat(i) = w
           r2 = r2 + w*w
-    30    continue
+       end do
        r = sqrt ( r2 )
-       do 40 i=1,3
+       do i=1,3
           pnat(i) = pnat(i) / r
-    40    continue
-    50 continue
+       end do
+    end do
 
     !  Light deflection, giving BCRS coordinate direction.
     call ZP ( d )
-    do 100 j=1,5
+    do j=1,5
        r2 = 0d0
-       do 60 i=1,3
+       do i=1,3
           w = pnat(i) - d(i)
           before(i) = w
           r2 = r2 + w*w
-    60    continue
+       end do
        r = sqrt ( r2 )
-       do 70 i=1,3
+       do i=1,3
           before(i) = before(i) / r
-    70    continue
+       end do
        call LDN ( n, b, astrom(2), before, after )
        r2 = 0d0
-       do 80 i=1,3
+       do i=1,3
           d(i) = after(i) - before(i)
           w = pnat(i) - d(i)
           pco(i) = w
           r2 = r2 + w*w
-    80    continue
+       end do
        r = sqrt ( r2 )
-       do 90 i=1,3
+       do i=1,3
           pco(i) = pco(i) / r
-    90    continue
-    100 continue
+       end do
+    end do
 
     !  ICRS astrometric RA,Dec.
     call C2S ( pco, w, dc )
@@ -7621,9 +7623,9 @@
 
     !  T**0
     w0 = 0d0
-    do 10 j=474,1,-1
+    do j=474,1,-1
        w0 = w0 + fairhd(1,j) * sin(fairhd(2,j)*t + fairhd(3,j))
-    10 continue
+    end do
 
     !  T**1
     w1 = 0d0
@@ -7971,6 +7973,7 @@
     real(wp) date1, date2, rm(3,3)
 
     real(wp) ob, bp(3,3), e(3,3)
+
     !  Obliquity, IAU 2006.
     ob = OBL06 ( date1, date2 )
 
@@ -8543,13 +8546,13 @@
        end do
        s0 = s0 + ( se0(1,i)*sin(a) + se0(2,i)*cos(a) )
     end do
-    do 4 i = ne1,1,-1
+    do i = ne1,1,-1
        a = 0d0
-       do 3 j=1,8
+       do j=1,8
           a = a + dble(ke1(j,i))*fa(j)
-    3    continue
+       end do
        s1 = s1 + ( se1(1,i)*sin(a) + se1(2,i)*cos(a) )
-    4 continue
+    end do
     EECT00 = ( s0 + s1 * t ) * das2r
 
     end function EECT00
@@ -11369,7 +11372,7 @@
        end do
 
     !     Sun to Earth, T^1 terms.
-       do 2 j=1,ne1(k)
+       do j=1,ne1(k)
           a = e1(1,j,k)
           b = e1(2,j,k)
           c = e1(3,j,k)
@@ -11378,10 +11381,10 @@
           cp = cos(p)
           xyz  = xyz  + a*t*cp
           xyzd = xyzd + a*(cp-ct*sin(p))
-    2    continue
+       end do
 
     !     Sun to Earth, T^2 terms.
-       do 3 j=1,ne2(k)
+       do j=1,ne2(k)
           a = e2(1,j,k)
           b = e2(2,j,k)
           c = e2(3,j,k)
@@ -11390,7 +11393,7 @@
           cp = cos(p)
           xyz  = xyz  + a*t2*cp
           xyzd = xyzd + a*t*(2d0*cp-ct*sin(p))
-    3    continue
+       end do
 
     !     Heliocentric Earth position and velocity component.
        ph(k) = xyz
@@ -11411,7 +11414,7 @@
     4    continue
 
     !     SSB to Sun, T^1 terms.
-       do 5 j=1,ns1(k)
+       do j=1,ns1(k)
           a = s1(1,j,k)
           b = s1(2,j,k)
           c = s1(3,j,k)
@@ -11420,7 +11423,7 @@
           cp = cos(p)
           xyz  = xyz  + a*t*cp
           xyzd = xyzd + a*(cp-ct*sin(p))
-    5    continue
+       end do
 
     !     SSB to Sun, T^2 terms.
        do 6 j=1,ns2(k)
@@ -12561,8 +12564,8 @@
     call PVPPV ( pv1, pv2, pv3 )
 
     !  Convert pv-vector to Fricke system (cf. Seidelmann 3.591-3).
-    do 4 l = 1,2
-       do 3 k=1,3
+    do l = 1,2
+       do k=1,3
           w = 0d0
           do 2 j=1,2
              do 1 i=1,3
@@ -12570,8 +12573,8 @@
     1          continue
     2       continue
           pv1(k,l) = w
-    3    continue
-    4 continue
+       end do
+    end do
 
     !  Revert to catalog form.
     call PV2S ( pv1, r, d, w, ur, ud, rd )
@@ -12717,15 +12720,15 @@
     call PMP ( r0, p1, p2 )
 
     !  Convert to Fricke system pv-vector (cf. Seidelmann 3.591-3).
-    do 3 k = 1,2
-       do 2 j=1,3
+    do k = 1,2
+       do j=1,3
           w = 0d0
           do 1 i=1,3
              w = w + em(i,j,k)*p2(i)
     1       continue
           pv1(j,k) = w
-    2    continue
-    3 continue
+       end do
+    end do
 
     !  Allow for fictitious proper motion.
     call EPB2JD ( bepoch, djm0, djm )
@@ -12904,8 +12907,8 @@
     call S2PV ( r, d, 1d0, ur, ud, w, r0 )
 
     !  Convert pv-vector to Bessel-Newcomb system (cf. Seidelmann 3.592-1).
-    do 4 l = 1,2
-       do 3 k=1,3
+    do l = 1,2
+       do k=1,3
           w = 0d0
           do 2 j=1,2
              do 1 i=1,3
@@ -12913,8 +12916,8 @@
     1          continue
     2       continue
           r1(k,l) = w
-    3    continue
-    4 continue
+       end do
+    end do
 
     !  Apply E-terms (equivalent to Seidelmann 3.592-3, two iterations).
 
@@ -19862,7 +19865,7 @@
     de = 0d0
 
     !  Summation of luni-solar nutation series (in reverse order).
-    do 100 i = nls, 1, -1
+    do i = nls, 1, -1
 
     !     Argument and functions.
        arg = mod ( dble ( nals(1,i) ) * el  + &
@@ -19879,7 +19882,7 @@
        de = de + ( cls(4,i) + cls(5,i) * t ) * carg &
                +   cls(6,i)                  * sarg
 
-    100 continue
+    end do
 
     !  Convert from 0.1 microarcsec units to radians.
     dpsils = dp * u2r
@@ -20356,7 +20359,7 @@
     de = 0d0
 
     !  Summation of luni-solar nutation series (in reverse order).
-    do 100 i = nls, 1, -1
+    do i = nls, 1, -1
 
     !     Argument and functions.
        arg = mod ( dble ( nals(1,i) ) * el  + &
@@ -20373,7 +20376,7 @@
        de = de + ( cls(4,i) + cls(5,i) * t ) * carg &
                +   cls(6,i)                  * sarg
 
-    100 continue
+    end do
 
     !  Convert from 0.1 microarcsec units to radians.
     dpsils = dp * u2r
@@ -22003,11 +22006,11 @@
        jstat = -1
 
     !     Reset the result in case of failure.
-       do 2 k=1,2
+       do k=1,2
           do 1 i=1,3
              pv(i,k) = 0d0
     1       continue
-    2    continue
+       end do
     else
 
     !     Time: Julian millennia since J2000.0.
@@ -22042,14 +22045,14 @@
 
     !     Apply the trigonometric terms.
        dmu = 0.35953620d0 * t
-       do 3 k=1,8
+       do k=1,8
           arga = kp(k,np) * dmu
           argl = kq(k,np) * dmu
           da = da + ( ca(k,np) * cos(arga) + &
                       sa(k,np) * sin(arga) ) * 1d-7
           dl = dl + ( cl(k,np) * cos(argl) + &
                       sl(k,np) * sin(argl) ) * 1d-7
-    3    continue
+       end do
        arga = kp(9,np) * dmu
        da = da + t * ( ca(9,np) * cos(arga) + &
                        sa(9,np) * sin(arga) ) * 1d-7
@@ -22064,13 +22067,13 @@
        am = dl - dp
        ae = am + de*sin(am)
        k = 0
-    5    continue
+       do
           dae = ( am - ae + de*sin(ae) ) / ( 1d0 - de*cos(ae) )
           ae = ae + dae
           k = k + 1
           if ( k>=kmax ) jstat = 2
-       if ( k<kmax .and. abs(dae) > 1d-12 ) go to 5
-
+          if ( k==kmax .or. abs(dae) <= 1d-12 ) exit
+       end do
     !     True anomaly.
        ae2 = ae / 2d0
        at = 2d0 * atan2(sqrt((1d0+de)/(1d0-de)) * sin(ae2), &
@@ -25054,15 +25057,15 @@
     integer i, j, k
     real(wp) w, wm(3,3)
 
-    do 3 i=1,3
-       do 2 j=1,3
+    do i=1,3
+       do j=1,3
           w = 0d0
           do 1 k=1,3
              w = w + a(i,k)*b(k,j)
     1       continue
           wm(i,j) = w
-    2    continue
-    3 continue
+       end do
+    end do
     call CR ( wm, atb )
 
     end subroutine RXR
@@ -25531,37 +25534,37 @@
        s0 = s0 + ( ss0(1,i)*sin(a) + ss0(2,i)*cos(a) )
     end do
 
-    do 4 i = ns1,1,-1
+    do i = ns1,1,-1
        a = 0d0
-       do 3 j=1,8
+       do j=1,8
           a = a + dble(ks1(j,i))*fa(j)
-    3    continue
+       end do
        s1 = s1 + ( ss1(1,i)*sin(a) + ss1(2,i)*cos(a) )
-    4 continue
+    end do
 
-    do 6 i = ns2,1,-1
+    do i = ns2,1,-1
        a = 0d0
-       do 5 j=1,8
+       do j=1,8
           a = a + dble(ks2(j,i))*fa(j)
-    5    continue
+       end do
        s2 = s2 + ( ss2(1,i)*sin(a) + ss2(2,i)*cos(a) )
-    6 continue
+    end do
 
-    do 8 i = ns3,1,-1
+    do i = ns3,1,-1
        a = 0d0
-       do 7 j=1,8
+       do j=1,8
           a = a + dble(ks3(j,i))*fa(j)
-    7    continue
+       end do
        s3 = s3 + ( ss3(1,i)*sin(a) + ss3(2,i)*cos(a) )
-    8 continue
+    end do
 
-    do 10 i = ns4,1,-1
+    do i = ns4,1,-1
        a = 0d0
-       do 9 j=1,8
+       do j=1,8
           a = a + dble(ks4(j,i))*fa(j)
-    9    continue
+       end do
        s4 = s4 + ( ss4(1,i)*sin(a) + ss4(2,i)*cos(a) )
-    10 continue
+    end do
 
     S00 = ( s0 + &
               ( s1 + &
@@ -26099,37 +26102,37 @@
        s0 = s0 + ( ss0(1,i)*sin(a) + ss0(2,i)*cos(a) )
     end do
 
-    do 4 i = ns1,1,-1
+    do i = ns1,1,-1
        a = 0d0
-       do 3 j=1,8
+       do j=1,8
           a = a + dble(ks1(j,i))*fa(j)
-    3    continue
+       end do
        s1 = s1 + ( ss1(1,i)*sin(a) + ss1(2,i)*cos(a) )
-    4 continue
+    end do
 
-    do 6 i = ns2,1,-1
+    do i = ns2,1,-1
        a = 0d0
-       do 5 j=1,8
+       do j=1,8
           a = a + dble(ks2(j,i))*fa(j)
-    5    continue
+       end do
        s2 = s2 + ( ss2(1,i)*sin(a) + ss2(2,i)*cos(a) )
-    6 continue
+    end do
 
-    do 8 i = ns3,1,-1
+    do i = ns3,1,-1
        a = 0d0
-       do 7 j=1,8
+       do j=1,8
           a = a + dble(ks3(j,i))*fa(j)
-    7    continue
+       end do
        s3 = s3 + ( ss3(1,i)*sin(a) + ss3(2,i)*cos(a) )
-    8 continue
+    end do
 
-    do 10 i = ns4,1,-1
+    do i = ns4,1,-1
        a = 0d0
-       do 9 j=1,8
+       do j=1,8
           a = a + dble(ks4(j,i))*fa(j)
-    9    continue
+       end do
        s4 = s4 + ( ss4(1,i)*sin(a) + ss4(2,i)*cos(a) )
-    10 continue
+    end do
 
     S06 = ( s0 + &
               ( s1 + &
@@ -31510,21 +31513,21 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     !  Polynomial part of precession-nutation
     !  --------------------------------------
 
-    do 3 jxy=0,1
+    do jxy=0,1
        xypr(jxy) = 0d0
-       do 2 j=maxpt,0,-1
+       do j=maxpt,0,-1
           xypr(jxy) = xypr(jxy) + xyp(j,jxy)*pt(j)
-    2    continue
-    3 continue
+       end do
+    end do
 
     !  ----------------------------------
     !  Nutation periodic terms, planetary
     !  ----------------------------------
 
     !  Initialize totals in X and Y.
-    do 4 jxy=0,1
+    do jxy=0,1
        xypl(jxy) = 0d0
-    4 continue
+    end do
 
     !  Work backwards through the coefficients per frequency list.
     ialast = na
@@ -31532,10 +31535,10 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     !     Obtain the argument functions.
        arg = 0d0
-       do 5 i=1,14
+       do i=1,14
           m = mfapl(i,ifreq)
           if ( m/=0 ) arg = arg + dble(m)*fa(i)
-    5    continue
+       end do
        sc(0) = sin(arg)
        sc(1) = cos(arg)
 
@@ -31566,25 +31569,25 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     !  -----------------------------------
 
     !  Initialize totals in X and Y.
-    do 8 jxy=0,1
+    do jxy=0,1
        xyls(jxy) = 0d0
-    8 continue
+    end do
 
     !  Continue working backwards through the number of coefficients list.
     do 11 ifreq=nfls,1,-1
 
     !     Obtain the argument functions.
        arg = 0d0
-       do 9 i=1,5
+       do i=1,5
           m = mfals(i,ifreq)
           if ( m/=0 ) arg = arg + dble(m)*fa(i)
-    9    continue
+       end do
        sc(0) = sin(arg)
        sc(1) = cos(arg)
 
     !     Work backwards through the amplitudes at this frequency.
        ia = nc(ifreq)
-       do 10 i=ialast,ia,-1
+       do i=ialast,ia,-1
 
     !        Coefficient number (0 = 1st).
           j = i-ia
@@ -31600,7 +31603,7 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     !        Accumulate the component.
           xyls(jxy) = xyls(jxy) + a(i)*sc(jsc)*pt(jpt)
-    10    continue
+       end do
        ialast = ia-1
     11 continue
 
