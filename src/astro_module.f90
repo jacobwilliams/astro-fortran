@@ -1437,42 +1437,46 @@
 
     !  UTC to other time scales.
     call UTCTAI ( utc1, utc2, tai1, tai2, js )
-    if ( js<0 ) go to 9
-    call TAITT ( tai1, tai2, tt1, tt2, js )
-    call UTCUT1 ( utc1, utc2, dut1, ut11, ut12, js )
-    if ( js<0 ) go to 9
+    if ( js>=0 ) then
 
-    !  Earth barycentric & heliocentric position/velocity (au, au/d).
-    call EPV00 ( tt1, tt2, ehpv, ebpv, jw )
+      call TAITT ( tai1, tai2, tt1, tt2, js )
+      call UTCUT1 ( utc1, utc2, dut1, ut11, ut12, js )
+      if ( js>=0 ) then
 
-    !  Form the equinox based BPN matrix, IAU 2006/2000A.
-    call PNM06A ( tt1, tt2, r )
+        !  Earth barycentric & heliocentric position/velocity (au, au/d).
+        call EPV00 ( tt1, tt2, ehpv, ebpv, jw )
 
-    !  Extract CIP X,Y.
-    call BPN2XY ( r, x, y )
+        !  Form the equinox based BPN matrix, IAU 2006/2000A.
+        call PNM06A ( tt1, tt2, r )
 
-    !  Obtain CIO locator s.
-    s = S06 ( tt1, tt2, x, y )
+        !  Extract CIP X,Y.
+        call BPN2XY ( r, x, y )
 
-    !  Earth rotation angle.
-    theta = ERA00 ( ut11, ut12 )
+        !  Obtain CIO locator s.
+        s = S06 ( tt1, tt2, x, y )
 
-    !  TIO locator s'.
-    sp = SP00 ( tt1, tt2 )
+        !  Earth rotation angle.
+        theta = ERA00 ( ut11, ut12 )
 
-    !  Refraction constants A and B.
-    call REFCO ( phpa, tc, rh, wl, refa, refb )
+        !  TIO locator s'.
+        sp = SP00 ( tt1, tt2 )
 
-    !  Compute the star-independent astrometry parameters.
-    call APCO ( tt1, tt2, ebpv, ehpv, x, y, s, theta, &
-                    elong, phi, hm, xp, yp, sp, refa, refb, &
-                    astrom )
+        !  Refraction constants A and B.
+        call REFCO ( phpa, tc, rh, wl, refa, refb )
 
-    !  Equation of the origins.
-    eo = EORS ( r, s )
+        !  Compute the star-independent astrometry parameters.
+        call APCO ( tt1, tt2, ebpv, ehpv, x, y, s, theta, &
+                        elong, phi, hm, xp, yp, sp, refa, refb, &
+                        astrom )
+
+        !  Equation of the origins.
+        eo = EORS ( r, s )
+
+      end if
+
+    end if
 
     !  Return the status.
-    9 continue
     j = js
 
     end subroutine APCO13
@@ -2334,23 +2338,24 @@
     call UTCUT1 ( utc1, utc2, dut1, ut11, ut12, js )
 
     !  Abort if error.
-    if ( js<0 ) go to 9
+    if ( js>=0 ) then
 
-    !  TIO locator s'.
-    sp = SP00 ( tt1, tt2 )
+      !  TIO locator s'.
+      sp = SP00 ( tt1, tt2 )
 
-    !  Earth rotation angle.
-    theta = ERA00 ( ut11, ut12 )
+      !  Earth rotation angle.
+      theta = ERA00 ( ut11, ut12 )
 
-    !  Refraction constants A and B.
-    call REFCO ( phpa, tc, rh, wl, refa, refb )
+      !  Refraction constants A and B.
+      call REFCO ( phpa, tc, rh, wl, refa, refb )
 
-    !  CIRS <-> observed astrometry parameters.
-    call APIO ( sp, theta, elong, phi, hm, xp, yp, refa, refb, &
-                    astrom )
+      !  CIRS <-> observed astrometry parameters.
+      call APIO ( sp, theta, elong, phi, hm, xp, yp, refa, refb, &
+                      astrom )
+
+    end if
 
     !  Return the status.
-    9 continue
     j = js
 
     end subroutine APIO13
@@ -2912,16 +2917,17 @@
     !  Star-independent astrometry parameters.
     call APCO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
                       phpa, tc, rh, wl, astrom, eo, js )
-    if ( js<0 ) go to 9
+    if ( js>=0 ) then
 
-    !  Transform ICRS to CIRS.
-    call ATCIQ ( rc, dc, pr, pd, px, rv, astrom, ri, di )
+      !  Transform ICRS to CIRS.
+      call ATCIQ ( rc, dc, pr, pd, px, rv, astrom, ri, di )
 
-    !  Transform CIRS to observed.
-    call ATIOQ ( ri, di, astrom, aob, zob, hob, dob, rob )
+      !  Transform CIRS to observed.
+      call ATIOQ ( ri, di, astrom, aob, zob, hob, dob, rob )
+
+    end if
 
     !  Return OK/warning status.
-    9 continue
     j = js
 
     end subroutine ATCO13
@@ -3467,13 +3473,14 @@
                       phpa, tc, rh, wl, astrom, js )
 
     !  Abort if bad UTC.
-    if ( js<0 ) go to 9
+    if ( js>=0 ) then
 
-    !  Transform CIRS to observed.
-    call ATIOQ ( ri, di, astrom, aob, zob, hob, dob, rob )
+      !  Transform CIRS to observed.
+      call ATIOQ ( ri, di, astrom, aob, zob, hob, dob, rob )
+
+    end if
 
     !  Return OK/warning status.
-    9 continue
     j = js
 
     end subroutine ATIO13
@@ -3812,16 +3819,17 @@
                       phpa, tc, rh, wl, astrom, eo, js )
 
     !  Abort if bad UTC.
-    if ( js<0 ) go to 9
+    if ( js>=0 ) then
 
-    !  Transform observed to CIRS.
-    call ATOIQ ( type, ob1, ob2, astrom, ri, di )
+      !  Transform observed to CIRS.
+      call ATOIQ ( type, ob1, ob2, astrom, ri, di )
 
-    !  Transform CIRS to ICRS.
-    call ATICQ ( ri, di, astrom, rc, dc )
+      !  Transform CIRS to ICRS.
+      call ATICQ ( ri, di, astrom, rc, dc )
+
+    end if
 
     !  Return OK/warning status.
-    9 continue
     j = js
 
     end subroutine ATOC13
@@ -3979,13 +3987,14 @@
                       phpa, tc, rh, wl, astrom, js )
 
     !  Abort if bad UTC.
-    if ( js<0 ) go to 9
+    if ( js>=0 ) then
 
-    !  Transform observed to CIRS.
-    call ATOIQ ( type, ob1, ob2, astrom, ri, di )
+      !  Transform observed to CIRS.
+      call ATOIQ ( type, ob1, ob2, astrom, ri, di )
+
+    end if
 
     !  Return OK/warning status.
-    9 continue
     j = js
 
     end subroutine ATOI13
@@ -6031,105 +6040,108 @@
     integer iy1, im1, id1, js, iy2, im2, id2, ihmsf1(4), i
     real(wp) a1, b1, fd, dat0, dat12, w, dat24, dleap
 
-    !  The two-part JD.
-    a1 = d1
-    b1 = d2
+    main : block
 
-    !  Provisional calendar date.
-    call JD2CAL ( a1, b1, iy1, im1, id1, fd, js )
-    if ( js/=0 ) go to 9
+      !  The two-part JD.
+      a1 = d1
+      b1 = d2
 
-    !  Is this a leap second day?
-    leap = .false.
-    if ( scale=='UTC' ) then
+      !  Provisional calendar date.
+      call JD2CAL ( a1, b1, iy1, im1, id1, fd, js )
+      if ( js/=0 ) exit main
 
-    !     TAI-UTC at 0h today.
-       call DAT ( iy1, im1, id1, 0d0, dat0, js )
-       if ( js<0 ) go to 9
+      !  Is this a leap second day?
+      leap = .false.
+      if ( scale=='UTC' ) then
 
-    !     TAI-UTC at 12h today (to detect drift).
-       call DAT ( iy1, im1, id1, 0.5d0, dat12, js )
-       if ( js<0 ) go to 9
+      !     TAI-UTC at 0h today.
+        call DAT ( iy1, im1, id1, 0d0, dat0, js )
+        if ( js<0 ) exit main
 
-    !     TAI-UTC at 0h tomorrow (to detect jumps).
-       call JD2CAL ( a1+1.5d0, b1-fd, iy2, im2, id2, w, js )
-       if ( js/=0 ) go to 9
-       call DAT ( iy2, im2, id2, 0d0, dat24, js )
-       if ( js<0 ) go to 9
+      !     TAI-UTC at 12h today (to detect drift).
+        call DAT ( iy1, im1, id1, 0.5d0, dat12, js )
+        if ( js<0 ) exit main
 
-    !     Any sudden change in TAI-UTC (seconds).
-       dleap = dat24 - ( 2d0 * dat12 - dat0 )
+      !     TAI-UTC at 0h tomorrow (to detect jumps).
+        call JD2CAL ( a1+1.5d0, b1-fd, iy2, im2, id2, w, js )
+        if ( js/=0 ) exit main
+        call DAT ( iy2, im2, id2, 0d0, dat24, js )
+        if ( js<0 ) exit main
 
-    !     If leap second day, scale the fraction of a day into SI.
-       leap = dleap/=0d0
-       if ( leap ) fd = fd + fd*dleap/d2s
+      !     Any sudden change in TAI-UTC (seconds).
+        dleap = dat24 - ( 2d0 * dat12 - dat0 )
 
-    end if
+      !     If leap second day, scale the fraction of a day into SI.
+        leap = dleap/=0d0
+        if ( leap ) fd = fd + fd*dleap/d2s
 
-    !  Provisional time of day.
-    call D2TF ( ndp, fd, s, ihmsf1 )
+      end if
 
-    !  Has the (rounded) time gone past 24h?
-    if ( ihmsf1(1)>23 ) then
+      !  Provisional time of day.
+      call D2TF ( ndp, fd, s, ihmsf1 )
 
-    !     Yes.  We probably need tomorrow's calendar date.
-       call JD2CAL ( a1+1.5d0, b1-fd, iy2, im2, id2, w, js )
-       if ( js<0 ) go to 9
+      !  Has the (rounded) time gone past 24h?
+      if ( ihmsf1(1)>23 ) then
 
-    !     Is today a leap second day?
-       if ( .not. leap ) then
+      !     Yes.  We probably need tomorrow's calendar date.
+        call JD2CAL ( a1+1.5d0, b1-fd, iy2, im2, id2, w, js )
+        if ( js<0 ) exit main
 
-    !        No.  Use 0h tomorrow.
-          iy1 = iy2
-          im1 = im2
-          id1 = id2
-          ihmsf1(1) = 0
-          ihmsf1(2) = 0
-          ihmsf1(3) = 0
+      !     Is today a leap second day?
+        if ( .not. leap ) then
 
-       else
+      !        No.  Use 0h tomorrow.
+            iy1 = iy2
+            im1 = im2
+            id1 = id2
+            ihmsf1(1) = 0
+            ihmsf1(2) = 0
+            ihmsf1(3) = 0
 
-    !        Yes.  Are we past the leap second itself?
-          if ( ihmsf1(3)>0 ) then
+        else
 
-    !           Yes.  Use tomorrow but allow for the leap second.
-             iy1 = iy2
-             im1 = im2
-             id1 = id2
-             ihmsf1(1) = 0
-             ihmsf1(2) = 0
-             ihmsf1(3) = 0
+      !        Yes.  Are we past the leap second itself?
+            if ( ihmsf1(3)>0 ) then
 
-          else
+      !           Yes.  Use tomorrow but allow for the leap second.
+              iy1 = iy2
+              im1 = im2
+              id1 = id2
+              ihmsf1(1) = 0
+              ihmsf1(2) = 0
+              ihmsf1(3) = 0
 
-    !           No.  Use 23 59 60... today.
-             ihmsf1(1) = 23
-             ihmsf1(2) = 59
-             ihmsf1(3) = 60
-          end if
+            else
 
-    !        If rounding to 10s or coarser always go up to new day.
-          if ( ndp<0 .and. ihmsf1(3)==60 ) then
-             iy1 = iy2
-             im1 = im2
-             id1 = id2
-             ihmsf1(1) = 0
-             ihmsf1(2) = 0
-             ihmsf1(3) = 0
-          end if
-       end if
-    end if
+      !           No.  Use 23 59 60... today.
+              ihmsf1(1) = 23
+              ihmsf1(2) = 59
+              ihmsf1(3) = 60
+            end if
 
-    !  Results.
-    iy = iy1
-    im = im1
-    id = id1
-    do i=1,4
-       ihmsf(i) = ihmsf1(i)
-    end do
+      !        If rounding to 10s or coarser always go up to new day.
+            if ( ndp<0 .and. ihmsf1(3)==60 ) then
+              iy1 = iy2
+              im1 = im2
+              id1 = id2
+              ihmsf1(1) = 0
+              ihmsf1(2) = 0
+              ihmsf1(3) = 0
+            end if
+        end if
+      end if
+
+      !  Results.
+      iy = iy1
+      im = im1
+      id = id1
+      do i=1,4
+        ihmsf(i) = ihmsf1(i)
+      end do
+
+    end block main
 
     !  Status.
-    9 continue
     j = js
 
     end subroutine D2DTF
@@ -6447,59 +6459,62 @@
         2015,  7, 36d0, &
         2017,  1, 37d0 /
 
-    !  Initialize the result to zero and the status to OK.
-    da = 0d0
-    js = 0
+    main : block
 
-    !  If invalid fraction of a day, set error status and give up.
-    if ( fd<0d0 .or. fd>1d0 ) then
-       js = -4
-       go to 9000
-    end if
+      !  Initialize the result to zero and the status to OK.
+      da = 0d0
+      js = 0
 
-    !  Convert the date into an MJD.
-    call CAL2JD ( iy, im, id, djm0, djm, js )
+      !  If invalid fraction of a day, set error status and give up.
+      if ( fd<0d0 .or. fd>1d0 ) then
+        js = -4
+        exit main
+      end if
 
-    !  If invalid year, month, or day, give up.
-    if ( js < 0 ) go to 9000
+      !  Convert the date into an MJD.
+      call CAL2JD ( iy, im, id, djm0, djm, js )
 
-    !  If pre-UTC year, set warning status and give up.
-    if ( iy < idat(1,1) ) then
-       js = 1
-       go to 9000
-    end if
+      !  If invalid year, month, or day, give up.
+      if ( js < 0 ) exit main
 
-    !  If suspiciously late year, set warning status but proceed.
-    if ( iy > iyv+5 ) js = 1
+      !  If pre-UTC year, set warning status and give up.
+      if ( iy < idat(1,1) ) then
+        js = 1
+        exit main
+      end if
 
-    !  Combine year and month.
-    m = 12*iy+im
+      !  If suspiciously late year, set warning status but proceed.
+      if ( iy > iyv+5 ) js = 1
 
-    !  Find the most recent table entry.
-    is = 0
-    more = .true.
-    do n=ndat,1,-1
-       if ( more ) then
-          is = n
-          more = m < ( 12*idat(1,n) + idat(2,n) )
-       end if
-    end do
+      !  Combine year and month.
+      m = 12*iy+im
 
-    !  Prevent underflow warnings.
-    if ( is < 1 ) then
-       js = -5
-       go to 9000
-    end if
+      !  Find the most recent table entry.
+      is = 0
+      more = .true.
+      do n=ndat,1,-1
+        if ( more ) then
+            is = n
+            more = m < ( 12*idat(1,n) + idat(2,n) )
+        end if
+      end do
 
-    !  Get the Delta(AT).
-    da = dats(is)
+      !  Prevent underflow warnings.
+      if ( is < 1 ) then
+        js = -5
+        exit main
+      end if
 
-    !  If pre-1972, adjust for drift.
-    if ( is <= nera1 ) da = da + &
-                              ( djm + fd - drift(1,is) ) * drift(2,is)
+      !  Get the Delta(AT).
+      da = dats(is)
+
+      !  If pre-1972, adjust for drift.
+      if ( is <= nera1 ) da = da + &
+                                ( djm + fd - drift(1,is) ) * drift(2,is)
+
+    end block main
 
     !  Return the Delta(AT) value and the status.
-    9000 continue
     deltat = da
     j = js
 
@@ -7758,69 +7773,72 @@
     real(wp) dj, w, day, seclim, dat0, dat12, dat24, &
                      dleap, time
 
-    !  Today's Julian Day Number.
-    call CAL2JD ( iy, im, id, dj, w, js )
-    if ( js/=0 ) go to 9
-    dj = dj + w
+    main : block
 
-    !  Day length and final minute length in seconds (provisional).
-    day = d2s
-    seclim = 60d0
+      !  Today's Julian Day Number.
+      call CAL2JD ( iy, im, id, dj, w, js )
+      if ( js/=0 ) exit main
+      dj = dj + w
 
-    !  Deal with the UTC leap second case.
-    if ( scale=='UTC' ) then
+      !  Day length and final minute length in seconds (provisional).
+      day = d2s
+      seclim = 60d0
 
-    !     TAI-UTC at 0h today.
-       call DAT ( iy, im, id, 0d0, dat0, js )
-       if ( js<0 ) go to 9
+      !  Deal with the UTC leap second case.
+      if ( scale=='UTC' ) then
 
-    !     TAI-UTC at 12h today (to detect drift).
-       call DAT ( iy, im, id, 0.5d0, dat12, js )
-       if ( js<0 ) go to 9
+      !     TAI-UTC at 0h today.
+        call DAT ( iy, im, id, 0d0, dat0, js )
+        if ( js<0 ) exit main
 
-    !     TAI-UTC at 0h tomorrow (to detect jumps).
-       call JD2CAL ( dj, 1.5d0, iy2, im2, id2, w, js )
-       if ( js/=0 ) go to 9
-       call DAT ( iy2, im2, id2, 0d0, dat24, js )
-       if ( js<0 ) go to 9
+      !     TAI-UTC at 12h today (to detect drift).
+        call DAT ( iy, im, id, 0.5d0, dat12, js )
+        if ( js<0 ) exit main
 
-    !     Any sudden change in TAI-UTC between today and tomorrow.
-       dleap = dat24 - ( 2d0 * dat12 - dat0 )
+      !     TAI-UTC at 0h tomorrow (to detect jumps).
+        call JD2CAL ( dj, 1.5d0, iy2, im2, id2, w, js )
+        if ( js/=0 ) exit main
+        call DAT ( iy2, im2, id2, 0d0, dat24, js )
+        if ( js<0 ) exit main
 
-    !     If leap second day, correct the day and final minute lengths.
-       day = day + dleap
-       if ( ihr==23 .and. imn==59 ) seclim = seclim + dleap
+      !     Any sudden change in TAI-UTC between today and tomorrow.
+        dleap = dat24 - ( 2d0 * dat12 - dat0 )
 
-    !     End of UTC-specific actions.
-    end if
+      !     If leap second day, correct the day and final minute lengths.
+        day = day + dleap
+        if ( ihr==23 .and. imn==59 ) seclim = seclim + dleap
 
-    !  Validate the time.
-    if ( ihr>=0 .and. ihr<=23 ) then
-       if ( imn>=0 .and. imn<=59 ) then
-          if ( sec>=0d0 ) then
-             if ( sec>=seclim ) then
-                js = js + 2
-             end if
-          else
-             js = -6
-          end if
-       else
-          js = -5
-       end if
-    else
-       js = -4
-    end if
-    if ( js<0 ) go to 9
+      !     End of UTC-specific actions.
+      end if
 
-    !  The time in days.
-    time = (60d0*dble(60*ihr+imn)+sec) / day
+      !  Validate the time.
+      if ( ihr>=0 .and. ihr<=23 ) then
+        if ( imn>=0 .and. imn<=59 ) then
+            if ( sec>=0d0 ) then
+              if ( sec>=seclim ) then
+                  js = js + 2
+              end if
+            else
+              js = -6
+            end if
+        else
+            js = -5
+        end if
+      else
+        js = -4
+      end if
+      if ( js<0 ) exit main
 
-    !  Return the date and time.
-    d1 = dj
-    d2 = time
+      !  The time in days.
+      time = (60d0*dble(60*ihr+imn)+sec) / day
+
+      !  Return the date and time.
+      d1 = dj
+      d2 = time
+
+    end block main
 
     !  Return the status.
-    9 continue
     j = js
 
     end subroutine DTF2D
@@ -13724,10 +13742,10 @@
     !  Validate ellipsoid parameters.
     if ( f<0d0 .or. f>=1d0 ) then
        j = -1
-       go to 9999
+       return
     else if ( a <= 0d0 ) then
        j = -2
-       go to 9999
+       return
     end if
 
     !  Functions of ellipsoid parameters (with further validation of F).
@@ -13737,7 +13755,7 @@
     ec2 = 1d0-e2
     if ( ec2 <= 0d0 ) then
        j = -1
-       go to 9999
+       return
     end if
     ec = sqrt(ec2)
     b = a*ec
@@ -13805,9 +13823,6 @@
 
     !  OK status.
     j = 0
-
-    !  Finished.
-    9999 continue
 
     end subroutine GC2GDE
 !***********************************************************************
@@ -19935,7 +19950,7 @@
     de = 0d0
 
     !  Summation of planetary nutation series (in reverse order).
-    do 200 i = npl, 1, -1
+    do i = npl, 1, -1
 
     !     Argument and functions.
        arg = mod ( dble ( napl( 1,i) ) * al   + &
@@ -19959,7 +19974,7 @@
        dp = dp + dble( icpl(1,i)) * sarg + dble( icpl(2,i)) * carg
        de = de + dble( icpl(3,i)) * sarg + dble( icpl(4,i)) * carg
 
-    200 continue
+    end do
 
     !  Convert from 0.1 microarcsec units to radians.
     dpsipl = dp * u2r
@@ -24281,7 +24296,7 @@
     w = betr*betr + bett*bett
     if ( d==0d0 .or. w>=1d0 ) then
        j = -1
-       go to 9
+       return
     end if
     del = - w / ( sqrt(1d0-w) + 1d0 )
 
@@ -24303,7 +24318,7 @@
     call PV2S ( pv, a, dec, r, rad, decd, rd )
     if ( r == 0d0 ) then
        j = -2
-       go to 9
+       return
     end if
 
     !  Return RA in range 0 to 2pi.
@@ -24321,9 +24336,6 @@
 
     !  OK status.
     j = 0
-
-    !  Exit.
-    9 continue
 
     end subroutine PVSTAR
 !***********************************************************************
@@ -26692,7 +26704,7 @@
     c2mv2 = c*c - v2
     if ( c2mv2 <= 0d0 ) then
        j = -1
-       go to 9
+       return
     end if
     tl2 = ( - rdv + sqrt(rdv*rdv + c2mv2*r2) ) / c2mv2
 
@@ -26706,9 +26718,6 @@
     !  Return the status.
     if ( j2 /= 0 ) j1 = -1
     j = j1
-
-    !  Exit.
-    9 continue
 
     end subroutine STARPM
 !***********************************************************************
@@ -27203,7 +27212,10 @@
 
     !     Guessed UTC to TAI.
        call UTCTAI ( u1, u2, g1, g2, js )
-       if ( js<0 ) go to 9
+       if ( js<0 ) then
+        j = js
+        return
+       end if
 
     !     Adjust guessed UTC.
        u2 = u2 + (a1-g1)
@@ -27221,7 +27233,6 @@
     end if
 
     !  Status.
-    9 continue
     j = js
 
     end subroutine TAIUTC
@@ -28817,9 +28828,15 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     do i=-1,3
        d2 = u2 + dble(i)
        call JD2CAL ( d1, d2, iy, im, id, fd, js )
-       if ( js/=0 ) go to 9
+       if ( js/=0 ) then
+          j = js
+          return
+       end if
        call DAT ( iy, im, id, 0d0, dats2, js )
-       if ( js<0 ) go to 9
+       if ( js<0 ) then
+          j = js
+          return
+       end if
        if ( i==-1 ) dats1 = dats2
        ddats = dats2 - dats1
        if ( abs(ddats)>=0.5d0 ) then
@@ -28863,7 +28880,6 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     end if
 
     !  Return the status.
-    9 continue
     j = js
 
     end subroutine UT1UTC
@@ -28951,47 +28967,55 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     !  Get TAI-UTC at 0h today.
     call JD2CAL ( u1, u2, iy, im, id, fd, js )
-    if ( js/=0 ) go to 9
-    call DAT ( iy, im, id, 0d0, dat0, js )
-    if ( js<0 ) go to 9
+    if ( js==0 ) then
 
-    !  Get TAI-UTC at 12h today (to detect drift).
-    call DAT ( iy, im, id, 0.5d0, dat12, js )
-    if ( js<0 ) go to 9
+      call DAT ( iy, im, id, 0d0, dat0, js )
+      if ( js>=0 ) then
 
-    !  Get TAI-UTC at 0h tomorrow (to detect jumps).
-    call JD2CAL ( u1+1.5d0, u2-fd, iyt, imt, idt, w, js )
-    if ( js/=0 ) go to 9
-    call DAT ( iyt, imt, idt, 0d0, dat24, js )
-    if ( js<0 ) go to 9
+        !  Get TAI-UTC at 12h today (to detect drift).
+        call DAT ( iy, im, id, 0.5d0, dat12, js )
+        if ( js>=0 ) then
 
-    !  Separate TAI-UTC change into per-day (DLOD) and any jump (DLEAP).
-    dlod = 2d0 * ( dat12 - dat0 )
-    dleap = dat24 - ( dat0 + dlod )
+          !  Get TAI-UTC at 0h tomorrow (to detect jumps).
+          call JD2CAL ( u1+1.5d0, u2-fd, iyt, imt, idt, w, js )
+          if ( js==0 ) then
 
-    !  Remove any scaling applied to spread leap into preceding day.
-    fd = fd * (d2s+dleap)/d2s
+            call DAT ( iyt, imt, idt, 0d0, dat24, js )
+            if ( js>=0 ) then
 
-    !  Scale from (pre-1972) UTC seconds to SI seconds.
-    fd = fd * (d2s+dlod)/d2s
+              !  Separate TAI-UTC change into per-day (DLOD) and any jump (DLEAP).
+              dlod = 2d0 * ( dat12 - dat0 )
+              dleap = dat24 - ( dat0 + dlod )
 
-    !  Today's calendar date to 2-part JD.
-    call CAL2JD ( iy, im, id, z1, z2, js )
-    if ( js/=0 ) go to 9
+              !  Remove any scaling applied to spread leap into preceding day.
+              fd = fd * (d2s+dleap)/d2s
 
-    !  Assemble the TAI result, preserving the UTC split and order.
-    a2 = z1 - u1
-    a2 = ( a2 + z2 ) + ( fd + dat0/d2s )
-    if ( big1 ) then
-       tai1 = u1
-       tai2 = a2
-    else
-       tai1 = a2
-       tai2 = u1
+              !  Scale from (pre-1972) UTC seconds to SI seconds.
+              fd = fd * (d2s+dlod)/d2s
+
+              !  Today's calendar date to 2-part JD.
+              call CAL2JD ( iy, im, id, z1, z2, js )
+              if ( js==0 ) then
+
+                !  Assemble the TAI result, preserving the UTC split and order.
+                a2 = z1 - u1
+                a2 = ( a2 + z2 ) + ( fd + dat0/d2s )
+                if ( big1 ) then
+                  tai1 = u1
+                  tai2 = a2
+                else
+                  tai1 = a2
+                  tai2 = u1
+                end if
+
+              end if
+            end if
+          end if
+        end if
+      end if
     end if
 
     !  Status.
-    9 continue
     j = js
 
     end subroutine UTCTAI
@@ -29071,23 +29095,27 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     !  Look up TAI-UTC.
     call JD2CAL ( utc1, utc2, iy, im, id, w, js )
-    if ( js/=0 ) go to 9
-    call DAT ( iy, im, id, 0d0, d, js )
-    if ( js<0 ) go to 9
+    if ( js==0 ) then
 
-    !  Form UT1-TAI.
-    dta = dut1 - d
+      call DAT ( iy, im, id, 0d0, d, js )
+      if ( js>=0 ) then
 
-    !  UTC to TAI to UT1.
-    call UTCTAI ( utc1, utc2, tai1, tai2, jw )
-    if ( jw<0 ) then
-       js = jw
-       go to 9
+        !  Form UT1-TAI.
+        dta = dut1 - d
+
+        !  UTC to TAI to UT1.
+        call UTCTAI ( utc1, utc2, tai1, tai2, jw )
+        if ( jw<0 ) then
+          js = jw
+        else
+          call TAIUT1 ( tai1, tai2, dta, ut11, ut12, jw )
+        end if
+
+      end if
+
     end if
-    call TAIUT1 ( tai1, tai2, dta, ut11, ut12, jw )
 
     !  Return the status.
-    9 continue
     j = js
 
     end subroutine UTCUT1
