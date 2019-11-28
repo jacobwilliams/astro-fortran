@@ -17,8 +17,9 @@
 !   * replaced old style PARAMETER and DATA declarations
 !   * moved duplicated parameter declarations to the top of the module ...
 !   * eliminate line numbers (replace with do...end do, replaced some with exit statements)
-!
 !   * replace DBLE(.) with real(x,wp)
+!   * add INTENT to all arguments
+!   * make all routines PURE
 !
 !### Original SOFA Copyright Notice
 !
