@@ -20,6 +20,7 @@
 !   * replace DBLE(.) with real(x,wp)
 !   * add INTENT to all arguments
 !   * make all routines PURE
+!   * replace anint and nint ???
 !
 !### Original SOFA Copyright Notice
 !
@@ -3593,6 +3594,7 @@
                      xhdt, yhdt, zhdt, xaet, yaet, zaet, azobs, &
                      r, tz, w, del, cosdel, xaeo, yaeo, zaeo, &
                      zdobs, hmobs, dcobs, raobs
+
     !  CIRS RA,Dec to Cartesian -HA,Dec.
     call S2C ( ri-astrom(28), di, v )
     x = v(1)
@@ -5837,20 +5839,20 @@
     !     Validate month.
        if ( im>=1 .and. im<=12 ) then
 
-    !        Days in current month.
+          !  Days in current month.
           ndays = mtab(im)
 
-    !        Allow for leap year.
+          !  Allow for leap year.
           if ( im == 2 ) then
              if ( mod(iy,4) == 0 ) ndays = 29
              if ( mod(iy,100)==0 .and. &
                   mod(iy,400)/=0 ) ndays = 28
           end if
 
-    !        Validate day.
+          !  Validate day.
           if ( id<1 .or. id>ndays ) j = -3
 
-    !        Result.
+          !  Result.
           my = ( im - 14 ) / 12
           iypmy = iy + my
           djm0 = 2400000.5d0
@@ -5859,7 +5861,7 @@
                     - (    3 * ( ( iypmy + 4900 ) / 100 ) ) / 4 &
                     + id - 2432076)
 
-    !        Bad month
+          !  Bad month
        else
           j = -2
        end if
@@ -24279,6 +24281,7 @@
 
     real(wp) :: r, x(3), vr, ur(3), vt, ut(3), bett, betr, d, w, &
                      del, usr(3), ust(3), a, rad, decd, rd
+
     !  Isolate the radial component of the velocity (au/day, inertial).
     call PN ( pv(1,1), r, x )
     call PDP ( x, pv(1,2), vr )
@@ -28842,27 +28845,27 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
        ddats = dats2 - dats1
        if ( abs(ddats)>=0.5d0 ) then
 
-    !        Yes, leap second nearby: ensure UT1-UTC is "before" value.
+          !  Yes, leap second nearby: ensure UT1-UTC is "before" value.
           if ( ddats*duts>=0d0 ) duts = duts-ddats
 
-    !        UT1 for the start of the UTC day that ends in a leap.
+          !  UT1 for the start of the UTC day that ends in a leap.
           call CAL2JD ( iy, im, id, d1, d2, js )
           us1 = d1
           us2 = d2 - 1d0 + duts/d2s
 
-    !        Is the UT1 after this point?
+          !  Is the UT1 after this point?
           du = u1 - us1
           du = du + ( u2 - us2 )
           if ( du>0d0 ) then
 
-    !           Yes:  fraction of the current UTC day that has elapsed.
+             !  Yes:  fraction of the current UTC day that has elapsed.
              fd = du * d2s / ( d2s + ddats )
 
-    !           Ramp UT1-UTC to bring about SOFA's JD(UTC) convention.
+             !  Ramp UT1-UTC to bring about SOFA's JD(UTC) convention.
              duts = duts + ddats*min(fd,1d0)
           end if
 
-    !        Break.
+          !  Break.
           exit
        end if
        dats1 = dats2
@@ -31575,19 +31578,19 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
        ia = nc(ifreq+nfls)
        do i=ialast,ia,-1
 
-    !        Coefficient number (0 = 1st).
+          !  Coefficient number (0 = 1st).
           j = i-ia
 
-    !        X or Y.
+          !  X or Y.
           jxy = jaxy(j)
 
-    !        Sin or cos.
+          !  Sin or cos.
           jsc = jasc(j)
 
-    !        Power of T.
+          !  Power of T.
           jpt = japt(j)
 
-    !        Accumulate the component.
+          !  Accumulate the component.
           xypl(jxy) = xypl(jxy) + a(i)*sc(jsc)*pt(jpt)
        end do
        ialast = ia-1
@@ -31618,19 +31621,19 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
        ia = nc(ifreq)
        do i=ialast,ia,-1
 
-    !        Coefficient number (0 = 1st).
+          !  Coefficient number (0 = 1st).
           j = i-ia
 
-    !        X or Y.
+          !  X or Y.
           jxy = jaxy(j)
 
-    !        Sin or cos.
+          !  Sin or cos.
           jsc = jasc(j)
 
-    !        Power of T.
+          !  Power of T.
           jpt = japt(j)
 
-    !        Accumulate the component.
+          !  Accumulate the component.
           xyls(jxy) = xyls(jxy) + a(i)*sc(jsc)*pt(jpt)
        end do
        ialast = ia-1
