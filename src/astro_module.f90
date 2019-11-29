@@ -496,8 +496,8 @@
     if ( ideg<0 .or. ideg>359 ) j=1
 
     !  Compute the angle.
-    w = ( 60d0 * ( 60d0 * dble( abs(ideg) ) + &
-                          dble( abs(iamin) ) ) + &
+    w = ( 60d0 * ( 60d0 * real( abs(ideg), wp ) + &
+                          real( abs(iamin), wp ) ) + &
                           abs(asec) ) * das2r
 
     !  Apply the sign.
@@ -5897,10 +5897,10 @@
           my = ( im - 14 ) / 12
           iypmy = iy + my
           djm0 = 2400000.5d0
-          djm = dble( ( 1461 * ( iypmy + 4800 ) ) / 4 &
+          djm = real( ( 1461 * ( iypmy + 4800 ) ) / 4 &
                     + (  367 * ( im-2 - 12*my ) ) / 12 &
                     - (    3 * ( ( iypmy + 4900 ) / 100 ) ) / 4 &
-                    + id - 2432076)
+                    + id - 2432076, wp)
 
           !  Bad month
        else
@@ -6266,7 +6266,7 @@
              nrs = nrs * 10
           end if
        end do
-       rs = dble(nrs)
+       rs = real(nrs, wp)
        a = rs * anint(a/rs)
     end if
 
@@ -6275,7 +6275,7 @@
     do n=1,ndp
        nrs = nrs * 10
     end do
-    rs = dble(nrs)
+    rs = real(nrs, wp)
     rm = rs * 60d0
     rh = rm * 60d0
 
@@ -7867,7 +7867,7 @@
       if ( js<0 ) exit main
 
       !  The time in days.
-      time = (60d0*dble(60*ihr+imn)+sec) / day
+      time = (60d0*real(60*ihr+imn, wp)+sec) / day
 
       !  Return the date and time.
       d1 = dj
@@ -8560,14 +8560,14 @@
     do i = ne0,1,-1
        a = 0d0
        do j=1,8
-          a = a + dble(ke0(j,i))*fa(j)
+          a = a + real(ke0(j,i),wp)*fa(j)
        end do
        s0 = s0 + ( se0(1,i)*sin(a) + se0(2,i)*cos(a) )
     end do
     do i = ne1,1,-1
        a = 0d0
        do j=1,8
-          a = a + dble(ke1(j,i))*fa(j)
+          a = a + real(ke1(j,i),wp)*fa(j)
        end do
        s1 = s1 + ( se1(1,i)*sin(a) + se1(2,i)*cos(a) )
     end do
@@ -15284,7 +15284,7 @@
     !  Denominator of fraction (e.g. 100 for 2 decimal places).
     if ( ndp>=0 .and. ndp<=9 ) then
        j = 0
-       denom = dble(10**ndp)
+       denom = real(10**ndp,wp)
     else
        j = 1
        denom = 1d0
@@ -19756,11 +19756,11 @@
     do i = nls, 1, -1
 
        !  Argument and functions.
-       arg = mod ( dble ( nals(1,i) ) * el  + &
-                   dble ( nals(2,i) ) * elp + &
-                   dble ( nals(3,i) ) * f   + &
-                   dble ( nals(4,i) ) * d   + &
-                   dble ( nals(5,i) ) * om, d2pi )
+       arg = mod ( real ( nals(1,i), wp ) * el  + &
+                   real ( nals(2,i), wp ) * elp + &
+                   real ( nals(3,i), wp ) * f   + &
+                   real ( nals(4,i), wp ) * d   + &
+                   real ( nals(5,i), wp ) * om, d2pi )
        sarg = sin(arg)
        carg = cos(arg)
 
@@ -19826,26 +19826,26 @@
     do i = npl, 1, -1
 
        !  Argument and functions.
-       arg = mod ( dble ( napl( 1,i) ) * al   + &
-                   dble ( napl( 2,i) ) * alsu + &
-                   dble ( napl( 3,i) ) * af   + &
-                   dble ( napl( 4,i) ) * ad   + &
-                   dble ( napl( 5,i) ) * aom  + &
-                   dble ( napl( 6,i) ) * alme + &
-                   dble ( napl( 7,i) ) * alve + &
-                   dble ( napl( 8,i) ) * alea + &
-                   dble ( napl( 9,i) ) * alma + &
-                   dble ( napl(10,i) ) * alju + &
-                   dble ( napl(11,i) ) * alsa + &
-                   dble ( napl(12,i) ) * alur + &
-                   dble ( napl(13,i) ) * alne + &
-                   dble ( napl(14,i) ) * apa, d2pi )
+       arg = mod ( real ( napl( 1,i), wp ) * al   + &
+                   real ( napl( 2,i), wp ) * alsu + &
+                   real ( napl( 3,i), wp ) * af   + &
+                   real ( napl( 4,i), wp ) * ad   + &
+                   real ( napl( 5,i), wp ) * aom  + &
+                   real ( napl( 6,i), wp ) * alme + &
+                   real ( napl( 7,i), wp ) * alve + &
+                   real ( napl( 8,i), wp ) * alea + &
+                   real ( napl( 9,i), wp ) * alma + &
+                   real ( napl(10,i), wp ) * alju + &
+                   real ( napl(11,i), wp ) * alsa + &
+                   real ( napl(12,i), wp ) * alur + &
+                   real ( napl(13,i), wp ) * alne + &
+                   real ( napl(14,i), wp ) * apa, d2pi )
        sarg = sin(arg)
        carg = cos(arg)
 
        !  Term.
-       dp = dp + dble( icpl(1,i)) * sarg + dble( icpl(2,i)) * carg
-       de = de + dble( icpl(3,i)) * sarg + dble( icpl(4,i)) * carg
+       dp = dp + real(icpl(1,i), wp) * sarg + real(icpl(2,i), wp) * carg
+       de = de + real(icpl(3,i), wp) * sarg + real(icpl(4,i), wp) * carg
 
     end do
 
@@ -20247,11 +20247,11 @@
     do i = nls, 1, -1
 
     !     Argument and functions.
-       arg = mod ( dble ( nals(1,i) ) * el  + &
-                   dble ( nals(2,i) ) * elp + &
-                   dble ( nals(3,i) ) * f   + &
-                   dble ( nals(4,i) ) * d   + &
-                   dble ( nals(5,i) ) * om, d2pi )
+       arg = mod ( real ( nals(1,i), wp ) * el  + &
+                   real ( nals(2,i), wp ) * elp + &
+                   real ( nals(3,i), wp ) * f   + &
+                   real ( nals(4,i), wp ) * d   + &
+                   real ( nals(5,i), wp ) * om, d2pi )
        sarg = sin(arg)
        carg = cos(arg)
 
@@ -20608,15 +20608,15 @@
     do j=106,1,-1
 
        !  Form argument for current term.
-       arg = dble(x(1,j)) * el &
-           + dble(x(2,j)) * elp &
-           + dble(x(3,j)) * f &
-           + dble(x(4,j)) * d &
-           + dble(x(5,j)) * om
+       arg = real(x(1,j),wp) * el &
+           + real(x(2,j),wp) * elp &
+           + real(x(3,j),wp) * f &
+           + real(x(4,j),wp) * d &
+           + real(x(5,j),wp) * om
 
        !  Accumulate current nutation term.
-       s = dble(x(6,j)) + dble(x(7,j)) * t
-       c = dble(x(8,j)) + dble(x(9,j)) * t
+       s = real(x(6,j),wp) + real(x(7,j),wp) * t
+       c = real(x(8,j),wp) + real(x(9,j),wp) * t
        if ( s /= 0d0 ) dp = dp + s * sin(arg)
        if ( c /= 0d0 ) de = de + c * cos(arg)
 
@@ -25364,7 +25364,7 @@
     do i = ns0,1,-1
        a = 0d0
        do j=1,8
-          a = a + dble(ks0(j,i))*fa(j)
+          a = a + real(ks0(j,i),wp)*fa(j)
        end do
        s0 = s0 + ( ss0(1,i)*sin(a) + ss0(2,i)*cos(a) )
     end do
@@ -25372,7 +25372,7 @@
     do i = ns1,1,-1
        a = 0d0
        do j=1,8
-          a = a + dble(ks1(j,i))*fa(j)
+          a = a + real(ks1(j,i),wp)*fa(j)
        end do
        s1 = s1 + ( ss1(1,i)*sin(a) + ss1(2,i)*cos(a) )
     end do
@@ -25380,7 +25380,7 @@
     do i = ns2,1,-1
        a = 0d0
        do j=1,8
-          a = a + dble(ks2(j,i))*fa(j)
+          a = a + real(ks2(j,i),wp)*fa(j)
        end do
        s2 = s2 + ( ss2(1,i)*sin(a) + ss2(2,i)*cos(a) )
     end do
@@ -25388,7 +25388,7 @@
     do i = ns3,1,-1
        a = 0d0
        do j=1,8
-          a = a + dble(ks3(j,i))*fa(j)
+          a = a + real(ks3(j,i),wp)*fa(j)
        end do
        s3 = s3 + ( ss3(1,i)*sin(a) + ss3(2,i)*cos(a) )
     end do
@@ -25396,7 +25396,7 @@
     do i = ns4,1,-1
        a = 0d0
        do j=1,8
-          a = a + dble(ks4(j,i))*fa(j)
+          a = a + real(ks4(j,i),wp)*fa(j)
        end do
        s4 = s4 + ( ss4(1,i)*sin(a) + ss4(2,i)*cos(a) )
     end do
@@ -25911,7 +25911,7 @@
     do i = ns0,1,-1
        a = 0d0
        do j=1,8
-          a = a + dble(ks0(j,i))*fa(j)
+          a = a + real(ks0(j,i),wp)*fa(j)
        end do
        s0 = s0 + ( ss0(1,i)*sin(a) + ss0(2,i)*cos(a) )
     end do
@@ -25919,7 +25919,7 @@
     do i = ns1,1,-1
        a = 0d0
        do j=1,8
-          a = a + dble(ks1(j,i))*fa(j)
+          a = a + real(ks1(j,i),wp)*fa(j)
        end do
        s1 = s1 + ( ss1(1,i)*sin(a) + ss1(2,i)*cos(a) )
     end do
@@ -25927,7 +25927,7 @@
     do i = ns2,1,-1
        a = 0d0
        do j=1,8
-          a = a + dble(ks2(j,i))*fa(j)
+          a = a + real(ks2(j,i),wp)*fa(j)
        end do
        s2 = s2 + ( ss2(1,i)*sin(a) + ss2(2,i)*cos(a) )
     end do
@@ -25935,7 +25935,7 @@
     do i = ns3,1,-1
        a = 0d0
        do j=1,8
-          a = a + dble(ks3(j,i))*fa(j)
+          a = a + real(ks3(j,i),wp)*fa(j)
        end do
        s3 = s3 + ( ss3(1,i)*sin(a) + ss3(2,i)*cos(a) )
     end do
@@ -25943,7 +25943,7 @@
     do i = ns4,1,-1
        a = 0d0
        do j=1,8
-          a = a + dble(ks4(j,i))*fa(j)
+          a = a + real(ks4(j,i),wp)*fa(j)
        end do
        s4 = s4 + ( ss4(1,i)*sin(a) + ss4(2,i)*cos(a) )
     end do
@@ -27395,8 +27395,8 @@
     if ( ihour<0 .or. ihour>23 ) j=1
 
     !  Compute the angle.
-    w = ( 60d0 * ( 60d0 * dble( abs(ihour) ) + &
-                          dble( abs(imin) ) ) + &
+    w = ( 60d0 * ( 60d0 * real( abs(ihour), wp ) + &
+                          real( abs(imin), wp ) ) + &
                                 abs(sec) ) * ds2r
 
     !  Apply the sign.
@@ -27464,8 +27464,8 @@
     if ( ihour<0 .or. ihour>23 ) j=1
 
     !  Compute the interval.
-    w = ( 60d0 * ( 60d0 * dble( abs(ihour) ) + &
-                          dble( abs(imin) ) ) + &
+    w = ( 60d0 * ( 60d0 * real( abs(ihour), wp ) + &
+                          real( abs(imin), wp ) ) + &
                                 abs(sec) ) / d2s
 
     !  Apply the sign.
@@ -28662,7 +28662,7 @@
     d1 = u1
     dats1 = 0d0
     do i=-1,3
-       d2 = u2 + dble(i)
+       d2 = u2 + real(i,wp)
        call JD2CAL ( d1, d2, iy, im, id, fd, js )
        if ( js/=0 ) then
           j = js
@@ -31377,7 +31377,7 @@
        arg = 0d0
        do i=1,14
           m = mfapl(i,ifreq)
-          if ( m/=0 ) arg = arg + dble(m)*fa(i)
+          if ( m/=0 ) arg = arg + real(m,wp)*fa(i)
        end do
        sc(0) = sin(arg)
        sc(1) = cos(arg)
@@ -31420,7 +31420,7 @@
        arg = 0d0
        do i=1,5
           m = mfals(i,ifreq)
-          if ( m/=0 ) arg = arg + dble(m)*fa(i)
+          if ( m/=0 ) arg = arg + real(m,wp)*fa(i)
        end do
        sc(0) = sin(arg)
        sc(1) = cos(arg)
