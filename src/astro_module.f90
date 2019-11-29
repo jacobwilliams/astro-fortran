@@ -194,7 +194,7 @@
     integer :: ndp
     real(wp) :: angle
     character(len=*) :: sign
-    integer :: idmsf(4)
+    integer,dimension(4) :: idmsf
 
     !  Hours to degrees * radians to turns
     real(wp),parameter :: f = 15d0/d2pi
@@ -260,7 +260,7 @@
     integer :: ndp
     real(wp) :: angle
     character(len=*) :: sign
-    integer :: ihmsf(4)
+    integer,dimension(4) :: ihmsf
 
     !  Scale then use days to h,m,s routine.
     call D2TF ( ndp, angle/d2pi, sign, ihmsf )
@@ -316,11 +316,11 @@
 
     implicit none
 
-    real(wp) :: pnat(3)
-    real(wp) :: v(3)
+    real(wp),dimension(3) :: pnat
+    real(wp),dimension(3) :: v
     real(wp) :: s
     real(wp) :: bm1
-    real(wp) :: ppr(3)
+    real(wp),dimension(3) :: ppr
 
     !  Schwarzschild radius of the Sun (au)
     !  = 2 * 1.32712440041 D20 / (2.99792458 D8)^2 / 1.49597870700 D11
@@ -670,9 +670,9 @@
 
     real(wp) :: date1
     real(wp) :: date2
-    real(wp) :: ebpv(3,2)
-    real(wp) :: ehp(3)
-    real(wp) :: astrom(30)
+    real(wp),dimension(3,2) :: ebpv
+    real(wp),dimension(3) :: ehp
+    real(wp),dimension(30) :: astrom
 
     real(wp) :: pv(3,2)
 
@@ -791,7 +791,7 @@
 
     real(wp) :: date1
     real(wp) :: date2
-    real(wp) :: astrom(30)
+    real(wp),dimension(30) :: astrom
 
     integer :: j
     real(wp) :: ehpv(3,2), ebpv(3,2)
@@ -916,12 +916,12 @@
 
     real(wp) :: date1
     real(wp) :: date2
-    real(wp) :: ebpv(3,2)
-    real(wp) :: ehp(3)
+    real(wp),dimension(3,2) :: ebpv
+    real(wp),dimension(3) :: ehp
     real(wp) :: x
     real(wp) :: y
     real(wp) :: s
-    real(wp) :: astrom(30)
+    real(wp),dimension(30) :: astrom
 
     !  Star-independent astrometry parameters for geocenter.
     call APCG ( date1, date2, ebpv, ehp, astrom )
@@ -1039,7 +1039,7 @@
 
     real(wp) :: date1
     real(wp) :: date2
-    real(wp) :: astrom(30)
+    real(wp),dimension(30) :: astrom
     real(wp) :: eo
 
     integer :: j
@@ -1212,8 +1212,8 @@
 
     real(wp) :: date1
     real(wp) :: date2
-    real(wp) :: ebpv(3,2)
-    real(wp) :: ehp(3)
+    real(wp),dimension(3,2) :: ebpv
+    real(wp),dimension(3) :: ehp
     real(wp) :: x
     real(wp) :: y
     real(wp) :: s
@@ -1226,7 +1226,7 @@
     real(wp) :: sp
     real(wp) :: refa
     real(wp) :: refb
-    real(wp) :: astrom(30)
+    real(wp),dimension(30) :: astrom
 
     real(wp) :: sl, cl, r(3,3), pvc(3,2), pv(3,2)
 
@@ -1442,7 +1442,7 @@
     real(wp) :: tc
     real(wp) :: rh
     real(wp) :: wl
-    real(wp) :: astrom(30)
+    real(wp),dimension(30) :: astrom
     real(wp) :: eo
     integer :: j
 
@@ -1618,10 +1618,10 @@
 
     real(wp) :: date1
     real(wp) :: date2
-    real(wp) :: pv(3,2)
-    real(wp) :: ebpv(3,2)
-    real(wp) :: ehp(3)
-    real(wp) :: astrom(30)
+    real(wp),dimension(3,2) :: pv
+    real(wp),dimension(3,2) :: ebpv
+    real(wp),dimension(3) :: ehp
+    real(wp),dimension(30) :: astrom
 
     !  Astronomical unit (m, IAU 2012)
     real(wp),parameter :: aum = 149597870.7d3
@@ -1783,8 +1783,8 @@
 
     real(wp) :: date1
     real(wp) :: date2
-    real(wp) :: pv(3,2)
-    real(wp) :: astrom(30)
+    real(wp),dimension(3,2) :: pv
+    real(wp),dimension(30) :: astrom
 
     integer :: j
     real(wp) :: ehpv(3,2), ebpv(3,2)
@@ -1892,7 +1892,7 @@
     implicit none
 
     real(wp) :: theta
-    real(wp) :: astrom(30)
+    real(wp),dimension(30) :: astrom
 
     astrom(28) = theta + astrom(22)
 
@@ -2009,7 +2009,7 @@
 
     real(wp) :: ut11
     real(wp) :: ut12
-    real(wp) :: astrom(30)
+    real(wp),dimension(30) :: astrom
 
     call APER ( ERA00 ( ut11, ut12 ), astrom )
 
@@ -2136,7 +2136,7 @@
     real(wp) :: yp
     real(wp) :: refa
     real(wp) :: refb
-    real(wp) :: astrom(30)
+    real(wp),dimension(30) :: astrom
 
     real(wp) :: sl, cl, pv(3,2)
 
@@ -2334,7 +2334,7 @@
     real(wp) :: tc
     real(wp) :: rh
     real(wp) :: wl
-    real(wp) :: astrom(30)
+    real(wp),dimension(30) :: astrom
     integer :: j
 
     integer :: js
@@ -2534,7 +2534,7 @@
     real(wp) :: pd
     real(wp) :: px
     real(wp) :: rv
-    real(wp) :: astrom(30)
+    real(wp),dimension(30) :: astrom
     real(wp) :: ri
     real(wp) :: di
 
@@ -2662,9 +2662,9 @@
     real(wp) :: pd
     real(wp) :: px
     real(wp) :: rv
-    real(wp) :: astrom(30)
+    real(wp),dimension(30) :: astrom
     integer :: n
-    real(wp) :: b(8,n)
+    real(wp),dimension(8,n) :: b
     real(wp) :: ri
     real(wp) :: di
 
@@ -2749,7 +2749,7 @@
 
     real(wp) :: rc
     real(wp) :: dc
-    real(wp) :: astrom(30)
+    real(wp),dimension(30) :: astrom
     real(wp) :: ri
     real(wp) :: di
 
@@ -3110,7 +3110,7 @@
 
     real(wp) :: ri
     real(wp) :: di
-    real(wp) :: astrom(30)
+    real(wp),dimension(30) :: astrom
     real(wp) :: rc
     real(wp) :: dc
 
@@ -3279,9 +3279,9 @@
 
     real(wp) :: ri
     real(wp) :: di
-    real(wp) :: astrom(30)
+    real(wp),dimension(30) :: astrom
     integer :: n
-    real(wp) :: b(8,n)
+    real(wp),dimension(8,n) :: b
     real(wp) :: rc
     real(wp) :: dc
 
@@ -3621,7 +3621,7 @@
 
     real(wp) :: ri
     real(wp) :: di
-    real(wp) :: astrom(30)
+    real(wp),dimension(30) :: astrom
     real(wp) :: aob
     real(wp) :: zob
     real(wp) :: hob
@@ -4159,7 +4159,7 @@
     character(len=*) :: type
     real(wp) :: ob1
     real(wp) :: ob2
-    real(wp) :: astrom(30)
+    real(wp),dimension(30) :: astrom
     real(wp) :: ri
     real(wp) :: di
 
@@ -4397,9 +4397,9 @@
 
     real(wp) :: date1
     real(wp) :: date2
-    real(wp) :: rb(3,3)
-    real(wp) :: rp(3,3)
-    real(wp) :: rbp(3,3)
+    real(wp),dimension(3,3) :: rb
+    real(wp),dimension(3,3) :: rp
+    real(wp),dimension(3,3) :: rbp
 
     !  J2000.0 obliquity (Lieske et al. 1977)
     real(wp),parameter :: eps0 = 84381.448d0 * das2r
@@ -4507,9 +4507,9 @@
 
     real(wp) :: date1
     real(wp) :: date2
-    real(wp) :: rb(3,3)
-    real(wp) :: rp(3,3)
-    real(wp) :: rbp(3,3)
+    real(wp),dimension(3,3) :: rb
+    real(wp),dimension(3,3) :: rp
+    real(wp),dimension(3,3) :: rbp
 
     !  JD for MJD 0
     real(wp),parameter :: djm0 = 2400000.5d0
@@ -4574,7 +4574,7 @@
 
     implicit none
 
-    real(wp) :: rbpn(3,3)
+    real(wp),dimension(3,3) :: rbpn
     real(wp) :: x
     real(wp) :: y
 
@@ -4655,7 +4655,7 @@
 
     real(wp) :: date1
     real(wp) :: date2
-    real(wp) :: rc2i(3,3)
+    real(wp),dimension(3,3) :: rc2i
 
     real(wp) :: rbpn(3,3)
 
@@ -4738,7 +4738,7 @@
 
     real(wp) :: date1
     real(wp) :: date2
-    real(wp) :: rc2i(3,3)
+    real(wp),dimension(3,3) :: rc2i
 
     real(wp) :: rbpn(3,3)
 
@@ -4814,7 +4814,7 @@
 
     real(wp) :: date1
     real(wp) :: date2
-    real(wp) :: rc2i(3,3)
+    real(wp),dimension(3,3) :: rc2i
 
     real(wp) :: rbpn(3,3), x, y, s
 
@@ -4907,8 +4907,8 @@
 
     real(wp) :: date1
     real(wp) :: date2
-    real(wp) :: rbpn(3,3)
-    real(wp) :: rc2i(3,3)
+    real(wp),dimension(3,3) :: rbpn
+    real(wp),dimension(3,3) :: rc2i
 
     real(wp) :: x, y
 
@@ -4989,7 +4989,7 @@
     real(wp) :: date2
     real(wp) :: x
     real(wp) :: y
-    real(wp) :: rc2i(3,3)
+    real(wp),dimension(3,3) :: rc2i
 
     !  Compute s and then the matrix.
     call C2IXYS ( x, y, S00 ( date1, date2, x, y ), rc2i )
@@ -5045,7 +5045,7 @@
     real(wp) :: x
     real(wp) :: y
     real(wp) :: s
-    real(wp) :: rc2i(3,3)
+    real(wp),dimension(3,3) :: rc2i
 
     real(wp) :: r2, e, d
 
@@ -5094,7 +5094,7 @@
 
     implicit none
 
-    real(wp) :: p(3)
+    real(wp),dimension(3) :: p
     real(wp) :: theta
     real(wp) :: phi
 
@@ -5197,7 +5197,7 @@
     real(wp) :: utb
     real(wp) :: xp
     real(wp) :: yp
-    real(wp) :: rc2t(3,3)
+    real(wp),dimension(3,3) :: rc2t
 
     real(wp) :: rc2i(3,3), era, sp, rpom(3,3)
 
@@ -5296,7 +5296,7 @@
     real(wp) :: utb
     real(wp) :: xp
     real(wp) :: yp
-    real(wp) :: rc2t(3,3)
+    real(wp),dimension(3,3) :: rc2t
 
     real(wp) :: rc2i(3,3), era, rpom(3,3)
 
@@ -5390,7 +5390,7 @@
     real(wp) :: utb
     real(wp) :: xp
     real(wp) :: yp
-    real(wp) :: rc2t(3,3)
+    real(wp),dimension(3,3) :: rc2t
 
     real(wp) :: rc2i(3,3), era, sp, rpom(3,3)
 
@@ -5450,10 +5450,10 @@
 
     implicit none
 
-    real(wp) :: rc2i(3,3)
+    real(wp),dimension(3,3) :: rc2i
     real(wp) :: era
-    real(wp) :: rpom(3,3)
-    real(wp) :: rc2t(3,3)
+    real(wp),dimension(3,3) :: rpom
+    real(wp),dimension(3,3) :: rc2t
 
     !  Call the renamed routine.
     call C2TCIO ( rc2i, era, rpom, rc2t )
@@ -5511,10 +5511,10 @@
 
     implicit none
 
-    real(wp) :: rc2i(3,3)
+    real(wp),dimension(3,3) :: rc2i
     real(wp) :: era
-    real(wp) :: rpom(3,3)
-    real(wp) :: rc2t(3,3)
+    real(wp),dimension(3,3) :: rpom
+    real(wp),dimension(3,3) :: rc2t
 
     real(wp) :: r(3,3)
 
@@ -5576,10 +5576,10 @@
 
     implicit none
 
-    real(wp) :: rbpn(3,3)
+    real(wp),dimension(3,3) :: rbpn
     real(wp) :: gst
-    real(wp) :: rpom(3,3)
-    real(wp) :: rc2t(3,3)
+    real(wp),dimension(3,3) :: rpom
+    real(wp),dimension(3,3) :: rc2t
 
     real(wp) :: r(3,3)
 
@@ -5678,7 +5678,7 @@
     real(wp) :: deps
     real(wp) :: xp
     real(wp) :: yp
-    real(wp) :: rc2t(3,3)
+    real(wp),dimension(3,3) :: rc2t
 
     real(wp) :: epsa, rb(3,3), rp(3,3), rbp(3,3), rn(3,3), &
                      rbpn(3,3), gmst, ee, sp, rpom(3,3)
@@ -5787,7 +5787,7 @@
     real(wp) :: y
     real(wp) :: xp
     real(wp) :: yp
-    real(wp) :: rc2t(3,3)
+    real(wp),dimension(3,3) :: rc2t
 
     real(wp) :: rc2i(3,3), era, sp, rpom(3,3)
 
@@ -5929,8 +5929,8 @@
 
     implicit none
 
-    real(wp) :: p(3)
-    real(wp) :: c(3)
+    real(wp),dimension(3) :: p
+    real(wp),dimension(3) :: c
 
     integer :: i
 
@@ -5959,8 +5959,8 @@
 
     implicit none
 
-    real(wp) :: pv(3,2)
-    real(wp) :: c(3,2)
+    real(wp),dimension(3,2) :: pv
+    real(wp),dimension(3,2) :: c
 
     call CP ( pv(1,1), c(1,1) )
     call CP ( pv(1,2), c(1,2) )
@@ -5986,8 +5986,8 @@
 
     implicit none
 
-    real(wp) :: r(3,3)
-    real(wp) :: c(3,3)
+    real(wp),dimension(3,3) :: r
+    real(wp),dimension(3,3) :: c
 
     integer :: i
 
@@ -6071,7 +6071,7 @@
     integer :: iy
     integer :: im
     integer :: id
-    integer :: ihmsf(4)
+    integer,dimension(4) :: ihmsf
     integer :: j
 
     logical :: leap
@@ -6241,7 +6241,7 @@
     integer :: ndp
     real(wp) :: days
     character(len=*) :: sign
-    integer :: ihmsf(4)
+    integer,dimension(4) :: ihmsf
 
     integer :: nrs, n
     real(wp) :: rs, rm, rh, a, ah, am, as, af
@@ -8017,7 +8017,7 @@
 
     real(wp) :: date1
     real(wp) :: date2
-    real(wp) :: rm(3,3)
+    real(wp),dimension(3,3) :: rm
 
     real(wp) :: ob, bp(3,3), e(3,3)
 
@@ -8779,7 +8779,7 @@
 
     implicit none
 
-    real(wp) :: rnpb(3,3)
+    real(wp),dimension(3,3) :: rnpb
     real(wp) :: s
 
     real(wp) :: x, ax, xs, ys, zs, p, q
@@ -9057,8 +9057,8 @@
 
     real(wp) :: date1
     real(wp) :: date2
-    real(wp) :: pvh(3,2)
-    real(wp) :: pvb(3,2)
+    real(wp),dimension(3,2) :: pvh
+    real(wp),dimension(3,2) :: pvb
     integer :: jstat
 
     real(wp) :: t, t2, xyz, xyzd, a, b, c, ct, p, cp, &
@@ -13169,8 +13169,8 @@
 
     implicit none
 
-    real(wp) :: r5h(3,3)
-    real(wp) :: s5h(3)
+    real(wp),dimension(3,3) :: r5h
+    real(wp),dimension(3) :: s5h
 
     !  FK5 to Hipparcos orientation and spin (radians, radians/year)
     real(wp),parameter :: epx = -19.9d-3 * das2r
@@ -13365,7 +13365,7 @@
     real(wp) :: phib
     real(wp) :: psi
     real(wp) :: eps
-    real(wp) :: r(3,3)
+    real(wp),dimension(3,3) :: r
 
     !  Construct the matrix.
     call IR ( r )
@@ -13598,7 +13598,7 @@
     implicit none
 
     integer :: n
-    real(wp) :: xyz(3)
+    real(wp),dimension(3) :: xyz
     real(wp) :: elong
     real(wp) :: phi
     real(wp) :: height
@@ -13683,7 +13683,7 @@
 
     real(wp) :: a
     real(wp) :: f
-    real(wp) :: xyz(3)
+    real(wp),dimension(3) :: xyz
     real(wp) :: elong
     real(wp) :: phi
     real(wp) :: height
@@ -13837,7 +13837,7 @@
     real(wp) :: elong
     real(wp) :: phi
     real(wp) :: height
-    real(wp) :: xyz(3)
+    real(wp),dimension(3) :: xyz
     integer :: j
 
     real(wp) :: a, f
@@ -13919,7 +13919,7 @@
     real(wp) :: elong
     real(wp) :: phi
     real(wp) :: height
-    real(wp) :: xyz(3)
+    real(wp),dimension(3) :: xyz
     integer :: j
 
     real(wp) :: sp, cp, w, d, ac, as, r
@@ -14444,7 +14444,7 @@
     real(wp) :: utb
     real(wp) :: tta
     real(wp) :: ttb
-    real(wp) :: rnpb(3,3)
+    real(wp),dimension(3,3) :: rnpb
 
     real(wp) :: x, y, s
 
@@ -15093,7 +15093,7 @@
 
     implicit none
 
-    real(wp) :: r(3,3)
+    real(wp),dimension(3,3) :: r
 
     r(1,1) = 1d0
     r(1,2) = 0d0
@@ -15275,7 +15275,7 @@
     integer :: ndp
     real(wp) :: dj1
     real(wp) :: dj2
-    integer :: iymdf(4)
+    integer,dimension(4) :: iymdf
     integer :: j
 
     integer :: js
@@ -15388,12 +15388,12 @@
     implicit none
 
     real(wp) :: bm
-    real(wp) :: p(3)
-    real(wp) :: q(3)
-    real(wp) :: e(3)
+    real(wp),dimension(3) :: p
+    real(wp),dimension(3) :: q
+    real(wp),dimension(3) :: e
     real(wp) :: em
     real(wp) :: dlim
-    real(wp) :: p1(3)
+    real(wp),dimension(3) :: p1
 
     !  Schwarzschild radius of the Sun (au)
     !  = 2 * 1.32712440041 D20 / (2.99792458 D8)^2 / 1.49597870700 D11
@@ -15496,10 +15496,10 @@
     implicit none
 
     integer :: n
-    real(wp) :: b(8,n)
-    real(wp) :: ob(3)
-    real(wp) :: sc(3)
-    real(wp) :: sn(3)
+    real(wp),dimension(8,n) :: b
+    real(wp),dimension(3) :: ob
+    real(wp),dimension(3) :: sc
+    real(wp),dimension(3) :: sn
 
     !  Astronomical unit (m, IAU 2012)
     real(wp),parameter :: aum = 149597870.7d3
@@ -15579,10 +15579,10 @@
 
     implicit none
 
-    real(wp) :: p(3)
-    real(wp) :: e(3)
+    real(wp),dimension(3) :: p
+    real(wp),dimension(3) :: e
     real(wp) :: em
-    real(wp) :: p1(3)
+    real(wp),dimension(3) :: p1
 
     real(wp) :: dlim
 
@@ -15723,7 +15723,7 @@
     implicit none
 
     real(wp) :: epj
-    real(wp) :: rm(3,3)
+    real(wp),dimension(3,3) :: rm
 
     !  Frame bias (IERS Conventions 2010, Eqs. 5.21 and 5.33)
     real(wp),parameter :: dx = -0.016617d0 * das2r
@@ -15879,7 +15879,7 @@
     implicit none
 
     real(wp) :: epj
-    real(wp) :: rp(3,3)
+    real(wp),dimension(3,3) :: rp
 
     integer :: i
     real(wp) :: peqr(3), pecl(3), v(3), w, eqx(3)
@@ -15957,7 +15957,7 @@
     implicit none
 
     real(wp) :: epj
-    real(wp) :: rpb(3,3)
+    real(wp),dimension(3,3) :: rpb
 
     !  Frame bias (IERS Conventions 2010, Eqs. 5.21 and 5.33)
     real(wp),parameter :: dx = -0.016617d0 * das2r
@@ -16021,7 +16021,7 @@
     implicit none
 
     real(wp) :: epj
-    real(wp) :: vec(3)
+    real(wp),dimension(3) :: vec
 
     !  Obliquity at J2000.0 (radians).
     real(wp),parameter :: eps0 = 84381.406d0 * das2r
@@ -16150,7 +16150,7 @@
     implicit none
 
     real(wp) :: epj
-    real(wp) :: veq(3)
+    real(wp),dimension(3) :: veq
 
     !  Number of polynomial terms
     integer,parameter :: npol = 4
@@ -16299,7 +16299,7 @@
 
     real(wp) :: date1
     real(wp) :: date2
-    real(wp) :: rmatn(3,3)
+    real(wp),dimension(3,3) :: rmatn
 
     real(wp) :: dpsi, deps, epsa, &
                 rb(3,3), rp(3,3), rbp(3,3), rbpn(3,3)
@@ -16366,7 +16366,7 @@
 
     real(wp) :: date1
     real(wp) :: date2
-    real(wp) :: rmatn(3,3)
+    real(wp),dimension(3,3) :: rmatn
 
     real(wp) :: dpsi, deps, epsa, &
                 rb(3,3), rp(3,3), rbp(3,3), rbpn(3,3)
@@ -16431,7 +16431,7 @@
 
     real(wp) :: date1
     real(wp) :: date2
-    real(wp) :: rmatn(3,3)
+    real(wp),dimension(3,3) :: rmatn
 
     real(wp) :: eps, dp, de
 
@@ -16490,7 +16490,7 @@
     real(wp) :: epsa
     real(wp) :: dpsi
     real(wp) :: deps
-    real(wp) :: rmatn(3,3)
+    real(wp),dimension(3,3) :: rmatn
 
     !  Build the rotation matrix.
     call IR ( rmatn )
@@ -20676,7 +20676,7 @@
 
     real(wp) :: date1
     real(wp) :: date2
-    real(wp) :: rmatn(3,3)
+    real(wp),dimension(3,3) :: rmatn
 
     real(wp) :: dpsi, deps, epsa
 
@@ -21115,8 +21115,8 @@
 
     implicit none
 
-    real(wp) :: p(3)
-    real(wp) :: pv(3,2)
+    real(wp),dimension(3) :: p
+    real(wp),dimension(3,2) :: pv
 
     call CP ( p, pv(1,1) )
     call ZP ( pv(1,2) )
@@ -21150,7 +21150,7 @@
 
     implicit none
 
-    real(wp) :: p(3)
+    real(wp),dimension(3) :: p
     real(wp) :: theta
     real(wp) :: phi
     real(wp) :: r
@@ -21195,8 +21195,8 @@
 
     implicit none
 
-    real(wp) :: a(3)
-    real(wp) :: b(3)
+    real(wp),dimension(3) :: a
+    real(wp),dimension(3) :: b
     real(wp) :: theta
 
     real(wp) :: am, au(3), bm, st, ct, xa, ya, za, eta(3), &
@@ -21399,8 +21399,8 @@
 
     implicit none
 
-    real(wp) :: a(3)
-    real(wp) :: b(3)
+    real(wp),dimension(3) :: a
+    real(wp),dimension(3) :: b
     real(wp) :: adb
 
     real(wp) :: w
@@ -21690,7 +21690,7 @@
     real(wp) :: date1
     real(wp) :: date2
     integer :: np
-    real(wp) :: pv(3,2)
+    real(wp),dimension(3,2) :: pv
     integer :: j
 
     !  Maximum number of iterations allowed to solve Kepler's equation
@@ -21996,7 +21996,7 @@
 
     implicit none
 
-    real(wp) :: p(3)
+    real(wp),dimension(3) :: p
     real(wp) :: r
 
     integer :: i
@@ -22065,7 +22065,7 @@
 
     real(wp) :: date1
     real(wp) :: date2
-    real(wp) :: rbp(3,3)
+    real(wp),dimension(3,3) :: rbp
 
     real(wp) :: rb(3,3), rp(3,3)
 
@@ -22128,7 +22128,7 @@
 
     real(wp) :: date1
     real(wp) :: date2
-    real(wp) :: rbp(3,3)
+    real(wp),dimension(3,3) :: rbp
 
     real(wp) :: gamb, phib, psib, epsa
 
@@ -22206,7 +22206,7 @@
 
     real(wp) :: date1
     real(wp) :: date2
-    real(wp) :: rmatp(3,3)
+    real(wp),dimension(3,3) :: rmatp
 
     real(wp) :: zeta, z, theta, wmat(3,3)
 
@@ -22242,9 +22242,9 @@
 
     implicit none
 
-    real(wp) :: a(3)
-    real(wp) :: b(3)
-    real(wp) :: amb(3)
+    real(wp),dimension(3) :: a
+    real(wp),dimension(3) :: b
+    real(wp),dimension(3) :: amb
 
     integer :: i
 
@@ -22306,8 +22306,8 @@
     real(wp) :: px
     real(wp) :: rv
     real(wp) :: pmt
-    real(wp) :: pob(3)
-    real(wp) :: pco(3)
+    real(wp),dimension(3) :: pob
+    real(wp),dimension(3) :: pco
 
     !  Days per Julian millennium
     real(wp),parameter :: djm = 365250d0
@@ -22538,9 +22538,9 @@
 
     implicit none
 
-    real(wp) :: p(3)
+    real(wp),dimension(3) :: p
     real(wp) :: r
-    real(wp) :: u(3)
+    real(wp),dimension(3) :: u
 
     real(wp) :: w
 
@@ -22653,11 +22653,11 @@
     real(wp) :: dpsi
     real(wp) :: deps
     real(wp) :: epsa
-    real(wp) :: rb(3,3)
-    real(wp) :: rp(3,3)
-    real(wp) :: rbp(3,3)
-    real(wp) :: rn(3,3)
-    real(wp) :: rbpn(3,3)
+    real(wp),dimension(3,3) :: rb
+    real(wp),dimension(3,3) :: rp
+    real(wp),dimension(3,3) :: rbp
+    real(wp),dimension(3,3) :: rn
+    real(wp),dimension(3,3) :: rbpn
 
     real(wp) :: dpsipr, depspr
 
@@ -22773,11 +22773,11 @@
     real(wp) :: dpsi
     real(wp) :: deps
     real(wp) :: epsa
-    real(wp) :: rb(3,3)
-    real(wp) :: rp(3,3)
-    real(wp) :: rbp(3,3)
-    real(wp) :: rn(3,3)
-    real(wp) :: rbpn(3,3)
+    real(wp),dimension(3,3) :: rb
+    real(wp),dimension(3,3) :: rp
+    real(wp),dimension(3,3) :: rbp
+    real(wp),dimension(3,3) :: rn
+    real(wp),dimension(3,3) :: rbpn
 
     !  Nutation.
     call NUT00A ( date1, date2, dpsi, deps )
@@ -22883,11 +22883,11 @@
     real(wp) :: dpsi
     real(wp) :: deps
     real(wp) :: epsa
-    real(wp) :: rb(3,3)
-    real(wp) :: rp(3,3)
-    real(wp) :: rbp(3,3)
-    real(wp) :: rn(3,3)
-    real(wp) :: rbpn(3,3)
+    real(wp),dimension(3,3) :: rb
+    real(wp),dimension(3,3) :: rp
+    real(wp),dimension(3,3) :: rbp
+    real(wp),dimension(3,3) :: rn
+    real(wp),dimension(3,3) :: rbpn
 
     !  Nutation.
     call NUT00B ( date1, date2, dpsi, deps )
@@ -22986,11 +22986,11 @@
     real(wp) :: dpsi
     real(wp) :: deps
     real(wp) :: epsa
-    real(wp) :: rb(3,3)
-    real(wp) :: rp(3,3)
-    real(wp) :: rbp(3,3)
-    real(wp) :: rn(3,3)
-    real(wp) :: rbpn(3,3)
+    real(wp),dimension(3,3) :: rb
+    real(wp),dimension(3,3) :: rp
+    real(wp),dimension(3,3) :: rbp
+    real(wp),dimension(3,3) :: rn
+    real(wp),dimension(3,3) :: rbpn
 
     !  JD for MJD 0
     real(wp),parameter :: djm0 = 2400000.5d0
@@ -23113,11 +23113,11 @@
     real(wp) :: dpsi
     real(wp) :: deps
     real(wp) :: epsa
-    real(wp) :: rb(3,3)
-    real(wp) :: rp(3,3)
-    real(wp) :: rbp(3,3)
-    real(wp) :: rn(3,3)
-    real(wp) :: rbpn(3,3)
+    real(wp),dimension(3,3) :: rb
+    real(wp),dimension(3,3) :: rp
+    real(wp),dimension(3,3) :: rbp
+    real(wp),dimension(3,3) :: rn
+    real(wp),dimension(3,3) :: rbpn
 
     !  Nutation.
     call NUT06A ( date1, date2, dpsi, deps )
@@ -23185,7 +23185,7 @@
 
     real(wp) :: date1
     real(wp) :: date2
-    real(wp) :: rbpn(3,3)
+    real(wp),dimension(3,3) :: rbpn
 
     real(wp) :: dpsi, deps, epsa, rb(3,3), rp(3,3), rbp(3,3), &
                 rn(3,3)
@@ -23253,7 +23253,7 @@
 
     real(wp) :: date1
     real(wp) :: date2
-    real(wp) :: rbpn(3,3)
+    real(wp),dimension(3,3) :: rbpn
 
     real(wp) ::  dpsi, deps, epsa, &
                  rb(3,3), rp(3,3), rbp(3,3), rn(3,3)
@@ -23316,7 +23316,7 @@
 
     real(wp) :: date1
     real(wp) :: date2
-    real(wp) :: rnpb(3,3)
+    real(wp),dimension(3,3) :: rnpb
 
     real(wp) :: gamb, phib, psib, epsa, dp, de
 
@@ -23386,7 +23386,7 @@
 
     real(wp) :: date1
     real(wp) :: date2
-    real(wp) :: rmatpn(3,3)
+    real(wp),dimension(3,3) :: rmatpn
 
     real(wp) :: rmatp(3,3), rmatn(3,3)
 
@@ -23448,7 +23448,7 @@
     real(wp) :: xp
     real(wp) :: yp
     real(wp) :: sp
-    real(wp) :: rpom(3,3)
+    real(wp),dimension(3,3) :: rpom
 
     !  Construct the matrix.
     call IR ( rpom )
@@ -23478,9 +23478,9 @@
 
     implicit none
 
-    real(wp) :: a(3)
-    real(wp) :: b(3)
-    real(wp) :: apb(3)
+    real(wp),dimension(3) :: a
+    real(wp),dimension(3) :: b
+    real(wp),dimension(3) :: apb
 
     integer :: i
 
@@ -23511,10 +23511,10 @@
 
     implicit none
 
-    real(wp) :: a(3)
+    real(wp),dimension(3) :: a
     real(wp) :: s
-    real(wp) :: b(3)
-    real(wp) :: apsb(3)
+    real(wp),dimension(3) :: b
+    real(wp),dimension(3) :: apsb
 
     integer :: i
 
@@ -23745,8 +23745,8 @@
 
     implicit none
 
-    real(wp) :: pv(3,2)
-    real(wp) :: p(3)
+    real(wp),dimension(3,2) :: pv
+    real(wp),dimension(3) :: p
 
     call CP ( pv, p )
 
@@ -23789,7 +23789,7 @@
 
     implicit none
 
-    real(wp) :: pv(3,2)
+    real(wp),dimension(3,2) :: pv
     real(wp) :: theta
     real(wp) :: phi
     real(wp) :: r
@@ -23882,9 +23882,9 @@
 
     implicit none
 
-    real(wp) :: a(3,2)
-    real(wp) :: b(3,2)
-    real(wp) :: adb(2)
+    real(wp),dimension(3,2) :: a
+    real(wp),dimension(3,2) :: b
+    real(wp),dimension(2) :: adb
 
     real(wp) :: adbd, addb
 
@@ -23922,7 +23922,7 @@
 
     implicit none
 
-    real(wp) :: pv(3,2)
+    real(wp),dimension(3,2) :: pv
     real(wp) :: r
     real(wp) :: s
 
@@ -23954,9 +23954,9 @@
 
     implicit none
 
-    real(wp) :: a(3,2)
-    real(wp) :: b(3,2)
-    real(wp) :: amb(3,2)
+    real(wp),dimension(3,2) :: a
+    real(wp),dimension(3,2) :: b
+    real(wp),dimension(3,2) :: amb
 
     integer :: i
 
@@ -23986,9 +23986,9 @@
 
     implicit none
 
-    real(wp) :: a(3,2)
-    real(wp) :: b(3,2)
-    real(wp) :: apb(3,2)
+    real(wp),dimension(3,2) :: a
+    real(wp),dimension(3,2) :: b
+    real(wp),dimension(3,2) :: apb
 
     integer :: i
 
@@ -24083,7 +24083,7 @@
 
     implicit none
 
-    real(wp) :: pv(3,2)
+    real(wp),dimension(3,2) :: pv
     real(wp) :: ra
     real(wp) :: dec
     real(wp) :: pmr
@@ -24234,7 +24234,7 @@
     real(wp) :: yp
     real(wp) :: sp
     real(wp) :: theta
-    real(wp) :: pv(3,2)
+    real(wp),dimension(3,2) :: pv
 
     !  Earth rotation rate in radians per UT1 second
     real(wp),parameter :: om = 1.00273781191135448d0 * d2pi / d2s
@@ -24296,8 +24296,8 @@
     implicit none
 
     real(wp) :: dt
-    real(wp) :: pv(3,2)
-    real(wp) :: upv(3,2)
+    real(wp),dimension(3,2) :: pv
+    real(wp),dimension(3,2) :: upv
 
     call PPSP ( pv(1,1), dt, pv(1,2), upv(1,1) )
     call CP ( pv(1,2), upv(1,2) )
@@ -24332,8 +24332,8 @@
     implicit none
 
     real(wp) :: dt
-    real(wp) :: pv(3,2)
-    real(wp) :: p(3)
+    real(wp),dimension(3,2) :: pv
+    real(wp),dimension(3) :: p
 
     integer :: i
 
@@ -24370,9 +24370,9 @@
 
     implicit none
 
-    real(wp) :: a(3,2)
-    real(wp) :: b(3,2)
-    real(wp) :: axb(3,2)
+    real(wp),dimension(3,2) :: a
+    real(wp),dimension(3,2) :: b
+    real(wp),dimension(3,2) :: axb
 
     real(wp) :: wa(3,2), wb(3,2), axbd(3), adxb(3)
 
@@ -24410,9 +24410,9 @@
 
     implicit none
 
-    real(wp) :: a(3)
-    real(wp) :: b(3)
-    real(wp) :: axb(3)
+    real(wp),dimension(3) :: a
+    real(wp),dimension(3) :: b
+    real(wp),dimension(3) :: axb
 
     real(wp) :: xa, ya, za, xb, yb, zb
 
@@ -24659,8 +24659,8 @@
 
     implicit none
 
-    real(wp) :: r(3,3)
-    real(wp) :: w(3)
+    real(wp),dimension(3,3) :: r
+    real(wp),dimension(3) :: w
 
     real(wp) :: x, y, z, s2, c2, phi, f
 
@@ -24714,8 +24714,8 @@
 
     implicit none
 
-    real(wp) :: w(3)
-    real(wp) :: r(3,3)
+    real(wp),dimension(3) :: w
+    real(wp),dimension(3,3) :: r
 
     real(wp) :: x, y, z, phi, s, c, f
 
@@ -24782,7 +24782,7 @@
     implicit none
 
     real(wp) :: phi
-    real(wp) :: r(3,3)
+    real(wp),dimension(3,3) :: r
 
     real(wp) :: s, c, a21, a22, a23, a31, a32, a33
 
@@ -24825,9 +24825,9 @@
 
     implicit none
 
-    real(wp) :: r(3,3)
-    real(wp) :: p(3)
-    real(wp) :: rp(3)
+    real(wp),dimension(3,3) :: r
+    real(wp),dimension(3) :: p
+    real(wp),dimension(3) :: rp
 
     real(wp) :: w, wrp(3)
 
@@ -24867,9 +24867,9 @@
 
     implicit none
 
-    real(wp) :: r(3,3)
-    real(wp) :: pv(3,2)
-    real(wp) :: rpv(3,2)
+    real(wp),dimension(3,3) :: r
+    real(wp),dimension(3,2) :: pv
+    real(wp),dimension(3,2) :: rpv
 
     call RXP ( r, pv(1,1), rpv(1,1) )
     call RXP ( r, pv(1,2), rpv(1,2) )
@@ -24896,9 +24896,9 @@
 
     implicit none
 
-    real(wp) :: a(3,3)
-    real(wp) :: b(3,3)
-    real(wp) :: atb(3,3)
+    real(wp),dimension(3,3) :: a
+    real(wp),dimension(3,3) :: b
+    real(wp),dimension(3,3) :: atb
 
     integer :: i, j, k
     real(wp) :: w, wm(3,3)
@@ -24950,7 +24950,7 @@
     implicit none
 
     real(wp) :: theta
-    real(wp) :: r(3,3)
+    real(wp),dimension(3,3) :: r
 
     real(wp) :: s, c, a11, a12, a13, a31, a32, a33
 
@@ -25007,7 +25007,7 @@
     implicit none
 
     real(wp) :: psi
-    real(wp) :: r(3,3)
+    real(wp),dimension(3,3) :: r
 
     real(wp) :: s, c, a11, a12, a13, a21, a22, a23
 
@@ -26066,7 +26066,7 @@
 
     real(wp) :: theta
     real(wp) :: phi
-    real(wp) :: c(3)
+    real(wp),dimension(3) :: c
 
     real(wp) :: cp
 
@@ -26101,7 +26101,7 @@
     real(wp) :: theta
     real(wp) :: phi
     real(wp) :: r
-    real(wp) :: p(3)
+    real(wp),dimension(3) :: p
 
     real(wp) :: u(3)
 
@@ -26140,7 +26140,7 @@
     real(wp) :: td
     real(wp) :: pd
     real(wp) :: rd
-    real(wp) :: pv(3,2)
+    real(wp),dimension(3,2) :: pv
 
     real(wp) :: st, ct, sp, cp, rcp, x, y, rpd, w
 
@@ -26186,8 +26186,8 @@
 
     real(wp) :: s1
     real(wp) :: s2
-    real(wp) :: pv(3,2)
-    real(wp) :: spv(3,2)
+    real(wp),dimension(3,2) :: pv
+    real(wp),dimension(3,2) :: spv
 
     call SXP ( s1, pv(1,1), spv(1,1) )
     call SXP ( s2, pv(1,2), spv(1,2) )
@@ -26224,8 +26224,8 @@
 
     implicit none
 
-    real(wp) :: a(3)
-    real(wp) :: b(3)
+    real(wp),dimension(3) :: a
+    real(wp),dimension(3) :: b
     real(wp) :: s
 
     real(wp) :: axb(3), ss, cs
@@ -26627,7 +26627,7 @@
     real(wp) :: pmd
     real(wp) :: px
     real(wp) :: rv
-    real(wp) :: pv(3,2)
+    real(wp),dimension(3,2) :: pv
     integer :: j
 
     !  Smallest allowed parallax
@@ -26764,8 +26764,8 @@
     implicit none
 
     real(wp) :: s
-    real(wp) :: p(3)
-    real(wp) :: sp(3)
+    real(wp),dimension(3) :: p
+    real(wp),dimension(3) :: sp
 
     integer :: i
 
@@ -26796,8 +26796,8 @@
     implicit none
 
     real(wp) :: s
-    real(wp) :: pv(3,2)
-    real(wp) :: spv(3,2)
+    real(wp),dimension(3,2) :: pv
+    real(wp),dimension(3,2) :: spv
 
     call S2XPV ( s, s, pv, spv )
 
@@ -27680,9 +27680,9 @@
 
     real(wp) :: xi
     real(wp) :: eta
-    real(wp) :: v(3)
-    real(wp) :: v01(3)
-    real(wp) :: v02(3)
+    real(wp),dimension(3) :: v
+    real(wp),dimension(3) :: v01
+    real(wp),dimension(3) :: v02
     integer :: n
 
     real(wp) :: x, y, z, rxy2, xi2, eta2p1, r, rsb, rcb, w2, w, c
@@ -27851,8 +27851,8 @@
 
     real(wp) :: xi
     real(wp) :: eta
-    real(wp) :: v0(3)
-    real(wp) :: v(3)
+    real(wp),dimension(3) :: v0
+    real(wp),dimension(3) :: v
 
     real(wp) :: x, y, z, r, f
 
@@ -28044,8 +28044,8 @@
 
     implicit none
 
-    real(wp) :: v(3)
-    real(wp) :: v0(3)
+    real(wp),dimension(3) :: v
+    real(wp),dimension(3) :: v0
     real(wp) :: xi
     real(wp) :: eta
     integer :: j
@@ -28113,8 +28113,8 @@
 
     implicit none
 
-    real(wp) :: r(3,3)
-    real(wp) :: rt(3,3)
+    real(wp),dimension(3,3) :: r
+    real(wp),dimension(3,3) :: rt
 
     real(wp) :: wm(3,3)
     integer :: i, j
@@ -28148,9 +28148,9 @@
 
     implicit none
 
-    real(wp) :: r(3,3)
-    real(wp) :: p(3)
-    real(wp) :: trp(3)
+    real(wp),dimension(3,3) :: r
+    real(wp),dimension(3) :: p
+    real(wp),dimension(3) :: trp
 
     real(wp) :: ri(3,3)
 
@@ -28182,9 +28182,9 @@
 
     implicit none
 
-    real(wp) :: r(3,3)
-    real(wp) :: pv(3,2)
-    real(wp) :: trpv(3,2)
+    real(wp),dimension(3,3) :: r
+    real(wp),dimension(3,2) :: pv
+    real(wp),dimension(3,2) :: trpv
 
     real(wp) :: ri(3,3)
 
@@ -31702,7 +31702,7 @@
 
     implicit none
 
-    real(wp) :: p(3)
+    real(wp),dimension(3) :: p
 
     integer :: i
 
@@ -31728,7 +31728,7 @@
 
     implicit none
 
-    real(wp) :: pv(3,2)
+    real(wp),dimension(3,2) :: pv
 
     integer :: i
 
@@ -31754,7 +31754,7 @@
 
     implicit none
 
-    real(wp) :: r(3,3)
+    real(wp),dimension(3,3) :: r
 
     r(1,1) = 0d0
     r(1,2) = 0d0
