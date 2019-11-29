@@ -10,18 +10,16 @@
 !  * Conversion from Fixed-form (FORTRAN 77) to Free-form (Fortran 2008) format.
 !  * Removal of the "iau_" prefix on all routines.
 !  * All routines were combined into this module.
-!
-!  in progress...
-!   * moved headers before code in prep for FORD syntax.
-!   * replaced DOUBLE PRECISION with REAL(WP)
-!   * replaced old style PARAMETER and DATA declarations
-!   * moved duplicated parameter declarations to the top of the module ...
-!   * eliminate line numbers (replace with do...end do, replaced some with exit statements)
-!   * replace DBLE(.) with real(x,wp)
-!   * add INTENT to all arguments
-!   * make all routines PURE
-!   * replace anint and nint ???
-!   * git rid of the "Called:" blocks in the headers
+!  * moved headers before code in prep for FORD syntax.
+!  * replaced DOUBLE PRECISION with REAL(WP)
+!  * replaced old style PARAMETER and DATA declarations
+!  * moved duplicated parameter declarations to the top of the module ...
+!  * eliminate line numbers (replace with do...end do, replaced some with exit statements)
+!  * replace DBLE(.) with real(x,wp)
+!  * add INTENT to all arguments
+!  * make all routines PURE
+!  * replace anint and nint ???
+!  * git rid of the "Called:" blocks in the headers
 !
 !### Original SOFA Copyright Notice
 !
@@ -147,8 +145,8 @@
 !
 !### Notes
 !
-!  1) NDP is interpreted as follows:
-!
+!  1. NDP is interpreted as follows:
+!```
 !     NDP         resolution
 !      :      ...0000 00 00
 !     -7         1000 00 00
@@ -163,8 +161,8 @@
 !      2            0 00 00.01
 !      3            0 00 00.001
 !      :            0 00 00.000...
-!
-!  2) The largest positive useful value for NDP is determined by the
+!```
+!  2. The largest positive useful value for NDP is determined by the
 !     size of ANGLE, the format of REAL(WP) floating-point
 !     numbers on the target platform, and the risk of overflowing
 !     IDMSF(4).  On a typical platform, for ANGLE up to 2pi, the
@@ -172,7 +170,7 @@
 !     However, the practical limit is typically NDP=9, set by the
 !     capacity of a 32-bit IDMSF(4).
 !
-!  3) The absolute value of ANGLE may exceed 2pi.  In cases where it
+!  3. The absolute value of ANGLE may exceed 2pi.  In cases where it
 !     does not, it is up to the caller to test for and handle the
 !     case where ANGLE is very nearly 2pi and rounds up to 360 degrees,
 !     by testing for IDMSF(1)=360 and setting IDMSF(1-4) to zero.
@@ -206,8 +204,8 @@
 !
 !### Notes
 !
-!  1) NDP is interpreted as follows:
-!
+!  1. NDP is interpreted as follows:
+!```
 !     NDP         resolution
 !      :      ...0000 00 00
 !     -7         1000 00 00
@@ -222,8 +220,8 @@
 !      2            0 00 00.01
 !      3            0 00 00.001
 !      :            0 00 00.000...
-!
-!  2) The largest useful value for NDP is determined by the size
+!```
+!  2. The largest useful value for NDP is determined by the size
 !     of ANGLE, the format of REAL(WP) floating-point numbers
 !     on the target platform, and the risk of overflowing IHMSF(4).
 !     On a typical platform, for ANGLE up to 2pi, the available
@@ -231,7 +229,7 @@
 !     the practical limit is typically NDP=9, set by the capacity of
 !     a 32-bit IHMSF(4).
 !
-!  3) The absolute value of ANGLE may exceed 2pi.  In cases where it
+!  3. The absolute value of ANGLE may exceed 2pi.  In cases where it
 !     does not, it is up to the caller to test for and handle the
 !     case where ANGLE is very nearly 2pi and rounds up to 24 hours,
 !     by testing for IHMSF(1)=24 and setting IHMSF(1-4) to zero.
@@ -272,7 +270,7 @@
 !
 !### Notes
 !
-!  1) The algorithm is based on Expr. (7.40) in the Explanatory
+!  1. The algorithm is based on Expr. (7.40) in the Explanatory
 !     Supplement (Urban & Seidelmann 2013), but with the following
 !     changes:
 !
@@ -283,7 +281,7 @@
 !        contribution.  This has a maximum effect of about
 !        0.4 microarcsecond.
 !
-!  2) In almost all cases, the maximum accuracy will be limited by the
+!  2. In almost all cases, the maximum accuracy will be limited by the
 !     supplied velocity.  For example, if the SOFA EPV00 routine is
 !     used, errors of up to 5 microarcseconds could occur.
 !
@@ -351,30 +349,30 @@
 !
 !### Notes
 !
-!  1)  All the arguments are angles in radians.
+!  1.  All the arguments are angles in radians.
 !
-!  2)  The sign convention for azimuth is north zero, east +pi/2.
+!  2.  The sign convention for azimuth is north zero, east +pi/2.
 !
-!  3)  HA is returned in the range +/-pi.  Declination is returned in
+!  3.  HA is returned in the range +/-pi.  Declination is returned in
 !      the range +/-pi/2.
 !
-!  4)  The latitude PHI is pi/2 minus the angle between the Earth's
+!  4.  The latitude PHI is pi/2 minus the angle between the Earth's
 !      rotation axis and the adopted zenith.  In many applications it
 !      will be sufficient to use the published geodetic latitude of the
 !      site.  In very precise (sub-arcsecond) applications, PHI can be
 !      corrected for polar motion.
 !
-!  5)  The azimuth AZ must be with respect to the rotational north pole,
+!  5.  The azimuth AZ must be with respect to the rotational north pole,
 !      as opposed to the ITRS pole, and an azimuth with respect to north
 !      on a map of the Earth's surface will need to be adjusted for
 !      polar motion if sub-arcsecond accuracy is required.
 !
-!  6)  Should the user wish to work with respect to the astronomical
+!  6.  Should the user wish to work with respect to the astronomical
 !      zenith rather than the geodetic zenith, PHI will need to be
 !      adjusted for deflection of the vertical (often tens of
 !      arcseconds), and the zero point of HA will also be affected.
 !
-!  7)  The transformation is the same as Ve = Ry(phi-pi/2)*Rz(pi)*Vh,
+!  7.  The transformation is the same as Ve = Ry(phi-pi/2)*Rz(pi)*Vh,
 !      where Ve and Vh are lefthanded unit vectors in the (ha,dec) and
 !      (az,el) systems respectively and Rz and Ry are rotations about
 !      first the z-axis and then the y-axis.  (n.b. Rz(pi) simply
@@ -384,7 +382,7 @@
 !      efficiency, additional savings are possible if constant terms
 !      such as functions of latitude are computed once and for all.
 !
-!  8)  Again for efficiency, no range checking of arguments is carried
+!  8.  Again for efficiency, no range checking of arguments is carried
 !      out.
 !
 !  Last revision:   2018 January 2
@@ -447,15 +445,15 @@
 !
 !### Notes
 !
-!  1)  If the s argument is a string, only the leftmost character is
+!  1.  If the s argument is a string, only the leftmost character is
 !      used and no warning status is provided.
 !
-!  2)  The result is computed even if any of the range checks fail.
+!  2.  The result is computed even if any of the range checks fail.
 !
-!  3)  Negative IDEG, IAMIN and/or ASEC produce a warning status, but
+!  3.  Negative IDEG, IAMIN and/or ASEC produce a warning status, but
 !      the absolute value is used in the conversion.
 !
-!  4)  If there are multiple errors, the status value reflects only the
+!  4.  If there are multiple errors, the status value reflects only the
 !      first, the smallest taking precedence.
 !
 !
@@ -596,7 +594,7 @@
 !
 !### Notes
 !
-!  1) The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TDB)=2450123.7 could be expressed in any of these ways, among
 !     others:
@@ -620,9 +618,9 @@
 !     TT can be used instead of TDB without any significant impact on
 !     accuracy.
 !
-!  2) All the vectors are with respect to BCRS axes.
+!  2. All the vectors are with respect to BCRS axes.
 !
-!  3) This is one of several routines that inserts into the ASTROM
+!  3. This is one of several routines that inserts into the ASTROM
 !     array star-independent parameters needed for the chain of
 !     astrometric transformations ICRS <-> GCRS <-> CIRS <-> observed.
 !
@@ -649,7 +647,7 @@
 !     aberration and parallax (unless subsumed into the ICRS <-> GCRS
 !     transformation), and atmospheric refraction.
 !
-!  4) The context array ASTROM produced by this routine is used by
+!  4. The context array ASTROM produced by this routine is used by
 !     ATCIQ* and ATICQ*.
 !
 !### History
@@ -714,7 +712,7 @@
 !
 !### Notes
 !
-!  1) The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TDB)=2450123.7 could be expressed in any of these ways, among
 !     others:
@@ -738,13 +736,13 @@
 !     TT can be used instead of TDB without any significant impact on
 !     accuracy.
 !
-!  2) All the vectors are with respect to BCRS axes.
+!  2. All the vectors are with respect to BCRS axes.
 !
-!  3) In cases where the caller wishes to supply his own Earth
+!  3. In cases where the caller wishes to supply his own Earth
 !     ephemeris, the routine APCG can be used instead of the present
 !     routine.
 !
-!  4) This is one of several routines that inserts into the ASTROM
+!  4. This is one of several routines that inserts into the ASTROM
 !     array star-independent parameters needed for the chain of
 !     astrometric transformations ICRS <-> GCRS <-> CIRS <-> observed.
 !
@@ -771,7 +769,7 @@
 !     aberration and parallax (unless subsumed into the ICRS <-> GCRS
 !     transformation), and atmospheric refraction.
 !
-!  5) The context array ASTROM produced by this routine is used by
+!  5. The context array ASTROM produced by this routine is used by
 !     ATCIQ* and ATICQ*.
 !
 !### History
@@ -839,7 +837,7 @@
 !
 !### Notes
 !
-!  1) The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TDB)=2450123.7 could be expressed in any of these ways, among
 !     others:
@@ -863,14 +861,14 @@
 !     TT can be used instead of TDB without any significant impact on
 !     accuracy.
 !
-!  2) All the vectors are with respect to BCRS axes.
+!  2. All the vectors are with respect to BCRS axes.
 !
-!  3) In cases where the caller does not wish to provide the Earth
+!  3. In cases where the caller does not wish to provide the Earth
 !     ephemeris and CIP/CIO, the routine APCI13 can be used instead
 !     of the present routine.  This computes the required quantities
 !     using other SOFA routines.
 !
-!  4) This is one of several routines that inserts into the ASTROM
+!  4. This is one of several routines that inserts into the ASTROM
 !     array star-independent parameters needed for the chain of
 !     astrometric transformations ICRS <-> GCRS <-> CIRS <-> observed.
 !
@@ -897,7 +895,7 @@
 !     aberration and parallax (unless subsumed into the ICRS <-> GCRS
 !     transformation), and atmospheric refraction.
 !
-!  5) The context array ASTROM produced by this routine is used by
+!  5. The context array ASTROM produced by this routine is used by
 !     ATCIQ* and ATICQ*.
 !
 !### History
@@ -964,7 +962,7 @@
 !
 !### Notes
 !
-!  1) The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TDB)=2450123.7 could be expressed in any of these ways, among
 !     others:
@@ -988,13 +986,13 @@
 !     TT can be used instead of TDB without any significant impact on
 !     accuracy.
 !
-!  2) All the vectors are with respect to BCRS axes.
+!  2. All the vectors are with respect to BCRS axes.
 !
-!  3) In cases where the caller wishes to supply his own Earth
+!  3. In cases where the caller wishes to supply his own Earth
 !     ephemeris and CIP/CIO, the routine APCI can be used instead of
 !     the present routine.
 !
-!  4) This is one of several routines that inserts into the ASTROM
+!  4. This is one of several routines that inserts into the ASTROM
 !     array star-independent parameters needed for the chain of
 !     astrometric transformations ICRS <-> GCRS <-> CIRS <-> observed.
 !
@@ -1021,7 +1019,7 @@
 !     aberration and parallax (unless subsumed into the ICRS <-> GCRS
 !     transformation), and atmospheric refraction.
 !
-!  5) The context array ASTROM produced by this routine is used by
+!  5. The context array ASTROM produced by this routine is used by
 !     ATCIQ* and ATICQ*.
 !
 !### History
@@ -1107,7 +1105,7 @@
 !
 !### Notes
 !
-!  1) The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TDB)=2450123.7 could be expressed in any of these ways, among
 !     others:
@@ -1131,16 +1129,16 @@
 !     TT can be used instead of TDB without any significant impact on
 !     accuracy.
 !
-!  2) The vectors EB, EH, and all the ASTROM vectors, are with respect
+!  2. The vectors EB, EH, and all the ASTROM vectors, are with respect
 !     to BCRS axes.
 !
-!  3) The geographical coordinates are with respect to the WGS84
+!  3. The geographical coordinates are with respect to the WGS84
 !     reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN
 !     CONVENTION:  the longitude required by the present routine is
 !     right-handed, i.e. east-positive, in accordance with geographical
 !     convention.
 !
-!  4) XP and YP are the coordinates (in radians) of the Celestial
+!  4. XP and YP are the coordinates (in radians) of the Celestial
 !     Intermediate Pole with respect to the International Terrestrial
 !     Reference System (see IERS Conventions), measured along the
 !     meridians 0 and 90 deg west respectively.  SP is the TIO locator
@@ -1151,22 +1149,22 @@
 !     Internally, the polar motion is stored in a form rotated onto the
 !     local meridian.
 !
-!  5) The refraction constants REFA and REFB are for use in a
+!  5. The refraction constants REFA and REFB are for use in a
 !     dZ = A*tan(Z)+B*tan^3(Z) model, where Z is the observed
 !     (i.e. refracted) zenith distance and dZ is the amount of
 !     refraction.
 !
-!  6) It is advisable to take great care with units, as even unlikely
+!  6. It is advisable to take great care with units, as even unlikely
 !     values of the input parameters are accepted and processed in
 !     accordance with the models used.
 !
-!  7) In cases where the caller does not wish to provide the Earth
+!  7. In cases where the caller does not wish to provide the Earth
 !     Ephemeris, the Earth rotation information and refraction
 !     constants, the routine APCO13 can be used instead of the
 !     present routine.  This starts from UTC and weather readings etc.
 !     and computes suitable values using other SOFA routines.
 !
-!  8) This is one of several routines that inserts into the ASTROM
+!  8. This is one of several routines that inserts into the ASTROM
 !     array star-independent parameters needed for the chain of
 !     astrometric transformations ICRS <-> GCRS <-> CIRS <-> observed.
 !
@@ -1193,7 +1191,7 @@
 !     aberration and parallax (unless subsumed into the ICRS <-> GCRS
 !     transformation), and atmospheric refraction.
 !
-!  9) The context array ASTROM produced by this routine is used by
+!  9. The context array ASTROM produced by this routine is used by
 !     ATIOQ, ATOIQ, ATCIQ*, and ATICQ*.
 !
 !### History
@@ -1318,7 +1316,7 @@
 !
 !### Notes
 !
-!  1)  UTC1+UTC2 is quasi Julian Date (see Note 2), apportioned in any
+!  1.  UTC1+UTC2 is quasi Julian Date (see Note 2), apportioned in any
 !      convenient way between the two arguments, for example where UTC1
 !      is the Julian Day Number and UTC2 is the fraction of a day.
 !
@@ -1332,22 +1330,22 @@
 !      it implements the leap-second-ambiguity convention just
 !      described.
 !
-!  2)  The warning status "dubious year" flags UTCs that predate the
+!  2.  The warning status "dubious year" flags UTCs that predate the
 !      introduction of the time scale or that are too far in the
 !      future to be trusted.  See DAT for further details.
 !
-!  3)  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
+!  3.  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
 !      one second at the end of each positive UTC leap second,
 !      introduced in order to keep UT1-UTC within +/- 0.9s.  n.b. This
 !      practice is under review, and in the future UT1-UTC may grow
 !      essentially without limit.
 !
-!  4)  The geographical coordinates are with respect to the WGS84
+!  4.  The geographical coordinates are with respect to the WGS84
 !      reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN:  the
 !      longitude required by the present routine is east-positive
 !      (i.e. right-handed), in accordance with geographical convention.
 !
-!  5)  The polar motion XP,YP can be obtained from IERS bulletins.  The
+!  5.  The polar motion XP,YP can be obtained from IERS bulletins.  The
 !      values are the coordinates (in radians) of the Celestial
 !      Intermediate Pole with respect to the International Terrestrial
 !      Reference System (see IERS Conventions 2003), measured along the
@@ -1357,7 +1355,7 @@
 !      Internally, the polar motion is stored in a form rotated onto
 !      the local meridian.
 !
-!  6)  If hm, the height above the ellipsoid of the observing station
+!  6.  If hm, the height above the ellipsoid of the observing station
 !      in meters, is not known but phpa, the pressure in hPa (=mB), is
 !      available, an adequate estimate of hm can be obtained from the
 !      expression
@@ -1376,19 +1374,19 @@
 !      the pressure and that an accurate phpa value is important for
 !      precise work.
 !
-!  7)  The argument WL specifies the observing wavelength in
+!  7.  The argument WL specifies the observing wavelength in
 !      micrometers.  The transition from optical to radio is assumed to
 !      occur at 100 micrometers (about 3000 GHz).
 !
-!  8)  It is advisable to take great care with units, as even unlikely
+!  8.  It is advisable to take great care with units, as even unlikely
 !      values of the input parameters are accepted and processed in
 !      accordance with the models used.
 !
-!  9)  In cases where the caller wishes to supply his own Earth
+!  9.  In cases where the caller wishes to supply his own Earth
 !      ephemeris, Earth rotation information and refraction constants,
 !      the routine APCO can be used instead of the present routine.
 !
-!  10) This is one of several routines that inserts into the ASTROM
+!  10. This is one of several routines that inserts into the ASTROM
 !      array star-independent parameters needed for the chain of
 !      astrometric transformations ICRS <-> GCRS <-> CIRS <-> observed.
 !
@@ -1415,7 +1413,7 @@
 !      aberration and parallax (unless subsumed into the ICRS <-> GCRS
 !      transformation), and atmospheric refraction.
 !
-!  11) The context array ASTROM produced by this routine is used by
+!  11. The context array ASTROM produced by this routine is used by
 !      ATIOQ, ATOIQ, ATCIQ* and ATICQ*.
 !
 !### History
@@ -1535,7 +1533,7 @@
 !
 !### Notes
 !
-!  1) The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TDB)=2450123.7 could be expressed in any of these ways, among
 !     others:
@@ -1559,9 +1557,9 @@
 !     TT can be used instead of TDB without any significant impact on
 !     accuracy.
 !
-!  2) All the vectors are with respect to BCRS axes.
+!  2. All the vectors are with respect to BCRS axes.
 !
-!  3) Providing separate arguments for (i) the observer's geocentric
+!  3. Providing separate arguments for (i) the observer's geocentric
 !     position and velocity and (ii) the Earth ephemeris is done for
 !     convenience in the geocentric, terrestrial and Earth orbit cases.
 !     For deep space applications it maybe more convenient to specify
@@ -1571,12 +1569,12 @@
 !     m and m/s for the geocentric vectors, au and au/day for the
 !     heliocentric and barycentric vectors.
 !
-!  4) In cases where the caller does not wish to provide the Earth
+!  4. In cases where the caller does not wish to provide the Earth
 !     ephemeris, the routine APCS13 can be used instead of the
 !     present routine.  This computes the Earth ephemeris using the
 !     SOFA routine EPV00.
 !
-!  5) This is one of several routines that inserts into the ASTROM
+!  5. This is one of several routines that inserts into the ASTROM
 !     array star-independent parameters needed for the chain of
 !     astrometric transformations ICRS <-> GCRS <-> CIRS <-> observed.
 !
@@ -1603,7 +1601,7 @@
 !     aberration and parallax (unless subsumed into the ICRS <-> GCRS
 !     transformation), and atmospheric refraction.
 !
-!  6) The context array ASTROM produced by this routine is used by
+!  6. The context array ASTROM produced by this routine is used by
 !     ATCIQ* and ATICQ*.
 !
 !### History
@@ -1706,7 +1704,7 @@
 !
 !### Notes
 !
-!  1) The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TDB)=2450123.7 could be expressed in any of these ways, among
 !     others:
@@ -1730,19 +1728,19 @@
 !     TT can be used instead of TDB without any significant impact on
 !     accuracy.
 !
-!  2) All the vectors are with respect to BCRS axes.
+!  2. All the vectors are with respect to BCRS axes.
 !
-!  3) The observer's position and velocity PV are geocentric but with
+!  3. The observer's position and velocity PV are geocentric but with
 !     respect to BCRS axes, and in units of m and m/s.  No assumptions
 !     are made about proximity to the Earth, and the routine can be
 !     used for deep space applications as well as Earth orbit and
 !     terrestrial.
 !
-!  4) In cases where the caller wishes to supply his own Earth
+!  4. In cases where the caller wishes to supply his own Earth
 !     ephemeris, the routine APCS can be used instead of the present
 !     routine.
 !
-!  5) This is one of several routines that inserts into the ASTROM
+!  5. This is one of several routines that inserts into the ASTROM
 !     array star-independent parameters needed for the chain of
 !     astrometric transformations ICRS <-> GCRS <-> CIRS <-> observed.
 !
@@ -1769,7 +1767,7 @@
 !     aberration and parallax (unless subsumed into the ICRS <-> GCRS
 !     transformation), and atmospheric refraction.
 !
-!  6) The context array ASTROM produced by this routine is used by
+!  6. The context array ASTROM produced by this routine is used by
 !     ATCIQ* and ATICQ*.
 !
 !### History
@@ -1844,19 +1842,19 @@
 !
 !### Notes
 !
-!  1) This routine exists to enable sidereal-tracking applications to
+!  1. This routine exists to enable sidereal-tracking applications to
 !     avoid wasteful recomputation of the bulk of the astrometry
 !     parameters:  only the Earth rotation is updated.
 !
-!  2) For targets expressed as equinox based positions, such as
+!  2. For targets expressed as equinox based positions, such as
 !     classical geocentric apparent (RA,Dec), the supplied THETA can be
 !     Greenwich apparent sidereal time rather than Earth rotation
 !     angle.
 !
-!  3) The routine APER13 can be used instead of the present routine,
+!  3. The routine APER13 can be used instead of the present routine,
 !     and starts from UT1 rather than ERA itself.
 !
-!  4) This is one of several routines that inserts into the ASTROM
+!  4. This is one of several routines that inserts into the ASTROM
 !     array star-independent parameters needed for the chain of
 !     astrometric transformations ICRS <-> GCRS <-> CIRS <-> observed.
 !
@@ -1947,7 +1945,7 @@
 !
 !### Notes
 !
-!  1) The UT1 date (n.b. not UTC) UT11+UT12 is a Julian Date,
+!  1. The UT1 date (n.b. not UTC) UT11+UT12 is a Julian Date,
 !     apportioned in any convenient way between the arguments UT11 and
 !     UT12.  For example, JD(UT1)=2450123.7 could be expressed in any
 !     of these ways, among others:
@@ -1968,12 +1966,12 @@
 !     question and the UT12 argument lies in the range 0 to 1, or vice
 !     versa.
 !
-!  2) If the caller wishes to provide the Earth rotation angle itself,
+!  2. If the caller wishes to provide the Earth rotation angle itself,
 !     the routine APER can be used instead.  One use of this
 !     technique is to substitute Greenwich apparent sidereal time and
 !     thereby to support equinox based transformations directly.
 !
-!  3) This is one of several routines that inserts into the ASTROM
+!  3. This is one of several routines that inserts into the ASTROM
 !     array star-independent parameters needed for the chain of
 !     astrometric transformations ICRS <-> GCRS <-> CIRS <-> observed.
 !
@@ -2056,16 +2054,16 @@
 !
 !### Notes
 !
-!  1) SP, the TIO locator s', is a tiny quantity needed only by the most
+!  1. SP, the TIO locator s', is a tiny quantity needed only by the most
 !     precise applications.  It can either be set to zero or predicted
 !     using the SOFA routine SP00.
 !
-!  2) The geographical coordinates are with respect to the WGS84
+!  2. The geographical coordinates are with respect to the WGS84
 !     reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN:  the
 !     longitude required by the present routine is east-positive
 !     (i.e. right-handed), in accordance with geographical convention.
 !
-!  3) The polar motion XP,YP can be obtained from IERS bulletins.  The
+!  3. The polar motion XP,YP can be obtained from IERS bulletins.  The
 !     values are the coordinates (in radians) of the Celestial
 !     Intermediate Pole with respect to the International Terrestrial
 !     Reference System (see IERS Conventions 2003), measured along the
@@ -2075,22 +2073,22 @@
 !     Internally, the polar motion is stored in a form rotated onto the
 !     local meridian.
 !
-!  4) The refraction constants REFA and REFB are for use in a
+!  4. The refraction constants REFA and REFB are for use in a
 !     dZ = A*tan(Z)+B*tan^3(Z) model, where Z is the observed
 !     (i.e. refracted) zenith distance and dZ is the amount of
 !     refraction.
 !
-!  5) It is advisable to take great care with units, as even unlikely
+!  5. It is advisable to take great care with units, as even unlikely
 !     values of the input parameters are accepted and processed in
 !     accordance with the models used.
 !
-!  6) In cases where the caller does not wish to provide the Earth
+!  6. In cases where the caller does not wish to provide the Earth
 !     rotation information and refraction constants, the routine
 !     APIO13 can be used instead of the present routine.  This
 !     starts from UTC and weather readings etc. and computes suitable
 !     values using other SOFA routines.
 !
-!  7) This is one of several routines that inserts into the ASTROM
+!  7. This is one of several routines that inserts into the ASTROM
 !     array star-independent parameters needed for the chain of
 !     astrometric transformations ICRS <-> GCRS <-> CIRS <-> observed.
 !
@@ -2117,7 +2115,7 @@
 !     aberration and parallax (unless subsumed into the ICRS <-> GCRS
 !     transformation), and atmospheric refraction.
 !
-!  8) The context array ASTROM produced by this routine is used by
+!  8. The context array ASTROM produced by this routine is used by
 !     ATIOQ and ATOIQ.
 !
 !### History
@@ -2216,7 +2214,7 @@
 !
 !### Notes
 !
-!  1)  UTC1+UTC2 is quasi Julian Date (see Note 2), apportioned in any
+!  1.  UTC1+UTC2 is quasi Julian Date (see Note 2), apportioned in any
 !      convenient way between the two arguments, for example where UTC1
 !      is the Julian Day Number and UTC2 is the fraction of a day.
 !
@@ -2230,22 +2228,22 @@
 !      it implements the leap-second-ambiguity convention just
 !      described.
 !
-!  2)  The warning status "dubious year" flags UTCs that predate the
+!  2.  The warning status "dubious year" flags UTCs that predate the
 !      introduction of the time scale or that are too far in the future
 !      to be trusted.  See DAT for further details.
 !
-!  3)  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
+!  3.  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
 !      one second at the end of each positive UTC leap second,
 !      introduced in order to keep UT1-UTC within +/- 0.9s.  n.b. This
 !      practice is under review, and in the future UT1-UTC may grow
 !      essentially without limit.
 !
-!  4)  The geographical coordinates are with respect to the WGS84
+!  4.  The geographical coordinates are with respect to the WGS84
 !      reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN:  the
 !      longitude required by the present routine is east-positive
 !      (i.e. right-handed), in accordance with geographical convention.
 !
-!  5)  The polar motion XP,YP can be obtained from IERS bulletins.  The
+!  5.  The polar motion XP,YP can be obtained from IERS bulletins.  The
 !      values are the coordinates (in radians) of the Celestial
 !      Intermediate Pole with respect to the International Terrestrial
 !      Reference System (see IERS Conventions 2003), measured along the
@@ -2255,7 +2253,7 @@
 !      Internally, the polar motion is stored in a form rotated onto
 !      the local meridian.
 !
-!  6)  If hm, the height above the ellipsoid of the observing station
+!  6.  If hm, the height above the ellipsoid of the observing station
 !      in meters, is not known but phpa, the pressure in hPa (=mB), is
 !      available, an adequate estimate of hm can be obtained from the
 !      expression
@@ -2274,19 +2272,19 @@
 !      pressure and that an accurate phpa value is important for
 !      precise work.
 !
-!  7)  The argument WL specifies the observing wavelength in
+!  7.  The argument WL specifies the observing wavelength in
 !      micrometers.  The transition from optical to radio is assumed to
 !      occur at 100 micrometers (about 3000 GHz).
 !
-!  8)  It is advisable to take great care with units, as even unlikely
+!  8.  It is advisable to take great care with units, as even unlikely
 !      values of the input parameters are accepted and processed in
 !      accordance with the models used.
 !
-!  9)  In cases where the caller wishes to supply his own Earth
+!  9.  In cases where the caller wishes to supply his own Earth
 !      rotation information and refraction constants, the routine
 !      APC can be used instead of the present routine.
 !
-!  10) This is one of several routines that inserts into the ASTROM
+!  10. This is one of several routines that inserts into the ASTROM
 !      array star-independent parameters needed for the chain of
 !      astrometric transformations ICRS <-> GCRS <-> CIRS <-> observed.
 !
@@ -2313,7 +2311,7 @@
 !      aberration and parallax (unless subsumed into the ICRS <-> GCRS
 !      transformation), and atmospheric refraction.
 !
-!  11) The context array ASTROM produced by this routine is used by
+!  11. The context array ASTROM produced by this routine is used by
 !      ATIOQ and ATOIQ.
 !
 !### History
@@ -2394,13 +2392,13 @@
 !
 !### Notes
 !
-!  1) Star data for an epoch other than J2000.0 (for example from the
+!  1. Star data for an epoch other than J2000.0 (for example from the
 !     Hipparcos catalog, which has an epoch of J1991.25) will require a
 !     preliminary call to PMSAFE before use.
 !
-!  2) The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
+!  2. The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
 !
-!  3) The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
+!  3. The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TDB)=2450123.7 could be expressed in any of these ways, among
 !     others:
@@ -2424,7 +2422,7 @@
 !     TT can be used instead of TDB without any significant impact on
 !     accuracy.
 !
-!  4) The available accuracy is better than 1 milliarcsecond, limited
+!  4. The available accuracy is better than 1 milliarcsecond, limited
 !     mainly by the precession-nutation model that is used, namely
 !     IAU 2000A/2006.  Very close to solar system bodies, additional
 !     errors of up to several milliarcseconds can occur because of
@@ -2435,7 +2433,7 @@
 !     5 microarcseconds.  Light deflection at the Sun's limb is
 !     uncertain at the 0.4 mas level.
 !
-!  5) Should the transformation to (equinox based) apparent place be
+!  5. Should the transformation to (equinox based) apparent place be
 !     required rather than (CIO based) intermediate place, subtract the
 !     equation of the origins from the returned right ascension:
 !     RA = RI - EO. (The ANP routine can then be applied, as
@@ -2517,13 +2515,13 @@
 !
 !### Notes
 !
-!  1) All the vectors are with respect to BCRS axes.
+!  1. All the vectors are with respect to BCRS axes.
 !
-!  2) Star data for an epoch other than J2000.0 (for example from the
+!  2. Star data for an epoch other than J2000.0 (for example from the
 !     Hipparcos catalog, which has an epoch of J1991.25) will require a
 !     preliminary call to PMSAFE before use.
 !
-!  3) The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
+!  3. The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
 !
 !### History
 !  * IAU SOFA revision:  2013 August 25
@@ -2617,25 +2615,25 @@
 !
 !### Notes
 !
-!  1) Star data for an epoch other than J2000.0 (for example from the
+!  1. Star data for an epoch other than J2000.0 (for example from the
 !     Hipparcos catalog, which has an epoch of J1991.25) will require a
 !     preliminary call to PMSAFE before use.
 !
-!  2) The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
+!  2. The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
 !
-!  3) The array B contains N entries, one for each body to be
+!  3. The array B contains N entries, one for each body to be
 !     considered.  If N = 0, no gravitational light deflection will be
 !     applied, not even for the Sun.
 !
-!  4) The array B should include an entry for the Sun as well as for any
+!  4. The array B should include an entry for the Sun as well as for any
 !     planet or other body to be taken into account.  The entries should
 !     be in the order in which the light passes the body.
 !
-!  5) In the entry in the B array for body I, the mass parameter B(1,I)
+!  5. In the entry in the B array for body I, the mass parameter B(1,I)
 !     can, as required, be adjusted in order to allow for such effects
 !     as quadrupole field.
 !
-!  6) The deflection limiter parameter B(2,I) is phi^2/2, where phi is
+!  6. The deflection limiter parameter B(2,I) is phi^2/2, where phi is
 !     the angular separation (in radians) between star and body at which
 !     limiting is applied.  As phi shrinks below the chosen threshold,
 !     the deflection is artificially reduced, reaching zero for phi = 0.
@@ -2648,7 +2646,7 @@
 !        Jupiter    0.00095435D0   3D-9
 !        Saturn     0.00028574D0   3D-10
 !
-!  7) For efficiency, validation of the B array is omitted.  The
+!  7. For efficiency, validation of the B array is omitted.  The
 !     supplied masses must be greater than zero, the position and
 !     velocity vectors must be right, and the deflection limiter
 !     greater than zero.
@@ -2818,13 +2816,13 @@
 !
 !### Notes
 !
-!  1)  Star data for an epoch other than J2000.0 (for example from the
+!  1.  Star data for an epoch other than J2000.0 (for example from the
 !      Hipparcos catalog, which has an epoch of J1991.25) will require
 !      a preliminary call to PMSAFE before use.
 !
-!  2)  The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
+!  2.  The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
 !
-!  3)  UTC1+UTC2 is quasi Julian Date (see Note 2), apportioned in any
+!  3.  UTC1+UTC2 is quasi Julian Date (see Note 2), apportioned in any
 !      convenient way between the two arguments, for example where UTC1
 !      is the Julian Day Number and UTC2 is the fraction of a day.
 !
@@ -2838,29 +2836,29 @@
 !      it implements the leap-second-ambiguity convention just
 !      described.
 !
-!  4)  The warning status "dubious year" flags UTCs that predate the
+!  4.  The warning status "dubious year" flags UTCs that predate the
 !      introduction of the time scale or that are too far in the
 !      future to be trusted.  See DAT for further details.
 !
-!  5)  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
+!  5.  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
 !      one second at the end of each positive UTC leap second,
 !      introduced in order to keep UT1-UTC within +/- 0.9s.  n.b. This
 !      practice is under review, and in the future UT1-UTC may grow
 !      essentially without limit.
 !
-!  6)  The geographical coordinates are with respect to the WGS84
+!  6.  The geographical coordinates are with respect to the WGS84
 !      reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN:  the
 !      longitude required by the present routine is east-positive
 !      (i.e. right-handed), in accordance with geographical convention.
 !
-!  7)  The polar motion XP,YP can be obtained from IERS bulletins.  The
+!  7.  The polar motion XP,YP can be obtained from IERS bulletins.  The
 !      values are the coordinates (in radians) of the Celestial
 !      Intermediate Pole with respect to the International Terrestrial
 !      Reference System (see IERS Conventions 2003), measured along the
 !      meridians 0 and 90 deg west respectively.  For many applications,
 !      XP and YP can be set to zero.
 !
-!  8)  If hm, the height above the ellipsoid of the observing station
+!  8.  If hm, the height above the ellipsoid of the observing station
 !      in meters, is not known but phpa, the pressure in hPa (=mB),
 !      is available, an adequate estimate of hm can be obtained from
 !      the expression
@@ -2879,11 +2877,11 @@
 !      the pressure and that an accurate phpa value is important for
 !      precise work.
 !
-!  9)  The argument WL specifies the observing wavelength in
+!  9.  The argument WL specifies the observing wavelength in
 !      micrometers.  The transition from optical to radio is assumed to
 !      occur at 100 micrometers (about 3000 GHz).
 !
-!  10) The accuracy of the result is limited by the corrections for
+!  10. The accuracy of the result is limited by the corrections for
 !      refraction, which use a simple A*tan(z) + B*tan^3(z) model.
 !      Providing the meteorological parameters are known accurately and
 !      there are no gross local effects, the predicted observed
@@ -2898,7 +2896,7 @@
 !      consistency falls off at high zenith distances, but is still
 !      better than 0.05 arcsec at 85 degrees.
 !
-!  11) "Observed" Az,ZD means the position that would be seen by a
+!  11. "Observed" Az,ZD means the position that would be seen by a
 !      perfect geodetically aligned theodolite.  (Zenith distance is
 !      used rather than altitude in order to reflect the fact that no
 !      allowance is made for depression of the horizon.)  This is
@@ -2909,7 +2907,7 @@
 !      means the position that would be seen by a perfect equatorial
 !      with its polar axis aligned to the Earth's axis of rotation.
 !
-!  12) It is advisable to take great care with units, as even unlikely
+!  12. It is advisable to take great care with units, as even unlikely
 !      values of the input parameters are accepted and processed in
 !      accordance with the models used.
 !
@@ -2989,7 +2987,7 @@
 !
 !### Notes
 !
-!  1) The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TDB)=2450123.7 could be expressed in any of these ways, among
 !     others:
@@ -3013,13 +3011,13 @@
 !     TT can be used instead of TDB without any significant impact on
 !     accuracy.
 !
-!  2) Iterative techniques are used for the aberration and light
+!  2. Iterative techniques are used for the aberration and light
 !     deflection corrections so that the routines ATIC13 (or
 !     ATICQ) and ATCI13 (or ATCIQ) are accurate inverses;
 !     even at the edge of the Sun's disk the discrepancy is only about
 !     1 nanoarcsecond.
 !
-!  3) The available accuracy is better than 1 milliarcsecond, limited
+!  3. The available accuracy is better than 1 milliarcsecond, limited
 !     mainly by the precession-nutation model that is used, namely
 !     IAU 2000A/2006.  Very close to solar system bodies, additional
 !     errors of up to several milliarcseconds can occur because of
@@ -3030,7 +3028,7 @@
 !     5 microarcseconds.  Light deflection at the Sun's limb is
 !     uncertain at the 0.4 mas level.
 !
-!  4) Should the transformation to (equinox based) J2000.0 mean place
+!  4. Should the transformation to (equinox based) J2000.0 mean place
 !     be required rather than (CIO based) ICRS coordinates, subtract the
 !     equation of the origins from the returned right ascension:
 !     RA = RI - EO.  (The ANP routine can then be applied, as
@@ -3101,10 +3099,10 @@
 !
 !### Notes
 !
-!  1) Only the Sun is taken into account in the light deflection
+!  1. Only the Sun is taken into account in the light deflection
 !     correction.
 !
-!  2) Iterative techniques are used for the aberration and light
+!  2. Iterative techniques are used for the aberration and light
 !     deflection corrections so that the routines ATIC13 (or
 !     ATICQ) and ATCI13 (or ATCIQ) are accurate inverses;
 !     even at the edge of the Sun's disk the discrepancy is only about
@@ -3242,27 +3240,27 @@
 !
 !### Notes
 !
-!  1) Iterative techniques are used for the aberration and light
+!  1. Iterative techniques are used for the aberration and light
 !     deflection corrections so that the routines ATICQN and
 !     ATCIQN are accurate inverses; even at the edge of the Sun's
 !     disk the discrepancy is only about 1 nanoarcsecond.
 !
-!  2) If the only light-deflecting body to be taken into account is the
+!  2. If the only light-deflecting body to be taken into account is the
 !     Sun, the ATICQ routine can be used instead.
 !
-!  3) The array B contains N entries, one for each body to be
+!  3. The array B contains N entries, one for each body to be
 !     considered.  If N = 0, no gravitational light deflection will be
 !     applied, not even for the Sun.
 !
-!  4) The array B should include an entry for the Sun as well as for any
+!  4. The array B should include an entry for the Sun as well as for any
 !     planet or other body to be taken into account.  The entries should
 !     be in the order in which the light passes the body.
 !
-!  5) In the entry in the B array for body I, the mass parameter B(1,I)
+!  5. In the entry in the B array for body I, the mass parameter B(1,I)
 !     can, as required, be adjusted in order to allow for such effects
 !     as quadrupole field.
 !
-!  6) The deflection limiter parameter B(2,I) is phi^2/2, where phi is
+!  6. The deflection limiter parameter B(2,I) is phi^2/2, where phi is
 !     the angular separation (in radians) between star and body at which
 !     limiting is applied.  As phi shrinks below the chosen threshold,
 !     the deflection is artificially reduced, reaching zero for phi = 0.
@@ -3275,7 +3273,7 @@
 !        Jupiter    0.00095435D0   3D-9
 !        Saturn     0.00028574D0   3D-10
 !
-!  7) For efficiency, validation of the contents of the B array is
+!  7. For efficiency, validation of the contents of the B array is
 !     omitted.  The supplied masses must be greater than zero, the
 !     position and velocity vectors must be right, and the deflection
 !     limiter greater than zero.
@@ -3400,7 +3398,7 @@
 !
 !### Notes
 !
-!  1)  UTC1+UTC2 is quasi Julian Date (see Note 2), apportioned in any
+!  1.  UTC1+UTC2 is quasi Julian Date (see Note 2), apportioned in any
 !      convenient way between the two arguments, for example where UTC1
 !      is the Julian Day Number and UTC2 is the fraction of a day.
 !
@@ -3414,29 +3412,29 @@
 !      it implements the leap-second-ambiguity convention just
 !      described.
 !
-!  2)  The warning status "dubious year" flags UTCs that predate the
+!  2.  The warning status "dubious year" flags UTCs that predate the
 !      introduction of the time scale or that are too far in the
 !      future to be trusted.  See DAT for further details.
 !
-!  3)  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
+!  3.  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
 !      one second at the end of each positive UTC leap second,
 !      introduced in order to keep UT1-UTC within +/- 0.9s.  n.b. This
 !      practice is under review, and in the future UT1-UTC may grow
 !      essentially without limit.
 !
-!  4)  The geographical coordinates are with respect to the WGS84
+!  4.  The geographical coordinates are with respect to the WGS84
 !      reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN:  the
 !      longitude required by the present routine is east-positive
 !      (i.e. right-handed), in accordance with geographical convention.
 !
-!  5)  The polar motion XP,YP can be obtained from IERS bulletins.  The
+!  5.  The polar motion XP,YP can be obtained from IERS bulletins.  The
 !      values are the coordinates (in radians) of the Celestial
 !      Intermediate Pole with respect to the International Terrestrial
 !      Reference System (see IERS Conventions 2003), measured along the
 !      meridians 0 and 90 deg west respectively.  For many applications,
 !      XP and YP can be set to zero.
 !
-!  6)  If hm, the height above the ellipsoid of the observing station
+!  6.  If hm, the height above the ellipsoid of the observing station
 !      in meters, is not known but phpa, the pressure in hPa (=mB), is
 !      available, an adequate estimate of hm can be obtained from the
 !      expression
@@ -3455,11 +3453,11 @@
 !      the pressure and that an accurate phpa value is important for
 !      precise work.
 !
-!  7)  The argument WL specifies the observing wavelength in
+!  7.  The argument WL specifies the observing wavelength in
 !      micrometers.  The transition from optical to radio is assumed to
 !      occur at 100 micrometers (about 3000 GHz).
 !
-!  8)  "Observed" Az,ZD means the position that would be seen by a
+!  8.  "Observed" Az,ZD means the position that would be seen by a
 !      perfect geodetically aligned theodolite.  (Zenith distance is
 !      used rather than altitude in order to reflect the fact that no
 !      allowance is made for depression of the horizon.)  This is
@@ -3470,7 +3468,7 @@
 !      means the position that would be seen by a perfect equatorial
 !      with its polar axis aligned to the Earth's axis of rotation.
 !
-!  9)  The accuracy of the result is limited by the corrections for
+!  9.  The accuracy of the result is limited by the corrections for
 !      refraction, which use a simple A*tan(z) + B*tan^3(z) model.
 !      Providing the meteorological parameters are known accurately and
 !      there are no gross local effects, the predicted astrometric
@@ -3479,11 +3477,11 @@
 !      than 30 arcsec (optical or radio) at 85 degrees and better
 !      than 20 arcmin (optical) or 30 arcmin (radio) at the horizon.
 !
-!  10) The complementary routines ATIO13 and ATOI13 are self-
+!  10. The complementary routines ATIO13 and ATOI13 are self-
 !      consistent to better than 1 microarcsecond all over the
 !      celestial sphere.
 !
-!  11) It is advisable to take great care with units, as even unlikely
+!  11. It is advisable to take great care with units, as even unlikely
 !      values of the input parameters are accepted and processed in
 !      accordance with the models used.
 !
@@ -3579,11 +3577,11 @@
 !
 !### Notes
 !
-!  1) This routine returns zenith distance rather than altitude in
+!  1. This routine returns zenith distance rather than altitude in
 !     order to reflect the fact that no allowance is made for
 !     depression of the horizon.
 !
-!  2) The accuracy of the result is limited by the corrections for
+!  2. The accuracy of the result is limited by the corrections for
 !     refraction, which use a simple A*tan(z) + B*tan^3(z) model.
 !     Providing the meteorological parameters are known accurately and
 !     there are no gross local effects, the predicted observed
@@ -3598,18 +3596,18 @@
 !     falls off at high zenith distances, but is still better than
 !     0.05 arcsec at 85 degrees.
 !
-!  3) It is advisable to take great care with units, as even unlikely
+!  3. It is advisable to take great care with units, as even unlikely
 !     values of the input parameters are accepted and processed in
 !     accordance with the models used.
 !
-!  4) The CIRS RA,Dec is obtained from a star catalog mean place by
+!  4. The CIRS RA,Dec is obtained from a star catalog mean place by
 !     allowing for space motion, parallax, the Sun's gravitational lens
 !     effect, annual aberration and precession-nutation.  For star
 !     positions in the ICRS, these effects can be applied by means of
 !     the ATCI13 (etc.) routines.  Starting from classical "mean
 !     place" systems, additional transformations will be needed first.
 !
-!  5) "Observed" Az,El means the position that would be seen by a
+!  5. "Observed" Az,El means the position that would be seen by a
 !     perfect geodetically aligned theodolite.  This is obtained from
 !     the CIRS RA,Dec by allowing for Earth orientation and diurnal
 !     aberration, rotating from equator to horizon coordinates, and then
@@ -3619,7 +3617,7 @@
 !     Earth's axis of rotation.  Finally, the RA is obtained by
 !     subtracting the HA from the local ERA.
 !
-!  6) The star-independent CIRS-to-observed-place parameters in ASTROM
+!  6. The star-independent CIRS-to-observed-place parameters in ASTROM
 !     may be computed with APIO[13] or APCO[13].  If nothing has
 !     changed significantly except the time, APER[13] may be used
 !     to perform the requisite adjustment to the ASTROM array.
@@ -3755,7 +3753,7 @@
 !
 !### Notes
 !
-!  1)  "Observed" Az,ZD means the position that would be seen by a
+!  1.  "Observed" Az,ZD means the position that would be seen by a
 !      perfect geodetically aligned theodolite.  (Zenith distance is
 !      used rather than altitude in order to reflect the fact that no
 !      allowance is made for depression of the horizon.)  This is
@@ -3766,14 +3764,14 @@
 !      means the position that would be seen by a perfect equatorial
 !      with its polar axis aligned to the Earth's axis of rotation.
 !
-!  2)  Only the first character of the TYPE argument is significant.
+!  2.  Only the first character of the TYPE argument is significant.
 !      'R' or 'r' indicates that OB1 and OB2 are the observed right
 !      ascension and declination;  'H' or 'h' indicates that they are
 !      hour angle (west +ve) and declination;  anything else ('A' or
 !      'a' is recommended) indicates that OB1 and OB2 are azimuth
 !      (north zero, east 90 deg) and zenith distance.
 !
-!  3)  UTC1+UTC2 is quasi Julian Date (see Note 2), apportioned in any
+!  3.  UTC1+UTC2 is quasi Julian Date (see Note 2), apportioned in any
 !      convenient way between the two arguments, for example where UTC1
 !      is the Julian Day Number and UTC2 is the fraction of a day.
 !
@@ -3787,29 +3785,29 @@
 !      it implements the leap-second-ambiguity convention just
 !      described.
 !
-!  4)  The warning status "dubious year" flags UTCs that predate the
+!  4.  The warning status "dubious year" flags UTCs that predate the
 !      introduction of the time scale or that are too far in the
 !      future to be trusted.  See DAT for further details.
 !
-!  5)  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
+!  5.  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
 !      one second at the end of each positive UTC leap second,
 !      introduced in order to keep UT1-UTC within +/- 0.9s.  n.b. This
 !      practice is under review, and in the future UT1-UTC may grow
 !      essentially without limit.
 !
-!  6)  The geographical coordinates are with respect to the WGS84
+!  6.  The geographical coordinates are with respect to the WGS84
 !      reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN:  the
 !      longitude required by the present routine is east-positive
 !      (i.e. right-handed), in accordance with geographical convention.
 !
-!  7)  The polar motion XP,YP can be obtained from IERS bulletins.  The
+!  7.  The polar motion XP,YP can be obtained from IERS bulletins.  The
 !      values are the coordinates (in radians) of the Celestial
 !      Intermediate Pole with respect to the International Terrestrial
 !      Reference System (see IERS Conventions 2003), measured along the
 !      meridians 0 and 90 deg west respectively.  For many applications,
 !      XP and YP can be set to zero.
 !
-!  8)  If hm, the height above the ellipsoid of the observing station
+!  8.  If hm, the height above the ellipsoid of the observing station
 !      in meters, is not known but phpa, the pressure in hPa (=mB), is
 !      available, an adequate estimate of hm can be obtained from the
 !      expression
@@ -3828,11 +3826,11 @@
 !      the pressure and that an accurate phpa value is important for
 !      precise work.
 !
-!  9)  The argument WL specifies the observing wavelength in
+!  9.  The argument WL specifies the observing wavelength in
 !      micrometers.  The transition from optical to radio is assumed to
 !      occur at 100 micrometers (about 3000 GHz).
 !
-!  10) The accuracy of the result is limited by the corrections for
+!  10. The accuracy of the result is limited by the corrections for
 !      refraction, which use a simple A*tan(z) + B*tan^3(z) model.
 !      Providing the meteorological parameters are known accurately and
 !      there are no gross local effects, the predicted astrometric
@@ -3847,7 +3845,7 @@
 !      consistency falls off at high zenith distances, but is still
 !      better than 0.05 arcsec at 85 degrees.
 !
-!  11) It is advisable to take great care with units, as even unlikely
+!  11. It is advisable to take great care with units, as even unlikely
 !      values of the input parameters are accepted and processed in
 !      accordance with the models used.
 !
@@ -3935,7 +3933,7 @@
 !
 !### Notes
 !
-!  1)  "Observed" Az,ZD means the position that would be seen by a
+!  1.  "Observed" Az,ZD means the position that would be seen by a
 !      perfect geodetically aligned theodolite.  (Zenith distance is
 !      used rather than altitude in order to reflect the fact that no
 !      allowance is made for depression of the horizon.)  This is
@@ -3946,14 +3944,14 @@
 !      means the position that would be seen by a perfect equatorial
 !      with its polar axis aligned to the Earth's axis of rotation.
 !
-!  2)  Only the first character of the TYPE argument is significant.
+!  2.  Only the first character of the TYPE argument is significant.
 !      'R' or 'r' indicates that OB1 and OB2 are the observed right
 !      ascension and declination;  'H' or 'h' indicates that they are
 !      hour angle (west +ve) and declination;  anything else ('A' or
 !      'a' is recommended) indicates that OB1 and OB2 are azimuth
 !      (north zero, east 90 deg) and zenith distance.
 !
-!  3)  UTC1+UTC2 is quasi Julian Date (see Note 2), apportioned in any
+!  3.  UTC1+UTC2 is quasi Julian Date (see Note 2), apportioned in any
 !      convenient way between the two arguments, for example where UTC1
 !      is the Julian Day Number and UTC2 is the fraction of a day.
 !
@@ -3967,29 +3965,29 @@
 !      it implements the leap-second-ambiguity convention just
 !      described.
 !
-!  4)  The warning status "dubious year" flags UTCs that predate the
+!  4.  The warning status "dubious year" flags UTCs that predate the
 !      introduction of the time scale or that are too far in the
 !      future to be trusted.  See DAT for further details.
 !
-!  5)  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
+!  5.  UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
 !      one second at the end of each positive UTC leap second,
 !      introduced in order to keep UT1-UTC within +/- 0.9s.  n.b. This
 !      practice is under review, and in the future UT1-UTC may grow
 !      essentially without limit.
 !
-!  6)  The geographical coordinates are with respect to the WGS84
+!  6.  The geographical coordinates are with respect to the WGS84
 !      reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN:  the
 !      longitude required by the present routine is east-positive
 !      (i.e. right-handed), in accordance with geographical convention.
 !
-!  7)  The polar motion XP,YP can be obtained from IERS bulletins.  The
+!  7.  The polar motion XP,YP can be obtained from IERS bulletins.  The
 !      values are the coordinates (in radians) of the Celestial
 !      Intermediate Pole with respect to the International Terrestrial
 !      Reference System (see IERS Conventions 2003), measured along the
 !      meridians 0 and 90 deg west respectively.  For many applications,
 !      XP and YP can be set to zero.
 !
-!  8)  If hm, the height above the ellipsoid of the observing station
+!  8.  If hm, the height above the ellipsoid of the observing station
 !      in meters, is not known but phpa, the pressure in hPa (=mB), is
 !      available, an adequate estimate of hm can be obtained from the
 !      expression
@@ -4008,11 +4006,11 @@
 !      the pressure and that an accurate phpa value is important for
 !      precise work.
 !
-!  9)  The argument WL specifies the observing wavelength in
+!  9.  The argument WL specifies the observing wavelength in
 !      micrometers.  The transition from optical to radio is assumed to
 !      occur at 100 micrometers (about 3000 GHz).
 !
-!  10) The accuracy of the result is limited by the corrections for
+!  10. The accuracy of the result is limited by the corrections for
 !      refraction, which use a simple A*tan(z) + B*tan^3(z) model.
 !      Providing the meteorological parameters are known accurately and
 !      there are no gross local effects, the predicted astrometric
@@ -4027,7 +4025,7 @@
 !      consistency falls off at high zenith distances, but is still
 !      better than 0.05 arcsec at 85 degrees.
 !
-!  11) It is advisable to take great care with units, as even unlikely
+!  11. It is advisable to take great care with units, as even unlikely
 !      values of the input parameters are accepted and processed in
 !      accordance with the models used.
 !
@@ -4120,7 +4118,7 @@
 !
 !### Notes
 !
-!  1) "Observed" Az,El means the position that would be seen by a
+!  1. "Observed" Az,El means the position that would be seen by a
 !     perfect geodetically aligned theodolite.  This is related to the
 !     observed HA,Dec via the standard rotation, using the geodetic
 !     latitude (corrected for polar motion), while the observed HA and
@@ -4131,7 +4129,7 @@
 !     the observed place the effects of atmospheric refraction and
 !     diurnal aberration, the CIRS RA,Dec is obtained.
 !
-!  2) Only the first character of the type argument is significant.
+!  2. Only the first character of the type argument is significant.
 !     'R' or 'r' indicates that OB1 and OB2 are the observed right
 !     ascension and declination;  'H' or 'h' indicates that they are
 !     hour angle (west +ve) and declination;  anything else ('A' or
@@ -4140,7 +4138,7 @@
 !     rather than altitude in order to reflect the fact that no
 !     allowance is made for depression of the horizon.)
 !
-!  3) The accuracy of the result is limited by the corrections for
+!  3. The accuracy of the result is limited by the corrections for
 !     refraction, which use a simple A*tan(z) + B*tan^3(z) model.
 !     Providing the meteorological parameters are known accurately and
 !     there are no gross local effects, the predicted observed
@@ -4155,11 +4153,11 @@
 !     falls off at high zenith distances, but is still better than
 !     0.05 arcsec at 85 degrees.
 !
-!  4) It is advisable to take great care with units, as even unlikely
+!  4. It is advisable to take great care with units, as even unlikely
 !     values of the input parameters are accepted and processed in
 !     accordance with the models used.
 !
-!  5) The star-independent astrometry parameters in ASTROM may be
+!  5. The star-independent astrometry parameters in ASTROM may be
 !     computed with APIO13 (or APIO).  If nothing has changed
 !     significantly except the time, APER13 (or APER) may be
 !     used to perform the requisite adjustment to the ASTROM array.
@@ -4297,18 +4295,18 @@
 !
 !### Notes
 !
-!  1) The frame bias corrections in longitude and obliquity (radians)
+!  1. The frame bias corrections in longitude and obliquity (radians)
 !     are required in order to correct for the offset between the GCRS
 !     pole and the J2000.0 mean pole.  They define, with respect to the
 !     GCRS frame, a J2000.0 mean pole that is consistent with the rest
 !     of the IAU 2000A precession-nutation model.
 !
-!  2) In addition to the displacement of the pole, the complete
+!  2. In addition to the displacement of the pole, the complete
 !     description of the frame bias requires also an offset in right
 !     ascension.  This is not part of the IAU 2000A model, and is from
 !     Chapront et al. (2002).  It is returned in radians.
 !
-!  3) This is a supplemented implementation of one aspect of the IAU
+!  3. This is a supplemented implementation of one aspect of the IAU
 !     2000A nutation model, formally adopted by the IAU General Assembly
 !     in 2000, namely MHB2000 (Mathews et al. 2002).
 !
@@ -4365,7 +4363,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -4384,14 +4382,14 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The matrix RB transforms vectors from GCRS to mean J2000.0 by
+!  2. The matrix RB transforms vectors from GCRS to mean J2000.0 by
 !     applying frame bias.
 !
-!  3) The matrix RP transforms vectors from J2000.0 mean equator and
+!  3. The matrix RP transforms vectors from J2000.0 mean equator and
 !     equinox to mean equator and equinox of date by applying
 !     precession.
 !
-!  4) The matrix RBP transforms vectors from GCRS to mean equator and
+!  4. The matrix RBP transforms vectors from GCRS to mean equator and
 !     equinox of date by applying frame bias then precession.  It is the
 !     product RP x RB.
 !
@@ -4482,7 +4480,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -4501,13 +4499,13 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The matrix RB transforms vectors from GCRS to mean J2000.0 by
+!  2. The matrix RB transforms vectors from GCRS to mean J2000.0 by
 !     applying frame bias.
 !
-!  3) The matrix RP transforms vectors from mean J2000.0 to mean of date
+!  3. The matrix RP transforms vectors from mean J2000.0 to mean of date
 !     by applying precession.
 !
-!  4) The matrix RBP transforms vectors from GCRS to mean of date by
+!  4. The matrix RBP transforms vectors from GCRS to mean of date by
 !     applying frame bias then precession.  It is the product RP x RB.
 !
 !### References
@@ -4569,11 +4567,11 @@
 !
 !### Notes
 !
-!  1) The matrix RBPN transforms vectors from GCRS to true equator (and
+!  1. The matrix RBPN transforms vectors from GCRS to true equator (and
 !     CIO or equinox) of date, and therefore the Celestial Intermediate
 !     Pole unit vector is the bottom row of the matrix.
 !
-!  2) X,Y are components of the Celestial Intermediate Pole unit vector
+!  2. X,Y are components of the Celestial Intermediate Pole unit vector
 !     in the Geocentric Celestial Reference System.
 !
 !### Reference
@@ -4619,7 +4617,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -4638,7 +4636,7 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The matrix RC2I is the first stage in the transformation from
+!  2. The matrix RC2I is the first stage in the transformation from
 !     celestial to terrestrial coordinates:
 !
 !        [TRS]  =  RPOM * R_3(ERA) * RC2I * [CRS]
@@ -4650,7 +4648,7 @@
 !     Reference System (see IERS Conventions 2003), ERA is the Earth
 !     Rotation Angle and RPOM is the polar motion matrix.
 !
-!  3) A faster, but slightly less accurate result (about 1 mas), can be
+!  3. A faster, but slightly less accurate result (about 1 mas), can be
 !     obtained by using instead the C2I00B routine.
 !
 !### References
@@ -4703,7 +4701,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -4722,7 +4720,7 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The matrix RC2I is the first stage in the transformation from
+!  2. The matrix RC2I is the first stage in the transformation from
 !     celestial to terrestrial coordinates:
 !
 !        [TRS]  =  RPOM * R_3(ERA) * RC2I * [CRS]
@@ -4734,7 +4732,7 @@
 !     Reference System (see IERS Conventions 2003), ERA is the Earth
 !     Rotation Angle and RPOM is the polar motion matrix.
 !
-!  3) The present routine is faster, but slightly less accurate (about
+!  3. The present routine is faster, but slightly less accurate (about
 !     1 mas), than the C2I00A routine.
 !
 !### References
@@ -4787,7 +4785,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -4806,7 +4804,7 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The matrix RC2I is the first stage in the transformation from
+!  2. The matrix RC2I is the first stage in the transformation from
 !     celestial to terrestrial coordinates:
 !
 !        [TRS]  =  RPOM * R_3(ERA) * RC2I * [CRS]
@@ -4871,7 +4869,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -4890,10 +4888,10 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The matrix RBPN transforms vectors from GCRS to true equator (and
+!  2. The matrix RBPN transforms vectors from GCRS to true equator (and
 !     CIO or equinox) of date.  Only the CIP (bottom row) is used.
 !
-!  3) The matrix RC2I is the first stage in the transformation from
+!  3. The matrix RC2I is the first stage in the transformation from
 !     celestial to terrestrial coordinates:
 !
 !        [TRS]  =  RPOM * R_3(ERA) * RC2I * [CRS]
@@ -4905,7 +4903,7 @@
 !     Reference System (see IERS Conventions 2003), ERA is the Earth
 !     Rotation Angle and RPOM is the polar motion matrix.
 !
-!  4) Although its name does not include "00", this routine is in fact
+!  4. Although its name does not include "00", this routine is in fact
 !     specific to the IAU 2000 models.
 !
 !### References
@@ -4960,7 +4958,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -4979,10 +4977,10 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The Celestial Intermediate Pole coordinates are the x,y components
+!  2. The Celestial Intermediate Pole coordinates are the x,y components
 !     of the unit vector in the Geocentric Celestial Reference System.
 !
-!  3) The matrix RC2I is the first stage in the transformation from
+!  3. The matrix RC2I is the first stage in the transformation from
 !     celestial to terrestrial coordinates:
 !
 !        [TRS]  =  RPOM * R_3(ERA) * RC2I * [CRS]
@@ -4994,7 +4992,7 @@
 !     Reference System (see IERS Conventions 2003), ERA is the Earth
 !     Rotation Angle and RPOM is the polar motion matrix.
 !
-!  4) Although its name does not include "00", this routine is in fact
+!  4. Although its name does not include "00", this routine is in fact
 !     specific to the IAU 2000 models.
 !
 !### Reference
@@ -5037,13 +5035,13 @@
 !
 !### Notes
 !
-!  1) The Celestial Intermediate Pole coordinates are the x,y components
+!  1. The Celestial Intermediate Pole coordinates are the x,y components
 !     of the unit vector in the Geocentric Celestial Reference System.
 !
-!  2) The CIO locator s (in radians) positions the Celestial
+!  2. The CIO locator s (in radians) positions the Celestial
 !     Intermediate Origin on the equator of the CIP.
 !
-!  3) The matrix RC2I is the first stage in the transformation from
+!  3. The matrix RC2I is the first stage in the transformation from
 !     celestial to terrestrial coordinates:
 !
 !        [TRS]  =  RPOM * R_3(ERA) * RC2I * [CRS]
@@ -5107,11 +5105,11 @@
 !
 !### Notes
 !
-!  1) P can have any magnitude; only its direction is used.
+!  1. P can have any magnitude; only its direction is used.
 !
-!  2) If P is null, zero THETA and PHI are returned.
+!  2. If P is null, zero THETA and PHI are returned.
 !
-!  3) At either pole, zero THETA is returned.
+!  3. At either pole, zero THETA is returned.
 !
 !### History
 !  * IAU SOFA revision: 2007 April 11
@@ -5163,7 +5161,7 @@
 !
 !### Notes
 !
-!  1) The TT and UT1 dates TTA+TTB and UTA+UTB are Julian Dates,
+!  1. The TT and UT1 dates TTA+TTB and UTA+UTB are Julian Dates,
 !     apportioned in any convenient way between the arguments UTA and
 !     UTB.  For example, JD(UT1)=2450123.7 could be expressed in any of
 !     these ways, among others:
@@ -5185,12 +5183,12 @@
 !     question and the UTB argument lies in the range 0 to 1, or vice
 !     versa.
 !
-!  2) XP and YP are the coordinates (in radians) of the Celestial
+!  2. XP and YP are the coordinates (in radians) of the Celestial
 !     Intermediate Pole with respect to the International Terrestrial
 !     Reference System (see IERS Conventions 2003), measured along the
 !     meridians to 0 and 90 deg west respectively.
 !
-!  3) The matrix RC2T transforms from celestial to terrestrial
+!  3. The matrix RC2T transforms from celestial to terrestrial
 !     coordinates:
 !
 !        [TRS]  =  RPOM * R_3(ERA) * RC2I * [CRS]
@@ -5203,7 +5201,7 @@
 !     celestial-to-intermediate matrix, ERA is the Earth rotation angle
 !     and RPOM is the polar motion matrix.
 !
-!  4) A faster, but slightly less accurate result (about 1 mas), can be
+!  4. A faster, but slightly less accurate result (about 1 mas), can be
 !     obtained by using instead the C2T00B routine.
 !
 !### Reference
@@ -5263,7 +5261,7 @@
 !
 !### Notes
 !
-!  1) The TT and UT1 dates TTA+TTB and UTA+UTB are Julian Dates,
+!  1. The TT and UT1 dates TTA+TTB and UTA+UTB are Julian Dates,
 !     apportioned in any convenient way between the arguments UTA and
 !     UTB.  For example, JD(UT1)=2450123.7 could be expressed in any of
 !     these ways, among others:
@@ -5285,12 +5283,12 @@
 !     question and the UTB argument lies in the range 0 to 1, or vice
 !     versa.
 !
-!  2) XP and YP are the coordinates (in radians) of the Celestial
+!  2. XP and YP are the coordinates (in radians) of the Celestial
 !     Intermediate Pole with respect to the International Terrestrial
 !     Reference System (see IERS Conventions 2003), measured along the
 !     meridians to 0 and 90 deg west respectively.
 !
-!  3) The matrix RC2T transforms from celestial to terrestrial
+!  3. The matrix RC2T transforms from celestial to terrestrial
 !     coordinates:
 !
 !        [TRS]  =  RPOM * R_3(ERA) * RC2I * [CRS]
@@ -5303,7 +5301,7 @@
 !     celestial-to-intermediate matrix, ERA is the Earth rotation angle
 !     and RPOM is the polar motion matrix.
 !
-!  4) The present routine is faster, but slightly less accurate (about
+!  4. The present routine is faster, but slightly less accurate (about
 !     1 mas), than the C2T00A routine.
 !
 !### Reference
@@ -5361,7 +5359,7 @@
 !
 !### Notes
 !
-!  1) The TT and UT1 dates TTA+TTB and UTA+UTB are Julian Dates,
+!  1. The TT and UT1 dates TTA+TTB and UTA+UTB are Julian Dates,
 !     apportioned in any convenient way between the arguments UTA and
 !     UTB.  For example, JD(UT1)=2450123.7 could be expressed in any of
 !     these ways, among others:
@@ -5383,12 +5381,12 @@
 !     question and the UTB argument lies in the range 0 to 1, or vice
 !     versa.
 !
-!  2) XP and YP are the coordinates (in radians) of the Celestial
+!  2. XP and YP are the coordinates (in radians) of the Celestial
 !     Intermediate Pole with respect to the International Terrestrial
 !     Reference System (see IERS Conventions 2003), measured along the
 !     meridians to 0 and 90 deg west respectively.
 !
-!  3) The matrix RC2T transforms from celestial to terrestrial
+!  3. The matrix RC2T transforms from celestial to terrestrial
 !     coordinates:
 !
 !        [TRS]  =  RPOM * R_3(ERA) * RC2I * [CRS]
@@ -5459,17 +5457,17 @@
 !
 !### Notes
 !
-!  1) The name of the present routine, C2TCEO, reflects the original
+!  1. The name of the present routine, C2TCEO, reflects the original
 !     name of the celestial intermediate origin (CIO), which before the
 !     adoption of IAU 2006 Resolution 2 was called the "celestial
 !     ephemeris origin" (CEO).
 !
-!  2) When the name change from CEO to CIO occurred, a new SOFA routine
+!  2. When the name change from CEO to CIO occurred, a new SOFA routine
 !     called C2TCIO was introduced as the successor to the existing
 !     C2TCEO.  The present routine is merely a front end to the new
 !     one.
 !
-!  3) The present routine is included in the SOFA collection only to
+!  3. The present routine is included in the SOFA collection only to
 !     support existing applications.  It should not be used in new
 !     applications.
 !
@@ -5509,7 +5507,7 @@
 !
 !### Notes
 !
-!  1) This routine constructs the rotation matrix that transforms
+!  1. This routine constructs the rotation matrix that transforms
 !     vectors in the celestial system into vectors in the terrestrial
 !     system.  It does so starting from precomputed components, namely
 !     the matrix which rotates from celestial coordinates to the
@@ -5520,7 +5518,7 @@
 !     recomputing the precession-nutation more often than necessary to
 !     achieve given accuracy objectives.
 !
-!  2) The relationship between the arguments is as follows:
+!  2. The relationship between the arguments is as follows:
 !
 !        [TRS]  =  RPOM * R_3(ERA) * RC2I * [CRS]
 !
@@ -5575,7 +5573,7 @@
 !
 !### Notes
 !
-!  1) This routine constructs the rotation matrix that transforms
+!  1. This routine constructs the rotation matrix that transforms
 !     vectors in the celestial system into vectors in the terrestrial
 !     system.  It does so starting from precomputed components, namely
 !     the matrix which rotates from celestial coordinates to the
@@ -5586,7 +5584,7 @@
 !     overhead of recomputing the precession-nutation more often than
 !     necessary to achieve given accuracy objectives.
 !
-!  2) The relationship between the arguments is as follows:
+!  2. The relationship between the arguments is as follows:
 !
 !        [TRS]  =  RPOM * R_3(GST) * RBPN * [CRS]
 !
@@ -5641,7 +5639,7 @@
 !
 !### Notes
 !
-!  1) The TT and UT1 dates TTA+TTB and UTA+UTB are Julian Dates,
+!  1. The TT and UT1 dates TTA+TTB and UTA+UTB are Julian Dates,
 !     apportioned in any convenient way between the arguments UTA and
 !     UTB.  For example, JD(UT1)=2450123.7 could be expressed in any of
 !     these ways, among others:
@@ -5663,18 +5661,18 @@
 !     question and the UTB argument lies in the range 0 to 1, or vice
 !     versa.
 !
-!  2) The caller is responsible for providing the nutation components;
+!  2. The caller is responsible for providing the nutation components;
 !     they are in longitude and obliquity, in radians and are with
 !     respect to the equinox and ecliptic of date.  For high-accuracy
 !     applications, free core nutation should be included as well as
 !     any other relevant corrections to the position of the CIP.
 !
-!  3) XP and YP are the coordinates (in radians) of the Celestial
+!  3. XP and YP are the coordinates (in radians) of the Celestial
 !     Intermediate Pole with respect to the International Terrestrial
 !     Reference System (see IERS Conventions 2003), measured along the
 !     meridians to 0 and 90 deg west respectively.
 !
-!  4) The matrix RC2T transforms from celestial to terrestrial
+!  4. The matrix RC2T transforms from celestial to terrestrial
 !     coordinates:
 !
 !        [TRS]  =  RPOM * R_3(GST) * RBPN * [CRS]
@@ -5687,7 +5685,7 @@
 !     bias-precession-nutation matrix, GST is the Greenwich (apparent)
 !     Sidereal Time and RPOM is the polar motion matrix.
 !
-!  5) Although its name does not include "00", this routine is in fact
+!  5. Although its name does not include "00", this routine is in fact
 !     specific to the IAU 2000 models.
 !
 !### Reference
@@ -5756,7 +5754,7 @@
 !
 !### Notes
 !
-!  1) The TT and UT1 dates TTA+TTB and UTA+UTB are Julian Dates,
+!  1. The TT and UT1 dates TTA+TTB and UTA+UTB are Julian Dates,
 !     apportioned in any convenient way between the arguments UTA and
 !     UTB.  For example, JD(UT1)=2450123.7 could be expressed in any of
 !     these ways, among others:
@@ -5778,15 +5776,15 @@
 !     question and the UTB argument lies in the range 0 to 1, or vice
 !     versa.
 !
-!  2) The Celestial Intermediate Pole coordinates are the x,y components
+!  2. The Celestial Intermediate Pole coordinates are the x,y components
 !     of the unit vector in the Geocentric Celestial Reference System.
 !
-!  3) XP and YP are the coordinates (in radians) of the Celestial
+!  3. XP and YP are the coordinates (in radians) of the Celestial
 !     Intermediate Pole with respect to the International Terrestrial
 !     Reference System (see IERS Conventions 2003), measured along the
 !     meridians to 0 and 90 deg west respectively.
 !
-!  4) The matrix RC2T transforms from celestial to terrestrial
+!  4. The matrix RC2T transforms from celestial to terrestrial
 !     coordinates:
 !
 !        [TRS]  =  RPOM * R_3(ERA) * RC2I * [CRS]
@@ -5798,7 +5796,7 @@
 !     Reference System (see IERS Conventions 2003), ERA is the Earth
 !     Rotation Angle and RPOM is the polar motion matrix.
 !
-!  5) Although its name does not include "00", this routine is in fact
+!  5. Although its name does not include "00", this routine is in fact
 !     specific to the IAU 2000 models.
 !
 ! Reference:
@@ -5863,15 +5861,15 @@
 !
 !### Notes
 !
-!  1) The algorithm used is valid from -4800 March 1, but this
+!  1. The algorithm used is valid from -4800 March 1, but this
 !     implementation rejects dates before -4799 January 1.
 !
-!  2) The Julian Date is returned in two pieces, in the usual SOFA
+!  2. The Julian Date is returned in two pieces, in the usual SOFA
 !     manner, which is designed to preserve time resolution.  The
 !     Julian Date is available as a single number by adding DJM0 and
 !     DJM.
 !
-!  3) In early eras the conversion is from the "Proleptic Gregorian
+!  3. In early eras the conversion is from the "Proleptic Gregorian
 !     Calendar";  no account is taken of the date(s) of adoption of
 !     the Gregorian Calendar, nor is the AD/BC numbering convention
 !     observed.
@@ -6057,11 +6055,11 @@
 !
 !### Notes
 !
-!  1) SCALE identifies the time scale.  Only the value 'UTC' (in upper
+!  1. SCALE identifies the time scale.  Only the value 'UTC' (in upper
 !     case) is significant, and enables handling of leap seconds (see
 !     Note 4).
 !
-!  2) NDP is the number of decimal places in the seconds field, and can
+!  2. NDP is the number of decimal places in the seconds field, and can
 !     have negative as well as positive values, such as:
 !
 !     NDP         resolution
@@ -6076,13 +6074,13 @@
 !
 !     The limits are platform dependent, but a safe range is -5 to +9.
 !
-!  3) D1+D2 is Julian Date, apportioned in any convenient way between
+!  3. D1+D2 is Julian Date, apportioned in any convenient way between
 !     the two arguments, for example where D1 is the Julian Day Number
 !     and D2 is the fraction of a day.  In the case of UTC, where the
 !     use of JD is problematical, special conventions apply:  see the
 !     next note.
 !
-!  4) JD cannot unambiguously represent UTC during a leap second unless
+!  4. JD cannot unambiguously represent UTC during a leap second unless
 !     special measures are taken.  The SOFA internal convention is that
 !     the quasi-JD day represents UTC days whether the length is 86399,
 !     86400 or 86401 SI seconds.  In the 1960-1972 era there were
@@ -6090,11 +6088,11 @@
 !     expression was changed, and these "mini-leaps" are also included
 !     in the SOFA convention.
 !
-!  5) The warning status "dubious year" flags UTCs that predate the
+!  5. The warning status "dubious year" flags UTCs that predate the
 !     introduction of the time scale or that are too far in the future
 !     to be trusted.  See DAT for further details.
 !
-!  6) For calendar conventions and limitations, see CAL2JD.
+!  6. For calendar conventions and limitations, see CAL2JD.
 !
 !### History
 !  * IAU SOFA revision: 2014 February 15
@@ -6241,8 +6239,8 @@
 !
 !### Notes
 !
-!  1) NDP is interpreted as follows:
-!
+!  1. NDP is interpreted as follows:
+!```
 !     NDP         resolution
 !      :      ...0000 00 00
 !     -7         1000 00 00
@@ -6257,8 +6255,8 @@
 !      2            0 00 00.01
 !      3            0 00 00.001
 !      :            0 00 00.000...
-!
-!  2) The largest positive useful value for NDP is determined by the
+!```
+!  2. The largest positive useful value for NDP is determined by the
 !     size of DAYS, the format of REAL(WP) floating-point
 !     numbers on the target platform, and the risk of overflowing
 !     IHMSF(4).  On a typical platform, for DAYS up to 1D0, the
@@ -6266,7 +6264,7 @@
 !     However, the practical limit is typically NDP=9, set by the
 !     capacity of a 32-bit IHMSF(4).
 !
-!  3) The absolute value of DAYS may exceed 1D0.  In cases where it
+!  3. The absolute value of DAYS may exceed 1D0.  In cases where it
 !     does not, it is up to the caller to test for and handle the
 !     case where DAYS is very nearly 1D0 and rounds up to 24 hours,
 !     by testing for IHMSF(1)=24 and setting IHMSF(1-4) to zero.
@@ -6399,7 +6397,7 @@
 !
 !### Notes
 !
-!  1) UTC began at 1960 January 1.0 (JD 2436934.5) and it is improper
+!  1. UTC began at 1960 January 1.0 (JD 2436934.5) and it is improper
 !     to call the routine with an earlier date.  If this is attempted,
 !     zero is returned together with a warning status.
 !
@@ -6414,18 +6412,18 @@
 !     This is distinct from the error status J=-1, which signifies a
 !     year so early that JD could not be computed.
 !
-!  2) If the specified date is for a day which ends with a leap second,
+!  2. If the specified date is for a day which ends with a leap second,
 !     the TAI-UTC value returned is for the period leading up to the
 !     leap second.  If the date is for a day which begins as a leap
 !     second ends, the TAI-UTC returned is for the period following the
 !     leap second.
 !
-!  3) The day number must be in the normal calendar range, for example
+!  3. The day number must be in the normal calendar range, for example
 !     1 through 30 for April.  The "almanac" convention of allowing
 !     such dates as January 0 and December 32 is not supported in this
 !     routine, in order to avoid confusion near leap seconds.
 !
-!  4) The fraction of day is used only for dates before the introduction
+!  4. The fraction of day is used only for dates before the introduction
 !     of leap seconds, the first of which occurred at the end of 1971.
 !     It is tested for validity (0 to 1 is the valid range) even if not
 !     used;  if invalid, zero is used and status J=-4 is returned.  For
@@ -6433,20 +6431,20 @@
 !     resulting error is always less than 3 ms (and occurs only
 !     pre-1972).
 !
-!  5) The status value returned in the case where there are multiple
+!  5. The status value returned in the case where there are multiple
 !     errors refers to the first error detected.  For example, if the
 !     month and day are 13 and 32 respectively, J=-2 (bad month) will be
 !     returned.  The "internal error" status refers to a case that is
 !     impossible but causes some compilers to issue a warning.
 !
-!  6) In cases where a valid result is not available, zero is returned.
+!  6. In cases where a valid result is not available, zero is returned.
 !
 !### References
 !
-!  1) For dates from 1961 January 1 onwards, the expressions from the
+!  1. For dates from 1961 January 1 onwards, the expressions from the
 !     file ftp://maia.usno.navy.mil/ser7/tai-utc.dat are used.
 !
-!  2) The 5ms timestep at 1961 January 1 is taken from 2.58.1 (p87) of
+!  2. The 5ms timestep at 1961 January 1 is taken from 2.58.1 (p87) of
 !     the 1992 Explanatory Supplement.
 !
 !### History
@@ -6647,7 +6645,7 @@
 !
 !### Notes
 !
-!  1) The date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the arguments DATE1 and DATE2.  For
 !     example, JD(TDB)=2450123.7 could be expressed in any of these
 !     ways, among others:
@@ -6670,17 +6668,17 @@
 !     the terrestrial dynamical time (TT) can be used with no practical
 !     effect on the accuracy of the prediction.
 !
-!  2) TT can be regarded as a coordinate time that is realized as an
+!  2. TT can be regarded as a coordinate time that is realized as an
 !     offset of 32.184s from International Atomic Time, TAI.  TT is a
 !     specific linear transformation of geocentric coordinate time TCG,
 !     which is the time scale for the Geocentric Celestial Reference
 !     System, GCRS.
 !
-!  3) TDB is a coordinate time, and is a specific linear transformation
+!  3. TDB is a coordinate time, and is a specific linear transformation
 !     of barycentric coordinate time TCB, which is the time scale for
 !     the Barycentric Celestial Reference System, BCRS.
 !
-!  4) The difference TCG-TCB depends on the masses and positions of the
+!  4. The difference TCG-TCB depends on the masses and positions of the
 !     bodies of the solar system and the velocity of the Earth.  It is
 !     dominated by a rate difference, the residual being of a periodic
 !     character.  The latter, which is modeled by the present routine,
@@ -6692,7 +6690,7 @@
 !     surface) experiences variations in speed (with respect to the
 !     BCRS) and gravitational potential.
 !
-!  5) TDB can be regarded as the same as TCB but with a rate adjustment
+!  5. TDB can be regarded as the same as TCB but with a rate adjustment
 !     to keep it close to TT, which is convenient for many applications.
 !     The history of successive attempts to define TDB is set out in
 !     Resolution 3 adopted by the IAU General Assembly in 2006, which
@@ -6702,7 +6700,7 @@
 !     could introduce a linear drift between TDB and TT;  however, any
 !     such drift is unlikely to exceed 1 nanosecond per century.
 !
-!  6) The geocentric TDB-TT model used in the present routine is that of
+!  6. The geocentric TDB-TT model used in the present routine is that of
 !     Fairhead & Bretagnon (1990), in its full form.  It was originally
 !     supplied by Fairhead (private communications with P.T.Wallace,
 !     1990) as a Fortran subroutine.  The present routine contains an
@@ -6722,12 +6720,12 @@
 !     model can be nullified, and the routine will return the Fairhead
 !     & Bretagnon result alone.
 !
-!  7) During the interval 1950-2050, the absolute accuracy is better
+!  7. During the interval 1950-2050, the absolute accuracy is better
 !     than +/- 3 nanoseconds relative to time ephemerides obtained by
 !     direct numerical integrations based on the JPL DE405 solar system
 !     ephemeris.
 !
-!  8) It must be stressed that the present routine is merely a model,
+!  8. It must be stressed that the present routine is merely a model,
 !     and that numerical integration of solar-system ephemerides is the
 !     definitive method for predicting the relationship between TCG and
 !     TCB and hence between TT and TDB.
@@ -7795,18 +7793,18 @@
 !
 !### Notes
 !
-!  1) SCALE identifies the time scale.  Only the value 'UTC' (in upper
+!  1. SCALE identifies the time scale.  Only the value 'UTC' (in upper
 !     case) is significant, and enables handling of leap seconds (see
 !     Note 4).
 !
-!  2) For calendar conventions and limitations, see CAL2JD.
+!  2. For calendar conventions and limitations, see CAL2JD.
 !
-!  3) The sum of the results, D1+D2, is Julian Date, where normally D1
+!  3. The sum of the results, D1+D2, is Julian Date, where normally D1
 !     is the Julian Day Number and D2 is the fraction of a day.  In the
 !     case of UTC, where the use of JD is problematical, special
 !     conventions apply:  see the next note.
 !
-!  4) JD cannot unambiguously represent UTC during a leap second unless
+!  4. JD cannot unambiguously represent UTC during a leap second unless
 !     special measures are taken.  The SOFA internal convention is that
 !     the quasi-JD day represents UTC days whether the length is 86399,
 !     86400 or 86401 SI seconds.  In the 1960-1972 era there were
@@ -7814,16 +7812,16 @@
 !     expression was changed, and these "mini-leaps" are also included
 !     in the SOFA convention.
 !
-!  5) The warning status "time is after end of day" usually means that
+!  5. The warning status "time is after end of day" usually means that
 !     the SEC argument is greater than 60D0.  However, in a day ending
 !     in a leap second the limit changes to 61D0 (or 59D0 in the case of
 !     a negative leap second).
 !
-!  6) The warning status "dubious year" flags UTCs that predate the
+!  6. The warning status "dubious year" flags UTCs that predate the
 !     introduction of the time scale or that are too far in the future
 !     to be trusted.  See DAT for further details.
 !
-!  7) Only in the case of continuous and regular time scales (TAI, TT,
+!  7. Only in the case of continuous and regular time scales (TAI, TT,
 !     TCG, TCB and TDB) is the result D1+D2 a Julian Date, strictly
 !     speaking.  In the other cases (UT1 and UTC) the result must be
 !     used with circumspection;  in particular the difference between
@@ -7940,7 +7938,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -7959,11 +7957,11 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) No assumptions are made about whether the coordinates represent
+!  2. No assumptions are made about whether the coordinates represent
 !     starlight and embody astrometric effects such as parallax or
 !     aberration.
 !
-!  3) The transformation is approximately that from ecliptic longitude
+!  3. The transformation is approximately that from ecliptic longitude
 !     and latitude (mean equinox and ecliptic of date) to mean J2000.0
 !     right ascension and declination, with only frame bias (always less
 !     than 25 mas) to disturb this classical picture.
@@ -8017,7 +8015,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -8036,7 +8034,7 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The matrix is in the sense
+!  2. The matrix is in the sense
 !
 !        E_ep = RM x P_ICRS,
 !
@@ -8044,7 +8042,7 @@
 !     and declination axes and E_ep is the same vector with respect to
 !     the (inertial) ecliptic and equinox of date.
 !
-!  3) P_ICRS is a free vector, merely a direction, typically of unit
+!  3. P_ICRS is a free vector, merely a direction, typically of unit
 !     magnitude, and not bound to any particular spatial origin, such as
 !     the Earth, Sun or SSB.  No assumptions are made about whether it
 !     represents starlight and embodies astrometric effects such as
@@ -8099,7 +8097,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -8118,13 +8116,13 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The obliquity, in radians, is mean of date.
+!  2. The obliquity, in radians, is mean of date.
 !
-!  3) The result, which is in radians, operates in the following sense:
+!  3. The result, which is in radians, operates in the following sense:
 !
 !        Greenwich apparent ST = GMST + equation of the equinoxes
 !
-!  4) The result is compatible with the IAU 2000 resolutions.  For
+!  4. The result is compatible with the IAU 2000 resolutions.  For
 !     further details, see IERS Conventions 2003 and Capitaine et al.
 !     (2002).
 !
@@ -8169,7 +8167,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -8188,11 +8186,11 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The result, which is in radians, operates in the following sense:
+!  2. The result, which is in radians, operates in the following sense:
 !
 !        Greenwich apparent ST = GMST + equation of the equinoxes
 !
-!  3) The result is compatible with the IAU 2000 resolutions.  For
+!  3. The result is compatible with the IAU 2000 resolutions.  For
 !     further details, see IERS Conventions 2003 and Capitaine et al.
 !     (2002).
 !
@@ -8247,7 +8245,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -8266,11 +8264,11 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The result, which is in radians, operates in the following sense:
+!  2. The result, which is in radians, operates in the following sense:
 !
 !        Greenwich apparent ST = GMST + equation of the equinoxes
 !
-!  3) The result is compatible with the IAU 2000 resolutions except that
+!  3. The result is compatible with the IAU 2000 resolutions except that
 !     accuracy has been compromised for the sake of speed.  For further
 !     details, see McCarthy & Luzum (2001), IERS Conventions 2003 and
 !     Capitaine et al. (2003).
@@ -8330,7 +8328,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -8349,7 +8347,7 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The result, which is in radians, operates in the following sense:
+!  2. The result, which is in radians, operates in the following sense:
 !
 !        Greenwich apparent ST = GMST + equation of the equinoxes
 !
@@ -8390,7 +8388,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -8409,7 +8407,7 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The "complementary terms" are part of the equation of the
+!  2. The "complementary terms" are part of the equation of the
 !     equinoxes (EE), classically the difference between apparent and
 !     mean Sidereal Time:
 !
@@ -8643,7 +8641,7 @@
 !
 !### Notes
 !
-!  1) The identifier N is a number that specifies the choice of
+!  1. The identifier N is a number that specifies the choice of
 !     reference ellipsoid.  The following are supported:
 !
 !        N   ellipsoid
@@ -8654,11 +8652,11 @@
 !
 !     The number N has no significance outside the SOFA software.
 !
-!  2) The ellipsoid parameters are returned in the form of equatorial
+!  2. The ellipsoid parameters are returned in the form of equatorial
 !     radius in meters (A) and flattening (F).  The latter is a number
 !     around 0.00335, i.e. around 1/298.
 !
-!  3) For the case where an unsupported N value is supplied, zero A and
+!  3. For the case where an unsupported N value is supplied, zero A and
 !     F are returned, as well as error status.
 !
 !### References
@@ -8736,7 +8734,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -8755,7 +8753,7 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The equation of the origins is the distance between the true
+!  2. The equation of the origins is the distance between the true
 !     equinox and the celestial intermediate origin and, equivalently,
 !     the difference between Earth rotation angle and Greenwich
 !     apparent sidereal time (ERA-GST).  It comprises the precession
@@ -8810,14 +8808,14 @@
 !
 !### Notes
 !
-!  1)  The equation of the origins is the distance between the true
+!  1.  The equation of the origins is the distance between the true
 !      equinox and the celestial intermediate origin and, equivalently,
 !      the difference between Earth rotation angle and Greenwich
 !      apparent sidereal time (ERA-GST).  It comprises the precession
 !      (since J2000.0) in right ascension plus the equation of the
 !      equinoxes (including the small correction terms).
 !
-!  2)  The algorithm is from Wallace & Capitaine (2006).
+!  2.  The algorithm is from Wallace & Capitaine (2006).
 !
 !### References
 !
@@ -9040,7 +9038,7 @@
 !
 !### Notes
 !
-!  1) The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TDB)=2450123.7 could be expressed in any of these ways, among
 !     others:
@@ -9062,7 +9060,7 @@
 !     limited by the algorithm itself than the way the epoch has been
 !     expressed.
 !
-!  2) On return, the arrays PVH and PVB contain the following:
+!  2. On return, the arrays PVH and PVB contain the following:
 !
 !        PVH(1,1)  x       }
 !        PVH(2,1)  y       } heliocentric position, au
@@ -9083,12 +9081,12 @@
 !     The vectors are with respect to the Barycentric Celestial
 !     Reference System.  The time unit is one day in TDB.
 !
-!  3) The routine is a SIMPLIFIED SOLUTION from the planetary theory
+!  3. The routine is a SIMPLIFIED SOLUTION from the planetary theory
 !     VSOP2000 (X. Moisson, P. Bretagnon, 2001, Celes. Mechanics &
 !     Dyn. Astron., 80, 3/4, 205-213) and is an adaptation of original
 !     Fortran code supplied by P. Bretagnon (private comm., 2000).
 !
-!  4) Comparisons over the time span 1900-2100 with this simplified
+!  4. Comparisons over the time span 1900-2100 with this simplified
 !     solution and the JPL DE405 ephemeris give the following results:
 !
 !                                RMS    max
@@ -11558,7 +11556,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -11577,11 +11575,11 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) No assumptions are made about whether the coordinates represent
+!  2. No assumptions are made about whether the coordinates represent
 !     starlight and embody astrometric effects such as parallax or
 !     aberration.
 !
-!  3) The transformation is approximately that from mean J2000.0 right
+!  3. The transformation is approximately that from mean J2000.0 right
 !     ascension and declination to ecliptic longitude and latitude (mean
 !     equinox and ecliptic of date), with only frame bias (always less
 !     than 25 mas) to disturb this classical picture.
@@ -11635,7 +11633,7 @@
 !
 !### Notes
 !
-!  1) The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TDB)=2450123.7 could be expressed in any of these ways, among
 !     others:
@@ -11654,7 +11652,7 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The result, which is in radians, operates in the following sense:
+!  2. The result, which is in radians, operates in the following sense:
 !
 !        Greenwich apparent ST = GMST + equation of the equinoxes
 !
@@ -11711,7 +11709,7 @@
 !
 !### Notes
 !
-!  1) The UT1 date DJ1+DJ2 is a Julian Date, apportioned in any
+!  1. The UT1 date DJ1+DJ2 is a Julian Date, apportioned in any
 !     convenient way between the arguments DJ1 and DJ2.  For example,
 !     JD(UT1)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -11732,7 +11730,7 @@
 !     0hrs UT1 on the day in question and the DJ2 argument lies in the
 !     range 0 to 1, or vice versa.
 !
-!  2) The algorithm is adapted from Expression 22 of Capitaine et al.
+!  2. The algorithm is adapted from Expression 22 of Capitaine et al.
 !     2000.  The time argument has been expressed in days directly,
 !     and, to retain precision, integer contributions have been
 !     eliminated.  The same formulation is given in IERS Conventions
@@ -11793,10 +11791,10 @@
 !
 !### Notes
 !
-!  1) Though T is strictly TDB, it is usually more convenient to use TT,
+!  1. Though T is strictly TDB, it is usually more convenient to use TT,
 !     which makes no significant difference.
 !
-!  2) The expression used is as adopted in IERS Conventions (2003) and
+!  2. The expression used is as adopted in IERS Conventions (2003) and
 !     is from Simon et al. (1994).
 !
 !### References
@@ -11844,10 +11842,10 @@
 !
 !### Notes
 !
-!  1) Though T is strictly TDB, it is usually more convenient to use TT,
+!  1. Though T is strictly TDB, it is usually more convenient to use TT,
 !     which makes no significant difference.
 !
-!  2) The expression used is as adopted in IERS Conventions (2003) and
+!  2. The expression used is as adopted in IERS Conventions (2003) and
 !     comes from Souchay et al. (1999) after Simon et al. (1994).
 !
 !### References
@@ -11892,10 +11890,10 @@
 !
 !### Notes
 !
-!  1) Though T is strictly TDB, it is usually more convenient to use TT,
+!  1. Though T is strictly TDB, it is usually more convenient to use TT,
 !     which makes no significant difference.
 !
-!  2) The expression used is as adopted in IERS Conventions (2003) and
+!  2. The expression used is as adopted in IERS Conventions (2003) and
 !     is from Simon et al. (1994).
 !
 !### References
@@ -11944,10 +11942,10 @@
 !
 !### Notes
 !
-!  1) Though T is strictly TDB, it is usually more convenient to use TT,
+!  1. Though T is strictly TDB, it is usually more convenient to use TT,
 !     which makes no significant difference.
 !
-!  2) The expression used is as adopted in IERS Conventions (2003) and
+!  2. The expression used is as adopted in IERS Conventions (2003) and
 !     comes from Souchay et al. (1999) after Simon et al. (1994).
 !
 !### References
@@ -11991,10 +11989,10 @@
 !
 !### Notes
 !
-!  1) Though T is strictly TDB, it is usually more convenient to use TT,
+!  1. Though T is strictly TDB, it is usually more convenient to use TT,
 !     which makes no significant difference.
 !
-!  2) The expression used is as adopted in IERS Conventions (2003) and
+!  2. The expression used is as adopted in IERS Conventions (2003) and
 !     is from Simon et al. (1994).
 !
 !### References
@@ -12042,10 +12040,10 @@
 !
 !### Notes
 !
-!  1) Though T is strictly TDB, it is usually more convenient to use TT,
+!  1. Though T is strictly TDB, it is usually more convenient to use TT,
 !     which makes no significant difference.
 !
-!  2) The expression used is as adopted in IERS Conventions (2003) and
+!  2. The expression used is as adopted in IERS Conventions (2003) and
 !     is from Simon et al. (1994).
 !
 !### References
@@ -12093,10 +12091,10 @@
 !
 !### Notes
 !
-!  1) Though T is strictly TDB, it is usually more convenient to use TT,
+!  1. Though T is strictly TDB, it is usually more convenient to use TT,
 !     which makes no significant difference.
 !
-!  2) The expression used is as adopted in IERS Conventions (2003) and
+!  2. The expression used is as adopted in IERS Conventions (2003) and
 !     comes from Souchay et al. (1999) after Simon et al. (1994).
 !
 !### References
@@ -12140,10 +12138,10 @@
 !
 !### Notes
 !
-!  1) Though T is strictly TDB, it is usually more convenient to use TT,
+!  1. Though T is strictly TDB, it is usually more convenient to use TT,
 !     which makes no significant difference.
 !
-!  2) The expression used is as adopted in IERS Conventions (2003) and
+!  2. The expression used is as adopted in IERS Conventions (2003) and
 !     comes from Souchay et al. (1999) after Simon et al. (1994).
 !
 !### References
@@ -12187,10 +12185,10 @@
 !
 !### Notes
 !
-!  1) Though T is strictly TDB, it is usually more convenient to use TT,
+!  1. Though T is strictly TDB, it is usually more convenient to use TT,
 !     which makes no significant difference.
 !
-!  2) The expression used is as adopted in IERS Conventions (2003) and
+!  2. The expression used is as adopted in IERS Conventions (2003) and
 !     is adapted from Simon et al. (1994).
 !
 !### References
@@ -12231,10 +12229,10 @@
 !
 !### Notes
 !
-!  1) Though T is strictly TDB, it is usually more convenient to use TT,
+!  1. Though T is strictly TDB, it is usually more convenient to use TT,
 !     which makes no significant difference.
 !
-!  2) The expression used is as adopted in IERS Conventions (2003) and
+!  2. The expression used is as adopted in IERS Conventions (2003) and
 !     is from Simon et al. (1994).
 !
 !### References
@@ -12282,10 +12280,10 @@
 !
 !### Notes
 !
-!  1) Though T is strictly TDB, it is usually more convenient to use TT,
+!  1. Though T is strictly TDB, it is usually more convenient to use TT,
 !     which makes no significant difference.
 !
-!  2) The expression used is as adopted in IERS Conventions (2003).  It
+!  2. The expression used is as adopted in IERS Conventions (2003).  It
 !     is taken from Kinoshita & Souchay (1990) and comes originally from
 !     Lieske et al. (1977).
 !
@@ -12330,10 +12328,10 @@
 !
 !### Notes
 !
-!  1) Though T is strictly TDB, it is usually more convenient to use TT,
+!  1. Though T is strictly TDB, it is usually more convenient to use TT,
 !     which makes no significant difference.
 !
-!  2) The expression used is as adopted in IERS Conventions (2003) and
+!  2. The expression used is as adopted in IERS Conventions (2003) and
 !     comes from Souchay et al. (1999) after Simon et al. (1994).
 !
 !### References
@@ -12377,10 +12375,10 @@
 !
 !### Notes
 !
-!  1) Though T is strictly TDB, it is usually more convenient to use TT,
+!  1. Though T is strictly TDB, it is usually more convenient to use TT,
 !     which makes no significant difference.
 !
-!  2) The expression used is as adopted in IERS Conventions (2003) and
+!  2. The expression used is as adopted in IERS Conventions (2003) and
 !     is adapted from Simon et al. (1994).
 !
 !### References
@@ -12421,10 +12419,10 @@
 !
 !### Notes
 !
-!  1) Though T is strictly TDB, it is usually more convenient to use TT,
+!  1. Though T is strictly TDB, it is usually more convenient to use TT,
 !     which makes no significant difference.
 !
-!  2) The expression used is as adopted in IERS Conventions (2003) and
+!  2. The expression used is as adopted in IERS Conventions (2003) and
 !     comes from Souchay et al. (1999) after Simon et al. (1994).
 !
 !### References
@@ -12476,10 +12474,10 @@
 !
 !### Notes
 !
-!  1) The proper motions in RA are dRA/dt rather than cos(Dec)*dRA/dt,
+!  1. The proper motions in RA are dRA/dt rather than cos(Dec)*dRA/dt,
 !     and are per year rather than per century.
 !
-!  2) The conversion is somewhat complicated, for several reasons:
+!  2. The conversion is somewhat complicated, for several reasons:
 !
 !     . Change of standard epoch from B1950.0 to J2000.0.
 !
@@ -12503,11 +12501,11 @@
 !     Andoyer's post-Newcomb precession.  The numerical constants from
 !     Seidelmann (1992) are used canonically.
 !
-!  3) Conversion from B1950.0 FK4 to J2000.0 FK5 only is provided for.
+!  3. Conversion from B1950.0 FK4 to J2000.0 FK5 only is provided for.
 !     Conversions for different epochs and equinoxes would require
 !     additional treatment for precession, proper motion and E-terms.
 !
-!  4) In the FK4 catalog the proper motions of stars within 10 degrees
+!  4. In the FK4 catalog the proper motions of stars within 10 degrees
 !     of the poles do not embody differential E-terms effects and
 !     should, strictly speaking, be handled in a different manner from
 !     stars outside these regions.  However, given the general lack of
@@ -12687,20 +12685,20 @@
 !
 !### Notes
 !
-!  1) The epoch BEPOCH is strictly speaking Besselian, but if a Julian
+!  1. The epoch BEPOCH is strictly speaking Besselian, but if a Julian
 !     epoch is supplied the result will be affected only to a negligible
 !     extent.
 !
-!  2) The method is from Appendix 2 of Aoki et al. (1983), but using the
+!  2. The method is from Appendix 2 of Aoki et al. (1983), but using the
 !     constants of Seidelmann (1992).  See the routine FK425 for a
 !     general introduction to the FK4 to FK5 conversion.
 !
-!  3) Conversion from equinox B1950.0 FK4 to equinox J2000.0 FK5 only is
+!  3. Conversion from equinox B1950.0 FK4 to equinox J2000.0 FK5 only is
 !     provided for.  Conversions for different starting and/or ending
 !     epochs would require additional treatment for precession, proper
 !     motion and E-terms.
 !
-!  4) In the FK4 catalog the proper motions of stars within 10 degrees
+!  4. In the FK4 catalog the proper motions of stars within 10 degrees
 !     of the poles do not embody differential E-terms effects and
 !     should, strictly speaking, be handled in a different manner from
 !     stars outside these regions.  However, given the general lack of
@@ -12826,10 +12824,10 @@
 !
 !### Notes
 !
-!  1) The proper motions in RA are dRA/dt rather than cos(Dec)*dRA/dt,
+!  1. The proper motions in RA are dRA/dt rather than cos(Dec)*dRA/dt,
 !     and are per year rather than per century.
 !
-!  2) The conversion is somewhat complicated, for several reasons:
+!  2. The conversion is somewhat complicated, for several reasons:
 !
 !     . Change of standard epoch from J2000.0 to B1950.0.
 !
@@ -12853,7 +12851,7 @@
 !     Andoyer's post-Newcomb precession.  The numerical constants from
 !     Seidelmann (1992) are used canonically.
 !
-!  4) In the FK4 catalog the proper motions of stars within 10 degrees
+!  4. In the FK4 catalog the proper motions of stars within 10 degrees
 !     of the poles do not embody differential E-terms effects and
 !     should, strictly speaking, be handled in a different manner from
 !     stars outside these regions.  However, given the general lack of
@@ -13053,17 +13051,17 @@
 !
 !### Notes
 !
-!  1) This routine transforms FK5 star positions and proper motions into
+!  1. This routine transforms FK5 star positions and proper motions into
 !     the system of the Hipparcos catalog.
 !
-!  2) The proper motions in RA are dRA/dt rather than cos(Dec)*dRA/dt,
+!  2. The proper motions in RA are dRA/dt rather than cos(Dec)*dRA/dt,
 !     and are per year rather than per century.
 !
-!  3) The FK5 to Hipparcos transformation is modeled as a pure rotation
+!  3. The FK5 to Hipparcos transformation is modeled as a pure rotation
 !     and spin;  zonal errors in the FK5 catalog are not taken into
 !     account.
 !
-!  4) See also H2FK5, FK5HZ, HFK5Z.
+!  4. See also H2FK5, FK5HZ, HFK5Z.
 !
 !### Reference
 !
@@ -13140,10 +13138,10 @@
 !
 !### Notes
 !
-!  1) In contrast to the FK524 routine, here the FK5 proper motions,
+!  1. In contrast to the FK524 routine, here the FK5 proper motions,
 !     the parallax and the radial velocity are presumed zero.
 !
-!  2) This routine converts a star position from the IAU 1976 FK5
+!  2. This routine converts a star position from the IAU 1976 FK5
 !     (Fricke) system to the former FK4 (Bessel-Newcomb) system, for
 !     cases such as distant radio sources where it is presumed there is
 !     zero parallax and no proper motion.  Because of the E-terms of
@@ -13151,17 +13149,17 @@
 !     in FK4, and the present routine returns those fictitious proper
 !     motions.
 !
-!  3) Conversion from B1950.0 FK4 to J2000.0 FK5 only is provided for.
+!  3. Conversion from B1950.0 FK4 to J2000.0 FK5 only is provided for.
 !     Conversions involving other equinoxes would require additional
 !     treatment for precession.
 !
-!  4) The position returned by this routine is in the B1950.0 FK4
+!  4. The position returned by this routine is in the B1950.0 FK4
 !     reference system but at Besselian epoch BEPOCH.  For comparison
 !     with catalogs the BEPOCH argument will frequently be 1950D0.  (In
 !     this context the distinction between Besselian and Julian epoch is
 !     insignificant.)
 !
-!  5) The RA component of the returned (fictitious) proper motion is
+!  5. The RA component of the returned (fictitious) proper motion is
 !     dRA/dt rather than cos(Dec)*dRA/dt.
 !
 !### History
@@ -13224,18 +13222,18 @@
 !
 !### Notes
 !
-!  1) This routine models the FK5 to Hipparcos transformation as a
+!  1. This routine models the FK5 to Hipparcos transformation as a
 !     pure rotation and spin;  zonal errors in the FK5 catalogue are
 !     not taken into account.
 !
-!  2) The r-matrix R5H operates in the sense:
+!  2. The r-matrix R5H operates in the sense:
 !
 !           P_Hipparcos = R5H x P_FK5
 !
 !     where P_FK5 is a p-vector in the FK5 frame, and P_Hipparcos is
 !     the equivalent Hipparcos p-vector.
 !
-!  3) The r-vector S5H represents the time derivative of the FK5 to
+!  3. The r-vector S5H represents the time derivative of the FK5 to
 !     Hipparcos rotation.  The units are radians per year (Julian,
 !     TDB).
 !
@@ -13297,13 +13295,13 @@
 !
 !### Notes
 !
-!  1) This routine converts a star position from the FK5 system to
+!  1. This routine converts a star position from the FK5 system to
 !     the Hipparcos system, in such a way that the Hipparcos proper
 !     motion is zero.  Because such a star has, in general, a non-zero
 !     proper motion in the FK5 system, the routine requires the date
 !     at which the position in the FK5 system was determined.
 !
-!  2) The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
+!  2. The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TDB)=2450123.7 could be expressed in any of these ways, among
 !     others:
@@ -13322,14 +13320,14 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  3) The FK5 to Hipparcos transformation is modeled as a pure
+!  3. The FK5 to Hipparcos transformation is modeled as a pure
 !     rotation and spin;  zonal errors in the FK5 catalogue are
 !     not taken into account.
 !
-!  4) The position returned by this routine is in the Hipparcos
+!  4. The position returned by this routine is in the Hipparcos
 !     reference system but at date DATE1+DATE2.
 !
-!  5) See also FK52H, H2FK5, HFK5Z.
+!  5. See also FK52H, H2FK5, HFK5Z.
 !
 !### Reference
 !
@@ -13397,7 +13395,7 @@
 !
 !### Notes
 !
-!  1) Naming the following points:
+!  1. Naming the following points:
 !
 !           e = J2000.0 ecliptic pole,
 !           p = GCRS pole,
@@ -13411,12 +13409,12 @@
 !        PSI = psi = pEP
 !        EPS = epsilon = EP
 !
-!  2) The matrix representing the combined effects of frame bias,
+!  2. The matrix representing the combined effects of frame bias,
 !     precession and nutation is:
 !
 !        NxPxB = R_1(-EPS).R_3(-PSI).R_1(PHIB).R_3(GAMB)
 !
-!  3) Three different matrices can be constructed, depending on the
+!  3. Three different matrices can be constructed, depending on the
 !     supplied angles:
 !
 !     o  To obtain the nutation x precession x frame bias matrix,
@@ -13477,7 +13475,7 @@
 !
 !### Notes
 !
-!  1) Naming the following points:
+!  1. Naming the following points:
 !
 !           e = J2000.0 ecliptic pole,
 !           p = GCRS pole
@@ -13491,7 +13489,7 @@
 !        PSI = psi = pEP
 !        EPS = epsilon = EP
 !
-!  2) The matrix representing the combined effects of frame bias,
+!  2. The matrix representing the combined effects of frame bias,
 !     precession and nutation is:
 !
 !        NxPxB = R_1(-EPSA).R_3(-PSI).R_1(PHIB).R_3(GAMB)
@@ -13544,7 +13542,7 @@
 !
 !### Notes
 !
-!  1) The IAU 1958 system of Galactic coordinates was defined with
+!  1. The IAU 1958 system of Galactic coordinates was defined with
 !     respect to the now obsolete reference system FK4 B1950.0.  When
 !     interpreting the system in a modern context, several factors have
 !     to be taken into account:
@@ -13571,7 +13569,7 @@
 !     present SOFA routine the matrix elements have been recomputed from
 !     the canonical three angles and are given to 30 decimal places.
 !
-!  2) The inverse transformation is performed by the routine ICRS2G.
+!  2. The inverse transformation is performed by the routine ICRS2G.
 !
 !### Reference
 !     Perryman M.A.C. & ESA, 1997, ESA SP-1200, The Hipparcos and Tycho
@@ -13656,7 +13654,7 @@
 !
 !### Notes
 !
-!  1) The identifier N is a number that specifies the choice of
+!  1. The identifier N is a number that specifies the choice of
 !     reference ellipsoid.  The following are supported:
 !
 !        N   ellipsoid
@@ -13667,14 +13665,14 @@
 !
 !     The number N has no significance outside the SOFA software.
 !
-!  2) The geocentric vector (XYZ, given) and height (HEIGHT, returned)
+!  2. The geocentric vector (XYZ, given) and height (HEIGHT, returned)
 !     are in meters.
 !
-!  3) An error status J=-1 means that the identifier N is illegal.  An
+!  3. An error status J=-1 means that the identifier N is illegal.  An
 !     error status J=-2 is theoretically impossible.  In all error
 !     cases, all three results are set to -1D9.
 !
-!  4) The inverse transformation is performed in the routine GD2GC.
+!  4. The inverse transformation is performed in the routine GD2GC.
 !
 !### History
 !  * IAU SOFA revision: 2013 September 1
@@ -13733,24 +13731,24 @@
 !
 !### Notes
 !
-!  1) This routine is closely based on the GCONV2H subroutine by
+!  1. This routine is closely based on the GCONV2H subroutine by
 !     Toshio Fukushima (see reference).
 !
-!  2) The equatorial radius, A, can be in any units, but meters is
+!  2. The equatorial radius, A, can be in any units, but meters is
 !     the conventional choice.
 !
-!  3) The flattening, F, is (for the Earth) a value around 0.00335,
+!  3. The flattening, F, is (for the Earth) a value around 0.00335,
 !     i.e. around 1/298.
 !
-!  4) The equatorial radius, A, and the geocentric vector, XYZ,
+!  4. The equatorial radius, A, and the geocentric vector, XYZ,
 !     must be given in the same units, and determine the units of
 !     the returned height, HEIGHT.
 !
-!  5) If an error occurs (J<0), ELONG, PHI and HEIGHT are unchanged.
+!  5. If an error occurs (J<0), ELONG, PHI and HEIGHT are unchanged.
 !
-!  6) The inverse transformation is performed in the routine GD2GCE.
+!  6. The inverse transformation is performed in the routine GD2GCE.
 !
-!  7) The transformation for a standard ellipsoid (such as WGS84) can
+!  7. The transformation for a standard ellipsoid (such as WGS84) can
 !     more conveniently be performed by calling GC2GD, which uses a
 !     numerical code (1 for WGS84) to identify the required A and F
 !     values.
@@ -13893,7 +13891,7 @@
 !
 !### Notes
 !
-!  1) The identifier N is a number that specifies the choice of
+!  1. The identifier N is a number that specifies the choice of
 !     reference ellipsoid.  The following are supported:
 !
 !        N   ellipsoid
@@ -13904,15 +13902,15 @@
 !
 !     The number N has no significance outside the SOFA software.
 !
-!  2) The height (HEIGHT, given) and the geocentric vector (XYZ,
+!  2. The height (HEIGHT, given) and the geocentric vector (XYZ,
 !     returned) are in meters.
 !
-!  3) No validation is performed on the arguments ELONG, PHI and HEIGHT.
+!  3. No validation is performed on the arguments ELONG, PHI and HEIGHT.
 !     An error status J=-1 means that the identifier N is illegal.  An
 !     error status J=-2 protects against cases that would lead to
 !     arithmetic exceptions.  In all error cases, XYZ is set to zeros.
 !
-!  4) The inverse transformation is performed in the routine GC2GD.
+!  4. The inverse transformation is performed in the routine GC2GD.
 !
 !### History
 !  * IAU SOFA revision: 2010 January 18
@@ -13966,23 +13964,23 @@
 !
 !### Notes
 !
-!  1) The equatorial radius, A, can be in any units, but meters is
+!  1. The equatorial radius, A, can be in any units, but meters is
 !     the conventional choice.
 !
-!  2) The flattening, F, is (for the Earth) a value around 0.00335,
+!  2. The flattening, F, is (for the Earth) a value around 0.00335,
 !     i.e. around 1/298.
 !
-!  3) The equatorial radius, A, and the height, HEIGHT, must be
+!  3. The equatorial radius, A, and the height, HEIGHT, must be
 !     given in the same units, and determine the units of the
 !     returned geocentric vector, XYZ.
 !
-!  4) No validation is performed on individual arguments.  The error
+!  4. No validation is performed on individual arguments.  The error
 !     status J=-1 protects against (unrealistic) cases that would lead
 !     to arithmetic exceptions.  If an error occurs, XYZ is unchanged.
 !
-!  5) The inverse transformation is performed in the routine GC2GDE.
+!  5. The inverse transformation is performed in the routine GC2GDE.
 !
-!  6) The transformation for a standard ellipsoid (such as WGS84) can
+!  6. The transformation for a standard ellipsoid (such as WGS84) can
 !     more conveniently be performed by calling GD2GC, which uses a
 !     numerical code (1 for WGS84) to identify the required A and F
 !     values.
@@ -14056,7 +14054,7 @@
 !
 !### Notes
 !
-!  1) The UT1 and TT dates UTA+UTB and TTA+TTB respectively, are both
+!  1. The UT1 and TT dates UTA+UTB and TTA+TTB respectively, are both
 !     Julian Dates, apportioned in any convenient way between the
 !     argument pairs.  For example, JD=2450123.7 could be expressed in
 !     any of these ways, among others:
@@ -14079,17 +14077,17 @@
 !     0hrs UT1 on the day in question and the UTB argument lies in the
 !     range 0 to 1, or vice versa.
 !
-!  2) Both UT1 and TT are required, UT1 to predict the Earth rotation
+!  2. Both UT1 and TT are required, UT1 to predict the Earth rotation
 !     and TT to predict the effects of precession.  If UT1 is used for
 !     both purposes, errors of order 100 microarcseconds result.
 !
-!  3) This GMST is compatible with the IAU 2000 resolutions and must be
+!  3. This GMST is compatible with the IAU 2000 resolutions and must be
 !     used only in conjunction with other IAU 2000 compatible components
 !     such as precession-nutation and equation of the equinoxes.
 !
-!  4) The result is returned in the range 0 to 2pi.
+!  4. The result is returned in the range 0 to 2pi.
 !
-!  5) The algorithm is from Capitaine et al. (2003) and IERS Conventions
+!  5. The algorithm is from Capitaine et al. (2003) and IERS Conventions
 !     2003.
 !
 !### References
@@ -14145,7 +14143,7 @@
 !
 !### Notes
 !
-!  1) The UT1 and TT dates UTA+UTB and TTA+TTB respectively, are both
+!  1. The UT1 and TT dates UTA+UTB and TTA+TTB respectively, are both
 !     Julian Dates, apportioned in any convenient way between the
 !     argument pairs.  For example, JD=2450123.7 could be expressed in
 !     any of these ways, among others:
@@ -14168,14 +14166,14 @@
 !     0hrs UT1 on the day in question and the UTB argument lies in the
 !     range 0 to 1, or vice versa.
 !
-!  2) Both UT1 and TT are required, UT1 to predict the Earth rotation
+!  2. Both UT1 and TT are required, UT1 to predict the Earth rotation
 !     and TT to predict the effects of precession.  If UT1 is used for
 !     both purposes, errors of order 100 microarcseconds result.
 !
-!  3) This GMST is compatible with the IAU 2006 precession and must not
+!  3. This GMST is compatible with the IAU 2006 precession and must not
 !     be used with other precession models.
 !
-!  4) The result is returned in the range 0 to 2pi.
+!  4. The result is returned in the range 0 to 2pi.
 !
 !### Reference
 !
@@ -14226,7 +14224,7 @@
 !
 !### Notes
 !
-!  1) The UT1 epoch DJ1+DJ2 is a Julian Date, apportioned in any
+!  1. The UT1 epoch DJ1+DJ2 is a Julian Date, apportioned in any
 !     convenient way between the arguments DJ1 and DJ2.  For example,
 !     JD(UT1)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -14247,19 +14245,19 @@
 !     0hrs UT1 on the day in question and the DJ2 argument lies in the
 !     range 0 to 1, or vice versa.
 !
-!  2) The algorithm is based on the IAU 1982 expression.  This is always
+!  2. The algorithm is based on the IAU 1982 expression.  This is always
 !     described as giving the GMST at 0 hours UT1.  In fact, it gives the
 !     difference between the GMST and the UT, the steady 4-minutes-per-day
 !     drawing-ahead of ST with respect to UT.  When whole days are ignored,
 !     the expression happens to equal the GMST at 0 hours UT1 each day.
 !
-!  3) In this routine, the entire UT1 (the sum of the two arguments DJ1
+!  3. In this routine, the entire UT1 (the sum of the two arguments DJ1
 !     and DJ2) is used directly as the argument for the standard formula,
 !     the constant term of which is adjusted by 12 hours to take account
 !     of the noon phasing of Julian Date.  The UT1 is then added, but
 !     omitting whole days to conserve accuracy.
 !
-!  4) The result is returned in the range 0 to 2pi.
+!  4. The result is returned in the range 0 to 2pi.
 !
 !### References
 !
@@ -14324,7 +14322,7 @@
 !
 !### Notes
 !
-!  1) The UT1 and TT dates UTA+UTB and TTA+TTB respectively, are both
+!  1. The UT1 and TT dates UTA+UTB and TTA+TTB respectively, are both
 !     Julian Dates, apportioned in any convenient way between the
 !     argument pairs.  For example, JD=2450123.7 could be expressed in
 !     any of these ways, among others:
@@ -14347,18 +14345,18 @@
 !     0hrs UT1 on the day in question and the UTB argument lies in the
 !     range 0 to 1, or vice versa.
 !
-!  2) Both UT1 and TT are required, UT1 to predict the Earth rotation
+!  2. Both UT1 and TT are required, UT1 to predict the Earth rotation
 !     and TT to predict the effects of precession-nutation.  If UT1 is
 !     used for both purposes, errors of order 100 microarcseconds
 !     result.
 !
-!  3) This GAST is compatible with the IAU 2000 resolutions and must be
+!  3. This GAST is compatible with the IAU 2000 resolutions and must be
 !     used only in conjunction with other IAU 2000 compatible components
 !     such as precession-nutation.
 !
-!  4) The result is returned in the range 0 to 2pi.
+!  4. The result is returned in the range 0 to 2pi.
 !
-!  5) The algorithm is from Capitaine et al. (2003) and IERS Conventions
+!  5. The algorithm is from Capitaine et al. (2003) and IERS Conventions
 !     2003.
 !
 !### References
@@ -14403,7 +14401,7 @@
 !
 !### Notes
 !
-!  1) The UT1 date UTA+UTB is a Julian Date, apportioned in any
+!  1. The UT1 date UTA+UTB is a Julian Date, apportioned in any
 !     convenient way between the argument pair.  For example,
 !     JD=2450123.7 could be expressed in any of these ways, among
 !     others:
@@ -14425,7 +14423,7 @@
 !     0hrs UT1 on the day in question and the UTB argument lies in the
 !     range 0 to 1, or vice versa.
 !
-!  2) The result is compatible with the IAU 2000 resolutions, except
+!  2. The result is compatible with the IAU 2000 resolutions, except
 !     that accuracy has been compromised for the sake of speed and
 !     convenience in two respects:
 !
@@ -14436,13 +14434,13 @@
 !     . The IAU 2000B abridged nutation model (McCarthy & Luzum, 2001)
 !       is used, introducing errors of up to 1 mas.
 !
-!  3) This GAST is compatible with the IAU 2000 resolutions and must be
+!  3. This GAST is compatible with the IAU 2000 resolutions and must be
 !     used only in conjunction with other IAU 2000 compatible components
 !     such as precession-nutation.
 !
-!  4) The result is returned in the range 0 to 2pi.
+!  4. The result is returned in the range 0 to 2pi.
 !
-!  5) The algorithm is from Capitaine et al. (2003) and IERS Conventions
+!  5. The algorithm is from Capitaine et al. (2003) and IERS Conventions
 !     2003.
 !
 !### References
@@ -14490,7 +14488,7 @@
 !
 !### Notes
 !
-!  1) The UT1 and TT dates UTA+UTB and TTA+TTB respectively, are both
+!  1. The UT1 and TT dates UTA+UTB and TTA+TTB respectively, are both
 !     Julian Dates, apportioned in any convenient way between the
 !     argument pairs.  For example, JD=2450123.7 could be expressed in
 !     any of these ways, among others:
@@ -14513,16 +14511,16 @@
 !     0hrs UT1 on the day in question and the UTB argument lies in the
 !     range 0 to 1, or vice versa.
 !
-!  2) Both UT1 and TT are required, UT1 to predict the Earth rotation
+!  2. Both UT1 and TT are required, UT1 to predict the Earth rotation
 !     and TT to predict the effects of precession-nutation.  If UT1 is
 !     used for both purposes, errors of order 100 microarcseconds
 !     result.
 !
-!  3) Although the routine uses the IAU 2006 series for s+XY/2, it is
+!  3. Although the routine uses the IAU 2006 series for s+XY/2, it is
 !     otherwise independent of the precession-nutation model and can in
 !     practice be used with any equinox-based NPB matrix.
 !
-!  4) The result is returned in the range 0 to 2pi.
+!  4. The result is returned in the range 0 to 2pi.
 !
 !### Reference
 !
@@ -14572,7 +14570,7 @@
 !
 !### Notes
 !
-!  1) The UT1 and TT dates UTA+UTB and TTA+TTB respectively, are both
+!  1. The UT1 and TT dates UTA+UTB and TTA+TTB respectively, are both
 !     Julian Dates, apportioned in any convenient way between the
 !     argument pairs.  For example, JD=2450123.7 could be expressed in
 !     any of these ways, among others:
@@ -14595,16 +14593,16 @@
 !     0hrs UT1 on the day in question and the UTB argument lies in the
 !     range 0 to 1, or vice versa.
 !
-!  2) Both UT1 and TT are required, UT1 to predict the Earth rotation
+!  2. Both UT1 and TT are required, UT1 to predict the Earth rotation
 !     and TT to predict the effects of precession-nutation.  If UT1 is
 !     used for both purposes, errors of order 100 microarcseconds
 !     result.
 !
-!  3) This GAST is compatible with the IAU 2000/2006 resolutions and
+!  3. This GAST is compatible with the IAU 2000/2006 resolutions and
 !     must be used only in conjunction with IAU 2006 precession and
 !     IAU 2000A nutation.
 !
-!  4) The result is returned in the range 0 to 2pi.
+!  4. The result is returned in the range 0 to 2pi.
 !
 !### Reference
 !
@@ -14648,7 +14646,7 @@
 !
 !### Notes
 !
-!  1) The UT1 date UTA+UTB is a Julian Date, apportioned in any
+!  1. The UT1 date UTA+UTB is a Julian Date, apportioned in any
 !     convenient way between the argument pair.  For example,
 !     JD=2450123.7 could be expressed in any of these ways, among
 !     others:
@@ -14670,16 +14668,16 @@
 !     0hrs UT1 on the day in question and the UTB argument lies in the
 !     range 0 to 1, or vice versa.
 !
-!  2) The result is compatible with the IAU 1982 and 1994 resolutions,
+!  2. The result is compatible with the IAU 1982 and 1994 resolutions,
 !     except that accuracy has been compromised for the sake of
 !     convenience in that UT is used instead of TDB (or TT) to compute
 !     the equation of the equinoxes.
 !
-!  3) This GAST must be used only in conjunction with contemporaneous
+!  3. This GAST must be used only in conjunction with contemporaneous
 !     IAU standards such as 1976 precession, 1980 obliquity and 1982
 !     nutation.  It is not compatible with the IAU 2000 resolutions.
 !
-!  4) The result is returned in the range 0 to 2pi.
+!  4. The result is returned in the range 0 to 2pi.
 !
 !### References
 !
@@ -14728,17 +14726,17 @@
 !
 !### Notes
 !
-!  1) This routine transforms Hipparcos star positions and proper
+!  1. This routine transforms Hipparcos star positions and proper
 !     motions into FK5 J2000.0.
 !
-!  2) The proper motions in RA are dRA/dt rather than cos(Dec)*dRA/dt,
+!  2. The proper motions in RA are dRA/dt rather than cos(Dec)*dRA/dt,
 !     and are per year rather than per century.
 !
-!  3) The FK5 to Hipparcos transformation is modeled as a pure rotation
+!  3. The FK5 to Hipparcos transformation is modeled as a pure rotation
 !     and spin;  zonal errors in the FK5 catalog are not taken into
 !     account.
 !
-!  4) See also FK52H, FK5HZ, HFK5Z.
+!  4. See also FK52H, FK5HZ, HFK5Z.
 !
 !### Reference
 !
@@ -14819,28 +14817,28 @@
 !
 !### Notes
 !
-!  1)  All the arguments are angles in radians.
+!  1.  All the arguments are angles in radians.
 !
-!  2)  Azimuth is returned in the range 0-2pi;  north is zero, and east
+!  2.  Azimuth is returned in the range 0-2pi;  north is zero, and east
 !      is +pi/2.  Altitude is returned in the range +/- pi/2.
 !
-!  3)  The latitude PHI is pi/2 minus the angle between the Earth's
+!  3.  The latitude PHI is pi/2 minus the angle between the Earth's
 !      rotation axis and the adopted zenith.  In many applications it
 !      will be sufficient to use the published geodetic latitude of the
 !      site.  In very precise (sub-arcsecond) applications, PHI can be
 !      corrected for polar motion.
 !
-!  4)  The returned azimuth AZ is with respect to the rotational north
+!  4.  The returned azimuth AZ is with respect to the rotational north
 !      pole, as opposed to the ITRS pole, and for sub-arcsecond accuracy
 !      will need to be adjusted for polar motion if it is to be with
 !      respect to north on a map of the Earth's surface.
 !
-!  5)  Should the user wish to work with respect to the astronomical
+!  5.  Should the user wish to work with respect to the astronomical
 !      zenith rather than the geodetic zenith, PHI will need to be
 !      adjusted for deflection of the vertical (often tens of
 !      arcseconds), and the zero point of HA will also be affected.
 !
-!  6)  The transformation is the same as Vh = Rz(pi)*Ry(pi/2-phi)*Ve,
+!  6.  The transformation is the same as Vh = Rz(pi)*Ry(pi/2-phi)*Ve,
 !      where Vh and Ve are lefthanded unit vectors in the (az,el) and
 !      (ha,dec) systems respectively and Ry and Rz are rotations about
 !      first the y-axis and then the z-axis.  (n.b. Rz(pi) simply
@@ -14850,7 +14848,7 @@
 !      efficiency, additional savings are possible if constant terms
 !      such as functions of latitude are computed once and for all.
 !
-!  7)  Again for efficiency, no range checking of arguments is carried
+!  7.  Again for efficiency, no range checking of arguments is carried
 !      out.
 !
 !  Last revision:   2018 January 2
@@ -14908,23 +14906,23 @@
 !
 !### Notes
 !
-!  1)  All the arguments are angles in radians.
+!  1.  All the arguments are angles in radians.
 !
-!  2)  The parallactic angle at a point in the sky is the position angle
+!  2.  The parallactic angle at a point in the sky is the position angle
 !      of the vertical, i.e. the angle between the directions to the
 !      north celestial pole and to the zenith respectively.
 !
-!  3)  The result is returned in the range -pi to +pi.
+!  3.  The result is returned in the range -pi to +pi.
 !
-!  4)  At the pole itself a zero result is returned.
+!  4.  At the pole itself a zero result is returned.
 !
-!  5)  The latitude PHI is pi/2 minus the angle between the Earth's
+!  5.  The latitude PHI is pi/2 minus the angle between the Earth's
 !      rotation axis and the adopted zenith.  In many applications it
 !      will be sufficient to use the published geodetic latitude of the
 !      site.  In very precise (sub-arcsecond) applications, PHI can be
 !      corrected for polar motion.
 !
-!  6)  Should the user wish to work with respect to the astronomical
+!  6.  Should the user wish to work with respect to the astronomical
 !      zenith rather than the geodetic zenith, PHI will need to be
 !      adjusted for deflection of the vertical (often tens of
 !      arcseconds), and the zero point of HA will also be affected.
@@ -14975,7 +14973,7 @@
 !
 !### Notes
 !
-!  1) The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TDB)=2450123.7 could be expressed in any of these ways, among
 !     others:
@@ -14994,22 +14992,22 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
+!  2. The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
 !
-!  3) The FK5 to Hipparcos transformation is modeled as a pure
+!  3. The FK5 to Hipparcos transformation is modeled as a pure
 !     rotation and spin;  zonal errors in the FK5 catalogue are
 !     not taken into account.
 !
-!  4) It was the intention that Hipparcos should be a close
+!  4. It was the intention that Hipparcos should be a close
 !     approximation to an inertial frame, so that distant objects
 !     have zero proper motion;  such objects have (in general)
 !     non-zero proper motion in FK5, and this routine returns those
 !     fictitious proper motions.
 !
-!  5) The position returned by this routine is in the FK5 J2000.0
+!  5. The position returned by this routine is in the FK5 J2000.0
 !     reference system but at date DATE1+DATE2.
 !
-!  6) See also FK52H, H2FK5, FK5ZHZ.
+!  6. See also FK52H, H2FK5, FK5ZHZ.
 !
 !### Reference
 !
@@ -15088,7 +15086,7 @@
 !
 !### Notes
 !
-!  1) The IAU 1958 system of Galactic coordinates was defined with
+!  1. The IAU 1958 system of Galactic coordinates was defined with
 !     respect to the now obsolete reference system FK4 B1950.0.  When
 !     interpreting the system in a modern context, several factors have
 !     to be taken into account:
@@ -15115,7 +15113,7 @@
 !     present SOFA routine the matrix elements have been recomputed from
 !     the canonical three angles and are given to 30 decimal places.
 !
-!  2) The inverse transformation is performed by the routine G2ICRS.
+!  2. The inverse transformation is performed by the routine G2ICRS.
 !
 !### Reference
 !     Perryman M.A.C. & ESA, 1997, ESA SP-1200, The Hipparcos and Tycho
@@ -15230,10 +15228,10 @@
 !
 !### Notes
 !
-!  1) The earliest valid date is -68569.5 (-4900 March 1).  The
+!  1. The earliest valid date is -68569.5 (-4900 March 1).  The
 !     largest value accepted is 10^9.
 !
-!  2) The Julian Date is apportioned in any convenient way between
+!  2. The Julian Date is apportioned in any convenient way between
 !     the arguments DJ1 and DJ2.  For example, JD=2450123.7 could
 !     be expressed in any of these ways, among others:
 !
@@ -15244,7 +15242,7 @@
 !         2400000.5D0     50123.2D0     (MJD method)
 !         2450123.5D0       0.2D0       (date & time method)
 !
-!  3) In early eras the conversion is from the "Proleptic Gregorian
+!  3. In early eras the conversion is from the "Proleptic Gregorian
 !     Calendar";  no account is taken of the date(s) of adoption of
 !     the Gregorian Calendar, nor is the AD/BC numbering convention
 !     observed.
@@ -15342,7 +15340,7 @@
 !
 !### Notes
 !
-!  1) The Julian Date is apportioned in any convenient way between
+!  1. The Julian Date is apportioned in any convenient way between
 !     the arguments DJ1 and DJ2.  For example, JD=2450123.7 could
 !     be expressed in any of these ways, among others:
 !
@@ -15353,14 +15351,14 @@
 !         2400000.5D0     50123.2D0     (MJD method)
 !         2450123.5D0       0.2D0       (date & time method)
 !
-!  2) In early eras the conversion is from the "Proleptic Gregorian
+!  2. In early eras the conversion is from the "Proleptic Gregorian
 !     Calendar";  no account is taken of the date(s) of adoption of
 !     the Gregorian Calendar, nor is the AD/BC numbering convention
 !     observed.
 !
-!  3) Refer to the routine JD2CAL.
+!  3. Refer to the routine JD2CAL.
 !
-!  4) NDP should be 4 or less if internal overflows are to be
+!  4. NDP should be 4 or less if internal overflows are to be
 !     avoided on machines which use 16-bit integers.
 !
 !### Reference
@@ -15447,32 +15445,32 @@
 !
 !### Notes
 !
-!  1) The algorithm is based on Expr. (70) in Klioner (2003) and
+!  1. The algorithm is based on Expr. (70) in Klioner (2003) and
 !     Expr. (7.63) in the Explanatory Supplement (Urban & Seidelmann
 !     2013), with some rearrangement to minimize the effects of machine
 !     precision.
 !
-!  2) The mass parameter BM can, as required, be adjusted in order to
+!  2. The mass parameter BM can, as required, be adjusted in order to
 !     allow for such effects as quadrupole field.
 !
-!  3) The barycentric position of the deflecting body should ideally
+!  3. The barycentric position of the deflecting body should ideally
 !     correspond to the time of closest approach of the light ray to
 !     the body.
 !
-!  4) The deflection limiter parameter DLIM is phi^2/2, where phi is the
+!  4. The deflection limiter parameter DLIM is phi^2/2, where phi is the
 !     angular separation (in radians) between source and body at which
 !     limiting is applied.  As phi shrinks below the chosen threshold,
 !     the deflection is artificially reduced, reaching zero for phi = 0.
 !
-!  5) The returned vector P1 is not normalized, but the consequential
+!  5. The returned vector P1 is not normalized, but the consequential
 !     departure from unit magnitude is always negligible.
 !
-!  6) To accumulate total light deflection taking into account the
+!  6. To accumulate total light deflection taking into account the
 !     contributions from several bodies, call the present routine for
 !     each body in succession, in decreasing order of distance from the
 !     observer.
 !
-!  7) For efficiency, validation is omitted.  The supplied vectors must
+!  7. For efficiency, validation is omitted.  The supplied vectors must
 !     be of unit magnitude, and the deflection limiter non-zero and
 !     positive.
 !
@@ -15548,19 +15546,19 @@
 !  Returned:
 !     SN    d(3)     observer to deflected star (unit vector)
 !
-!  1) The array B contains N entries, one for each body to be
+!  1. The array B contains N entries, one for each body to be
 !     considered.  If N = 0, no gravitational light deflection will be
 !     applied, not even for the Sun.
 !
-!  2) The array B should include an entry for the Sun as well as for any
+!  2. The array B should include an entry for the Sun as well as for any
 !     planet or other body to be taken into account.  The entries should
 !     be in the order in which the light passes the body.
 !
-!  3) In the entry in the B array for body I, the mass parameter B(1,I)
+!  3. In the entry in the B array for body I, the mass parameter B(1,I)
 !     can, as required, be adjusted in order to allow for such effects
 !     as quadrupole field.
 !
-!  4) The deflection limiter parameter B(2,I) is phi^2/2, where phi is
+!  4. The deflection limiter parameter B(2,I) is phi^2/2, where phi is
 !     the angular separation (in radians) between star and body at which
 !     limiting is applied.  As phi shrinks below the chosen threshold,
 !     the deflection is artificially reduced, reaching zero for phi = 0.
@@ -15573,7 +15571,7 @@
 !        Jupiter    0.00095435D0   3D-9
 !        Saturn     0.00028574D0   3D-10
 !
-!  5) For cases where the starlight passes the body before reaching the
+!  5. For cases where the starlight passes the body before reaching the
 !     observer, the body is placed back along its barycentric track by
 !     the light time from that point to the observer.  For cases where
 !     the body is "behind" the observer no such shift is applied.  If
@@ -15581,10 +15579,10 @@
 !     instead using the LD routine.  Similarly, LD can be used
 !     for cases where the source is nearby, not a star.
 !
-!  6) The returned vector SN is not normalized, but the consequential
+!  6. The returned vector SN is not normalized, but the consequential
 !     departure from unit magnitude is always negligible.
 !
-!  7) For efficiency, validation is omitted.  The supplied masses must
+!  7. For efficiency, validation is omitted.  The supplied masses must
 !     be greater than zero, the position and velocity vectors must be
 !     right, and the deflection limiter greater than zero.
 !
@@ -15669,11 +15667,11 @@
 !
 !### Notes
 !
-!  1) The source is presumed to be sufficiently distant that its
+!  1. The source is presumed to be sufficiently distant that its
 !     directions seen from the Sun and the observer are essentially
 !     the same.
 !
-!  2) The deflection is restrained when the angle between the star and
+!  2. The deflection is restrained when the angle between the star and
 !     the center of the Sun is less than a threshold value, falling to
 !     zero deflection for zero separation.  The chosen threshold value
 !     is within the solar limb for all solar-system applications, and
@@ -15716,16 +15714,16 @@
 !  Returned:
 !     DR,DD     d        ICRS right ascension and declination (radians)
 !
-!  1) No assumptions are made about whether the coordinates represent
+!  1. No assumptions are made about whether the coordinates represent
 !     starlight and embody astrometric effects such as parallax or
 !     aberration.
 !
-!  2) The transformation is approximately that from ecliptic longitude
+!  2. The transformation is approximately that from ecliptic longitude
 !     and latitude (mean equinox and ecliptic of date) to mean J2000.0
 !     right ascension and declination, with only frame bias (always less
 !     than 25 mas) to disturb this classical picture.
 !
-!  3) The Vondrak et al. (2011, 2012) 400 millennia precession model
+!  3. The Vondrak et al. (2011, 2012) 400 millennia precession model
 !     agrees with the IAU 2006 precession at J2000.0 and stays within
 !     100 microarcseconds during the 20th and 21st centuries.  It is
 !     accurate to a few arcseconds throughout the historical period,
@@ -15790,7 +15788,7 @@
 !
 !### Notes
 !
-!  1) The matrix is in the sense
+!  1. The matrix is in the sense
 !
 !        E_ep = RM x P_ICRS,
 !
@@ -15798,7 +15796,7 @@
 !     and declination axes and E_ep is the same vector with respect to
 !     the (inertial) ecliptic and equinox of epoch EPJ.
 !
-!  2) P_ICRS is a free vector, merely a direction, typically of unit
+!  2. P_ICRS is a free vector, merely a direction, typically of unit
 !     magnitude, and not bound to any particular spatial origin, such as
 !     the Earth, Sun or SSB.  No assumptions are made about whether it
 !     represents starlight and embodies astrometric effects such as
@@ -15807,7 +15805,7 @@
 !     longitude and latitude, with only frame bias (always less than
 !     25 mas) to disturb this classical picture.
 !
-!  3) The Vondrak et al. (2011, 2012) 400 millennia precession model
+!  3. The Vondrak et al. (2011, 2012) 400 millennia precession model
 !     agrees with the IAU 2006 precession at J2000.0 and stays within
 !     100 microarcseconds during the 20th and 21st centuries.  It is
 !     accurate to a few arcseconds throughout the historical period,
@@ -15883,16 +15881,16 @@
 !  Returned:
 !     DL,DB     d        ecliptic longitude and latitude (radians)
 !
-!  1) No assumptions are made about whether the coordinates represent
+!  1. No assumptions are made about whether the coordinates represent
 !     starlight and embody astrometric effects such as parallax or
 !     aberration.
 !
-!  2) The transformation is approximately that from mean J2000.0 right
+!  2. The transformation is approximately that from mean J2000.0 right
 !     ascension and declination to ecliptic longitude and latitude
 !     (mean equinox and ecliptic of date), with only frame bias (always
 !     less than 25 mas) to disturb this classical picture.
 !
-!  3) The Vondrak et al. (2011, 2012) 400 millennia precession model
+!  3. The Vondrak et al. (2011, 2012) 400 millennia precession model
 !     agrees with the IAU 2006 precession at J2000.0 and stays within
 !     100 microarcseconds during the 20th and 21st centuries.  It is
 !     accurate to a few arcseconds throughout the historical period,
@@ -15957,7 +15955,7 @@
 !
 !### Notes
 !
-!  1) The matrix is in the sense
+!  1. The matrix is in the sense
 !
 !        P_date = RP x P_J2000,
 !
@@ -15965,7 +15963,7 @@
 !     and equinox and P_date is the same vector with respect to the
 !     equator and equinox of epoch EPJ.
 !
-!  2) The Vondrak et al. (2011, 2012) 400 millennia precession model
+!  2. The Vondrak et al. (2011, 2012) 400 millennia precession model
 !     agrees with the IAU 2006 precession at J2000.0 and stays within
 !     100 microarcseconds during the 20th and 21st centuries.  It is
 !     accurate to a few arcseconds throughout the historical period,
@@ -16032,7 +16030,7 @@
 !
 !### Notes
 !
-!  1) The matrix is in the sense
+!  1. The matrix is in the sense
 !
 !        P_date = RPB x P_ICRS,
 !
@@ -16041,10 +16039,10 @@
 !     Intermediate Reference System at that date but with nutation
 !     neglected.
 !
-!  2) A first order frame bias formulation is used, of sub-
+!  2. A first order frame bias formulation is used, of sub-
 !     microarcsecond accuracy compared with a full 3D rotation.
 !
-!  3) The Vondrak et al. (2011, 2012) 400 millennia precession model
+!  3. The Vondrak et al. (2011, 2012) 400 millennia precession model
 !     agrees with the IAU 2006 precession at J2000.0 and stays within
 !     100 microarcseconds during the 20th and 21st centuries.  It is
 !     accurate to a few arcseconds throughout the historical period,
@@ -16106,10 +16104,10 @@
 !
 !### Notes
 !
-!  1) The returned vector is with respect to the J2000.0 mean equator
+!  1. The returned vector is with respect to the J2000.0 mean equator
 !     and equinox.
 !
-!  2) The Vondrak et al. (2011, 2012) 400 millennia precession model
+!  2. The Vondrak et al. (2011, 2012) 400 millennia precession model
 !     agrees with the IAU 2006 precession at J2000.0 and stays within
 !     100 microarcseconds during the 20th and 21st centuries.  It is
 !     accurate to a few arcseconds throughout the historical period,
@@ -16236,10 +16234,10 @@
 !
 !### Notes
 !
-!  1) The returned vector is with respect to the J2000.0 mean equator
+!  1. The returned vector is with respect to the J2000.0 mean equator
 !     and equinox.
 !
-!  2) The Vondrak et al. (2011, 2012) 400 millennia precession model
+!  2. The Vondrak et al. (2011, 2012) 400 millennia precession model
 !     agrees with the IAU 2006 precession at J2000.0 and stays within
 !     100 microarcseconds during the 20th and 21st centuries.  It is
 !     accurate to a few arcseconds throughout the historical period,
@@ -16372,7 +16370,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -16391,12 +16389,12 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The matrix operates in the sense V(true) = RMATN * V(mean),
+!  2. The matrix operates in the sense V(true) = RMATN * V(mean),
 !     where the p-vector V(true) is with respect to the true
 !     equatorial triad of date and the p-vector V(mean) is with
 !     respect to the mean equatorial triad of date.
 !
-!  3) A faster, but slightly less accurate result (about 1 mas), can be
+!  3. A faster, but slightly less accurate result (about 1 mas), can be
 !     obtained by using instead the NUM00B routine.
 !
 !### Reference
@@ -16440,7 +16438,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -16459,12 +16457,12 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The matrix operates in the sense V(true) = RMATN * V(mean),
+!  2. The matrix operates in the sense V(true) = RMATN * V(mean),
 !     where the p-vector V(true) is with respect to the true
 !     equatorial triad of date and the p-vector V(mean) is with
 !     respect to the mean equatorial triad of date.
 !
-!  3) The present routine is faster, but slightly less accurate (about
+!  3. The present routine is faster, but slightly less accurate (about
 !     1 mas), than the NUM00A routine.
 !
 !### Reference
@@ -16508,7 +16506,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -16527,7 +16525,7 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The matrix operates in the sense V(true) = RMATN * V(mean),
+!  2. The matrix operates in the sense V(true) = RMATN * V(mean),
 !     where the p-vector V(true) is with respect to the true
 !     equatorial triad of date and the p-vector V(mean) is with
 !     respect to the mean equatorial triad of date.
@@ -16580,14 +16578,14 @@
 !### Notes
 !
 !
-!  1) The supplied mean obliquity EPSA, must be consistent with the
+!  1. The supplied mean obliquity EPSA, must be consistent with the
 !     precession-nutation models from which DPSI and DEPS were obtained.
 !
-!  2) The caller is responsible for providing the nutation components;
+!  2. The caller is responsible for providing the nutation components;
 !     they are in longitude and obliquity, in radians and are with
 !     respect to the equinox and ecliptic of date.
 !
-!  3) The matrix operates in the sense V(true) = RMATN * V(mean),
+!  3. The matrix operates in the sense V(true) = RMATN * V(mean),
 !     where the p-vector V(true) is with respect to the true
 !     equatorial triad of date and the p-vector V(mean) is with
 !     respect to the mean equatorial triad of date.
@@ -16634,7 +16632,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -16653,7 +16651,7 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The nutation components in longitude and obliquity are in radians
+!  2. The nutation components in longitude and obliquity are in radians
 !     and with respect to the equinox and ecliptic of date.  The
 !     obliquity at J2000.0 is assumed to be the Lieske et al. (1977)
 !     value of 84381.448 arcsec.
@@ -16662,14 +16660,14 @@
 !     latter are due to direct planetary nutations and the perturbations
 !     of the lunar and terrestrial orbits.
 !
-!  3) The routine computes the MHB2000 nutation series with the
+!  3. The routine computes the MHB2000 nutation series with the
 !     associated corrections for planetary nutations.  It is an
 !     implementation of the nutation part of the IAU 2000A precession-
 !     nutation model, formally adopted by the IAU General Assembly in
 !     2000, namely MHB2000 (Mathews et al. 2002), but with the free core
 !     nutation (FCN - see Note 4) omitted.
 !
-!  4) The full MHB2000 model also contains contributions to the
+!  4. The full MHB2000 model also contains contributions to the
 !     nutations in longitude and obliquity due to the free-excitation of
 !     the free-core-nutation during the period 1979-2000.  These FCN
 !     terms, which are time-dependent and unpredictable, are NOT
@@ -16679,7 +16677,7 @@
 !     accurate to a few hundred microarcseconds.  The omission of FCN
 !     introduces further errors of about that size.
 !
-!  5) The present routine provides classical nutation.  The MHB2000
+!  5. The present routine provides classical nutation.  The MHB2000
 !     algorithm, from which it is adapted, deals also with (i) the
 !     offsets between the GCRS and mean poles and (ii) the adjustments
 !     in longitude and obliquity due to the changed precession rates.
@@ -16687,7 +16685,7 @@
 !     adjustments, are supported by the SOFA routines BI00 and
 !     PR00.
 !
-!  6) The MHB2000 algorithm also provides "total" nutations, comprising
+!  6. The MHB2000 algorithm also provides "total" nutations, comprising
 !     the arithmetic sum of the frame bias, precession adjustments,
 !     luni-solar nutation and planetary nutation.  These total nutations
 !     can be used in combination with an existing IAU 1976 precession
@@ -16725,7 +16723,7 @@
 !     by calling BI00, PR00 and the present routine and adding
 !     the results.
 !
-!  7) The MHB2000 model contains 41 instances where the same frequency
+!  7. The MHB2000 model contains 41 instances where the same frequency
 !     appears multiple times, of which 38 are duplicates and three are
 !     triplicates.  To keep the present code close to the original MHB
 !     algorithm, this small inefficiency has not been corrected.
@@ -19997,7 +19995,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -20016,7 +20014,7 @@
 !     resolution.  The MJD method and the date & time methods are both
 !     good compromises between resolution and convenience.
 !
-!  2) The nutation components in longitude and obliquity are in radians
+!  2. The nutation components in longitude and obliquity are in radians
 !     and with respect to the equinox and ecliptic of date.  The
 !     obliquity at J2000.0 is assumed to be the Lieske et al. (1977)
 !     value of 84381.448 arcsec.  (The errors that result from using
@@ -20027,14 +20025,14 @@
 !     also a fixed offset which compensates for certain long-period
 !     planetary terms (Note 7).
 !
-!  3) This routine is an implementation of the IAU 2000B abridged
+!  3. This routine is an implementation of the IAU 2000B abridged
 !     nutation model formally adopted by the IAU General Assembly in
 !     2000.  The routine computes the MHB_2000_SHORT luni-solar nutation
 !     series (Luzum 2001), but without the associated corrections for
 !     the precession rate adjustments and the offset between the GCRS
 !     and J2000.0 mean poles.
 !
-!  4) The full IAU 2000A (MHB2000) nutation model contains nearly 1400
+!  4. The full IAU 2000A (MHB2000) nutation model contains nearly 1400
 !     terms.  The IAU 2000B model (McCarthy & Luzum 2003) contains only
 !     77 terms, plus additional simplifications, yet still delivers
 !     results of 1 mas accuracy at present epochs.  This combination of
@@ -20049,7 +20047,7 @@
 !     corrections for the essentially unpredictable free-core-nutation
 !     (FCN) must also be included.
 !
-!  5) The present routine provides classical nutation.  The
+!  5. The present routine provides classical nutation.  The
 !     MHB_2000_SHORT algorithm, from which it is adapted, deals also
 !     with (i) the offsets between the GCRS and mean poles and (ii) the
 !     adjustments in longitude and obliquity due to the changed
@@ -20057,7 +20055,7 @@
 !     and precession adjustments, are supported by the SOFA routines
 !     BI00 and PR00.
 !
-!  6) The MHB_2000_SHORT algorithm also provides "total" nutations,
+!  6. The MHB_2000_SHORT algorithm also provides "total" nutations,
 !     comprising the arithmetic sum of the frame bias, precession
 !     adjustments, and nutation (luni-solar + planetary).  These total
 !     nutations can be used in combination with an existing IAU 1976
@@ -20069,7 +20067,7 @@
 !     by calling BI00, PR00 and the present routine and adding
 !     the results.
 !
-!  7) The IAU 2000B model includes "planetary bias" terms that are fixed
+!  7. The IAU 2000B model includes "planetary bias" terms that are fixed
 !     in size but compensate for long-period nutations.  The amplitudes
 !     quoted in McCarthy & Luzum (2003), namely Dpsi = -1.5835 mas and
 !     Depsilon = +1.6339 mas, are optimized for the "total nutations"
@@ -20420,7 +20418,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others
@@ -20439,17 +20437,17 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The nutation components in longitude and obliquity are in radians
+!  2. The nutation components in longitude and obliquity are in radians
 !     and with respect to the mean equinox and ecliptic of date,
 !     IAU 2006 precession model (Hilton et al. 2006, Capitaine et al.
 !     2005).
 !
-!  3) The routine first computes the IAU 2000A nutation, then applies
+!  3. The routine first computes the IAU 2000A nutation, then applies
 !     adjustments for (i) the consequences of the change in obliquity
 !     from the IAU 1980 ecliptic to the IAU 2006 ecliptic and (ii) the
 !     secular variation in the Earth's dynamical form factor J2.
 !
-!  4) The present routine provides classical nutation, complementing
+!  4. The present routine provides classical nutation, complementing
 !     the IAU 2000 frame bias and IAU 2006 precession.  It delivers a
 !     pole which is at current epochs accurate to a few tens of
 !     microarcseconds, apart from the free core nutation.
@@ -20504,7 +20502,7 @@
 !
 !### Notes
 !
-!  1) The DATE DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The DATE DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TDB)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -20523,7 +20521,7 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The nutation components are with respect to the ecliptic of
+!  2. The nutation components are with respect to the ecliptic of
 !     date.
 !
 !### Reference
@@ -20766,7 +20764,7 @@
 !
 !### Notes
 !
-!  1) The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TDB)=2450123.7 could be expressed in any of these ways, among
 !     others:
@@ -20785,7 +20783,7 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The matrix operates in the sense V(true) = RMATN * V(mean),
+!  2. The matrix operates in the sense V(true) = RMATN * V(mean),
 !     where the p-vector V(true) is with respect to the true
 !     equatorial triad of date and the p-vector V(mean) is with
 !     respect to the mean equatorial triad of date.
@@ -20827,7 +20825,7 @@
 !
 !### Notes
 !
-!  1) The date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -20846,7 +20844,7 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The result is the angle between the ecliptic and mean equator of
+!  2. The result is the angle between the ecliptic and mean equator of
 !     date DATE1+DATE2.
 !
 !### Reference
@@ -20894,7 +20892,7 @@
 !
 !### Notes
 !
-!  1) The date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TDB)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -20913,7 +20911,7 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The result is the angle between the ecliptic and mean equator of
+!  2. The result is the angle between the ecliptic and mean equator of
 !     date DATE1+DATE2.
 !
 !### Reference
@@ -20975,7 +20973,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others
@@ -20994,7 +20992,7 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) This routine returns the set of equinox based angles for the
+!  2. This routine returns the set of equinox based angles for the
 !     Capitaine et al. "P03" precession theory, adopted by the IAU in
 !     2006.  The angles are set out in Table 1 of Hilton et al. (2006):
 !
@@ -21017,7 +21015,7 @@
 !
 !     The returned values are all radians.
 !
-!  3) Hilton et al. (2006) Table 1 also contains angles that depend on
+!  3. Hilton et al. (2006) Table 1 also contains angles that depend on
 !     models distinct from the P03 precession theory itself, namely the
 !     IAU 2000A frame bias and nutation.  The quoted polynomials are
 !     used in other SOFA routines:
@@ -21030,21 +21028,21 @@
 !       angles that are with respect to the GCRS pole (i.e. the variants
 !       that include frame bias).
 !
-!  4) The IAU resolution stipulated that the choice of parameterization
+!  4. The IAU resolution stipulated that the choice of parameterization
 !     was left to the user, and so an IAU compliant precession
 !     implementation can be constructed using various combinations of
 !     the angles returned by the present routine.
 !
-!  5) The parameterization used by SOFA is the version of the Fukushima-
+!  5. The parameterization used by SOFA is the version of the Fukushima-
 !     Williams angles that refers directly to the GCRS pole.  These
 !     angles may be calculated by calling the routine PFW06.  SOFA
 !     also supports the direct computation of the CIP GCRS X,Y by
 !     series, available by calling XY06.
 !
-!  6) The agreement between the different parameterizations is at the
+!  6. The agreement between the different parameterizations is at the
 !     1 microarcsecond level in the present era.
 !
-!  7) When constructing a precession formulation that refers to the GCRS
+!  7. When constructing a precession formulation that refers to the GCRS
 !     pole rather than the dynamical pole, it may (depending on the
 !     choice of angles) be necessary to introduce the frame bias
 !     explicitly.
@@ -21267,9 +21265,9 @@
 !
 !### Notes
 !
-!  1) If P is null, zero THETA, PHI and R are returned.
+!  1. If P is null, zero THETA, PHI and R are returned.
 !
-!  2) At either pole, zero THETA is returned.
+!  2. At either pole, zero THETA is returned.
 !
 !### History
 !  * IAU SOFA revision: 2006 November 13
@@ -21304,18 +21302,18 @@
 !
 !### Notes
 !
-!  1) The result is the position angle, in radians, of direction B with
+!  1. The result is the position angle, in radians, of direction B with
 !     respect to direction A.  It is in the range -pi to +pi.  The sense
 !     is such that if B is a small distance "north" of A the position
 !     angle is approximately zero, and if B is a small distance "east" of
 !     A the position angle is approximately +pi/2.
 !
-!  2) A and B need not be unit vectors.
+!  2. A and B need not be unit vectors.
 !
-!  3) Zero is returned if the two directions are the same or if either
+!  3. Zero is returned if the two directions are the same or if either
 !     vector is null.
 !
-!  4) If A is at a pole, the result is ill-defined.
+!  4. If A is at a pole, the result is ill-defined.
 !
 !### History
 !  * IAU SOFA revision: 2006 November 13
@@ -21389,12 +21387,12 @@
 !
 !### Notes
 !
-!  1) The result is the bearing (position angle), in radians, of point
+!  1. The result is the bearing (position angle), in radians, of point
 !     B with respect to point A.  It is in the range -pi to +pi.  The
 !     sense is such that if B is a small distance "east" of point A,
 !     the bearing is approximately +pi/2.
 !
-!  2) Zero is returned if the two points are coincident.
+!  2. Zero is returned if the two points are coincident.
 !
 !### History
 !  * IAU SOFA revision: 2000 November 25
@@ -21441,7 +21439,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the arguments DATE1 and DATE2.  For
 !     example, JD(TT)=2450123.7 could be expressed in any of these
 !     ways, among others:
@@ -21460,7 +21458,7 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The traditional accumulated precession angles zeta_A, z_A, theta_A
+!  2. The traditional accumulated precession angles zeta_A, z_A, theta_A
 !     cannot be obtained in the usual way, namely through polynomial
 !     expressions, because of the frame bias.  The latter means that two
 !     of the angles undergo rapid changes near this date.  They are
@@ -21470,11 +21468,11 @@
 !     can be used in the conventional formulation and which include
 !     frame bias.
 !
-!  3) The three angles are returned in the conventional order, which
+!  3. The three angles are returned in the conventional order, which
 !     is not the same as the order of the corresponding Euler rotations.
 !     The precession-bias matrix is R_3(-z) x R_2(+theta) x R_3(-zeta).
 !
-!  4) Should zeta_A, z_A, theta_A angles be required that do not contain
+!  4. Should zeta_A, z_A, theta_A angles be required that do not contain
 !     frame bias, they are available by calling the SOFA routine
 !     P06E.
 !
@@ -21564,7 +21562,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others
@@ -21583,7 +21581,7 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) Naming the following points:
+!  2. Naming the following points:
 !
 !           e = J2000.0 ecliptic pole,
 !           p = GCRS pole,
@@ -21597,12 +21595,12 @@
 !        PSIB = psi_bar = pEP
 !        EPSA = epsilon_A = EP
 !
-!  3) The matrix representing the combined effects of frame bias and
+!  3. The matrix representing the combined effects of frame bias and
 !     precession is:
 !
 !        PxB = R_1(-EPSA).R_3(-PSIB).R_1(PHIB).R_3(GAMB)
 !
-!  4) The matrix representing the combined effects of frame bias,
+!  4. The matrix representing the combined effects of frame bias,
 !     precession and nutation is simply:
 !
 !        NxPxB = R_1(-EPSA-dE).R_3(-PSIB-dP).R_1(PHIB).R_3(GAMB)
@@ -21685,7 +21683,7 @@
 !
 !### Notes
 !
-!  1) The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TDB)=2450123.7 could be expressed in any of these ways, among
 !     others:
@@ -21706,14 +21704,14 @@
 !     The limited accuracy of the present algorithm is such that any
 !     of the methods is satisfactory.
 !
-!  2) If an NP value outside the range 1-8 is supplied, an error
+!  2. If an NP value outside the range 1-8 is supplied, an error
 !     status (J = -1) is returned and the PV vector set to zeroes.
 !
-!  3) For NP=3 the result is for the Earth-Moon Barycenter.  To
+!  3. For NP=3 the result is for the Earth-Moon Barycenter.  To
 !     obtain the heliocentric position and velocity of the Earth,
 !     use instead the SOFA routine EPV00.
 !
-!  4) On successful return, the array PV contains the following:
+!  4. On successful return, the array PV contains the following:
 !
 !        PV(1,1)  x       }
 !        PV(2,1)  y       } heliocentric position, au
@@ -21726,7 +21724,7 @@
 !     The reference frame is equatorial and is with respect to the
 !     mean equator and equinox of epoch J2000.0.
 !
-!  5) The algorithm is due to J.L. Simon, P. Bretagnon, J. Chapront,
+!  5. The algorithm is due to J.L. Simon, P. Bretagnon, J. Chapront,
 !     M. Chapront-Touze, G. Francou and J. Laskar (Bureau des
 !     Longitudes, Paris, France).  From comparisons with JPL
 !     ephemeris DE102, they quote the following maximum errors
@@ -21776,7 +21774,7 @@
 !        Uranus        86            7         661000      27.4
 !        Neptune       11            2         248000      21.4
 !
-!  6) The present SOFA re-implementation of the original Simon et al.
+!  6. The present SOFA re-implementation of the original Simon et al.
 !     Fortran code differs from the original in the following respects:
 !
 !       *  The date is supplied in two parts.
@@ -21805,7 +21803,7 @@
 !
 !     None of the above changes affects the result significantly.
 !
-!  7) The returned status, J, indicates the most serious condition
+!  7. The returned status, J, indicates the most serious condition
 !     encountered during execution of the routine.  Illegal NP is
 !     considered the most serious, overriding failure to converge,
 !     which in turn takes precedence over the remote epoch warning.
@@ -22162,7 +22160,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the arguments DATE1 and DATE2.  For
 !     example, JD(TT)=2450123.7 could be expressed in any of these
 !     ways, among others:
@@ -22181,7 +22179,7 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The matrix operates in the sense V(date) = RBP * V(GCRS), where
+!  2. The matrix operates in the sense V(date) = RBP * V(GCRS), where
 !     the p-vector V(GCRS) is with respect to the Geocentric Celestial
 !     Reference System (IAU, 2000) and the p-vector V(date) is with
 !     respect to the mean equatorial triad of the given date.
@@ -22226,7 +22224,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the arguments DATE1 and DATE2.  For
 !     example, JD(TT)=2450123.7 could be expressed in any of these
 !     ways, among others:
@@ -22245,7 +22243,7 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The matrix operates in the sense V(date) = RBP * V(GCRS), where
+!  2. The matrix operates in the sense V(date) = RBP * V(GCRS), where
 !     the p-vector V(GCRS) is with respect to the Geocentric Celestial
 !     Reference System (IAU, 2000) and the p-vector V(date) is with
 !     respect to the mean equatorial triad of the given date.
@@ -22292,7 +22290,7 @@
 !
 !### Notes
 !
-!  1) The ending date DATE1+DATE2 is a Julian Date, apportioned
+!  1. The ending date DATE1+DATE2 is a Julian Date, apportioned
 !     in any convenient way between the arguments DATE1 and DATE2.
 !     For example, JD(TT)=2450123.7 could be expressed in any of
 !     these ways, among others:
@@ -22311,13 +22309,13 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The matrix operates in the sense V(date) = RMATP * V(J2000),
+!  2. The matrix operates in the sense V(date) = RMATP * V(J2000),
 !     where the p-vector V(J2000) is with respect to the mean
 !     equatorial triad of epoch J2000.0 and the p-vector V(date)
 !     is with respect to the mean equatorial triad of the given
 !     date.
 !
-!  3) Though the matrix method itself is rigorous, the precession
+!  3. Though the matrix method itself is rigorous, the precession
 !     angles are expressed through canonical polynomials which are
 !     valid only for a limited time span.  In addition, the IAU 1976
 !     precession rate is known to be imperfect.  The absolute accuracy
@@ -22414,12 +22412,12 @@
 !
 !### Notes
 !
-!  1) The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
+!  1. The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
 !
-!  2) The proper motion time interval is for when the starlight
+!  2. The proper motion time interval is for when the starlight
 !     reaches the solar system barycenter.
 !
-!  3) To avoid the need for iteration, the Roemer effect (i.e. the
+!  3. To avoid the need for iteration, the Roemer effect (i.e. the
 !     small annual modulation of the proper motion coming from the
 !     changing light time) is applied approximately, using the
 !     direction of the star at the catalog epoch.
@@ -22536,7 +22534,7 @@
 !
 !### Notes
 !
-!  1) The starting and ending TDB epochs EP1A+EP1B and EP2A+EP2B are
+!  1. The starting and ending TDB epochs EP1A+EP1B and EP2A+EP2B are
 !     Julian Dates, apportioned in any convenient way between the two
 !     parts (A and B).  For example, JD(TDB)=2450123.7 could be
 !     expressed in any of these ways, among others:
@@ -22555,7 +22553,7 @@
 !     resolution.  The MJD method and the date & time methods are both
 !     good compromises between resolution and convenience.
 !
-!  2) In accordance with normal star-catalog conventions, the object's
+!  2. In accordance with normal star-catalog conventions, the object's
 !     right ascension and declination are freed from the effects of
 !     secular aberration.  The frame, which is aligned to the catalog
 !     equator and equinox, is Lorentzian and centered on the SSB.
@@ -22566,29 +22564,29 @@
 !
 !     The parallax and radial velocity are in the same frame.
 !
-!  3) Care is needed with units.  The star coordinates are in radians
+!  3. Care is needed with units.  The star coordinates are in radians
 !     and the proper motions in radians per Julian year, but the
 !     parallax is in arcseconds.
 !
-!  4) The RA proper motion is in terms of coordinate angle, not true
+!  4. The RA proper motion is in terms of coordinate angle, not true
 !     angle.  If the catalog uses arcseconds for both RA and Dec proper
 !     motions, the RA proper motion will need to be divided by cos(Dec)
 !     before use.
 !
-!  5) Straight-line motion at constant speed, in the inertial frame, is
+!  5. Straight-line motion at constant speed, in the inertial frame, is
 !     assumed.
 !
-!  6) An extremely small (or zero or negative) parallax is overridden to
+!  6. An extremely small (or zero or negative) parallax is overridden to
 !     ensure that the object is at a finite but very large distance, but
 !     not so large that the proper motion is equivalent to a large but
 !     safe speed (about 0.1c using the chosen constant).  A warning
 !     status of 1 is added to the status if this action has been taken.
 !
-!  7) If the space velocity is a significant fraction of c (see the
+!  7. If the space velocity is a significant fraction of c (see the
 !     constant VMAX in the routine STARPV), it is arbitrarily set to
 !     zero.  When this action occurs, 2 is added to the status.
 !
-!  8) The relativistic adjustment carried out in the STARPV routine
+!  8. The relativistic adjustment carried out in the STARPV routine
 !     involves an iterative calculation.  If the process fails to
 !     converge within a set number of iterations, 4 is added to the
 !     status.
@@ -22726,7 +22724,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -22745,31 +22743,31 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The caller is responsible for providing the nutation components;
+!  2. The caller is responsible for providing the nutation components;
 !     they are in longitude and obliquity, in radians and are with
 !     respect to the equinox and ecliptic of date.  For high-accuracy
 !     applications, free core nutation should be included as well as
 !     any other relevant corrections to the position of the CIP.
 !
-!  3) The returned mean obliquity is consistent with the IAU 2000
+!  3. The returned mean obliquity is consistent with the IAU 2000
 !     precession-nutation models.
 !
-!  4) The matrix RB transforms vectors from GCRS to J2000.0 mean equator
+!  4. The matrix RB transforms vectors from GCRS to J2000.0 mean equator
 !     and equinox by applying frame bias.
 !
-!  5) The matrix RP transforms vectors from J2000.0 mean equator and
+!  5. The matrix RP transforms vectors from J2000.0 mean equator and
 !     equinox to mean equator and equinox of date by applying
 !     precession.
 !
-!  6) The matrix RBP transforms vectors from GCRS to mean equator and
+!  6. The matrix RBP transforms vectors from GCRS to mean equator and
 !     equinox of date by applying frame bias then precession.  It is the
 !     product RP x RB.
 !
-!  7) The matrix RN transforms vectors from mean equator and equinox of
+!  7. The matrix RN transforms vectors from mean equator and equinox of
 !     date to true equator and equinox of date by applying the nutation
 !     (luni-solar + planetary).
 !
-!  8) The matrix RBPN transforms vectors from GCRS to true equator and
+!  8. The matrix RBPN transforms vectors from GCRS to true equator and
 !     equinox of date.  It is the product RN x RBP, applying frame bias,
 !     precession and nutation in that order.
 !
@@ -22844,7 +22842,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -22863,35 +22861,35 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The nutation components (luni-solar + planetary, IAU 2000A) in
+!  2. The nutation components (luni-solar + planetary, IAU 2000A) in
 !     longitude and obliquity are in radians and with respect to the
 !     equinox and ecliptic of date.  Free core nutation is omitted;  for
 !     the utmost accuracy, use the PN00 routine, where the nutation
 !     components are caller-specified.  For faster but slightly less
 !     accurate results, use the PN00B routine.
 !
-!  3) The mean obliquity is consistent with the IAU 2000 precession.
+!  3. The mean obliquity is consistent with the IAU 2000 precession.
 !
-!  4) The matrix RB transforms vectors from GCRS to J2000.0 mean equator
+!  4. The matrix RB transforms vectors from GCRS to J2000.0 mean equator
 !     and equinox by applying frame bias.
 !
-!  5) The matrix RP transforms vectors from J2000.0 mean equator and
+!  5. The matrix RP transforms vectors from J2000.0 mean equator and
 !     equinox to mean equator and equinox of date by applying
 !     precession.
 !
-!  6) The matrix RBP transforms vectors from GCRS to mean equator and
+!  6. The matrix RBP transforms vectors from GCRS to mean equator and
 !     equinox of date by applying frame bias then precession.  It is the
 !     product RP x RB.
 !
-!  7) The matrix RN transforms vectors from mean equator and equinox of
+!  7. The matrix RN transforms vectors from mean equator and equinox of
 !     date to true equator and equinox of date by applying the nutation
 !     (luni-solar + planetary).
 !
-!  8) The matrix RBPN transforms vectors from GCRS to true equator and
+!  8. The matrix RBPN transforms vectors from GCRS to true equator and
 !     equinox of date.  It is the product RN x RBP, applying frame bias,
 !     precession and nutation in that order.
 !
-!  9) The X,Y,Z coordinates of the IAU 2000A Celestial Intermediate Pole
+!  9. The X,Y,Z coordinates of the IAU 2000A Celestial Intermediate Pole
 !     are elements (3,1-3) of the matrix RBPN.
 !
 !### Reference
@@ -22955,7 +22953,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -22974,35 +22972,35 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The nutation components (luni-solar + planetary, IAU 2000B) in
+!  2. The nutation components (luni-solar + planetary, IAU 2000B) in
 !     longitude and obliquity are in radians and with respect to the
 !     equinox and ecliptic of date.  For more accurate results, but
 !     at the cost of increased computation, use the PN00A routine.
 !     For the utmost accuracy, use the PN00 routine, where the
 !     nutation components are caller-specified.
 !
-!  3) The mean obliquity is consistent with the IAU 2000 precession.
+!  3. The mean obliquity is consistent with the IAU 2000 precession.
 !
-!  4) The matrix RB transforms vectors from GCRS to J2000.0 mean equator
+!  4. The matrix RB transforms vectors from GCRS to J2000.0 mean equator
 !     and equinox by applying frame bias.
 !
-!  5) The matrix RP transforms vectors from J2000.0 mean equator and
+!  5. The matrix RP transforms vectors from J2000.0 mean equator and
 !     equinox to mean equator and equinox of date by applying
 !     precession.
 !
-!  6) The matrix RBP transforms vectors from GCRS to mean equator and
+!  6. The matrix RBP transforms vectors from GCRS to mean equator and
 !     equinox of date by applying frame bias then precession.  It is the
 !     product RP x RB.
 !
-!  7) The matrix RN transforms vectors from mean equator and equinox of
+!  7. The matrix RN transforms vectors from mean equator and equinox of
 !     date to true equator and equinox of date by applying the nutation
 !     (luni-solar + planetary).
 !
-!  8) The matrix RBPN transforms vectors from GCRS to true equator and
+!  8. The matrix RBPN transforms vectors from GCRS to true equator and
 !     equinox of date.  It is the product RN x RBP, applying frame bias,
 !     precession and nutation in that order.
 !
-!  9) The X,Y,Z coordinates of the IAU 2000B Celestial Intermediate Pole
+!  9. The X,Y,Z coordinates of the IAU 2000B Celestial Intermediate Pole
 !     are elements (3,1-3) of the matrix RBPN.
 !
 !### Reference
@@ -23066,7 +23064,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -23085,32 +23083,32 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The caller is responsible for providing the nutation components;
+!  2. The caller is responsible for providing the nutation components;
 !     they are in longitude and obliquity, in radians and are with
 !     respect to the equinox and ecliptic of date.  For high-accuracy
 !     applications, free core nutation should be included as well as
 !     any other relevant corrections to the position of the CIP.
 !
-!  3) The returned mean obliquity is consistent with the IAU 2006
+!  3. The returned mean obliquity is consistent with the IAU 2006
 !     precession.
 !
-!  4) The matrix RB transforms vectors from GCRS to mean J2000.0 by
+!  4. The matrix RB transforms vectors from GCRS to mean J2000.0 by
 !     applying frame bias.
 !
-!  5) The matrix RP transforms vectors from mean J2000.0 to mean of date
+!  5. The matrix RP transforms vectors from mean J2000.0 to mean of date
 !     by applying precession.
 !
-!  6) The matrix RBP transforms vectors from GCRS to mean of date by
+!  6. The matrix RBP transforms vectors from GCRS to mean of date by
 !     applying frame bias then precession.  It is the product RP x RB.
 !
-!  7) The matrix RN transforms vectors from mean of date to true of date
+!  7. The matrix RN transforms vectors from mean of date to true of date
 !     by applying the nutation (luni-solar + planetary).
 !
-!  8) The matrix RBPN transforms vectors from GCRS to true of date
+!  8. The matrix RBPN transforms vectors from GCRS to true of date
 !     (CIP/equinox).  It is the product RN x RBP, applying frame bias,
 !     precession and nutation in that order.
 !
-!  9) The X,Y,Z coordinates of the Celestial Intermediate Pole are
+!  9. The X,Y,Z coordinates of the Celestial Intermediate Pole are
 !     elements (3,1-3) of the matrix RBPN.
 !
 !### References
@@ -23197,7 +23195,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -23216,31 +23214,31 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The nutation components (luni-solar + planetary, IAU 2000A) in
+!  2. The nutation components (luni-solar + planetary, IAU 2000A) in
 !     longitude and obliquity are in radians and with respect to the
 !     equinox and ecliptic of date.  Free core nutation is omitted;  for
 !     the utmost accuracy, use the PN06 routine, where the nutation
 !     components are caller-specified.
 !
-!  3) The mean obliquity is consistent with the IAU 2006 precession.
+!  3. The mean obliquity is consistent with the IAU 2006 precession.
 !
-!  4) The matrix RB transforms vectors from GCRS to mean J2000.0 by
+!  4. The matrix RB transforms vectors from GCRS to mean J2000.0 by
 !     applying frame bias.
 !
-!  5) The matrix RP transforms vectors from mean J2000.0 to mean of date
+!  5. The matrix RP transforms vectors from mean J2000.0 to mean of date
 !     by applying precession.
 !
-!  6) The matrix RBP transforms vectors from GCRS to mean of date by
+!  6. The matrix RBP transforms vectors from GCRS to mean of date by
 !     applying frame bias then precession.  It is the product RP x RB.
 !
-!  7) The matrix RN transforms vectors from mean of date to true of date
+!  7. The matrix RN transforms vectors from mean of date to true of date
 !     by applying the nutation (luni-solar + planetary).
 !
-!  8) The matrix RBPN transforms vectors from GCRS to true of date
+!  8. The matrix RBPN transforms vectors from GCRS to true of date
 !     (CIP/equinox).  It is the product RN x RBP, applying frame bias,
 !     precession and nutation in that order.
 !
-!  9) The X,Y,Z coordinates of the IAU 2006/2000A Celestial Intermediate
+!  9. The X,Y,Z coordinates of the IAU 2006/2000A Celestial Intermediate
 !     Pole are elements (3,1-3) of the matrix RBPN.
 !
 !### Reference
@@ -23291,7 +23289,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -23310,12 +23308,12 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The matrix operates in the sense V(date) = RBPN * V(GCRS), where
+!  2. The matrix operates in the sense V(date) = RBPN * V(GCRS), where
 !     the p-vector V(date) is with respect to the true equatorial triad
 !     of date DATE1+DATE2 and the p-vector V(GCRS) is with respect to
 !     the Geocentric Celestial Reference System (IAU, 2000).
 !
-!  3) A faster, but slightly less accurate result (about 1 mas), can be
+!  3. A faster, but slightly less accurate result (about 1 mas), can be
 !     obtained by using instead the PNM00B routine.
 !
 !### Reference
@@ -23360,7 +23358,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -23379,12 +23377,12 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The matrix operates in the sense V(date) = RBPN * V(GCRS), where
+!  2. The matrix operates in the sense V(date) = RBPN * V(GCRS), where
 !     the p-vector V(date) is with respect to the true equatorial triad
 !     of date DATE1+DATE2 and the p-vector V(GCRS) is with respect to
 !     the Geocentric Celestial Reference System (IAU, 2000).
 !
-!  3) The present routine is faster, but slightly less accurate (about
+!  3. The present routine is faster, but slightly less accurate (about
 !     1 mas), than the PNM00A routine.
 !
 !### Reference
@@ -23429,7 +23427,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -23448,7 +23446,7 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The matrix operates in the sense V(date) = RNPB * V(GCRS), where
+!  2. The matrix operates in the sense V(date) = RNPB * V(GCRS), where
 !     the p-vector V(date) is with respect to the true equatorial triad
 !     of date DATE1+DATE2 and the p-vector V(GCRS) is with respect to
 !     the Geocentric Celestial Reference System (IAU, 2000).
@@ -23497,7 +23495,7 @@
 !
 !### Notes
 !
-!  1) The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TDB)=2450123.7 could be expressed in any of these ways, among
 !     others:
@@ -23516,7 +23514,7 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The matrix operates in the sense V(date) = RMATPN * V(J2000),
+!  2. The matrix operates in the sense V(date) = RMATPN * V(J2000),
 !     where the p-vector V(date) is with respect to the true
 !     equatorial triad of date DATE1+DATE2 and the p-vector
 !     V(J2000) is with respect to the mean equatorial triad of
@@ -23568,12 +23566,12 @@
 !
 !### Notes
 !
-!  1) XP and YP are the coordinates (in radians) of the Celestial
+!  1. XP and YP are the coordinates (in radians) of the Celestial
 !     Intermediate Pole with respect to the International Terrestrial
 !     Reference System (see IERS Conventions 2003), measured along the
 !     meridians to 0 and 90 deg west respectively.
 !
-!  2) SP is the TIO locator s', in radians, which positions the
+!  2. SP is the TIO locator s', in radians, which positions the
 !     Terrestrial Intermediate Origin on the equator.  It is obtained
 !     from polar motion observations by numerical integration, and so is
 !     in essence unpredictable.  However, it is dominated by a secular
@@ -23581,7 +23579,7 @@
 !     into account by using s' = -47*t, where t is centuries since
 !     J2000.0.  The routine SP00 implements this approximation.
 !
-!  3) The matrix operates in the sense V(TRS) = RPOM * V(CIP), meaning
+!  3. The matrix operates in the sense V(TRS) = RPOM * V(CIP), meaning
 !     that it is the final rotation when computing the pointing
 !     direction to a celestial source.
 !
@@ -23694,7 +23692,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others
@@ -23713,18 +23711,18 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The precession adjustments are expressed as "nutation components",
+!  2. The precession adjustments are expressed as "nutation components",
 !     corrections in longitude and obliquity with respect to the J2000.0
 !     equinox and ecliptic.
 !
-!  3) Although the precession adjustments are stated to be with respect
+!  3. Although the precession adjustments are stated to be with respect
 !     to Lieske et al. (1977), the MHB2000 model does not specify which
 !     set of Euler angles are to be used and how the adjustments are to
 !     be applied.  The most literal and straightforward procedure is to
 !     adopt the 4-rotation epsilon_0, psi_A, omega_A, xi_A option, and
 !     to add DPSIPR to psi_A and DEPSPR to both omega_A and eps_A.
 !
-!  4) This is an implementation of one aspect of the IAU 2000A nutation
+!  4. This is an implementation of one aspect of the IAU 2000A nutation
 !     model, formally adopted by the IAU General Assembly in 2000,
 !     namely MHB2000 (Mathews et al. 2002).
 !
@@ -23795,7 +23793,7 @@
 !
 !### Notes
 !
-!  1) The dates DATE01+DATE02 and DATE11+DATE12 are Julian Dates,
+!  1. The dates DATE01+DATE02 and DATE11+DATE12 are Julian Dates,
 !     apportioned in any convenient way between the arguments DATEn1 and
 !     DATEn2.  For example, JD(TDB)=2450123.7 could be expressed in any
 !     of these ways, among others:
@@ -23816,7 +23814,7 @@
 !     The two dates may be expressed using different methods, but at
 !     the risk of losing some resolution.
 !
-!  2) The accumulated precession angles zeta, z, theta are expressed
+!  2. The accumulated precession angles zeta, z, theta are expressed
 !     through canonical polynomials which are valid only for a limited
 !     time span.  In addition, the IAU 1976 precession rate is known to
 !     be imperfect.  The absolute accuracy of the present formulation is
@@ -23826,7 +23824,7 @@
 !     the range 1200BC to 3900AD, exceed 100 arcsec outside 4200BC to
 !     5600AD and exceed 1000 arcsec outside 6800BC to 8200AD.
 !
-!  3) The three angles are returned in the conventional order, which
+!  3. The three angles are returned in the conventional order, which
 !     is not the same as the order of the corresponding Euler rotations.
 !     The precession matrix is R_3(-z) x R_2(+theta) x R_3(-zeta).
 !
@@ -23929,7 +23927,7 @@
 !
 !### Notes
 !
-!  1) If the position part of PV is null, THETA, PHI, TD and PD
+!  1. If the position part of PV is null, THETA, PHI, TD and PD
 !     are indeterminate.  This is handled by extrapolating the
 !     position through unit time by using the velocity part of
 !     PV.  This moves the origin without changing the direction
@@ -23937,7 +23935,7 @@
 !     components of PV are both null, zeroes are returned for all
 !     six results.
 !
-!  2) If the position is a pole, THETA, TD and PD are indeterminate.
+!  2. If the position is a pole, THETA, TD and PD are indeterminate.
 !     In such cases zeroes are returned for all three.
 !
 !### History
@@ -24184,11 +24182,11 @@
 !
 !### Notes
 !
-!  1) The specified pv-vector is the coordinate direction (and its rate
+!  1. The specified pv-vector is the coordinate direction (and its rate
 !     of change) for the epoch at which the light leaving the star
 !     reached the solar-system barycenter.
 !
-!  2) The star data returned by this routine are "observables" for an
+!  2. The star data returned by this routine are "observables" for an
 !     imaginary observer at the solar-system barycenter.  Proper motion
 !     and radial velocity are, strictly, in terms of barycentric
 !     coordinate time, TCB.  For most practical applications, it is
@@ -24218,22 +24216,22 @@
 !
 !     (ii) The transformation complies with special relativity.
 !
-!  3) Care is needed with units.  The star coordinates are in radians
+!  3. Care is needed with units.  The star coordinates are in radians
 !     and the proper motions in radians per Julian year, but the
 !     parallax is in arcseconds; the radial velocity is in km/s, but
 !     the pv-vector result is in au and au/day.
 !
-!  4) The proper motions are the rate of change of the right ascension
+!  4. The proper motions are the rate of change of the right ascension
 !     and declination at the catalog epoch and are in radians per Julian
 !     year.  The RA proper motion is in terms of coordinate angle, not
 !     true angle, and will thus be numerically larger at high
 !     declinations.
 !
-!  5) Straight-line motion at constant speed in the inertial frame is
+!  5. Straight-line motion at constant speed in the inertial frame is
 !     assumed.  If the speed is greater than or equal to the speed of
 !     light, the routine aborts with an error status.
 !
-!  6) The inverse transformation is performed by the routine STARPV.
+!  6. The inverse transformation is performed by the routine STARPV.
 !
 !### Reference
 !
@@ -24351,10 +24349,10 @@
 !
 !### Notes
 !
-!  1) The terrestrial coordinates are with respect to the WGS84
+!  1. The terrestrial coordinates are with respect to the WGS84
 !     reference ellipsoid.
 !
-!  2) XP and YP are the coordinates (in radians) of the Celestial
+!  2. XP and YP are the coordinates (in radians) of the Celestial
 !     Intermediate Pole with respect to the International Terrestrial
 !     Reference System (see IERS Conventions 2003), measured along the
 !     meridians 0 and 90 deg west respectively.  SP is the TIO locator
@@ -24362,16 +24360,16 @@
 !     Origin on the equator.  For many applications, XP, YP and
 !     (especially) SP can be set to zero.
 !
-!  3) If THETA is Greenwich apparent sidereal time instead of Earth
+!  3. If THETA is Greenwich apparent sidereal time instead of Earth
 !     rotation angle, the result is with respect to the true equator
 !     and equinox of date, i.e. with the x-axis at the equinox rather
 !     than the celestial intermediate origin.
 !
-!  4) The velocity units are meters per UT1 second, not per SI second.
+!  4. The velocity units are meters per UT1 second, not per SI second.
 !     This is unlikely to have any practical consequences in the modern
 !     era.
 !
-!  5) No validation is performed on the arguments.  Error cases that
+!  5. No validation is performed on the arguments.  Error cases that
 !     could lead to arithmetic exceptions are trapped by the GD2GC
 !     routine, and the result set to zeros.
 !
@@ -24448,10 +24446,10 @@
 !
 !### Notes
 !
-!  1) "Update" means "refer the position component of the vector
+!  1. "Update" means "refer the position component of the vector
 !     to a new epoch DT time units from the existing epoch".
 !
-!  2) The time units of DT must match those of the velocity.
+!  2. The time units of DT must match those of the velocity.
 !
 !### History
 !  * IAU SOFA revision: 2003 January 14
@@ -24485,10 +24483,10 @@
 !
 !### Notes
 !
-!  1) "Update" means "refer the position component of the vector to a
+!  1. "Update" means "refer the position component of the vector to a
 !     new date DT time units from the existing date".
 !
-!  2) The time units of DT must match those of the velocity.
+!  2. The time units of DT must match those of the velocity.
 !
 !### History
 !  * IAU SOFA revision: 2008 May 8
@@ -24620,12 +24618,12 @@
 !
 !### Notes
 !
-!  1) The model balances speed and accuracy to give good results in
+!  1. The model balances speed and accuracy to give good results in
 !     applications where performance at low altitudes is not paramount.
 !     Performance is maintained across a range of conditions, and
 !     applies to both optical/IR and radio.
 !
-!  2) The model omits the effects of (i) height above sea level (apart
+!  2. The model omits the effects of (i) height above sea level (apart
 !     from the reduced pressure itself), (ii) latitude (i.e. the
 !     flattening of the Earth), (iii) variations in tropospheric lapse
 !     rate and (iv) dispersive effects in the radio.
@@ -24684,15 +24682,15 @@
 !     The values for Saastamoinen's formula (which includes terms
 !     up to tan^5) are taken from Hohenkerk and Sinclair (1985).
 !
-!  3) A WL value in the range 0-100 selects the optical/IR case and is
+!  3. A WL value in the range 0-100 selects the optical/IR case and is
 !     wavelength in micrometers.  Any value outside this range selects
 !     the radio case.
 !
-!  4) Outlandish input parameters are silently limited to mathematically
+!  4. Outlandish input parameters are silently limited to mathematically
 !     safe values.  Zero pressure is permissible, and causes zeroes to
 !     be returned.
 !
-!  5) The algorithm draws on several sources, as follows:
+!  5. The algorithm draws on several sources, as follows:
 !
 !     a) The formula for the saturation vapour pressure of water as
 !        a function of temperature and temperature is taken from
@@ -24809,17 +24807,17 @@
 !
 !### Notes
 !
-!  1) A rotation matrix describes a rotation through some angle about
+!  1. A rotation matrix describes a rotation through some angle about
 !     some arbitrary axis called the Euler axis.  The "rotation vector"
 !     returned by this routine has the same direction as the Euler axis,
 !     and its magnitude is the angle in radians.  (The magnitude and
 !     direction can be separated by means of the routine PN.)
 !
-!  2) If R is null, so is the result.  If R is not a rotation matrix
+!  2. If R is null, so is the result.  If R is not a rotation matrix
 !     the result is undefined.  R must be proper (i.e. have a positive
 !     determinant) and real orthogonal (inverse = transpose).
 !
-!  3) The reference frame rotates clockwise as seen looking along
+!  3. The reference frame rotates clockwise as seen looking along
 !     the rotation vector from the origin.
 !
 !### History
@@ -24868,14 +24866,14 @@
 !
 !### Notes
 !
-!  1) A rotation matrix describes a rotation through some angle about
+!  1. A rotation matrix describes a rotation through some angle about
 !     some arbitrary axis called the Euler axis.  The "rotation vector"
 !     supplied to this routine has the same direction as the Euler axis,
 !     and its magnitude is the angle in radians.
 !
-!  2) If W is null, the unit matrix is returned.
+!  2. If W is null, the unit matrix is returned.
 !
-!  3) The reference frame rotates clockwise as seen looking along the
+!  3. The reference frame rotates clockwise as seen looking along the
 !     rotation vector from the origin.
 !
 !### History
@@ -24934,11 +24932,11 @@
 !
 !### Notes
 !
-!  1) Calling this routine with positive PHI incorporates in the
+!  1. Calling this routine with positive PHI incorporates in the
 !     supplied r-matrix R an additional rotation, about the x-axis,
 !     anticlockwise as seen looking towards the origin from positive x.
 !
-!  2) The additional rotation can be represented by this matrix:
+!  2. The additional rotation can be represented by this matrix:
 !
 !         (  1        0            0      )
 !         (                               )
@@ -25106,11 +25104,11 @@
 !
 !### Notes
 !
-!  1) Calling this routine with positive THETA incorporates in the
+!  1. Calling this routine with positive THETA incorporates in the
 !     supplied r-matrix R an additional rotation, about the y-axis,
 !     anticlockwise as seen looking towards the origin from positive y.
 !
-!  2) The additional rotation can be represented by this matrix:
+!  2. The additional rotation can be represented by this matrix:
 !
 !         (  + cos(THETA)     0      - sin(THETA)  )
 !         (                                        )
@@ -25164,11 +25162,11 @@
 !
 !### Notes
 !
-!  1) Calling this routine with positive PSI incorporates in the
+!  1. Calling this routine with positive PSI incorporates in the
 !     supplied r-matrix R an additional rotation, about the z-axis,
 !     anticlockwise as seen looking towards the origin from positive z.
 !
-!  2) The additional rotation can be represented by this matrix:
+!  2. The additional rotation can be represented by this matrix:
 !
 !         (  + cos(PSI)   + sin(PSI)     0  )
 !         (                                 )
@@ -25225,7 +25223,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -25244,19 +25242,19 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The CIO locator s is the difference between the right ascensions
+!  2. The CIO locator s is the difference between the right ascensions
 !     of the same point in two systems:  the two systems are the GCRS
 !     and the CIP,CIO, and the point is the ascending node of the
 !     CIP equator.  The quantity s remains below 0.1 arcsecond
 !     throughout 1900-2100.
 !
-!  3) The series used to compute s is in fact for s+XY/2, where X and Y
+!  3. The series used to compute s is in fact for s+XY/2, where X and Y
 !     are the x and y components of the CIP unit vector;  this series is
 !     more compact than a direct series for s would be.  This routine
 !     requires X,Y to be supplied by the caller, who is responsible for
 !     providing values that are consistent with the supplied date.
 !
-!  4) The model is consistent with the IAU 2000A precession-nutation.
+!  4. The model is consistent with the IAU 2000A precession-nutation.
 !
 !### References
 !
@@ -25605,7 +25603,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -25624,13 +25622,13 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The CIO locator s is the difference between the right ascensions
+!  2. The CIO locator s is the difference between the right ascensions
 !     of the same point in two systems.  The two systems are the GCRS
 !     and the CIP,CIO, and the point is the ascending node of the
 !     CIP equator.  The CIO locator s remains a small fraction of
 !     1 arcsecond throughout 1900-2100.
 !
-!  3) The series used to compute s is in fact for s+XY/2, where X and Y
+!  3. The series used to compute s is in fact for s+XY/2, where X and Y
 !     are the x and y components of the CIP unit vector;  this series is
 !     more compact than a direct series for s would be.  The present
 !     routine uses the full IAU 2000A nutation model when predicting the
@@ -25691,7 +25689,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -25710,13 +25708,13 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The CIO locator s is the difference between the right ascensions
+!  2. The CIO locator s is the difference between the right ascensions
 !     of the same point in two systems.  The two systems are the GCRS
 !     and the CIP,CIO, and the point is the ascending node of the
 !     CIP equator.  The CIO locator s remains a small fraction of
 !     1 arcsecond throughout 1900-2100.
 !
-!  3) The series used to compute s is in fact for s+XY/2, where X and Y
+!  3. The series used to compute s is in fact for s+XY/2, where X and Y
 !     are the x and y components of the CIP unit vector;  this series is
 !     more compact than a direct series for s would be.  The present
 !     routine uses the IAU 2000B truncated nutation model when
@@ -25778,7 +25776,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -25797,19 +25795,19 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The CIO locator s is the difference between the right ascensions
+!  2. The CIO locator s is the difference between the right ascensions
 !     of the same point in two systems:  the two systems are the GCRS
 !     and the CIP,CIO, and the point is the ascending node of the
 !     CIP equator.  The quantity s remains below 0.1 arcsecond
 !     throughout 1900-2100.
 !
-!  3) The series used to compute s is in fact for s+XY/2, where X and Y
+!  3. The series used to compute s is in fact for s+XY/2, where X and Y
 !     are the x and y components of the CIP unit vector;  this series is
 !     more compact than a direct series for s would be.  This routine
 !     requires X,Y to be supplied by the caller, who is responsible for
 !     providing values that are consistent with the supplied date.
 !
-!  4) The model is consistent with the "P03" precession (Capitaine et
+!  4. The model is consistent with the "P03" precession (Capitaine et
 !     al. 2003), adopted by IAU 2006 Resolution 1, 2006, and the
 !     IAU 2000A nutation (with P03 adjustments).
 !
@@ -26155,7 +26153,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -26174,13 +26172,13 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The CIO locator s is the difference between the right ascensions
+!  2. The CIO locator s is the difference between the right ascensions
 !     of the same point in two systems.  The two systems are the GCRS
 !     and the CIP,CIO, and the point is the ascending node of the
 !     CIP equator.  The CIO locator s remains a small fraction of
 !     1 arcsecond throughout 1900-2100.
 !
-!  3) The series used to compute s is in fact for s+XY/2, where X and Y
+!  3. The series used to compute s is in fact for s+XY/2, where X and Y
 !     are the x and y components of the CIP unit vector;  this series is
 !     more compact than a direct series for s would be.  The present
 !     routine uses the full IAU 2000A nutation model when predicting the
@@ -26396,9 +26394,9 @@
 !
 !### Notes
 !
-!  1) If either vector is null, a zero result is returned.
+!  1. If either vector is null, a zero result is returned.
 !
-!  2) The angular separation is most simply formulated in terms of
+!  2. The angular separation is most simply formulated in terms of
 !     scalar product.  However, this gives poor accuracy for angles
 !     near zero and pi.  The present algorithm uses both cross product
 !     and dot product, to deliver full accuracy whatever the size of
@@ -26489,7 +26487,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -26508,7 +26506,7 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The TIO locator s' is obtained from polar motion observations by
+!  2. The TIO locator s' is obtained from polar motion observations by
 !     numerical integration, and so is in essence unpredictable.
 !     However, it is dominated by a secular drift of about
 !     47 microarcseconds per century, which is the approximation
@@ -26576,7 +26574,7 @@
 !
 !### Notes
 !
-!  1) The starting and ending TDB epochs EP1A+EP1B and EP2A+EP2B are
+!  1. The starting and ending TDB epochs EP1A+EP1B and EP2A+EP2B are
 !     Julian Dates, apportioned in any convenient way between the two
 !     parts (A and B).  For example, JD(TDB)=2450123.7 could be
 !     expressed in any of these ways, among others:
@@ -26595,7 +26593,7 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) In accordance with normal star-catalog conventions, the object's
+!  2. In accordance with normal star-catalog conventions, the object's
 !     right ascension and declination are freed from the effects of
 !     secular aberration.  The frame, which is aligned to the catalog
 !     equator and equinox, is Lorentzian and centered on the SSB.
@@ -26606,29 +26604,29 @@
 !
 !     The parallax and radial velocity are in the same frame.
 !
-!  3) Care is needed with units.  The star coordinates are in radians
+!  3. Care is needed with units.  The star coordinates are in radians
 !     and the proper motions in radians per Julian year, but the
 !     parallax is in arcseconds.
 !
-!  4) The RA proper motion is in terms of coordinate angle, not true
+!  4. The RA proper motion is in terms of coordinate angle, not true
 !     angle.  If the catalog uses arcseconds for both RA and Dec proper
 !     motions, the RA proper motion will need to be divided by cos(Dec)
 !     before use.
 !
-!  5) Straight-line motion at constant speed, in the inertial frame,
+!  5. Straight-line motion at constant speed, in the inertial frame,
 !     is assumed.
 !
-!  6) An extremely small (or zero or negative) parallax is interpreted
+!  6. An extremely small (or zero or negative) parallax is interpreted
 !     to mean that the object is on the "celestial sphere", the radius
 !     of which is an arbitrary (large) value (see the STARPV routine
 !     for the value used).  When the distance is overridden in this way,
 !     the status, initially zero, has 1 added to it.
 !
-!  7) If the space velocity is a significant fraction of c (see the
+!  7. If the space velocity is a significant fraction of c (see the
 !     constant VMAX in the routine STARPV), it is arbitrarily set to
 !     zero.  When this action occurs, 2 is added to the status.
 !
-!  8) The relativistic adjustment carried out in the STARPV routine
+!  8. The relativistic adjustment carried out in the STARPV routine
 !     involves an iterative calculation.  If the process fails to
 !     converge within a set number of iterations, 4 is added to the
 !     status.
@@ -26735,7 +26733,7 @@
 !
 !### Notes
 !
-!  1) The star data accepted by this routine are "observables" for an
+!  1. The star data accepted by this routine are "observables" for an
 !     imaginary observer at the solar-system barycenter.  Proper motion
 !     and radial velocity are, strictly, in terms of barycentric
 !     coordinate time, TCB.  For most practical applications, it is
@@ -26751,7 +26749,7 @@
 !     secular aberration.  The frame, which is aligned to the catalog
 !     equator and equinox, is Lorentzian and centered on the SSB.
 !
-!  2) The resulting position and velocity pv-vector is with respect to
+!  2. The resulting position and velocity pv-vector is with respect to
 !     the same frame and, like the catalog coordinates, is freed from
 !     the effects of secular aberration.  Should the "coordinate
 !     direction", where the object was located at the catalog epoch, be
@@ -26772,34 +26770,34 @@
 !
 !     (ii) The transformation complies with special relativity.
 !
-!  3) Care is needed with units.  The star coordinates are in radians
+!  3. Care is needed with units.  The star coordinates are in radians
 !     and the proper motions in radians per Julian year, but the
 !     parallax is in arcseconds; the radial velocity is in km/s, but
 !     the pv-vector result is in au and au/day.
 !
-!  4) The RA proper motion is in terms of coordinate angle, not true
+!  4. The RA proper motion is in terms of coordinate angle, not true
 !     angle.  If the catalog uses arcseconds for both RA and Dec proper
 !     motions, the RA proper motion will need to be divided by cos(Dec)
 !     before use.
 !
-!  5) Straight-line motion at constant speed, in the inertial frame,
+!  5. Straight-line motion at constant speed, in the inertial frame,
 !     is assumed.
 !
-!  6) An extremely small (or zero or negative) parallax is interpreted
+!  6. An extremely small (or zero or negative) parallax is interpreted
 !     to mean that the object is on the "celestial sphere", the radius
 !     of which is an arbitrary (large) value (see the constant PXMIN).
 !     When the distance is overridden in this way, the status, initially
 !     zero, has 1 added to it.
 !
-!  7) If the space velocity is a significant fraction of c (see the
+!  7. If the space velocity is a significant fraction of c (see the
 !     constant VMAX), it is arbitrarily set to zero.  When this action
 !     occurs, 2 is added to the status.
 !
-!  8) The relativistic adjustment involves an iterative calculation.
+!  8. The relativistic adjustment involves an iterative calculation.
 !     If the process fails to converge within a set number (IMAX) of
 !     iterations, 4 is added to the status.
 !
-!  9) The inverse transformation is performed by the routine PVSTAR.
+!  9. The inverse transformation is performed by the routine PVSTAR.
 !
 !### Reference
 !
@@ -27074,12 +27072,12 @@
 !
 !### Notes
 !
-!  1) TAI1+TAI2 is Julian Date, apportioned in any convenient way
+!  1. TAI1+TAI2 is Julian Date, apportioned in any convenient way
 !     between the two arguments, for example where TAI1 is the Julian
 !     Day Number and TAI2 is the fraction of a day.  The returned
 !     UT11,UT12 follow suit.
 !
-!  2) The argument DTA, i.e. UT1-TAI, is an observed quantity, and is
+!  2. The argument DTA, i.e. UT1-TAI, is an observed quantity, and is
 !     available from IERS tabulations.
 !
 !### Reference
@@ -27137,14 +27135,14 @@
 !
 !### Notes
 !
-!  1) TAI1+TAI2 is Julian Date, apportioned in any convenient way
+!  1. TAI1+TAI2 is Julian Date, apportioned in any convenient way
 !     between the two arguments, for example where TAI1 is the Julian
 !     Day Number and TAI2 is the fraction of a day.  The returned UTC1
 !     and UTC2 form an analogous pair, except that a special convention
 !     is used, to deal with the problem of leap seconds - see the next
 !     note.
 !
-!  2) JD cannot unambiguously represent UTC during a leap second unless
+!  2. JD cannot unambiguously represent UTC during a leap second unless
 !     special measures are taken.  The convention in the present routine
 !     is that the JD day represents UTC days whether the length is
 !     86399, 86400 or 86401 SI seconds.  In the 1960-1972 era there were
@@ -27152,11 +27150,11 @@
 !     expression was changed, and these "mini-leaps" are also included
 !     in the SOFA convention.
 !
-!  3) The routine D2DTF can be used to transform the UTC quasi-JD
+!  3. The routine D2DTF can be used to transform the UTC quasi-JD
 !     into calendar date and clock time, including UTC leap second
 !     handling.
 !
-!  4) The warning status "dubious year" flags UTCs that predate the
+!  4. The warning status "dubious year" flags UTCs that predate the
 !     introduction of the time scale or that are too far in the future
 !     to be trusted.  See DAT for further details.
 !
@@ -27246,12 +27244,12 @@
 !
 !### Notes
 !
-!  1) TCB1+TCB2 is Julian Date, apportioned in any convenient way
+!  1. TCB1+TCB2 is Julian Date, apportioned in any convenient way
 !     between the two arguments, for example where TCB1 is the Julian
 !     Day Number and TCB2 is the fraction of a day.  The returned
 !     TDB1,TDB2 follow suit.
 !
-!  2) The 2006 IAU General Assembly introduced a conventional linear
+!  2. The 2006 IAU General Assembly introduced a conventional linear
 !     transformation between TDB and TCB.  This transformation
 !     compensates for the drift between TCB and terrestrial time TT,
 !     and keeps TDB approximately centered on TT.  Because the
@@ -27266,7 +27264,7 @@
 !     these difficulties whilst delivering a TDB that in practice was
 !     consistent with values before that date.
 !
-!  3) TDB is essentially the same as Teph, the time argument for the
+!  3. TDB is essentially the same as Teph, the time argument for the
 !     JPL solar system ephemerides.
 !
 !### Reference
@@ -27394,12 +27392,12 @@
 !
 !### Notes
 !
-!  1) TDB1+TDB2 is Julian Date, apportioned in any convenient way
+!  1. TDB1+TDB2 is Julian Date, apportioned in any convenient way
 !     between the two arguments, for example where TDB1 is the Julian
 !     Day Number and TDB2 is the fraction of a day.  The returned
 !     TCB1,TCB2 follow suit.
 !
-!  2) The 2006 IAU General Assembly introduced a conventional linear
+!  2. The 2006 IAU General Assembly introduced a conventional linear
 !     transformation between TDB and TCB.  This transformation
 !     compensates for the drift between TCB and terrestrial time TT,
 !     and keeps TDB approximately centered on TT.  Because the
@@ -27414,7 +27412,7 @@
 !     these difficulties whilst delivering a TDB that in practice was
 !     consistent with values before that date.
 !
-!  3) TDB is essentially the same as Teph, the time argument for the
+!  3. TDB is essentially the same as Teph, the time argument for the
 !     JPL solar system ephemerides.
 !
 !### Reference
@@ -27484,12 +27482,12 @@
 !
 !### Notes
 !
-!  1) TDB1+TDB2 is Julian Date, apportioned in any convenient way
+!  1. TDB1+TDB2 is Julian Date, apportioned in any convenient way
 !     between the two arguments, for example where TDB1 is the Julian
 !     Day Number and TDB2 is the fraction of a day.  The returned
 !     TT1,TT2 follow suit.
 !
-!  2) The argument DTR represents the quasi-periodic component of the
+!  2. The argument DTR represents the quasi-periodic component of the
 !     GR transformation between TT and TCB.  It is dependent upon the
 !     adopted solar-system ephemeris, and can be obtained by numerical
 !     integration, by interrogating a precomputed time ephemeris or by
@@ -27497,7 +27495,7 @@
 !     DTDB.  The quantity is dominated by an annual term of 1.7 ms
 !     amplitude.
 !
-!  3) TDB is essentially the same as Teph, the time argument for the
+!  3. TDB is essentially the same as Teph, the time argument for the
 !     JPL solar system ephemerides.
 !
 !### References
@@ -27560,15 +27558,15 @@
 !
 !### Notes
 !
-!  1)  If the s argument is a string, only the leftmost character is
+!  1.  If the s argument is a string, only the leftmost character is
 !      used and no warning status is provided.
 !
-!  2)  The result is computed even if any of the range checks fail.
+!  2.  The result is computed even if any of the range checks fail.
 !
-!  3)  Negative IHOUR, IMIN and/or SEC produce a warning status, but the
+!  3.  Negative IHOUR, IMIN and/or SEC produce a warning status, but the
 !      absolute value is used in the conversion.
 !
-!  4)  If there are multiple errors, the status value reflects only the
+!  4.  If there are multiple errors, the status value reflects only the
 !      first, the smallest taking precedence.
 !
 !### History
@@ -27630,15 +27628,15 @@
 !
 !### Notes
 !
-!  1)  If the s argument is a string, only the leftmost character is
+!  1.  If the s argument is a string, only the leftmost character is
 !      used and no warning status is provided.
 !
-!  2)  The result is computed even if any of the range checks fail.
+!  2.  The result is computed even if any of the range checks fail.
 !
-!  3)  Negative IHOUR, IMIN and/or SEC produce a warning status, but the
+!  3.  Negative IHOUR, IMIN and/or SEC produce a warning status, but the
 !      absolute value is used in the conversion.
 !
-!  4)  If there are multiple errors, the status value reflects only the
+!  4.  If there are multiple errors, the status value reflects only the
 !      first, the smallest taking precedence.
 !
 !### History
@@ -27701,34 +27699,34 @@
 !
 !### Notes
 !
-!  1) The tangent plane projection is also called the "gnomonic
+!  1. The tangent plane projection is also called the "gnomonic
 !     projection" and the "central projection".
 !
-!  2) The eta axis points due north in the adopted coordinate system.
+!  2. The eta axis points due north in the adopted coordinate system.
 !     If the spherical coordinates are observed (RA,Dec), the tangent
 !     plane coordinates (xi,eta) are conventionally called the "standard
 !     coordinates".  If the spherical coordinates are with respect to a
 !     right-handed triad, (xi,eta) are also right-handed.  The units of
 !     (xi,eta) are, effectively, radians at the tangent point.
 !
-!  3) All angular arguments are in radians.
+!  3. All angular arguments are in radians.
 !
-!  4) The angles A01 and A02 are returned in the range 0-2pi.  The
+!  4. The angles A01 and A02 are returned in the range 0-2pi.  The
 !     angles B01 and B02 are returned in the range +/-pi, but in the
 !     usual, non-pole-crossing, case, the range is +/-pi/2.
 !
-!  5) Cases where there is no solution can arise only near the poles.
+!  5. Cases where there is no solution can arise only near the poles.
 !     For example, it is clearly impossible for a star at the pole
 !     itself to have a non-zero xi value, and hence it is meaningless
 !     to ask where the tangent point would have to be to bring about
 !     this combination of xi and dec.
 !
-!  6) Also near the poles, cases can arise where there are two useful
+!  6. Also near the poles, cases can arise where there are two useful
 !     solutions.  The returned value N indicates whether the second of
 !     the two solutions returned is useful;  N=1 indicates only one
 !     useful solution, the usual case.
 !
-!  7) The basis of the algorithm is to solve the spherical triangle PSC,
+!  7. The basis of the algorithm is to solve the spherical triangle PSC,
 !     where P is the north celestial pole, S is the star and C is the
 !     tangent point.  The spherical coordinates of the tangent point are
 !     [a0,b0];  writing rho^2 = (xi^2+eta^2) and r^2 = (1+rho^2), side c
@@ -27737,7 +27735,7 @@
 !     cos(C) = eta/rho.  Angle P (to be found) is the longitude
 !     difference between star and tangent point (a-a0).
 !
-!  8) This routine is a member of the following set:
+!  8. This routine is a member of the following set:
 !
 !         spherical       vector       solve for
 !
@@ -27825,29 +27823,29 @@
 !
 !### Notes
 !
-!  1) The tangent plane projection is also called the "gnomonic
+!  1. The tangent plane projection is also called the "gnomonic
 !     projection" and the "central projection".
 !
-!  2) The eta axis points due north in the adopted coordinate system.
+!  2. The eta axis points due north in the adopted coordinate system.
 !     If the direction cosines represent observed (RA,Dec), the tangent
 !     plane coordinates (xi,eta) are conventionally called the "standard
 !     coordinates".  If the direction cosines are with respect to a
 !     right-handed triad, (xi,eta) are also right-handed.  The units of
 !     (xi,eta) are, effectively, radians at the tangent point.
 !
-!  3) The vector V must be of unit length or the result will be wrong.
+!  3. The vector V must be of unit length or the result will be wrong.
 !
-!  4) Cases where there is no solution can arise only near the poles.
+!  4. Cases where there is no solution can arise only near the poles.
 !     For example, it is clearly impossible for a star at the pole
 !     itself to have a non-zero xi value, and hence it is meaningless
 !     to ask where the tangent point would have to be.
 !
-!  5) Also near the poles, cases can arise where there are two useful
+!  5. Also near the poles, cases can arise where there are two useful
 !     solutions.  The returned value N indicates whether the second of
 !     the two solutions returned is useful;  N=1 indicates only one
 !     useful solution, the usual case.
 !
-!  6) The basis of the algorithm is to solve the spherical triangle PSC,
+!  6. The basis of the algorithm is to solve the spherical triangle PSC,
 !     where P is the north celestial pole, S is the star and C is the
 !     tangent point.  Calling the celestial spherical coordinates of the
 !     star and tangent point (a,b) and (a0,b0) respectively, and writing
@@ -27859,7 +27857,7 @@
 !     triangle, the result (a0,b0) can be expressed in vector form as
 !     V0.
 !
-!  7) This routine is a member of the following set:
+!  7. This routine is a member of the following set:
 !
 !         spherical       vector       solve for
 !
@@ -27939,19 +27937,19 @@
 !  Returned:
 !     A,B       d       star's spherical coordinates
 !
-!  1) The tangent plane projection is also called the "gnomonic
+!  1. The tangent plane projection is also called the "gnomonic
 !     projection" and the "central projection".
 !
-!  2) The eta axis points due north in the adopted coordinate system.
+!  2. The eta axis points due north in the adopted coordinate system.
 !     If the spherical coordinates are observed (RA,Dec), the tangent
 !     plane coordinates (xi,eta) are conventionally called the "standard
 !     coordinates".  If the direction cosines are with respect to a
 !     right-handed triad, (xi,eta) are also right-handed.  The units of
 !     (xi,eta) are, effectively, radians at the tangent point.
 !
-!  3) All angular arguments are in radians.
+!  3. All angular arguments are in radians.
 !
-!  4) This routine is a member of the following set:
+!  4. This routine is a member of the following set:
 !
 !         spherical       vector       solve for
 !
@@ -28007,17 +28005,17 @@
 !  Returned:
 !     V         d(3)    star's direction cosines
 !
-!  1) The tangent plane projection is also called the "gnomonic
+!  1. The tangent plane projection is also called the "gnomonic
 !     projection" and the "central projection".
 !
-!  2) The eta axis points due north in the adopted coordinate system.
+!  2. The eta axis points due north in the adopted coordinate system.
 !     If the direction cosines represent observed (RA,Dec), the tangent
 !     plane coordinates (xi,eta) are conventionally called the "standard
 !     coordinates".  If the direction cosines are with respect to a
 !     right-handed triad, (xi,eta) are also right-handed.  The units of
 !     (xi,eta) are, effectively, radians at the tangent point.
 !
-!  3) The method used is to complete the star vector in the (xi,eta)
+!  3. The method used is to complete the star vector in the (xi,eta)
 !     based triad and normalize it, then rotate the triad to put the
 !     tangent point at the pole with the x-axis aligned to zero
 !     longitude.  Writing (a0,b0) for the celestial spherical
@@ -28025,14 +28023,14 @@
 !     (b0-pi/2) around the x-axis followed by (-a0-pi/2) around the
 !     z-axis.
 !
-!  4) If vector V0 is not of unit length, the returned vector V will
+!  4. If vector V0 is not of unit length, the returned vector V will
 !     be wrong.
 !
-!  5) If vector V0 points at a pole, the returned vector V will be
+!  5. If vector V0 points at a pole, the returned vector V will be
 !     based on the arbitrary assumption that the longitude coordinate
 !     of the tangent point is zero.
 !
-!  6) This routine is a member of the following set:
+!  6. This routine is a member of the following set:
 !
 !         spherical       vector       solve for
 !
@@ -28106,19 +28104,19 @@
 !
 !### Notes
 !
-!  1) The tangent plane projection is also called the "gnomonic
+!  1. The tangent plane projection is also called the "gnomonic
 !     projection" and the "central projection".
 !
-!  2) The eta axis points due north in the adopted coordinate system.
+!  2. The eta axis points due north in the adopted coordinate system.
 !     If the spherical coordinates are observed (RA,Dec), the tangent
 !     plane coordinates (xi,eta) are conventionally called the "standard
 !     coordinates".  For right-handed spherical coordinates, (xi,eta)
 !     are also right-handed.  The units of (xi,eta) are, effectively,
 !     radians at the tangent point.
 !
-!  3) All angular arguments are in radians.
+!  3. All angular arguments are in radians.
 !
-!  4) This routine is a member of the following set:
+!  4. This routine is a member of the following set:
 !
 !         spherical       vector       solve for
 !
@@ -28206,30 +28204,30 @@
 !
 !### Notes
 !
-!  1) The tangent plane projection is also called the "gnomonic
+!  1. The tangent plane projection is also called the "gnomonic
 !     projection" and the "central projection".
 !
-!  2) The eta axis points due north in the adopted coordinate system.
+!  2. The eta axis points due north in the adopted coordinate system.
 !     If the direction cosines represent observed (RA,Dec), the tangent
 !     plane coordinates (xi,eta) are conventionally called the "standard
 !     coordinates".  If the direction cosines are with respect to a
 !     right-handed triad, (xi,eta) are also right-handed.  The units of
 !     (xi,eta) are, effectively, radians at the tangent point.
 !
-!  3) The method used is to extend the star vector to the tangent
+!  3. The method used is to extend the star vector to the tangent
 !     plane and then rotate the triad so that (x,y) becomes (xi,eta).
 !     Writing (a,b) for the celestial spherical coordinates of the
 !     star, the sequence of rotations is (a+pi/2) around the z-axis
 !     followed by (pi/2-b) around the x-axis.
 !
-!  4) If vector V0 is not of unit length, or if vector V is of zero
+!  4. If vector V0 is not of unit length, or if vector V is of zero
 !     length, the results will be wrong.
 !
-!  5) If V0 points at a pole, the returned (XI,ETA) will be based on the
+!  5. If V0 points at a pole, the returned (XI,ETA) will be based on the
 !     arbitrary assumption that the longitude coordinate of the tangent
 !     point is zero.
 !
-!  6) This routine is a member of the following set:
+!  6. This routine is a member of the following set:
 !
 !         spherical       vector       solve for
 !
@@ -28553,12 +28551,12 @@
 !
 !### Notes
 !
-!  1) TT1+TT2 is Julian Date, apportioned in any convenient way between
+!  1. TT1+TT2 is Julian Date, apportioned in any convenient way between
 !     the two arguments, for example where TT1 is the Julian Day Number
 !     and TT2 is the fraction of a day.  The returned TDB1,TDB2 follow
 !     suit.
 !
-!  2) The argument DTR represents the quasi-periodic component of the
+!  2. The argument DTR represents the quasi-periodic component of the
 !     GR transformation between TT and TCB.  It is dependent upon the
 !     adopted solar-system ephemeris, and can be obtained by numerical
 !     integration, by interrogating a precomputed time ephemeris or by
@@ -28566,7 +28564,7 @@
 !     DTDB.  The quantity is dominated by an annual term of 1.7 ms
 !     amplitude.
 !
-!  3) TDB is essentially the same as Teph, the time argument for the JPL
+!  3. TDB is essentially the same as Teph, the time argument for the JPL
 !     solar system ephemerides.
 !
 !### References
@@ -28625,12 +28623,12 @@
 !
 !### Notes
 !
-!  1) TT1+TT2 is Julian Date, apportioned in any convenient way between
+!  1. TT1+TT2 is Julian Date, apportioned in any convenient way between
 !     the two arguments, for example where TT1 is the Julian Day Number
 !     and TT2 is the fraction of a day.  The returned UT11,UT12 follow
 !     suit.
 !
-!  2) The argument DT is classical Delta T.
+!  2. The argument DT is classical Delta T.
 !
 !### Reference
 !
@@ -28686,12 +28684,12 @@
 !
 !### Notes
 !
-!  1) UT11+UT12 is Julian Date, apportioned in any convenient way
+!  1. UT11+UT12 is Julian Date, apportioned in any convenient way
 !     between the two arguments, for example where UT11 is the Julian
 !     Day Number and UT12 is the fraction of a day.  The returned
 !     TAI1,TAI2 follow suit.
 !
-!  2) The argument DTA, i.e. UT1-TAI, is an observed quantity, and is
+!  2. The argument DTA, i.e. UT1-TAI, is an observed quantity, and is
 !     available from IERS tabulations.
 !
 !### Reference
@@ -28748,12 +28746,12 @@
 !
 !### Notes
 !
-!  1) UT11+UT12 is Julian Date, apportioned in any convenient way
+!  1. UT11+UT12 is Julian Date, apportioned in any convenient way
 !     between the two arguments, for example where UT11 is the Julian
 !     Day Number and UT12 is the fraction of a day.  The returned
 !     TT1,TT2 follow suit.
 !
-!  2) The argument DT is classical Delta T.
+!  2. The argument DT is classical Delta T.
 !
 !### Reference
 !
@@ -28811,28 +28809,28 @@
 !
 !### Notes
 !
-!  1) UT11+UT12 is Julian Date, apportioned in any convenient way
+!  1. UT11+UT12 is Julian Date, apportioned in any convenient way
 !     between the two arguments, for example where UT11 is the Julian
 !     Day Number and UT12 is the fraction of a day.  The returned UTC1
 !     and UTC2 form an analogous pair, except that a special convention
 !     is used, to deal with the problem of leap seconds - see Note 3.
 !
-!  2) Delta UT1 can be obtained from tabulations provided by the
+!  2. Delta UT1 can be obtained from tabulations provided by the
 !     International Earth Rotation and Reference Systems Service.  The
 !     value changes abruptly by 1s at a leap second;  however, close to
 !     a leap second the algorithm used here is tolerant of the "wrong"
 !     choice of value being made.
 !
-!  3) JD cannot unambiguously represent UTC during a leap second unless
+!  3. JD cannot unambiguously represent UTC during a leap second unless
 !     special measures are taken.  The convention in the present routine
 !     is that the returned quasi JD day UTC1+UTC2 represents UTC days
 !     whether the length is 86399, 86400 or 86401 SI seconds.
 !
-!  4) The routine D2DTF can be used to transform the UTC quasi-JD
+!  4. The routine D2DTF can be used to transform the UTC quasi-JD
 !     into calendar date and clock time, including UTC leap second
 !     handling.
 !
-!  5) The warning status "dubious year" flags UTCs that predate the
+!  5. The warning status "dubious year" flags UTCs that predate the
 !     introduction of the time scale or that are too far in the future
 !     to be trusted.  See DAT for further details.
 !
@@ -28957,11 +28955,11 @@
 !
 !### Notes
 !
-!  1) UTC1+UTC2 is quasi Julian Date (see Note 2), apportioned in any
+!  1. UTC1+UTC2 is quasi Julian Date (see Note 2), apportioned in any
 !     convenient way between the two arguments, for example where UTC1
 !     is the Julian Day Number and UTC2 is the fraction of a day.
 !
-!  2) JD cannot unambiguously represent UTC during a leap second unless
+!  2. JD cannot unambiguously represent UTC during a leap second unless
 !     special measures are taken.  The convention in the present routine
 !     is that the JD day represents UTC days whether the length is
 !     86399, 86400 or 86401 SI seconds.  In the 1960-1972 era there were
@@ -28969,15 +28967,15 @@
 !     expression was changed, and these "mini-leaps" are also included
 !     in the SOFA convention.
 !
-!  3) The warning status "dubious year" flags UTCs that predate the
+!  3. The warning status "dubious year" flags UTCs that predate the
 !     introduction of the time scale or that are too far in the future
 !     to be trusted.  See DAT for further details.
 !
-!  4) The routine DTF2D converts from calendar date and time of day
+!  4. The routine DTF2D converts from calendar date and time of day
 !     into 2-part Julian Date, and in the case of UTC implements the
 !     leap-second-ambiguity convention described above.
 !
-!  5) The returned TAI1,TAI2 are such that their sum is the TAI Julian
+!  5. The returned TAI1,TAI2 are such that their sum is the TAI Julian
 !     Date.
 !
 !### References
@@ -29091,29 +29089,29 @@
 !
 !### Notes
 !
-!  1) UTC1+UTC2 is quasi Julian Date (see Note 2), apportioned in any
+!  1. UTC1+UTC2 is quasi Julian Date (see Note 2), apportioned in any
 !     convenient way between the two arguments, for example where UTC1
 !     is the Julian Day Number and UTC2 is the fraction of a day.
 !
-!  2) JD cannot unambiguously represent UTC during a leap second unless
+!  2. JD cannot unambiguously represent UTC during a leap second unless
 !     special measures are taken.  The convention in the present routine
 !     is that the JD day represents UTC days whether the length is
 !     86399, 86400 or 86401 SI seconds.
 !
-!  3) The warning status "dubious year" flags UTCs that predate the
+!  3. The warning status "dubious year" flags UTCs that predate the
 !     introduction of the time scale or that are too far in the future
 !     to be trusted.  See DAT for further details.
 !
-!  4) The routine DTF2D converts from calendar date and time of day
+!  4. The routine DTF2D converts from calendar date and time of day
 !     into 2-part Julian Date, and in the case of UTC implements the
 !     leap-second-ambiguity convention described above.
 !
-!  5) Delta UT1 can be obtained from tabulations provided by the
+!  5. Delta UT1 can be obtained from tabulations provided by the
 !     International Earth Rotation and Reference Systems Service.
 !     It is the caller's responsibility to supply a DUT1 argument
 !     containing the UT1-UTC value that matches the given UTC.
 !
-!  6) The returned UT11,UT12 are such that their sum is the UT1 Julian
+!  6. The returned UT11,UT12 are such that their sum is the UT1 Julian
 !     Date.
 !
 !### References
@@ -29187,7 +29185,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -29206,14 +29204,14 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The X,Y coordinates are those of the unit vector towards the
+!  2. The X,Y coordinates are those of the unit vector towards the
 !     celestial intermediate pole.  They represent the combined effects
 !     of frame bias, precession and nutation.
 !
-!  3) The fundamental arguments used are as adopted in IERS Conventions
+!  3. The fundamental arguments used are as adopted in IERS Conventions
 !     (2003) and are from Simon et al. (1994) and Souchay et al. (1999).
 !
-!  4) This is an alternative to the angles-based method, via the SOFA
+!  4. This is an alternative to the angles-based method, via the SOFA
 !     routine FW2XY and as used in XYS06A for example.  The
 !     two methods agree at the 1 microarcsecond level (at present),
 !     a negligible amount compared with the intrinsic accuracy of the
@@ -31696,7 +31694,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -31715,13 +31713,13 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The Celestial Intermediate Pole coordinates are the x,y components
+!  2. The Celestial Intermediate Pole coordinates are the x,y components
 !     of the unit vector in the Geocentric Celestial Reference System.
 !
-!  3) The CIO locator s (in radians) positions the Celestial
+!  3. The CIO locator s (in radians) positions the Celestial
 !     Intermediate Origin on the equator of the CIP.
 !
-!  4) A faster, but slightly less accurate result (about 1 mas for X,Y),
+!  4. A faster, but slightly less accurate result (about 1 mas for X,Y),
 !     can be obtained by using instead the XYS00B routine.
 !
 !### Reference
@@ -31773,7 +31771,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -31792,13 +31790,13 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The Celestial Intermediate Pole coordinates are the x,y components
+!  2. The Celestial Intermediate Pole coordinates are the x,y components
 !     of the unit vector in the Geocentric Celestial Reference System.
 !
-!  3) The CIO locator s (in radians) positions the Celestial
+!  3. The CIO locator s (in radians) positions the Celestial
 !     Intermediate Origin on the equator of the CIP.
 !
-!  4) The present routine is faster, but slightly less accurate (about
+!  4. The present routine is faster, but slightly less accurate (about
 !     1 mas in X,Y), than the XYS00A routine.
 !
 !### Reference
@@ -31850,7 +31848,7 @@
 !
 !### Notes
 !
-!  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+!  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
 !     JD(TT)=2450123.7 could be expressed in any of these ways,
 !     among others:
@@ -31869,13 +31867,13 @@
 !     optimum resolution.  The MJD method and the date & time methods
 !     are both good compromises between resolution and convenience.
 !
-!  2) The Celestial Intermediate Pole coordinates are the x,y components
+!  2. The Celestial Intermediate Pole coordinates are the x,y components
 !     of the unit vector in the Geocentric Celestial Reference System.
 !
-!  3) The CIO locator s (in radians) positions the Celestial
+!  3. The CIO locator s (in radians) positions the Celestial
 !     Intermediate Origin on the equator of the CIP.
 !
-!  4) Series-based solutions for generating X and Y are also available:
+!  4. Series-based solutions for generating X and Y are also available:
 !     see Capitaine & Wallace (2006) and XY06.
 !
 !### References
