@@ -125,16 +125,15 @@
 
     public
 
-    real(wp),parameter,private :: d2pi  = 6.283185307179586476925287_wp    !! 2Pi
-    real(wp),parameter,private :: das2r = 4.848136811095359935899141e-6_wp !! Arcseconds to radians
-    real(wp),parameter,private :: dpi   = 3.141592653589793238462643_wp    !! Pi
-    real(wp),parameter,private :: d2s   = 86400.0_wp      !! Days to seconds
-    real(wp),parameter,private :: dj00  = 2451545.0_wp    !! Reference epoch (J2000.0), JD
-    real(wp),parameter,private :: djy   = 365.25_wp       !! Days per Julian year
-    real(wp),parameter,private :: cmps  = 299792458.0_wp  !! Speed of light (m/s)
-    real(wp),parameter,private :: djc   = 36525.0_wp      !! Days per Julian century
-    real(wp),parameter,private :: ds2r  = 7.272205216643039903848712e-5_wp   !! Seconds of time to radians
-
+    real(wp),parameter,private :: cmps  = 299792458.0_wp                    !! Speed of light (m/s)
+    real(wp),parameter,private :: d2pi  = 6.283185307179586476925287_wp     !! 2Pi
+    real(wp),parameter,private :: d2s   = 86400.0_wp                        !! Days to seconds
+    real(wp),parameter,private :: das2r = 4.848136811095359935899141e-6_wp  !! Arcseconds to radians
+    real(wp),parameter,private :: dj00  = 2451545.0_wp                      !! Reference epoch (J2000.0), JD
+    real(wp),parameter,private :: djc   = 36525.0_wp                        !! Days per Julian century
+    real(wp),parameter,private :: djy   = 365.25_wp                         !! Days per Julian year
+    real(wp),parameter,private :: dpi   = 3.141592653589793238462643_wp     !! Pi
+    real(wp),parameter,private :: ds2r  = 7.272205216643039903848712e-5_wp  !! Seconds of time to radians
 
     contains
 !********************************************************************************
@@ -6040,24 +6039,24 @@
       leap = .false.
       if ( scale=='UTC' ) then
 
-      !     TAI-UTC at 0h today.
+        !  TAI-UTC at 0h today.
         call DAT ( iy1, im1, id1, 0d0, dat0, js )
         if ( js<0 ) exit main
 
-      !     TAI-UTC at 12h today (to detect drift).
+        !  TAI-UTC at 12h today (to detect drift).
         call DAT ( iy1, im1, id1, 0.5d0, dat12, js )
         if ( js<0 ) exit main
 
-      !     TAI-UTC at 0h tomorrow (to detect jumps).
+        !  TAI-UTC at 0h tomorrow (to detect jumps).
         call JD2CAL ( a1+1.5d0, b1-fd, iy2, im2, id2, w, js )
         if ( js/=0 ) exit main
         call DAT ( iy2, im2, id2, 0d0, dat24, js )
         if ( js<0 ) exit main
 
-      !     Any sudden change in TAI-UTC (seconds).
+        !  Any sudden change in TAI-UTC (seconds).
         dleap = dat24 - ( 2d0 * dat12 - dat0 )
 
-      !     If leap second day, scale the fraction of a day into SI.
+        !  If leap second day, scale the fraction of a day into SI.
         leap = dleap/=0d0
         if ( leap ) fd = fd + fd*dleap/d2s
 
@@ -6069,14 +6068,14 @@
       !  Has the (rounded) time gone past 24h?
       if ( ihmsf1(1)>23 ) then
 
-      !     Yes.  We probably need tomorrow's calendar date.
+        !  Yes.  We probably need tomorrow's calendar date.
         call JD2CAL ( a1+1.5d0, b1-fd, iy2, im2, id2, w, js )
         if ( js<0 ) exit main
 
-      !     Is today a leap second day?
+        !  Is today a leap second day?
         if ( .not. leap ) then
 
-      !        No.  Use 0h tomorrow.
+            !  No.  Use 0h tomorrow.
             iy1 = iy2
             im1 = im2
             id1 = id2
@@ -6086,10 +6085,10 @@
 
         else
 
-      !        Yes.  Are we past the leap second itself?
+            !  Yes.  Are we past the leap second itself?
             if ( ihmsf1(3)>0 ) then
 
-      !           Yes.  Use tomorrow but allow for the leap second.
+              !  Yes.  Use tomorrow but allow for the leap second.
               iy1 = iy2
               im1 = im2
               id1 = id2
@@ -6099,13 +6098,13 @@
 
             else
 
-      !           No.  Use 23 59 60... today.
+              !  No.  Use 23 59 60... today.
               ihmsf1(1) = 23
               ihmsf1(2) = 59
               ihmsf1(3) = 60
             end if
 
-      !        If rounding to 10s or coarser always go up to new day.
+            !  If rounding to 10s or coarser always go up to new day.
             if ( ndp<0 .and. ihmsf1(3)==60 ) then
               iy1 = iy2
               im1 = im2
@@ -7764,28 +7763,28 @@
       !  Deal with the UTC leap second case.
       if ( scale=='UTC' ) then
 
-      !     TAI-UTC at 0h today.
+        !  TAI-UTC at 0h today.
         call DAT ( iy, im, id, 0d0, dat0, js )
         if ( js<0 ) exit main
 
-      !     TAI-UTC at 12h today (to detect drift).
+        !  TAI-UTC at 12h today (to detect drift).
         call DAT ( iy, im, id, 0.5d0, dat12, js )
         if ( js<0 ) exit main
 
-      !     TAI-UTC at 0h tomorrow (to detect jumps).
+        !  TAI-UTC at 0h tomorrow (to detect jumps).
         call JD2CAL ( dj, 1.5d0, iy2, im2, id2, w, js )
         if ( js/=0 ) exit main
         call DAT ( iy2, im2, id2, 0d0, dat24, js )
         if ( js<0 ) exit main
 
-      !     Any sudden change in TAI-UTC between today and tomorrow.
+        !  Any sudden change in TAI-UTC between today and tomorrow.
         dleap = dat24 - ( 2d0 * dat12 - dat0 )
 
-      !     If leap second day, correct the day and final minute lengths.
+        !  If leap second day, correct the day and final minute lengths.
         day = day + dleap
         if ( ihr==23 .and. imn==59 ) seclim = seclim + dleap
 
-      !     End of UTC-specific actions.
+        !  End of UTC-specific actions.
       end if
 
       !  Validate the time.
