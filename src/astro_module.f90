@@ -21,6 +21,7 @@
 !   * add INTENT to all arguments
 !   * make all routines PURE
 !   * replace anint and nint ???
+!   * git rid of the "Called:" blocks in the headers
 !
 !### Original SOFA Copyright Notice
 !
@@ -323,7 +324,12 @@
     subroutine AB ( pnat, v, s, bm1, ppr )
 
     implicit none
-    real(wp) :: pnat(3), v(3), s, bm1, ppr(3)
+
+    real(wp) :: pnat(3)
+    real(wp) :: v(3)
+    real(wp) :: s
+    real(wp) :: bm1
+    real(wp) :: ppr(3)
 
     !  Schwarzschild radius of the Sun (au)
     !  = 2 * 1.32712440041 D20 / (2.99792458 D8)^2 / 1.49597870700 D11
@@ -409,7 +415,11 @@
 
     implicit none
 
-    real(wp) :: az, el, phi, ha, dec
+    real(wp) :: az
+    real(wp) :: el
+    real(wp) :: phi
+    real(wp) :: ha
+    real(wp) :: dec
 
     real(wp) :: sa, ca, se, ce, sp, cp, x, y, z, r
 
@@ -478,8 +488,10 @@
     implicit none
 
     character(len=1) :: s
-    integer :: ideg, iamin
-    real(wp) :: asec, rad
+    integer :: ideg
+    integer :: iamin
+    real(wp) :: asec
+    real(wp) :: rad
     integer :: j
 
     real(wp) :: w
@@ -668,7 +680,12 @@
     subroutine APCG ( date1, date2, ebpv, ehp, astrom )
 
     implicit none
-    real(wp) :: date1, date2, ebpv(3,2), ehp(3), astrom(30)
+
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: ebpv(3,2)
+    real(wp) :: ehp(3)
+    real(wp) :: astrom(30)
 
     real(wp) :: pv(3,2)
 
@@ -788,7 +805,10 @@
     subroutine APCG13 ( date1, date2, astrom )
 
     implicit none
-    real(wp) :: date1, date2, astrom(30)
+
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: astrom(30)
 
     integer :: j
     real(wp) :: ehpv(3,2), ebpv(3,2)
@@ -914,8 +934,15 @@
     subroutine APCI ( date1, date2, ebpv, ehp, x, y, s, astrom )
 
     implicit none
-    real(wp) :: date1, date2, ebpv(3,2), ehp(3), x, y, s, &
-                     astrom(30)
+
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: ebpv(3,2)
+    real(wp) :: ehp(3)
+    real(wp) :: x
+    real(wp) :: y
+    real(wp) :: s
+    real(wp) :: astrom(30)
 
     !  Star-independent astrometry parameters for geocenter.
     call APCG ( date1, date2, ebpv, ehp, astrom )
@@ -1038,7 +1065,11 @@
     subroutine APCI13 ( date1, date2, astrom, eo )
 
     implicit none
-    real(wp) :: date1, date2, astrom(30), eo
+
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: astrom(30)
+    real(wp) :: eo
 
     integer :: j
     real(wp) :: pvh(3,2), pvb(3,2), r(3,3), x, y, s
@@ -1215,9 +1246,24 @@
                       refa, refb, astrom )
 
     implicit none
-    real(wp) :: date1, date2, ebpv(3,2), ehp(3), x, y, s, &
-                     theta, elong, phi, hm, xp, yp, sp, refa, refb, &
-                     astrom(30)
+
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: ebpv(3,2)
+    real(wp) :: ehp(3)
+    real(wp) :: x
+    real(wp) :: y
+    real(wp) :: s
+    real(wp) :: theta
+    real(wp) :: elong
+    real(wp) :: phi
+    real(wp) :: hm
+    real(wp) :: xp
+    real(wp) :: yp
+    real(wp) :: sp
+    real(wp) :: refa
+    real(wp) :: refb
+    real(wp) :: astrom(30)
 
     real(wp) :: sl, cl, r(3,3), pvc(3,2), pv(3,2)
 
@@ -1434,8 +1480,21 @@
                         phpa, tc, rh, wl, astrom, eo, j )
 
     implicit none
-    real(wp) :: utc1, utc2, dut1, elong, phi, hm, xp, yp, &
-                     phpa, tc, rh, wl, astrom(30), eo
+
+    real(wp) :: utc1
+    real(wp) :: utc2
+    real(wp) :: dut1
+    real(wp) :: elong
+    real(wp) :: phi
+    real(wp) :: hm
+    real(wp) :: xp
+    real(wp) :: yp
+    real(wp) :: phpa
+    real(wp) :: tc
+    real(wp) :: rh
+    real(wp) :: wl
+    real(wp) :: astrom(30)
+    real(wp) :: eo
     integer :: j
 
     integer :: js, jw
@@ -1613,8 +1672,13 @@
     subroutine APCS ( date1, date2, pv, ebpv, ehp, astrom )
 
     implicit none
-    real(wp) :: date1, date2, pv(3,2), ebpv(3,2), ehp(3), &
-                     astrom(30)
+
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: pv(3,2)
+    real(wp) :: ebpv(3,2)
+    real(wp) :: ehp(3)
+    real(wp) :: astrom(30)
 
     !  Astronomical unit (m, IAU 2012)
     real(wp),parameter :: aum = 149597870.7d3
@@ -1777,7 +1841,11 @@
     subroutine APCS13 ( date1, date2, pv, astrom )
 
     implicit none
-    real(wp) :: date1, date2, pv(3,2), astrom(30)
+
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: pv(3,2)
+    real(wp) :: astrom(30)
 
     integer :: j
     real(wp) :: ehpv(3,2), ebpv(3,2)
@@ -1883,7 +1951,9 @@
     subroutine APER ( theta, astrom )
 
     implicit none
-    real(wp) :: theta, astrom(30)
+
+    real(wp) :: theta
+    real(wp) :: astrom(30)
 
     astrom(28) = theta + astrom(22)
 
@@ -2001,9 +2071,12 @@
     subroutine APER13 ( ut11, ut12, astrom )
 
     implicit none
-    real(wp) :: ut11, ut12, astrom(30)
 
-        call APER ( ERA00 ( ut11, ut12 ), astrom )
+    real(wp) :: ut11
+    real(wp) :: ut12
+    real(wp) :: astrom(30)
+
+    call APER ( ERA00 ( ut11, ut12 ), astrom )
 
     end subroutine APER13
 !***********************************************************************
@@ -2122,8 +2195,17 @@
                       refa, refb, astrom )
 
     implicit none
-    real(wp) :: sp, theta, elong, phi, hm, xp, yp, refa, refb, &
-                     astrom(30)
+
+    real(wp) :: sp
+    real(wp) :: theta
+    real(wp) :: elong
+    real(wp) :: phi
+    real(wp) :: hm
+    real(wp) :: xp
+    real(wp) :: yp
+    real(wp) :: refa
+    real(wp) :: refb
+    real(wp) :: astrom(30)
 
     real(wp) :: sl, cl, pv(3,2)
 
@@ -2317,8 +2399,20 @@
                         phpa, tc, rh, wl, astrom, j )
 
     implicit none
-    real(wp) :: utc1, utc2, dut1, elong, phi, hm, xp, yp, &
-                     phpa, tc, rh, wl, astrom(30)
+
+    real(wp) :: utc1
+    real(wp) :: utc2
+    real(wp) :: dut1
+    real(wp) :: elong
+    real(wp) :: phi
+    real(wp) :: hm
+    real(wp) :: xp
+    real(wp) :: yp
+    real(wp) :: phpa
+    real(wp) :: tc
+    real(wp) :: rh
+    real(wp) :: wl
+    real(wp) :: astrom(30)
     integer :: j
 
     integer :: js
@@ -2433,7 +2527,18 @@
                         ri, di, eo )
 
     implicit none
-    real(wp) :: rc, dc, pr, pd, px, rv, date1, date2, ri, di, eo
+
+    real(wp) :: rc
+    real(wp) :: dc
+    real(wp) :: pr
+    real(wp) :: pd
+    real(wp) :: px
+    real(wp) :: rv
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: ri
+    real(wp) :: di
+    real(wp) :: eo
 
     !  Star-independent astrometry parameters
     real(wp) :: astrom(30)
