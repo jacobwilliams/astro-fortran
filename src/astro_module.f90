@@ -2617,7 +2617,16 @@
     subroutine ATCIQ ( rc, dc, pr, pd, px, rv, astrom, ri, di )
 
     implicit none
-    real(wp) :: rc, dc, pr, pd, px, rv, astrom(30), ri, di
+
+    real(wp) :: rc
+    real(wp) :: dc
+    real(wp) :: pr
+    real(wp) :: pd
+    real(wp) :: px
+    real(wp) :: rv
+    real(wp) :: astrom(30)
+    real(wp) :: ri
+    real(wp) :: di
 
     real(wp) :: pco(3), pnat(3), ppr(3), pi(3), w
 
@@ -2744,9 +2753,18 @@
                         ri, di )
 
     implicit none
-    real(wp) :: rc, dc, pr, pd, px, rv, astrom(30)
+
+    real(wp) :: rc
+    real(wp) :: dc
+    real(wp) :: pr
+    real(wp) :: pd
+    real(wp) :: px
+    real(wp) :: rv
+    real(wp) :: astrom(30)
     integer :: n
-    real(wp) :: b(8,n), ri, di
+    real(wp) :: b(8,n)
+    real(wp) :: ri
+    real(wp) :: di
 
     real(wp) :: pco(3), pnat(3), ppr(3), pi(3), w
 
@@ -2834,7 +2852,12 @@
     subroutine ATCIQZ ( rc, dc, astrom, ri, di )
 
     implicit none
-    real(wp) :: rc, dc, astrom(30), ri, di
+
+    real(wp) :: rc
+    real(wp) :: dc
+    real(wp) :: astrom(30)
+    real(wp) :: ri
+    real(wp) :: di
 
     real(wp) :: pco(3), pnat(3), ppr(3), pi(3), w
 
@@ -3003,9 +3026,31 @@
                         aob, zob, hob, dob, rob, eo, j )
 
     implicit none
-    real(wp) :: rc, dc, pr, pd, px, rv, utc1, utc2, dut1, &
-                     elong, phi, hm, xp, yp, phpa, tc, rh, wl, &
-                     aob, zob, hob, dob, rob, eo
+
+    real(wp) :: rc
+    real(wp) :: dc
+    real(wp) :: pr
+    real(wp) :: pd
+    real(wp) :: px
+    real(wp) :: rv
+    real(wp) :: utc1
+    real(wp) :: utc2
+    real(wp) :: dut1
+    real(wp) :: elong
+    real(wp) :: phi
+    real(wp) :: hm
+    real(wp) :: xp
+    real(wp) :: yp
+    real(wp) :: phpa
+    real(wp) :: tc
+    real(wp) :: rh
+    real(wp) :: wl
+    real(wp) :: aob
+    real(wp) :: zob
+    real(wp) :: hob
+    real(wp) :: dob
+    real(wp) :: rob
+    real(wp) :: eo
     integer :: j
 
     integer :: js
@@ -3104,7 +3149,14 @@
     subroutine ATIC13 ( ri, di, date1, date2, rc, dc, eo )
 
     implicit none
-    real(wp) :: ri, di, date1, date2, rc, dc, eo
+
+    real(wp) :: ri
+    real(wp) :: di
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: rc
+    real(wp) :: dc
+    real(wp) :: eo
 
     !  Star-independent astrometry parameters
     real(wp) :: astrom(30)
@@ -3179,7 +3231,12 @@
     subroutine ATICQ ( ri, di, astrom, rc, dc )
 
     implicit none
-    real(wp) :: ri, di, astrom(30), rc, dc
+
+    real(wp) :: ri
+    real(wp) :: di
+    real(wp) :: astrom(30)
+    real(wp) :: rc
+    real(wp) :: dc
 
     integer :: j, i
     real(wp) :: pi(3), ppr(3), pnat(3), pco(3), w, d(3), &
@@ -3352,9 +3409,14 @@
     subroutine ATICQN ( ri, di, astrom, n, b, rc, dc )
 
     implicit none
-    real(wp) :: ri, di, astrom(30)
+
+    real(wp) :: ri
+    real(wp) :: di
+    real(wp) :: astrom(30)
     integer :: n
-    real(wp) :: b(8,n), rc, dc
+    real(wp) :: b(8,n)
+    real(wp) :: rc
+    real(wp) :: dc
 
     integer :: j, i
     real(wp) :: pi(3), ppr(3), pnat(3), pco(3), w, d(3), &
@@ -3559,8 +3621,26 @@
                         aob, zob, hob, dob, rob, j )
 
     implicit none
-    real(wp) :: ri, di, utc1, utc2, dut1, elong, phi, hm, xp, yp, &
-                     phpa, tc, rh, wl, aob, zob, hob, dob, rob
+
+    real(wp) :: ri
+    real(wp) :: di
+    real(wp) :: utc1
+    real(wp) :: utc2
+    real(wp) :: dut1
+    real(wp) :: elong
+    real(wp) :: phi
+    real(wp) :: hm
+    real(wp) :: xp
+    real(wp) :: yp
+    real(wp) :: phpa
+    real(wp) :: tc
+    real(wp) :: rh
+    real(wp) :: wl
+    real(wp) :: aob
+    real(wp) :: zob
+    real(wp) :: hob
+    real(wp) :: dob
+    real(wp) :: rob
     integer :: j
 
     integer :: js
@@ -3680,7 +3760,15 @@
     subroutine ATIOQ ( ri, di, astrom, aob, zob, hob, dob, rob )
 
     implicit none
-    real(wp) :: ri, di, astrom(30), aob, zob, hob, dob, rob
+
+    real(wp) :: ri
+    real(wp) :: di
+    real(wp) :: astrom(30)
+    real(wp) :: aob
+    real(wp) :: zob
+    real(wp) :: hob
+    real(wp) :: dob
+    real(wp) :: rob
 
     !  Minimum sine and cosine of altitude for refraction purposes
     real(wp),parameter :: selmin = 0.05d0
@@ -3905,9 +3993,24 @@
                         rc, dc, j )
 
     implicit none
+
     character(len=*) :: type
-    real(wp) :: ob1, ob2, utc1, utc2, dut1, &
-                     elong, phi, hm, xp, yp, phpa, tc, rh, wl, rc, dc
+    real(wp) :: ob1
+    real(wp) :: ob2
+    real(wp) :: utc1
+    real(wp) :: utc2
+    real(wp) :: dut1
+    real(wp) :: elong
+    real(wp) :: phi
+    real(wp) :: hm
+    real(wp) :: xp
+    real(wp) :: yp
+    real(wp) :: phpa
+    real(wp) :: tc
+    real(wp) :: rh
+    real(wp) :: wl
+    real(wp) :: rc
+    real(wp) :: dc
     integer :: j
 
     integer :: js
@@ -4073,9 +4176,24 @@
                         ri, di, j )
 
     implicit none
+
     character(len=*) :: type
-    real(wp) :: ob1, ob2, utc1, utc2, dut1, elong, phi, hm, &
-                     xp, yp, phpa, tc, rh, wl, ri, di
+    real(wp) :: ob1
+    real(wp) :: ob2
+    real(wp) :: utc1
+    real(wp) :: utc2
+    real(wp) :: dut1
+    real(wp) :: elong
+    real(wp) :: phi
+    real(wp) :: hm
+    real(wp) :: xp
+    real(wp) :: yp
+    real(wp) :: phpa
+    real(wp) :: tc
+    real(wp) :: rh
+    real(wp) :: wl
+    real(wp) :: ri
+    real(wp) :: di
     integer :: j
 
     integer :: js
@@ -4193,15 +4311,20 @@
     subroutine ATOIQ ( type, ob1, ob2, astrom, ri, di )
 
     implicit none
+
     character(len=*) :: type
-    real(wp) :: ob1, ob2, astrom(30), ri, di
+    real(wp) :: ob1
+    real(wp) :: ob2
+    real(wp) :: astrom(30)
+    real(wp) :: ri
+    real(wp) :: di
 
     character(len=1) :: c
     real(wp) :: c1, c2, sphi, cphi, ce, xaeo, yaeo, zaeo, v(3), &
-                     xmhdo, ymhdo, zmhdo, az, sz, zdo, refa, refb, &
-                     tz, dref, zdt, xaet, yaet, zaet, &
-                     xmhda, ymhda, zmhda, f, xhd, yhd, zhd, &
-                     xpl, ypl, w, hma
+                xmhdo, ymhdo, zmhdo, az, sz, zdo, refa, refb, &
+                tz, dref, zdt, xaet, yaet, zaet, &
+                xmhda, ymhda, zmhda, f, xhd, yhd, zhd, &
+                xpl, ypl, w, hma
 
     !  Coordinate type.
     c = type(:1)
@@ -4347,7 +4470,9 @@
 
     implicit none
 
-    real(wp) :: dpsibi, depsbi, dra
+    real(wp) :: dpsibi
+    real(wp) :: depsbi
+    real(wp) :: dra
 
     !  The frame bias corrections in longitude and obliquity
     real(wp),parameter :: dpbias = -0.041775d0 * das2r
@@ -4436,7 +4561,11 @@
 
     implicit none
 
-    real(wp) :: date1, date2, rb(3,3), rp(3,3), rbp(3,3)
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: rb(3,3)
+    real(wp) :: rp(3,3)
+    real(wp) :: rbp(3,3)
 
     !  J2000.0 obliquity (Lieske et al. 1977)
     real(wp),parameter :: eps0 = 84381.448d0 * das2r
@@ -4549,7 +4678,11 @@
 
     implicit none
 
-    real(wp) :: date1, date2, rb(3,3), rp(3,3), rbp(3,3)
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: rb(3,3)
+    real(wp) :: rp(3,3)
+    real(wp) :: rbp(3,3)
 
     !  JD for MJD 0
     real(wp),parameter :: djm0 = 2400000.5d0
@@ -4614,7 +4747,9 @@
 
     implicit none
 
-    real(wp) :: rbpn(3,3), x, y
+    real(wp) :: rbpn(3,3)
+    real(wp) :: x
+    real(wp) :: y
 
     !  Extract the X,Y coordinates.
     x = rbpn(3,1)
@@ -4695,7 +4830,9 @@
 
     implicit none
 
-    real(wp) :: date1, date2, rc2i(3,3)
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: rc2i(3,3)
 
     real(wp) :: rbpn(3,3)
 
@@ -4780,7 +4917,9 @@
 
     implicit none
 
-    real(wp) :: date1, date2, rc2i(3,3)
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: rc2i(3,3)
 
     real(wp) :: rbpn(3,3)
 
@@ -4860,7 +4999,9 @@
 
     implicit none
 
-    real(wp) :: date1, date2, rc2i(3,3)
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: rc2i(3,3)
 
     real(wp) :: rbpn(3,3), x, y, s
 
@@ -4955,7 +5096,10 @@
 
     implicit none
 
-    real(wp) :: date1, date2, rbpn(3,3), rc2i(3,3)
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: rbpn(3,3)
+    real(wp) :: rc2i(3,3)
 
     real(wp) :: x, y
 
@@ -5036,7 +5180,11 @@
 
     implicit none
 
-    real(wp) :: date1, date2, x, y, rc2i(3,3)
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: x
+    real(wp) :: y
+    real(wp) :: rc2i(3,3)
 
     !  Compute s and then the matrix.
     call C2IXYS ( x, y, S00 ( date1, date2, x, y ), rc2i )
@@ -5094,7 +5242,10 @@
 
     implicit none
 
-    real(wp) :: x, y, s, rc2i(3,3)
+    real(wp) :: x
+    real(wp) :: y
+    real(wp) :: s
+    real(wp) :: rc2i(3,3)
 
     real(wp) :: r2, e, d
 
@@ -5143,7 +5294,9 @@
 
     implicit none
 
-    real(wp) :: p(3), theta, phi
+    real(wp) :: p(3)
+    real(wp) :: theta
+    real(wp) :: phi
 
     real(wp) :: x, y, z, d2
 
@@ -5245,7 +5398,13 @@
 
     implicit none
 
-    real(wp) :: tta, ttb, uta, utb, xp, yp, rc2t(3,3)
+    real(wp) :: tta
+    real(wp) :: ttb
+    real(wp) :: uta
+    real(wp) :: utb
+    real(wp) :: xp
+    real(wp) :: yp
+    real(wp) :: rc2t(3,3)
 
     real(wp) :: rc2i(3,3), era, sp, rpom(3,3)
 
@@ -5344,7 +5503,13 @@
 
     implicit none
 
-    real(wp) :: tta, ttb, uta, utb, xp, yp, rc2t(3,3)
+    real(wp) :: tta
+    real(wp) :: ttb
+    real(wp) :: uta
+    real(wp) :: utb
+    real(wp) :: xp
+    real(wp) :: yp
+    real(wp) :: rc2t(3,3)
 
     real(wp) :: rc2i(3,3), era, rpom(3,3)
 
@@ -5439,7 +5604,13 @@
 
     implicit none
 
-    real(wp) :: tta, ttb, uta, utb, xp, yp, rc2t(3,3)
+    real(wp) :: tta
+    real(wp) :: ttb
+    real(wp) :: uta
+    real(wp) :: utb
+    real(wp) :: xp
+    real(wp) :: yp
+    real(wp) :: rc2t(3,3)
 
     real(wp) :: rc2i(3,3), era, sp, rpom(3,3)
 
@@ -5502,7 +5673,10 @@
 
     implicit none
 
-    real(wp) :: rc2i(3,3), era, rpom(3,3), rc2t(3,3)
+    real(wp) :: rc2i(3,3)
+    real(wp) :: era
+    real(wp) :: rpom(3,3)
+    real(wp) :: rc2t(3,3)
 
     !  Call the renamed routine.
     call C2TCIO ( rc2i, era, rpom, rc2t )
@@ -5565,7 +5739,10 @@
 
     implicit none
 
-    real(wp) :: rc2i(3,3), era, rpom(3,3), rc2t(3,3)
+    real(wp) :: rc2i(3,3)
+    real(wp) :: era
+    real(wp) :: rpom(3,3)
+    real(wp) :: rc2t(3,3)
 
     real(wp) :: r(3,3)
 
@@ -5632,7 +5809,10 @@
 
     implicit none
 
-    real(wp) :: rbpn(3,3), gst, rpom(3,3), rc2t(3,3)
+    real(wp) :: rbpn(3,3)
+    real(wp) :: gst
+    real(wp) :: rpom(3,3)
+    real(wp) :: rc2t(3,3)
 
     real(wp) :: r(3,3)
 
@@ -5731,7 +5911,15 @@
 
     implicit none
 
-    real(wp) :: tta, ttb, uta, utb, dpsi, deps, xp, yp, rc2t(3,3)
+    real(wp) :: tta
+    real(wp) :: ttb
+    real(wp) :: uta
+    real(wp) :: utb
+    real(wp) :: dpsi
+    real(wp) :: deps
+    real(wp) :: xp
+    real(wp) :: yp
+    real(wp) :: rc2t(3,3)
 
     real(wp) :: epsa, rb(3,3), rp(3,3), rbp(3,3), rn(3,3), &
                      rbpn(3,3), gmst, ee, sp, rpom(3,3)
@@ -5839,7 +6027,15 @@
 
     implicit none
 
-    real(wp) :: tta, ttb, uta, utb, x, y, xp, yp, rc2t(3,3)
+    real(wp) :: tta
+    real(wp) :: ttb
+    real(wp) :: uta
+    real(wp) :: utb
+    real(wp) :: x
+    real(wp) :: y
+    real(wp) :: xp
+    real(wp) :: yp
+    real(wp) :: rc2t(3,3)
 
     real(wp) :: rc2i(3,3), era, sp, rpom(3,3)
 
@@ -5906,8 +6102,11 @@
 
     implicit none
 
-    integer :: iy, im, id
-    real(wp) :: djm0, djm
+    integer :: iy
+    integer :: im
+    integer :: id
+    real(wp) :: djm0
+    real(wp) :: djm
 
     integer :: j, ndays, my, iypmy
 
@@ -5978,7 +6177,8 @@
 
     implicit none
 
-    real(wp) :: p(3), c(3)
+    real(wp) :: p(3)
+    real(wp) :: c(3)
 
     integer :: i
 
@@ -6010,7 +6210,8 @@
 
     implicit none
 
-    real(wp) :: pv(3,2), c(3,2)
+    real(wp) :: pv(3,2)
+    real(wp) :: c(3,2)
 
     call CP ( pv(1,1), c(1,1) )
     call CP ( pv(1,2), c(1,2) )
@@ -6039,7 +6240,8 @@
 
     implicit none
 
-    real(wp) :: r(3,3), c(3,3)
+    real(wp) :: r(3,3)
+    real(wp) :: c(3,3)
 
     integer :: i
 
@@ -6120,10 +6322,16 @@
     subroutine D2DTF ( scale, ndp, d1, d2, iy, im, id, ihmsf, j )
 
     implicit none
+
     character(len=*) :: scale
     integer :: ndp
-    real(wp) :: d1, d2
-    integer :: iy, im, id, ihmsf(4), j
+    real(wp) :: d1
+    real(wp) :: d2
+    integer :: iy
+    integer :: im
+    integer :: id
+    integer :: ihmsf(4)
+    integer :: j
 
     logical :: leap
     character(len=1) :: s
@@ -6469,8 +6677,11 @@
 
     implicit none
 
-    integer :: iy, im, id
-    real(wp) :: fd, deltat
+    integer :: iy
+    integer :: im
+    integer :: id
+    real(wp) :: fd
+    real(wp) :: deltat
     integer :: j
 
     !  Release year for this version of DAT
@@ -6765,11 +6976,16 @@
 !  This revision:  2010 July 29
 !
     real(wp) function DTDB ( date1, date2, &
-                                     ut, elong, u, v )
+                             ut, elong, u, v )
 
     implicit none
 
-    real(wp) :: date1, date2, ut, elong, u, v
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: ut
+    real(wp) :: elong
+    real(wp) :: u
+    real(wp) :: v
 
     !  Degrees to radians
     real(wp),parameter :: dd2r = 1.745329251994329576923691d-2
@@ -7845,9 +8061,16 @@
                        d1, d2, j )
 
     implicit none
+
     character(len=*) :: scale
-    integer :: iy, im, id, ihr, imn
-    real(wp) :: sec, d1, d2
+    integer :: iy
+    integer :: im
+    integer :: id
+    integer :: ihr
+    integer :: imn
+    real(wp) :: sec
+    real(wp) :: d1
+    real(wp) :: d2
     integer :: j
 
     integer :: js, iy2, im2, id2
@@ -7983,7 +8206,12 @@
 
     implicit none
 
-    real(wp) :: date1, date2, dl, db, dr, dd
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: dl
+    real(wp) :: db
+    real(wp) :: dr
+    real(wp) :: dd
 
     real(wp) :: rm(3,3), v1(3), v2(3), a, b
 
@@ -8069,7 +8297,9 @@
 
     implicit none
 
-    real(wp) :: date1, date2, rm(3,3)
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: rm(3,3)
 
     real(wp) :: ob, bp(3,3), e(3,3)
 
@@ -8153,7 +8383,10 @@
 
     implicit none
 
-    real(wp) :: date1, date2, epsa, dpsi
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: epsa
+    real(wp) :: dpsi
 
     !  Equation of the equinoxes.
     EE00 = dpsi * cos(epsa) + EECT00 ( date1, date2 )
@@ -8223,7 +8456,8 @@
 
     implicit none
 
-    real(wp) :: date1, date2
+    real(wp) :: date1
+    real(wp) :: date2
 
     real(wp) :: dpsipr, depspr, epsa, dpsi, deps
 
@@ -8310,7 +8544,8 @@
 
     implicit none
 
-    real(wp) :: date1, date2
+    real(wp) :: date1
+    real(wp) :: date2
 
     real(wp) :: dpsipr, depspr, epsa, dpsi, deps
 
@@ -8383,7 +8618,8 @@
 
     implicit none
 
-    real(wp) :: date1, date2
+    real(wp) :: date1
+    real(wp) :: date2
 
     !  Equation of the equinoxes.
     EE06A = ANPM ( GST06A ( 0d0, 0d0, date1, date2 ) - &
@@ -8485,7 +8721,8 @@
 
     implicit none
 
-    real(wp) :: date1, date2
+    real(wp) :: date1
+    real(wp) :: date2
 
     !  Time since J2000.0, in Julian centuries
     real(wp) :: t
@@ -8707,7 +8944,8 @@
     implicit none
 
     integer :: n
-    real(wp) :: a, f
+    real(wp) :: a
+    real(wp) :: f
     integer :: j
 
     !  Preset the status to OK
@@ -8803,7 +9041,8 @@
 
     implicit none
 
-    real(wp) :: date1, date2
+    real(wp) :: date1
+    real(wp) :: date2
 
     real(wp) :: r(3,3), x, y, s
     !  Classical nutation x precession x bias matrix.
@@ -8858,7 +9097,8 @@
 
     implicit none
 
-    real(wp) :: rnpb(3,3), s
+    real(wp) :: rnpb(3,3)
+    real(wp) :: s
 
     real(wp) :: x, ax, xs, ys, zs, p, q
 
@@ -8908,7 +9148,8 @@
 
     implicit none
 
-    real(wp) :: dj1, dj2
+    real(wp) :: dj1
+    real(wp) :: dj2
 
     !  J2000.0 minus B1900.0 (2415019.81352) in days
     real(wp),parameter :: d1900 = 36524.68648d0
@@ -8951,7 +9192,9 @@
 
     implicit none
 
-    real(wp) :: epb, djm0, djm
+    real(wp) :: epb
+    real(wp) :: djm0
+    real(wp) :: djm
 
     !  Length of tropical year B1900 (days)
     real(wp),parameter :: ty = 365.242198781d0
@@ -8991,7 +9234,8 @@
 
     implicit none
 
-    real(wp) :: dj1, dj2
+    real(wp) :: dj1
+    real(wp) :: dj2
 
     EPJ = 2000d0 + ( ( dj1-dj00 ) + dj2 ) / djy
 
@@ -9028,7 +9272,9 @@
 
     implicit none
 
-    real(wp) :: epj, djm0, djm
+    real(wp) :: epj
+    real(wp) :: djm0
+    real(wp) :: djm
 
     djm0 = 2400000.5d0
     djm  =   51544.5d0 + ( epj-2000d0 ) * 365.25d0
@@ -9127,7 +9373,10 @@
 
     implicit none
 
-    real(wp) :: date1, date2, pvh(3,2), pvb(3,2)
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: pvh(3,2)
+    real(wp) :: pvb(3,2)
     integer :: jstat
 
     real(wp) :: t, t2, xyz, xyzd, a, b, c, ct, p, cp, &
@@ -9226,7 +9475,7 @@
     integer,dimension(3),parameter :: ns2 = [ ns2x, ns2y, ns2z ]
 
     real(wp) :: e0(3,me0,3), e1(3,me1,3), e2(3,me2,3), &
-             s0(3,ms0,3), s1(3,ms1,3), s2(3,ms2,3)
+                s0(3,ms0,3), s1(3,ms1,3), s2(3,ms2,3)
 
     !  Sun-to-Earth, T^0, X
     data ((e0(i,j,1),i=1,3),j=  1, 10) / &
@@ -11611,7 +11860,12 @@
 
     implicit none
 
-    real(wp) :: date1, date2, dr, dd, dl, db
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: dr
+    real(wp) :: dd
+    real(wp) :: dl
+    real(wp) :: db
 
     real(wp) :: rm(3,3), v1(3), v2(3), a, b
 
@@ -11689,17 +11943,19 @@
 
     implicit none
 
-    real(wp) :: date1, date2
+    real(wp) :: date1
+    real(wp) :: date2
 
     real(wp) :: t, om, dpsi, deps, eps0
+
     !  Interval between fundamental epoch J2000.0 and given date (JC).
     t = ( ( date1-dj00 ) + date2 ) / djc
 
     !  Longitude of the mean ascending node of the lunar orbit on the
     !  ecliptic, measured from the mean equinox of date.
     om = ANPM( ( 450160.280d0 + ( -482890.539d0 + &
-                     ( 7.455d0 + 0.008d0 * t ) * t ) * t ) * das2r &
-                   + mod(-5d0*t,1d0) * d2pi )
+               ( 7.455d0 + 0.008d0 * t ) * t ) * t ) * das2r &
+                 + mod(-5d0*t,1d0) * d2pi )
 
     !  Nutation components and mean obliquity.
     call NUT80 ( date1, date2, dpsi, deps )
@@ -11707,7 +11963,7 @@
 
     !  Equation of the equinoxes.
     EQEQ94 = dpsi * cos(eps0) + das2r * ( 0.00264d0 * sin(om) + &
-                                              0.000063d0 * sin(om+om))
+                                          0.000063d0 * sin(om+om))
 
     end function EQEQ94
 !***********************************************************************
@@ -11770,7 +12026,8 @@
 
     implicit none
 
-    real(wp) :: dj1, dj2
+    real(wp) :: dj1
+    real(wp) :: dj2
 
     real(wp) :: d1, d2, t, f
 
@@ -11789,7 +12046,7 @@
 
     !  Earth rotation angle at this UT1.
     ERA00 = ANP ( d2pi * ( f + 0.7790572732640d0 &
-                                     + 0.00273781191135448d0 * t ) )
+                             + 0.00273781191135448d0 * t ) )
 
     end function ERA00
 !***********************************************************************
@@ -11835,11 +12092,11 @@
     real(wp),parameter :: turnas = 1296000d0
 
     !  Mean elongation of the Moon from the Sun (IERS Conventions 2003).
-    FAD03 = mod (      1072260.703692d0 + &
-                      t*( 1602961601.2090d0 + &
-                      t*(        - 6.3706d0 + &
-                      t*(          0.006593d0 + &
-                      t*(        - 0.00003169d0 )))), turnas ) * das2r
+    FAD03 = mod (  1072260.703692d0 + &
+                  t*( 1602961601.2090d0 + &
+                  t*(        - 6.3706d0 + &
+                  t*(          0.006593d0 + &
+                  t*(        - 0.00003169d0 )))), turnas ) * das2r
 
     end function FAD03
 !***********************************************************************
@@ -12029,11 +12286,11 @@
     real(wp),parameter :: turnas = 1296000d0
 
     !  Mean anomaly of the Moon (IERS Conventions 2003).
-    FAL03 = mod (       485868.249036d0 + &
-                      t*( 1717915923.2178d0 + &
-                      t*(         31.8792d0 + &
-                      t*(          0.051635d0 + &
-                      t*(        - 0.00024470d0 )))), turnas ) * das2r
+    FAL03 = mod (   485868.249036d0 + &
+                  t*( 1717915923.2178d0 + &
+                  t*(         31.8792d0 + &
+                  t*(          0.051635d0 + &
+                  t*(        - 0.00024470d0 )))), turnas ) * das2r
 
     end function FAL03
 !***********************************************************************
@@ -12079,11 +12336,11 @@
     real(wp),parameter :: turnas = 1296000d0
 
     !  Mean anomaly of the Sun (IERS Conventions 2003).
-    FALP03 = mod (     1287104.793048d0 + &
-                       t*( 129596581.0481d0 + &
-                       t*(       - 0.5532d0 + &
-                       t*(         0.000136d0 + &
-                       t*(       - 0.00001149d0 )))), turnas ) * das2r
+    FALP03 = mod ( 1287104.793048d0 + &
+                   t*( 129596581.0481d0 + &
+                   t*(       - 0.5532d0 + &
+                   t*(         0.000136d0 + &
+                   t*(       - 0.00001149d0 )))), turnas ) * das2r
 
     end function FALP03
 !***********************************************************************
@@ -12565,8 +12822,18 @@
 
     implicit none
 
-    real(wp) :: r1950, d1950, dr1950, dd1950, p1950, v1950, &
-                     r2000, d2000, dr2000, dd2000, p2000, v2000
+    real(wp) :: r1950
+    real(wp) :: d1950
+    real(wp) :: dr1950
+    real(wp) :: dd1950
+    real(wp) :: p1950
+    real(wp) :: v1950
+    real(wp) :: r2000
+    real(wp) :: d2000
+    real(wp) :: dr2000
+    real(wp) :: dd2000
+    real(wp) :: p2000
+    real(wp) :: v2000
 
     !  Radians per year to arcsec per century
     real(wp),parameter :: pmf = 100d0*60d0*60d0*360d0/d2pi
@@ -12582,7 +12849,7 @@
     real(wp) :: r0(3,2), pv1(3,2), pv2(3,2), pv3(3,2)
 
     !  Functions
-        !
+    !
     !  CANONICAL CONSTANTS  (Seidelmann 1992)
     !
 
@@ -12744,7 +13011,11 @@
 
     implicit none
 
-    real(wp) :: r1950, d1950, bepoch, r2000, d2000
+    real(wp) :: r1950
+    real(wp) :: d1950
+    real(wp) :: bepoch
+    real(wp) :: r2000
+    real(wp) :: d2000
 
     !  Radians per year to arcsec per century
     real(wp),parameter :: pmf = 100d0*60d0*60d0*360d0/d2pi
@@ -12757,7 +13028,7 @@
     integer :: k, j, i
 
     !  Functions
-        !
+    !
     !  CANONICAL CONSTANTS
     !
 
@@ -12916,8 +13187,18 @@
 
     implicit none
 
-    real(wp) :: r2000, d2000, dr2000, dd2000, p2000, v2000, &
-                     r1950, d1950, dr1950, dd1950, p1950, v1950
+    real(wp) :: r2000
+    real(wp) :: d2000
+    real(wp) :: dr2000
+    real(wp) :: dd2000
+    real(wp) :: p2000
+    real(wp) :: v2000
+    real(wp) :: r1950
+    real(wp) :: d1950
+    real(wp) :: dr1950
+    real(wp) :: dd1950
+    real(wp) :: p1950
+    real(wp) :: v1950
 
     !  Radians per year to arcsec per century
     real(wp),parameter :: pmf = 100d0*60d0*60d0*360d0/d2pi
@@ -12933,7 +13214,7 @@
     real(wp) :: r0(3,2), r1(3,2), p1(3), p2(3), p3(3), pv(3,2)
 
     !  Functions
-        !
+    !
     !  CANONICAL CONSTANTS  (Seidelmann 1992)
     !
 
@@ -13089,8 +13370,18 @@
 
     implicit none
 
-    real(wp) :: r5, d5, dr5, dd5, px5, rv5, &
-                     rh, dh, drh, ddh, pxh, rvh
+    real(wp) :: r5
+    real(wp) :: d5
+    real(wp) :: dr5
+    real(wp) :: dd5
+    real(wp) :: px5
+    real(wp) :: rv5
+    real(wp) :: rh
+    real(wp) :: dh
+    real(wp) :: drh
+    real(wp) :: ddh
+    real(wp) :: pxh
+    real(wp) :: rvh
 
     real(wp) :: pv5(3,2), r5h(3,3), s5h(3), wxp(3), vv(3), &
                      pvh(3,2)
@@ -13179,8 +13470,13 @@
 
     implicit none
 
-    real(wp) :: r2000, d2000, bepoch, &
-                     r1950, d1950, dr1950, dd1950
+    real(wp) :: r2000
+    real(wp) :: d2000
+    real(wp) :: bepoch
+    real(wp) :: r1950
+    real(wp) :: d1950
+    real(wp) :: dr1950
+    real(wp) :: dd1950
 
     real(wp) :: r, d, pr, pd, px, rv, p(3), w, v(3)
     integer :: i
@@ -13254,7 +13550,8 @@
 
     implicit none
 
-    real(wp) :: r5h(3,3), s5h(3)
+    real(wp) :: r5h(3,3)
+    real(wp) :: s5h(3)
 
     !  FK5 to Hipparcos orientation and spin (radians, radians/year)
     real(wp),parameter :: epx = -19.9d-3 * das2r
@@ -13354,10 +13651,15 @@
 
     implicit none
 
-    real(wp) :: r5, d5, date1, date2, rh, dh
+    real(wp) :: r5
+    real(wp) :: d5
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: rh
+    real(wp) :: dh
 
     real(wp) :: t, p5e(3), r5h(3,3), s5h(3), vst(3), rst(3,3), &
-                     p5(3), ph(3), w
+                p5(3), ph(3), w
 
     !  Interval from given date to fundamental epoch J2000.0 (JY).
     t = - ( ( date1-dj00 ) + date2 ) / djy
@@ -13455,7 +13757,11 @@
 
     implicit none
 
-    real(wp) :: gamb, phib, psi, eps, r(3,3)
+    real(wp) :: gamb
+    real(wp) :: phib
+    real(wp) :: psi
+    real(wp) :: eps
+    real(wp) :: r(3,3)
 
     !  Construct the matrix.
     call IR ( r )
@@ -13520,7 +13826,12 @@
 
     implicit none
 
-    real(wp) :: gamb, phib, psi, eps, x, y
+    real(wp) :: gamb
+    real(wp) :: phib
+    real(wp) :: psi
+    real(wp) :: eps
+    real(wp) :: x
+    real(wp) :: y
 
     real(wp) :: r(3,3)
 
@@ -13596,9 +13907,13 @@
     subroutine G2ICRS ( dl, db, dr, dd )
 
     implicit none
-    real(wp) :: dl, db, dr, dd
 
-        real(wp) v1(3), v2(3)
+    real(wp) :: dl
+    real(wp) :: db
+    real(wp) :: dr
+    real(wp) :: dd
+
+    real(wp) v1(3), v2(3)
 
     !
     !  L2,B2 system of galactic coordinates in the form presented in the
@@ -13694,7 +14009,10 @@
     implicit none
 
     integer :: n
-    real(wp) :: xyz(3), elong, phi, height
+    real(wp) :: xyz(3)
+    real(wp) :: elong
+    real(wp) :: phi
+    real(wp) :: height
     integer :: j
 
     real(wp) :: a, f
@@ -13774,12 +14092,17 @@
 
     implicit none
 
-    real(wp) :: a, f, xyz(3), elong, phi, height
+    real(wp) :: a
+    real(wp) :: f
+    real(wp) :: xyz(3)
+    real(wp) :: elong
+    real(wp) :: phi
+    real(wp) :: height
     integer :: j
 
     real(wp) :: aeps2, e2, e4t, ec2, ec, b, x, y, z, p2, absz, p, &
-                     s0, pn, zc, c0, c02, c03, s02, s03, a02, a0, a03, &
-                     d0, f0, b0, s1, cc, s12, cc2
+                s0, pn, zc, c0, c02, c03, s02, s03, a02, a0, a03, &
+                d0, f0, b0, s1, cc, s12, cc2
 
     !  -------------
     !  Preliminaries
@@ -13827,15 +14150,15 @@
     !  Proceed unless polar case.
     if ( p2>aeps2 ) then
 
-    !     Distance from polar axis.
+       !  Distance from polar axis.
        p = sqrt(p2)
 
-    !     Normalization.
+       !  Normalization.
        s0 = absz/a
        pn = p/a
        zc = ec*s0
 
-    !     Prepare Newton correction factors.
+       !  Prepare Newton correction factors.
        c0 = ec*pn
        c02 = c0*c0
        c03 = c02*c0
@@ -13847,19 +14170,19 @@
        d0 = zc*a03 + e2*s03
        f0 = pn*a03 - e2*c03
 
-    !     Prepare Halley correction factor.
+       !  Prepare Halley correction factor.
        b0 = e4t*s02*c02*pn*(a0-ec)
        s1 = d0*f0 - b0*s0
        cc = ec*(f0*f0-b0*c0)
 
-    !     Evaluate latitude and height.
+       !  Evaluate latitude and height.
        phi = atan(s1/cc)
        s12 = s1*s1
        cc2 = cc*cc
        height = (p*cc+absz*s1-a*sqrt(ec2*s12+cc2))/sqrt(s12+cc2)
     else
 
-    !     Exception: pole.
+       !  Exception: pole.
        phi = dpi/2d0
        height = absz-b
     end if
@@ -13927,7 +14250,10 @@
     implicit none
 
     integer :: n
-    real(wp) :: elong, phi, height, xyz(3)
+    real(wp) :: elong
+    real(wp) :: phi
+    real(wp) :: height
+    real(wp) :: xyz(3)
     integer :: j
 
     real(wp) :: a, f
@@ -14004,7 +14330,12 @@
 
     implicit none
 
-    real(wp) :: a, f, elong, phi, height, xyz(3)
+    real(wp) :: a
+    real(wp) :: f
+    real(wp) :: elong
+    real(wp) :: phi
+    real(wp) :: height
+    real(wp) :: xyz(3)
     integer :: j
 
     real(wp) :: sp, cp, w, d, ac, as, r
@@ -14019,17 +14350,17 @@
        ac = a / sqrt(d)
        as = w * ac
 
-    !     Geocentric vector.
+       !  Geocentric vector.
        r = ( ac + height ) * cp
        xyz(1) = r * cos(elong)
        xyz(2) = r * sin(elong)
        xyz(3) = ( as + height ) * sp
 
-    !     Success.
+       !  Success.
        j = 0
     else
 
-    !     Fail.
+       !  Fail.
        j = -1
     end if
 
@@ -14107,7 +14438,10 @@
 
     implicit none
 
-    real(wp) :: uta, utb, tta, ttb
+    real(wp) :: uta
+    real(wp) :: utb
+    real(wp) :: tta
+    real(wp) :: ttb
 
     real(wp) :: t
 
@@ -14188,7 +14522,10 @@
 
     implicit none
 
-    real(wp) :: uta, utb, tta, ttb
+    real(wp) :: uta
+    real(wp) :: utb
+    real(wp) :: tta
+    real(wp) :: ttb
 
     real(wp) :: t
 
@@ -14273,7 +14610,8 @@
 
     implicit none
 
-    real(wp) :: dj1, dj2
+    real(wp) :: dj1
+    real(wp) :: dj2
 
     !  Coefficients of IAU 1982 GMST-UT1 model
     real(wp),parameter :: a = 24110.54841d0 - d2s/2d0
@@ -14378,10 +14716,13 @@
 
     implicit none
 
-    real(wp) :: uta, utb, tta, ttb
+    real(wp) :: uta
+    real(wp) :: utb
+    real(wp) :: tta
+    real(wp) :: ttb
 
-        GST00A = ANP ( GMST00 ( uta,utb, tta,ttb ) + &
-                           EE00A ( tta,ttb ) )
+    GST00A = ANP ( GMST00 ( uta,utb, tta,ttb ) + &
+                    EE00A ( tta,ttb ) )
 
     end function GST00A
 !***********************************************************************
@@ -14467,10 +14808,11 @@
 
     implicit none
 
-    real(wp) :: uta, utb
+    real(wp) :: uta
+    real(wp) :: utb
 
-        GST00B = ANP ( GMST00 ( uta,utb, uta,utb ) + &
-                           EE00B ( uta,utb ) )
+    GST00B = ANP ( GMST00 ( uta,utb, uta,utb ) + &
+                   EE00B ( uta,utb ) )
 
     end function GST00B
 !***********************************************************************
@@ -14542,7 +14884,11 @@
 
     implicit none
 
-    real(wp) :: uta, utb, tta, ttb, rnpb(3,3)
+    real(wp) :: uta
+    real(wp) :: utb
+    real(wp) :: tta
+    real(wp) :: ttb
+    real(wp) :: rnpb(3,3)
 
     real(wp) :: x, y, s
 
@@ -14554,7 +14900,7 @@
 
     !  Greenwich apparent sidereal time.
     GST06 = ANP ( ERA00 ( uta, utb ) - &
-                          EORS ( rnpb, s ) )
+                  EORS ( rnpb, s ) )
 
     end function GST06
 !***********************************************************************
@@ -14623,7 +14969,10 @@
 
     implicit none
 
-    real(wp) :: uta, utb, tta, ttb
+    real(wp) :: uta
+    real(wp) :: utb
+    real(wp) :: tta
+    real(wp) :: ttb
 
     real(wp) :: rnpb(3,3)
 
@@ -14702,10 +15051,11 @@
 
     implicit none
 
-    real(wp) :: uta, utb
+    real(wp) :: uta
+    real(wp) :: utb
 
-        GST94 = ANP ( GMST82 ( uta, utb ) + &
-                          EQEQ94 ( uta, utb ) )
+    GST94 = ANP ( GMST82 ( uta, utb ) + &
+                  EQEQ94 ( uta, utb ) )
 
     end function GST94
 !***********************************************************************
@@ -14767,8 +15117,18 @@
 
     implicit none
 
-    real(wp) :: rh, dh, drh, ddh, pxh, rvh, &
-                     r5, d5, dr5, dd5, px5, rv5
+    real(wp) :: rh
+    real(wp) :: dh
+    real(wp) :: drh
+    real(wp) :: ddh
+    real(wp) :: pxh
+    real(wp) :: rvh
+    real(wp) :: r5
+    real(wp) :: d5
+    real(wp) :: dr5
+    real(wp) :: dd5
+    real(wp) :: px5
+    real(wp) :: rv5
 
     real(wp) :: pvh(3,2), r5h(3,3), s5h(3), sh(3), wxp(3), &
                      vv(3), pv5(3,2)
@@ -14864,7 +15224,11 @@
 
     implicit none
 
-    real(wp) :: ha, dec, phi, az, el
+    real(wp) :: ha
+    real(wp) :: dec
+    real(wp) :: phi
+    real(wp) :: az
+    real(wp) :: el
 
     real(wp) :: sh, ch, sd, cd, sp, cp, x, y, z, r, a
 
@@ -14940,7 +15304,9 @@
 
     implicit none
 
-    real(wp) :: ha, dec, phi
+    real(wp) :: ha
+    real(wp) :: dec
+    real(wp) :: phi
 
     real(wp) :: cp, sqsz, cqsz
 
@@ -15030,11 +15396,18 @@
 
     implicit none
 
-    real(wp) :: rh, dh, date1, date2, r5, d5, dr5, dd5
+    real(wp) :: rh
+    real(wp) :: dh
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: r5
+    real(wp) :: d5
+    real(wp) :: dr5
+    real(wp) :: dd5
 
     real(wp) :: t, ph(3), r5h(3,3), s5h(3), sh(3), vst(3), &
-                     rst(3,3), r5ht(3,3), pv5e(3,2), vv(3), &
-                     w, r, v
+                rst(3,3), r5ht(3,3), pv5e(3,2), vv(3), &
+                w, r, v
 
     !  Time interval from fundamental epoch J2000.0 to given date (JY).
     t = ( ( date1-dj00 ) + date2 ) / djy
@@ -15133,12 +15506,16 @@
 !
 !  This revision:   2015 January 9
 !
-    subroutine ICRS2G ( dr, dd, dl, db  )
+    subroutine ICRS2G ( dr, dd, dl, db )
 
     implicit none
-    real(wp) :: dr, dd, dl, db
 
-        real(wp) v1(3), v2(3)
+    real(wp) :: dr
+    real(wp) :: dd
+    real(wp) :: dl
+    real(wp) :: db
+
+    real(wp) v1(3), v2(3)
 
     !
     !  L2,B2 system of galactic coordinates in the form presented in the
@@ -15263,8 +15640,11 @@
 
     implicit none
 
-    real(wp) :: dj1, dj2
-    integer :: iy, im, id
+    real(wp) :: dj1
+    real(wp) :: dj2
+    integer :: iy
+    integer :: im
+    integer :: id
     real(wp) :: fd
     integer :: j
 
@@ -15282,7 +15662,7 @@
     else
        j = 0
 
-    !     Copy the date, big then small, and re-align to midnight.
+       !  Copy the date, big then small, and re-align to midnight.
        if ( abs(dj1) >= abs(dj2) ) then
           d1 = dj1
           d2 = dj2
@@ -15292,7 +15672,7 @@
        end if
        d2 = d2 - 0.5d0
 
-    !     Separate day and fraction.
+       !  Separate day and fraction.
        f1 = mod(d1,1d0)
        f2 = mod(d2,1d0)
        f = mod(f1+f2,1d0)
@@ -15300,7 +15680,7 @@
        d = anint(d1-f1) + anint(d2-f2) + anint(f1+f2-f)
        jd = nint(d) + 1
 
-    !     Express day in Gregorian calendar.
+       !  Express day in Gregorian calendar.
        l = jd + 68569
        n = ( 4*l ) / 146097
        l = l - ( 146097*n + 3 ) / 4
@@ -15377,8 +15757,10 @@
     implicit none
 
     integer :: ndp
-    real(wp) :: dj1, dj2
-    integer :: iymdf(4), j
+    real(wp) :: dj1
+    real(wp) :: dj2
+    integer :: iymdf(4)
+    integer :: j
 
     integer :: js
     real(wp) :: denom, d1, d2, f1, f2, f
@@ -15492,7 +15874,14 @@
     subroutine LD ( bm, p, q, e, em, dlim, p1 )
 
     implicit none
-    real(wp) :: bm, p(3), q(3), e(3), em, dlim, p1(3)
+
+    real(wp) :: bm
+    real(wp) :: p(3)
+    real(wp) :: q(3)
+    real(wp) :: e(3)
+    real(wp) :: em
+    real(wp) :: dlim
+    real(wp) :: p1(3)
 
     !  Schwarzschild radius of the Sun (au)
     !  = 2 * 1.32712440041 D20 / (2.99792458 D8)^2 / 1.49597870700 D11
@@ -15601,8 +15990,12 @@
     subroutine LDN ( n, b, ob, sc, sn )
 
     implicit none
+
     integer :: n
-    real(wp) :: b(8,n), ob(3), sc(3), sn(3)
+    real(wp) :: b(8,n)
+    real(wp) :: ob(3)
+    real(wp) :: sc(3)
+    real(wp) :: sn(3)
 
     !  Astronomical unit (m, IAU 2012)
     real(wp),parameter :: aum = 149597870.7d3
@@ -15619,29 +16012,29 @@
     !  Body by body.
     do i=1,n
 
-    !     Body to observer vector at epoch of observation (au).
+       !  Body to observer vector at epoch of observation (au).
        call PMP ( ob, b(3,i), v )
 
-    !     Minus the time since the light passed the body (days).
+       !  Minus the time since the light passed the body (days).
        call PDP ( s, v, d )
        dt = d * cr
 
-    !     Neutralize if the star is "behind" the observer.
+       !  Neutralize if the star is "behind" the observer.
        dt = min ( dt, 0d0 )
 
-    !     Backtrack the body to the time the light was passing the body.
+       !  Backtrack the body to the time the light was passing the body.
        call PPSP ( v, -dt, b(6,i), ev )
 
-    !     Separate the body to observer vector into magnitude and direction.
+       !  Separate the body to observer vector into magnitude and direction.
        call PN ( ev, em, e )
 
-    !     Apply light deflection for this body.
+       !  Apply light deflection for this body.
        call LD ( b(1,i), s, s, e, em, b(2,i), v )
 
-    !     Update the star direction.
+       !  Update the star direction.
        call CP ( v, s )
 
-    !     Next body.
+       !  Next body.
     end do
 
     !  Return the deflected star direction.
@@ -15684,7 +16077,11 @@
     subroutine LDSUN ( p, e, em, p1 )
 
     implicit none
-    real(wp) :: p(3), e(3), em, p1(3)
+
+    real(wp) :: p(3)
+    real(wp) :: e(3)
+    real(wp) :: em
+    real(wp) :: p1(3)
 
     real(wp) :: dlim
 
@@ -15751,7 +16148,11 @@
 
     implicit none
 
-    real(wp) :: epj, dl, db, dr, dd
+    real(wp) :: epj
+    real(wp) :: dl
+    real(wp) :: db
+    real(wp) :: dr
+    real(wp) :: dd
 
     real(wp) :: rm(3,3), v1(3), v2(3), a, b
 
@@ -15834,7 +16235,8 @@
 
     implicit none
 
-    real(wp) :: epj, rm(3,3)
+    real(wp) :: epj
+    real(wp) :: rm(3,3)
 
     !  Frame bias (IERS Conventions 2010, Eqs. 5.21 and 5.33)
     real(wp),parameter :: dx = -0.016617d0 * das2r
@@ -15925,7 +16327,11 @@
 
     implicit none
 
-    real(wp) :: epj, dr, dd, dl, db
+    real(wp) :: epj
+    real(wp) :: dr
+    real(wp) :: dd
+    real(wp) :: dl
+    real(wp) :: db
 
     real(wp) :: rm(3,3), v1(3), v2(3), a, b
 
@@ -15998,7 +16404,9 @@
     subroutine LTP ( epj, rp )
 
     implicit none
-    real(wp) :: epj, rp(3,3)
+
+    real(wp) :: epj
+    real(wp) :: rp(3,3)
 
     integer :: i
     real(wp) :: peqr(3), pecl(3), v(3), w, eqx(3)
@@ -16077,7 +16485,9 @@
     subroutine LTPB ( epj, rpb )
 
     implicit none
-    real(wp) :: epj, rpb(3,3)
+
+    real(wp) :: epj
+    real(wp) :: rpb(3,3)
 
     !  Frame bias (IERS Conventions 2010, Eqs. 5.21 and 5.33)
     real(wp),parameter :: dx = -0.016617d0 * das2r
@@ -16139,7 +16549,9 @@
     subroutine LTPECL ( epj, vec )
 
     implicit none
-    real(wp) :: epj, vec(3)
+
+    real(wp) :: epj
+    real(wp) :: vec(3)
 
     !  Obliquity at J2000.0 (radians).
     real(wp),parameter :: eps0 = 84381.406d0 * das2r
@@ -16266,7 +16678,9 @@
     subroutine LTPEQU ( epj, veq )
 
     implicit none
-    real(wp) :: epj, veq(3)
+
+    real(wp) :: epj
+    real(wp) :: veq(3)
 
     !  Number of polynomial terms
     integer,parameter :: npol = 4
@@ -16416,14 +16830,16 @@
 
     implicit none
 
-    real(wp) :: date1, date2, rmatn(3,3)
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: rmatn(3,3)
 
     real(wp) :: dpsi, deps, epsa, &
-                     rb(3,3), rp(3,3), rbp(3,3), rbpn(3,3)
+                rb(3,3), rp(3,3), rbp(3,3), rbpn(3,3)
 
     !  Obtain the required matrix (discarding other results).
     call PN00A ( date1, date2, &
-                     dpsi, deps, epsa, rb, rp, rbp, rmatn, rbpn )
+                 dpsi, deps, epsa, rb, rp, rbp, rmatn, rbpn )
 
     end subroutine NUM00A
 !***********************************************************************
@@ -16484,14 +16900,16 @@
 
     implicit none
 
-    real(wp) :: date1, date2, rmatn(3,3)
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: rmatn(3,3)
 
     real(wp) :: dpsi, deps, epsa, &
-                     rb(3,3), rp(3,3), rbp(3,3), rbpn(3,3)
+                rb(3,3), rp(3,3), rbp(3,3), rbpn(3,3)
 
     !  Obtain the required matrix (discarding other results).
     call PN00B ( date1, date2, &
-                     dpsi, deps, epsa, rb, rp, rbp, rmatn, rbpn )
+                 dpsi, deps, epsa, rb, rp, rbp, rmatn, rbpn )
 
     end subroutine NUM00B
 !***********************************************************************
@@ -16552,7 +16970,9 @@
 
     implicit none
 
-    real(wp) :: date1, date2, rmatn(3,3)
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: rmatn(3,3)
 
     real(wp) :: eps, dp, de
 
@@ -16613,7 +17033,10 @@
 
     implicit none
 
-    real(wp) :: epsa, dpsi, deps, rmatn(3,3)
+    real(wp) :: epsa
+    real(wp) :: dpsi
+    real(wp) :: deps
+    real(wp) :: rmatn(3,3)
 
     !  Build the rotation matrix.
     call IR ( rmatn )
@@ -16775,7 +17198,10 @@
 
     implicit none
 
-    real(wp) :: date1, date2, dpsi, deps
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: dpsi
+    real(wp) :: deps
 
     !  Arcseconds in a full circle
     real(wp),parameter :: turnas = 1296000d0
@@ -16786,9 +17212,9 @@
     !  Miscellaneous
     integer :: i, j
     real(wp) :: t, el, elp, f, d, om, arg, dp, de, sarg, carg, &
-                     al, alsu, af, ad, aom, alme, alve, alea, alma, &
-                     alju, alsa, alur, alne, apa, dpsils, depsls, &
-                     dpsipl, depspl
+                al, alsu, af, ad, aom, alme, alve, alea, alma, &
+                alju, alsa, alur, alne, apa, dpsils, depsls, &
+                dpsipl, depspl
 
     !  -------------------------
     !  Luni-Solar nutation model
@@ -19888,7 +20314,7 @@
     !  Summation of luni-solar nutation series (in reverse order).
     do i = nls, 1, -1
 
-    !     Argument and functions.
+       !  Argument and functions.
        arg = mod ( dble ( nals(1,i) ) * el  + &
                    dble ( nals(2,i) ) * elp + &
                    dble ( nals(3,i) ) * f   + &
@@ -19897,7 +20323,7 @@
        sarg = sin(arg)
        carg = cos(arg)
 
-    !     Term.
+       !  Term.
        dp = dp + ( cls(1,i) + cls(2,i) * t ) * sarg &
                +   cls(3,i)                  * carg
        de = de + ( cls(4,i) + cls(5,i) * t ) * carg &
@@ -19958,7 +20384,7 @@
     !  Summation of planetary nutation series (in reverse order).
     do i = npl, 1, -1
 
-    !     Argument and functions.
+       !  Argument and functions.
        arg = mod ( dble ( napl( 1,i) ) * al   + &
                    dble ( napl( 2,i) ) * alsu + &
                    dble ( napl( 3,i) ) * af   + &
@@ -19976,7 +20402,7 @@
        sarg = sin(arg)
        carg = cos(arg)
 
-    !     Term.
+       !  Term.
        dp = dp + dble( icpl(1,i)) * sarg + dble( icpl(2,i)) * carg
        de = de + dble( icpl(3,i)) * sarg + dble( icpl(4,i)) * carg
 
@@ -20116,7 +20542,10 @@
 
     implicit none
 
-    real(wp) :: date1, date2, dpsi, deps
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: dpsi
+    real(wp) :: deps
 
     !  Milliarcseconds to radians
     real(wp),parameter :: dmas2r = das2r / 1d3
@@ -20477,7 +20906,10 @@
 
     implicit none
 
-    real(wp) :: date1, date2, dpsi, deps
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: dpsi
+    real(wp) :: deps
 
     !  Miscellaneous
     real(wp) :: t, fj2, dp, de
@@ -20550,7 +20982,10 @@
 
     implicit none
 
-    real(wp) :: date1, date2, dpsi, deps
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: dpsi
+    real(wp) :: deps
 
     !  Units of 0.1 milliarcsecond to radians
     real(wp),parameter :: u2r = das2r/1d4
@@ -20737,20 +21172,20 @@
     !  Sum the nutation terms, ending with the biggest.
     do j=106,1,-1
 
-    !     Form argument for current term.
+       !  Form argument for current term.
        arg = dble(x(1,j)) * el &
            + dble(x(2,j)) * elp &
            + dble(x(3,j)) * f &
            + dble(x(4,j)) * d &
            + dble(x(5,j)) * om
 
-    !     Accumulate current nutation term.
+       !  Accumulate current nutation term.
        s = dble(x(6,j)) + dble(x(7,j)) * t
        c = dble(x(8,j)) + dble(x(9,j)) * t
        if ( s /= 0d0 ) dp = dp + s * sin(arg)
        if ( c /= 0d0 ) de = de + c * cos(arg)
 
-    !     Next term.
+       !  Next term.
     end do
 
     !  Convert results from 0.1 mas units to radians.
@@ -20809,9 +21244,12 @@
 
     implicit none
 
-    real(wp) :: date1, date2, rmatn(3,3)
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: rmatn(3,3)
 
     real(wp) :: dpsi, deps, epsa
+
     !  Nutation components and mean obliquity.
     call NUT80 ( date1, date2, dpsi, deps )
     epsa = OBL80 ( date1, date2 )
@@ -20868,7 +21306,8 @@
 
     implicit none
 
-    real(wp) :: date1, date2
+    real(wp) :: date1
+    real(wp) :: date2
 
     real(wp) :: t
 
@@ -20935,7 +21374,8 @@
 
     implicit none
 
-    real(wp) :: date1, date2
+    real(wp) :: date1
+    real(wp) :: date2
 
     real(wp) :: t
 
@@ -21070,10 +21510,24 @@
 
     implicit none
 
-    real(wp) :: date1, date2, &
-                     eps0, psia, oma, bpa, bqa, pia, bpia, &
-                     epsa, chia, za, zetaa, thetaa, pa, &
-                     gam, phi, psi
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: eps0
+    real(wp) :: psia
+    real(wp) :: oma
+    real(wp) :: bpa
+    real(wp) :: bqa
+    real(wp) :: pia
+    real(wp) :: bpia
+    real(wp) :: epsa
+    real(wp) :: chia
+    real(wp) :: za
+    real(wp) :: zetaa
+    real(wp) :: thetaa
+    real(wp) :: pa
+    real(wp) :: gam
+    real(wp) :: phi
+    real(wp) :: psi
 
     real(wp) :: t
 
@@ -21238,7 +21692,8 @@
 
     implicit none
 
-    real(wp) :: p(3), pv(3,2)
+    real(wp) :: p(3)
+    real(wp) :: pv(3,2)
 
     call CP ( p, pv(1,1) )
     call ZP ( pv(1,2) )
@@ -21276,7 +21731,10 @@
 
     implicit none
 
-    real(wp) :: p(3), theta, phi, r
+    real(wp) :: p(3)
+    real(wp) :: theta
+    real(wp) :: phi
+    real(wp) :: r
 
     call C2S ( p, theta, phi )
     call PM ( p, r )
@@ -21325,10 +21783,12 @@
 
     implicit none
 
-    real(wp) :: a(3), b(3), theta
+    real(wp) :: a(3)
+    real(wp) :: b(3)
+    real(wp) :: theta
 
     real(wp) :: am, au(3), bm, st, ct, xa, ya, za, eta(3), &
-                     xi(3), a2b(3)
+                xi(3), a2b(3)
 
     !  Modulus and direction of the A vector.
     call PN ( a, am, au )
@@ -21342,7 +21802,7 @@
        ct = 1d0
     else
 
-    !     The "north" axis tangential from A (arbitrary length).
+       !  The "north" axis tangential from A (arbitrary length).
        xa = a(1)
        ya = a(2)
        za = a(3)
@@ -21350,17 +21810,17 @@
        eta(2) = - ya * za
        eta(3) = xa*xa + ya*ya
 
-    !     The "east" axis tangential from A (same length).
+       !  The "east" axis tangential from A (same length).
        call PXP ( eta, au, xi )
 
-    !     The vector from A to B.
+       !  The vector from A to B.
        call PMP ( b, a, a2b )
 
-    !     Resolve into components along the north and east axes.
+       !  Resolve into components along the north and east axes.
        call PDP ( a2b, xi, st )
        call PDP ( a2b, eta, ct )
 
-    !     Deal with degenerate cases.
+       !  Deal with degenerate cases.
        if ( st==0d0 .and. ct==0d0 ) ct = 1d0
 
     end if
@@ -21401,7 +21861,11 @@
 
     implicit none
 
-    real(wp) :: al, ap, bl, bp, theta
+    real(wp) :: al
+    real(wp) :: ap
+    real(wp) :: bl
+    real(wp) :: bp
+    real(wp) :: theta
 
     real(wp) :: dl, x, y
 
@@ -21482,7 +21946,11 @@
 
     implicit none
 
-    real(wp) :: date1, date2, bzeta, bz, btheta
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: bzeta
+    real(wp) :: bz
+    real(wp) :: btheta
 
     real(wp) :: r(3,3), r31, r32
 
@@ -21523,7 +21991,9 @@
 
     implicit none
 
-    real(wp) :: a(3), b(3), adb
+    real(wp) :: a(3)
+    real(wp) :: b(3)
+    real(wp) :: adb
 
     real(wp) :: w
     integer :: i
@@ -21613,7 +22083,12 @@
 
     implicit none
 
-    real(wp) :: date1, date2, gamb, phib, psib, epsa
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: gamb
+    real(wp) :: phib
+    real(wp) :: psib
+    real(wp) :: epsa
 
     real(wp) :: t
 
@@ -21810,7 +22285,8 @@
 
     implicit none
 
-    real(wp) :: date1, date2
+    real(wp) :: date1
+    real(wp) :: date2
     integer :: np
     real(wp) :: pv(3,2)
     integer :: j
@@ -21981,7 +22457,7 @@
     if ( np<1 .or. np>8 ) then
        jstat = -1
 
-    !     Reset the result in case of failure.
+       !  Reset the result in case of failure.
        do k=1,2
           do i=1,3
              pv(i,k) = 0d0
@@ -21989,17 +22465,17 @@
        end do
     else
 
-    !     Time: Julian millennia since J2000.0.
+       !  Time: Julian millennia since J2000.0.
        t = ( ( date1-dj00 ) + date2 ) / djm
 
-    !     OK status unless remote epoch.
+       !  OK status unless remote epoch.
        if ( abs(t) <= 1d0 ) then
           jstat = 0
        else
           jstat = 1
        end if
 
-    !     Compute the mean elements.
+       !  Compute the mean elements.
        da = a(1,np) + &
           ( a(2,np) + &
             a(3,np) * t ) * t
@@ -22019,7 +22495,7 @@
                                + ( omega(2,np) &
                                  + omega(3,np) * t ) * t ) * das2r )
 
-    !     Apply the trigonometric terms.
+       !  Apply the trigonometric terms.
        dmu = 0.35953620d0 * t
        do k=1,8
           arga = kp(k,np) * dmu
@@ -22039,7 +22515,7 @@
        end do
        dl = mod(dl, d2pi)
 
-    !     Iterative solution of Kepler's equation to get eccentric anomaly.
+       !  Iterative solution of Kepler's equation to get eccentric anomaly.
        am = dl - dp
        ae = am + de*sin(am)
        k = 0
@@ -22050,12 +22526,12 @@
           if ( k>=kmax ) jstat = 2
           if ( k==kmax .or. abs(dae) <= 1d-12 ) exit
        end do
-    !     True anomaly.
+       !  True anomaly.
        ae2 = ae / 2d0
        at = 2d0 * atan2(sqrt((1d0+de)/(1d0-de)) * sin(ae2), &
                                                   cos(ae2))
 
-    !     Distance (au) and speed (radians per day).
+       !  Distance (au) and speed (radians per day).
        r = da * ( 1d0 - de*cos(ae) )
        v = gk * sqrt( ( 1d0 + 1d0/amas(np) ) / (da*da*da))
 
@@ -22072,22 +22548,22 @@
        xmc = ( de * cos(dp) + xcw ) * xf
        xpxq2 = 2d0 * xp * xq
 
-    !     Position (J2000.0 ecliptic x,y,z in au).
+       !  Position (J2000.0 ecliptic x,y,z in au).
        x = r * ( xcw - xm2*xp )
        y = r * ( xsw + xm2*xq )
        z = r * ( -xm2 * ci2 )
 
-    !     Rotate to equatorial.
+       !  Rotate to equatorial.
        pv(1,1) = x
        pv(2,1) = y*coseps - z*sineps
        pv(3,1) = y*sineps + z*coseps
 
-    !     Velocity (J2000.0 ecliptic xdot,ydot,zdot in au/d).
+       !  Velocity (J2000.0 ecliptic xdot,ydot,zdot in au/d).
        x = v * ( ( -1d0 + 2d0*xp*xp ) * xms + xpxq2 * xmc )
        y = v * ( ( 1d0 - 2d0*xq*xq ) * xmc - xpxq2 * xms )
        z = v * ( 2d0 * ci2 * ( xp*xms + xq*xmc ) )
 
-    !     Rotate to equatorial.
+       !  Rotate to equatorial.
        pv(1,2) = x
        pv(2,2) = y*coseps - z*sineps
        pv(3,2) = y*sineps + z*coseps
@@ -22118,7 +22594,8 @@
 
     implicit none
 
-    real(wp) :: p(3), r
+    real(wp) :: p(3)
+    real(wp) :: r
 
     integer :: i
     real(wp) :: w, c
@@ -22187,7 +22664,9 @@
 
     implicit none
 
-    real(wp) :: date1, date2, rbp(3,3)
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: rbp(3,3)
 
     real(wp) :: rb(3,3), rp(3,3)
 
@@ -22252,7 +22731,9 @@
 
     implicit none
 
-    real(wp) :: date1, date2, rbp(3,3)
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: rbp(3,3)
 
     real(wp) :: gamb, phib, psib, epsa
 
@@ -22335,7 +22816,9 @@
 
     implicit none
 
-    real(wp) :: date1, date2, rmatp(3,3)
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: rmatp(3,3)
 
     real(wp) :: zeta, z, theta, wmat(3,3)
 
@@ -22371,7 +22854,9 @@
 
     implicit none
 
-    real(wp) :: a(3), b(3), amb(3)
+    real(wp) :: a(3)
+    real(wp) :: b(3)
+    real(wp) :: amb(3)
 
     integer :: i
 
@@ -22429,7 +22914,16 @@
     subroutine PMPX ( rc, dc, pr, pd, px, rv, pmt, pob, pco )
 
     implicit none
-    real(wp) :: rc, dc, pr, pd, px, rv, pmt, pob(3), pco(3)
+
+    real(wp) :: rc
+    real(wp) :: dc
+    real(wp) :: pr
+    real(wp) :: pd
+    real(wp) :: px
+    real(wp) :: rv
+    real(wp) :: pmt
+    real(wp) :: pob(3)
+    real(wp) :: pco(3)
 
     !  Days per Julian millennium
     real(wp),parameter :: djm = 365250d0
@@ -22586,9 +23080,23 @@
                         ra2, dec2, pmr2, pmd2, px2, rv2, j )
 
     implicit none
-    real(wp) :: ra1, dec1, pmr1, pmd1, px1, rv1, &
-                     ep1a, ep1b, ep2a, ep2b, &
-                     ra2, dec2, pmr2, pmd2, px2, rv2
+
+    real(wp) :: ra1
+    real(wp) :: dec1
+    real(wp) :: pmr1
+    real(wp) :: pmd1
+    real(wp) :: px1
+    real(wp) :: rv1
+    real(wp) :: ep1a
+    real(wp) :: ep1b
+    real(wp) :: ep2a
+    real(wp) :: ep2b
+    real(wp) :: ra2
+    real(wp) :: dec2
+    real(wp) :: pmr2
+    real(wp) :: pmd2
+    real(wp) :: px2
+    real(wp) :: rv2
     integer :: j
 
     !  Minimum allowed parallax (arcsec)
@@ -22655,7 +23163,9 @@
 
     implicit none
 
-    real(wp) :: p(3), r, u(3)
+    real(wp) :: p(3)
+    real(wp) :: r
+    real(wp) :: u(3)
 
     real(wp) :: w
 
@@ -22663,11 +23173,11 @@
     call PM ( p, w )
     if ( w == 0d0 ) then
 
-    !     Null vector.
+       !  Null vector.
        call ZP ( u )
     else
 
-    !     Unit vector.
+       !  Unit vector.
        call SXP ( 1d0/w, p, u )
     end if
 
@@ -22770,9 +23280,16 @@
 
     implicit none
 
-    real(wp) :: date1, date2, dpsi, deps, &
-                     epsa, rb(3,3), rp(3,3), rbp(3,3), &
-                     rn(3,3), rbpn(3,3)
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: dpsi
+    real(wp) :: deps
+    real(wp) :: epsa
+    real(wp) :: rb(3,3)
+    real(wp) :: rp(3,3)
+    real(wp) :: rbp(3,3)
+    real(wp) :: rn(3,3)
+    real(wp) :: rbpn(3,3)
 
     real(wp) :: dpsipr, depspr
 
@@ -22887,8 +23404,16 @@
 
     implicit none
 
-    real(wp) :: date1, date2, dpsi, deps, epsa, &
-                     rb(3,3), rp(3,3), rbp(3,3), rn(3,3), rbpn(3,3)
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: dpsi
+    real(wp) :: deps
+    real(wp) :: epsa
+    real(wp) :: rb(3,3)
+    real(wp) :: rp(3,3)
+    real(wp) :: rbp(3,3)
+    real(wp) :: rn(3,3)
+    real(wp) :: rbpn(3,3)
 
     !  Nutation.
     call NUT00A ( date1, date2, dpsi, deps )
@@ -22993,8 +23518,16 @@
 
     implicit none
 
-    real(wp) :: date1, date2, dpsi, deps, epsa, &
-                     rb(3,3), rp(3,3), rbp(3,3), rn(3,3), rbpn(3,3)
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: dpsi
+    real(wp) :: deps
+    real(wp) :: epsa
+    real(wp) :: rb(3,3)
+    real(wp) :: rp(3,3)
+    real(wp) :: rbp(3,3)
+    real(wp) :: rn(3,3)
+    real(wp) :: rbpn(3,3)
 
     !  Nutation.
     call NUT00B ( date1, date2, dpsi, deps )
@@ -23094,9 +23627,16 @@
 
     implicit none
 
-    real(wp) :: date1, date2, dpsi, deps, &
-                     epsa, rb(3,3), rp(3,3), rbp(3,3), &
-                     rn(3,3), rbpn(3,3)
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: dpsi
+    real(wp) :: deps
+    real(wp) :: epsa
+    real(wp) :: rb(3,3)
+    real(wp) :: rp(3,3)
+    real(wp) :: rbp(3,3)
+    real(wp) :: rn(3,3)
+    real(wp) :: rbpn(3,3)
 
     !  JD for MJD 0
     real(wp),parameter :: djm0 = 2400000.5d0
@@ -23218,8 +23758,16 @@
 
     implicit none
 
-    real(wp) :: date1, date2, dpsi, deps, epsa, &
-                     rb(3,3), rp(3,3), rbp(3,3), rn(3,3), rbpn(3,3)
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: dpsi
+    real(wp) :: deps
+    real(wp) :: epsa
+    real(wp) :: rb(3,3)
+    real(wp) :: rp(3,3)
+    real(wp) :: rbp(3,3)
+    real(wp) :: rn(3,3)
+    real(wp) :: rbpn(3,3)
 
     !  Nutation.
     call NUT06A ( date1, date2, dpsi, deps )
@@ -23288,14 +23836,16 @@
 
     implicit none
 
-    real(wp) :: date1, date2, rbpn(3,3)
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: rbpn(3,3)
 
     real(wp) :: dpsi, deps, epsa, rb(3,3), rp(3,3), rbp(3,3), &
-                     rn(3,3)
+                rn(3,3)
 
     !  Obtain the required matrix (discarding other results).
     call PN00A ( date1, date2, &
-                     dpsi, deps, epsa, rb, rp, rbp, rn, rbpn )
+                 dpsi, deps, epsa, rb, rp, rbp, rn, rbpn )
 
     end subroutine PNM00A
 !***********************************************************************
@@ -23357,14 +23907,16 @@
 
     implicit none
 
-    real(wp) :: date1, date2, rbpn(3,3)
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: rbpn(3,3)
 
     real(wp) ::  dpsi, deps, epsa, &
-                      rb(3,3), rp(3,3), rbp(3,3), rn(3,3)
+                 rb(3,3), rp(3,3), rbp(3,3), rn(3,3)
 
     !  Obtain the required matrix (discarding other results).
     call PN00B ( date1, date2, &
-                     dpsi, deps, epsa, rb, rp, rbp, rn, rbpn )
+                 dpsi, deps, epsa, rb, rp, rbp, rn, rbpn )
 
     end subroutine PNM00B
 !***********************************************************************
@@ -23423,7 +23975,9 @@
 
     implicit none
 
-    real(wp) :: date1, date2, rnpb(3,3)
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: rnpb(3,3)
 
     real(wp) :: gamb, phib, psib, epsa, dp, de
 
@@ -23496,7 +24050,9 @@
 
     implicit none
 
-    real(wp) :: date1, date2, rmatpn(3,3)
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: rmatpn(3,3)
 
     real(wp) :: rmatp(3,3), rmatn(3,3)
 
@@ -23561,7 +24117,10 @@
 
     implicit none
 
-    real(wp) :: xp, yp, sp, rpom(3,3)
+    real(wp) :: xp
+    real(wp) :: yp
+    real(wp) :: sp
+    real(wp) :: rpom(3,3)
 
     !  Construct the matrix.
     call IR ( rpom )
@@ -23591,7 +24150,9 @@
 
     implicit none
 
-    real(wp) :: a(3), b(3), apb(3)
+    real(wp) :: a(3)
+    real(wp) :: b(3)
+    real(wp) :: apb(3)
 
     integer :: i
 
@@ -23622,7 +24183,10 @@
 
     implicit none
 
-    real(wp) :: a(3), s, b(3), apsb(3)
+    real(wp) :: a(3)
+    real(wp) :: s
+    real(wp) :: b(3)
+    real(wp) :: apsb(3)
 
     integer :: i
 
@@ -23703,7 +24267,10 @@
 
     implicit none
 
-    real(wp) :: date1, date2, dpsipr, depspr
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: dpsipr
+    real(wp) :: depspr
 
     real(wp) :: t
 
@@ -23792,7 +24359,13 @@
 
     implicit none
 
-    real(wp) :: date01, date02, date11, date12, zeta, z, theta
+    real(wp) :: date01
+    real(wp) :: date02
+    real(wp) :: date11
+    real(wp) :: date12
+    real(wp) :: zeta
+    real(wp) :: z
+    real(wp) :: theta
 
     real(wp) :: t0, t, tas2r, w
 
@@ -23847,7 +24420,8 @@
 
     implicit none
 
-    real(wp) :: pv(3,2), p(3)
+    real(wp) :: pv(3,2)
+    real(wp) :: p(3)
 
     call CP ( pv, p )
 
@@ -23890,10 +24464,16 @@
 
     implicit none
 
-    real(wp) :: pv(3,2), theta, phi, r, td, pd, rd
+    real(wp) :: pv(3,2)
+    real(wp) :: theta
+    real(wp) :: phi
+    real(wp) :: r
+    real(wp) :: td
+    real(wp) :: pd
+    real(wp) :: rd
 
     real(wp) :: x, y, z, xd, yd, zd, rxy2, rxy, r2, &
-                     rtrue, rw, xyp
+                rtrue, rw, xyp
 
     !  Components of position/velocity vector.
     x =  pv(1,1)
@@ -23980,7 +24560,9 @@
 
     implicit none
 
-    real(wp) :: a(3,2), b(3,2), adb(2)
+    real(wp) :: a(3,2)
+    real(wp) :: b(3,2)
+    real(wp) :: adb(2)
 
     real(wp) :: adbd, addb
 
@@ -24021,7 +24603,9 @@
 
     implicit none
 
-    real(wp) :: pv(3,2), r, s
+    real(wp) :: pv(3,2)
+    real(wp) :: r
+    real(wp) :: s
 
     !  Distance.
     call PM ( pv(1,1), r )
@@ -24054,7 +24638,9 @@
 
     implicit none
 
-    real(wp) :: a(3,2), b(3,2), amb(3,2)
+    real(wp) :: a(3,2)
+    real(wp) :: b(3,2)
+    real(wp) :: amb(3,2)
 
     integer :: i
 
@@ -24087,7 +24673,9 @@
 
     implicit none
 
-    real(wp) :: a(3,2), b(3,2), apb(3,2)
+    real(wp) :: a(3,2)
+    real(wp) :: b(3,2)
+    real(wp) :: apb(3,2)
 
     integer :: i
 
@@ -24192,7 +24780,13 @@
 
     implicit none
 
-    real(wp) :: pv(3,2), ra, dec, pmr, pmd, px, rv
+    real(wp) :: pv(3,2)
+    real(wp) :: ra
+    real(wp) :: dec
+    real(wp) :: pmr
+    real(wp) :: pmd
+    real(wp) :: px
+    real(wp) :: rv
     integer :: j
 
     !  Julian years to days
@@ -24334,7 +24928,15 @@
     subroutine PVTOB ( elong, phi, hm, xp, yp, sp, theta, pv )
 
     implicit none
-    real(wp) :: elong, phi, hm, xp, yp, sp, theta, pv(3,2)
+
+    real(wp) :: elong
+    real(wp) :: phi
+    real(wp) :: hm
+    real(wp) :: xp
+    real(wp) :: yp
+    real(wp) :: sp
+    real(wp) :: theta
+    real(wp) :: pv(3,2)
 
     !  Earth rotation rate in radians per UT1 second
     real(wp),parameter :: om = 1.00273781191135448d0 * d2pi / d2s
@@ -24399,7 +25001,9 @@
 
     implicit none
 
-    real(wp) :: dt, pv(3,2), upv(3,2)
+    real(wp) :: dt
+    real(wp) :: pv(3,2)
+    real(wp) :: upv(3,2)
 
     call PPSP ( pv(1,1), dt, pv(1,2), upv(1,1) )
     call CP ( pv(1,2), upv(1,2) )
@@ -24433,7 +25037,9 @@
 
     implicit none
 
-    real(wp) :: dt, pv(3,2), p(3)
+    real(wp) :: dt
+    real(wp) :: pv(3,2)
+    real(wp) :: p(3)
 
     integer :: i
 
@@ -24475,7 +25081,9 @@
 
     implicit none
 
-    real(wp) :: a(3,2), b(3,2), axb(3,2)
+    real(wp) :: a(3,2)
+    real(wp) :: b(3,2)
+    real(wp) :: axb(3,2)
 
     real(wp) :: wa(3,2), wb(3,2), axbd(3), adxb(3)
 
@@ -24513,7 +25121,9 @@
 
     implicit none
 
-    real(wp) :: a(3), b(3), axb(3)
+    real(wp) :: a(3)
+    real(wp) :: b(3)
+    real(wp) :: axb(3)
 
     real(wp) :: xa, ya, za, xb, yb, zb
 
@@ -24677,7 +25287,13 @@
     subroutine REFCO ( phpa, tc, rh, wl, refa, refb )
 
     implicit none
-    real(wp) :: phpa, tc, rh, wl, refa, refb
+
+    real(wp) :: phpa
+    real(wp) :: tc
+    real(wp) :: rh
+    real(wp) :: wl
+    real(wp) :: refa
+    real(wp) :: refb
 
     logical :: optic
     real(wp) :: p, t, r, w, ps, pw, tk, wlsq, gamma, beta
@@ -24754,7 +25370,8 @@
 
     implicit none
 
-    real(wp) :: r(3,3), w(3)
+    real(wp) :: r(3,3)
+    real(wp) :: w(3)
 
     real(wp) :: x, y, z, s2, c2, phi, f
 
@@ -24808,7 +25425,8 @@
 
     implicit none
 
-    real(wp) :: w(3), r(3,3)
+    real(wp) :: w(3)
+    real(wp) :: r(3,3)
 
     real(wp) :: x, y, z, phi, s, c, f
 
@@ -24874,7 +25492,8 @@
 
     implicit none
 
-    real(wp) :: phi, r(3,3)
+    real(wp) :: phi
+    real(wp) :: r(3,3)
 
     real(wp) :: s, c, a21, a22, a23, a31, a32, a33
 
@@ -24920,7 +25539,9 @@
 
     implicit none
 
-    real(wp) :: r(3,3), p(3), rp(3)
+    real(wp) :: r(3,3)
+    real(wp) :: p(3)
+    real(wp) :: rp(3)
 
     real(wp) :: w, wrp(3)
 
@@ -24963,7 +25584,9 @@
 
     implicit none
 
-    real(wp) :: r(3,3), pv(3,2), rpv(3,2)
+    real(wp) :: r(3,3)
+    real(wp) :: pv(3,2)
+    real(wp) :: rpv(3,2)
 
     call RXP ( r, pv(1,1), rpv(1,1) )
     call RXP ( r, pv(1,2), rpv(1,2) )
@@ -24993,7 +25616,9 @@
 
     implicit none
 
-    real(wp) :: a(3,3), b(3,3), atb(3,3)
+    real(wp) :: a(3,3)
+    real(wp) :: b(3,3)
+    real(wp) :: atb(3,3)
 
     integer :: i, j, k
     real(wp) :: w, wm(3,3)
@@ -25044,7 +25669,8 @@
 
     implicit none
 
-    real(wp) :: theta, r(3,3)
+    real(wp) :: theta
+    real(wp) :: r(3,3)
 
     real(wp) :: s, c, a11, a12, a13, a31, a32, a33
 
@@ -25100,7 +25726,8 @@
 
     implicit none
 
-    real(wp) :: psi, r(3,3)
+    real(wp) :: psi
+    real(wp) :: r(3,3)
 
     real(wp) :: s, c, a11, a12, a13, a21, a22, a23
 
@@ -25203,7 +25830,10 @@
 
     implicit none
 
-    real(wp) :: date1, date2, x, y
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: x
+    real(wp) :: y
 
     !  Time since J2000.0, in Julian centuries
     real(wp) :: t
@@ -25232,17 +25862,17 @@
 
     !  Coefficients of l,l',F,D,Om,LVe,LE,pA
     integer :: ks0 ( 8, ns0 ), &
-            ks1 ( 8, ns1 ), &
-            ks2 ( 8, ns2 ), &
-            ks3 ( 8, ns3 ), &
-            ks4 ( 8, ns4 )
+               ks1 ( 8, ns1 ), &
+               ks2 ( 8, ns2 ), &
+               ks3 ( 8, ns3 ), &
+               ks4 ( 8, ns4 )
 
     !  Sine and cosine coefficients
     real(wp) :: ss0 ( 2, ns0 ), &
-                     ss1 ( 2, ns1 ), &
-                     ss2 ( 2, ns2 ), &
-                     ss3 ( 2, ns3 ), &
-                     ss4 ( 2, ns4 )
+                ss1 ( 2, ns1 ), &
+                ss2 ( 2, ns2 ), &
+                ss3 ( 2, ns3 ), &
+                ss4 ( 2, ns4 )
 
     !  Polynomial coefficients
     data sp /    94d-6, &
@@ -25584,7 +26214,8 @@
 
     implicit none
 
-    real(wp) :: date1, date2
+    real(wp) :: date1
+    real(wp) :: date2
 
     real(wp) :: rbpn(3,3), x, y
 
@@ -25673,7 +26304,8 @@
 
     implicit none
 
-    real(wp) :: date1, date2
+    real(wp) :: date1
+    real(wp) :: date2
 
     real(wp) :: rbpn(3,3), x, y
 
@@ -25765,7 +26397,10 @@
 
     implicit none
 
-    real(wp) :: date1, date2, x, y
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: x
+    real(wp) :: y
 
     !  Time since J2000.0, in Julian centuries
     real(wp) :: t
@@ -25794,17 +26429,17 @@
 
     !  Coefficients of l,l',F,D,Om,LVe,LE,pA
     integer :: ks0 ( 8, ns0 ), &
-            ks1 ( 8, ns1 ), &
-            ks2 ( 8, ns2 ), &
-            ks3 ( 8, ns3 ), &
-            ks4 ( 8, ns4 )
+               ks1 ( 8, ns1 ), &
+               ks2 ( 8, ns2 ), &
+               ks3 ( 8, ns3 ), &
+               ks4 ( 8, ns4 )
 
     !  Sine and cosine coefficients
     real(wp) :: ss0 ( 2, ns0 ), &
-                     ss1 ( 2, ns1 ), &
-                     ss2 ( 2, ns2 ), &
-                     ss3 ( 2, ns3 ), &
-                     ss4 ( 2, ns4 )
+                ss1 ( 2, ns1 ), &
+                ss2 ( 2, ns2 ), &
+                ss3 ( 2, ns3 ), &
+                ss4 ( 2, ns4 )
 
     !  Polynomial coefficients
     data sp /    94d-6, &
@@ -26148,7 +26783,8 @@
 
     implicit none
 
-    real(wp) :: date1, date2
+    real(wp) :: date1
+    real(wp) :: date2
 
     real(wp) :: rnpb(3,3), x, y
 
@@ -26183,7 +26819,9 @@
 
     implicit none
 
-    real(wp) :: theta, phi, c(3)
+    real(wp) :: theta
+    real(wp) :: phi
+    real(wp) :: c(3)
 
     real(wp) :: cp
 
@@ -26219,7 +26857,10 @@
 
     implicit none
 
-    real(wp) :: theta, phi, r, p(3)
+    real(wp) :: theta
+    real(wp) :: phi
+    real(wp) :: r
+    real(wp) :: p(3)
 
     real(wp) :: u(3)
 
@@ -26252,7 +26893,13 @@
 
     implicit none
 
-    real(wp) :: theta, phi, r, td, pd, rd, pv(3,2)
+    real(wp) :: theta
+    real(wp) :: phi
+    real(wp) :: r
+    real(wp) :: td
+    real(wp) :: pd
+    real(wp) :: rd
+    real(wp) :: pv(3,2)
 
     real(wp) :: st, ct, sp, cp, rcp, x, y, rpd, w
 
@@ -26299,7 +26946,10 @@
 
     implicit none
 
-    real(wp) :: s1, s2, pv(3,2), spv(3,2)
+    real(wp) :: s1
+    real(wp) :: s2
+    real(wp) :: pv(3,2)
+    real(wp) :: spv(3,2)
 
     call SXP ( s1, pv(1,1), spv(1,1) )
     call SXP ( s2, pv(1,2), spv(1,2) )
@@ -26341,7 +26991,9 @@
 
     implicit none
 
-    real(wp) :: a(3), b(3), s
+    real(wp) :: a(3)
+    real(wp) :: b(3)
+    real(wp) :: s
 
     real(wp) :: axb(3), ss, cs
 
@@ -26387,7 +27039,11 @@
 
     implicit none
 
-    real(wp) :: al, ap, bl, bp, s
+    real(wp) :: al
+    real(wp) :: ap
+    real(wp) :: bl
+    real(wp) :: bp
+    real(wp) :: s
 
     real(wp) :: ac(3), bc(3)
 
@@ -26452,7 +27108,8 @@
 
     implicit none
 
-    real(wp) :: date1, date2
+    real(wp) :: date1
+    real(wp) :: date2
 
     !  Time since J2000.0, in Julian centuries
     real(wp) :: t
@@ -26572,9 +27229,22 @@
 
     implicit none
 
-    real(wp) :: ra1, dec1, pmr1, pmd1, px1, rv1, &
-                     ep1a, ep1b, ep2a, ep2b, &
-                     ra2, dec2, pmr2, pmd2, px2, rv2
+    real(wp) :: ra1
+    real(wp) :: dec1
+    real(wp) :: pmr1
+    real(wp) :: pmd1
+    real(wp) :: px1
+    real(wp) :: rv1
+    real(wp) :: ep1a
+    real(wp) :: ep1b
+    real(wp) :: ep2a
+    real(wp) :: ep2b
+    real(wp) :: ra2
+    real(wp) :: dec2
+    real(wp) :: pmr2
+    real(wp) :: pmd2
+    real(wp) :: px2
+    real(wp) :: rv2
     integer :: j
 
     !  Astronomical unit (m, IAU 2012)
@@ -26738,7 +27408,13 @@
 
     implicit none
 
-    real(wp) :: ra, dec, pmr, pmd, px, rv, pv(3,2)
+    real(wp) :: ra
+    real(wp) :: dec
+    real(wp) :: pmr
+    real(wp) :: pmd
+    real(wp) :: px
+    real(wp) :: rv
+    real(wp) :: pv(3,2)
     integer :: j
 
     !  Smallest allowed parallax
@@ -26765,8 +27441,8 @@
     integer :: i
     integer :: iwarn
     real(wp) :: w, r, rd, rad, decd, v, x(3), usr(3), ust(3), &
-                     vsr, vst, betst, betsr, bett, betr, od, odel, &
-                     dd, ddel, odd, oddel, d, del, ur(3), ut(3)
+                vsr, vst, betst, betsr, bett, betr, od, odel, &
+                dd, ddel, odd, oddel, d, del, ur(3), ut(3)
 
     !  Distance (au).
     if ( px>=pxmin ) then
@@ -26874,7 +27550,9 @@
 
     implicit none
 
-    real(wp) :: s, p(3), sp(3)
+    real(wp) :: s
+    real(wp) :: p(3)
+    real(wp) :: sp(3)
 
     integer :: i
 
@@ -26907,7 +27585,9 @@
 
     implicit none
 
-    real(wp) :: s, pv(3,2), spv(3,2)
+    real(wp) :: s
+    real(wp) :: pv(3,2)
+    real(wp) :: spv(3,2)
 
     call S2XPV ( s, s, pv, spv )
 
@@ -26948,7 +27628,11 @@
     subroutine TAITT ( tai1, tai2, tt1, tt2, j )
 
     implicit none
-    real(wp) :: tai1, tai2, tt1, tt2
+
+    real(wp) :: tai1
+    real(wp) :: tai2
+    real(wp) :: tt1
+    real(wp) :: tt2
     integer :: j
 
     !  TT minus TAI (days).
@@ -27004,7 +27688,12 @@
     subroutine TAIUT1 ( tai1, tai2, dta, ut11, ut12, j )
 
     implicit none
-    real(wp) :: tai1, tai2, dta, ut11, ut12
+
+    real(wp) :: tai1
+    real(wp) :: tai2
+    real(wp) :: dta
+    real(wp) :: ut11
+    real(wp) :: ut12
     integer :: j
 
     real(wp) :: dtad
@@ -27082,7 +27771,11 @@
     subroutine TAIUTC ( tai1, tai2, utc1, utc2, j )
 
     implicit none
-    real(wp) :: tai1, tai2, utc1, utc2
+
+    real(wp) :: tai1
+    real(wp) :: tai2
+    real(wp) :: utc1
+    real(wp) :: utc2
     integer :: j
 
     logical :: big1
@@ -27106,14 +27799,14 @@
     !  Iterate (though in most cases just once is enough).
     do i=1,3
 
-    !     Guessed UTC to TAI.
+       !  Guessed UTC to TAI.
        call UTCTAI ( u1, u2, g1, g2, js )
        if ( js<0 ) then
         j = js
         return
        end if
 
-    !     Adjust guessed UTC.
+       !  Adjust guessed UTC.
        u2 = u2 + (a1-g1)
        u2 = u2 + (a2-g2)
 
@@ -27182,7 +27875,11 @@
     subroutine TCBTDB ( tcb1, tcb2, tdb1, tdb2, j )
 
     implicit none
-    real(wp) :: tcb1, tcb2, tdb1, tdb2
+
+    real(wp) :: tcb1
+    real(wp) :: tcb2
+    real(wp) :: tdb1
+    real(wp) :: tdb2
     integer :: j
 
     !  1977 Jan 1.0 TAI = 1977/1/1 00:00:32.184 TCB, as two-part JD
@@ -27245,7 +27942,11 @@
     subroutine TCGTT ( tcg1, tcg2, tt1, tt2, j )
 
     implicit none
-    real(wp) :: tcg1, tcg2, tt1, tt2
+
+    real(wp) :: tcg1
+    real(wp) :: tcg2
+    real(wp) :: tt1
+    real(wp) :: tt2
     integer :: j
 
     !  JD for MJD 0
@@ -27318,10 +28019,14 @@
 !  This revision:  2019 June 20
 !
 
-subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
+    subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     implicit none
-    real(wp) :: tdb1, tdb2, tcb1, tcb2
+
+    real(wp) :: tdb1
+    real(wp) :: tdb2
+    real(wp) :: tcb1
+    real(wp) :: tcb2
     integer :: j
 
     !  1977 Jan 1.0 TAI = 1977/1/1 00:00:32.184 TCB, as two-part JD
@@ -27401,7 +28106,12 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     subroutine TDBTT ( tdb1, tdb2, dtr, tt1, tt2, j )
 
     implicit none
-    real(wp) :: tdb1, tdb2, dtr, tt1, tt2
+
+    real(wp) :: tdb1
+    real(wp) :: tdb2
+    real(wp) :: dtr
+    real(wp) :: tt1
+    real(wp) :: tt2
     integer :: j
 
     real(wp) :: dtrd
@@ -27461,8 +28171,10 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     implicit none
 
     character(len=1) :: s
-    integer :: ihour, imin
-    real(wp) :: sec, rad
+    integer :: ihour
+    integer :: imin
+    real(wp) :: sec
+    real(wp) :: rad
     integer :: j
 
     real(wp) :: w
@@ -27528,8 +28240,10 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     implicit none
 
     character(len=1) :: s
-    integer :: ihour, imin
-    real(wp) :: sec, days
+    integer :: ihour
+    integer :: imin
+    real(wp) :: sec
+    real(wp) :: days
     integer :: j
 
     real(wp) :: w
@@ -27639,12 +28353,19 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     implicit none
 
-    real(wp) :: xi, eta, a, b, a01, b01, a02, b02
+    real(wp) :: xi
+    real(wp) :: eta
+    real(wp) :: a
+    real(wp) :: b
+    real(wp) :: a01
+    real(wp) :: b01
+    real(wp) :: a02
+    real(wp) :: b02
     integer :: n
 
     real(wp) :: xi2, r, sb, cb, rsb, rcb, w2, w, s, c
 
-        xi2 = xi*xi
+    xi2 = xi*xi
     r = sqrt(1d0+xi2+eta*eta)
     sb = sin(b)
     cb = cos(b)
@@ -27753,7 +28474,11 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     implicit none
 
-    real(wp) :: xi, eta, v(3), v01(3), v02(3)
+    real(wp) :: xi
+    real(wp) :: eta
+    real(wp) :: v(3)
+    real(wp) :: v01(3)
+    real(wp) :: v02(3)
     integer :: n
 
     real(wp) :: x, y, z, rxy2, xi2, eta2p1, r, rsb, rcb, w2, w, c
@@ -27843,11 +28568,16 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     implicit none
 
-    real(wp) :: xi, eta, a0, b0, a, b
+    real(wp) :: xi
+    real(wp) :: eta
+    real(wp) :: a0
+    real(wp) :: b0
+    real(wp) :: a
+    real(wp) :: b
 
     real(wp) :: sb0, cb0, d
 
-        sb0 = sin(b0)
+    sb0 = sin(b0)
     cb0 = cos(b0)
     d = cb0 - eta*sb0
     a = ANP(atan2(xi,d)+a0)
@@ -27918,7 +28648,10 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     implicit none
 
-    real(wp) :: xi, eta, v0(3), v(3)
+    real(wp) :: xi
+    real(wp) :: eta
+    real(wp) :: v0(3)
+    real(wp) :: v(3)
 
     real(wp) :: x, y, z, r, f
 
@@ -28000,7 +28733,12 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     implicit none
 
-    real(wp) :: a, b, a0, b0, xi, eta
+    real(wp) :: a
+    real(wp) :: b
+    real(wp) :: a0
+    real(wp) :: b0
+    real(wp) :: xi
+    real(wp) :: eta
     integer :: j
 
     real(wp),parameter :: tiny = 1d-6
@@ -28105,7 +28843,10 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     implicit none
 
-    real(wp) :: v(3), v0(3), xi, eta
+    real(wp) :: v(3)
+    real(wp) :: v0(3)
+    real(wp) :: xi
+    real(wp) :: eta
     integer :: j
 
     real(wp),parameter :: tiny = 1d-6
@@ -28174,7 +28915,8 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     implicit none
 
-    real(wp) :: r(3,3), rt(3,3)
+    real(wp) :: r(3,3)
+    real(wp) :: rt(3,3)
 
     real(wp) :: wm(3,3)
     integer :: i, j
@@ -28212,7 +28954,9 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     implicit none
 
-    real(wp) :: r(3,3), p(3), trp(3)
+    real(wp) :: r(3,3)
+    real(wp) :: p(3)
+    real(wp) :: trp(3)
 
     real(wp) :: ri(3,3)
 
@@ -28248,7 +28992,9 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     implicit none
 
-    real(wp) :: r(3,3), pv(3,2), trpv(3,2)
+    real(wp) :: r(3,3)
+    real(wp) :: pv(3,2)
+    real(wp) :: trpv(3,2)
 
     real(wp) :: ri(3,3)
 
@@ -28295,7 +29041,11 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     subroutine TTTAI ( tt1, tt2, tai1, tai2, j )
 
     implicit none
-    real(wp) :: tt1, tt2, tai1, tai2
+
+    real(wp) :: tt1
+    real(wp) :: tt2
+    real(wp) :: tai1
+    real(wp) :: tai2
     integer :: j
 
     !  TT minus TAI (days).
@@ -28349,7 +29099,11 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     subroutine TTTCG ( tt1, tt2, tcg1, tcg2, j )
 
     implicit none
-    real(wp) :: tt1, tt2, tcg1, tcg2
+
+    real(wp) :: tt1
+    real(wp) :: tt2
+    real(wp) :: tcg1
+    real(wp) :: tcg2
     integer :: j
 
     !  JD for MJD 0
@@ -28424,7 +29178,12 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     subroutine TTTDB ( tt1, tt2, dtr, tdb1, tdb2, j )
 
     implicit none
-    real(wp) :: tt1, tt2, dtr, tdb1, tdb2
+
+    real(wp) :: tt1
+    real(wp) :: tt2
+    real(wp) :: dtr
+    real(wp) :: tdb1
+    real(wp) :: tdb2
     integer :: j
 
     real(wp) :: dtrd
@@ -28479,7 +29238,12 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     subroutine TTUT1 ( tt1, tt2, dt, ut11, ut12, j )
 
     implicit none
-    real(wp) :: tt1, tt2, dt, ut11, ut12
+
+    real(wp) :: tt1
+    real(wp) :: tt2
+    real(wp) :: dt
+    real(wp) :: ut11
+    real(wp) :: ut12
     integer :: j
 
     real(wp) :: dtd
@@ -28535,7 +29299,12 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     subroutine UT1TAI ( ut11, ut12, dta, tai1, tai2, j )
 
     implicit none
-    real(wp) :: ut11, ut12, dta, tai1, tai2
+
+    real(wp) :: ut11
+    real(wp) :: ut12
+    real(wp) :: dta
+    real(wp) :: tai1
+    real(wp) :: tai2
     integer :: j
 
     real(wp) :: dtad
@@ -28590,7 +29359,12 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     subroutine UT1TT ( ut11, ut12, dt, tt1, tt2, j )
 
     implicit none
-    real(wp) :: ut11, ut12, dt, tt1, tt2
+
+    real(wp) :: ut11
+    real(wp) :: ut12
+    real(wp) :: dt
+    real(wp) :: tt1
+    real(wp) :: tt2
     integer :: j
 
     real(wp) :: dtd
@@ -28673,13 +29447,18 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     subroutine UT1UTC ( ut11, ut12, dut1, utc1, utc2, j )
 
     implicit none
-    real(wp) :: ut11, ut12, dut1, utc1, utc2
+
+    real(wp) :: ut11
+    real(wp) :: ut12
+    real(wp) :: dut1
+    real(wp) :: utc1
+    real(wp) :: utc2
     integer :: j
 
     logical :: big1
     integer :: i, iy, im, id, js
     real(wp) :: duts, u1, u2, d1, dats1, d2, fd, dats2, ddats, &
-                     us1, us2, du
+                us1, us2, du
 
     !  UT1-UTC in seconds.
     duts = dut1
@@ -28816,13 +29595,17 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     subroutine UTCTAI ( utc1, utc2, tai1, tai2, j )
 
     implicit none
-    real(wp) :: utc1, utc2, tai1, tai2
+
+    real(wp) :: utc1
+    real(wp) :: utc2
+    real(wp) :: tai1
+    real(wp) :: tai2
     integer :: j
 
     logical :: big1
     integer :: iy, im, id, js, iyt, imt, idt
     real(wp) :: u1, u2, fd, dat0, dat12, w, dat24, dlod, dleap, &
-                     z1, z2, a2
+                z1, z2, a2
 
     !  Put the two parts of the UTC into big-first order.
     big1 = abs(utc1) >= abs(utc2)
@@ -28956,7 +29739,12 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     subroutine UTCUT1 ( utc1, utc2, dut1, ut11, ut12, j )
 
     implicit none
-    real(wp) :: utc1, utc2, dut1, ut11, ut12
+
+    real(wp) :: utc1
+    real(wp) :: utc2
+    real(wp) :: dut1
+    real(wp) :: ut11
+    real(wp) :: ut12
     integer :: j
 
     integer :: iy, im, id, js, jw
@@ -29078,7 +29866,10 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     implicit none
 
-    real(wp) :: date1, date2, x, y
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: x
+    real(wp) :: y
 
     !  Maximum power of T in the polynomials for X and Y
     integer,parameter :: maxpt = 5
@@ -31570,7 +32361,11 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     implicit none
 
-    real(wp) :: date1, date2, x, y, s
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: x
+    real(wp) :: y
+    real(wp) :: s
 
     real(wp) :: rbpn(3,3)
 
@@ -31647,7 +32442,11 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     implicit none
 
-    real(wp) :: date1, date2, x, y, s
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: x
+    real(wp) :: y
+    real(wp) :: s
 
     real(wp) :: rbpn(3,3)
 
@@ -31725,7 +32524,11 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
     implicit none
 
-    real(wp) :: date1, date2, x, y, s
+    real(wp) :: date1
+    real(wp) :: date2
+    real(wp) :: x
+    real(wp) :: y
+    real(wp) :: s
 
     real(wp) :: rbpn(3,3)
 
