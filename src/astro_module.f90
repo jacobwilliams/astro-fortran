@@ -145,15 +145,7 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     NDP       i        resolution (Note 1)
-!     ANGLE     d        angle in radians
-!
-!  Returned:
-!     SIGN      c        '+' or '-'
-!     IDMSF     i(4)     degrees, arcminutes, arcseconds, fraction
-!
-!  Notes:
+!### Notes
 !
 !  1) NDP is interpreted as follows:
 !
@@ -185,16 +177,17 @@
 !     case where ANGLE is very nearly 2pi and rounds up to 360 degrees,
 !     by testing for IDMSF(1)=360 and setting IDMSF(1-4) to zero.
 !
-!  This revision:  2007 December 3
-!
+!### History
+!  * IAU SOFA revision: 2007 December 3
+
     subroutine A2AF ( ndp, angle, sign, idmsf )
 
     implicit none
 
-    integer :: ndp
-    real(wp) :: angle
-    character(len=*) :: sign
-    integer,dimension(4) :: idmsf
+    integer,intent(in) :: ndp !! resolution (Note 1)
+    real(wp),intent(in) :: angle !! angle in radians
+    character(len=*),intent(out) :: sign !! '+' or '-'
+    integer,dimension(4),intent(out) :: idmsf !! degrees, arcminutes, arcseconds, fraction
 
     !  Hours to degrees * radians to turns
     real(wp),parameter :: f = 15d0/d2pi
@@ -211,15 +204,7 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     NDP       i        resolution (Note 1)
-!     ANGLE     d        angle in radians
-!
-!  Returned:
-!     SIGN      c        '+' or '-'
-!     IHMSF     i(4)     hours, minutes, seconds, fraction
-!
-!  Notes:
+!### Notes
 !
 !  1) NDP is interpreted as follows:
 !
@@ -251,16 +236,17 @@
 !     case where ANGLE is very nearly 2pi and rounds up to 24 hours,
 !     by testing for IHMSF(1)=24 and setting IHMSF(1-4) to zero.
 !
-!  This revision:  2000 November 25
-!
+!### History
+!  * IAU SOFA revision: 2000 November 25
+
     subroutine A2TF ( ndp, angle, sign, ihmsf )
 
     implicit none
 
-    integer :: ndp
-    real(wp) :: angle
-    character(len=*) :: sign
-    integer,dimension(4) :: ihmsf
+    integer,intent(in) :: ndp !! resolution (Note 1)
+    real(wp),intent(in):: angle !! angle in radians
+    character(len=*),intent(out) :: sign !! '+' or '-'
+    integer,dimension(4),intent(out) :: ihmsf !! hours, minutes, seconds, fraction
 
     !  Scale then use days to h,m,s routine.
     call D2TF ( ndp, angle/d2pi, sign, ihmsf )
@@ -284,7 +270,7 @@
 !  Returned:
 !    PPR       d(3)   proper direction to source (unit vector)
 !
-!  Notes:
+!### Notes
 !
 !  1) The algorithm is based on Expr. (7.40) in the Explanatory
 !     Supplement (Urban & Seidelmann 2013), but with the following
@@ -301,17 +287,18 @@
 !     supplied velocity.  For example, if the SOFA EPV00 routine is
 !     used, errors of up to 5 microarcseconds could occur.
 !
-!  References:
+!### References
 !
-!     Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
+!  * Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
 !     the Astronomical Almanac, 3rd ed., University Science Books
 !     (2013).
 !
-!     Klioner, Sergei A., "A practical relativistic model for micro-
+!  * Klioner, Sergei A., "A practical relativistic model for micro-
 !     arcsecond astrometry in space", Astr. J. 125, 1580-1597 (2003).
 !
-!  This revision:   2013 August 31
-!
+!### History
+!  * IAU SOFA revision:  2013 August 31
+
     subroutine AB ( pnat, v, s, bm1, ppr )
 
     implicit none
@@ -362,7 +349,7 @@
 !     HA       d     hour angle
 !     DEC      d     declination
 !
-!  Notes:
+!### Notes
 !
 !  1)  All the arguments are angles in radians.
 !
@@ -458,7 +445,7 @@
 !                                2 = IAMIN outside range 0-59
 !                                3 = ASEC outside range 0-59.999...
 !
-!  Notes:
+!### Notes
 !
 !  1)  If the s argument is a string, only the leftmost character is
 !      used and no warning status is provided.
@@ -472,8 +459,9 @@
 !      first, the smallest taking precedence.
 !
 !
-!  This revision:  2013 December 2
-!
+!### History
+!  * IAU SOFA revision: 2013 December 2
+
     subroutine AF2A ( s, ideg, iamin, asec, rad, j )
 
     implicit none
@@ -521,8 +509,9 @@
 !  Returned:
 !     ANP    d       angle in range 0-2pi
 !
-!  This revision:  2000 December 15
-!
+!### History
+!  * IAU SOFA revision: 2000 December 15
+
     real(wp) function ANP ( a )
 
     implicit none
@@ -550,8 +539,9 @@
 !  Returned:
 !     ANPM   d       angle in range +/-pi
 !
-!  This revision:  2000 November 25
-!
+!### History
+!  * IAU SOFA revision: 2000 November 25
+
     real(wp) function ANPM ( a )
 
     implicit none
@@ -604,7 +594,7 @@
 !               (29)     unchanged
 !               (30)     unchanged
 !
-!  Notes:
+!### Notes
 !
 !  1) The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -662,8 +652,9 @@
 !  4) The context array ASTROM produced by this routine is used by
 !     ATCIQ* and ATICQ*.
 !
-!  This revision:   2017 March 12
-!
+!### History
+!  * IAU SOFA revision:  2017 March 12
+
     subroutine APCG ( date1, date2, ebpv, ehp, astrom )
 
     implicit none
@@ -721,7 +712,7 @@
 !               (29)     unchanged
 !               (30)     unchanged
 !
-!  Notes:
+!### Notes
 !
 !  1) The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -783,8 +774,9 @@
 !  5) The context array ASTROM produced by this routine is used by
 !     ATCIQ* and ATICQ*.
 !
-!  This revision:   2017 March 12
-!
+!### History
+!  * IAU SOFA revision:  2017 March 12
+
     subroutine APCG13 ( date1, date2, astrom )
 
     implicit none
@@ -845,7 +837,7 @@
 !               (29)     unchanged
 !               (30)     unchanged
 !
-!  Notes:
+!### Notes
 !
 !  1) The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -908,8 +900,9 @@
 !  5) The context array ASTROM produced by this routine is used by
 !     ATCIQ* and ATICQ*.
 !
-!  This revision:   2017 March 12
-!
+!### History
+!  * IAU SOFA revision:  2017 March 12
+
     subroutine APCI ( date1, date2, ebpv, ehp, x, y, s, astrom )
 
     implicit none
@@ -969,7 +962,7 @@
 !               (30)     unchanged
 !     EO       d      equation of the origins (ERA-GST)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -1031,8 +1024,9 @@
 !  5) The context array ASTROM produced by this routine is used by
 !     ATCIQ* and ATICQ*.
 !
-!  This revision:   2017 March 12
-!
+!### History
+!  * IAU SOFA revision:  2017 March 12
+
     subroutine APCI13 ( date1, date2, astrom, eo )
 
     implicit none
@@ -1111,7 +1105,7 @@
 !               (29)     refraction constant A (radians)
 !               (30)     refraction constant B (radians)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -1202,8 +1196,9 @@
 !  9) The context array ASTROM produced by this routine is used by
 !     ATIOQ, ATOIQ, ATCIQ*, and ATICQ*.
 !
-!  This revision:   2017 March 12
-!
+!### History
+!  * IAU SOFA revision:  2017 March 12
+
     subroutine APCO ( date1, date2, ebpv, ehp, x, y, s, &
                       theta, elong, phi, hm, xp, yp, sp, &
                       refa, refb, astrom )
@@ -1321,7 +1316,7 @@
 !                              0 = OK
 !                             -1 = unacceptable date
 !
-!  Notes:
+!### Notes
 !
 !  1)  UTC1+UTC2 is quasi Julian Date (see Note 2), apportioned in any
 !      convenient way between the two arguments, for example where UTC1
@@ -1423,8 +1418,9 @@
 !  11) The context array ASTROM produced by this routine is used by
 !      ATIOQ, ATOIQ, ATCIQ* and ATICQ*.
 !
-!  This revision:   2013 December 5
-!
+!### History
+!  * IAU SOFA revision:  2013 December 5
+
     subroutine APCO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
                         phpa, tc, rh, wl, astrom, eo, j )
 
@@ -1448,8 +1444,8 @@
 
     integer :: js, jw
     real(wp) :: tai1, tai2, tt1, tt2, ut11, ut12, &
-                     ehpv(3,2), ebpv(3,2), r(3,3), x, y, s, theta, &
-                     sp, refa, refb
+                ehpv(3,2), ebpv(3,2), r(3,3), x, y, s, theta, &
+                sp, refa, refb
 
     !  UTC to other time scales.
     call UTCTAI ( utc1, utc2, tai1, tai2, js )
@@ -1537,7 +1533,7 @@
 !               (29)     unchanged
 !               (30)     unchanged
 !
-!  Notes:
+!### Notes
 !
 !  1) The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -1610,8 +1606,9 @@
 !  6) The context array ASTROM produced by this routine is used by
 !     ATCIQ* and ATICQ*.
 !
-!  This revision:   2017 March 16
-!
+!### History
+!  * IAU SOFA revision:  2017 March 16
+
     subroutine APCS ( date1, date2, pv, ebpv, ehp, astrom )
 
     implicit none
@@ -1707,7 +1704,7 @@
 !               (29)     unchanged
 !               (30)     unchanged
 !
-!  Notes:
+!### Notes
 !
 !  1) The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -1775,8 +1772,9 @@
 !  6) The context array ASTROM produced by this routine is used by
 !     ATCIQ* and ATICQ*.
 !
-!  This revision:   2017 March 12
-!
+!### History
+!  * IAU SOFA revision:  2017 March 12
+
     subroutine APCS13 ( date1, date2, pv, astrom )
 
     implicit none
@@ -1844,7 +1842,7 @@
 !               (29)     unchanged
 !               (30)     unchanged
 !
-!  Notes:
+!### Notes
 !
 !  1) This routine exists to enable sidereal-tracking applications to
 !     avoid wasteful recomputation of the bulk of the astrometry
@@ -1885,8 +1883,9 @@
 !     aberration and parallax (unless subsumed into the ICRS <-> GCRS
 !     transformation), and atmospheric refraction.
 !
-!  This revision:   2013 September 25
-!
+!### History
+!  * IAU SOFA revision:  2013 September 25
+
     subroutine APER ( theta, astrom )
 
     implicit none
@@ -1946,7 +1945,7 @@
 !               (29)     unchanged
 !               (30)     unchanged
 !
-!  Notes:
+!### Notes
 !
 !  1) The UT1 date (n.b. not UTC) UT11+UT12 is a Julian Date,
 !     apportioned in any convenient way between the arguments UT11 and
@@ -2001,8 +2000,9 @@
 !     aberration and parallax (unless subsumed into the ICRS <-> GCRS
 !     transformation), and atmospheric refraction.
 !
-!  This revision:   2017 March 12
-!
+!### History
+!  * IAU SOFA revision:  2017 March 12
+
     subroutine APER13 ( ut11, ut12, astrom )
 
     implicit none
@@ -2054,7 +2054,7 @@
 !               (29)     refraction constant A (radians)
 !               (30)     refraction constant B (radians)
 !
-!  Notes:
+!### Notes
 !
 !  1) SP, the TIO locator s', is a tiny quantity needed only by the most
 !     precise applications.  It can either be set to zero or predicted
@@ -2120,8 +2120,9 @@
 !  8) The context array ASTROM produced by this routine is used by
 !     ATIOQ and ATOIQ.
 !
-!  This revision:   2013 September 25
-!
+!### History
+!  * IAU SOFA revision:  2013 September 25
+
     subroutine APIO ( sp, theta, elong, phi, hm, xp, yp, &
                       refa, refb, astrom )
 
@@ -2213,7 +2214,7 @@
 !                                 0 = OK
 !                                -1 = unacceptable date
 !
-!  Notes:
+!### Notes
 !
 !  1)  UTC1+UTC2 is quasi Julian Date (see Note 2), apportioned in any
 !      convenient way between the two arguments, for example where UTC1
@@ -2315,8 +2316,9 @@
 !  11) The context array ASTROM produced by this routine is used by
 !      ATIOQ and ATOIQ.
 !
-!  This revision:   2013 September 25
-!
+!### History
+!  * IAU SOFA revision:  2013 September 25
+
     subroutine APIO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
                         phpa, tc, rh, wl, astrom, j )
 
@@ -2390,7 +2392,7 @@
 !     RI,DI    d      CIRS geocentric RA,Dec (radians)
 !     EO       d      equation of the origins (ERA-GST, Note 5)
 !
-!  Notes:
+!### Notes
 !
 !  1) Star data for an epoch other than J2000.0 (for example from the
 !     Hipparcos catalog, which has an epoch of J1991.25) will require a
@@ -2439,8 +2441,9 @@
 !     RA = RI - EO. (The ANP routine can then be applied, as
 !     required, to keep the result in the conventional 0-2pi range.)
 !
-!  This revision:   2017 March 12
-!
+!### History
+!  * IAU SOFA revision:  2017 March 12
+
     subroutine ATCI13 ( rc, dc, pr, pd, px, rv, date1, date2, &
                         ri, di, eo )
 
@@ -2512,7 +2515,7 @@
 !  Returned:
 !     RI,DI    d      CIRS RA,Dec (radians)
 !
-!  Notes:
+!### Notes
 !
 !  1) All the vectors are with respect to BCRS axes.
 !
@@ -2522,8 +2525,9 @@
 !
 !  3) The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
 !
-!  This revision:   2013 August 25
-!
+!### History
+!  * IAU SOFA revision:  2013 August 25
+
     subroutine ATCIQ ( rc, dc, pr, pd, px, rv, astrom, ri, di )
 
     implicit none
@@ -2611,7 +2615,7 @@
 !  Returned:
 !     RI,DI    d      CIRS RA,Dec (radians)
 !
-!  Notes:
+!### Notes
 !
 !  1) Star data for an epoch other than J2000.0 (for example from the
 !     Hipparcos catalog, which has an epoch of J1991.25) will require a
@@ -2649,8 +2653,9 @@
 !     velocity vectors must be right, and the deflection limiter
 !     greater than zero.
 !
-!  This revision:   2013 September 30
-!
+!### History
+!  * IAU SOFA revision:  2013 September 30
+
     subroutine ATCIQN ( rc, dc, pr, pd, px, rv, astrom, n, b, &
                         ri, di )
 
@@ -2728,11 +2733,11 @@
 !  Returned:
 !     RI,DI    d      CIRS RA,Dec (radians)
 !
-!  Note:
+!### Note
 !
 !     All the vectors are with respect to BCRS axes.
 !
-!  References:
+!### References
 !
 !     Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
 !     the Astronomical Almanac, 3rd ed., University Science Books
@@ -2741,8 +2746,9 @@
 !     Klioner, Sergei A., "A practical relativistic model for micro-
 !     arcsecond astrometry in space", Astr. J. 125, 1580-1597 (2003).
 !
-!  This revision:   2013 August 31
-!
+!### History
+!  * IAU SOFA revision:  2013 August 31
+
     subroutine ATCIQZ ( rc, dc, astrom, ri, di )
 
     implicit none
@@ -2810,7 +2816,7 @@
 !                              0 = OK
 !                             -1 = unacceptable date
 !
-!  Notes:
+!### Notes
 !
 !  1)  Star data for an epoch other than J2000.0 (for example from the
 !      Hipparcos catalog, which has an epoch of J1991.25) will require
@@ -2907,8 +2913,9 @@
 !      values of the input parameters are accepted and processed in
 !      accordance with the models used.
 !
-!  This revision:   2016 February 2
-!
+!### History
+!  * IAU SOFA revision:  2016 February 2
+
     subroutine ATCO13 ( rc, dc, pr, pd, px, rv, &
                         utc1, utc2, dut1, elong, phi, hm, xp, yp, &
                         phpa, tc, rh, wl, &
@@ -2980,7 +2987,7 @@
 !     RC,DC    d      ICRS astrometric RA,Dec (radians)
 !     EO       d      equation of the origins (ERA-GST, Note 4)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -3029,8 +3036,9 @@
 !     RA = RI - EO.  (The ANP routine can then be applied, as
 !     required, to keep the result in the conventional 0-2pi range.)
 !
-!  This revision:   2017 March 12
-!
+!### History
+!  * IAU SOFA revision:  2017 March 12
+
     subroutine ATIC13 ( ri, di, date1, date2, rc, dc, eo )
 
     implicit none
@@ -3091,7 +3099,7 @@
 !  Returned:
 !     RC,DC    d      ICRS astrometric RA,Dec (radians)
 !
-!  Notes:
+!### Notes
 !
 !  1) Only the Sun is taken into account in the light deflection
 !     correction.
@@ -3102,8 +3110,9 @@
 !     even at the edge of the Sun's disk the discrepancy is only about
 !     1 nanoarcsecond.
 !
-!  This revision:   2013 August 3
-!
+!### History
+!  * IAU SOFA revision:  2013 August 3
+
     subroutine ATICQ ( ri, di, astrom, rc, dc )
 
     implicit none
@@ -3231,7 +3240,7 @@
 !  Returned:
 !     RC,DC    d      ICRS astrometric RA,Dec (radians)
 !
-!  Notes:
+!### Notes
 !
 !  1) Iterative techniques are used for the aberration and light
 !     deflection corrections so that the routines ATICQN and
@@ -3271,8 +3280,9 @@
 !     position and velocity vectors must be right, and the deflection
 !     limiter greater than zero.
 !
-!  This revision:   2013 September 30
-!
+!### History
+!  * IAU SOFA revision:  2013 September 30
+
     subroutine ATICQN ( ri, di, astrom, n, b, rc, dc )
 
     implicit none
@@ -3388,7 +3398,7 @@
 !                              0 = OK
 !                             -1 = unacceptable date
 !
-!  Notes:
+!### Notes
 !
 !  1)  UTC1+UTC2 is quasi Julian Date (see Note 2), apportioned in any
 !      convenient way between the two arguments, for example where UTC1
@@ -3477,8 +3487,9 @@
 !      values of the input parameters are accepted and processed in
 !      accordance with the models used.
 !
-!  This revision:   2016 February 2
-!
+!### History
+!  * IAU SOFA revision:  2016 February 2
+
     subroutine ATIO13 ( ri, di, utc1, utc2, dut1, &
                         elong, phi, hm, xp, yp, phpa, tc, rh, wl, &
                         aob, zob, hob, dob, rob, j )
@@ -3566,7 +3577,7 @@
 !     DOB      d      observed declination (CIO-based, radians)
 !     ROB      d      observed right ascension (CIO-based, radians)
 !
-!  Notes:
+!### Notes
 !
 !  1) This routine returns zenith distance rather than altitude in
 !     order to reflect the fact that no allowance is made for
@@ -3613,8 +3624,9 @@
 !     changed significantly except the time, APER[13] may be used
 !     to perform the requisite adjustment to the ASTROM array.
 !
-!  This revision:   2017 July 10
-!
+!### History
+!  * IAU SOFA revision:  2017 July 10
+
     subroutine ATIOQ ( ri, di, astrom, aob, zob, hob, dob, rob )
 
     implicit none
@@ -3741,7 +3753,7 @@
 !                                   0 = OK
 !                                  -1 = unacceptable date
 !
-!  Notes:
+!### Notes
 !
 !  1)  "Observed" Az,ZD means the position that would be seen by a
 !      perfect geodetically aligned theodolite.  (Zenith distance is
@@ -3839,8 +3851,9 @@
 !      values of the input parameters are accepted and processed in
 !      accordance with the models used.
 !
-!  This revision:   2013 August 3
-!
+!### History
+!  * IAU SOFA revision:  2013 August 3
+
     subroutine ATOC13 ( type, ob1, ob2, utc1, utc2, dut1, &
                         elong, phi, hm, xp, yp, phpa, tc, rh, wl, &
                         rc, dc, j )
@@ -3920,7 +3933,7 @@
 !                              0 = OK
 !                             -1 = unacceptable date
 !
-!  Notes:
+!### Notes
 !
 !  1)  "Observed" Az,ZD means the position that would be seen by a
 !      perfect geodetically aligned theodolite.  (Zenith distance is
@@ -4018,8 +4031,9 @@
 !      values of the input parameters are accepted and processed in
 !      accordance with the models used.
 !
-!  This revision:   2013 July 6
-!
+!### History
+!  * IAU SOFA revision:  2013 July 6
+
     subroutine ATOI13 ( type, ob1, ob2, utc1, utc2, dut1, &
                         elong, phi, hm, xp, yp, phpa, tc, rh, wl, &
                         ri, di, j )
@@ -4104,7 +4118,7 @@
 !     RI       d      CIRS right ascension (CIO-based, radians)
 !     DI       d      CIRS declination (radians)
 !
-!  Notes:
+!### Notes
 !
 !  1) "Observed" Az,El means the position that would be seen by a
 !     perfect geodetically aligned theodolite.  This is related to the
@@ -4150,8 +4164,9 @@
 !     significantly except the time, APER13 (or APER) may be
 !     used to perform the requisite adjustment to the ASTROM array.
 !
-!  This revision:   2013 August 3
-!
+!### History
+!  * IAU SOFA revision:  2013 August 3
+
     subroutine ATOIQ ( type, ob1, ob2, astrom, ri, di )
 
     implicit none
@@ -4280,7 +4295,7 @@
 !     DPSIBI,DEPSBI  d   longitude and obliquity corrections
 !     DRA            d   the ICRS RA of the J2000.0 mean equinox
 !
-!  Notes:
+!### Notes
 !
 !  1) The frame bias corrections in longitude and obliquity (radians)
 !     are required in order to correct for the offset between the GCRS
@@ -4297,7 +4312,7 @@
 !     2000A nutation model, formally adopted by the IAU General Assembly
 !     in 2000, namely MHB2000 (Mathews et al. 2002).
 !
-!  References:
+!### References
 !
 !     Chapront, J., Chapront-Touze, M. & Francou, G., Astron.Astrophys.,
 !     387, 700, 2002.
@@ -4308,8 +4323,9 @@
 !     2002.  The MHB2000 code itself was obtained on 9th September 2002
 !     from ftp://maia.usno.navy.mil/conv2000/chapter5/IAU2000A.
 !
-!  This revision:  2009 December 15
-!
+!### History
+!  * IAU SOFA revision: 2009 December 15
+
     subroutine BI00 ( dpsibi, depsbi, dra )
 
     implicit none
@@ -4347,7 +4363,7 @@
 !     RP           d(3,3)    precession matrix (Note 3)
 !     RBP          d(3,3)    bias-precession matrix (Note 4)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -4379,7 +4395,7 @@
 !     equinox of date by applying frame bias then precession.  It is the
 !     product RP x RB.
 !
-!  Reference:
+!### Reference
 !
 !     Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
 !     "Expressions for the Celestial Intermediate Pole and Celestial
@@ -4389,8 +4405,9 @@
 !     n.b. The celestial ephemeris origin (CEO) was renamed "celestial
 !          intermediate origin" (CIO) by IAU 2006 Resolution 2.
 !
-!  This revision:  2013 August 21
-!
+!### History
+!  * IAU SOFA revision: 2013 August 21
+
     subroutine BP00 ( date1, date2, rb, rp, rbp )
 
     implicit none
@@ -4463,7 +4480,7 @@
 !     RP           d(3,3)    precession matrix (Note 3)
 !     RBP          d(3,3)    bias-precession matrix (Note 4)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -4493,14 +4510,15 @@
 !  4) The matrix RBP transforms vectors from GCRS to mean of date by
 !     applying frame bias then precession.  It is the product RP x RB.
 !
-!  References:
+!### References
 !
 !     Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 !
 !     Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 !
-!  This revision:  2013 August 21
-!
+!### History
+!  * IAU SOFA revision: 2013 August 21
+
     subroutine BP06 ( date1, date2, rb, rp, rbp )
 
     implicit none
@@ -4549,7 +4567,7 @@
 !  Returned:
 !     X,Y         d       Celestial Intermediate Pole (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) The matrix RBPN transforms vectors from GCRS to true equator (and
 !     CIO or equinox) of date, and therefore the Celestial Intermediate
@@ -4558,7 +4576,7 @@
 !  2) X,Y are components of the Celestial Intermediate Pole unit vector
 !     in the Geocentric Celestial Reference System.
 !
-!  Reference:
+!### Reference
 !
 !     Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
 !     "Expressions for the Celestial Intermediate Pole and Celestial
@@ -4568,8 +4586,9 @@
 !     n.b. The celestial ephemeris origin (CEO) was renamed "celestial
 !          intermediate origin" (CIO) by IAU 2006 Resolution 2.
 !
-!  This revision:  2010 January 18
-!
+!### History
+!  * IAU SOFA revision: 2010 January 18
+
     subroutine BPN2XY ( rbpn, x, y )
 
     implicit none
@@ -4598,7 +4617,7 @@
 !  Returned:
 !     RC2I         d(3,3)    celestial-to-intermediate matrix (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -4634,7 +4653,7 @@
 !  3) A faster, but slightly less accurate result (about 1 mas), can be
 !     obtained by using instead the C2I00B routine.
 !
-!  References:
+!### References
 !
 !     Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
 !     "Expressions for the Celestial Intermediate Pole and Celestial
@@ -4647,8 +4666,9 @@
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
 !
-!  This revision:  2010 January 18
-!
+!### History
+!  * IAU SOFA revision: 2010 January 18
+
     subroutine C2I00A ( date1, date2, rc2i )
 
     implicit none
@@ -4681,7 +4701,7 @@
 !  Returned:
 !     RC2I         d(3,3)    celestial-to-intermediate matrix (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -4717,7 +4737,7 @@
 !  3) The present routine is faster, but slightly less accurate (about
 !     1 mas), than the C2I00A routine.
 !
-!  References:
+!### References
 !
 !     Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
 !     "Expressions for the Celestial Intermediate Pole and Celestial
@@ -4730,8 +4750,9 @@
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
 !
-!  This revision:  2010 January 18
-!
+!### History
+!  * IAU SOFA revision: 2010 January 18
+
     subroutine C2I00B ( date1, date2, rc2i )
 
     implicit none
@@ -4764,7 +4785,7 @@
 !  Returned:
 !     RC2I         d(3,3)    celestial-to-intermediate matrix (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -4797,7 +4818,7 @@
 !     Reference System (see IERS Conventions 2003), ERA is the Earth
 !     Rotation Angle and RPOM is the polar motion matrix.
 !
-!  References:
+!### References
 !
 !     McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG
@@ -4806,8 +4827,9 @@
 !
 !     Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 !
-!  This revision:  2007 May 11
-!
+!### History
+!  * IAU SOFA revision: 2007 May 11
+
     subroutine C2I06A ( date1, date2, rc2i )
 
     implicit none
@@ -4847,7 +4869,7 @@
 !  Returned:
 !     RC2I         d(3,3)    celestial-to-intermediate matrix (Note 3)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -4886,7 +4908,7 @@
 !  4) Although its name does not include "00", this routine is in fact
 !     specific to the IAU 2000 models.
 !
-!  References:
+!### References
 !
 !     Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
 !     "Expressions for the Celestial Intermediate Pole and Celestial
@@ -4899,8 +4921,9 @@
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
 !
-!  This revision:  2010 January 18
-!
+!### History
+!  * IAU SOFA revision: 2010 January 18
+
     subroutine C2IBPN ( date1, date2, rbpn, rc2i )
 
     implicit none
@@ -4935,7 +4958,7 @@
 !  Returned:
 !     RC2I         d(3,3)   celestial-to-intermediate matrix (Note 3)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -4974,13 +4997,14 @@
 !  4) Although its name does not include "00", this routine is in fact
 !     specific to the IAU 2000 models.
 !
-!  Reference:
+!### Reference
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
 !
-!  This revision:  2007 June 1
-!
+!### History
+!  * IAU SOFA revision: 2007 June 1
+
     subroutine C2IXY ( date1, date2, x, y, rc2i )
 
     implicit none
@@ -5011,7 +5035,7 @@
 !  Returned:
 !     RC2I     d(3,3)    celestial-to-intermediate matrix (Note 3)
 !
-!  Notes:
+!### Notes
 !
 !  1) The Celestial Intermediate Pole coordinates are the x,y components
 !     of the unit vector in the Geocentric Celestial Reference System.
@@ -5031,13 +5055,14 @@
 !     Reference System (see IERS Conventions 2003), ERA is the Earth
 !     Rotation Angle and RPOM is the polar motion matrix.
 !
-!  Reference:
+!### Reference
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
 !
-!  This revision:  2014 November 7
-!
+!### History
+!  * IAU SOFA revision: 2014 November 7
+
     subroutine C2IXYS ( x, y, s, rc2i )
 
     implicit none
@@ -5080,7 +5105,7 @@
 !     THETA    d         longitude angle (radians)
 !     PHI      d         latitude angle (radians)
 !
-!  Notes:
+!### Notes
 !
 !  1) P can have any magnitude; only its direction is used.
 !
@@ -5088,8 +5113,9 @@
 !
 !  3) At either pole, zero THETA is returned.
 !
-!  This revision:  2007 April 11
-!
+!### History
+!  * IAU SOFA revision: 2007 April 11
+
     subroutine C2S ( p, theta, phi )
 
     implicit none
@@ -5135,7 +5161,7 @@
 !  Returned:
 !     RC2T     d(3,3)    celestial-to-terrestrial matrix (Note 3)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT and UT1 dates TTA+TTB and UTA+UTB are Julian Dates,
 !     apportioned in any convenient way between the arguments UTA and
@@ -5180,13 +5206,14 @@
 !  4) A faster, but slightly less accurate result (about 1 mas), can be
 !     obtained by using instead the C2T00B routine.
 !
-!  Reference:
+!### Reference
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
 !
-!  This revision:  2009 April 1
-!
+!### History
+!  * IAU SOFA revision: 2009 April 1
+
     subroutine C2T00A ( tta, ttb, uta, utb, xp, yp, rc2t )
 
     implicit none
@@ -5234,7 +5261,7 @@
 !  Returned:
 !     RC2T     d(3,3)    celestial-to-terrestrial matrix (Note 3)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT and UT1 dates TTA+TTB and UTA+UTB are Julian Dates,
 !     apportioned in any convenient way between the arguments UTA and
@@ -5279,13 +5306,14 @@
 !  4) The present routine is faster, but slightly less accurate (about
 !     1 mas), than the C2T00A routine.
 !
-!  Reference:
+!### Reference
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
 !
-!  This revision:  2009 April 1
-!
+!### History
+!  * IAU SOFA revision: 2009 April 1
+
     subroutine C2T00B ( tta, ttb, uta, utb, xp, yp, rc2t )
 
     implicit none
@@ -5331,7 +5359,7 @@
 !  Returned:
 !     RC2T     d(3,3)    celestial-to-terrestrial matrix (Note 3)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT and UT1 dates TTA+TTB and UTA+UTB are Julian Dates,
 !     apportioned in any convenient way between the arguments UTA and
@@ -5373,13 +5401,14 @@
 !     celestial-to-intermediate matrix, ERA is the Earth rotation angle
 !     and RPOM is the polar motion matrix.
 !
-!  Reference:
+!### Reference
 !
 !     McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG
 !
-!  This revision:  2009 April 1
-!
+!### History
+!  * IAU SOFA revision: 2009 April 1
+
     subroutine C2T06A ( tta, ttb, uta, utb, xp, yp, rc2t )
 
     implicit none
@@ -5428,7 +5457,7 @@
 !  Returned:
 !     RC2T     d(3,3)    celestial-to-terrestrial matrix
 !
-!  Notes:
+!### Notes
 !
 !  1) The name of the present routine, C2TCEO, reflects the original
 !     name of the celestial intermediate origin (CIO), which before the
@@ -5444,8 +5473,9 @@
 !     support existing applications.  It should not be used in new
 !     applications.
 !
-!  This revision:  2007 May 9
-!
+!### History
+!  * IAU SOFA revision: 2007 May 9
+
     subroutine C2TCEO ( rc2i, era, rpom, rc2t )
 
     implicit none
@@ -5477,7 +5507,7 @@
 !  Returned:
 !     RC2T     d(3,3)    celestial-to-terrestrial matrix
 !
-!  Notes:
+!### Notes
 !
 !  1) This routine constructs the rotation matrix that transforms
 !     vectors in the celestial system into vectors in the terrestrial
@@ -5500,13 +5530,14 @@
 !     System and [TRS] is a vector in the International Terrestrial
 !     Reference System (see IERS Conventions 2003).
 !
-!  Reference:
+!### Reference
 !
 !     McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG
 !
-!  This revision:  2013 August 24
-!
+!### History
+!  * IAU SOFA revision: 2013 August 24
+
     subroutine C2TCIO ( rc2i, era, rpom, rc2t )
 
     implicit none
@@ -5542,7 +5573,7 @@
 !  Returned:
 !     RC2T     d(3,3)    celestial-to-terrestrial matrix (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) This routine constructs the rotation matrix that transforms
 !     vectors in the celestial system into vectors in the terrestrial
@@ -5565,13 +5596,14 @@
 !     System and [TRS] is a vector in the International Terrestrial
 !     Reference System (see IERS Conventions 2003).
 !
-!  Reference:
+!### Reference
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
 !
-!  This revision:  2013 August 24
-!
+!### History
+!  * IAU SOFA revision: 2013 August 24
+
     subroutine C2TEQX ( rbpn, gst, rpom, rc2t )
 
     implicit none
@@ -5607,7 +5639,7 @@
 !  Returned:
 !     RC2T      d(3,3)    celestial-to-terrestrial matrix (Note 4)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT and UT1 dates TTA+TTB and UTA+UTB are Julian Dates,
 !     apportioned in any convenient way between the arguments UTA and
@@ -5658,13 +5690,14 @@
 !  5) Although its name does not include "00", this routine is in fact
 !     specific to the IAU 2000 models.
 !
-!  Reference:
+!### Reference
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
 !
-!  This revision:  2009 April 1
-!
+!### History
+!  * IAU SOFA revision: 2009 April 1
+
     subroutine C2TPE ( tta, ttb, uta, utb, dpsi, deps, xp, yp, &
                        rc2t )
 
@@ -5721,7 +5754,7 @@
 !  Returned:
 !     RC2T     d(3,3)    celestial-to-terrestrial matrix (Note 4)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT and UT1 dates TTA+TTB and UTA+UTB are Julian Dates,
 !     apportioned in any convenient way between the arguments UTA and
@@ -5773,8 +5806,9 @@
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
 !
-!  This revision:  2009 April 1
-!
+!### History
+!  * IAU SOFA revision: 2009 April 1
+
     subroutine C2TXY ( tta, ttb, uta, utb, x, y, xp, yp, rc2t )
 
     implicit none
@@ -5827,7 +5861,7 @@
 !                          -2 = bad month  (JD not computed)
 !                          -3 = bad day    (JD computed)
 !
-!  Notes:
+!### Notes
 !
 !  1) The algorithm used is valid from -4800 March 1, but this
 !     implementation rejects dates before -4799 January 1.
@@ -5842,14 +5876,15 @@
 !     the Gregorian Calendar, nor is the AD/BC numbering convention
 !     observed.
 !
-!  Reference:
+!### Reference
 !
 !     Explanatory Supplement to the Astronomical Almanac,
 !     P. Kenneth Seidelmann (ed), University Science Books (1992),
 !     Section 12.92 (p604).
 !
-!  This revision:  2014 November 7
-!
+!### History
+!  * IAU SOFA revision: 2014 November 7
+
     subroutine CAL2JD ( iy, im, id, djm0, djm, j )
 
     implicit none
@@ -5923,8 +5958,9 @@
 !  Returned:
 !     C        d(3)     copy
 !
-!  This revision:  2000 November 25
-!
+!### History
+!  * IAU SOFA revision: 2000 November 25
+
     subroutine CP ( p, c )
 
     implicit none
@@ -5953,8 +5989,9 @@
 !  Returned:
 !     C        d(3,2)    copy
 !
-!  This revision:  2000 November 25
-!
+!### History
+!  * IAU SOFA revision: 2000 November 25
+
     subroutine CPV ( pv, c )
 
     implicit none
@@ -5980,8 +6017,9 @@
 !  Returned:
 !     C        d(3,3)    copy
 !
-!  This revision:  2000 November 25
-!
+!### History
+!  * IAU SOFA revision: 2000 November 25
+
     subroutine CR ( r, c )
 
     implicit none
@@ -6017,7 +6055,7 @@
 !                                0 = OK
 !                               -1 = unacceptable date (Note 6)
 !
-!  Notes:
+!### Notes
 !
 !  1) SCALE identifies the time scale.  Only the value 'UTC' (in upper
 !     case) is significant, and enables handling of leap seconds (see
@@ -6058,8 +6096,9 @@
 !
 !  6) For calendar conventions and limitations, see CAL2JD.
 !
-!  This revision:  2014 February 15
-!
+!### History
+!  * IAU SOFA revision: 2014 February 15
+
     subroutine D2DTF ( scale, ndp, d1, d2, iy, im, id, ihmsf, j )
 
     implicit none
@@ -6200,7 +6239,7 @@
 !     SIGN      c        '+' or '-'
 !     IHMSF     i(4)     hours, minutes, seconds, fraction
 !
-!  Notes:
+!### Notes
 !
 !  1) NDP is interpreted as follows:
 !
@@ -6232,8 +6271,9 @@
 !     case where DAYS is very nearly 1D0 and rounds up to 24 hours,
 !     by testing for IHMSF(1)=24 and setting IHMSF(1-4) to zero.
 !
-!  This revision:  2005 August 26
-!
+!### History
+!  * IAU SOFA revision: 2005 August 26
+
     subroutine D2TF ( ndp, days, sign, ihmsf )
 
     implicit none
@@ -6357,7 +6397,7 @@
 !                      -4 = bad fraction (Note 4)
 !                      -5 = internal error (Note 5)
 !
-!  Notes:
+!### Notes
 !
 !  1) UTC began at 1960 January 1.0 (JD 2436934.5) and it is improper
 !     to call the routine with an earlier date.  If this is attempted,
@@ -6401,7 +6441,7 @@
 !
 !  6) In cases where a valid result is not available, zero is returned.
 !
-!  References:
+!### References
 !
 !  1) For dates from 1961 January 1 onwards, the expressions from the
 !     file ftp://maia.usno.navy.mil/ser7/tai-utc.dat are used.
@@ -6409,8 +6449,9 @@
 !  2) The 5ms timestep at 1961 January 1 is taken from 2.58.1 (p87) of
 !     the 1992 Explanatory Supplement.
 !
-!  This revision:  2019 July 5
-!
+!### History
+!  * IAU SOFA revision: 2019 July 5
+
     subroutine DAT ( iy, im, id, fd, deltat, j )
 
     implicit none
@@ -6604,7 +6645,7 @@
 !  Returned:
 !    DTDB         d    TDB-TT (seconds)
 !
-!  Notes:
+!### Notes
 !
 !  1) The date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the arguments DATE1 and DATE2.  For
@@ -6691,7 +6732,7 @@
 !     definitive method for predicting the relationship between TCG and
 !     TCB and hence between TT and TDB.
 !
-!  References:
+!### References
 !
 !     Fairhead, L., & Bretagnon, P., Astron.Astrophys., 229, 240-247
 !     (1990).
@@ -6711,8 +6752,9 @@
 !     Simon, J.L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
 !     Francou, G. & Laskar, J., Astron.Astrophys., 282, 663-683 (1994).
 !
-!  This revision:  2010 July 29
-!
+!### History
+!  * IAU SOFA revision: 2010 July 29
+
     real(wp) function DTDB ( date1, date2, &
                              ut, elong, u, v )
 
@@ -7751,7 +7793,7 @@
 !                               -5 = bad minute
 !                               -6 = bad second (<0)
 !
-!  Notes:
+!### Notes
 !
 !  1) SCALE identifies the time scale.  Only the value 'UTC' (in upper
 !     case) is significant, and enables handling of leap seconds (see
@@ -7788,8 +7830,9 @@
 !     two such results cannot be interpreted as a precise time
 !     interval.
 !
-!  This revision:  2013 July 26
-!
+!### History
+!  * IAU SOFA revision: 2013 July 26
+
     subroutine DTF2D ( scale, iy, im, id, ihr, imn, sec, &
                        d1, d2, j )
 
@@ -7895,7 +7938,7 @@
 !  Returned:
 !     DR,DD        d      ICRS right ascension and declination (radians)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -7925,8 +7968,9 @@
 !     right ascension and declination, with only frame bias (always less
 !     than 25 mas) to disturb this classical picture.
 !
-!  This revision:  2016 February 9
-!
+!### History
+!  * IAU SOFA revision: 2016 February 9
+
     subroutine ECEQ06 ( date1, date2, dl, db, dr, dd )
 
     implicit none
@@ -7971,7 +8015,7 @@
 !  Returned:
 !     RM           d(3,3) ICRS to ecliptic rotation matrix
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -8009,8 +8053,9 @@
 !     longitude and latitude, with only frame bias (always less than
 !     25 mas) to disturb this classical picture.
 !
-!  This revision:  2015 December 11
-!
+!### History
+!  * IAU SOFA revision: 2015 December 11
+
     subroutine ECM06 ( date1, date2, rm )
 
     implicit none
@@ -8052,7 +8097,7 @@
 !  Returned:
 !     EE00       d      equation of the equinoxes (Note 4)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -8083,7 +8128,7 @@
 !     further details, see IERS Conventions 2003 and Capitaine et al.
 !     (2002).
 !
-!  References:
+!### References
 !
 !     Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
 !     implement the IAU 2000 definition of UT1", Astronomy &
@@ -8092,8 +8137,9 @@
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
 !
-!  This revision:  2006 November 13
-!
+!### History
+!  * IAU SOFA revision: 2006 November 13
+
     real(wp) function EE00 ( date1, date2, epsa, dpsi )
 
     implicit none
@@ -8121,7 +8167,7 @@
 !  Returned:
 !     EE00A      d      equation of the equinoxes (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -8150,7 +8196,7 @@
 !     further details, see IERS Conventions 2003 and Capitaine et al.
 !     (2002).
 !
-!  References:
+!### References
 !
 !     Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
 !     implement the IAU 2000 definition of UT1", Astronomy &
@@ -8159,8 +8205,9 @@
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
 !
-!  This revision:  2006 November 13
-!
+!### History
+!  * IAU SOFA revision: 2006 November 13
+
     real(wp) function EE00A ( date1, date2 )
 
     implicit none
@@ -8198,7 +8245,7 @@
 !  Returned:
 !     EE00B     d     equation of the equinoxes (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -8228,7 +8275,7 @@
 !     details, see McCarthy & Luzum (2001), IERS Conventions 2003 and
 !     Capitaine et al. (2003).
 !
-!  References:
+!### References
 !
 !     Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
 !     implement the IAU 2000 definition of UT1", Astronomy &
@@ -8241,8 +8288,9 @@
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
 !
-!  This revision:  2006 November 13
-!
+!### History
+!  * IAU SOFA revision: 2006 November 13
+
     real(wp) function EE00B ( date1, date2 )
 
     implicit none
@@ -8280,7 +8328,7 @@
 !  Returned:
 !     EE06A      d      equation of the equinoxes (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -8305,13 +8353,14 @@
 !
 !        Greenwich apparent ST = GMST + equation of the equinoxes
 !
-!  Reference:
+!### Reference
 !
 !     McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG
 !
-!  This revision:  2006 October 31
-!
+!### History
+!  * IAU SOFA revision: 2006 October 31
+
     real(wp) function EE06A ( date1, date2 )
 
     implicit none
@@ -8339,7 +8388,7 @@
 !  Returned:
 !     EECT00    d    complementary terms (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -8389,7 +8438,7 @@
 !     compatible with IAU 2000 resolutions (Capitaine et al., 2002, and
 !     IERS Conventions 2003).
 !
-!  References:
+!### References
 !
 !     Capitaine, N. & Gontier, A.-M., Astron.Astrophys., 275,
 !     645-650 (1993)
@@ -8403,8 +8452,9 @@
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
 !
-!  This revision:  2017 October 23
-!
+!### History
+!  * IAU SOFA revision: 2017 October 23
+
     real(wp) function EECT00 ( date1, date2 )
 
     implicit none
@@ -8591,7 +8641,7 @@
 !     J         i     status:  0 = OK
 !                             -1 = illegal identifier (Note 3)
 !
-!  Notes:
+!### Notes
 !
 !  1) The identifier N is a number that specifies the choice of
 !     reference ellipsoid.  The following are supported:
@@ -8611,7 +8661,7 @@
 !  3) For the case where an unsupported N value is supplied, zero A and
 !     F are returned, as well as error status.
 !
-!  References:
+!### References
 !
 !     Department of Defense World Geodetic System 1984, National Imagery
 !     and Mapping Agency Technical Report 8350.2, Third Edition, p3-2.
@@ -8625,8 +8675,9 @@
 !     P. Kenneth Seidelmann (ed), University Science Books (1992),
 !     p220.
 !
-!  This revision:  2010 January 18
-!
+!### History
+!  * IAU SOFA revision: 2010 January 18
+
     subroutine EFORM ( n, a, f, j )
 
     implicit none
@@ -8683,7 +8734,7 @@
 !  Returned:
 !     EO06A      d      equation of the origins in radians
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -8711,14 +8762,15 @@
 !     (since J2000.0) in right ascension plus the equation of the
 !     equinoxes (including the small correction terms).
 !
-!  References:
+!### References
 !
 !     Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 !
 !     Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 !
-!  This revision:  2007 February 13
-!
+!### History
+!  * IAU SOFA revision: 2007 February 13
+
     real(wp) function EO06A ( date1, date2 )
 
     implicit none
@@ -8756,7 +8808,7 @@
 !  Returned:
 !     EORS  d       the equation of the origins in radians.
 !
-!  Notes:
+!### Notes
 !
 !  1)  The equation of the origins is the distance between the true
 !      equinox and the celestial intermediate origin and, equivalently,
@@ -8767,14 +8819,15 @@
 !
 !  2)  The algorithm is from Wallace & Capitaine (2006).
 !
-!  References:
+!### References
 !
 !     Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 !
 !     Wallace, P. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 !
-!  This revision:  2008 February 24
-!
+!### History
+!  * IAU SOFA revision: 2008 February 24
+
     real(wp) function EORS ( rnpb, s )
 
     implicit none
@@ -8812,7 +8865,7 @@
 !
 !  The result is the Besselian Epoch.
 !
-!  Note:
+!### Note
 !
 !     The Julian Date is supplied in two pieces, in the usual SOFA
 !     manner, which is designed to preserve time resolution.  The
@@ -8820,12 +8873,13 @@
 !     DJ2.  The maximum resolution is achieved if DJ1 is 2451545D0
 !     (J2000.0).
 !
-!  Reference:
+!### Reference
 !
 !     Lieske, J.H., 1979, Astron.Astrophys. 73, 282.
 !
-!  This revision:  2013 August 7
-!
+!### History
+!  * IAU SOFA revision: 2013 August 7
+
     real(wp) function EPB ( dj1, dj2 )
 
     implicit none
@@ -8857,19 +8911,20 @@
 !     DJM0        d     MJD zero-point: always 2400000.5
 !     DJM         d     Modified Julian Date
 !
-!  Note:
+!### Note
 !
 !     The Julian Date is returned in two pieces, in the usual SOFA
 !     manner, which is designed to preserve time resolution.  The
 !     Julian Date is available as a single number by adding DJM0 and
 !     DJM.
 !
-!  Reference:
+!### Reference
 !
 !     Lieske, J.H., 1979, Astron.Astrophys. 73, 282.
 !
-!  This revision:  2008 May 11
-!
+!### History
+!  * IAU SOFA revision: 2008 May 11
+
     subroutine EPB2JD ( epb, djm0, djm )
 
     implicit none
@@ -8898,7 +8953,7 @@
 !
 !  The result is the Julian Epoch.
 !
-!  Note:
+!### Note
 !
 !     The Julian Date is supplied in two pieces, in the usual SOFA
 !     manner, which is designed to preserve time resolution.  The
@@ -8906,12 +8961,13 @@
 !     DJ2.  The maximum resolution is achieved if DJ1 is 2451545D0
 !     (J2000.0).
 !
-!  Reference:
+!### Reference
 !
 !     Lieske, J.H., 1979, Astron.Astrophys. 73, 282.
 !
-!  This revision:  2009 December 15
-!
+!### History
+!  * IAU SOFA revision: 2009 December 15
+
     real(wp) function EPJ ( dj1, dj2 )
 
     implicit none
@@ -8937,19 +8993,20 @@
 !     DJM0        d     MJD zero-point: always 2400000.5
 !     DJM         d     Modified Julian Date
 !
-!  Note:
+!### Note
 !
 !     The Julian Date is returned in two pieces, in the usual SOFA
 !     manner, which is designed to preserve time resolution.  The
 !     Julian Date is available as a single number by adding DJM0 and
 !     DJM.
 !
-!  Reference:
+!### Reference
 !
 !     Lieske, J.H., 1979, Astron.Astrophys. 73, 282.
 !
-!  This revision:  2008 May 11
-!
+!### History
+!  * IAU SOFA revision: 2008 May 11
+
     subroutine EPJ2JD ( epj, djm0, djm )
 
     implicit none
@@ -8981,7 +9038,7 @@
 !     JSTAT    i        status: 0 = OK
 !                              +1 = warning: date outside 1900-2100 AD
 !
-!  Notes:
+!### Notes
 !
 !  1) The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -9049,8 +9106,9 @@
 !     1000 and 3000 a factor of 60.  The velocity accuracy falls off at
 !     about half that rate.
 !
-!  This revision:  2017 March 16
-!
+!### History
+!  * IAU SOFA revision: 2017 March 16
+
     subroutine EPV00 ( date1, date2, pvh, pvb, jstat )
 
     implicit none
@@ -11498,7 +11556,7 @@
 !  Returned:
 !     DL,DB        d      ecliptic longitude and latitude (radians)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -11528,8 +11586,9 @@
 !     equinox and ecliptic of date), with only frame bias (always less
 !     than 25 mas) to disturb this classical picture.
 !
-!  This revision:  2016 February 9
-!
+!### History
+!  * IAU SOFA revision: 2016 February 9
+
     subroutine EQEC06 ( date1, date2, dr, dd, dl, db )
 
     implicit none
@@ -11574,7 +11633,7 @@
 !  Returned:
 !     EQEQ94      d         equation of the equinoxes (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -11599,15 +11658,16 @@
 !
 !        Greenwich apparent ST = GMST + equation of the equinoxes
 !
-!  References:
+!### References
 !
 !     IAU Resolution C7, Recommendation 3 (1994)
 !
 !     Capitaine, N. & Gontier, A.-M., Astron.Astrophys., 275,
 !     645-650 (1993)
 !
-!  This revision:  2017 October 12
-!
+!### History
+!  * IAU SOFA revision: 2017 October 12
+
     real(wp) function EQEQ94 ( date1, date2 )
 
     implicit none
@@ -11649,7 +11709,7 @@
 !  The result is the Earth rotation angle (radians), in the range 0 to
 !  2pi.
 !
-!  Notes:
+!### Notes
 !
 !  1) The UT1 date DJ1+DJ2 is a Julian Date, apportioned in any
 !     convenient way between the arguments DJ1 and DJ2.  For example,
@@ -11678,7 +11738,7 @@
 !     eliminated.  The same formulation is given in IERS Conventions
 !     (2003), Chap. 5, Eq. 14.
 !
-!  References:
+!### References
 !
 !     Capitaine N., Guinot B. and McCarthy D.D, 2000, Astron.
 !     Astrophys., 355, 398-405.
@@ -11686,8 +11746,9 @@
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
 !
-!  This revision:  2009 December 15
-!
+!### History
+!  * IAU SOFA revision: 2009 December 15
+
     real(wp) function ERA00 ( dj1, dj2 )
 
     implicit none
@@ -11730,7 +11791,7 @@
 !  Returned:
 !     FAD03   d    D, radians (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) Though T is strictly TDB, it is usually more convenient to use TT,
 !     which makes no significant difference.
@@ -11738,7 +11799,7 @@
 !  2) The expression used is as adopted in IERS Conventions (2003) and
 !     is from Simon et al. (1994).
 !
-!  References:
+!### References
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
@@ -11746,8 +11807,9 @@
 !     Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
 !     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 !
-!  This revision:  2009 December 15
-!
+!### History
+!  * IAU SOFA revision: 2009 December 15
+
     real(wp) function FAD03 ( t )
 
     implicit none
@@ -11780,7 +11842,7 @@
 !  Returned:
 !     FAE03   d    mean longitude of Earth, radians (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) Though T is strictly TDB, it is usually more convenient to use TT,
 !     which makes no significant difference.
@@ -11788,7 +11850,7 @@
 !  2) The expression used is as adopted in IERS Conventions (2003) and
 !     comes from Souchay et al. (1999) after Simon et al. (1994).
 !
-!  References:
+!### References
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
@@ -11799,8 +11861,9 @@
 !     Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
 !     Astron.Astrophys.Supp.Ser. 135, 111
 !
-!  This revision:  2009 December 15
-!
+!### History
+!  * IAU SOFA revision: 2009 December 15
+
     real(wp) function FAE03 ( t )
 
     implicit none
@@ -11827,7 +11890,7 @@
 !  Returned:
 !     FAF03   d    F, radians (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) Though T is strictly TDB, it is usually more convenient to use TT,
 !     which makes no significant difference.
@@ -11835,7 +11898,7 @@
 !  2) The expression used is as adopted in IERS Conventions (2003) and
 !     is from Simon et al. (1994).
 !
-!  References:
+!### References
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
@@ -11843,8 +11906,9 @@
 !     Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
 !     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 !
-!  This revision:  2009 December 15
-!
+!### History
+!  * IAU SOFA revision: 2009 December 15
+
     real(wp) function FAF03 ( t )
 
     implicit none
@@ -11878,7 +11942,7 @@
 !  Returned:
 !     FAJU03  d    mean longitude of Jupiter, radians (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) Though T is strictly TDB, it is usually more convenient to use TT,
 !     which makes no significant difference.
@@ -11886,7 +11950,7 @@
 !  2) The expression used is as adopted in IERS Conventions (2003) and
 !     comes from Souchay et al. (1999) after Simon et al. (1994).
 !
-!  References:
+!### References
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
@@ -11897,8 +11961,9 @@
 !     Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
 !     Astron.Astrophys.Supp.Ser. 135, 111
 !
-!  This revision:  2009 December 15
-!
+!### History
+!  * IAU SOFA revision: 2009 December 15
+
     real(wp) function FAJU03 ( t )
 
     implicit none
@@ -11924,7 +11989,7 @@
 !  Returned:
 !     FAL03   d    l, radians (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) Though T is strictly TDB, it is usually more convenient to use TT,
 !     which makes no significant difference.
@@ -11932,7 +11997,7 @@
 !  2) The expression used is as adopted in IERS Conventions (2003) and
 !     is from Simon et al. (1994).
 !
-!  References:
+!### References
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
@@ -11940,8 +12005,9 @@
 !     Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
 !     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 !
-!  This revision:  2009 December 15
-!
+!### History
+!  * IAU SOFA revision: 2009 December 15
+
     real(wp) function FAL03 ( t )
 
     implicit none
@@ -11974,7 +12040,7 @@
 !  Returned:
 !     FALP03  d    l', radians (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) Though T is strictly TDB, it is usually more convenient to use TT,
 !     which makes no significant difference.
@@ -11982,7 +12048,7 @@
 !  2) The expression used is as adopted in IERS Conventions (2003) and
 !     is from Simon et al. (1994).
 !
-!  References:
+!### References
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
@@ -11990,8 +12056,9 @@
 !     Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
 !     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 !
-!  This revision:  2009 December 15
-!
+!### History
+!  * IAU SOFA revision: 2009 December 15
+
     real(wp) function FALP03 ( t )
 
     implicit none
@@ -12024,7 +12091,7 @@
 !  Returned:
 !     FAMA03  d    mean longitude of Mars, radians (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) Though T is strictly TDB, it is usually more convenient to use TT,
 !     which makes no significant difference.
@@ -12032,7 +12099,7 @@
 !  2) The expression used is as adopted in IERS Conventions (2003) and
 !     comes from Souchay et al. (1999) after Simon et al. (1994).
 !
-!  References:
+!### References
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
@@ -12043,8 +12110,9 @@
 !     Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
 !     Astron.Astrophys.Supp.Ser. 135, 111
 !
-!  This revision:  2009 December 15
-!
+!### History
+!  * IAU SOFA revision: 2009 December 15
+
     real(wp) function FAMA03 ( t )
 
     implicit none
@@ -12070,7 +12138,7 @@
 !  Returned:
 !     FAME03  d    mean longitude of Mercury, radians (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) Though T is strictly TDB, it is usually more convenient to use TT,
 !     which makes no significant difference.
@@ -12078,7 +12146,7 @@
 !  2) The expression used is as adopted in IERS Conventions (2003) and
 !     comes from Souchay et al. (1999) after Simon et al. (1994).
 !
-!  References:
+!### References
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
@@ -12089,8 +12157,9 @@
 !     Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
 !     Astron.Astrophys.Supp.Ser. 135, 111
 !
-!  This revision:  2009 December 15
-!
+!### History
+!  * IAU SOFA revision: 2009 December 15
+
     real(wp) function FAME03 ( t )
 
     implicit none
@@ -12116,7 +12185,7 @@
 !  Returned:
 !     FANE03  d    mean longitude of Neptune, radians (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) Though T is strictly TDB, it is usually more convenient to use TT,
 !     which makes no significant difference.
@@ -12124,7 +12193,7 @@
 !  2) The expression used is as adopted in IERS Conventions (2003) and
 !     is adapted from Simon et al. (1994).
 !
-!  References:
+!### References
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
@@ -12132,8 +12201,9 @@
 !     Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
 !     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 !
-!  This revision:  2009 December 15
-!
+!### History
+!  * IAU SOFA revision: 2009 December 15
+
     real(wp) function FANE03 ( t )
 
     implicit none
@@ -12159,7 +12229,7 @@
 !  Returned:
 !     FAOM03  d    Omega, radians (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) Though T is strictly TDB, it is usually more convenient to use TT,
 !     which makes no significant difference.
@@ -12167,7 +12237,7 @@
 !  2) The expression used is as adopted in IERS Conventions (2003) and
 !     is from Simon et al. (1994).
 !
-!  References:
+!### References
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
@@ -12175,8 +12245,9 @@
 !     Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
 !     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 !
-!  This revision:  2009 December 15
-!
+!### History
+!  * IAU SOFA revision: 2009 December 15
+
     real(wp) function FAOM03 ( t )
 
     implicit none
@@ -12209,7 +12280,7 @@
 !  Returned:
 !     FAPA03  d    general precession in longitude, radians (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) Though T is strictly TDB, it is usually more convenient to use TT,
 !     which makes no significant difference.
@@ -12218,7 +12289,7 @@
 !     is taken from Kinoshita & Souchay (1990) and comes originally from
 !     Lieske et al. (1977).
 !
-!  References:
+!### References
 !
 !     Kinoshita, H. and Souchay J. 1990, Celest.Mech. and Dyn.Astron.
 !     48, 187
@@ -12229,8 +12300,9 @@
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
 !
-!  This revision:  2009 December 15
-!
+!### History
+!  * IAU SOFA revision: 2009 December 15
+
     real(wp) function FAPA03 ( t )
 
     implicit none
@@ -12256,7 +12328,7 @@
 !  Returned:
 !     FASA03  d    mean longitude of Saturn, radians (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) Though T is strictly TDB, it is usually more convenient to use TT,
 !     which makes no significant difference.
@@ -12264,7 +12336,7 @@
 !  2) The expression used is as adopted in IERS Conventions (2003) and
 !     comes from Souchay et al. (1999) after Simon et al. (1994).
 !
-!  References:
+!### References
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
@@ -12275,8 +12347,9 @@
 !     Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
 !     Astron.Astrophys.Supp.Ser. 135, 111
 !
-!  This revision:  2009 December 15
-!
+!### History
+!  * IAU SOFA revision: 2009 December 15
+
     real(wp) function FASA03 ( t )
 
     implicit none
@@ -12302,7 +12375,7 @@
 !  Returned:
 !     FAUR03  d    mean longitude of Uranus, radians (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) Though T is strictly TDB, it is usually more convenient to use TT,
 !     which makes no significant difference.
@@ -12310,7 +12383,7 @@
 !  2) The expression used is as adopted in IERS Conventions (2003) and
 !     is adapted from Simon et al. (1994).
 !
-!  References:
+!### References
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
@@ -12318,8 +12391,9 @@
 !     Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
 !     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 !
-!  This revision:  2009 December 15
-!
+!### History
+!  * IAU SOFA revision: 2009 December 15
+
     real(wp) function FAUR03 ( t )
 
     implicit none
@@ -12345,7 +12419,7 @@
 !  Returned:
 !     FAVE03  d    mean longitude of Venus, radians (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) Though T is strictly TDB, it is usually more convenient to use TT,
 !     which makes no significant difference.
@@ -12353,7 +12427,7 @@
 !  2) The expression used is as adopted in IERS Conventions (2003) and
 !     comes from Souchay et al. (1999) after Simon et al. (1994).
 !
-!  References:
+!### References
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
@@ -12364,8 +12438,9 @@
 !     Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
 !     Astron.Astrophys.Supp.Ser. 135, 111
 !
-!  This revision:  2009 December 15
-!
+!### History
+!  * IAU SOFA revision: 2009 December 15
+
     real(wp) function FAVE03 ( t )
 
     implicit none
@@ -12399,7 +12474,7 @@
 !     P2000            d     parallax (arcsec)
 !     V2000            d     radial velocity (km/s, +ve = moving away)
 !
-!  Notes:
+!### Notes
 !
 !  1) The proper motions in RA are dRA/dt rather than cos(Dec)*dRA/dt,
 !     and are per year rather than per century.
@@ -12449,7 +12524,7 @@
 !     from this simplification are less than 1 milliarcsecond in
 !     position and 1 milliarcsecond per century in proper motion.
 !
-!  References:
+!### References
 !
 !     Aoki, S. et al., 1983, "Conversion matrix of epoch B1950.0
 !     FK4-based positions of stars to epoch J2000.0 positions in
@@ -12470,8 +12545,9 @@
 !     from FK4 B1950.0 to FK5 J2000.0 using matrices in 6-space".
 !     Astron.J. 97, 274.
 !
-!  This revision:   2018 January 11
-!
+!### History
+!  * IAU SOFA revision:  2018 January 11
+
     subroutine FK425 ( r1950, d1950, &
                        dr1950, dd1950, p1950, v1950, &
                        r2000, d2000, &
@@ -12609,7 +12685,7 @@
 !  Returned:
 !     R2000,D2000      d     J2000.0 FK5 RA,Dec (rad)
 !
-!  Notes:
+!### Notes
 !
 !  1) The epoch BEPOCH is strictly speaking Besselian, but if a Julian
 !     epoch is supplied the result will be affected only to a negligible
@@ -12641,7 +12717,7 @@
 !     from this simplification are less than 1 milliarcsecond in
 !     position and 1 milliarcsecond per century in proper motion.
 !
-!  References:
+!### References
 !
 !     Aoki, S. et al., 1983, "Conversion matrix of epoch B1950.0
 !     FK4-based positions of stars to epoch J2000.0 positions in
@@ -12651,8 +12727,9 @@
 !     Seidelmann, P.K. (ed), 1992, "Explanatory Supplement to the
 !     Astronomical Almanac", ISBN 0-935702-68-7.
 !
-!  This revision:   2018 January 11
-!
+!### History
+!  * IAU SOFA revision:  2018 January 11
+
     subroutine FK45Z ( r1950, d1950, bepoch, r2000, d2000 )
 
     implicit none
@@ -12747,7 +12824,7 @@
 !     P1950            d     parallax (arcsec)
 !     V1950            d     radial velocity (km/s, +ve = moving away)
 !
-!  Notes:
+!### Notes
 !
 !  1) The proper motions in RA are dRA/dt rather than cos(Dec)*dRA/dt,
 !     and are per year rather than per century.
@@ -12793,7 +12870,7 @@
 !     from this simplification are less than 1 milliarcsecond in
 !     position and 1 milliarcsecond per century in proper motion.
 !
-!  References:
+!### References
 !
 !     Aoki, S. et al., 1983, "Conversion matrix of epoch B1950.0
 !     FK4-based positions of stars to epoch J2000.0 positions in
@@ -12814,8 +12891,9 @@
 !     from FK4 B1950.0 to FK5 J2000.0 using matrices in 6-space".
 !     Astron.J. 97, 274.
 !
-!  This revision:   2018 January 11
-!
+!### History
+!  * IAU SOFA revision:  2018 January 11
+
     subroutine FK524 ( r2000, d2000, &
                        dr2000, dd2000, p2000, v2000, &
                        r1950, d1950, &
@@ -12973,7 +13051,7 @@
 !     PXH       d      parallax (arcsec)
 !     RVH       d      radial velocity (km/s, positive = receding)
 !
-!  Notes:
+!### Notes
 !
 !  1) This routine transforms FK5 star positions and proper motions into
 !     the system of the Hipparcos catalog.
@@ -12987,12 +13065,13 @@
 !
 !  4) See also H2FK5, FK5HZ, HFK5Z.
 !
-!  Reference:
+!### Reference
 !
 !     F.Mignard & M.Froeschle, Astron.Astrophys., 354, 732-739 (2000).
 !
-!  This revision:  2017 October 12
-!
+!### History
+!  * IAU SOFA revision: 2017 October 12
+
     subroutine FK52H ( r5, d5, dr5, dd5, px5, rv5, &
                        rh, dh, drh, ddh, pxh, rvh )
 
@@ -13059,7 +13138,7 @@
 !     R1950,D1950      d     B1950.0 FK4 RA,Dec (rad) at epoch BEPOCH
 !     DR1950,DD1950    d     B1950.0 FK4 proper motions (rad/trop.yr)
 !
-!  Notes:
+!### Notes
 !
 !  1) In contrast to the FK524 routine, here the FK5 proper motions,
 !     the parallax and the radial velocity are presumed zero.
@@ -13085,8 +13164,9 @@
 !  5) The RA component of the returned (fictitious) proper motion is
 !     dRA/dt rather than cos(Dec)*dRA/dt.
 !
-!  This revision:   2018 January 11
-!
+!### History
+!  * IAU SOFA revision:  2018 January 11
+
     subroutine FK54Z ( r2000, d2000, bepoch, &
                        r1950, d1950, dr1950, dd1950 )
 
@@ -13142,7 +13222,7 @@
 !     R5H     d(3,3)   r-matrix: FK5 rotation wrt Hipparcos (Note 2)
 !     S5H     d(3)     r-vector: FK5 spin wrt Hipparcos (Note 3)
 !
-!  Notes:
+!### Notes
 !
 !  1) This routine models the FK5 to Hipparcos transformation as a
 !     pure rotation and spin;  zonal errors in the FK5 catalogue are
@@ -13159,12 +13239,13 @@
 !     Hipparcos rotation.  The units are radians per year (Julian,
 !     TDB).
 !
-!  Reference:
+!### Reference
 !
 !     F.Mignard & M.Froeschle, Astron.Astrophys., 354, 732-739 (2000).
 !
-!  This revision:  2017 October 12
-!
+!### History
+!  * IAU SOFA revision: 2017 October 12
+
     subroutine FK5HIP ( r5h, s5h )
 
     implicit none
@@ -13214,7 +13295,7 @@
 !     RH              d      Hipparcos RA (radians)
 !     DH              d      Hipparcos Dec (radians)
 !
-!  Notes:
+!### Notes
 !
 !  1) This routine converts a star position from the FK5 system to
 !     the Hipparcos system, in such a way that the Hipparcos proper
@@ -13250,12 +13331,13 @@
 !
 !  5) See also FK52H, H2FK5, HFK5Z.
 !
-!  Reference:
+!### Reference
 !
 !     F.Mignard & M.Froeschle, Astron. Astrophys. 354, 732-739 (2000).
 !
-!  This revision:  2012 September 5
-!
+!### History
+!  * IAU SOFA revision: 2012 September 5
+
     subroutine FK5HZ ( r5, d5, date1, date2, rh, dh )
 
     implicit none
@@ -13313,7 +13395,7 @@
 !  Returned:
 !     R        d(3,3)   rotation matrix
 !
-!  Notes:
+!### Notes
 !
 !  1) Naming the following points:
 !
@@ -13351,12 +13433,13 @@
 !     The nutation-only and precession-only matrices can if necessary
 !     be obtained by combining these three appropriately.
 !
-!  Reference:
+!### Reference
 !
 !     Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
 !
-!  This revision:   2009 December 15
-!
+!### History
+!  * IAU SOFA revision:  2009 December 15
+
     subroutine FW2M ( gamb, phib, psi, eps, r )
 
     implicit none
@@ -13392,7 +13475,7 @@
 !  Returned:
 !     X,Y        d      CIP unit vector X,Y
 !
-!  Notes:
+!### Notes
 !
 !  1) Naming the following points:
 !
@@ -13416,12 +13499,13 @@
 !     The returned values x,y are elements (3,1) and (3,2) of the
 !     matrix.  Near J2000.0, they are essentially angles in radians.
 !
-!  Reference:
+!### Reference
 !
 !     Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
 !
-!  This revision:   2013 September 2
-!
+!### History
+!  * IAU SOFA revision:  2013 September 2
+
     subroutine FW2XY ( gamb, phib, psi, eps, x, y )
 
     implicit none
@@ -13458,7 +13542,7 @@
 !     DR       d      ICRS right ascension (radians)
 !     DD       d      ICRS declination (radians)
 !
-!  Notes:
+!### Notes
 !
 !  1) The IAU 1958 system of Galactic coordinates was defined with
 !     respect to the now obsolete reference system FK4 B1950.0.  When
@@ -13489,14 +13573,15 @@
 !
 !  2) The inverse transformation is performed by the routine ICRS2G.
 !
-!  Reference:
+!### Reference
 !     Perryman M.A.C. & ESA, 1997, ESA SP-1200, The Hipparcos and Tycho
 !     catalogues.  Astrometric and photometric star catalogues
 !     derived from the ESA Hipparcos Space Astrometry Mission.  ESA
 !     Publications Division, Noordwijk, Netherlands.
 !
-!  This revision:   2015 January 9
-!
+!### History
+!  * IAU SOFA revision:  2015 January 9
+
     subroutine G2ICRS ( dl, db, dr, dd )
 
     implicit none
@@ -13569,7 +13654,7 @@
 !                             -1 = illegal identifier (Note 3)
 !                             -2 = internal error (Note 3)
 !
-!  Notes:
+!### Notes
 !
 !  1) The identifier N is a number that specifies the choice of
 !     reference ellipsoid.  The following are supported:
@@ -13591,8 +13676,9 @@
 !
 !  4) The inverse transformation is performed in the routine GD2GC.
 !
-!  This revision:  2013 September 1
-!
+!### History
+!  * IAU SOFA revision: 2013 September 1
+
     subroutine GC2GD ( n, xyz, elong, phi, height, j )
 
     implicit none
@@ -13645,7 +13731,7 @@
 !                              -1 = illegal F
 !                              -2 = illegal A
 !
-!  Notes:
+!### Notes
 !
 !  1) This routine is closely based on the GCONV2H subroutine by
 !     Toshio Fukushima (see reference).
@@ -13669,14 +13755,15 @@
 !     numerical code (1 for WGS84) to identify the required A and F
 !     values.
 !
-!  Reference:
+!### Reference
 !
 !     Fukushima, T., "Transformation from Cartesian to geodetic
 !     coordinates accelerated by Halley's method", J.Geodesy (2006)
 !     79: 689-693
 !
-!  This revision:  2014 November 7
-!
+!### History
+!  * IAU SOFA revision: 2014 November 7
+
     subroutine GC2GDE ( a, f, xyz, elong, phi, height, j )
 
     implicit none
@@ -13804,7 +13891,7 @@
 !                             -1 = illegal identifier (Note 3)
 !                             -2 = illegal case (Note 3)
 !
-!  Notes:
+!### Notes
 !
 !  1) The identifier N is a number that specifies the choice of
 !     reference ellipsoid.  The following are supported:
@@ -13827,8 +13914,9 @@
 !
 !  4) The inverse transformation is performed in the routine GC2GD.
 !
-!  This revision:  2010 January 18
-!
+!### History
+!  * IAU SOFA revision: 2010 January 18
+
     subroutine GD2GC ( n, elong, phi, height, xyz, j )
 
     implicit none
@@ -13876,7 +13964,7 @@
 !     J         i     status:  0 = OK
 !                             -1 = illegal case (Note 4)
 !
-!  Notes:
+!### Notes
 !
 !  1) The equatorial radius, A, can be in any units, but meters is
 !     the conventional choice.
@@ -13899,7 +13987,7 @@
 !     numerical code (1 for WGS84) to identify the required A and F
 !     values.
 !
-!  References:
+!### References
 !
 !     Green, R.M., Spherical Astronomy, Cambridge University Press,
 !     (1985) Section 4.5, p96.
@@ -13908,8 +13996,9 @@
 !     P. Kenneth Seidelmann (ed), University Science Books (1992),
 !     Section 4.22, p202.
 !
-!  This revision:  2009 November 2
-!
+!### History
+!  * IAU SOFA revision: 2009 November 2
+
     subroutine GD2GCE ( a, f, elong, phi, height, xyz, j )
 
     implicit none
@@ -13965,7 +14054,7 @@
 !  Returned:
 !     GMST00   d      Greenwich mean sidereal time (radians)
 !
-!  Notes:
+!### Notes
 !
 !  1) The UT1 and TT dates UTA+UTB and TTA+TTB respectively, are both
 !     Julian Dates, apportioned in any convenient way between the
@@ -14003,7 +14092,7 @@
 !  5) The algorithm is from Capitaine et al. (2003) and IERS Conventions
 !     2003.
 !
-!  References:
+!### References
 !
 !     Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
 !     implement the IAU 2000 definition of UT1", Astronomy &
@@ -14012,8 +14101,9 @@
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
 !
-!  This revision:  2009 December 15
-!
+!### History
+!  * IAU SOFA revision: 2009 December 15
+
     real(wp) function GMST00 ( uta, utb, tta, ttb )
 
     implicit none
@@ -14053,7 +14143,7 @@
 !  Returned:
 !     GMST06   d      Greenwich mean sidereal time (radians)
 !
-!  Notes:
+!### Notes
 !
 !  1) The UT1 and TT dates UTA+UTB and TTA+TTB respectively, are both
 !     Julian Dates, apportioned in any convenient way between the
@@ -14087,13 +14177,14 @@
 !
 !  4) The result is returned in the range 0 to 2pi.
 !
-!  Reference:
+!### Reference
 !
 !     Capitaine, N., Wallace, P.T. & Chapront, J., 2005,
 !     Astron.Astrophys. 432, 355
 !
-!  This revision:  2010 March 9
-!
+!### History
+!  * IAU SOFA revision: 2010 March 9
+
     real(wp) function GMST06 ( uta, utb, tta, ttb )
 
     implicit none
@@ -14133,7 +14224,7 @@
 !  Returned:
 !     GMST82   d      Greenwich mean sidereal time (radians)
 !
-!  Notes:
+!### Notes
 !
 !  1) The UT1 epoch DJ1+DJ2 is a Julian Date, apportioned in any
 !     convenient way between the arguments DJ1 and DJ2.  For example,
@@ -14170,15 +14261,16 @@
 !
 !  4) The result is returned in the range 0 to 2pi.
 !
-!  References:
+!### References
 !
 !     Transactions of the International Astronomical Union,
 !     XVIII B, 67 (1983).
 !
 !     Aoki et al., Astron.Astrophys., 105, 359-361 (1982).
 !
-!  This revision:  2017 October 12
-!
+!### History
+!  * IAU SOFA revision: 2017 October 12
+
     real(wp) function GMST82 ( dj1, dj2 )
 
     implicit none
@@ -14230,7 +14322,7 @@
 !  Returned:
 !     GST00A   d      Greenwich apparent sidereal time (radians)
 !
-!  Notes:
+!### Notes
 !
 !  1) The UT1 and TT dates UTA+UTB and TTA+TTB respectively, are both
 !     Julian Dates, apportioned in any convenient way between the
@@ -14269,7 +14361,7 @@
 !  5) The algorithm is from Capitaine et al. (2003) and IERS Conventions
 !     2003.
 !
-!  References:
+!### References
 !
 !     Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
 !     implement the IAU 2000 definition of UT1", Astronomy &
@@ -14278,8 +14370,9 @@
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
 !
-!  This revision:  2007 December 8
-!
+!### History
+!  * IAU SOFA revision: 2007 December 8
+
     real(wp) function GST00A ( uta, utb, tta, ttb )
 
     implicit none
@@ -14308,7 +14401,7 @@
 !  Returned:
 !     GST00B   d      Greenwich apparent sidereal time (radians)
 !
-!  Notes:
+!### Notes
 !
 !  1) The UT1 date UTA+UTB is a Julian Date, apportioned in any
 !     convenient way between the argument pair.  For example,
@@ -14352,7 +14445,7 @@
 !  5) The algorithm is from Capitaine et al. (2003) and IERS Conventions
 !     2003.
 !
-!  References:
+!### References
 !
 !     Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
 !     implement the IAU 2000 definition of UT1", Astronomy &
@@ -14365,8 +14458,9 @@
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
 !
-!  This revision:  2007 December 8
-!
+!### History
+!  * IAU SOFA revision: 2007 December 8
+
     real(wp) function GST00B ( uta, utb )
 
     implicit none
@@ -14394,7 +14488,7 @@
 !  Returned:
 !     GST06    d      Greenwich apparent sidereal time (radians)
 !
-!  Notes:
+!### Notes
 !
 !  1) The UT1 and TT dates UTA+UTB and TTA+TTB respectively, are both
 !     Julian Dates, apportioned in any convenient way between the
@@ -14430,12 +14524,13 @@
 !
 !  4) The result is returned in the range 0 to 2pi.
 !
-!  Reference:
+!### Reference
 !
 !     Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 !
-!  This revision:  2008 January 2
-!
+!### History
+!  * IAU SOFA revision: 2008 January 2
+
     real(wp) function GST06 ( uta, utb, tta, ttb, rnpb )
 
     implicit none
@@ -14475,7 +14570,7 @@
 !  Returned:
 !     GST06A   d      Greenwich apparent sidereal time (radians)
 !
-!  Notes:
+!### Notes
 !
 !  1) The UT1 and TT dates UTA+UTB and TTA+TTB respectively, are both
 !     Julian Dates, apportioned in any convenient way between the
@@ -14511,12 +14606,13 @@
 !
 !  4) The result is returned in the range 0 to 2pi.
 !
-!  Reference:
+!### Reference
 !
 !     Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 !
-!  This revision:  2010 March 5
-!
+!### History
+!  * IAU SOFA revision: 2010 March 5
+
     real(wp) function GST06A ( uta, utb, tta, ttb )
 
     implicit none
@@ -14550,7 +14646,7 @@
 !  Returned:
 !     GST94    d      Greenwich apparent sidereal time (radians)
 !
-!  Notes:
+!### Notes
 !
 !  1) The UT1 date UTA+UTB is a Julian Date, apportioned in any
 !     convenient way between the argument pair.  For example,
@@ -14585,15 +14681,16 @@
 !
 !  4) The result is returned in the range 0 to 2pi.
 !
-!  References:
+!### References
 !
 !     Explanatory Supplement to the Astronomical Almanac,
 !     P. Kenneth Seidelmann (ed), University Science Books (1992)
 !
 !     IAU Resolution C7, Recommendation 3 (1994)
 !
-!  This revision:  2007 December 8
-!
+!### History
+!  * IAU SOFA revision: 2007 December 8
+
     real(wp) function GST94 ( uta, utb )
 
     implicit none
@@ -14629,7 +14726,7 @@
 !     PX5       d      parallax (arcsec)
 !     RV5       d      radial velocity (km/s, positive = receding)
 !
-!  Notes:
+!### Notes
 !
 !  1) This routine transforms Hipparcos star positions and proper
 !     motions into FK5 J2000.0.
@@ -14643,12 +14740,13 @@
 !
 !  4) See also FK52H, FK5HZ, HFK5Z.
 !
-!  Reference:
+!### Reference
 !
 !     F.Mignard & M.Froeschle, Astron.Astrophys., 354, 732-739 (2000).
 !
-!  This revision:  2017 October 12
-!
+!### History
+!  * IAU SOFA revision: 2017 October 12
+
     subroutine H2FK5 ( rh, dh, drh, ddh, pxh, rvh, &
                        r5, d5, dr5, dd5, px5, rv5 )
 
@@ -14719,7 +14817,7 @@
 !     AZ       d     azimuth
 !     EL       d     altitude (informally, elevation)
 !
-!  Notes:
+!### Notes
 !
 !  1)  All the arguments are angles in radians.
 !
@@ -14808,7 +14906,7 @@
 !  Returned:
 !     HD2PA   d     parallactic angle
 !
-!  Notes:
+!### Notes
 !
 !  1)  All the arguments are angles in radians.
 !
@@ -14831,12 +14929,13 @@
 !      adjusted for deflection of the vertical (often tens of
 !      arcseconds), and the zero point of HA will also be affected.
 !
-!  Reference:
+!### Reference
 !     Smart, W.M., "Spherical Astronomy", Cambridge University Press,
 !     6th edition (Green, 1977), p49.
 !
-!  This revision:   2017 September 12
-!
+!### History
+!  * IAU SOFA revision:  2017 September 12
+
     real(wp) function HD2PA ( ha, dec, phi )
 
     implicit none
@@ -14874,7 +14973,7 @@
 !     DR5             d      FK5 RA proper motion (rad/year, Note 4)
 !     DD5             d      Dec proper motion (rad/year, Note 4)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -14912,12 +15011,13 @@
 !
 !  6) See also FK52H, H2FK5, FK5ZHZ.
 !
-!  Reference:
+!### Reference
 !
 !     F.Mignard & M.Froeschle, Astron. Astrophys. 354, 732-739 (2000).
 !
-!  This revision:  2012 September 5
-!
+!### History
+!  * IAU SOFA revision: 2012 September 5
+
     subroutine HFK5Z ( rh, dh, date1, date2, r5, d5, dr5, dd5 )
 
     implicit none
@@ -14986,7 +15086,7 @@
 !     DL       d      galactic longitude (radians)
 !     DB       d      galactic latitude (radians)
 !
-!  Notes:
+!### Notes
 !
 !  1) The IAU 1958 system of Galactic coordinates was defined with
 !     respect to the now obsolete reference system FK4 B1950.0.  When
@@ -15017,14 +15117,15 @@
 !
 !  2) The inverse transformation is performed by the routine G2ICRS.
 !
-!  Reference:
+!### Reference
 !     Perryman M.A.C. & ESA, 1997, ESA SP-1200, The Hipparcos and Tycho
 !     catalogues.  Astrometric and photometric star catalogues
 !     derived from the ESA Hipparcos Space Astrometry Mission.  ESA
 !     Publications Division, Noordwijk, Netherlands.
 !
-!  This revision:   2015 January 9
-!
+!### History
+!  * IAU SOFA revision:  2015 January 9
+
     subroutine ICRS2G ( dr, dd, dl, db )
 
     implicit none
@@ -15087,8 +15188,9 @@
 !  Returned:
 !     R        d(3,3)    r-matrix
 !
-!  This revision:  2012 April 3
-!
+!### History
+!  * IAU SOFA revision: 2012 April 3
+
     subroutine IR ( r )
 
     implicit none
@@ -15126,7 +15228,7 @@
 !                           0 = OK
 !                          -1 = unacceptable date (Note 1)
 !
-!  Notes:
+!### Notes
 !
 !  1) The earliest valid date is -68569.5 (-4900 March 1).  The
 !     largest value accepted is 10^9.
@@ -15147,14 +15249,15 @@
 !     the Gregorian Calendar, nor is the AD/BC numbering convention
 !     observed.
 !
-!  Reference:
+!### Reference
 !
 !     Explanatory Supplement to the Astronomical Almanac,
 !     P. Kenneth Seidelmann (ed), University Science Books (1992),
 !     Section 12.92 (p604).
 !
-!  This revision:  2019 June 20
-!
+!### History
+!  * IAU SOFA revision: 2019 June 20
+
     subroutine JD2CAL ( dj1, dj2, iy, im, id, fd, j )
 
     implicit none
@@ -15237,7 +15340,7 @@
 !                           0 = OK
 !                          +1 = NDP not 0-9 (interpreted as 0)
 !
-!  Notes:
+!### Notes
 !
 !  1) The Julian Date is apportioned in any convenient way between
 !     the arguments DJ1 and DJ2.  For example, JD=2450123.7 could
@@ -15260,14 +15363,15 @@
 !  4) NDP should be 4 or less if internal overflows are to be
 !     avoided on machines which use 16-bit integers.
 !
-!  Reference:
+!### Reference
 !
 !     Explanatory Supplement to the Astronomical Almanac,
 !     P. Kenneth Seidelmann (ed), University Science Books (1992),
 !     Section 12.92 (p604).
 !
-!  This revision:  2019 June 20
-!
+!### History
+!  * IAU SOFA revision: 2019 June 20
+
     subroutine JDCALF ( ndp, dj1, dj2, iymdf, j )
 
     implicit none
@@ -15341,7 +15445,7 @@
 !  Returned:
 !     P1       d(3)   observer to deflected source (unit vector)
 !
-!  Notes:
+!### Notes
 !
 !  1) The algorithm is based on Expr. (70) in Klioner (2003) and
 !     Expr. (7.63) in the Explanatory Supplement (Urban & Seidelmann
@@ -15372,7 +15476,7 @@
 !     be of unit magnitude, and the deflection limiter non-zero and
 !     positive.
 !
-!  References:
+!### References
 !
 !     Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
 !     the Astronomical Almanac, 3rd ed., University Science Books
@@ -15381,8 +15485,9 @@
 !     Klioner, Sergei A., "A practical relativistic model for micro-
 !     arcsecond astrometry in space", Astr. J. 125, 1580-1597 (2003).
 !
-!  This revision:   2013 September 3
-!
+!### History
+!  * IAU SOFA revision:  2013 September 3
+
     subroutine LD ( bm, p, q, e, em, dlim, p1 )
 
     implicit none
@@ -15483,14 +15588,15 @@
 !     be greater than zero, the position and velocity vectors must be
 !     right, and the deflection limiter greater than zero.
 !
-!  Reference:
+!### Reference
 !
 !     Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
 !     the Astronomical Almanac, 3rd ed., University Science Books
 !     (2013), Section 7.2.4.
 !
-!  This revision:   2017 March 16
-!
+!### History
+!  * IAU SOFA revision:  2017 March 16
+
     subroutine LDN ( n, b, ob, sc, sn )
 
     implicit none
@@ -15561,7 +15667,7 @@
 !  Returned:
 !     P1       d(3)   observer to deflected star (unit vector)
 !
-!  Notes:
+!### Notes
 !
 !  1) The source is presumed to be sufficiently distant that its
 !     directions seen from the Sun and the observer are essentially
@@ -15573,8 +15679,9 @@
 !     is within the solar limb for all solar-system applications, and
 !     is about 5 arcminutes for the case of a terrestrial observer.
 !
-!  This revision:   2016 June 16
-!
+!### History
+!  * IAU SOFA revision:  2016 June 16
+
     subroutine LDSUN ( p, e, em, p1 )
 
     implicit none
@@ -15625,7 +15732,7 @@
 !     worsening to a few tenths of a degree at the end of the
 !     +/- 200,000 year time span.
 !
-!  References:
+!### References
 !
 !     Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
 !     expressions, valid for long time intervals, Astron.Astrophys. 534,
@@ -15635,8 +15742,9 @@
 !     expressions, valid for long time intervals (Corrigendum),
 !     Astron.Astrophys. 541, C1
 !
-!  This revision:  2016 February 9
-!
+!### History
+!  * IAU SOFA revision: 2016 February 9
+
     subroutine LTECEQ ( epj, dl, db, dr, dd )
 
     implicit none
@@ -15680,7 +15788,7 @@
 !  Returned:
 !     RM        d(3,3)   ICRS to ecliptic rotation matrix
 !
-!  Notes:
+!### Notes
 !
 !  1) The matrix is in the sense
 !
@@ -15706,7 +15814,7 @@
 !     worsening to a few tenths of a degree at the end of the
 !     +/- 200,000 year time span.
 !
-!  References:
+!### References
 !
 !     Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
 !     expressions, valid for long time intervals, Astron.Astrophys. 534,
@@ -15716,8 +15824,9 @@
 !     expressions, valid for long time intervals (Corrigendum),
 !     Astron.Astrophys. 541, C1
 !
-!  This revision:  2015 December 6
-!
+!### History
+!  * IAU SOFA revision: 2015 December 6
+
     subroutine LTECM ( epj, rm )
 
     implicit none
@@ -15790,7 +15899,7 @@
 !     worsening to a few tenths of a degree at the end of the
 !     +/- 200,000 year time span.
 !
-!  References:
+!### References
 !
 !     Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
 !     expressions, valid for long time intervals, Astron.Astrophys. 534,
@@ -15800,8 +15909,9 @@
 !     expressions, valid for long time intervals (Corrigendum),
 !     Astron.Astrophys. 541, C1
 !
-!  This revision:  2016 February 9
-!
+!### History
+!  * IAU SOFA revision: 2016 February 9
+
     subroutine LTEQEC ( epj, dr, dd, dl, db )
 
     implicit none
@@ -15845,7 +15955,7 @@
 !  Returned:
 !     RP        d(3,3)   precession matrix, J2000.0 to date
 !
-!  Notes:
+!### Notes
 !
 !  1) The matrix is in the sense
 !
@@ -15862,7 +15972,7 @@
 !     worsening to a few tenths of a degree at the end of the
 !     +/- 200,000 year time span.
 !
-!  References:
+!### References
 !
 !     Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
 !     expressions, valid for long time intervals, Astron.Astrophys. 534,
@@ -15872,8 +15982,9 @@
 !     expressions, valid for long time intervals (Corrigendum),
 !     Astron.Astrophys. 541, C1
 !
-!  This revision:  2015 December 6
-!
+!### History
+!  * IAU SOFA revision: 2015 December 6
+
     subroutine LTP ( epj, rp )
 
     implicit none
@@ -15919,7 +16030,7 @@
 !  Returned:
 !     RPB       d        precession-bias matrix, J2000.0 to date
 !
-!  Notes:
+!### Notes
 !
 !  1) The matrix is in the sense
 !
@@ -15940,7 +16051,7 @@
 !     worsening to a few tenths of a degree at the end of the
 !     +/- 200,000 year time span.
 !
-!  References:
+!### References
 !
 !     Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
 !     expressions, valid for long time intervals, Astron.Astrophys. 534,
@@ -15950,8 +16061,9 @@
 !     expressions, valid for long time intervals (Corrigendum),
 !     Astron.Astrophys. 541, C1
 !
-!  This revision:  2015 December 6
-!
+!### History
+!  * IAU SOFA revision: 2015 December 6
+
     subroutine LTPB ( epj, rpb )
 
     implicit none
@@ -15992,7 +16104,7 @@
 !  Returned:
 !     VEC       d(3)     ecliptic pole unit vector
 !
-!  Notes:
+!### Notes
 !
 !  1) The returned vector is with respect to the J2000.0 mean equator
 !     and equinox.
@@ -16004,7 +16116,7 @@
 !     worsening to a few tenths of a degree at the end of the
 !     +/- 200,000 year time span.
 !
-!  References:
+!### References
 !
 !     Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
 !     expressions, valid for long time intervals, Astron.Astrophys. 534,
@@ -16014,8 +16126,9 @@
 !     expressions, valid for long time intervals (Corrigendum),
 !     Astron.Astrophys. 541, C1
 !
-!  This revision:  2016 February 9
-!
+!### History
+!  * IAU SOFA revision: 2016 February 9
+
     subroutine LTPECL ( epj, vec )
 
     implicit none
@@ -16121,7 +16234,7 @@
 !  Returned:
 !     VEQ       d(3)     equator pole unit vector
 !
-!  Notes:
+!### Notes
 !
 !  1) The returned vector is with respect to the J2000.0 mean equator
 !     and equinox.
@@ -16133,7 +16246,7 @@
 !     worsening to a few tenths of a degree at the end of the
 !     +/- 200,000 year time span.
 !
-!  References:
+!### References
 !
 !     Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
 !     expressions, valid for long time intervals, Astron.Astrophys. 534,
@@ -16143,8 +16256,9 @@
 !     expressions, valid for long time intervals (Corrigendum),
 !     Astron.Astrophys. 541, C1
 !
-!  This revision:  2016 February 9
-!
+!### History
+!  * IAU SOFA revision: 2016 February 9
+
     subroutine LTPEQU ( epj, veq )
 
     implicit none
@@ -16256,7 +16370,7 @@
 !  Returned:
 !     RMATN        d(3,3)    nutation matrix
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -16285,14 +16399,15 @@
 !  3) A faster, but slightly less accurate result (about 1 mas), can be
 !     obtained by using instead the NUM00B routine.
 !
-!  Reference:
+!### Reference
 !
 !     Explanatory Supplement to the Astronomical Almanac,
 !     P. Kenneth Seidelmann (ed), University Science Books (1992),
 !     Section 3.222-3 (p114).
 !
-!  This revision:  2006 November 13
-!
+!### History
+!  * IAU SOFA revision: 2006 November 13
+
     subroutine NUM00A ( date1, date2, rmatn )
 
     implicit none
@@ -16323,7 +16438,7 @@
 !  Returned:
 !     RMATN       d(3,3)   nutation matrix
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -16352,14 +16467,15 @@
 !  3) The present routine is faster, but slightly less accurate (about
 !     1 mas), than the NUM00A routine.
 !
-!  Reference:
+!### Reference
 !
 !     Explanatory Supplement to the Astronomical Almanac,
 !     P. Kenneth Seidelmann (ed), University Science Books (1992),
 !     Section 3.222-3 (p114).
 !
-!  This revision:  2006 November 13
-!
+!### History
+!  * IAU SOFA revision: 2006 November 13
+
     subroutine NUM00B ( date1, date2, rmatn )
 
     implicit none
@@ -16390,7 +16506,7 @@
 !  Returned:
 !     RMATN        d(3,3)    nutation matrix
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -16416,15 +16532,16 @@
 !     equatorial triad of date and the p-vector V(mean) is with
 !     respect to the mean equatorial triad of date.
 !
-!  References:
+!### References
 !
 !     Capitaine, N., Wallace, P.T. & Chapront, J., 2005, Astron.
 !     Astrophys. 432, 355
 !
 !     Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 !
-!  This revision:  2007 May 11
-!
+!### History
+!  * IAU SOFA revision: 2007 May 11
+
     subroutine NUM06A ( date1, date2, rmatn )
 
     implicit none
@@ -16460,7 +16577,7 @@
 !  Returned:
 !     RMATN       d(3,3)    nutation matrix (Note 3)
 !
-!  Notes:
+!### Notes
 !
 !
 !  1) The supplied mean obliquity EPSA, must be consistent with the
@@ -16475,14 +16592,15 @@
 !     equatorial triad of date and the p-vector V(mean) is with
 !     respect to the mean equatorial triad of date.
 !
-!  Reference:
+!### Reference
 !
 !     Explanatory Supplement to the Astronomical Almanac,
 !     P. Kenneth Seidelmann (ed), University Science Books (1992),
 !     Section 3.222-3 (p114).
 !
-!  This revision:  2006 November 13
-!
+!### History
+!  * IAU SOFA revision: 2006 November 13
+
     subroutine NUMAT ( epsa, dpsi, deps, rmatn )
 
     implicit none
@@ -16514,7 +16632,7 @@
 !  Returned:
 !     DPSI,DEPS     d    nutation, luni-solar + planetary (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -16612,7 +16730,7 @@
 !     triplicates.  To keep the present code close to the original MHB
 !     algorithm, this small inefficiency has not been corrected.
 !
-!  References:
+!### References
 !
 !     Chapront, J., Chapront-Touze, M. & Francou, G. 2002,
 !     Astron.Astrophys. 387, 700
@@ -16633,8 +16751,9 @@
 !     Wallace, P.T., "Software for Implementing the IAU 2000
 !     Resolutions", in IERS Workshop 5.1 (2002)
 !
-!  This revision:  2009 December 15
-!
+!### History
+!  * IAU SOFA revision: 2009 December 15
+
     subroutine NUT00A ( date1, date2, dpsi, deps )
 
     implicit none
@@ -19876,7 +19995,7 @@
 !  Returned:
 !     DPSI,DEPS     d   nutation, luni-solar + planetary (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -19961,7 +20080,7 @@
 !     interval 1995-2050, the SOFA implementation delivers a maximum
 !     error of 1.001 mas (not including FCN).
 !
-!  References:
+!### References
 !
 !     Lieske, J.H., Lederle, T., Fricke, W., Morando, B., "Expressions
 !     for the precession quantities based upon the IAU /1976/ system of
@@ -19977,8 +20096,9 @@
 !     Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
 !     Francou, G., Laskar, J., Astron.Astrophys. 282, 663-683 (1994)
 !
-!  This revision:  2009 December 15
-!
+!### History
+!  * IAU SOFA revision: 2009 December 15
+
     subroutine NUT00B ( date1, date2, dpsi, deps )
 
     implicit none
@@ -20298,7 +20418,7 @@
 !
 !  Status:  canonical model.
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -20334,12 +20454,13 @@
 !     pole which is at current epochs accurate to a few tens of
 !     microarcseconds, apart from the free core nutation.
 !
-!  Reference:
+!### Reference
 !
 !     Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 !
-!  This revision:  2011 April 3
-!
+!### History
+!  * IAU SOFA revision: 2011 April 3
+
     subroutine NUT06A ( date1, date2, dpsi, deps )
 
     implicit none
@@ -20381,7 +20502,7 @@
 !     DPSI            d      nutation in longitude (radians)
 !     DEPS            d      nutation in obliquity (radians)
 !
-!  Notes:
+!### Notes
 !
 !  1) The DATE DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -20405,14 +20526,15 @@
 !  2) The nutation components are with respect to the ecliptic of
 !     date.
 !
-!  Reference:
+!### Reference
 !
 !     Explanatory Supplement to the Astronomical Almanac,
 !     P. Kenneth Seidelmann (ed), University Science Books (1992),
 !     Section 3.222 (p111).
 !
-!  This revision:  2009 December 15
-!
+!### History
+!  * IAU SOFA revision: 2009 December 15
+
     subroutine NUT80 ( date1, date2, dpsi, deps )
 
     implicit none
@@ -20642,7 +20764,7 @@
 !  Returned:
 !     RMATN          d(3,3)    nutation matrix
 !
-!  Notes:
+!### Notes
 !
 !  1) The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -20668,8 +20790,9 @@
 !     equatorial triad of date and the p-vector V(mean) is with
 !     respect to the mean equatorial triad of date.
 !
-!  This revision:  2012 September 5
-!
+!### History
+!  * IAU SOFA revision: 2012 September 5
+
     subroutine NUTM80 ( date1, date2, rmatn )
 
     implicit none
@@ -20702,7 +20825,7 @@
 !  Returned:
 !     OBL06      d     obliquity of the ecliptic (radians, Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) The date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -20726,12 +20849,13 @@
 !  2) The result is the angle between the ecliptic and mean equator of
 !     date DATE1+DATE2.
 !
-!  Reference:
+!### Reference
 !
 !     Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
 !
-!  This revision:  2009 December 15
-!
+!### History
+!  * IAU SOFA revision: 2009 December 15
+
     real(wp) function OBL06 ( date1, date2 )
 
     implicit none
@@ -20768,7 +20892,7 @@
 !  Returned:
 !     OBL80       d      obliquity of the ecliptic (radians, Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) The date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -20792,14 +20916,15 @@
 !  2) The result is the angle between the ecliptic and mean equator of
 !     date DATE1+DATE2.
 !
-!  Reference:
+!### Reference
 !
 !     Explanatory Supplement to the Astronomical Almanac,
 !     P. Kenneth Seidelmann (ed), University Science Books (1992),
 !     Expression 3.222-1 (p114).
 !
-!  This revision:  2009 December 15
-!
+!### History
+!  * IAU SOFA revision: 2009 December 15
+
     real(wp) function OBL80 ( date1, date2 )
 
     implicit none
@@ -20848,7 +20973,7 @@
 !     PHI           d    F-W angle phi_J2000
 !     PSI           d    F-W angle psi_J2000
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -20924,12 +21049,13 @@
 !     choice of angles) be necessary to introduce the frame bias
 !     explicitly.
 !
-!  Reference:
+!### Reference
 !
 !     Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
 !
-!  This revision:  2011 December 6
-!
+!### History
+!  * IAU SOFA revision: 2011 December 6
+
     subroutine P06E ( date1, date2, &
                       eps0, psia, oma, bpa, bqa, pia, bpia, &
                       epsa, chia, za, zetaa, thetaa, pa, &
@@ -21109,8 +21235,9 @@
 !  Returned:
 !     PV       d(3,2)    pv-vector
 !
-!  This revision:  2000 November 25
-!
+!### History
+!  * IAU SOFA revision: 2000 November 25
+
     subroutine P2PV ( p, pv )
 
     implicit none
@@ -21138,14 +21265,15 @@
 !     PHI      d         latitude angle (radians)
 !     R        d         radial distance
 !
-!  Notes:
+!### Notes
 !
 !  1) If P is null, zero THETA, PHI and R are returned.
 !
 !  2) At either pole, zero THETA is returned.
 !
-!  This revision:  2006 November 13
-!
+!### History
+!  * IAU SOFA revision: 2006 November 13
+
     subroutine P2S ( p, theta, phi, r )
 
     implicit none
@@ -21174,7 +21302,7 @@
 !  Returned:
 !     THETA    d         position angle of B with respect to A (radians)
 !
-!  Notes:
+!### Notes
 !
 !  1) The result is the position angle, in radians, of direction B with
 !     respect to direction A.  It is in the range -pi to +pi.  The sense
@@ -21189,8 +21317,9 @@
 !
 !  4) If A is at a pole, the result is ill-defined.
 !
-!  This revision:  2006 November 13
-!
+!### History
+!  * IAU SOFA revision: 2006 November 13
+
     subroutine PAP ( a, b, theta )
 
     implicit none
@@ -21258,7 +21387,7 @@
 !  Returned:
 !     THETA    d       position angle of B with respect to A
 !
-!  Notes:
+!### Notes
 !
 !  1) The result is the bearing (position angle), in radians, of point
 !     B with respect to point A.  It is in the range -pi to +pi.  The
@@ -21267,8 +21396,9 @@
 !
 !  2) Zero is returned if the two points are coincident.
 !
-!  This revision:  2000 November 25
-!
+!### History
+!  * IAU SOFA revision: 2000 November 25
+
     subroutine PAS ( al, ap, bl, bp, theta )
 
     implicit none
@@ -21309,7 +21439,7 @@
 !     BZ            d    3rd rotation: radians clockwise around z
 !     BTHETA        d    2nd rotation: radians counterclockwise around y
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the arguments DATE1 and DATE2.  For
@@ -21348,8 +21478,9 @@
 !     frame bias, they are available by calling the SOFA routine
 !     P06E.
 !
-!  This revision:  2007 June 8
-!
+!### History
+!  * IAU SOFA revision: 2007 June 8
+
     subroutine PB06 ( date1, date2, bzeta, bz, btheta )
 
     implicit none
@@ -21393,8 +21524,9 @@
 !  Returned:
 !     ADB      d         A . B
 !
-!  This revision:  2000 November 25
-!
+!### History
+!  * IAU SOFA revision: 2000 November 25
+
     subroutine PDP ( a, b, adb )
 
     implicit none
@@ -21430,7 +21562,7 @@
 !     PSIB          d    F-W angle psi_bar (radians)
 !     EPSA          d    F-W angle epsilon_A (radians)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -21478,12 +21610,13 @@
 !     where dP and dE are the nutation components with respect to the
 !     ecliptic of date.
 !
-!  Reference:
+!### Reference
 !
 !     Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
 !
-!  This revision:  2009 December 15
-!
+!### History
+!  * IAU SOFA revision: 2009 December 15
+
     subroutine PFW06 ( date1, date2, gamb, phib, psib, epsa )
 
     implicit none
@@ -21550,7 +21683,7 @@
 !                              +1 = warning: date outside 1000-3000 AD
 !                              +2 = warning: solution failed to converge
 !
-!  Notes:
+!### Notes
 !
 !  1) The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -21677,12 +21810,13 @@
 !     considered the most serious, overriding failure to converge,
 !     which in turn takes precedence over the remote epoch warning.
 !
-!  Reference:  Simon, J.L, Bretagnon, P., Chapront, J.,
+!### Reference  Simon, J.L, Bretagnon, P., Chapront, J.,
 !              Chapront-Touze, M., Francou, G., and Laskar, J.,
 !              Astron.Astrophys., 282, 663 (1994).
 !
-!  This revision:  2017 October 12
-!
+!### History
+!  * IAU SOFA revision: 2017 October 12
+
     subroutine PLAN94 ( date1, date2, np, pv, j )
 
     implicit none
@@ -21990,8 +22124,9 @@
 !  Returned:
 !     R        d         modulus
 !
-!  This revision:  2000 November 25
-!
+!### History
+!  * IAU SOFA revision: 2000 November 25
+
     subroutine PM ( p, r )
 
     implicit none
@@ -22025,7 +22160,7 @@
 !  Returned:
 !     RBP         d(3,3)    bias-precession matrix (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the arguments DATE1 and DATE2.  For
@@ -22051,14 +22186,15 @@
 !     Reference System (IAU, 2000) and the p-vector V(date) is with
 !     respect to the mean equatorial triad of the given date.
 !
-!  Reference:
+!### Reference
 !
 !     IAU: Trans. International Astronomical Union, Vol. XXIVB;  Proc.
 !     24th General Assembly, Manchester, UK.  Resolutions B1.3, B1.6.
 !     (2000)
 !
-!  This revision:  2009 December 21
-!
+!### History
+!  * IAU SOFA revision: 2009 December 21
+
     subroutine PMAT00 ( date1, date2, rbp )
 
     implicit none
@@ -22088,7 +22224,7 @@
 !  Returned:
 !     RBP         d(3,3)    bias-precession matrix (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the arguments DATE1 and DATE2.  For
@@ -22114,14 +22250,15 @@
 !     Reference System (IAU, 2000) and the p-vector V(date) is with
 !     respect to the mean equatorial triad of the given date.
 !
-!  References:
+!### References
 !
 !     Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 !
 !     Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 !
-!  This revision:  2009 December 21
-!
+!### History
+!  * IAU SOFA revision: 2009 December 21
+
     subroutine PMAT06 ( date1, date2, rbp )
 
     implicit none
@@ -22153,7 +22290,7 @@
 !  Returned:
 !     RMATP          d(3,3)  precession matrix, J2000.0 -> DATE1+DATE2
 !
-!  Notes:
+!### Notes
 !
 !  1) The ending date DATE1+DATE2 is a Julian Date, apportioned
 !     in any convenient way between the arguments DATE1 and DATE2.
@@ -22191,15 +22328,16 @@
 !     range 1200BC to 3900AD, exceed 100 arcsec outside 4200BC to
 !     5600AD and exceed 1000 arcsec outside 6800BC to 8200AD.
 !
-!  References:
+!### References
 !
 !     Lieske, J.H., 1979, Astron.Astrophys. 73, 282.
 !      equations (6) & (7), p283.
 !
 !     Kaplan, G.H., 1981, USNO circular no. 163, pA2.
 !
-!  This revision:  2009 December 18
-!
+!### History
+!  * IAU SOFA revision: 2009 December 18
+
     subroutine PMAT76 ( date1, date2, rmatp )
 
     implicit none
@@ -22236,8 +22374,9 @@
 !  Returned:
 !     AMB      d(3)      A - B
 !
-!  This revision:  2000 November 25
-!
+!### History
+!  * IAU SOFA revision: 2000 November 25
+
     subroutine PMP ( a, b, amb )
 
     implicit none
@@ -22273,7 +22412,7 @@
 !  Returned:
 !     PCO      d(3)   coordinate direction (BCRS unit vector)
 !
-!  Notes:
+!### Notes
 !
 !  1) The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
 !
@@ -22285,7 +22424,7 @@
 !     changing light time) is applied approximately, using the
 !     direction of the star at the catalog epoch.
 !
-!  References:
+!### References
 !
 !     1984 Astronomical Almanac, pp B39-B41.
 !
@@ -22293,8 +22432,9 @@
 !     the Astronomical Almanac, 3rd ed., University Science Books
 !     (2013), Section 7.2.
 !
-!  This revision:   2017 March 11
-!
+!### History
+!  * IAU SOFA revision:  2017 March 11
+
     subroutine PMPX ( rc, dc, pr, pd, px, rv, pmt, pob, pco )
 
     implicit none
@@ -22394,7 +22534,7 @@
 !                           4 = solution didn't converge (Note 8)
 !                        else = binary logical OR of the above warnings
 !
-!  Notes:
+!### Notes
 !
 !  1) The starting and ending TDB epochs EP1A+EP1B and EP2A+EP2B are
 !     Julian Dates, apportioned in any convenient way between the two
@@ -22453,8 +22593,9 @@
 !     converge within a set number of iterations, 4 is added to the
 !     status.
 !
-!  This revision:   2013 June 6
-!
+!### History
+!  * IAU SOFA revision:  2013 June 6
+
     subroutine PMSAFE ( ra1, dec1, pmr1, pmd1, px1, rv1, &
                         ep1a, ep1b, ep2a, ep2b, &
                         ra2, dec2, pmr2, pmd2, px2, rv2, j )
@@ -22528,12 +22669,13 @@
 !     R        d         modulus
 !     U        d(3)      unit vector
 !
-!  Note:
+!### Note
 !     If P is null, the result is null.  Otherwise the result is
 !     a unit vector.
 !
-!  This revision:  2006 November 13
-!
+!### History
+!  * IAU SOFA revision: 2006 November 13
+
     subroutine PN ( p, r, u )
 
     implicit none
@@ -22582,7 +22724,7 @@
 !     RN          d(3,3)    nutation matrix (Note 7)
 !     RBPN        d(3,3)    GCRS-to-true matrix (Note 8)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -22631,7 +22773,7 @@
 !     equinox of date.  It is the product RN x RBP, applying frame bias,
 !     precession and nutation in that order.
 !
-!  Reference:
+!### Reference
 !
 !     Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
 !     "Expressions for the Celestial Intermediate Pole and Celestial
@@ -22641,8 +22783,9 @@
 !     n.b. The celestial ephemeris origin (CEO) was renamed "celestial
 !          intermediate origin" (CIO) by IAU 2006 Resolution 2.
 !
-!  This revision:  2010 January 18
-!
+!### History
+!  * IAU SOFA revision: 2010 January 18
+
     subroutine PN00 ( date1, date2, dpsi, deps, &
                       epsa, rb, rp, rbp, rn, rbpn )
 
@@ -22699,7 +22842,7 @@
 !     RN          d(3,3)    nutation matrix (Note 7)
 !     RBPN        d(3,3)    GCRS-to-true matrix (Notes 8,9)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -22751,7 +22894,7 @@
 !  9) The X,Y,Z coordinates of the IAU 2000A Celestial Intermediate Pole
 !     are elements (3,1-3) of the matrix RBPN.
 !
-!  Reference:
+!### Reference
 !
 !     Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
 !     "Expressions for the Celestial Intermediate Pole and Celestial
@@ -22761,8 +22904,9 @@
 !     n.b. The celestial ephemeris origin (CEO) was renamed "celestial
 !          intermediate origin" (CIO) by IAU 2006 Resolution 2.
 !
-!  This revision:  2010 January 18
-!
+!### History
+!  * IAU SOFA revision: 2010 January 18
+
     subroutine PN00A ( date1, date2, &
                        dpsi, deps, epsa, rb, rp, rbp, rn, rbpn )
 
@@ -22809,7 +22953,7 @@
 !     RN          d(3,3)    nutation matrix (Note 7)
 !     RBPN        d(3,3)    GCRS-to-true matrix (Notes 8,9)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -22861,7 +23005,7 @@
 !  9) The X,Y,Z coordinates of the IAU 2000B Celestial Intermediate Pole
 !     are elements (3,1-3) of the matrix RBPN.
 !
-!  Reference:
+!### Reference
 !
 !     Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
 !     "Expressions for the Celestial Intermediate Pole and Celestial
@@ -22871,8 +23015,9 @@
 !     n.b. The celestial ephemeris origin (CEO) was renamed "celestial
 !          intermediate origin" (CIO) by IAU 2006 Resolution 2.
 !
-!  This revision:  2010 January 18
-!
+!### History
+!  * IAU SOFA revision: 2010 January 18
+
     subroutine PN00B ( date1, date2, &
                        dpsi, deps, epsa, rb, rp, rbp, rn, rbpn )
 
@@ -22919,7 +23064,7 @@
 !     RN          d(3,3)    nutation matrix (Note 7)
 !     RBPN        d(3,3)    GCRS-to-true matrix (Note 8)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -22968,14 +23113,15 @@
 !  9) The X,Y,Z coordinates of the Celestial Intermediate Pole are
 !     elements (3,1-3) of the matrix RBPN.
 !
-!  References:
+!### References
 !
 !     Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 !
 !     Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 !
-!  This revision:  2013 November 14
-!
+!### History
+!  * IAU SOFA revision: 2013 November 14
+
     subroutine PN06 ( date1, date2, dpsi, deps, &
                       epsa, rb, rp, rbp, rn, rbpn )
 
@@ -23049,7 +23195,7 @@
 !     RN          d(3,3)    nutation matrix (Note 7)
 !     RBPN        d(3,3)    GCRS-to-true matrix (Notes 8,9)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -23097,12 +23243,13 @@
 !  9) The X,Y,Z coordinates of the IAU 2006/2000A Celestial Intermediate
 !     Pole are elements (3,1-3) of the matrix RBPN.
 !
-!  Reference:
+!### Reference
 !
 !     Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 !
-!  This revision:  2009 December 15
-!
+!### History
+!  * IAU SOFA revision: 2009 December 15
+
     subroutine PN06A ( date1, date2, &
                        dpsi, deps, epsa, rb, rp, rbp, rn, rbpn )
 
@@ -23124,7 +23271,7 @@
 
     !  Remaining results.
     call PN06 ( date1, date2, dpsi, deps, &
-                    epsa, rb, rp, rbp, rn, rbpn )
+                epsa, rb, rp, rbp, rn, rbpn )
 
     end subroutine PN06A
 !***********************************************************************
@@ -23142,7 +23289,7 @@
 !  Returned:
 !     RBPN         d(3,3)    classical NPB matrix (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -23171,14 +23318,15 @@
 !  3) A faster, but slightly less accurate result (about 1 mas), can be
 !     obtained by using instead the PNM00B routine.
 !
-!  Reference:
+!### Reference
 !
 !     IAU: Trans. International Astronomical Union, Vol. XXIVB;  Proc.
 !     24th General Assembly, Manchester, UK.  Resolutions B1.3, B1.6.
 !     (2000)
 !
-!  This revision:  2009 December 21
-!
+!### History
+!  * IAU SOFA revision: 2009 December 21
+
     subroutine PNM00A ( date1, date2, rbpn )
 
     implicit none
@@ -23210,7 +23358,7 @@
 !  Returned:
 !     RBPN         d(3,3)    bias-precession-nutation matrix (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -23239,14 +23387,15 @@
 !  3) The present routine is faster, but slightly less accurate (about
 !     1 mas), than the PNM00A routine.
 !
-!  Reference:
+!### Reference
 !
 !     IAU: Trans. International Astronomical Union, Vol. XXIVB;  Proc.
 !     24th General Assembly, Manchester, UK.  Resolutions B1.3, B1.6.
 !     (2000)
 !
-!  This revision:  2009 December 21
-!
+!### History
+!  * IAU SOFA revision: 2009 December 21
+
     subroutine PNM00B ( date1, date2, rbpn )
 
     implicit none
@@ -23278,7 +23427,7 @@
 !  Returned:
 !     RNPB         d(3,3)    bias-precession-nutation matrix (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -23304,12 +23453,13 @@
 !     of date DATE1+DATE2 and the p-vector V(GCRS) is with respect to
 !     the Geocentric Celestial Reference System (IAU, 2000).
 !
-!  Reference:
+!### Reference
 !
 !     Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855.
 !
-!  This revision:  2009 December 21
-!
+!### History
+!  * IAU SOFA revision: 2009 December 21
+
     subroutine PNM06A ( date1, date2, rnpb )
 
     implicit none
@@ -23345,7 +23495,7 @@
 !  Returned:
 !     RMATPN          d(3,3)    combined precession/nutation matrix
 !
-!  Notes:
+!### Notes
 !
 !  1) The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -23372,14 +23522,15 @@
 !     V(J2000) is with respect to the mean equatorial triad of
 !     epoch J2000.0.
 !
-!  Reference:
+!### Reference
 !
 !     Explanatory Supplement to the Astronomical Almanac,
 !     P. Kenneth Seidelmann (ed), University Science Books (1992),
 !     Section 3.3 (p145).
 !
-!  This revision:  2012 September 5
-!
+!### History
+!  * IAU SOFA revision: 2012 September 5
+
     subroutine PNM80 ( date1, date2, rmatpn )
 
     implicit none
@@ -23415,7 +23566,7 @@
 !  Returned:
 !     RPOM     d(3,3)   polar-motion matrix (Note 3)
 !
-!  Notes:
+!### Notes
 !
 !  1) XP and YP are the coordinates (in radians) of the Celestial
 !     Intermediate Pole with respect to the International Terrestrial
@@ -23434,13 +23585,14 @@
 !     that it is the final rotation when computing the pointing
 !     direction to a celestial source.
 !
-!  Reference:
+!### Reference
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
 !
-!  This revision:  2009 December 15
-!
+!### History
+!  * IAU SOFA revision: 2009 December 15
+
     subroutine POM00 ( xp, yp, sp, rpom )
 
     implicit none
@@ -23472,8 +23624,9 @@
 !  Returned:
 !     APB      d(3)      A + B
 !
-!  This revision:  2000 November 25
-!
+!### History
+!  * IAU SOFA revision: 2000 November 25
+
     subroutine PPP ( a, b, apb )
 
     implicit none
@@ -23505,8 +23658,9 @@
 !  Returned:
 !     APSB     d(3)      A + S*B
 !
-!  This revision:  2007 August 18
-!
+!### History
+!  * IAU SOFA revision: 2007 August 18
+
     subroutine PPSP ( a, s, b, apsb )
 
     implicit none
@@ -23538,7 +23692,7 @@
 !  Returned:
 !     DPSIPR,DEPSPR  d   precession corrections (Notes 2,3)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -23574,7 +23728,7 @@
 !     model, formally adopted by the IAU General Assembly in 2000,
 !     namely MHB2000 (Mathews et al. 2002).
 !
-!  References:
+!### References
 !
 !     Lieske, J.H., Lederle, T., Fricke, W. & Morando, B., "Expressions
 !     for the precession quantities based upon the IAU (1976) System of
@@ -23589,8 +23743,9 @@
 !     Wallace, P.T., "Software for Implementing the IAU 2000
 !     Resolutions", in IERS Workshop 5.1 (2002).
 !
-!  This revision:  2009 December 15
-!
+!### History
+!  * IAU SOFA revision: 2009 December 15
+
     subroutine PR00 ( date1, date2, dpsipr, depspr )
 
     implicit none
@@ -23638,7 +23793,7 @@
 !     Z              d   3rd rotation: radians clockwise around z
 !     THETA          d   2nd rotation: radians counterclockwise around y
 !
-!  Notes:
+!### Notes
 !
 !  1) The dates DATE01+DATE02 and DATE11+DATE12 are Julian Dates,
 !     apportioned in any convenient way between the arguments DATEn1 and
@@ -23675,13 +23830,14 @@
 !     is not the same as the order of the corresponding Euler rotations.
 !     The precession matrix is R_3(-z) x R_2(+theta) x R_3(-zeta).
 !
-!  Reference:
+!### Reference
 !
 !     Lieske, J.H., 1979, Astron.Astrophys. 73, 282.
 !      equations (6) & (7), p283.
 !
-!  This revision:  2013 November 19
-!
+!### History
+!  * IAU SOFA revision: 2013 November 19
+
     subroutine PREC76 ( date01, date02, date11, date12, &
                         zeta, z, theta )
 
@@ -23739,8 +23895,9 @@
 !  Returned:
 !     P        d(3)        p-vector
 !
-!  This revision:  2000 November 25
-!
+!### History
+!  * IAU SOFA revision: 2000 November 25
+
     subroutine PV2P ( pv, p )
 
     implicit none
@@ -23770,7 +23927,7 @@
 !     PD       d         rate of change of PHI
 !     RD       d         rate of change of R
 !
-!  Notes:
+!### Notes
 !
 !  1) If the position part of PV is null, THETA, PHI, TD and PD
 !     are indeterminate.  This is handled by extrapolating the
@@ -23783,8 +23940,9 @@
 !  2) If the position is a pole, THETA, TD and PD are indeterminate.
 !     In such cases zeroes are returned for all three.
 !
-!  This revision:  2008 May 10
-!
+!### History
+!  * IAU SOFA revision: 2008 May 10
+
     subroutine PV2S ( pv, theta, phi, r, td, pd, rd )
 
     implicit none
@@ -23869,15 +24027,16 @@
 !  Returned:
 !     ADB      d(2)        A . B (see note)
 !
-!  Note:
+!### Note
 !
 !     If the position and velocity components of the two pv-vectors are
 !     ( Ap, Av ) and ( Bp, Bv ), the result, A . B, is the pair of
 !     numbers ( Ap . Bp , Ap . Bv + Av . Bp ).  The two numbers are the
 !     dot-product of the two p-vectors and its derivative.
 !
-!  This revision:  2006 November 13
-!
+!### History
+!  * IAU SOFA revision: 2006 November 13
+
     subroutine PVDPV ( a, b, adb )
 
     implicit none
@@ -23916,8 +24075,9 @@
 !     R        d         modulus of position component
 !     S        d         modulus of velocity component
 !
-!  This revision:  2000 November 25
-!
+!### History
+!  * IAU SOFA revision: 2000 November 25
+
     subroutine PVM ( pv, r, s )
 
     implicit none
@@ -23948,8 +24108,9 @@
 !  Returned:
 !     AMB      d(3,2)      A - B
 !
-!  This revision:  2006 November 13
-!
+!### History
+!  * IAU SOFA revision: 2006 November 13
+
     subroutine PVMPV ( a, b, amb )
 
     implicit none
@@ -23980,8 +24141,9 @@
 !  Returned:
 !     APB      d(3,2)      A + B
 !
-!  This revision:  2006 November 13
-!
+!### History
+!  * IAU SOFA revision: 2006 November 13
+
     subroutine PVPPV ( a, b, apb )
 
     implicit none
@@ -24020,7 +24182,7 @@
 !                          -1 = superluminal speed (Note 5)
 !                          -2 = null position vector
 !
-!  Notes:
+!### Notes
 !
 !  1) The specified pv-vector is the coordinate direction (and its rate
 !     of change) for the epoch at which the light leaving the star
@@ -24073,12 +24235,13 @@
 !
 !  6) The inverse transformation is performed by the routine STARPV.
 !
-!  Reference:
+!### Reference
 !
 !     Stumpff, P., Astron.Astrophys. 144, 232-240 (1985).
 !
-!  This revision:  2017 March 16
-!
+!### History
+!  * IAU SOFA revision: 2017 March 16
+
     subroutine PVSTAR ( pv, ra, dec, pmr, pmd, px, rv, j )
 
     implicit none
@@ -24186,7 +24349,7 @@
 !  Returned:
 !     PV         d(3,2)  position/velocity vector (m, m/s, CIRS)
 !
-!  Notes:
+!### Notes
 !
 !  1) The terrestrial coordinates are with respect to the WGS84
 !     reference ellipsoid.
@@ -24212,7 +24375,7 @@
 !     could lead to arithmetic exceptions are trapped by the GD2GC
 !     routine, and the result set to zeros.
 !
-!  References:
+!### References
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
@@ -24221,8 +24384,9 @@
 !     the Astronomical Almanac, 3rd ed., University Science Books
 !     (2013), Section 7.4.3.3.
 !
-!  This revision:   2013 June 25
-!
+!### History
+!  * IAU SOFA revision:  2013 June 25
+
     subroutine PVTOB ( elong, phi, hm, xp, yp, sp, theta, pv )
 
     implicit none
@@ -24282,15 +24446,16 @@
 !  Returned:
 !     UPV      d(3,2)      p updated, v unchanged
 !
-!  Notes:
+!### Notes
 !
 !  1) "Update" means "refer the position component of the vector
 !     to a new epoch DT time units from the existing epoch".
 !
 !  2) The time units of DT must match those of the velocity.
 !
-!  This revision:  2003 January 14
-!
+!### History
+!  * IAU SOFA revision: 2003 January 14
+
     subroutine PVU ( dt, pv, upv )
 
     implicit none
@@ -24318,15 +24483,16 @@
 !  Returned:
 !     P        d(3)        p-vector
 !
-!  Notes:
+!### Notes
 !
 !  1) "Update" means "refer the position component of the vector to a
 !     new date DT time units from the existing date".
 !
 !  2) The time units of DT must match those of the velocity.
 !
-!  This revision:  2008 May 8
-!
+!### History
+!  * IAU SOFA revision: 2008 May 8
+
     subroutine PVUP ( dt, pv, p )
 
     implicit none
@@ -24357,15 +24523,16 @@
 !  Returned:
 !     AXB      d(3,2)      A x B
 !
-!  Note:
+!### Note
 !
 !     If the position and velocity components of the two pv-vectors are
 !     ( Ap, Av ) and ( Bp, Bv ), the result, A x B, is the pair of
 !     vectors ( Ap x Bp, Ap x Bv + Av x Bp ).  The two vectors are the
 !     cross-product of the two p-vectors and its derivative.
 !
-!  This revision:  2006 November 13
-!
+!### History
+!  * IAU SOFA revision: 2006 November 13
+
     subroutine PVXPV ( a, b, axb )
 
     implicit none
@@ -24404,8 +24571,9 @@
 !  Returned:
 !     AXB      d(3)      A x B
 !
-!  This revision:  2000 November 25
-!
+!### History
+!  * IAU SOFA revision: 2000 November 25
+
     subroutine PXP ( a, b, axb )
 
     implicit none
@@ -24450,7 +24618,7 @@
 !     REFA     d      tan Z coefficient (radians)
 !     REFB     d      tan^3 Z coefficient (radians)
 !
-!  Notes:
+!### Notes
 !
 !  1) The model balances speed and accuracy to give good results in
 !     applications where performance at low altitudes is not paramount.
@@ -24549,7 +24717,7 @@
 !     e) The formulae for the refraction constants as a function of
 !        n-1 and beta are from Green (1987), Equation (4.31).
 !
-!  References:
+!### References
 !
 !     Crane, R.K., Meeks, M.L. (ed), "Refraction Effects in the Neutral
 !     Atmosphere", Methods of Experimental Physics: Astrophysics 12B,
@@ -24571,8 +24739,9 @@
 !
 !     Stone, Ronald C., P.A.S.P. 108, 1051-1058, 1996.
 !
-!  This revision:  2016 December 20
-!
+!### History
+!  * IAU SOFA revision: 2016 December 20
+
     subroutine REFCO ( phpa, tc, rh, wl, refa, refb )
 
     implicit none
@@ -24638,7 +24807,7 @@
 !  Returned:
 !     W        d(3)      rotation vector (Note 1)
 !
-!  Notes:
+!### Notes
 !
 !  1) A rotation matrix describes a rotation through some angle about
 !     some arbitrary axis called the Euler axis.  The "rotation vector"
@@ -24653,8 +24822,9 @@
 !  3) The reference frame rotates clockwise as seen looking along
 !     the rotation vector from the origin.
 !
-!  This revision:  2015 January 30
-!
+!### History
+!  * IAU SOFA revision: 2015 January 30
+
     subroutine RM2V ( r, w )
 
     implicit none
@@ -24696,7 +24866,7 @@
 !  Returned:
 !     R        d(3,3)    rotation matrix
 !
-!  Notes:
+!### Notes
 !
 !  1) A rotation matrix describes a rotation through some angle about
 !     some arbitrary axis called the Euler axis.  The "rotation vector"
@@ -24708,8 +24878,9 @@
 !  3) The reference frame rotates clockwise as seen looking along the
 !     rotation vector from the origin.
 !
-!  This revision:  2015 January 30
-!
+!### History
+!  * IAU SOFA revision: 2015 January 30
+
     subroutine RV2M ( w, r )
 
     implicit none
@@ -24761,7 +24932,7 @@
 !  Given and returned:
 !     R        d(3,3)    r-matrix, rotated
 !
-!  Notes:
+!### Notes
 !
 !  1) Calling this routine with positive PHI incorporates in the
 !     supplied r-matrix R an additional rotation, about the x-axis,
@@ -24775,8 +24946,9 @@
 !         (                               )
 !         (  0   - sin(PHI)   + cos(PHI)  )
 !
-!  This revision:  2012 April 3
-!
+!### History
+!  * IAU SOFA revision: 2012 April 3
+
     subroutine RX ( phi, r )
 
     implicit none
@@ -24819,8 +24991,9 @@
 !  Returned:
 !     RP       d(3)      R * P
 !
-!  This revision:  2006 November 13
-!
+!### History
+!  * IAU SOFA revision: 2006 November 13
+
     subroutine RXP ( r, p, rp )
 
     implicit none
@@ -24861,8 +25034,9 @@
 !  Returned:
 !     RPV      d(3,2)    R * PV
 !
-!  This revision:  2006 November 13
-!
+!### History
+!  * IAU SOFA revision: 2006 November 13
+
     subroutine RXPV ( r, pv, rpv )
 
     implicit none
@@ -24890,8 +25064,9 @@
 !  Returned:
 !     ATB      d(3,3)    A * B
 !
-!  This revision:  2000 November 25
-!
+!### History
+!  * IAU SOFA revision: 2000 November 25
+
     subroutine RXR ( a, b, atb )
 
     implicit none
@@ -24929,7 +25104,7 @@
 !  Given and returned:
 !     R        d(3,3)    r-matrix, rotated
 !
-!  Notes:
+!### Notes
 !
 !  1) Calling this routine with positive THETA incorporates in the
 !     supplied r-matrix R an additional rotation, about the y-axis,
@@ -24943,8 +25118,9 @@
 !         (                                        )
 !         (  + sin(THETA)     0      + cos(THETA)  )
 !
-!  This revision:  2012 April 3
-!
+!### History
+!  * IAU SOFA revision: 2012 April 3
+
     subroutine RY ( theta, r )
 
     implicit none
@@ -24986,7 +25162,7 @@
 !  Given and returned:
 !     R        d(3,3)    r-matrix, rotated
 !
-!  Notes:
+!### Notes
 !
 !  1) Calling this routine with positive PSI incorporates in the
 !     supplied r-matrix R an additional rotation, about the z-axis,
@@ -25000,8 +25176,9 @@
 !         (                                 )
 !         (       0            0         1  )
 !
-!  This revision:  2012 April 3
-!
+!### History
+!  * IAU SOFA revision: 2012 April 3
+
     subroutine RZ ( psi, r )
 
     implicit none
@@ -25046,7 +25223,7 @@
 !  Returned:
 !     S00        d      the CIO locator s in radians (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -25081,7 +25258,7 @@
 !
 !  4) The model is consistent with the IAU 2000A precession-nutation.
 !
-!  References:
+!### References
 !
 !     Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
 !     "Expressions for the Celestial Intermediate Pole and Celestial
@@ -25094,8 +25271,9 @@
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
 !
-!  This revision:  2010 January 18
-!
+!### History
+!  * IAU SOFA revision: 2010 January 18
+
     real(wp) function S00 ( date1, date2, x, y )
 
     implicit none
@@ -25425,7 +25603,7 @@
 !  Returned:
 !     S00A       d      the CIO locator s in radians (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -25460,7 +25638,7 @@
 !     accuracy, can be obtained via the routine S00B, which uses
 !     instead the IAU 2000B truncated model.
 !
-!  References:
+!### References
 !
 !     Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
 !     "Expressions for the Celestial Intermediate Pole and Celestial
@@ -25473,8 +25651,9 @@
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
 !
-!  This revision:  2010 January 18
-!
+!### History
+!  * IAU SOFA revision: 2010 January 18
+
     real(wp) function S00A ( date1, date2 )
 
     implicit none
@@ -25510,7 +25689,7 @@
 !  Returned:
 !     S00B       d      the CIO locator s in radians (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -25545,7 +25724,7 @@
 !     the full IAU 2000A model, but with no significant increase in
 !     accuracy and at some cost in speed.
 !
-!  References:
+!### References
 !
 !     Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
 !     "Expressions for the Celestial Intermediate Pole and Celestial
@@ -25558,8 +25737,9 @@
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
 !
-!  This revision:  2010 January 18
-!
+!### History
+!  * IAU SOFA revision: 2010 January 18
+
     real(wp) function S00B ( date1, date2 )
 
     implicit none
@@ -25596,7 +25776,7 @@
 !  Returned:
 !     S06        d      the CIO locator s in radians (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -25633,7 +25813,7 @@
 !     al. 2003), adopted by IAU 2006 Resolution 1, 2006, and the
 !     IAU 2000A nutation (with P03 adjustments).
 !
-!  References:
+!### References
 !
 !     Capitaine, N., Wallace, P.T. & Chapront, J., 2003, Astron.
 !     Astrophys. 432, 355
@@ -25641,8 +25821,9 @@
 !     McCarthy, D.D., Petit, G. (eds.) 2004, IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG
 !
-!  This revision:   2009 December 15
-!
+!### History
+!  * IAU SOFA revision:  2009 December 15
+
     real(wp) function S06 ( date1, date2, x, y )
 
     implicit none
@@ -25972,7 +26153,7 @@
 !  Returned:
 !     S06A       d      the CIO locator s in radians (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -26005,7 +26186,7 @@
 !     routine uses the full IAU 2000A nutation model when predicting the
 !     CIP position.
 !
-!  References:
+!### References
 !
 !     Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
 !     "Expressions for the Celestial Intermediate Pole and Celestial
@@ -26022,8 +26203,9 @@
 !
 !     Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 !
-!  This revision:  2010 January 18
-!
+!### History
+!  * IAU SOFA revision: 2010 January 18
+
     real(wp) function S06A ( date1, date2 )
 
     implicit none
@@ -26058,8 +26240,9 @@
 !  Returned:
 !     C        d(3)      direction cosines
 !
-!  This revision:  2000 November 25
-!
+!### History
+!  * IAU SOFA revision: 2000 November 25
+
     subroutine S2C ( theta, phi, c )
 
     implicit none
@@ -26092,8 +26275,9 @@
 !  Returned:
 !     P        d(3)      Cartesian coordinates
 !
-!  This revision:  2006 November 13
-!
+!### History
+!  * IAU SOFA revision: 2006 November 13
+
     subroutine S2P ( theta, phi, r, p )
 
     implicit none
@@ -26128,8 +26312,9 @@
 !  Returned:
 !     PV       d(3,2)    pv-vector
 !
-!  This revision:  2000 November 25
-!
+!### History
+!  * IAU SOFA revision: 2000 November 25
+
     subroutine S2PV ( theta, phi, r, td, pd, rd, pv )
 
     implicit none
@@ -26178,8 +26363,9 @@
 !  Returned:
 !     SPV      d(3,2)    pv-vector: p scaled by S1, v scaled by S2
 !
-!  This revision:  2006 November 13
-!
+!### History
+!  * IAU SOFA revision: 2006 November 13
+
     subroutine S2XPV ( s1, s2, pv, spv )
 
     implicit none
@@ -26208,7 +26394,7 @@
 !  Returned:
 !     S        d         angular separation (radians, always positive)
 !
-!  Notes:
+!### Notes
 !
 !  1) If either vector is null, a zero result is returned.
 !
@@ -26218,8 +26404,9 @@
 !     and dot product, to deliver full accuracy whatever the size of
 !     the angle.
 !
-!  This revision:  2006 November 13
-!
+!### History
+!  * IAU SOFA revision: 2006 November 13
+
     subroutine SEPP ( a, b, s )
 
     implicit none
@@ -26262,8 +26449,9 @@
 !  Returned:
 !     S        d         angular separation (radians)
 !
-!  This revision:  2006 November 13
-!
+!### History
+!  * IAU SOFA revision: 2006 November 13
+
     subroutine SEPS ( al, ap, bl, bp, s )
 
     implicit none
@@ -26299,7 +26487,7 @@
 !  Returned:
 !     SP00       d      the TIO locator s' in radians (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -26326,13 +26514,14 @@
 !     47 microarcseconds per century, which is the approximation
 !     evaluated by the present routine.
 !
-!  Reference:
+!### Reference
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
 !
-!  This revision:  2009 December 15
-!
+!### History
+!  * IAU SOFA revision: 2009 December 15
+
     real(wp) function SP00 ( date1, date2 )
 
     implicit none
@@ -26385,7 +26574,7 @@
 !                           4 = solution didn't converge (Note 8)
 !                        else = binary logical OR of the above warnings
 !
-!  Notes:
+!### Notes
 !
 !  1) The starting and ending TDB epochs EP1A+EP1B and EP2A+EP2B are
 !     Julian Dates, apportioned in any convenient way between the two
@@ -26444,8 +26633,9 @@
 !     converge within a set number of iterations, 4 is added to the
 !     status.
 !
-!  This revision:  2017 March 16
-!
+!### History
+!  * IAU SOFA revision: 2017 March 16
+
     subroutine STARPM ( ra1, dec1, pmr1, pmd1, px1, rv1, &
                         ep1a, ep1b, ep2a, ep2b, &
                         ra2, dec2, pmr2, pmd2, px2, rv2, j )
@@ -26543,7 +26733,7 @@
 !                           4 = solution didn't converge (Note 8)
 !                        else = binary logical OR of the above
 !
-!  Notes:
+!### Notes
 !
 !  1) The star data accepted by this routine are "observables" for an
 !     imaginary observer at the solar-system barycenter.  Proper motion
@@ -26611,12 +26801,13 @@
 !
 !  9) The inverse transformation is performed by the routine PVSTAR.
 !
-!  Reference:
+!### Reference
 !
 !     Stumpff, P., Astron.Astrophys. 144, 232-240 (1985).
 !
-!  This revision:  2017 March 16
-!
+!### History
+!  * IAU SOFA revision: 2017 March 16
+
     subroutine STARPV ( ra, dec, pmr, pmd, px, rv, pv, j )
 
     implicit none
@@ -26757,8 +26948,9 @@
 !  Returned:
 !     SP       d(3)      S * P
 !
-!  This revision:  2000 November 25
-!
+!### History
+!  * IAU SOFA revision: 2000 November 25
+
     subroutine SXP ( s, p, sp )
 
     implicit none
@@ -26789,8 +26981,9 @@
 !  Returned:
 !     SPV      d(3,2)    S * PV
 !
-!  This revision:  2006 November 13
-!
+!### History
+!  * IAU SOFA revision: 2006 November 13
+
     subroutine SXPV ( s, pv, spv )
 
     implicit none
@@ -26818,14 +27011,14 @@
 !     TT1,TT2      d      TT as a 2-part Julian Date
 !     J            i      status:  0 = OK
 !
-!  Note:
+!### Note
 !
 !     TAI1+TAI2 is Julian Date, apportioned in any convenient way
 !     between the two arguments, for example where TAI1 is the Julian
 !     Day Number and TAI2 is the fraction of a day.  The returned
 !     TT1,TT2 follow suit.
 !
-!  References:
+!### References
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
@@ -26833,8 +27026,9 @@
 !     Explanatory Supplement to the Astronomical Almanac,
 !     P. Kenneth Seidelmann (ed), University Science Books (1992)
 !
-!  This revision:  2019 June 20
-!
+!### History
+!  * IAU SOFA revision: 2019 June 20
+
     subroutine TAITT ( tai1, tai2, tt1, tt2, j )
 
     implicit none
@@ -26878,7 +27072,7 @@
 !     UT11,UT12    d      UT1 as a 2-part Julian Date
 !     J            i      status:  0 = OK
 !
-!  Notes:
+!### Notes
 !
 !  1) TAI1+TAI2 is Julian Date, apportioned in any convenient way
 !     between the two arguments, for example where TAI1 is the Julian
@@ -26888,13 +27082,14 @@
 !  2) The argument DTA, i.e. UT1-TAI, is an observed quantity, and is
 !     available from IERS tabulations.
 !
-!  Reference:
+!### Reference
 !
 !     Explanatory Supplement to the Astronomical Almanac,
 !     P. Kenneth Seidelmann (ed), University Science Books (1992)
 !
-!  This revision:  2019 June 20
-!
+!### History
+!  * IAU SOFA revision: 2019 June 20
+
     subroutine TAIUT1 ( tai1, tai2, dta, ut11, ut12, j )
 
     implicit none
@@ -26940,7 +27135,7 @@
 !                                  0 = OK
 !                                 -1 = unacceptable date
 !
-!  Notes:
+!### Notes
 !
 !  1) TAI1+TAI2 is Julian Date, apportioned in any convenient way
 !     between the two arguments, for example where TAI1 is the Julian
@@ -26965,7 +27160,7 @@
 !     introduction of the time scale or that are too far in the future
 !     to be trusted.  See DAT for further details.
 !
-!  References:
+!### References
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
@@ -26973,8 +27168,9 @@
 !     Explanatory Supplement to the Astronomical Almanac,
 !     P. Kenneth Seidelmann (ed), University Science Books (1992)
 !
-!  This revision:  2019 June 20
-!
+!### History
+!  * IAU SOFA revision: 2019 June 20
+
     subroutine TAIUTC ( tai1, tai2, utc1, utc2, j )
 
     implicit none
@@ -27048,7 +27244,7 @@
 !     TDB1,TDB2    d      TDB as a 2-part Julian Date
 !     J            i      status:  0 = OK
 !
-!  Notes:
+!### Notes
 !
 !  1) TCB1+TCB2 is Julian Date, apportioned in any convenient way
 !     between the two arguments, for example where TCB1 is the Julian
@@ -27073,12 +27269,13 @@
 !  3) TDB is essentially the same as Teph, the time argument for the
 !     JPL solar system ephemerides.
 !
-!  Reference:
+!### Reference
 !
 !     IAU 2006 Resolution B3
 !
-!  This revision:  2019 June 20
-!
+!### History
+!  * IAU SOFA revision: 2019 June 20
+
     subroutine TCBTDB ( tcb1, tcb2, tdb1, tdb2, j )
 
     implicit none
@@ -27130,22 +27327,23 @@
 !     TT1,TT2      d      TT as a 2-part Julian Date
 !     J            i      status:  0 = OK
 !
-!  Note:
+!### Note
 !
 !     TCG1+TCG2 is Julian Date, apportioned in any convenient way
 !     between the two arguments, for example where TCG1 is the Julian
 !     Day Number and TCG2 is the fraction of a day.  The returned
 !     TT1,TT2 follow suit.
 !
-!  References:
+!### References
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),.
 !     IERS Technical Note No. 32, BKG (2004)
 !
 !     IAU 2000 Resolution B1.9
 !
-!  This revision:  2019 June 20
-!
+!### History
+!  * IAU SOFA revision: 2019 June 20
+
     subroutine TCGTT ( tcg1, tcg2, tt1, tt2, j )
 
     implicit none
@@ -27194,7 +27392,7 @@
 !     TCB1,TCB2    d      TCB as a 2-part Julian Date
 !     J            i      status:  0 = OK
 !
-!  Notes:
+!### Notes
 !
 !  1) TDB1+TDB2 is Julian Date, apportioned in any convenient way
 !     between the two arguments, for example where TDB1 is the Julian
@@ -27219,12 +27417,13 @@
 !  3) TDB is essentially the same as Teph, the time argument for the
 !     JPL solar system ephemerides.
 !
-!  Reference:
+!### Reference
 !
 !     IAU 2006 Resolution B3
 !
-!  This revision:  2019 June 20
-!
+!### History
+!  * IAU SOFA revision: 2019 June 20
+
 
     subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
 
@@ -27283,7 +27482,7 @@
 !     TT1,TT2      d      TT as a 2-part Julian Date
 !     J            i      status:  0 = OK
 !
-!  Notes:
+!### Notes
 !
 !  1) TDB1+TDB2 is Julian Date, apportioned in any convenient way
 !     between the two arguments, for example where TDB1 is the Julian
@@ -27301,15 +27500,16 @@
 !  3) TDB is essentially the same as Teph, the time argument for the
 !     JPL solar system ephemerides.
 !
-!  References:
+!### References
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
 !
 !     IAU 2006 Resolution 3
 !
-!  This revision:  2019 June 20
-!
+!### History
+!  * IAU SOFA revision: 2019 June 20
+
     subroutine TDBTT ( tdb1, tdb2, dtr, tt1, tt2, j )
 
     implicit none
@@ -27358,7 +27558,7 @@
 !                                2 = IMIN outside range 0-59
 !                                3 = SEC outside range 0-59.999...
 !
-!  Notes:
+!### Notes
 !
 !  1)  If the s argument is a string, only the leftmost character is
 !      used and no warning status is provided.
@@ -27371,8 +27571,9 @@
 !  4)  If there are multiple errors, the status value reflects only the
 !      first, the smallest taking precedence.
 !
-!  This revision:  2013 December 2
-!
+!### History
+!  * IAU SOFA revision: 2013 December 2
+
     subroutine TF2A ( s, ihour, imin, sec, rad, j )
 
     implicit none
@@ -27427,7 +27628,7 @@
 !                                2 = IMIN outside range 0-59
 !                                3 = SEC outside range 0-59.999...
 !
-!  Notes:
+!### Notes
 !
 !  1)  If the s argument is a string, only the leftmost character is
 !      used and no warning status is provided.
@@ -27440,8 +27641,9 @@
 !  4)  If there are multiple errors, the status value reflects only the
 !      first, the smallest taking precedence.
 !
-!  This revision:  2013 December 2
-!
+!### History
+!  * IAU SOFA revision: 2013 December 2
+
     subroutine TF2D ( s, ihour, imin, sec, days, j )
 
     implicit none
@@ -27497,7 +27699,7 @@
 !                         1 = only the first solution is useful (Note 6)
 !                         2 = both solutions are useful (Note 6)
 !
-!  Notes:
+!### Notes
 !
 !  1) The tangent plane projection is also called the "gnomonic
 !     projection" and the "central projection".
@@ -27543,7 +27745,7 @@
 !         TPSTS      TPSTV       star
 !       > TPORS <    TPORV      origin
 !
-!  References:
+!### References
 !
 !     Calabretta M.R. & Greisen, E.W., 2002, "Representations of
 !     celestial coordinates in FITS", Astron.Astrophys. 395, 1077
@@ -27551,8 +27753,9 @@
 !     Green, R.M., "Spherical Astronomy", Cambridge University Press,
 !     1987, Chapter 13.
 !
-!  This revision:   2018 January 2
-!
+!### History
+!  * IAU SOFA revision:  2018 January 2
+
     subroutine TPORS ( xi, eta, a, b, a01, b01, a02, b02, n )
 
     implicit none
@@ -27620,7 +27823,7 @@
 !                         1 = only the first solution is useful (Note 5)
 !                         2 = both solutions are useful (Note 5)
 !
-!  Notes:
+!### Notes
 !
 !  1) The tangent plane projection is also called the "gnomonic
 !     projection" and the "central projection".
@@ -27664,7 +27867,7 @@
 !         TPSTS      TPSTV       star
 !         TPORS    > TPORV <    origin
 !
-!  References:
+!### References
 !
 !     Calabretta M.R. & Greisen, E.W., 2002, "Representations of
 !     celestial coordinates in FITS", Astron.Astrophys. 395, 1077
@@ -27672,8 +27875,9 @@
 !     Green, R.M., "Spherical Astronomy", Cambridge University Press,
 !     1987, Chapter 13.
 !
-!  This revision:   2018 January 2
-!
+!### History
+!  * IAU SOFA revision:  2018 January 2
+
     subroutine TPORV ( xi, eta, v, v01, v02, n )
 
     implicit none
@@ -27755,7 +27959,7 @@
 !       > TPSTS <    TPSTV       star
 !         TPORS      TPORV      origin
 !
-!  References:
+!### References
 !
 !     Calabretta M.R. & Greisen, E.W., 2002, "Representations of
 !     celestial coordinates in FITS", Astron.Astrophys. 395, 1077
@@ -27763,8 +27967,9 @@
 !     Green, R.M., "Spherical Astronomy", Cambridge University Press,
 !     1987, Chapter 13.
 !
-!  This revision:   2018 January 2
-!
+!### History
+!  * IAU SOFA revision:  2018 January 2
+
     subroutine TPSTS ( xi, eta, a0, b0, a, b )
 
     implicit none
@@ -27835,7 +28040,7 @@
 !         TPSTS    > TPSTV <     star
 !         TPORS      TPORV      origin
 !
-!  References:
+!### References
 !
 !     Calabretta M.R. & Greisen, E.W., 2002, "Representations of
 !     celestial coordinates in FITS", Astron.Astrophys. 395, 1077
@@ -27843,8 +28048,9 @@
 !     Green, R.M., "Spherical Astronomy", Cambridge University Press,
 !     1987, Chapter 13.
 !
-!  This revision:   2018 January 2
-!
+!### History
+!  * IAU SOFA revision:  2018 January 2
+
     subroutine TPSTV ( xi, eta, v0, v )
 
     implicit none
@@ -27898,7 +28104,7 @@
 !                                2 = antistar on tangent plane
 !                                3 = antistar too far from axis
 !
-!  Notes:
+!### Notes
 !
 !  1) The tangent plane projection is also called the "gnomonic
 !     projection" and the "central projection".
@@ -27920,7 +28126,7 @@
 !         TPSTS      TPSTV        star
 !         TPORS      TPORV       origin
 !
-!  References:
+!### References
 !
 !     Calabretta M.R. & Greisen, E.W., 2002, "Representations of
 !     celestial coordinates in FITS", Astron.Astrophys. 395, 1077
@@ -27928,8 +28134,9 @@
 !     Green, R.M., "Spherical Astronomy", Cambridge University Press,
 !     1987, Chapter 13.
 !
-!  This revision:   2018 January 2
-!
+!### History
+!  * IAU SOFA revision:  2018 January 2
+
     subroutine TPXES ( a, b, a0, b0, xi, eta, j )
 
     implicit none
@@ -27997,7 +28204,7 @@
 !                                  2 = antistar on tangent plane
 !                                  3 = antistar too far from axis
 !
-!  Notes:
+!### Notes
 !
 !  1) The tangent plane projection is also called the "gnomonic
 !     projection" and the "central projection".
@@ -28030,7 +28237,7 @@
 !         TPSTS      TPSTV       star
 !         TPORS      TPORV      origin
 !
-!  References:
+!### References
 !
 !     Calabretta M.R. & Greisen, E.W., 2002, "Representations of
 !     celestial coordinates in FITS", Astron.Astrophys. 395, 1077
@@ -28038,8 +28245,9 @@
 !     Green, R.M., "Spherical Astronomy", Cambridge University Press,
 !     1987, Chapter 13.
 !
-!  This revision:   2018 January 2
-!
+!### History
+!  * IAU SOFA revision:  2018 January 2
+
     subroutine TPXEV ( v, v0, xi, eta, j )
 
     implicit none
@@ -28107,8 +28315,9 @@
 !  Returned:
 !     RT       d(3,3)    transpose
 !
-!  This revision:  2000 November 25
-!
+!### History
+!  * IAU SOFA revision: 2000 November 25
+
     subroutine TR ( r, rt )
 
     implicit none
@@ -28142,8 +28351,9 @@
 !  Returned:
 !     TRP      d(3)      R * P
 !
-!  This revision:  2009 July 11
-!
+!### History
+!  * IAU SOFA revision: 2009 July 11
+
     subroutine TRXP ( r, p, trp )
 
     implicit none
@@ -28176,8 +28386,9 @@
 !  Returned:
 !     TRPV     d(3,2)    R * PV
 !
-!  This revision:  2009 July 11
-!
+!### History
+!  * IAU SOFA revision: 2009 July 11
+
     subroutine TRXPV ( r, pv, trpv )
 
     implicit none
@@ -28211,14 +28422,14 @@
 !     TAI1,TAI2    d      TAI as a 2-part Julian Date
 !     J            i      status:  0 = OK
 !
-!  Note:
+!### Note
 !
 !     TT1+TT2 is Julian Date, apportioned in any convenient way between
 !     the two arguments, for example where TT1 is the Julian Day Number
 !     and TT2 is the fraction of a day.  The returned TAI1,TAI2 follow
 !     suit.
 !
-!  References:
+!### References
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
@@ -28226,8 +28437,9 @@
 !     Explanatory Supplement to the Astronomical Almanac,
 !     P. Kenneth Seidelmann (ed), University Science Books (1992)
 !
-!  This revision:  2019 June 20
-!
+!### History
+!  * IAU SOFA revision: 2019 June 20
+
     subroutine TTTAI ( tt1, tt2, tai1, tai2, j )
 
     implicit none
@@ -28270,22 +28482,23 @@
 !     TCG1,TCG2    d      TCG as a 2-part Julian Date
 !     J            i      status:  0 = OK
 !
-!  Note:
+!### Note
 !
 !     TT1+TT2 is Julian Date, apportioned in any convenient way between
 !     the two arguments, for example where TT1 is the Julian Day Number
 !     and TT2 is the fraction of a day.  The returned TCG1,TCG2 follow
 !     suit.
 !
-!  References:
+!### References
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
 !
 !     IAU 2000 Resolution B1.9
 !
-!  This revision:  2019 June 20
-!
+!### History
+!  * IAU SOFA revision: 2019 June 20
+
     subroutine TTTCG ( tt1, tt2, tcg1, tcg2, j )
 
     implicit none
@@ -28338,7 +28551,7 @@
 !     TDB1,TDB2    d      TDB as a 2-part Julian Date
 !     J            i      status:  0 = OK
 !
-!  Notes:
+!### Notes
 !
 !  1) TT1+TT2 is Julian Date, apportioned in any convenient way between
 !     the two arguments, for example where TT1 is the Julian Day Number
@@ -28356,15 +28569,16 @@
 !  3) TDB is essentially the same as Teph, the time argument for the JPL
 !     solar system ephemerides.
 !
-!  References:
+!### References
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
 !
 !     IAU 2006 Resolution 3
 !
-!  This revision:  2019 June 20
-!
+!### History
+!  * IAU SOFA revision: 2019 June 20
+
     subroutine TTTDB ( tt1, tt2, dtr, tdb1, tdb2, j )
 
     implicit none
@@ -28409,7 +28623,7 @@
 !     UT11,UT12    d      UT1 as a 2-part Julian Date
 !     J            i      status:  0 = OK
 !
-!  Notes:
+!### Notes
 !
 !  1) TT1+TT2 is Julian Date, apportioned in any convenient way between
 !     the two arguments, for example where TT1 is the Julian Day Number
@@ -28418,13 +28632,14 @@
 !
 !  2) The argument DT is classical Delta T.
 !
-!  Reference:
+!### Reference
 !
 !     Explanatory Supplement to the Astronomical Almanac,
 !     P. Kenneth Seidelmann (ed), University Science Books (1992)
 !
-!  This revision:  2019 June 20
-!
+!### History
+!  * IAU SOFA revision: 2019 June 20
+
     subroutine TTUT1 ( tt1, tt2, dt, ut11, ut12, j )
 
     implicit none
@@ -28469,7 +28684,7 @@
 !     TAI1,TAI2    d      TAI as a 2-part Julian Date
 !     J            i      status:  0 = OK
 !
-!  Notes:
+!### Notes
 !
 !  1) UT11+UT12 is Julian Date, apportioned in any convenient way
 !     between the two arguments, for example where UT11 is the Julian
@@ -28479,13 +28694,14 @@
 !  2) The argument DTA, i.e. UT1-TAI, is an observed quantity, and is
 !     available from IERS tabulations.
 !
-!  Reference:
+!### Reference
 !
 !     Explanatory Supplement to the Astronomical Almanac,
 !     P. Kenneth Seidelmann (ed), University Science Books (1992)
 !
-!  This revision:  2019 June 20
-!
+!### History
+!  * IAU SOFA revision: 2019 June 20
+
     subroutine UT1TAI ( ut11, ut12, dta, tai1, tai2, j )
 
     implicit none
@@ -28530,7 +28746,7 @@
 !     TT1,TT2      d      TT as a 2-part Julian Date
 !     J            i      status:  0 = OK
 !
-!  Notes:
+!### Notes
 !
 !  1) UT11+UT12 is Julian Date, apportioned in any convenient way
 !     between the two arguments, for example where UT11 is the Julian
@@ -28539,13 +28755,14 @@
 !
 !  2) The argument DT is classical Delta T.
 !
-!  Reference:
+!### Reference
 !
 !     Explanatory Supplement to the Astronomical Almanac,
 !     P. Kenneth Seidelmann (ed), University Science Books (1992)
 !
-!  This revision:  2019 June 20
-!
+!### History
+!  * IAU SOFA revision: 2019 June 20
+
     subroutine UT1TT ( ut11, ut12, dt, tt1, tt2, j )
 
     implicit none
@@ -28592,7 +28809,7 @@
 !                                  0 = OK
 !                                 -1 = unacceptable date
 !
-!  Notes:
+!### Notes
 !
 !  1) UT11+UT12 is Julian Date, apportioned in any convenient way
 !     between the two arguments, for example where UT11 is the Julian
@@ -28619,7 +28836,7 @@
 !     introduction of the time scale or that are too far in the future
 !     to be trusted.  See DAT for further details.
 !
-!  References:
+!### References
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
@@ -28627,8 +28844,9 @@
 !     Explanatory Supplement to the Astronomical Almanac,
 !     P. Kenneth Seidelmann (ed), University Science Books (1992)
 !
-!  This revision:  2019 June 20
-!
+!### History
+!  * IAU SOFA revision: 2019 June 20
+
     subroutine UT1UTC ( ut11, ut12, dut1, utc1, utc2, j )
 
     implicit none
@@ -28737,7 +28955,7 @@
 !                                  0 = OK
 !                                 -1 = unacceptable date
 !
-!  Notes:
+!### Notes
 !
 !  1) UTC1+UTC2 is quasi Julian Date (see Note 2), apportioned in any
 !     convenient way between the two arguments, for example where UTC1
@@ -28762,7 +28980,7 @@
 !  5) The returned TAI1,TAI2 are such that their sum is the TAI Julian
 !     Date.
 !
-!  References:
+!### References
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
@@ -28770,8 +28988,9 @@
 !     Explanatory Supplement to the Astronomical Almanac,
 !     P. Kenneth Seidelmann (ed), University Science Books (1992)
 !
-!  This revision:  2019 June 20
-!
+!### History
+!  * IAU SOFA revision: 2019 June 20
+
     subroutine UTCTAI ( utc1, utc2, tai1, tai2, j )
 
     implicit none
@@ -28870,7 +29089,7 @@
 !                                  0 = OK
 !                                 -1 = unacceptable date
 !
-!  Notes:
+!### Notes
 !
 !  1) UTC1+UTC2 is quasi Julian Date (see Note 2), apportioned in any
 !     convenient way between the two arguments, for example where UTC1
@@ -28897,7 +29116,7 @@
 !  6) The returned UT11,UT12 are such that their sum is the UT1 Julian
 !     Date.
 !
-!  References:
+!### References
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
@@ -28905,8 +29124,9 @@
 !     Explanatory Supplement to the Astronomical Almanac,
 !     P. Kenneth Seidelmann (ed), University Science Books (1992)
 !
-!  This revision:  2013 August 12
-!
+!### History
+!  * IAU SOFA revision: 2013 August 12
+
 !  * 11/21/2019: for astro_module, renamed the local variable
 !    'dat' to 'd' so as not to conflict with the subroutine DAT.
 !
@@ -28965,7 +29185,7 @@
 !  Returned:
 !     X,Y            d       CIP X,Y coordinates (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -29000,7 +29220,7 @@
 !     models.  However, it would be unwise to mix the two methods
 !     (angles-based and series-based) in a single application.
 !
-!  References:
+!### References
 !
 !     Capitaine, N., Wallace, P.T. & Chapront, J., 2003,
 !     Astron.Astrophys., 412, 567
@@ -29018,8 +29238,9 @@
 !
 !     Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 !
-!  This revision:  2013 December 2
-!
+!### History
+!  * IAU SOFA revision: 2013 December 2
+
     subroutine XY06 ( date1, date2, x, y )
 
     implicit none
@@ -31473,7 +31694,7 @@
 !     X,Y           d    Celestial Intermediate Pole (Note 2)
 !     S             d    the CIO locator s (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -31503,13 +31724,14 @@
 !  4) A faster, but slightly less accurate result (about 1 mas for X,Y),
 !     can be obtained by using instead the XYS00B routine.
 !
-!  Reference:
+!### Reference
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
 !
-!  This revision:  2006 November 13
-!
+!### History
+!  * IAU SOFA revision: 2006 November 13
+
     subroutine XYS00A ( date1, date2, x, y, s )
 
     implicit none
@@ -31549,7 +31771,7 @@
 !     X,Y           d    Celestial Intermediate Pole (Note 2)
 !     S             d    the CIO locator s (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -31579,13 +31801,14 @@
 !  4) The present routine is faster, but slightly less accurate (about
 !     1 mas in X,Y), than the XYS00A routine.
 !
-!  Reference:
+!### Reference
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
 !     IERS Technical Note No. 32, BKG (2004)
 !
-!  This revision:  2006 November 13
-!
+!### History
+!  * IAU SOFA revision: 2006 November 13
+
     subroutine XYS00B ( date1, date2, x, y, s )
 
     implicit none
@@ -31625,7 +31848,7 @@
 !     X,Y           d    Celestial Intermediate Pole (Note 2)
 !     S             d    the CIO locator s (Note 2)
 !
-!  Notes:
+!### Notes
 !
 !  1) The TT date DATE1+DATE2 is a Julian Date, apportioned in any
 !     convenient way between the two arguments.  For example,
@@ -31655,14 +31878,15 @@
 !  4) Series-based solutions for generating X and Y are also available:
 !     see Capitaine & Wallace (2006) and XY06.
 !
-!  References:
+!### References
 !
 !     Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 !
 !     Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 !
-!  This revision:  2013 May 14
-!
+!### History
+!  * IAU SOFA revision: 2013 May 14
+
     subroutine XYS06A ( date1, date2, x, y, s )
 
     implicit none
@@ -31696,8 +31920,9 @@
 !  Returned:
 !     P        d(3)      p-vector
 !
-!  This revision:  2000 November 25
-!
+!### History
+!  * IAU SOFA revision: 2000 November 25
+
     subroutine ZP ( p )
 
     implicit none
@@ -31722,8 +31947,9 @@
 !  Returned:
 !     PV       d(3,2)      pv-vector
 !
-!  This revision:  2006 November 13
-!
+!### History
+!  * IAU SOFA revision: 2006 November 13
+
     subroutine ZPV ( pv )
 
     implicit none
@@ -31748,8 +31974,9 @@
 !  Returned:
 !     R        d(3,3)    r-matrix
 !
-!  This revision:  2012 April 3
-!
+!### History
+!  * IAU SOFA revision: 2012 April 3
+
     subroutine ZR ( r )
 
     implicit none
