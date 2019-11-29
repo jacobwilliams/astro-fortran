@@ -153,9 +153,6 @@
 !     SIGN      c        '+' or '-'
 !     IDMSF     i(4)     degrees, arcminutes, arcseconds, fraction
 !
-!  Called:
-!     D2TF     decompose days to hms
-!
 !  Notes:
 !
 !  1) NDP is interpreted as follows:
@@ -221,9 +218,6 @@
 !  Returned:
 !     SIGN      c        '+' or '-'
 !     IHMSF     i(4)     hours, minutes, seconds, fraction
-!
-!  Called:
-!     D2TF     decompose days to hms
 !
 !  Notes:
 !
@@ -315,9 +309,6 @@
 !
 !     Klioner, Sergei A., "A practical relativistic model for micro-
 !     arcsecond astrometry in space", Astr. J. 125, 1580-1597 (2003).
-!
-!  Called:
-!     PDP      scalar product of two p-vectors
 !
 !  This revision:   2013 August 31
 !
@@ -671,10 +662,6 @@
 !  4) The context array ASTROM produced by this routine is used by
 !     ATCIQ* and ATICQ*.
 !
-!  Called:
-!     ZPV      zero pv-vector
-!     APCS     astrometry parameters, ICRS-GCRS, space observer
-!
 !  This revision:   2017 March 12
 !
     subroutine APCG ( date1, date2, ebpv, ehp, astrom )
@@ -795,10 +782,6 @@
 !
 !  5) The context array ASTROM produced by this routine is used by
 !     ATCIQ* and ATICQ*.
-!
-!  Called:
-!     EPV00    Earth position and velocity
-!     APCG     astrometry parameters, ICRS-GCRS, geocenter
 !
 !  This revision:   2017 March 12
 !
@@ -925,10 +908,6 @@
 !  5) The context array ASTROM produced by this routine is used by
 !     ATCIQ* and ATICQ*.
 !
-!  Called:
-!     APCG     astrometry parameters, ICRS-GCRS, geocenter
-!     C2IXYS   celestial-to-intermediate matrix, given X,Y and s
-!
 !  This revision:   2017 March 12
 !
     subroutine APCI ( date1, date2, ebpv, ehp, x, y, s, astrom )
@@ -1051,14 +1030,6 @@
 !
 !  5) The context array ASTROM produced by this routine is used by
 !     ATCIQ* and ATICQ*.
-!
-!  Called:
-!     EPV00    Earth position and velocity
-!     PNM06A   classical NPB matrix, IAU 2006/2000A
-!     BPN2XY   extract CIP X,Y coordinates from NPB matrix
-!     S06      the CIO locator s, given X,Y, IAU 2006
-!     APCI     astrometry parameters, ICRS-CIRS
-!     EORS     equation of the origins, given NPB matrix and s
 !
 !  This revision:   2017 March 12
 !
@@ -1230,14 +1201,6 @@
 !
 !  9) The context array ASTROM produced by this routine is used by
 !     ATIOQ, ATOIQ, ATCIQ*, and ATICQ*.
-!
-!  Called:
-!     APER     astrometry parameters: update ERA
-!     C2IXYS   celestial-to-intermediate matrix, given X,Y and s
-!     PVTOB    position/velocity of terrestrial station
-!     TRXPV    product of transpose of r-matrix and pv-vector
-!     APCS     astrometry parameters, ICRS-GCRS, space observer
-!     CR       copy r-matrix
 !
 !  This revision:   2017 March 12
 !
@@ -1460,20 +1423,6 @@
 !  11) The context array ASTROM produced by this routine is used by
 !      ATIOQ, ATOIQ, ATCIQ* and ATICQ*.
 !
-!  Called:
-!     UTCTAI   UTC to TAI
-!     TAITT    TAI to TT
-!     UTCUT1   UTC to UT1
-!     EPV00    Earth position and velocity
-!     PNM06A   classical NPB matrix, IAU 2006/2000A
-!     BPN2XY   extract CIP X,Y coordinates from NPB matrix
-!     S06      the CIO locator s, given X,Y, IAU 2006
-!     ERA00    Earth rotation angle, IAU 2000
-!     SP00     the TIO locator s', IERS 2000
-!     REFCO    refraction constants for given ambient conditions
-!     APCO     astrometry parameters, ICRS-observed
-!     EORS     equation of the origins, given NPB matrix and s
-!
 !  This revision:   2013 December 5
 !
     subroutine APCO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
@@ -1661,12 +1610,6 @@
 !  6) The context array ASTROM produced by this routine is used by
 !     ATCIQ* and ATICQ*.
 !
-!  Called:
-!     CP       copy p-vector
-!     PM       modulus of p-vector
-!     PN       decompose p-vector into modulus and direction
-!     IR       initialize r-matrix to identity
-!
 !  This revision:   2017 March 16
 !
     subroutine APCS ( date1, date2, pv, ebpv, ehp, astrom )
@@ -1831,10 +1774,6 @@
 !
 !  6) The context array ASTROM produced by this routine is used by
 !     ATCIQ* and ATICQ*.
-!
-!  Called:
-!     EPV00    Earth position and velocity
-!     APCS     astrometry parameters, ICRS-GCRS, space observer
 !
 !  This revision:   2017 March 12
 !
@@ -2062,10 +2001,6 @@
 !     aberration and parallax (unless subsumed into the ICRS <-> GCRS
 !     transformation), and atmospheric refraction.
 !
-!  Called:
-!     APER     astrometry parameters: update ERA
-!     ERA00    Earth rotation angle, IAU 2000
-!
 !  This revision:   2017 March 12
 !
     subroutine APER13 ( ut11, ut12, astrom )
@@ -2184,10 +2119,6 @@
 !
 !  8) The context array ASTROM produced by this routine is used by
 !     ATIOQ and ATOIQ.
-!
-!  Called:
-!     PVTOB    position/velocity of terrestrial station
-!     APER     astrometry parameters: update ERA
 !
 !  This revision:   2013 September 25
 !
@@ -2384,15 +2315,6 @@
 !  11) The context array ASTROM produced by this routine is used by
 !      ATIOQ and ATOIQ.
 !
-!  Called:
-!     UTCTAI   UTC to TAI
-!     TAITT    TAI to TT
-!     UTCUT1   UTC to UT1
-!     SP00     the TIO locator s', IERS 2000
-!     ERA00    Earth rotation angle, IAU 2000
-!     REFCO    refraction constants for given ambient conditions
-!     APIO     astrometry parameters, CIRS-observed
-!
 !  This revision:   2013 September 25
 !
     subroutine APIO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
@@ -2517,10 +2439,6 @@
 !     RA = RI - EO. (The ANP routine can then be applied, as
 !     required, to keep the result in the conventional 0-2pi range.)
 !
-!  Called:
-!     APCI13   astrometry parameters, ICRS-CIRS, 2013
-!     ATCIQ    quick ICRS to CIRS
-!
 !  This revision:   2017 March 12
 !
     subroutine ATCI13 ( rc, dc, pr, pd, px, rv, date1, date2, &
@@ -2603,14 +2521,6 @@
 !     preliminary call to PMSAFE before use.
 !
 !  3) The proper motion in RA is dRA/dt rather than cos(Dec)*dRA/dt.
-!
-!  Called:
-!     PMPX     proper motion and parallax
-!     LDSUN    light deflection by the Sun
-!     AB       stellar aberration
-!     RXP      product of r-matrix and pv-vector
-!     C2S      p-vector to spherical
-!     ANP      normalize angle into range 0 to 2pi
 !
 !  This revision:   2013 August 25
 !
@@ -2739,14 +2649,6 @@
 !     velocity vectors must be right, and the deflection limiter
 !     greater than zero.
 !
-!  Called:
-!     PMPX     proper motion and parallax
-!     LDN      light deflection by n bodies
-!     AB       stellar aberration
-!     RXP      product of r-matrix and pv-vector
-!     C2S      p-vector to spherical
-!     ANP      normalize angle into range 0 to 2pi
-!
 !  This revision:   2013 September 30
 !
     subroutine ATCIQN ( rc, dc, pr, pd, px, rv, astrom, n, b, &
@@ -2838,14 +2740,6 @@
 !
 !     Klioner, Sergei A., "A practical relativistic model for micro-
 !     arcsecond astrometry in space", Astr. J. 125, 1580-1597 (2003).
-!
-!  Called:
-!     S2C      spherical coordinates to unit vector
-!     LDSUN    light deflection due to Sun
-!     AB       stellar aberration
-!     RXP      product of r-matrix and p-vector
-!     C2S      p-vector to spherical
-!     ANP      normalize angle into range +/- pi
 !
 !  This revision:   2013 August 31
 !
@@ -3013,11 +2907,6 @@
 !      values of the input parameters are accepted and processed in
 !      accordance with the models used.
 !
-!  Called:
-!     APCO13   astrometry parameters, ICRS-observed, 2013
-!     ATCIQ    quick ICRS to CIRS
-!     ATIOQ    quick CIRS to observed
-!
 !  This revision:   2016 February 2
 !
     subroutine ATCO13 ( rc, dc, pr, pd, px, rv, &
@@ -3140,10 +3029,6 @@
 !     RA = RI - EO.  (The ANP routine can then be applied, as
 !     required, to keep the result in the conventional 0-2pi range.)
 !
-!  Called:
-!     APCI13   astrometry parameters, ICRS-CIRS, 2013
-!     ATICQ    quick CIRS to ICRS astrometric
-!
 !  This revision:   2017 March 12
 !
     subroutine ATIC13 ( ri, di, date1, date2, rc, dc, eo )
@@ -3216,15 +3101,6 @@
 !     ATICQ) and ATCI13 (or ATCIQ) are accurate inverses;
 !     even at the edge of the Sun's disk the discrepancy is only about
 !     1 nanoarcsecond.
-!
-!  Called:
-!     S2C      spherical coordinates to unit vector
-!     TRXP     product of transpose of r-matrix and p-vector
-!     ZP       zero p-vector
-!     AB       stellar aberration
-!     LDSUN    light deflection by the Sun
-!     C2S      p-vector to spherical
-!     ANP      normalize angle into range +/- pi
 !
 !  This revision:   2013 August 3
 !
@@ -3394,15 +3270,6 @@
 !     omitted.  The supplied masses must be greater than zero, the
 !     position and velocity vectors must be right, and the deflection
 !     limiter greater than zero.
-!
-!  Called:
-!     S2C      spherical coordinates to unit vector
-!     TRXP     product of transpose of r-matrix and p-vector
-!     ZP       zero p-vector
-!     AB       stellar aberration
-!     LDN      light deflection by n bodies
-!     C2S      p-vector to spherical
-!     ANP      normalize angle into range +/- pi
 !
 !  This revision:   2013 September 30
 !
@@ -3610,10 +3477,6 @@
 !      values of the input parameters are accepted and processed in
 !      accordance with the models used.
 !
-!  Called:
-!     APIO13   astrometry parameters, CIRS-observed, 2013
-!     ATIOQ    quick CIRS to observed
-!
 !  This revision:   2016 February 2
 !
     subroutine ATIO13 ( ri, di, utc1, utc2, dut1, &
@@ -3749,11 +3612,6 @@
 !     may be computed with APIO[13] or APCO[13].  If nothing has
 !     changed significantly except the time, APER[13] may be used
 !     to perform the requisite adjustment to the ASTROM array.
-!
-!  Called:
-!     S2C      spherical coordinates to unit vector
-!     C2S      p-vector to spherical
-!     ANP      normalize angle into range 0 to 2pi
 !
 !  This revision:   2017 July 10
 !
@@ -3981,11 +3839,6 @@
 !      values of the input parameters are accepted and processed in
 !      accordance with the models used.
 !
-!  Called:
-!     APCO13   astrometry parameters, ICRS-observed
-!     ATOIQ    quick observed to CIRS
-!     ATICQ    quick CIRS to ICRS
-!
 !  This revision:   2013 August 3
 !
     subroutine ATOC13 ( type, ob1, ob2, utc1, utc2, dut1, &
@@ -4165,10 +4018,6 @@
 !      values of the input parameters are accepted and processed in
 !      accordance with the models used.
 !
-!  Called:
-!     APIO13   astrometry parameters, CIRS-observed, 2013
-!     ATOIQ    quick observed to CIRS
-!
 !  This revision:   2013 July 6
 !
     subroutine ATOI13 ( type, ob1, ob2, utc1, utc2, dut1, &
@@ -4300,11 +4149,6 @@
 !     computed with APIO13 (or APIO).  If nothing has changed
 !     significantly except the time, APER13 (or APER) may be
 !     used to perform the requisite adjustment to the ASTROM array.
-!
-!  Called:
-!     S2C      spherical coordinates to unit vector
-!     C2S      p-vector to spherical
-!     ANP      normalize angle into range 0 to 2pi
 !
 !  This revision:   2013 August 3
 !
@@ -4535,16 +4379,6 @@
 !     equinox of date by applying frame bias then precession.  It is the
 !     product RP x RB.
 !
-!  Called:
-!     BI00     frame bias components, IAU 2000
-!     PR00     IAU 2000 precession adjustments
-!     IR       initialize r-matrix to identity
-!     RX       rotate around X-axis
-!     RY       rotate around Y-axis
-!     RZ       rotate around Z-axis
-!     RXR      product of two r-matrices
-!     CR       copy r-matrix
-!
 !  Reference:
 !
 !     Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
@@ -4658,13 +4492,6 @@
 !
 !  4) The matrix RBP transforms vectors from GCRS to mean of date by
 !     applying frame bias then precession.  It is the product RP x RB.
-!
-!  Called:
-!     PFW06    bias-precession F-W angles, IAU 2006
-!     FW2M     F-W angles to r-matrix
-!     PMAT06   PB matrix, IAU 2006
-!     TR       transpose r-matrix
-!     RXR      product of two r-matrices
 !
 !  References:
 !
@@ -4807,10 +4634,6 @@
 !  3) A faster, but slightly less accurate result (about 1 mas), can be
 !     obtained by using instead the C2I00B routine.
 !
-!  Called:
-!     PNM00A   classical NPB matrix, IAU 2000A
-!     C2IBPN   celestial-to-intermediate matrix, given NPB matrix
-!
 !  References:
 !
 !     Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
@@ -4894,10 +4717,6 @@
 !  3) The present routine is faster, but slightly less accurate (about
 !     1 mas), than the C2I00A routine.
 !
-!  Called:
-!     PNM00B   classical NPB matrix, IAU 2000B
-!     C2IBPN   celestial-to-intermediate matrix, given NPB matrix
-!
 !  References:
 !
 !     Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
@@ -4977,12 +4796,6 @@
 !     System and [TRS] is a vector in the International Terrestrial
 !     Reference System (see IERS Conventions 2003), ERA is the Earth
 !     Rotation Angle and RPOM is the polar motion matrix.
-!
-!  Called:
-!     PNM06A   classical NPB matrix, IAU 2006/2000A
-!     BPN2XY   extract CIP X,Y coordinates from NPB matrix
-!     S06      the CIO locator s, given X,Y, IAU 2006
-!     C2IXYS   celestial-to-intermediate matrix, given X,Y and s
 !
 !  References:
 !
@@ -5073,10 +4886,6 @@
 !  4) Although its name does not include "00", this routine is in fact
 !     specific to the IAU 2000 models.
 !
-!  Called:
-!     BPN2XY   extract CIP X,Y coordinates from NPB matrix
-!     C2IXY    celestial-to-intermediate matrix, given X,Y
-!
 !  References:
 !
 !     Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
@@ -5165,10 +4974,6 @@
 !  4) Although its name does not include "00", this routine is in fact
 !     specific to the IAU 2000 models.
 !
-!  Called:
-!     C2IXYS   celestial-to-intermediate matrix, given X,Y and s
-!     S00      the CIO locator s, given X,Y, IAU 2000A
-!
 !  Reference:
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
@@ -5225,11 +5030,6 @@
 !     System and [TRS] is a vector in the International Terrestrial
 !     Reference System (see IERS Conventions 2003), ERA is the Earth
 !     Rotation Angle and RPOM is the polar motion matrix.
-!
-!  Called:
-!     IR       initialize r-matrix to identity
-!     RZ       rotate around Z-axis
-!     RY       rotate around Y-axis
 !
 !  Reference:
 !
@@ -5380,13 +5180,6 @@
 !  4) A faster, but slightly less accurate result (about 1 mas), can be
 !     obtained by using instead the C2T00B routine.
 !
-!  Called:
-!     C2I00A   celestial-to-intermediate matrix, IAU 2000A
-!     ERA00    Earth rotation angle, IAU 2000
-!     SP00     the TIO locator s', IERS 2000
-!     POM00    polar motion matrix
-!     C2TCIO   form CIO-based celestial-to-terrestrial matrix
-!
 !  Reference:
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
@@ -5486,12 +5279,6 @@
 !  4) The present routine is faster, but slightly less accurate (about
 !     1 mas), than the C2T00A routine.
 !
-!  Called:
-!     C2I00B   celestial-to-intermediate matrix, IAU 2000B
-!     ERA00    Earth rotation angle, IAU 2000
-!     POM00    polar motion matrix
-!     C2TCIO   form CIO-based celestial-to-terrestrial matrix
-!
 !  Reference:
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
@@ -5586,13 +5373,6 @@
 !     celestial-to-intermediate matrix, ERA is the Earth rotation angle
 !     and RPOM is the polar motion matrix.
 !
-!  Called:
-!     C2I06A   celestial-to-intermediate matrix, IAU 2006/2000A
-!     ERA00    Earth rotation angle, IAU 2000
-!     SP00     the TIO locator s', IERS 2000
-!     POM00    polar motion matrix
-!     C2TCIO   form CIO-based celestial-to-terrestrial matrix
-!
 !  Reference:
 !
 !     McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
@@ -5664,9 +5444,6 @@
 !     support existing applications.  It should not be used in new
 !     applications.
 !
-!  Called:
-!     C2TCIO   form CIO-based celestial-to-terrestrial matrix
-!
 !  This revision:  2007 May 9
 !
     subroutine C2TCEO ( rc2i, era, rpom, rc2t )
@@ -5722,11 +5499,6 @@
 !     where [CRS] is a vector in the Geocentric Celestial Reference
 !     System and [TRS] is a vector in the International Terrestrial
 !     Reference System (see IERS Conventions 2003).
-!
-!  Called:
-!     CR       copy r-matrix
-!     RZ       rotate around Z-axis
-!     RXR      product of two r-matrices
 !
 !  Reference:
 !
@@ -5792,11 +5564,6 @@
 !     where [CRS] is a vector in the Geocentric Celestial Reference
 !     System and [TRS] is a vector in the International Terrestrial
 !     Reference System (see IERS Conventions 2003).
-!
-!  Called:
-!     CR       copy r-matrix
-!     RZ       rotate around Z-axis
-!     RXR      product of two r-matrices
 !
 !  Reference:
 !
@@ -5890,14 +5657,6 @@
 !
 !  5) Although its name does not include "00", this routine is in fact
 !     specific to the IAU 2000 models.
-!
-!  Called:
-!     PN00     bias/precession/nutation results, IAU 2000
-!     GMST00   Greenwich mean sidereal time, IAU 2000
-!     SP00     the TIO locator s', IERS 2000
-!     EE00     equation of the equinoxes, IAU 2000
-!     POM00    polar motion matrix
-!     C2TEQX   form equinox-based celestial-to-terrestrial matrix
 !
 !  Reference:
 !
@@ -6008,13 +5767,6 @@
 !
 !  5) Although its name does not include "00", this routine is in fact
 !     specific to the IAU 2000 models.
-!
-!  Called:
-!     C2IXY    celestial-to-intermediate matrix, given X,Y
-!     ERA00    Earth rotation angle, IAU 2000
-!     SP00     the TIO locator s', IERS 2000
-!     POM00    polar motion matrix
-!     C2TCIO   form CIO-based celestial-to-terrestrial matrix
 !
 ! Reference:
 !
@@ -6201,9 +5953,6 @@
 !  Returned:
 !     C        d(3,2)    copy
 !
-!  Called:
-!     CP       copy p-vector
-!
 !  This revision:  2000 November 25
 !
     subroutine CPV ( pv, c )
@@ -6230,9 +5979,6 @@
 !
 !  Returned:
 !     C        d(3,3)    copy
-!
-!  Called:
-!     CP       copy p-vector
 !
 !  This revision:  2000 November 25
 !
@@ -6311,11 +6057,6 @@
 !     to be trusted.  See DAT for further details.
 !
 !  6) For calendar conventions and limitations, see CAL2JD.
-!
-!  Called:
-!     JD2CAL   JD to Gregorian calendar
-!     D2TF     decompose days to hms
-!     DAT      delta(AT) = TAI-UTC
 !
 !  This revision:  2014 February 15
 !
@@ -6667,9 +6408,6 @@
 !
 !  2) The 5ms timestep at 1961 January 1 is taken from 2.58.1 (p87) of
 !     the 1992 Explanatory Supplement.
-!
-!  Called:
-!     CAL2JD   Gregorian calendar to JD
 !
 !  This revision:  2019 July 5
 !
@@ -8050,11 +7788,6 @@
 !     two such results cannot be interpreted as a precise time
 !     interval.
 !
-!  Called:
-!     CAL2JD   Gregorian calendar to JD
-!     DAT      delta(AT) = TAI-UTC
-!     JD2CAL   JD to Gregorian calendar
-!
 !  This revision:  2013 July 26
 !
     subroutine DTF2D ( scale, iy, im, id, ihr, imn, sec, &
@@ -8192,14 +7925,6 @@
 !     right ascension and declination, with only frame bias (always less
 !     than 25 mas) to disturb this classical picture.
 !
-!  Called:
-!     S2C      spherical coordinates to unit vector
-!     ECM06    J2000.0 to ecliptic rotation matrix, IAU 2006
-!     TRXP     product of transpose of r-matrix and p-vector
-!     C2S      unit vector to spherical coordinates
-!     ANP      normalize angle into range 0 to 2pi
-!     ANPM     normalize angle into range +/- pi
-!
 !  This revision:  2016 February 9
 !
     subroutine ECEQ06 ( date1, date2, dl, db, dr, dd )
@@ -8284,13 +8009,6 @@
 !     longitude and latitude, with only frame bias (always less than
 !     25 mas) to disturb this classical picture.
 !
-!  Called:
-!     OBL06    mean obliquity, IAU 2006
-!     PMAT06   PB matrix, IAU 2006
-!     IR       initialize r-matrix to identity
-!     RX       rotate around X-axis
-!     RXR      product of two r-matrices
-!
 !  This revision:  2015 December 11
 !
     subroutine ECM06 ( date1, date2, rm )
@@ -8365,9 +8083,6 @@
 !     further details, see IERS Conventions 2003 and Capitaine et al.
 !     (2002).
 !
-!  Called:
-!     EECT00   equation of the equinoxes complementary terms
-!
 !  References:
 !
 !     Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
@@ -8434,12 +8149,6 @@
 !  3) The result is compatible with the IAU 2000 resolutions.  For
 !     further details, see IERS Conventions 2003 and Capitaine et al.
 !     (2002).
-!
-!  Called:
-!     PR00     IAU 2000 precession adjustments
-!     OBL80    mean obliquity, IAU 1980
-!     NUT00A   nutation, IAU 2000A
-!     EE00     equation of the equinoxes, IAU 2000
 !
 !  References:
 !
@@ -8519,12 +8228,6 @@
 !     details, see McCarthy & Luzum (2001), IERS Conventions 2003 and
 !     Capitaine et al. (2003).
 !
-!  Called:
-!     PR00     IAU 2000 precession adjustments
-!     OBL80    mean obliquity, IAU 1980
-!     NUT00B   nutation, IAU 2000B
-!     EE00     equation of the equinoxes, IAU 2000
-!
 !  References:
 !
 !     Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
@@ -8601,11 +8304,6 @@
 !  2) The result, which is in radians, operates in the following sense:
 !
 !        Greenwich apparent ST = GMST + equation of the equinoxes
-!
-!  Called:
-!     ANPM     normalize angle into range +/- pi
-!     GST06A   Greenwich apparent sidereal time, IAU 2006/2000A
-!     GMST06   Greenwich mean sidereal time, IAU 2006
 !
 !  Reference:
 !
@@ -8690,16 +8388,6 @@
 !     The present routine computes CT in the above expression,
 !     compatible with IAU 2000 resolutions (Capitaine et al., 2002, and
 !     IERS Conventions 2003).
-!
-!  Called:
-!     FAL03    mean anomaly of the Moon
-!     FALP03   mean anomaly of the Sun
-!     FAF03    mean argument of the latitude of the Moon
-!     FAD03    mean elongation of the Moon from the Sun
-!     FAOM03   mean longitude of the Moon's ascending node
-!     FAVE03   mean longitude of Venus
-!     FAE03    mean longitude of Earth
-!     FAPA03   general accumulated precession in longitude
 !
 !  References:
 !
@@ -9022,12 +8710,6 @@
 !     apparent sidereal time (ERA-GST).  It comprises the precession
 !     (since J2000.0) in right ascension plus the equation of the
 !     equinoxes (including the small correction terms).
-!
-!  Called:
-!     PNM06A   classical NPB matrix, IAU 2006/2000A
-!     BPN2XY   extract CIP X,Y coordinates from NPB matrix
-!     S06      the CIO locator s, given X,Y, IAU 2006
-!     EORS     equation of the origins, given NPB matrix and s
 !
 !  References:
 !
@@ -11846,14 +11528,6 @@
 !     equinox and ecliptic of date), with only frame bias (always less
 !     than 25 mas) to disturb this classical picture.
 !
-!  Called:
-!     S2C      spherical coordinates to unit vector
-!     ECM06    J2000.0 to ecliptic rotation matrix, IAU 2006
-!     RXP      product of r-matrix and p-vector
-!     C2S      unit vector to spherical coordinates
-!     ANP      normalize angle into range 0 to 2pi
-!     ANPM     normalize angle into range +/- pi
-!
 !  This revision:  2016 February 9
 !
     subroutine EQEC06 ( date1, date2, dr, dd, dl, db )
@@ -11924,11 +11598,6 @@
 !  2) The result, which is in radians, operates in the following sense:
 !
 !        Greenwich apparent ST = GMST + equation of the equinoxes
-!
-!  Called:
-!     ANPM     normalize angle into range +/- pi
-!     NUT80    nutation, IAU 1980
-!     OBL80    mean obliquity, IAU 1980
 !
 !  References:
 !
@@ -12008,9 +11677,6 @@
 !     and, to retain precision, integer contributions have been
 !     eliminated.  The same formulation is given in IERS Conventions
 !     (2003), Chap. 5, Eq. 14.
-!
-!  Called:
-!     ANP      normalize angle into range 0 to 2pi
 !
 !  References:
 !
@@ -12783,15 +12449,6 @@
 !     from this simplification are less than 1 milliarcsecond in
 !     position and 1 milliarcsecond per century in proper motion.
 !
-!  Called:
-!     ANP      normalize angle into range 0 to 2pi
-!     PV2S     pv-vector to spherical coordinates
-!     PDP      scalar product of two p-vectors
-!     PVMPV    pv-vector minus pv_vector
-!     PVPPV    pv-vector plus pv_vector
-!     S2PV     spherical coordinates to pv-vector
-!     SXP      multiply p-vector by scalar
-!
 !  References:
 !
 !     Aoki, S. et al., 1983, "Conversion matrix of epoch B1950.0
@@ -12994,17 +12651,6 @@
 !     Seidelmann, P.K. (ed), 1992, "Explanatory Supplement to the
 !     Astronomical Almanac", ISBN 0-935702-68-7.
 !
-!  Called:
-!     ANP      normalize angle into range 0 to 2pi
-!     C2S      p-vector to spherical
-!     EPB2JD   Besselian epoch to Julian date
-!     EPJ      Julian date to Julian epoch
-!     PDP      scalar product of two p-vectors
-!     PMP      p-vector minus p-vector
-!     PPSP     p-vector plus scaled p-vector
-!     PVU      update a pv-vector
-!     S2C      spherical to p-vector
-!
 !  This revision:   2018 January 11
 !
     subroutine FK45Z ( r1950, d1950, bepoch, r2000, d2000 )
@@ -13146,16 +12792,6 @@
 !     the sky" rather than in terms of RA change, the errors resulting
 !     from this simplification are less than 1 milliarcsecond in
 !     position and 1 milliarcsecond per century in proper motion.
-!
-!  Called:
-!     ANP      normalize angle into range 0 to 2pi
-!     PDP      scalar product of two p-vectors
-!     PM       modulus of p-vector
-!     PMP      p-vector minus p-vector
-!     PPP      p-vector pluus p-vector
-!     PV2S     pv-vector to spherical coordinates
-!     S2PV     spherical coordinates to pv-vector
-!     SXP      multiply p-vector by scalar
 !
 !  References:
 !
@@ -13351,14 +12987,6 @@
 !
 !  4) See also H2FK5, FK5HZ, HFK5Z.
 !
-!  Called:
-!     STARPV   star catalog data to space motion pv-vector
-!     FK5HIP   FK5 to Hipparcos rotation and spin
-!     RXP      product of r-matrix and p-vector
-!     PXP      vector product of two p-vectors
-!     PPP      p-vector plus p-vector
-!     PVSTAR   space motion pv-vector to star catalog data
-!
 !  Reference:
 !
 !     F.Mignard & M.Froeschle, Astron.Astrophys., 354, 732-739 (2000).
@@ -13457,12 +13085,6 @@
 !  5) The RA component of the returned (fictitious) proper motion is
 !     dRA/dt rather than cos(Dec)*dRA/dt.
 !
-!  Called:
-!     ANP      normalize angle into range 0 to 2pi
-!     C2S      p-vector to spherical
-!     FK524    FK4 to FK5
-!     S2C      spherical to p-vector
-!
 !  This revision:   2018 January 11
 !
     subroutine FK54Z ( r2000, d2000, bepoch, &
@@ -13536,9 +13158,6 @@
 !  3) The r-vector S5H represents the time derivative of the FK5 to
 !     Hipparcos rotation.  The units are radians per year (Julian,
 !     TDB).
-!
-!  Called:
-!     RV2M     r-vector to r-matrix
 !
 !  Reference:
 !
@@ -13630,16 +13249,6 @@
 !     reference system but at date DATE1+DATE2.
 !
 !  5) See also FK52H, H2FK5, HFK5Z.
-!
-!  Called:
-!     S2C      spherical coordinates to unit vector
-!     FK5HIP   FK5 to Hipparcos rotation and spin
-!     SXP      multiply p-vector by scalar
-!     RV2M     r-vector to r-matrix
-!     TRXP     product of transpose of r-matrix and p-vector
-!     PXP      vector product of two p-vectors
-!     C2S      p-vector to spherical
-!     ANP      normalize angle into range 0 to 2pi
 !
 !  Reference:
 !
@@ -13742,11 +13351,6 @@
 !     The nutation-only and precession-only matrices can if necessary
 !     be obtained by combining these three appropriately.
 !
-!  Called:
-!     IR       initialize r-matrix to identity
-!     RZ       rotate around Z-axis
-!     RX       rotate around X-axis
-!
 !  Reference:
 !
 !     Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
@@ -13811,10 +13415,6 @@
 !
 !     The returned values x,y are elements (3,1) and (3,2) of the
 !     matrix.  Near J2000.0, they are essentially angles in radians.
-!
-!  Called:
-!     FW2M     F-W angles to r-matrix
-!     BPN2XY   extract CIP X,Y coordinates from NPB matrix
 !
 !  Reference:
 !
@@ -13888,13 +13488,6 @@
 !     the canonical three angles and are given to 30 decimal places.
 !
 !  2) The inverse transformation is performed by the routine ICRS2G.
-!
-!  Called:
-!     ANP      normalize angle into range 0 to 2pi
-!     ANPM     normalize angle into range +/- pi
-!     S2C      spherical coordinates to unit vector
-!     TRXP     product of transpose of r-matrix and p-vector
-!     C2S      p-vector to spherical
 !
 !  Reference:
 !     Perryman M.A.C. & ESA, 1997, ESA SP-1200, The Hipparcos and Tycho
@@ -13997,10 +13590,6 @@
 !     cases, all three results are set to -1D9.
 !
 !  4) The inverse transformation is performed in the routine GD2GC.
-!
-!  Called:
-!     EFORM    Earth reference ellipsoids
-!     GC2GDE   geocentric to geodetic transformation, general
 !
 !  This revision:  2013 September 1
 !
@@ -14238,11 +13827,6 @@
 !
 !  4) The inverse transformation is performed in the routine GC2GD.
 !
-!  Called:
-!     EFORM    Earth reference ellipsoids
-!     GD2GCE   geodetic to geocentric transformation, general
-!     ZP       zero p-vector
-!
 !  This revision:  2010 January 18
 !
     subroutine GD2GC ( n, elong, phi, height, xyz, j )
@@ -14419,10 +14003,6 @@
 !  5) The algorithm is from Capitaine et al. (2003) and IERS Conventions
 !     2003.
 !
-!  Called:
-!     ERA00    Earth rotation angle, IAU 2000
-!     ANP      normalize angle into range 0 to 2pi
-!
 !  References:
 !
 !     Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
@@ -14507,10 +14087,6 @@
 !
 !  4) The result is returned in the range 0 to 2pi.
 !
-!  Called:
-!     ERA00    Earth rotation angle, IAU 2000
-!     ANP      normalize angle into range 0 to 2pi
-!
 !  Reference:
 !
 !     Capitaine, N., Wallace, P.T. & Chapront, J., 2005,
@@ -14593,9 +14169,6 @@
 !     omitting whole days to conserve accuracy.
 !
 !  4) The result is returned in the range 0 to 2pi.
-!
-!  Called:
-!     ANP      normalize angle into range 0 to 2pi
 !
 !  References:
 !
@@ -14696,11 +14269,6 @@
 !  5) The algorithm is from Capitaine et al. (2003) and IERS Conventions
 !     2003.
 !
-!  Called:
-!     GMST00   Greenwich mean sidereal time, IAU 2000
-!     EE00A    equation of the equinoxes, IAU 2000A
-!     ANP      normalize angle into range 0 to 2pi
-!
 !  References:
 !
 !     Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
@@ -14784,11 +14352,6 @@
 !  5) The algorithm is from Capitaine et al. (2003) and IERS Conventions
 !     2003.
 !
-!  Called:
-!     GMST00   Greenwich mean sidereal time, IAU 2000
-!     EE00B    equation of the equinoxes, IAU 2000B
-!     ANP      normalize angle into range 0 to 2pi
-!
 !  References:
 !
 !     Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
@@ -14866,13 +14429,6 @@
 !     practice be used with any equinox-based NPB matrix.
 !
 !  4) The result is returned in the range 0 to 2pi.
-!
-!  Called:
-!     BPN2XY   extract CIP X,Y coordinates from NPB matrix
-!     S06      the CIO locator s, given X,Y, IAU 2006
-!     ANP      normalize angle into range 0 to 2pi
-!     ERA00    Earth rotation angle, IAU 2000
-!     EORS     equation of the origins, given NPB matrix and s
 !
 !  Reference:
 !
@@ -14955,10 +14511,6 @@
 !
 !  4) The result is returned in the range 0 to 2pi.
 !
-!  Called:
-!     PNM06A   classical NPB matrix, IAU 2006/2000A
-!     GST06    Greenwich apparent ST, IAU 2006, given NPB matrix
-!
 !  Reference:
 !
 !     Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
@@ -15033,11 +14585,6 @@
 !
 !  4) The result is returned in the range 0 to 2pi.
 !
-!  Called:
-!     GMST82   Greenwich mean sidereal time, IAU 1982
-!     EQEQ94   equation of the equinoxes, IAU 1994
-!     ANP      normalize angle into range 0 to 2pi
-!
 !  References:
 !
 !     Explanatory Supplement to the Astronomical Almanac,
@@ -15095,16 +14642,6 @@
 !     account.
 !
 !  4) See also FK52H, FK5HZ, HFK5Z.
-!
-!  Called:
-!     STARPV   star catalog data to space motion pv-vector
-!     FK5HIP   FK5 to Hipparcos rotation and spin
-!     RV2M     r-vector to r-matrix
-!     RXP      product of r-matrix and p-vector
-!     TRXP     product of transpose of r-matrix and p-vector
-!     PXP      vector product of two p-vectors
-!     PMP      p-vector minus p-vector
-!     PVSTAR   space motion pv-vector to star catalog data
 !
 !  Reference:
 !
@@ -15375,17 +14912,6 @@
 !
 !  6) See also FK52H, H2FK5, FK5ZHZ.
 !
-!  Called:
-!     S2C      spherical coordinates to unit vector
-!     FK5HIP   FK5 to Hipparcos rotation and spin
-!     RXP      product of r-matrix and p-vector
-!     SXP      multiply p-vector by scalar
-!     RXR      product of two r-matrices
-!     TRXP     product of transpose of r-matrix and p-vector
-!     PXP      vector product of two p-vectors
-!     PV2S     pv-vector to spherical
-!     ANP      normalize angle into range 0 to 2pi
-!
 !  Reference:
 !
 !     F.Mignard & M.Froeschle, Astron. Astrophys. 354, 732-739 (2000).
@@ -15490,13 +15016,6 @@
 !     the canonical three angles and are given to 30 decimal places.
 !
 !  2) The inverse transformation is performed by the routine G2ICRS.
-!
-!  Called:
-!     ANP      normalize angle into range 0 to 2pi
-!     ANPM     normalize angle into range +/- pi
-!     S2C      spherical coordinates to unit vector
-!     RXP      product of r-matrix and p-vector
-!     C2S      p-vector to spherical
 !
 !  Reference:
 !     Perryman M.A.C. & ESA, 1997, ESA SP-1200, The Hipparcos and Tycho
@@ -15741,9 +15260,6 @@
 !  4) NDP should be 4 or less if internal overflows are to be
 !     avoided on machines which use 16-bit integers.
 !
-!  Called:
-!     JD2CAL   JD to Gregorian calendar
-!
 !  Reference:
 !
 !     Explanatory Supplement to the Astronomical Almanac,
@@ -15865,10 +15381,6 @@
 !     Klioner, Sergei A., "A practical relativistic model for micro-
 !     arcsecond astrometry in space", Astr. J. 125, 1580-1597 (2003).
 !
-!  Called:
-!     PDP      scalar product of two p-vectors
-!     PXP      vector product of two p-vectors
-!
 !  This revision:   2013 September 3
 !
     subroutine LD ( bm, p, q, e, em, dlim, p1 )
@@ -15977,14 +15489,6 @@
 !     the Astronomical Almanac, 3rd ed., University Science Books
 !     (2013), Section 7.2.4.
 !
-!  Called:
-!     CP       copy p-vector
-!     PDP      scalar product of two p-vectors
-!     PMP      p-vector minus p-vector
-!     PPSP     p-vector plus scaled p-vector
-!     PN       decompose p-vector into modulus and direction
-!     LD       light deflection by a solar-system body
-!
 !  This revision:   2017 March 16
 !
     subroutine LDN ( n, b, ob, sc, sn )
@@ -16069,9 +15573,6 @@
 !     is within the solar limb for all solar-system applications, and
 !     is about 5 arcminutes for the case of a terrestrial observer.
 !
-!  Called:
-!     LD       light deflection by a solar-system body
-!
 !  This revision:   2016 June 16
 !
     subroutine LDSUN ( p, e, em, p1 )
@@ -16123,14 +15624,6 @@
 !     accurate to a few arcseconds throughout the historical period,
 !     worsening to a few tenths of a degree at the end of the
 !     +/- 200,000 year time span.
-!
-!  Called:
-!     S2C      spherical coordinates to unit vector
-!     LTECM    J2000.0 to ecliptic rotation matrix, long term
-!     TRXP     product of transpose of r-matrix and p-vector
-!     C2S      unit vector to spherical coordinates
-!     ANP      normalize angle into range 0 to 2pi
-!     ANPM     normalize angle into range +/- pi
 !
 !  References:
 !
@@ -16212,12 +15705,6 @@
 !     accurate to a few arcseconds throughout the historical period,
 !     worsening to a few tenths of a degree at the end of the
 !     +/- 200,000 year time span.
-!
-!  Called:
-!     LTPEQU   equator pole, long term
-!     LTPECL   ecliptic pole, long term
-!     PXP      vector product
-!     PN       normalize vector
 !
 !  References:
 !
@@ -16303,14 +15790,6 @@
 !     worsening to a few tenths of a degree at the end of the
 !     +/- 200,000 year time span.
 !
-!  Called:
-!     S2C      spherical coordinates to unit vector
-!     LTECM    J2000.0 to ecliptic rotation matrix, long term
-!     RXP      product of r-matrix and p-vector
-!     C2S      unit vector to spherical coordinates
-!     ANP      normalize angle into range 0 to 2pi
-!     ANPM     normalize angle into range +/- pi
-!
 !  References:
 !
 !     Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
@@ -16382,12 +15861,6 @@
 !     accurate to a few arcseconds throughout the historical period,
 !     worsening to a few tenths of a degree at the end of the
 !     +/- 200,000 year time span.
-!
-!  Called:
-!     LTPEQU   equator pole, long term
-!     LTPECL   ecliptic pole, long term
-!     PXP      vector product
-!     PN       normalize vector
 !
 !  References:
 !
@@ -16466,9 +15939,6 @@
 !     accurate to a few arcseconds throughout the historical period,
 !     worsening to a few tenths of a degree at the end of the
 !     +/- 200,000 year time span.
-!
-!  Called:
-!     LTP      precession matrix, long term
 !
 !  References:
 !
@@ -16815,9 +16285,6 @@
 !  3) A faster, but slightly less accurate result (about 1 mas), can be
 !     obtained by using instead the NUM00B routine.
 !
-!  Called:
-!     PN00A    bias/precession/nutation, IAU 2000A
-!
 !  Reference:
 !
 !     Explanatory Supplement to the Astronomical Almanac,
@@ -16885,9 +16352,6 @@
 !  3) The present routine is faster, but slightly less accurate (about
 !     1 mas), than the NUM00A routine.
 !
-!  Called:
-!     PN00B    bias/precession/nutation, IAU 2000B
-!
 !  Reference:
 !
 !     Explanatory Supplement to the Astronomical Almanac,
@@ -16952,11 +16416,6 @@
 !     equatorial triad of date and the p-vector V(mean) is with
 !     respect to the mean equatorial triad of date.
 !
-!  Called:
-!     OBL06    mean obliquity, IAU 2006
-!     NUT06A   nutation, IAU 2006/2000A
-!     NUMAT    form nutation matrix
-!
 !  References:
 !
 !     Capitaine, N., Wallace, P.T. & Chapront, J., 2005, Astron.
@@ -17015,11 +16474,6 @@
 !     where the p-vector V(true) is with respect to the true
 !     equatorial triad of date and the p-vector V(mean) is with
 !     respect to the mean equatorial triad of date.
-!
-!  Called:
-!     IR       initialize r-matrix to identity
-!     RX       rotate around X-axis
-!     RZ       rotate around Z-axis
 !
 !  Reference:
 !
@@ -17157,19 +16611,6 @@
 !     appears multiple times, of which 38 are duplicates and three are
 !     triplicates.  To keep the present code close to the original MHB
 !     algorithm, this small inefficiency has not been corrected.
-!
-!  Called:
-!     FAL03    mean anomaly of the Moon
-!     FAF03    mean argument of the latitude of the Moon
-!     FAOM03   mean longitude of the Moon's ascending node
-!     FAME03   mean longitude of Mercury
-!     FAVE03   mean longitude of Venus
-!     FAE03    mean longitude of Earth
-!     FAMA03   mean longitude of Mars
-!     FAJU03   mean longitude of Jupiter
-!     FASA03   mean longitude of Saturn
-!     FAUR03   mean longitude of Uranus
-!     FAPA03   general accumulated precession in longitude
 !
 !  References:
 !
@@ -20893,9 +20334,6 @@
 !     pole which is at current epochs accurate to a few tens of
 !     microarcseconds, apart from the free core nutation.
 !
-!  Called:
-!     NUT00A   nutation, IAU 2000A
-!
 !  Reference:
 !
 !     Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
@@ -20966,9 +20404,6 @@
 !
 !  2) The nutation components are with respect to the ecliptic of
 !     date.
-!
-!  Called:
-!     ANPM     normalize angle into range +/- pi
 !
 !  Reference:
 !
@@ -21233,11 +20668,6 @@
 !     equatorial triad of date and the p-vector V(mean) is with
 !     respect to the mean equatorial triad of date.
 !
-!  Called:
-!     NUT80    nutation, IAU 1980
-!     OBL80    mean obliquity, IAU 1980
-!     NUMAT    form nutation matrix
-!
 !  This revision:  2012 September 5
 !
     subroutine NUTM80 ( date1, date2, rmatn )
@@ -21498,9 +20928,6 @@
 !
 !     Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
 !
-!  Called:
-!     OBL06    mean obliquity, IAU 2006
-!
 !  This revision:  2011 December 6
 !
     subroutine P06E ( date1, date2, &
@@ -21682,10 +21109,6 @@
 !  Returned:
 !     PV       d(3,2)    pv-vector
 !
-!  Called:
-!     CP       copy p-vector
-!     ZP       zero p-vector
-!
 !  This revision:  2000 November 25
 !
     subroutine P2PV ( p, pv )
@@ -21720,10 +21143,6 @@
 !  1) If P is null, zero THETA, PHI and R are returned.
 !
 !  2) At either pole, zero THETA is returned.
-!
-!  Called:
-!     C2S      p-vector to spherical
-!     PM       modulus of p-vector
 !
 !  This revision:  2006 November 13
 !
@@ -21769,13 +21188,6 @@
 !     vector is null.
 !
 !  4) If A is at a pole, the result is ill-defined.
-!
-!  Called:
-!     PN       decompose p-vector into modulus and direction
-!     PM       modulus of p-vector
-!     PXP      vector product of two p-vectors
-!     PMP      p-vector minus p-vector
-!     PDP      scalar product of two p-vectors
 !
 !  This revision:  2006 November 13
 !
@@ -21936,10 +21348,6 @@
 !     frame bias, they are available by calling the SOFA routine
 !     P06E.
 !
-!  Called:
-!     PMAT06   PB matrix, IAU 2006
-!     RZ       rotate around Z-axis
-!
 !  This revision:  2007 June 8
 !
     subroutine PB06 ( date1, date2, bzeta, bz, btheta )
@@ -22073,9 +21481,6 @@
 !  Reference:
 !
 !     Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
-!
-!  Called:
-!     OBL06    mean obliquity, IAU 2006
 !
 !  This revision:  2009 December 15
 !
@@ -22271,9 +21676,6 @@
 !     encountered during execution of the routine.  Illegal NP is
 !     considered the most serious, overriding failure to converge,
 !     which in turn takes precedence over the remote epoch warning.
-!
-!  Called:
-!     ANP      normalize angle into range 0 to 2pi
 !
 !  Reference:  Simon, J.L, Bretagnon, P., Chapront, J.,
 !              Chapront-Touze, M., Francou, G., and Laskar, J.,
@@ -22649,9 +22051,6 @@
 !     Reference System (IAU, 2000) and the p-vector V(date) is with
 !     respect to the mean equatorial triad of the given date.
 !
-!  Called:
-!     BP00     frame bias and precession matrices, IAU 2000
-!
 !  Reference:
 !
 !     IAU: Trans. International Astronomical Union, Vol. XXIVB;  Proc.
@@ -22714,10 +22113,6 @@
 !     the p-vector V(GCRS) is with respect to the Geocentric Celestial
 !     Reference System (IAU, 2000) and the p-vector V(date) is with
 !     respect to the mean equatorial triad of the given date.
-!
-!  Called:
-!     PFW06    bias-precession F-W angles, IAU 2006
-!     FW2M     F-W angles to r-matrix
 !
 !  References:
 !
@@ -22795,13 +22190,6 @@
 !     500BC to 3000AD.  The errors exceed 10 arcsec outside the
 !     range 1200BC to 3900AD, exceed 100 arcsec outside 4200BC to
 !     5600AD and exceed 1000 arcsec outside 6800BC to 8200AD.
-!
-!  Called:
-!     PREC76   accumulated precession angles, IAU 1976
-!     IR       initialize r-matrix to identity
-!     RZ       rotate around Z-axis
-!     RY       rotate around Y-axis
-!     CR       copy r-matrix
 !
 !  References:
 !
@@ -22904,10 +22292,6 @@
 !     Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
 !     the Astronomical Almanac, 3rd ed., University Science Books
 !     (2013), Section 7.2.
-!
-!  Called:
-!     PDP      scalar product of two p-vectors
-!     PN       decompose p-vector into modulus and direction
 !
 !  This revision:   2017 March 11
 !
@@ -23069,10 +22453,6 @@
 !     converge within a set number of iterations, 4 is added to the
 !     status.
 !
-!  Called:
-!     SEPS     angle between two points
-!     STARPM   update star catalog data for space motion
-!
 !  This revision:   2013 June 6
 !
     subroutine PMSAFE ( ra1, dec1, pmr1, pmd1, px1, rv1, &
@@ -23151,11 +22531,6 @@
 !  Note:
 !     If P is null, the result is null.  Otherwise the result is
 !     a unit vector.
-!
-!  Called:
-!     PM       modulus of p-vector
-!     ZP       zero p-vector
-!     SXP      multiply p-vector by scalar
 !
 !  This revision:  2006 November 13
 !
@@ -23255,13 +22630,6 @@
 !  8) The matrix RBPN transforms vectors from GCRS to true equator and
 !     equinox of date.  It is the product RN x RBP, applying frame bias,
 !     precession and nutation in that order.
-!
-!  Called:
-!     PR00     IAU 2000 precession adjustments
-!     OBL80    mean obliquity, IAU 1980
-!     BP00     frame bias and precession matrices, IAU 2000
-!     NUMAT    form nutation matrix
-!     RXR      product of two r-matrices
 !
 !  Reference:
 !
@@ -23383,10 +22751,6 @@
 !  9) The X,Y,Z coordinates of the IAU 2000A Celestial Intermediate Pole
 !     are elements (3,1-3) of the matrix RBPN.
 !
-!  Called:
-!     NUT00A   nutation, IAU 2000A
-!     PN00     bias/precession/nutation results, IAU 2000
-!
 !  Reference:
 !
 !     Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
@@ -23497,10 +22861,6 @@
 !  9) The X,Y,Z coordinates of the IAU 2000B Celestial Intermediate Pole
 !     are elements (3,1-3) of the matrix RBPN.
 !
-!  Called:
-!     NUT00B   nutation, IAU 2000B
-!     PN00     bias/precession/nutation results, IAU 2000
-!
 !  Reference:
 !
 !     Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
@@ -23607,12 +22967,6 @@
 !
 !  9) The X,Y,Z coordinates of the Celestial Intermediate Pole are
 !     elements (3,1-3) of the matrix RBPN.
-!
-!  Called:
-!     PFW06    bias-precession F-W angles, IAU 2006
-!     FW2M     F-W angles to r-matrix
-!     TR       transpose r-matrix
-!     RXR      product of two r-matrices
 !
 !  References:
 !
@@ -23743,10 +23097,6 @@
 !  9) The X,Y,Z coordinates of the IAU 2006/2000A Celestial Intermediate
 !     Pole are elements (3,1-3) of the matrix RBPN.
 !
-!  Called:
-!     NUT06A   nutation, IAU 2006/2000A
-!     PN06     bias/precession/nutation results, IAU 2006
-!
 !  Reference:
 !
 !     Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
@@ -23821,9 +23171,6 @@
 !  3) A faster, but slightly less accurate result (about 1 mas), can be
 !     obtained by using instead the PNM00B routine.
 !
-!  Called:
-!     PN00A    bias/precession/nutation, IAU 2000A
-!
 !  Reference:
 !
 !     IAU: Trans. International Astronomical Union, Vol. XXIVB;  Proc.
@@ -23892,9 +23239,6 @@
 !  3) The present routine is faster, but slightly less accurate (about
 !     1 mas), than the PNM00A routine.
 !
-!  Called:
-!     PN00B    bias/precession/nutation, IAU 2000B
-!
 !  Reference:
 !
 !     IAU: Trans. International Astronomical Union, Vol. XXIVB;  Proc.
@@ -23959,11 +23303,6 @@
 !     the p-vector V(date) is with respect to the true equatorial triad
 !     of date DATE1+DATE2 and the p-vector V(GCRS) is with respect to
 !     the Geocentric Celestial Reference System (IAU, 2000).
-!
-!  Called:
-!     PFW06    bias-precession F-W angles, IAU 2006
-!     NUT06A   nutation, IAU 2006/2000A
-!     FW2M     F-W angles to r-matrix
 !
 !  Reference:
 !
@@ -24033,11 +23372,6 @@
 !     V(J2000) is with respect to the mean equatorial triad of
 !     epoch J2000.0.
 !
-!  Called:
-!     PMAT76   precession matrix, IAU 1976
-!     NUTM80   nutation matrix, IAU 1980
-!     RXR      product of two r-matrices
-!
 !  Reference:
 !
 !     Explanatory Supplement to the Astronomical Almanac,
@@ -24099,12 +23433,6 @@
 !  3) The matrix operates in the sense V(TRS) = RPOM * V(CIP), meaning
 !     that it is the final rotation when computing the pointing
 !     direction to a celestial source.
-!
-!  Called:
-!     IR       initialize r-matrix to identity
-!     RZ       rotate around Z-axis
-!     RY       rotate around Y-axis
-!     RX       rotate around X-axis
 !
 !  Reference:
 !
@@ -24411,9 +23739,6 @@
 !  Returned:
 !     P        d(3)        p-vector
 !
-!  Called:
-!     CP       copy p-vector
-!
 !  This revision:  2000 November 25
 !
     subroutine PV2P ( pv, p )
@@ -24551,9 +23876,6 @@
 !     numbers ( Ap . Bp , Ap . Bv + Av . Bp ).  The two numbers are the
 !     dot-product of the two p-vectors and its derivative.
 !
-!  Called:
-!     PDP      scalar product of two p-vectors
-!
 !  This revision:  2006 November 13
 !
     subroutine PVDPV ( a, b, adb )
@@ -24594,9 +23916,6 @@
 !     R        d         modulus of position component
 !     S        d         modulus of velocity component
 !
-!  Called:
-!     PM       modulus of p-vector
-!
 !  This revision:  2000 November 25
 !
     subroutine PVM ( pv, r, s )
@@ -24629,9 +23948,6 @@
 !  Returned:
 !     AMB      d(3,2)      A - B
 !
-!  Called:
-!     PMP      p-vector minus p-vector
-!
 !  This revision:  2006 November 13
 !
     subroutine PVMPV ( a, b, amb )
@@ -24663,9 +23979,6 @@
 !
 !  Returned:
 !     APB      d(3,2)      A + B
-!
-!  Called:
-!     PPP      p-vector plus p-vector
 !
 !  This revision:  2006 November 13
 !
@@ -24759,16 +24072,6 @@
 !     light, the routine aborts with an error status.
 !
 !  6) The inverse transformation is performed by the routine STARPV.
-!
-!  Called:
-!     PN       decompose p-vector into modulus and direction
-!     PDP      scalar product of two p-vectors
-!     SXP      multiply p-vector by scalar
-!     PMP      p-vector minus p-vector
-!     PM       modulus of p-vector
-!     PPP      p-vector plus p-vector
-!     PV2S     pv-vector to spherical
-!     ANP      normalize angle into range 0 to 2pi
 !
 !  Reference:
 !
@@ -24918,11 +24221,6 @@
 !     the Astronomical Almanac, 3rd ed., University Science Books
 !     (2013), Section 7.4.3.3.
 !
-!  Called:
-!     GD2GC    geodetic to geocentric transformation
-!     POM00    polar motion matrix
-!     TRXP     product of transpose of r-matrix and p-vector
-!
 !  This revision:   2013 June 25
 !
     subroutine PVTOB ( elong, phi, hm, xp, yp, sp, theta, pv )
@@ -24990,10 +24288,6 @@
 !     to a new epoch DT time units from the existing epoch".
 !
 !  2) The time units of DT must match those of the velocity.
-!
-!  Called:
-!     PPSP     p-vector plus scaled p-vector
-!     CP       copy p-vector
 !
 !  This revision:  2003 January 14
 !
@@ -25069,11 +24363,6 @@
 !     ( Ap, Av ) and ( Bp, Bv ), the result, A x B, is the pair of
 !     vectors ( Ap x Bp, Ap x Bv + Av x Bp ).  The two vectors are the
 !     cross-product of the two p-vectors and its derivative.
-!
-!  Called:
-!     CPV      copy pv-vector
-!     PXP      vector product of two p-vectors
-!     PPP      p-vector plus p-vector
 !
 !  This revision:  2006 November 13
 !
@@ -25530,9 +24819,6 @@
 !  Returned:
 !     RP       d(3)      R * P
 !
-!  Called:
-!     CP       copy p-vector
-!
 !  This revision:  2006 November 13
 !
     subroutine RXP ( r, p, rp )
@@ -25575,9 +24861,6 @@
 !  Returned:
 !     RPV      d(3,2)    R * PV
 !
-!  Called:
-!     RXP      product of r-matrix and p-vector
-!
 !  This revision:  2006 November 13
 !
     subroutine RXPV ( r, pv, rpv )
@@ -25606,9 +24889,6 @@
 !
 !  Returned:
 !     ATB      d(3,3)    A * B
-!
-!  Called:
-!     CR       copy r-matrix
 !
 !  This revision:  2000 November 25
 !
@@ -25800,16 +25080,6 @@
 !     providing values that are consistent with the supplied date.
 !
 !  4) The model is consistent with the IAU 2000A precession-nutation.
-!
-!  Called:
-!     FAL03    mean anomaly of the Moon
-!     FALP03   mean anomaly of the Sun
-!     FAF03    mean argument of the latitude of the Moon
-!     FAD03    mean elongation of the Moon from the Sun
-!     FAOM03   mean longitude of the Moon's ascending node
-!     FAVE03   mean longitude of Venus
-!     FAE03    mean longitude of Earth
-!     FAPA03   general accumulated precession in longitude
 !
 !  References:
 !
@@ -26190,11 +25460,6 @@
 !     accuracy, can be obtained via the routine S00B, which uses
 !     instead the IAU 2000B truncated model.
 !
-!  Called:
-!     PNM00A   classical NPB matrix, IAU 2000A
-!     BNP2XY    extract CIP X,Y from the BPN matrix
-!     S00      the CIO locator s, given X,Y, IAU 2000A
-!
 !  References:
 !
 !     Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
@@ -26279,11 +25544,6 @@
 !     predicting the CIP position.  The routine S00A uses instead
 !     the full IAU 2000A model, but with no significant increase in
 !     accuracy and at some cost in speed.
-!
-!  Called:
-!     PNM00B   classical NPB matrix, IAU 2000B
-!     BNP2XY    extract CIP X,Y from the BPN matrix
-!     S00      the CIO locator s, given X,Y, IAU 2000A
 !
 !  References:
 !
@@ -26372,16 +25632,6 @@
 !  4) The model is consistent with the "P03" precession (Capitaine et
 !     al. 2003), adopted by IAU 2006 Resolution 1, 2006, and the
 !     IAU 2000A nutation (with P03 adjustments).
-!
-!  Called:
-!     FAL03    mean anomaly of the Moon
-!     FALP03   mean anomaly of the Sun
-!     FAF03    mean argument of the latitude of the Moon
-!     FAD03    mean elongation of the Moon from the Sun
-!     FAOM03   mean longitude of the Moon's ascending node
-!     FAVE03   mean longitude of Venus
-!     FAE03    mean longitude of Earth
-!     FAPA03   general accumulated precession in longitude
 !
 !  References:
 !
@@ -26755,11 +26005,6 @@
 !     routine uses the full IAU 2000A nutation model when predicting the
 !     CIP position.
 !
-!  Called:
-!     PNM06A   classical NPB matrix, IAU 2006/2000A
-!     BPN2XY   extract CIP X,Y coordinates from NPB matrix
-!     S06      the CIO locator s, given X,Y, IAU 2006
-!
 !  References:
 !
 !     Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
@@ -26847,10 +26092,6 @@
 !  Returned:
 !     P        d(3)      Cartesian coordinates
 !
-!  Called:
-!     S2C      spherical coordinates to unit vector
-!     SXP      multiply p-vector by scalar
-!
 !  This revision:  2006 November 13
 !
     subroutine S2P ( theta, phi, r, p )
@@ -26937,9 +26178,6 @@
 !  Returned:
 !     SPV      d(3,2)    pv-vector: p scaled by S1, v scaled by S2
 !
-!  Called:
-!     SXP      multiply p-vector by scalar
-!
 !  This revision:  2006 November 13
 !
     subroutine S2XPV ( s1, s2, pv, spv )
@@ -26979,11 +26217,6 @@
 !     near zero and pi.  The present algorithm uses both cross product
 !     and dot product, to deliver full accuracy whatever the size of
 !     the angle.
-!
-!  Called:
-!     PXP      vector product of two p-vectors
-!     PM       modulus of p-vector
-!     PDP      scalar product of two p-vectors
 !
 !  This revision:  2006 November 13
 !
@@ -27028,10 +26261,6 @@
 !
 !  Returned:
 !     S        d         angular separation (radians)
-!
-!  Called:
-!     S2C      spherical coordinates to unit vector
-!     SEPP     angular separation between two p-vectors
 !
 !  This revision:  2006 November 13
 !
@@ -27215,12 +26444,6 @@
 !     converge within a set number of iterations, 4 is added to the
 !     status.
 !
-!  Called:
-!     STARPV   star catalog data to space motion pv-vector
-!     PVU      update a pv-vector
-!     PDP      scalar product of two p-vectors
-!     PVSTAR   space motion pv-vector to star catalog data
-!
 !  This revision:  2017 March 16
 !
     subroutine STARPM ( ra1, dec1, pmr1, pmd1, px1, rv1, &
@@ -27387,16 +26610,6 @@
 !     iterations, 4 is added to the status.
 !
 !  9) The inverse transformation is performed by the routine PVSTAR.
-!
-!  Called:
-!     S2PV     spherical coordinates to pv-vector
-!     PM       modulus of p-vector
-!     ZP       zero p-vector
-!     PN       decompose p-vector into modulus and direction
-!     PDP      scalar product of two p-vectors
-!     SXP      multiply p-vector by scalar
-!     PMP      p-vector minus p-vector
-!     PPP      p-vector plus p-vector
 !
 !  Reference:
 !
@@ -27576,9 +26789,6 @@
 !  Returned:
 !     SPV      d(3,2)    S * PV
 !
-!  Called:
-!     S2XPV    multiply pv-vector by two scalars
-!
 !  This revision:  2006 November 13
 !
     subroutine SXPV ( s, pv, spv )
@@ -27754,9 +26964,6 @@
 !  4) The warning status "dubious year" flags UTCs that predate the
 !     introduction of the time scale or that are too far in the future
 !     to be trusted.  See DAT for further details.
-!
-!  Called:
-!     UTCTAI   UTC to TAI
 !
 !  References:
 !
@@ -28336,9 +27543,6 @@
 !         TPSTS      TPSTV       star
 !       > TPORS <    TPORV      origin
 !
-!  Called:
-!     ANP      normalize angle into range 0 to 2pi
-!
 !  References:
 !
 !     Calabretta M.R. & Greisen, E.W., 2002, "Representations of
@@ -28550,9 +27754,6 @@
 !         TPXES      TPXEV      xi,eta
 !       > TPSTS <    TPSTV       star
 !         TPORS      TPORV      origin
-!
-!  Called:
-!     ANP      normalize angle into range 0 to 2pi
 !
 !  References:
 !
@@ -28906,9 +28107,6 @@
 !  Returned:
 !     RT       d(3,3)    transpose
 !
-!  Called:
-!     CR       copy r-matrix
-!
 !  This revision:  2000 November 25
 !
     subroutine TR ( r, rt )
@@ -28944,10 +28142,6 @@
 !  Returned:
 !     TRP      d(3)      R * P
 !
-!  Called:
-!     TR       transpose r-matrix
-!     RXP      product of r-matrix and p-vector
-!
 !  This revision:  2009 July 11
 !
     subroutine TRXP ( r, p, trp )
@@ -28981,10 +28175,6 @@
 !
 !  Returned:
 !     TRPV     d(3,2)    R * PV
-!
-!  Called:
-!     TR       transpose r-matrix
-!     RXPV     product of r-matrix and pv-vector
 !
 !  This revision:  2009 July 11
 !
@@ -29429,11 +28619,6 @@
 !     introduction of the time scale or that are too far in the future
 !     to be trusted.  See DAT for further details.
 !
-!  Called:
-!     JD2CAL   JD to Gregorian calendar
-!     DAT      delta(AT) = TAI-UTC
-!     CAL2JD   Gregorian calendar to JD
-!
 !  References:
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
@@ -29576,11 +28761,6 @@
 !
 !  5) The returned TAI1,TAI2 are such that their sum is the TAI Julian
 !     Date.
-!
-!  Called:
-!     JD2CAL   JD to Gregorian calendar
-!     DAT      delta(AT) = TAI-UTC
-!     CAL2JD   Gregorian calendar to JD
 !
 !  References:
 !
@@ -29725,12 +28905,6 @@
 !     Explanatory Supplement to the Astronomical Almanac,
 !     P. Kenneth Seidelmann (ed), University Science Books (1992)
 !
-!  Called:
-!     JD2CAL   JD to Gregorian calendar
-!     DAT      delta(AT) = TAI-UTC
-!     UTCTAI   UTC to TAI
-!     TAIUT1   TAI to UT1
-!
 !  This revision:  2013 August 12
 !
 !  * 11/21/2019: for astro_module, renamed the local variable
@@ -29825,22 +28999,6 @@
 !     a negligible amount compared with the intrinsic accuracy of the
 !     models.  However, it would be unwise to mix the two methods
 !     (angles-based and series-based) in a single application.
-!
-!  Called:
-!     FAL03    mean anomaly of the Moon
-!     FALP03   mean anomaly of the Sun
-!     FAF03    mean argument of the latitude of the Moon
-!     FAD03    mean elongation of the Moon from the Sun
-!     FAOM03   mean longitude of the Moon's ascending node
-!     FAME03   mean longitude of Mercury
-!     FAVE03   mean longitude of Venus
-!     FAE03    mean longitude of Earth
-!     FAMA03   mean longitude of Mars
-!     FAJU03   mean longitude of Jupiter
-!     FASA03   mean longitude of Saturn
-!     FAUR03   mean longitude of Uranus
-!     FANE03   mean longitude of Neptune
-!     FAPA03   general accumulated precession in longitude
 !
 !  References:
 !
@@ -32345,11 +31503,6 @@
 !  4) A faster, but slightly less accurate result (about 1 mas for X,Y),
 !     can be obtained by using instead the XYS00B routine.
 !
-!  Called:
-!     PNM00A   classical NPB matrix, IAU 2000A
-!     BPN2XY   extract CIP X,Y coordinates from NPB matrix
-!     S00      the CIO locator s, given X,Y, IAU 2000A
-!
 !  Reference:
 !
 !     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
@@ -32425,11 +31578,6 @@
 !
 !  4) The present routine is faster, but slightly less accurate (about
 !     1 mas in X,Y), than the XYS00A routine.
-!
-!  Called:
-!     PNM00B   classical NPB matrix, IAU 2000B
-!     BPN2XY   extract CIP X,Y coordinates from NPB matrix
-!     S00      the CIO locator s, given X,Y, IAU 2000A
 !
 !  Reference:
 !
@@ -32507,11 +31655,6 @@
 !  4) Series-based solutions for generating X and Y are also available:
 !     see Capitaine & Wallace (2006) and XY06.
 !
-!  Called:
-!     PNM06A   classical NPB matrix, IAU 2006/2000A
-!     BPN2XY   extract CIP X,Y coordinates from NPB matrix
-!     S06      the CIO locator s, given X,Y, IAU 2006
-!
 !  References:
 !
 !     Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
@@ -32578,9 +31721,6 @@
 !
 !  Returned:
 !     PV       d(3,2)      pv-vector
-!
-!  Called:
-!     ZP       zero p-vector
 !
 !  This revision:  2006 November 13
 !
