@@ -125,9 +125,16 @@
 
     public
 
-    real(wp),parameter,private :: d2pi  = 6.283185307179586476925287_wp     !! 2Pi
-    real(wp),parameter,private :: das2r = 4.848136811095359935899141e-6_wp  !! Arcseconds to radians
-    real(wp),parameter,private :: dpi   = 3.141592653589793238462643_wp     !! Pi
+    real(wp),parameter,private :: d2pi  = 6.283185307179586476925287_wp    !! 2Pi
+    real(wp),parameter,private :: das2r = 4.848136811095359935899141e-6_wp !! Arcseconds to radians
+    real(wp),parameter,private :: dpi   = 3.141592653589793238462643_wp    !! Pi
+    real(wp),parameter,private :: d2s   = 86400.0_wp      !! Days to seconds
+    real(wp),parameter,private :: dj00  = 2451545.0_wp    !! Reference epoch (J2000.0), JD
+    real(wp),parameter,private :: djy   = 365.25_wp       !! Days per Julian year
+    real(wp),parameter,private :: cmps  = 299792458.0_wp  !! Speed of light (m/s)
+    real(wp),parameter,private :: djc   = 36525.0_wp      !! Days per Julian century
+    real(wp),parameter,private :: ds2r  = 7.272205216643039903848712e-5_wp   !! Seconds of time to radians
+
 
     contains
 !********************************************************************************
@@ -1610,18 +1617,6 @@
     real(wp) :: date1, date2, pv(3,2), ebpv(3,2), ehp(3), &
                      astrom(30)
 
-    !  Reference epoch (J2000.0), JD
-    real(wp),parameter :: dj00 = 2451545d0
-
-    !  Days per Julian year
-    real(wp),parameter :: djy = 365.25d0
-
-    !  Seconds per day
-    real(wp),parameter :: daysec = 86400d0
-
-    !  Speed of light (m/s)
-    real(wp),parameter :: cmps = 299792458d0
-
     !  Astronomical unit (m, IAU 2012)
     real(wp),parameter :: aum = 149597870.7d3
 
@@ -1629,10 +1624,10 @@
     real(wp),parameter :: ault = aum/cmps
 
     !  au/d to m/s
-    real(wp),parameter :: audms = aum/daysec
+    real(wp),parameter :: audms = aum/d2s
 
     !  Light time for 1 au (day)
-    real(wp),parameter :: cr = ault/daysec
+    real(wp),parameter :: cr = ault/d2s
 
     integer :: i
     real(wp) :: dp, dv, pb(3), vb(3), ph(3), v2, w
@@ -2130,9 +2125,6 @@
     implicit none
     real(wp) :: sp, theta, elong, phi, hm, xp, yp, refa, refb, &
                      astrom(30)
-
-    ! Speed of light (m/s)
-    real(wp),parameter :: cmps = 299792458d0
 
     real(wp) :: sl, cl, pv(3,2)
 
@@ -4342,12 +4334,6 @@
 
     real(wp) :: date1, date2, rb(3,3), rp(3,3), rbp(3,3)
 
-    !  Reference epoch (J2000.0), JD
-    real(wp),parameter :: dj00 = 2451545d0
-
-    !  Days per Julian century
-    real(wp),parameter :: djc = 36525d0
-
     !  J2000.0 obliquity (Lieske et al. 1977)
     real(wp),parameter :: eps0 = 84381.448d0 * das2r
 
@@ -6035,9 +6021,6 @@
     real(wp) :: d1, d2
     integer :: iy, im, id, ihmsf(4), j
 
-    !  Days to seconds
-    real(wp),parameter :: d2s = 86400d0
-
     logical :: leap
     character(len=1) :: s
     integer :: iy1, im1, id1, js, iy2, im2, id2, ihmsf1(4), i
@@ -6206,9 +6189,6 @@
     real(wp) :: days
     character(len=*) :: sign
     integer :: ihmsf(4)
-
-    !  Days to seconds
-    real(wp),parameter :: d2s = 86400d0
 
     integer :: nrs, n
     real(wp) :: rs, rm, rh, a, ah, am, as, af
@@ -6689,9 +6669,6 @@
 
     !  Degrees to radians
     real(wp),parameter :: dd2r = 1.745329251994329576923691d-2
-
-    !  Reference epoch (J2000.0), JD
-    real(wp),parameter :: dj00 = 2451545d0
 
     !  Days per Julian millennium
     real(wp),parameter :: djm = 365250d0
@@ -7769,9 +7746,6 @@
     real(wp) :: sec, d1, d2
     integer :: j
 
-    !  Days to seconds
-    real(wp),parameter :: d2s = 86400d0
-
     integer :: js, iy2, im2, id2
     real(wp) :: dj, w, day, seclim, dat0, dat12, dat24, &
                      dleap, time
@@ -8409,12 +8383,6 @@
 
     real(wp) :: date1, date2
 
-    !  Reference epoch (J2000.0), JD
-    real(wp),parameter :: dj00 = 2451545d0
-
-    !  Days per Julian century
-    real(wp),parameter :: djc = 36525d0
-
     !  Time since J2000.0, in Julian centuries
     real(wp) :: t
 
@@ -8838,9 +8806,6 @@
 
     real(wp) :: dj1, dj2
 
-    !  J2000.0 as a Julian Date
-    real(wp),parameter :: dj00 = 2451545d0
-
     !  J2000.0 minus B1900.0 (2415019.81352) in days
     real(wp),parameter :: d1900 = 36524.68648d0
 
@@ -8923,12 +8888,6 @@
     implicit none
 
     real(wp) :: dj1, dj2
-
-    !  Reference epoch (J2000.0), JD
-    real(wp),parameter :: dj00 = 2451545d0
-
-    !  Days per Julian year
-    real(wp),parameter :: djy = 365.25d0
 
     EPJ = 2000d0 + ( ( dj1-dj00 ) + dj2 ) / djy
 
@@ -9072,11 +9031,6 @@
 
     integer :: i, j, k
 
-    !  Days per Julian year
-    real(wp),parameter :: djy = 365.25d0
-
-    !  Reference epoch (J2000.0), JD
-    real(wp),parameter :: dj00 = 2451545d0
     !
     !  Matrix elements for orienting the analytical model to DE405/ICRF.
     !
@@ -11633,12 +11587,6 @@
 
     real(wp) :: date1, date2
 
-    !  Reference epoch (J2000.0), JD
-    real(wp),parameter :: dj00 = 2451545d0
-
-    !  Days per Julian century
-    real(wp),parameter :: djc = 36525d0
-
     real(wp) :: t, om, dpsi, deps, eps0
     !  Interval between fundamental epoch J2000.0 and given date (JC).
     t = ( ( date1-dj00 ) + date2 ) / djc
@@ -11719,9 +11667,6 @@
     implicit none
 
     real(wp) :: dj1, dj2
-
-    !  Reference epoch (J2000.0), JD
-    real(wp),parameter :: dj00 = 2451545d0
 
     real(wp) :: d1, d2, t, f
 
@@ -13307,12 +13252,6 @@
 
     real(wp) :: r5, d5, date1, date2, rh, dh
 
-    !  Reference epoch (J2000.0), JD
-    real(wp),parameter :: dj00 = 2451545d0
-
-    !  Days per Julian year
-    real(wp),parameter :: djy = 365.25d0
-
     real(wp) :: t, p5e(3), r5h(3,3), s5h(3), vst(3), rst(3,3), &
                      p5(3), ph(3), w
 
@@ -14066,12 +14005,6 @@
 
     real(wp) :: uta, utb, tta, ttb
 
-    !  Reference epoch (J2000.0), JD
-    real(wp),parameter :: dj00 = 2451545d0
-
-    !  Days per Julian century
-    real(wp),parameter :: djc = 36525d0
-
     real(wp) :: t
 
     !  TT Julian centuries since J2000.0.
@@ -14152,12 +14085,6 @@
     implicit none
 
     real(wp) :: uta, utb, tta, ttb
-
-    !  Reference epoch (J2000.0), JD
-    real(wp),parameter :: dj00 = 2451545d0
-
-    !  Days per Julian century
-    real(wp),parameter :: djc = 36525d0
 
     real(wp) :: t
 
@@ -14243,16 +14170,6 @@
     implicit none
 
     real(wp) :: dj1, dj2
-
-    !  Seconds of time to radians
-    real(wp),parameter :: ds2r = 7.272205216643039903848712d-5
-
-    !  Reference epoch (J2000.0), JD
-    real(wp),parameter :: dj00 = 2451545d0
-
-    !  Seconds per day, days per Julian century
-    real(wp),parameter :: d2s = 86400d0
-    real(wp),parameter :: djc = 36525d0
 
     !  Coefficients of IAU 1982 GMST-UT1 model
     real(wp),parameter :: a = 24110.54841d0 - d2s/2d0
@@ -15011,12 +14928,6 @@
 
     real(wp) :: rh, dh, date1, date2, r5, d5, dr5, dd5
 
-    !  Reference epoch (J2000.0), JD
-    real(wp),parameter :: dj00 = 2451545d0
-
-    !  Days per Julian year
-    real(wp),parameter :: djy = 365.25d0
-
     real(wp) :: t, ph(3), r5h(3,3), s5h(3), sh(3), vst(3), &
                      rst(3,3), r5ht(3,3), pv5e(3,2), vv(3), &
                      w, r, v
@@ -15589,17 +15500,11 @@
     integer :: n
     real(wp) :: b(8,n), ob(3), sc(3), sn(3)
 
-    !  Seconds per day.
-    real(wp),parameter :: daysec = 86400d0
-
-    !  Speed of light (m/s)
-    real(wp),parameter :: cmps = 299792458d0
-
     !  Astronomical unit (m, IAU 2012)
     real(wp),parameter :: aum = 149597870.7d3
 
     !  Light time for 1 au (day)
-    real(wp),parameter :: cr = aum/cmps/daysec
+    real(wp),parameter :: cr = aum/cmps/d2s
 
     integer :: i
     real(wp) :: s(3), v(3), d , dt, ev(3), em, e(3)
@@ -16773,12 +16678,6 @@
 
     !  Units of 0.1 microarcsecond to radians
     real(wp),parameter :: u2r = das2r/1d7
-
-    !  Reference epoch (J2000.0), JD
-    real(wp),parameter :: dj00 = 2451545d0
-
-    !  Days per Julian century
-    real(wp),parameter :: djc = 36525d0
 
     !  Miscellaneous
     integer :: i, j
@@ -20124,12 +20023,6 @@
     !  Units of 0.1 microarcsecond to radians
     real(wp),parameter :: u2r = das2r/1d7
 
-    !  Reference epoch (J2000.0), JD
-    real(wp),parameter :: dj00 = 2451545d0
-
-    !  Days per Julian century
-    real(wp),parameter :: djc = 36525d0
-
     !  Miscellaneous
     real(wp) :: t, el, elp, f, d, om, arg, dp, de, sarg, carg, &
                      dpsils, depsls, dpsipl, depspl
@@ -20482,12 +20375,6 @@
 
     real(wp) :: date1, date2, dpsi, deps
 
-    !  Reference epoch (J2000.0), JD
-    real(wp),parameter :: dj00 = 2451545d0
-
-    !  Days per Julian century
-    real(wp),parameter :: djc = 36525d0
-
     !  Miscellaneous
     real(wp) :: t, fj2, dp, de
 
@@ -20563,12 +20450,6 @@
 
     !  Units of 0.1 milliarcsecond to radians
     real(wp),parameter :: u2r = das2r/1d4
-
-    !  Reference epoch (J2000.0), JD
-    real(wp),parameter :: dj00 = 2451545d0
-
-    !  Days per Julian century
-    real(wp),parameter :: djc = 36525d0
 
     real(wp) :: t, el, elp, f, d, om, dp, de, arg, s, c
     integer :: i, j
@@ -20885,12 +20766,6 @@
 
     real(wp) :: date1, date2
 
-    !  Reference epoch (J2000.0), JD
-    real(wp),parameter :: dj00 = 2451545d0
-
-    !  Days per Julian century
-    real(wp),parameter :: djc = 36525d0
-
     real(wp) :: t
 
     !  Interval between fundamental date J2000.0 and given date (JC).
@@ -20957,12 +20832,6 @@
     implicit none
 
     real(wp) :: date1, date2
-
-    !  Reference epoch (J2000.0), JD
-    real(wp),parameter :: dj00 = 2451545d0
-
-    !  Days per Julian century
-    real(wp),parameter :: djc = 36525d0
 
     real(wp) :: t
 
@@ -21101,12 +20970,6 @@
                      eps0, psia, oma, bpa, bqa, pia, bpia, &
                      epsa, chia, za, zetaa, thetaa, pa, &
                      gam, phi, psi
-
-    !  Reference epoch (J2000.0), JD
-    real(wp),parameter :: dj00 = 2451545d0
-
-    !  Days per Julian century
-    real(wp),parameter :: djc = 36525d0
 
     real(wp) :: t
 
@@ -21648,12 +21511,6 @@
 
     real(wp) :: date1, date2, gamb, phib, psib, epsa
 
-    !  Reference epoch (J2000.0), JD
-    real(wp),parameter :: dj00 = 2451545d0
-
-    !  Days per Julian century
-    real(wp),parameter :: djc = 36525d0
-
     real(wp) :: t
 
     !  Interval between fundamental date J2000.0 and given date (JC).
@@ -21856,9 +21713,6 @@
 
     !  Maximum number of iterations allowed to solve Kepler's equation
     integer,parameter :: kmax = 10
-
-    !  Reference epoch (J2000.0), JD
-    real(wp),parameter :: dj00 = 2451545d0
 
     !  Days per Julian millennium
     real(wp),parameter :: djm = 365250d0
@@ -22379,9 +22233,6 @@
 
     real(wp) :: date1, date2, rmatp(3,3)
 
-    !  Reference epoch (J2000.0), JD
-    real(wp),parameter :: dj00 = 2451545d0
-
     real(wp) :: zeta, z, theta, wmat(3,3)
 
     !  Precession Euler angles, J2000.0 to specified date.
@@ -22476,17 +22327,8 @@
     implicit none
     real(wp) :: rc, dc, pr, pd, px, rv, pmt, pob(3), pco(3)
 
-    !  Days to seconds
-    real(wp),parameter :: d2s = 86400d0
-
-    !  Days per Julian year
-    real(wp),parameter :: djy = 365.25d0
-
     !  Days per Julian millennium
     real(wp),parameter :: djm = 365250d0
-
-    !  Speed of light (m/s)
-    real(wp),parameter :: cmps = 299792458d0
 
     !  Astronomical unit (m, IAU 2012)
     real(wp),parameter :: aum = 149597870.7d3
@@ -23759,12 +23601,6 @@
 
     real(wp) :: date1, date2, dpsipr, depspr
 
-    !  Reference epoch (J2000.0), JD
-    real(wp),parameter :: dj00 = 2451545d0
-
-    !  Days per Julian century
-    real(wp),parameter :: djc = 36525d0
-
     real(wp) :: t
 
     !  ------------------------------------
@@ -23853,12 +23689,6 @@
     implicit none
 
     real(wp) :: date01, date02, date11, date12, zeta, z, theta
-
-    !  Reference epoch (J2000.0), JD
-    real(wp),parameter :: dj00 = 2451545d0
-
-    !  Days per Julian century
-    real(wp),parameter :: djc = 36525d0
 
     real(wp) :: t0, t, tas2r, w
 
@@ -24267,12 +24097,6 @@
     !  Radians to arcseconds
     real(wp),parameter :: dr2as = 206264.8062470963551564734d0
 
-    !  Days to seconds
-    real(wp),parameter :: d2s = 86400d0
-
-    !  Speed of light (m/s)
-    real(wp),parameter :: cmps = 299792458d0
-
     !  Astronomical unit (m, IAU 2012)
     real(wp),parameter :: aum = 149597870.7d3
 
@@ -24407,9 +24231,6 @@
 
     implicit none
     real(wp) :: elong, phi, hm, xp, yp, sp, theta, pv(3,2)
-
-    !  Days to seconds
-    real(wp),parameter :: d2s = 86400d0
 
     !  Earth rotation rate in radians per UT1 second
     real(wp),parameter :: om = 1.00273781191135448d0 * d2pi / d2s
@@ -25280,12 +25101,6 @@
 
     real(wp) :: date1, date2, x, y
 
-    !  Reference epoch (J2000.0), JD
-    real(wp),parameter :: dj00 = 2451545d0
-
-    !  Days per Julian century
-    real(wp),parameter :: djc = 36525d0
-
     !  Time since J2000.0, in Julian centuries
     real(wp) :: t
 
@@ -25847,12 +25662,6 @@
     implicit none
 
     real(wp) :: date1, date2, x, y
-
-    !  Reference epoch (J2000.0), JD
-    real(wp),parameter :: dj00 = 2451545d0
-
-    !  Days per Julian century
-    real(wp),parameter :: djc = 36525d0
 
     !  Time since J2000.0, in Julian centuries
     real(wp) :: t
@@ -26541,12 +26350,6 @@
 
     real(wp) :: date1, date2
 
-    !  Reference epoch (J2000.0), JD
-    real(wp),parameter :: dj00 = 2451545d0
-
-    !  Days per Julian century
-    real(wp),parameter :: djc = 36525d0
-
     !  Time since J2000.0, in Julian centuries
     real(wp) :: t
 
@@ -26669,12 +26472,6 @@
                      ep1a, ep1b, ep2a, ep2b, &
                      ra2, dec2, pmr2, pmd2, px2, rv2
     integer :: j
-
-    !  Days to seconds
-    real(wp),parameter :: d2s = 86400d0
-
-    !  Speed of light (m/s)
-    real(wp),parameter :: cmps = 299792458d0
 
     !  Astronomical unit (m, IAU 2012)
     real(wp),parameter :: aum = 149597870.7d3
@@ -26851,12 +26648,6 @@
 
     !  Radians to arcseconds
     real(wp),parameter :: dr2as = 206264.8062470963551564734d0
-
-    !  Days to seconds
-    real(wp),parameter :: d2s = 86400d0
-
-    !  Speed of light (m/s)
-    real(wp),parameter :: cmps = 299792458d0
 
     !  Astronomical unit (m, IAU 2012)
     real(wp),parameter :: aum = 149597870.7d3
@@ -27111,9 +26902,6 @@
     implicit none
     real(wp) :: tai1, tai2, dta, ut11, ut12
     integer :: j
-
-    !  Days to seconds
-    real(wp),parameter :: d2s = 86400d0
 
     real(wp) :: dtad
 
@@ -27512,9 +27300,6 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     real(wp) :: tdb1, tdb2, dtr, tt1, tt2
     integer :: j
 
-    !  Days to seconds
-    real(wp),parameter :: d2s = 86400d0
-
     real(wp) :: dtrd
 
     !  Result, safeguarding precision.
@@ -27575,9 +27360,6 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     integer :: ihour, imin
     real(wp) :: sec, rad
     integer :: j
-
-    !  Seconds of time to radians
-    real(wp),parameter :: ds2r = 7.272205216643039903848712d-5
 
     real(wp) :: w
 
@@ -27645,9 +27427,6 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     integer :: ihour, imin
     real(wp) :: sec, days
     integer :: j
-
-    !  Days to seconds
-    real(wp),parameter :: d2s = 86400d0
 
     real(wp) :: w
 
@@ -28544,9 +28323,6 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     real(wp) :: tt1, tt2, dtr, tdb1, tdb2
     integer :: j
 
-    !  Days to seconds
-    real(wp),parameter :: d2s = 86400d0
-
     real(wp) :: dtrd
 
     !  Result, safeguarding precision.
@@ -28601,9 +28377,6 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     implicit none
     real(wp) :: tt1, tt2, dt, ut11, ut12
     integer :: j
-
-    !  Days to seconds
-    real(wp),parameter :: d2s = 86400d0
 
     real(wp) :: dtd
 
@@ -28661,9 +28434,6 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     real(wp) :: ut11, ut12, dta, tai1, tai2
     integer :: j
 
-    !  Days to seconds
-    real(wp),parameter :: d2s = 86400d0
-
     real(wp) :: dtad
 
     !  Result, safeguarding precision.
@@ -28718,9 +28488,6 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     implicit none
     real(wp) :: ut11, ut12, dt, tt1, tt2
     integer :: j
-
-    !  Days to seconds
-    real(wp),parameter :: d2s = 86400d0
 
     real(wp) :: dtd
 
@@ -28804,9 +28571,6 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     implicit none
     real(wp) :: ut11, ut12, dut1, utc1, utc2
     integer :: j
-
-    !  Days to seconds
-    real(wp),parameter :: d2s = 86400d0
 
     logical :: big1
     integer :: i, iy, im, id, js
@@ -28950,9 +28714,6 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     implicit none
     real(wp) :: utc1, utc2, tai1, tai2
     integer :: j
-
-    !  Days to seconds
-    real(wp),parameter :: d2s = 86400d0
 
     logical :: big1
     integer :: iy, im, id, js, iyt, imt, idt
@@ -29214,12 +28975,6 @@ subroutine TDBTCB ( tdb1, tdb2, tcb1, tcb2, j )
     implicit none
 
     real(wp) :: date1, date2, x, y
-
-    !  Reference epoch (J2000.0), JD
-    real(wp),parameter :: dj00 = 2451545d0
-
-    !  Days per Julian century
-    real(wp),parameter :: djc = 36525d0
 
     !  Maximum power of T in the polynomials for X and Y
     integer,parameter :: maxpt = 5
