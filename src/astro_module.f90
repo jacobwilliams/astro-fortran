@@ -259,24 +259,15 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!    PNAT      d(3)   natural direction to the source (unit vector)
-!    V         d(3)   observer barycentric velocity in units of c
-!    S         d      distance between the Sun and the observer (au)
-!    BM1       d      sqrt(1-|v|^2): reciprocal of Lorenz factor
-!
-!  Returned:
-!    PPR       d(3)   proper direction to source (unit vector)
-!
 !### Notes
 !
 !  1. The algorithm is based on Expr. (7.40) in the Explanatory
 !     Supplement (Urban & Seidelmann 2013), but with the following
 !     changes:
 !
-!     o  Rigorous rather than approximate normalization is applied.
+!     *  Rigorous rather than approximate normalization is applied.
 !
-!     o  The gravitational potential term from Expr. (7) in
+!     *  The gravitational potential term from Expr. (7) in
 !        Klioner (2003) is added, taking into account only the Sun's
 !        contribution.  This has a maximum effect of about
 !        0.4 microarcsecond.
@@ -301,11 +292,11 @@
 
     implicit none
 
-    real(wp),dimension(3) :: pnat
-    real(wp),dimension(3) :: v
-    real(wp) :: s
-    real(wp) :: bm1
-    real(wp),dimension(3) :: ppr
+    real(wp),dimension(3),intent(in) :: pnat !! natural direction to the source (unit vector)
+    real(wp),dimension(3),intent(in) :: v !! observer barycentric velocity in units of c
+    real(wp),intent(in) :: s !! distance between the Sun and the observer (au)
+    real(wp),intent(in) :: bm1 !! sqrt(1-|v|^2): reciprocal of Lorenz factor
+    real(wp),dimension(3),intent(out) :: ppr !! proper direction to source (unit vector)
 
     !  Schwarzschild radius of the Sun (au)
     !  = 2 * 1.32712440041 D20 / (2.99792458 D8)^2 / 1.49597870700 D11
@@ -337,15 +328,6 @@
 !  to hour angle and declination.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     AZ       d     azimuth
-!     EL       d     elevation
-!     PHI      d     observatory latitude
-!
-!  Returned:
-!     HA       d     hour angle
-!     DEC      d     declination
 !
 !### Notes
 !
@@ -391,11 +373,11 @@
 
     implicit none
 
-    real(wp) :: az
-    real(wp) :: el
-    real(wp) :: phi
-    real(wp) :: ha
-    real(wp) :: dec
+    real(wp),intent(in) :: az !! azimuth
+    real(wp),intent(in) :: el !! elevation
+    real(wp),intent(in) :: phi !! observatory latitude
+    real(wp),intent(out) :: ha !! hour angle
+    real(wp),intent(out) :: dec !! declination
 
     real(wp) :: sa, ca, se, ce, sp, cp, x, y, z, r
 
@@ -430,19 +412,6 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     S          c      sign:  '-' = negative, otherwise positive
-!     IDEG       i      degrees
-!     IAMIN      i      arcminutes
-!     ASEC       d      arcseconds
-!
-!  Returned:
-!     RAD        d      angle in radians
-!     J          i      status:  0 = OK
-!                                1 = IDEG outside range 0-359
-!                                2 = IAMIN outside range 0-59
-!                                3 = ASEC outside range 0-59.999...
-!
 !### Notes
 !
 !  1.  If the s argument is a string, only the leftmost character is
@@ -456,7 +425,6 @@
 !  4.  If there are multiple errors, the status value reflects only the
 !      first, the smallest taking precedence.
 !
-!
 !### History
 !  * IAU SOFA revision: 2013 December 2
 
@@ -464,12 +432,16 @@
 
     implicit none
 
-    character(len=1) :: s
-    integer :: ideg
-    integer :: iamin
-    real(wp) :: asec
-    real(wp) :: rad
-    integer :: j
+    character(len=1),intent(in) :: s !! sign:  '-' = negative, otherwise positive
+    integer,intent(in) :: ideg !! degrees
+    integer,intent(in) :: iamin !! arcminutes
+    real(wp),intent(in) :: asec !! arcseconds
+    real(wp),intent(out) :: rad !! angle in radians
+    integer,intent(out) :: j !! status:
+                             !! 0 = OK
+                             !! 1 = IDEG outside range 0-359
+                             !! 2 = IAMIN outside range 0-59
+                             !! 3 = ASEC outside range 0-59.999...
 
     real(wp) :: w
 
@@ -501,26 +473,18 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     A          d       angle (radians)
-!
-!  Returned:
-!     ANP    d       angle in range 0-2pi
-!
 !### History
 !  * IAU SOFA revision: 2000 December 15
 
-    real(wp) function ANP ( a )
+    function ANP ( a ) result(w)
 
     implicit none
 
-    real(wp) :: a
-
-    real(wp) :: w
+    real(wp),intent(in) :: a !! angle (radians)
+    real(wp) :: w !! angle in range 0-2pi
 
     w = mod(a,d2pi)
     if ( w < 0d0 ) w = w + d2pi
-    ANP = w
 
     end function ANP
 !***********************************************************************
@@ -531,26 +495,18 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     A          d       angle (radians)
-!
-!  Returned:
-!     ANPM   d       angle in range +/-pi
-!
 !### History
 !  * IAU SOFA revision: 2000 November 25
 
-    real(wp) function ANPM ( a )
+    function ANPM ( a ) result(w)
 
     implicit none
 
-    real(wp) :: a
-
-    real(wp) :: w
+    real(wp),intent(in) :: a !! angle (radians)
+    real(wp) :: w !! angle in range +/-pi
 
     w = mod(a,d2pi)
     if ( abs(w) >= dpi ) w = w - sign(d2pi,a)
-    ANPM = w
 
     end function ANPM
 !***********************************************************************
@@ -566,31 +522,6 @@
 !  transformation chain.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1    d       TDB as a 2-part...
-!     DATE2    d       ...Julian Date (Note 1)
-!     EBPV     d(3,2)  Earth barycentric position/velocity (au, au/day)
-!     EHP      d(3)    Earth heliocentric position (au)
-!
-!  Returned:
-!     ASTROM   d(30)   star-independent astrometry parameters:
-!               (1)      PM time interval (SSB, Julian years)
-!               (2-4)    SSB to observer (vector, au)
-!               (5-7)    Sun to observer (unit vector)
-!               (8)      distance from Sun to observer (au)
-!               (9-11)   v: barycentric observer velocity (vector, c)
-!               (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
-!               (13-21)  bias-precession-nutation matrix
-!               (22)     unchanged
-!               (23)     unchanged
-!               (24)     unchanged
-!               (25)     unchanged
-!               (26)     unchanged
-!               (27)     unchanged
-!               (28)     unchanged
-!               (29)     unchanged
-!               (30)     unchanged
 !
 !### Notes
 !
@@ -657,11 +588,28 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp),dimension(3,2) :: ebpv
-    real(wp),dimension(3) :: ehp
-    real(wp),dimension(30) :: astrom
+    real(wp),intent(in) :: date1 !! TDB as a 2-part...
+    real(wp),intent(in) :: date2 !! ...Julian Date (Note 1)
+    real(wp),dimension(3,2),intent(in) :: ebpv !! Earth barycentric position/velocity (au, au/day)
+    real(wp),dimension(3),intent(in) :: ehp !! Earth heliocentric position (au)
+    real(wp),dimension(30),intent(out) :: astrom !! star-independent astrometry parameters:
+                                                 !!
+                                                 !! (1)      PM time interval (SSB, Julian years)
+                                                 !! (2-4)    SSB to observer (vector, au)
+                                                 !! (5-7)    Sun to observer (unit vector)
+                                                 !! (8)      distance from Sun to observer (au)
+                                                 !! (9-11)   v: barycentric observer velocity (vector, c)
+                                                 !! (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
+                                                 !! (13-21)  bias-precession-nutation matrix
+                                                 !! (22)     unchanged
+                                                 !! (23)     unchanged
+                                                 !! (24)     unchanged
+                                                 !! (25)     unchanged
+                                                 !! (26)     unchanged
+                                                 !! (27)     unchanged
+                                                 !! (28)     unchanged
+                                                 !! (29)     unchanged
+                                                 !! (30)     unchanged
 
     real(wp) :: pv(3,2)
 
@@ -686,29 +634,6 @@
 !  transformation chain.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1    d      TDB as a 2-part...
-!     DATE2    d      ...Julian Date (Note 1)
-!
-!  Returned:
-!     ASTROM   d(30)  star-independent astrometry parameters:
-!               (1)      PM time interval (SSB, Julian years)
-!               (2-4)    SSB to observer (vector, au)
-!               (5-7)    Sun to observer (unit vector)
-!               (8)      distance from Sun to observer (au)
-!               (9-11)   v: barycentric observer velocity (vector, c)
-!               (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
-!               (13-21)  bias-precession-nutation matrix
-!               (22)     unchanged
-!               (23)     unchanged
-!               (24)     unchanged
-!               (25)     unchanged
-!               (26)     unchanged
-!               (27)     unchanged
-!               (28)     unchanged
-!               (29)     unchanged
-!               (30)     unchanged
 !
 !### Notes
 !
@@ -779,9 +704,26 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp),dimension(30) :: astrom
+    real(wp),intent(in) :: date1 !! TDB as a 2-part...
+    real(wp),intent(in) :: date2 !! ...Julian Date (Note 1)
+    real(wp),dimension(30),intent(out) :: astrom !! star-independent astrometry parameters:
+                                                 !!
+                                                 !! (1)      PM time interval (SSB, Julian years)
+                                                 !! (2-4)    SSB to observer (vector, au)
+                                                 !! (5-7)    Sun to observer (unit vector)
+                                                 !! (8)      distance from Sun to observer (au)
+                                                 !! (9-11)   v: barycentric observer velocity (vector, c)
+                                                 !! (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
+                                                 !! (13-21)  bias-precession-nutation matrix
+                                                 !! (22)     unchanged
+                                                 !! (23)     unchanged
+                                                 !! (24)     unchanged
+                                                 !! (25)     unchanged
+                                                 !! (26)     unchanged
+                                                 !! (27)     unchanged
+                                                 !! (28)     unchanged
+                                                 !! (29)     unchanged
+                                                 !! (30)     unchanged
 
     integer :: j
     real(wp) :: ehpv(3,2), ebpv(3,2)
@@ -807,33 +749,6 @@
 !  the astrometric transformation chain.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1    d       TDB as a 2-part...
-!     DATE2    d      ...Julian Date (Note 1)
-!     EBPV     d(3,2)  Earth barycentric position/velocity (au, au/day)
-!     EHP      d(3)    Earth heliocentric position (au)
-!     X,Y      d       CIP X,Y (components of unit vector)
-!     S        d       the CIO locator s (radians)
-!
-!  Returned:
-!     ASTROM   d(30)   star-independent astrometry parameters:
-!               (1)      PM time interval (SSB, Julian years)
-!               (2-4)    SSB to observer (vector, au)
-!               (5-7)    Sun to observer (unit vector)
-!               (8)      distance from Sun to observer (au)
-!               (9-11)   v: barycentric observer velocity (vector, c)
-!               (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
-!               (13-21)  bias-precession-nutation matrix
-!               (22)     unchanged
-!               (23)     unchanged
-!               (24)     unchanged
-!               (25)     unchanged
-!               (26)     unchanged
-!               (27)     unchanged
-!               (28)     unchanged
-!               (29)     unchanged
-!               (30)     unchanged
 !
 !### Notes
 !
@@ -905,14 +820,31 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp),dimension(3,2) :: ebpv
-    real(wp),dimension(3) :: ehp
-    real(wp) :: x
-    real(wp) :: y
-    real(wp) :: s
-    real(wp),dimension(30) :: astrom
+    real(wp),intent(in) :: date1 !! TDB as a 2-part...
+    real(wp),intent(in) :: date2 !! ...Julian Date (Note 1)
+    real(wp),dimension(3,2),intent(in) :: ebpv !! Earth barycentric position/velocity (au, au/day)
+    real(wp),dimension(3),intent(in) :: ehp !! Earth heliocentric position (au)
+    real(wp),intent(in) :: x !! CIP X (component of unit vector)
+    real(wp),intent(in) :: y !! CIP Y (component of unit vector)
+    real(wp),intent(in) :: s !! the CIO locator s (radians)
+    real(wp),dimension(30),intent(out) :: astrom !! star-independent astrometry parameters:
+                                                 !!
+                                                 !! (1)      PM time interval (SSB, Julian years)
+                                                 !! (2-4)    SSB to observer (vector, au)
+                                                 !! (5-7)    Sun to observer (unit vector)
+                                                 !! (8)      distance from Sun to observer (au)
+                                                 !! (9-11)   v: barycentric observer velocity (vector, c)
+                                                 !! (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
+                                                 !! (13-21)  bias-precession-nutation matrix
+                                                 !! (22)     unchanged
+                                                 !! (23)     unchanged
+                                                 !! (24)     unchanged
+                                                 !! (25)     unchanged
+                                                 !! (26)     unchanged
+                                                 !! (27)     unchanged
+                                                 !! (28)     unchanged
+                                                 !! (29)     unchanged
+                                                 !! (30)     unchanged
 
     !  Star-independent astrometry parameters for geocenter.
     call APCG ( date1, date2, ebpv, ehp, astrom )
@@ -935,30 +867,6 @@
 !  the astrometric transformation chain.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1    d      TDB as a 2-part...
-!     DATE2    d      ...Julian Date (Note 1)
-!
-!  Returned:
-!     ASTROM   d(30)  star-independent astrometry parameters:
-!               (1)      PM time interval (SSB, Julian years)
-!               (2-4)    SSB to observer (vector, au)
-!               (5-7)    Sun to observer (unit vector)
-!               (8)      distance from Sun to observer (au)
-!               (9-11)   v: barycentric observer velocity (vector, c)
-!               (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
-!               (13-21)  bias-precession-nutation matrix
-!               (22)     unchanged
-!               (23)     unchanged
-!               (24)     unchanged
-!               (25)     unchanged
-!               (26)     unchanged
-!               (27)     unchanged
-!               (28)     unchanged
-!               (29)     unchanged
-!               (30)     unchanged
-!     EO       d      equation of the origins (ERA-GST)
 !
 !### Notes
 !
@@ -1029,10 +937,27 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp),dimension(30) :: astrom
-    real(wp) :: eo
+    real(wp),intent(in) :: date1 !! TDB as a 2-part...
+    real(wp),intent(in) :: date2 !! ...Julian Date (Note 1)
+    real(wp),dimension(30),intent(out) :: astrom !! star-independent astrometry parameters:
+                                                 !!
+                                                 !! (1)      PM time interval (SSB, Julian years)
+                                                 !! (2-4)    SSB to observer (vector, au)
+                                                 !! (5-7)    Sun to observer (unit vector)
+                                                 !! (8)      distance from Sun to observer (au)
+                                                 !! (9-11)   v: barycentric observer velocity (vector, c)
+                                                 !! (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
+                                                 !! (13-21)  bias-precession-nutation matrix
+                                                 !! (22)     unchanged
+                                                 !! (23)     unchanged
+                                                 !! (24)     unchanged
+                                                 !! (25)     unchanged
+                                                 !! (26)     unchanged
+                                                 !! (27)     unchanged
+                                                 !! (28)     unchanged
+                                                 !! (29)     unchanged
+                                                 !! (30)     unchanged
+    real(wp),intent(out) :: eo !! equation of the origins (ERA-GST)
 
     integer :: j
     real(wp) :: pvh(3,2), pvb(3,2), r(3,3), x, y, s
@@ -13417,15 +13342,15 @@
 !  3. Three different matrices can be constructed, depending on the
 !     supplied angles:
 !
-!     o  To obtain the nutation x precession x frame bias matrix,
+!     *  To obtain the nutation x precession x frame bias matrix,
 !        generate the four precession angles, generate the nutation
 !        components and add them to the psi_bar and epsilon_A angles,
 !        and call the present routine.
 !
-!     o  To obtain the precession x frame bias matrix, generate the
+!     *  To obtain the precession x frame bias matrix, generate the
 !        four precession angles and call the present routine.
 !
-!     o  To obtain the frame bias matrix, generate the four precession
+!     *  To obtain the frame bias matrix, generate the four precession
 !        angles for date J2000.0 and call the present routine.
 !
 !     The nutation-only and precession-only matrices can if necessary
