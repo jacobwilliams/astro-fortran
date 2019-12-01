@@ -19,7 +19,8 @@
 !  * add INTENT to all arguments
 !  * make all routines PURE
 !  * replace anint and nint ???
-!  * git rid of the "Called:" blocks in the headers
+!  * get rid of the "Called:" blocks in the headers
+!  * added RESULT() to functions.
 !
 !### Original SOFA Copyright Notice
 !
@@ -592,24 +593,24 @@
     real(wp),intent(in) :: date2 !! ...Julian Date (Note 1)
     real(wp),dimension(3,2),intent(in) :: ebpv !! Earth barycentric position/velocity (au, au/day)
     real(wp),dimension(3),intent(in) :: ehp !! Earth heliocentric position (au)
-    real(wp),dimension(30),intent(out) :: astrom !! star-independent astrometry parameters:
-                                                 !!
-                                                 !! (1)      PM time interval (SSB, Julian years)
-                                                 !! (2-4)    SSB to observer (vector, au)
-                                                 !! (5-7)    Sun to observer (unit vector)
-                                                 !! (8)      distance from Sun to observer (au)
-                                                 !! (9-11)   v: barycentric observer velocity (vector, c)
-                                                 !! (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
-                                                 !! (13-21)  bias-precession-nutation matrix
-                                                 !! (22)     unchanged
-                                                 !! (23)     unchanged
-                                                 !! (24)     unchanged
-                                                 !! (25)     unchanged
-                                                 !! (26)     unchanged
-                                                 !! (27)     unchanged
-                                                 !! (28)     unchanged
-                                                 !! (29)     unchanged
-                                                 !! (30)     unchanged
+    real(wp),dimension(30),intent(inout) :: astrom !! star-independent astrometry parameters:
+                                                   !!
+                                                   !! (1)      PM time interval (SSB, Julian years)
+                                                   !! (2-4)    SSB to observer (vector, au)
+                                                   !! (5-7)    Sun to observer (unit vector)
+                                                   !! (8)      distance from Sun to observer (au)
+                                                   !! (9-11)   v: barycentric observer velocity (vector, c)
+                                                   !! (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
+                                                   !! (13-21)  bias-precession-nutation matrix
+                                                   !! (22)     unchanged
+                                                   !! (23)     unchanged
+                                                   !! (24)     unchanged
+                                                   !! (25)     unchanged
+                                                   !! (26)     unchanged
+                                                   !! (27)     unchanged
+                                                   !! (28)     unchanged
+                                                   !! (29)     unchanged
+                                                   !! (30)     unchanged
 
     real(wp) :: pv(3,2)
 
@@ -706,24 +707,24 @@
 
     real(wp),intent(in) :: date1 !! TDB as a 2-part...
     real(wp),intent(in) :: date2 !! ...Julian Date (Note 1)
-    real(wp),dimension(30),intent(out) :: astrom !! star-independent astrometry parameters:
-                                                 !!
-                                                 !! (1)      PM time interval (SSB, Julian years)
-                                                 !! (2-4)    SSB to observer (vector, au)
-                                                 !! (5-7)    Sun to observer (unit vector)
-                                                 !! (8)      distance from Sun to observer (au)
-                                                 !! (9-11)   v: barycentric observer velocity (vector, c)
-                                                 !! (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
-                                                 !! (13-21)  bias-precession-nutation matrix
-                                                 !! (22)     unchanged
-                                                 !! (23)     unchanged
-                                                 !! (24)     unchanged
-                                                 !! (25)     unchanged
-                                                 !! (26)     unchanged
-                                                 !! (27)     unchanged
-                                                 !! (28)     unchanged
-                                                 !! (29)     unchanged
-                                                 !! (30)     unchanged
+    real(wp),dimension(30),intent(inout) :: astrom !! star-independent astrometry parameters:
+                                                   !!
+                                                   !! (1)      PM time interval (SSB, Julian years)
+                                                   !! (2-4)    SSB to observer (vector, au)
+                                                   !! (5-7)    Sun to observer (unit vector)
+                                                   !! (8)      distance from Sun to observer (au)
+                                                   !! (9-11)   v: barycentric observer velocity (vector, c)
+                                                   !! (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
+                                                   !! (13-21)  bias-precession-nutation matrix
+                                                   !! (22)     unchanged
+                                                   !! (23)     unchanged
+                                                   !! (24)     unchanged
+                                                   !! (25)     unchanged
+                                                   !! (26)     unchanged
+                                                   !! (27)     unchanged
+                                                   !! (28)     unchanged
+                                                   !! (29)     unchanged
+                                                   !! (30)     unchanged
 
     integer :: j
     real(wp) :: ehpv(3,2), ebpv(3,2)
@@ -827,24 +828,24 @@
     real(wp),intent(in) :: x !! CIP X (component of unit vector)
     real(wp),intent(in) :: y !! CIP Y (component of unit vector)
     real(wp),intent(in) :: s !! the CIO locator s (radians)
-    real(wp),dimension(30),intent(out) :: astrom !! star-independent astrometry parameters:
-                                                 !!
-                                                 !! (1)      PM time interval (SSB, Julian years)
-                                                 !! (2-4)    SSB to observer (vector, au)
-                                                 !! (5-7)    Sun to observer (unit vector)
-                                                 !! (8)      distance from Sun to observer (au)
-                                                 !! (9-11)   v: barycentric observer velocity (vector, c)
-                                                 !! (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
-                                                 !! (13-21)  bias-precession-nutation matrix
-                                                 !! (22)     unchanged
-                                                 !! (23)     unchanged
-                                                 !! (24)     unchanged
-                                                 !! (25)     unchanged
-                                                 !! (26)     unchanged
-                                                 !! (27)     unchanged
-                                                 !! (28)     unchanged
-                                                 !! (29)     unchanged
-                                                 !! (30)     unchanged
+    real(wp),dimension(30),intent(inout) :: astrom !! star-independent astrometry parameters:
+                                                   !!
+                                                   !! (1)      PM time interval (SSB, Julian years)
+                                                   !! (2-4)    SSB to observer (vector, au)
+                                                   !! (5-7)    Sun to observer (unit vector)
+                                                   !! (8)      distance from Sun to observer (au)
+                                                   !! (9-11)   v: barycentric observer velocity (vector, c)
+                                                   !! (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
+                                                   !! (13-21)  bias-precession-nutation matrix
+                                                   !! (22)     unchanged
+                                                   !! (23)     unchanged
+                                                   !! (24)     unchanged
+                                                   !! (25)     unchanged
+                                                   !! (26)     unchanged
+                                                   !! (27)     unchanged
+                                                   !! (28)     unchanged
+                                                   !! (29)     unchanged
+                                                   !! (30)     unchanged
 
     !  Star-independent astrometry parameters for geocenter.
     call APCG ( date1, date2, ebpv, ehp, astrom )
@@ -939,24 +940,24 @@
 
     real(wp),intent(in) :: date1 !! TDB as a 2-part...
     real(wp),intent(in) :: date2 !! ...Julian Date (Note 1)
-    real(wp),dimension(30),intent(out) :: astrom !! star-independent astrometry parameters:
-                                                 !!
-                                                 !! (1)      PM time interval (SSB, Julian years)
-                                                 !! (2-4)    SSB to observer (vector, au)
-                                                 !! (5-7)    Sun to observer (unit vector)
-                                                 !! (8)      distance from Sun to observer (au)
-                                                 !! (9-11)   v: barycentric observer velocity (vector, c)
-                                                 !! (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
-                                                 !! (13-21)  bias-precession-nutation matrix
-                                                 !! (22)     unchanged
-                                                 !! (23)     unchanged
-                                                 !! (24)     unchanged
-                                                 !! (25)     unchanged
-                                                 !! (26)     unchanged
-                                                 !! (27)     unchanged
-                                                 !! (28)     unchanged
-                                                 !! (29)     unchanged
-                                                 !! (30)     unchanged
+    real(wp),dimension(30),intent(inout) :: astrom !! star-independent astrometry parameters:
+                                                   !!
+                                                   !! (1)      PM time interval (SSB, Julian years)
+                                                   !! (2-4)    SSB to observer (vector, au)
+                                                   !! (5-7)    Sun to observer (unit vector)
+                                                   !! (8)      distance from Sun to observer (au)
+                                                   !! (9-11)   v: barycentric observer velocity (vector, c)
+                                                   !! (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
+                                                   !! (13-21)  bias-precession-nutation matrix
+                                                   !! (22)     unchanged
+                                                   !! (23)     unchanged
+                                                   !! (24)     unchanged
+                                                   !! (25)     unchanged
+                                                   !! (26)     unchanged
+                                                   !! (27)     unchanged
+                                                   !! (28)     unchanged
+                                                   !! (29)     unchanged
+                                                   !! (30)     unchanged
     real(wp),intent(out) :: eo !! equation of the origins (ERA-GST)
 
     integer :: j
@@ -992,41 +993,6 @@
 !  coordinates.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1    d       TDB as a 2-part...
-!     DATE2    d       ...Julian Date (Note 1)
-!     EBPV     d(3,2)  Earth barycentric pos/vel (au, au/day, Note 2)
-!     EHP      d(3)    Earth heliocentric position (au, Note 2)
-!     X,Y      d       CIP X,Y (components of unit vector)
-!     S        d       the CIO locator s (radians)
-!     THETA    d       Earth rotation angle (radians)
-!     ELONG    d       longitude (radians, east +ve, Note 3)
-!     PHI      d       latitude (geodetic, radians, Note 3)
-!     HM       d       height above ellipsoid (m, geodetic, Note 3)
-!     XP,YP    d       polar motion coordinates (radians, Note 4)
-!     SP       d       the TIO locator s' (radians, Note 4)
-!     REFA     d       refraction constant A (radians, Note 5)
-!     REFB     d       refraction constant B (radians, Note 5)
-!
-!  Returned:
-!     ASTROM   d(30)   star-independent astrometry parameters:
-!               (1)      PM time interval (SSB, Julian years)
-!               (2-4)    SSB to observer (vector, au)
-!               (5-7)    Sun to observer (unit vector)
-!               (8)      distance from Sun to observer (au)
-!               (9-11)   v: barycentric observer velocity (vector, c)
-!               (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
-!               (13-21)  bias-precession-nutation matrix
-!               (22)     longitude + s' (radians)
-!               (23)     polar motion xp wrt local meridian (radians)
-!               (24)     polar motion yp wrt local meridian (radians)
-!               (25)     sine of geodetic latitude
-!               (26)     cosine of geodetic latitude
-!               (27)     magnitude of diurnal aberration vector
-!               (28)     "local" Earth rotation angle (radians)
-!               (29)     refraction constant A (radians)
-!               (30)     refraction constant B (radians)
 !
 !### Notes
 !
@@ -1128,23 +1094,40 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp),dimension(3,2) :: ebpv
-    real(wp),dimension(3) :: ehp
-    real(wp) :: x
-    real(wp) :: y
-    real(wp) :: s
-    real(wp) :: theta
-    real(wp) :: elong
-    real(wp) :: phi
-    real(wp) :: hm
-    real(wp) :: xp
-    real(wp) :: yp
-    real(wp) :: sp
-    real(wp) :: refa
-    real(wp) :: refb
-    real(wp),dimension(30) :: astrom
+    real(wp),intent(in) :: date1 !! TDB as a 2-part...
+    real(wp),intent(in) :: date2 !! ...Julian Date (Note 1)
+    real(wp),dimension(3,2) :: ebpv !! Earth barycentric pos/vel (au, au/day, Note 2)
+    real(wp),dimension(3) :: ehp !! Earth heliocentric position (au, Note 2)
+    real(wp),intent(in) :: x !! CIP X (component of unit vector)
+    real(wp),intent(in) :: y !! CIP Y (component of unit vector)
+    real(wp),intent(in) :: s !! the CIO locator s (radians)
+    real(wp),intent(in) :: theta !! Earth rotation angle (radians)
+    real(wp),intent(in) :: elong !! longitude (radians, east +ve, Note 3)
+    real(wp),intent(in) :: phi !! latitude (geodetic, radians, Note 3)
+    real(wp),intent(in) :: hm !! height above ellipsoid (m, geodetic, Note 3)
+    real(wp),intent(in) :: xp !! polar motion coordinate (radians, Note 4)
+    real(wp),intent(in) :: yp !! polar motion coordinate (radians, Note 4)
+    real(wp),intent(in) :: sp !! the TIO locator s' (radians, Note 4)
+    real(wp),intent(in) :: refa !! refraction constant A (radians, Note 5)
+    real(wp),intent(in) :: refb !! refraction constant B (radians, Note 5)
+    real(wp),dimension(30),intent(out) :: astrom !! star-independent astrometry parameters:
+                                                 !!
+                                                 !! (1)      PM time interval (SSB, Julian years)
+                                                 !! (2-4)    SSB to observer (vector, au)
+                                                 !! (5-7)    Sun to observer (unit vector)
+                                                 !! (8)      distance from Sun to observer (au)
+                                                 !! (9-11)   v: barycentric observer velocity (vector, c)
+                                                 !! (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
+                                                 !! (13-21)  bias-precession-nutation matrix
+                                                 !! (22)     longitude + s' (radians)
+                                                 !! (23)     polar motion xp wrt local meridian (radians)
+                                                 !! (24)     polar motion yp wrt local meridian (radians)
+                                                 !! (25)     sine of geodetic latitude
+                                                 !! (26)     cosine of geodetic latitude
+                                                 !! (27)     magnitude of diurnal aberration vector
+                                                 !! (28)     "local" Earth rotation angle (radians)
+                                                 !! (29)     refraction constant A (radians)
+                                                 !! (30)     refraction constant B (radians)
 
     real(wp) :: sl, cl, r(3,3), pvc(3,2), pv(3,2)
 
@@ -1202,42 +1185,6 @@
 !  the ICRS/CIRS transformations.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     UTC1     d      UTC as a 2-part...
-!     UTC2     d      ...quasi Julian Date (Notes 1,2)
-!     DUT1     d      UT1-UTC (seconds, Note 3)
-!     ELONG    d      longitude (radians, east +ve, Note 4)
-!     PHI      d      latitude (geodetic, radians, Note 4)
-!     HM       d      height above ellipsoid (m, geodetic, Notes 4,6)
-!     XP,YP    d      polar motion coordinates (radians, Note 5)
-!     PHPA     d      pressure at the observer (hPa = mB, Note 6)
-!     TC       d      ambient temperature at the observer (deg C)
-!     RH       d      relative humidity at the observer (range 0-1)
-!     WL       d      wavelength (micrometers, Note 7)
-!
-!  Returned:
-!     ASTROM   d(30)  star-independent astrometry parameters:
-!               (1)      PM time interval (SSB, Julian years)
-!               (2-4)    SSB to observer (vector, au)
-!               (5-7)    Sun to observer (unit vector)
-!               (8)      distance from Sun to observer (au)
-!               (9-11)   v: barycentric observer velocity (vector, c)
-!               (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
-!               (13-21)  bias-precession-nutation matrix
-!               (22)     longitude + s' (radians)
-!               (23)     polar motion xp wrt local meridian (radians)
-!               (24)     polar motion yp wrt local meridian (radians)
-!               (25)     sine of geodetic latitude
-!               (26)     cosine of geodetic latitude
-!               (27)     magnitude of diurnal aberration vector
-!               (28)     "local" Earth rotation angle (radians)
-!               (29)     refraction constant A (radians)
-!               (30)     refraction constant B (radians)
-!     EO       d      equation of the origins (ERA-GST)
-!     J        i      status: +1 = dubious year (Note 2)
-!                              0 = OK
-!                             -1 = unacceptable date
 !
 !### Notes
 !
@@ -1349,21 +1296,40 @@
 
     implicit none
 
-    real(wp) :: utc1
-    real(wp) :: utc2
-    real(wp) :: dut1
-    real(wp) :: elong
-    real(wp) :: phi
-    real(wp) :: hm
-    real(wp) :: xp
-    real(wp) :: yp
-    real(wp) :: phpa
-    real(wp) :: tc
-    real(wp) :: rh
-    real(wp) :: wl
-    real(wp),dimension(30) :: astrom
-    real(wp) :: eo
-    integer :: j
+    real(wp),intent(in) :: utc1 !! UTC as a 2-part...
+    real(wp),intent(in) :: utc2 !! ...quasi Julian Date (Notes 1,2)
+    real(wp),intent(in) :: dut1 !! UT1-UTC (seconds, Note 3)
+    real(wp),intent(in) :: elong !! longitude (radians, east +ve, Note 4)
+    real(wp),intent(in) :: phi !! latitude (geodetic, radians, Note 4)
+    real(wp),intent(in) :: hm !! height above ellipsoid (m, geodetic, Notes 4,6)
+    real(wp),intent(in) :: xp !! polar motion coordinate (radians, Note 5)
+    real(wp),intent(in) :: yp !! polar motion coordinate (radians, Note 5)
+    real(wp),intent(in) :: phpa !! pressure at the observer (hPa = mB, Note 6)
+    real(wp),intent(in) :: tc !! ambient temperature at the observer (deg C)
+    real(wp),intent(in) :: rh !! relative humidity at the observer (range 0-1)
+    real(wp),intent(in) :: wl !! wavelength (micrometers, Note 7)
+    real(wp),dimension(30),intent(out) :: astrom !! star-independent astrometry parameters:
+                                                 !!
+                                                 !! (1)      PM time interval (SSB, Julian years)
+                                                 !! (2-4)    SSB to observer (vector, au)
+                                                 !! (5-7)    Sun to observer (unit vector)
+                                                 !! (8)      distance from Sun to observer (au)
+                                                 !! (9-11)   v: barycentric observer velocity (vector, c)
+                                                 !! (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
+                                                 !! (13-21)  bias-precession-nutation matrix
+                                                 !! (22)     longitude + s' (radians)
+                                                 !! (23)     polar motion xp wrt local meridian (radians)
+                                                 !! (24)     polar motion yp wrt local meridian (radians)
+                                                 !! (25)     sine of geodetic latitude
+                                                 !! (26)     cosine of geodetic latitude
+                                                 !! (27)     magnitude of diurnal aberration vector
+                                                 !! (28)     "local" Earth rotation angle (radians)
+                                                 !! (29)     refraction constant A (radians)
+                                                 !! (30)     refraction constant B (radians)
+    real(wp),intent(out) :: eo !! equation of the origins (ERA-GST)
+    integer,intent(out) :: j !! status: +1 = dubious year (Note 2)
+                             !!  0 = OK
+                             !! -1 = unacceptable date
 
     integer :: js, jw
     real(wp) :: tai1, tai2, tt1, tt2, ut11, ut12, &
@@ -1429,32 +1395,6 @@
 !  astrometric transformation chain.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1    d       TDB as a 2-part...
-!     DATE2    d       ...Julian Date (Note 1)
-!     PV       d(3,2)  observer's geocentric pos/vel (m, m/s)
-!     EBPV     d(3,2)  Earth barycentric position/velocity (au, au/day)
-!     EHP      d(3)    Earth heliocentric position (au)
-!
-!  Returned:
-!     ASTROM   d(30)   star-independent astrometry parameters:
-!               (1)      PM time interval (SSB, Julian years)
-!               (2-4)    SSB to observer (vector, au)
-!               (5-7)    Sun to observer (unit vector)
-!               (8)      distance from Sun to observer (au)
-!               (9-11)   v: barycentric observer velocity (vector, c)
-!               (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
-!               (13-21)  bias-precession-nutation matrix
-!               (22)     unchanged
-!               (23)     unchanged
-!               (24)     unchanged
-!               (25)     unchanged
-!               (26)     unchanged
-!               (27)     unchanged
-!               (28)     unchanged
-!               (29)     unchanged
-!               (30)     unchanged
 !
 !### Notes
 !
@@ -1536,12 +1476,29 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp),dimension(3,2) :: pv
-    real(wp),dimension(3,2) :: ebpv
-    real(wp),dimension(3) :: ehp
-    real(wp),dimension(30) :: astrom
+    real(wp),intent(in) :: date1 !! TDB as a 2-part...
+    real(wp),intent(in) :: date2 !! ...Julian Date (Note 1)
+    real(wp),dimension(3,2),intent(in) :: pv !! observer's geocentric pos/vel (m, m/s)
+    real(wp),dimension(3,2),intent(in) :: ebpv !! Earth barycentric position/velocity (au, au/day)
+    real(wp),dimension(3),intent(in) :: ehp !! Earth heliocentric position (au)
+    real(wp),dimension(30),intent(inout) :: astrom !! star-independent astrometry parameters:
+                                                   !!
+                                                   !! (1)      PM time interval (SSB, Julian years)
+                                                   !! (2-4)    SSB to observer (vector, au)
+                                                   !! (5-7)    Sun to observer (unit vector)
+                                                   !! (8)      distance from Sun to observer (au)
+                                                   !! (9-11)   v: barycentric observer velocity (vector, c)
+                                                   !! (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
+                                                   !! (13-21)  bias-precession-nutation matrix
+                                                   !! (22)     unchanged
+                                                   !! (23)     unchanged
+                                                   !! (24)     unchanged
+                                                   !! (25)     unchanged
+                                                   !! (26)     unchanged
+                                                   !! (27)     unchanged
+                                                   !! (28)     unchanged
+                                                   !! (29)     unchanged
+                                                   !! (30)     unchanged
 
     !  Astronomical unit (m, IAU 2012)
     real(wp),parameter :: aum = 149597870.7d3
@@ -1602,30 +1559,6 @@
 !  astrometric transformation chain.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1    d      TDB as a 2-part...
-!     DATE2    d      ...Julian Date (Note 1)
-!     PV       d(3,2) observer's geocentric pos/vel (Note 3)
-!
-!  Returned:
-!     ASTROM   d(30)  star-independent astrometry parameters:
-!               (1)      PM time interval (SSB, Julian years)
-!               (2-4)    SSB to observer (vector, au)
-!               (5-7)    Sun to observer (unit vector)
-!               (8)      distance from Sun to observer (au)
-!               (9-11)   v: barycentric observer velocity (vector, c)
-!               (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
-!               (13-21)  bias-precession-nutation matrix
-!               (22)     unchanged
-!               (23)     unchanged
-!               (24)     unchanged
-!               (25)     unchanged
-!               (26)     unchanged
-!               (27)     unchanged
-!               (28)     unchanged
-!               (29)     unchanged
-!               (30)     unchanged
 !
 !### Notes
 !
@@ -1702,10 +1635,27 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp),dimension(3,2) :: pv
-    real(wp),dimension(30) :: astrom
+    real(wp),intent(in) :: date1 !! TDB as a 2-part...
+    real(wp),intent(in) :: date2 !! ...Julian Date (Note 1)
+    real(wp),dimension(3,2),intent(in) :: pv !! observer's geocentric pos/vel (Note 3)
+    real(wp),dimension(30),intent(inout) :: astrom !! star-independent astrometry parameters:
+                                                   !!
+                                                   !! (1)      PM time interval (SSB, Julian years)
+                                                   !! (2-4)    SSB to observer (vector, au)
+                                                   !! (5-7)    Sun to observer (unit vector)
+                                                   !! (8)      distance from Sun to observer (au)
+                                                   !! (9-11)   v: barycentric observer velocity (vector, c)
+                                                   !! (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
+                                                   !! (13-21)  bias-precession-nutation matrix
+                                                   !! (22)     unchanged
+                                                   !! (23)     unchanged
+                                                   !! (24)     unchanged
+                                                   !! (25)     unchanged
+                                                   !! (26)     unchanged
+                                                   !! (27)     unchanged
+                                                   !! (28)     unchanged
+                                                   !! (29)     unchanged
+                                                   !! (30)     unchanged
 
     integer :: j
     real(wp) :: ehpv(3,2), ebpv(3,2)
@@ -1725,45 +1675,6 @@
 !  Earth rotation angle, supplied by the caller explicitly.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     THETA    d      Earth rotation angle (radians, Note 2)
-!     ASTROM   d(30)  star-independent astrometry parameters:
-!               (1)      not used
-!               (2-4)    not used
-!               (5-7)    not used
-!               (8)      not used
-!               (9-11)   not used
-!               (12)     not used
-!               (13-21)  not used
-!               (22)     longitude + s' (radians)
-!               (23)     not used
-!               (24)     not used
-!               (25)     not used
-!               (26)     not used
-!               (27)     not used
-!               (28)     not used
-!               (29)     not used
-!               (30)     not used
-!
-!  Returned:
-!     ASTROM   d(30)  star-independent astrometry parameters:
-!               (1)      unchanged
-!               (2-4)    unchanged
-!               (5-7)    unchanged
-!               (8)      unchanged
-!               (9-11)   unchanged
-!               (12)     unchanged
-!               (13-21)  unchanged
-!               (22)     unchanged
-!               (23)     unchanged
-!               (24)     unchanged
-!               (25)     unchanged
-!               (26)     unchanged
-!               (27)     unchanged
-!               (28)     "local" Earth rotation angle (radians)
-!               (29)     unchanged
-!               (30)     unchanged
 !
 !### Notes
 !
@@ -1813,8 +1724,10 @@
 
     implicit none
 
-    real(wp) :: theta
-    real(wp),dimension(30) :: astrom
+    real(wp),intent(in) :: theta !! Earth rotation angle (radians, Note 2)
+    real(wp),dimension(30),intent(inout) :: astrom !! star-independent astrometry parameters:
+                                                   !! * In: astrom(22): longitude + s' (radians)
+                                                   !! * Out: astrom(28): "local" Earth rotation angle (radians)
 
     astrom(28) = theta + astrom(22)
 
@@ -1827,46 +1740,6 @@
 !  Earth rotation angle.  The caller provides UT1 (n.b. not UTC).
 !
 !  Status:  support routine.
-!
-!  Given:
-!     UT11     d      UT1 as a 2-part...
-!     UT12     d      ...Julian Date (Note 1)
-!     ASTROM   d(30)  star-independent astrometry parameters:
-!               (1)      not used
-!               (2-4)    not used
-!               (5-7)    not used
-!               (8)      not used
-!               (9-11)   not used
-!               (12)     not used
-!               (13-21)  not used
-!               (22)     longitude + s' (radians)
-!               (23)     not used
-!               (24)     not used
-!               (25)     not used
-!               (26)     not used
-!               (27)     not used
-!               (28)     not used
-!               (29)     not used
-!               (30)     not used
-!
-!  Returned:
-!     ASTROM   d(30)  star-independent astrometry parameters:
-!               (1)      unchanged
-!               (2-4)    unchanged
-!               (5-7)    unchanged
-!               (8)      unchanged
-!               (9-11)   unchanged
-!               (12)     unchanged
-!               (13-21)  unchanged
-!               (22)     unchanged
-!               (23)     unchanged
-!               (24)     unchanged
-!               (25)     unchanged
-!               (26)     unchanged
-!               (27)     unchanged
-!               (28)     "local" Earth rotation angle (radians)
-!               (29)     unchanged
-!               (30)     unchanged
 !
 !### Notes
 !
@@ -1930,9 +1803,11 @@
 
     implicit none
 
-    real(wp) :: ut11
-    real(wp) :: ut12
-    real(wp),dimension(30) :: astrom
+    real(wp),intent(in) :: ut11 !! UT1 as a 2-part...
+    real(wp),intent(in) :: ut12 !! ...Julian Date (Note 1)
+    real(wp),dimension(30),intent(inout) :: astrom !! star-independent astrometry parameters:
+                                                   !! * In: astrom(22): longitude + s' (radians)
+                                                   !! * Out: astrom(28): "local" Earth rotation angle (radians)
 
     call APER ( ERA00 ( ut11, ut12 ), astrom )
 
@@ -1947,35 +1822,6 @@
 !  refraction constants as well as the site coordinates.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     SP       d      the TIO locator s' (radians, Note 1)
-!     THETA    d      Earth rotation angle (radians)
-!     ELONG    d      longitude (radians, east +ve, Note 2)
-!     PHI      d      geodetic latitude (radians, Note 2)
-!     HM       d      height above ellipsoid (m, geodetic Note 2)
-!     XP,YP    d      polar motion coordinates (radians, Note 3)
-!     REFA     d      refraction constant A (radians, Note 4)
-!     REFB     d      refraction constant B (radians, Note 4)
-!
-!  Returned:
-!     ASTROM   d(30)  star-independent astrometry parameters:
-!               (1)      unchanged
-!               (2-4)    unchanged
-!               (5-7)    unchanged
-!               (8)      unchanged
-!               (9-11)   unchanged
-!               (12)     unchanged
-!               (13-21)  unchanged
-!               (22)     longitude + s' (radians)
-!               (23)     polar motion xp wrt local meridian (radians)
-!               (24)     polar motion yp wrt local meridian (radians)
-!               (25)     sine of geodetic latitude
-!               (26)     cosine of geodetic latitude
-!               (27)     magnitude of diurnal aberration vector
-!               (28)     "local" Earth rotation angle (radians)
-!               (29)     refraction constant A (radians)
-!               (30)     refraction constant B (radians)
 !
 !### Notes
 !
@@ -2051,16 +1897,33 @@
 
     implicit none
 
-    real(wp) :: sp
-    real(wp) :: theta
-    real(wp) :: elong
-    real(wp) :: phi
-    real(wp) :: hm
-    real(wp) :: xp
-    real(wp) :: yp
-    real(wp) :: refa
-    real(wp) :: refb
-    real(wp),dimension(30) :: astrom
+    real(wp),intent(in) :: sp !! the TIO locator s' (radians, Note 1)
+    real(wp),intent(in) :: theta !! Earth rotation angle (radians)
+    real(wp),intent(in) :: elong !! longitude (radians, east +ve, Note 2)
+    real(wp),intent(in) :: phi !! geodetic latitude (radians, Note 2)
+    real(wp),intent(in) :: hm !! height above ellipsoid (m, geodetic Note 2)
+    real(wp),intent(in) :: xp !! polar motion coordinate (radians, Note 3)
+    real(wp),intent(in) :: yp !! polar motion coordinate (radians, Note 3)
+    real(wp),intent(in) :: refa !! refraction constant A (radians, Note 4)
+    real(wp),intent(in) :: refb !! refraction constant B (radians, Note 4)
+    real(wp),dimension(30),intent(inout) :: astrom !! star-independent astrometry parameters:
+                                                   !!
+                                                   !! (1)      unchanged
+                                                   !! (2-4)    unchanged
+                                                   !! (5-7)    unchanged
+                                                   !! (8)      unchanged
+                                                   !! (9-11)   unchanged
+                                                   !! (12)     unchanged
+                                                   !! (13-21)  unchanged
+                                                   !! (22)     longitude + s' (radians)
+                                                   !! (23)     polar motion xp wrt local meridian (radians)
+                                                   !! (24)     polar motion yp wrt local meridian (radians)
+                                                   !! (25)     sine of geodetic latitude
+                                                   !! (26)     cosine of geodetic latitude
+                                                   !! (27)     magnitude of diurnal aberration vector
+                                                   !! (28)     "local" Earth rotation angle (radians)
+                                                   !! (29)     refraction constant A (radians)
+                                                   !! (30)     refraction constant B (radians)
 
     real(wp) :: sl, cl, pv(3,2)
 
@@ -2101,41 +1964,6 @@
 !  observing wavelength.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     UTC1     d      UTC as a 2-part...
-!     UTC2     d      ...quasi Julian Date (Notes 1,2)
-!     DUT1     d      UT1-UTC (seconds)
-!     ELONG    d      longitude (radians, east +ve, Note 3)
-!     PHI      d      geodetic latitude (radians, Note 3)
-!     HM       d      height above ellipsoid (m, geodetic Notes 4,6)
-!     XP,YP    d      polar motion x-coordinates (radians, Note 5)
-!     PHPA     d      pressure at the observer (hPa = mB, Note 6)
-!     TC       d      ambient temperature at the observer (deg C)
-!     RH       d      relative humidity at the observer (range 0-1)
-!     WL       d      wavelength (micrometers, Note 7)
-!
-!  Returned:
-!     ASTROM   d(30)  star-independent astrometry parameters:
-!               (1)      unchanged
-!               (2-4)    unchanged
-!               (5-7)    unchanged
-!               (8)      unchanged
-!               (9-11)   unchanged
-!               (12)     unchanged
-!               (13-21)  unchanged
-!               (22)     longitude + s' (radians)
-!               (23)     polar motion xp wrt local meridian (radians)
-!               (24)     polar motion yp wrt local meridian (radians)
-!               (25)     sine of geodetic latitude
-!               (26)     cosine of geodetic latitude
-!               (27)     magnitude of diurnal aberration vector
-!               (28)     "local" Earth rotation angle (radians)
-!               (29)     refraction constant A (radians)
-!               (30)     refraction constant B (radians)
-!     J        i         status: +1 = dubious year (Note 2)
-!                                 0 = OK
-!                                -1 = unacceptable date
 !
 !### Notes
 !
@@ -2247,24 +2075,44 @@
 
     implicit none
 
-    real(wp) :: utc1
-    real(wp) :: utc2
-    real(wp) :: dut1
-    real(wp) :: elong
-    real(wp) :: phi
-    real(wp) :: hm
-    real(wp) :: xp
-    real(wp) :: yp
-    real(wp) :: phpa
-    real(wp) :: tc
-    real(wp) :: rh
-    real(wp) :: wl
-    real(wp),dimension(30) :: astrom
-    integer :: j
+    real(wp),intent(in) :: utc1 !! UTC as a 2-part...
+    real(wp),intent(in) :: utc2 !! ...quasi Julian Date (Notes 1,2)
+    real(wp),intent(in) :: dut1 !! UT1-UTC (seconds)
+    real(wp),intent(in) :: elong !! longitude (radians, east +ve, Note 3)
+    real(wp),intent(in) :: phi !! geodetic latitude (radians, Note 3)
+    real(wp),intent(in) :: hm !! height above ellipsoid (m, geodetic Notes 4,6)
+    real(wp),intent(in) :: xp !! polar motion x-coordinate (radians, Note 5)
+    real(wp),intent(in) :: yp !! polar motion x-coordinate (radians, Note 5)
+    real(wp),intent(in) :: phpa !! pressure at the observer (hPa = mB, Note 6)
+    real(wp),intent(in) :: tc !! ambient temperature at the observer (deg C)
+    real(wp),intent(in) :: rh !! relative humidity at the observer (range 0-1)
+    real(wp),intent(in) :: wl !! wavelength (micrometers, Note 7)
+    real(wp),dimension(30),intent(inout) :: astrom !! star-independent astrometry parameters:
+                                                   !!
+                                                   !! (1)      unchanged
+                                                   !! (2-4)    unchanged
+                                                   !! (5-7)    unchanged
+                                                   !! (8)      unchanged
+                                                   !! (9-11)   unchanged
+                                                   !! (12)     unchanged
+                                                   !! (13-21)  unchanged
+                                                   !! (22)     longitude + s' (radians)
+                                                   !! (23)     polar motion xp wrt local meridian (radians)
+                                                   !! (24)     polar motion yp wrt local meridian (radians)
+                                                   !! (25)     sine of geodetic latitude
+                                                   !! (26)     cosine of geodetic latitude
+                                                   !! (27)     magnitude of diurnal aberration vector
+                                                   !! (28)     "local" Earth rotation angle (radians)
+                                                   !! (29)     refraction constant A (radians)
+                                                   !! (30)     refraction constant B (radians)
+    integer,intent(out) :: j !! status:
+                             !! * +1 = dubious year (Note 2)
+                             !! *  0 = OK
+                             !! * -1 = unacceptable date
 
     integer :: js
     real(wp) :: tai1, tai2, tt1, tt2, ut11, ut12, sp, theta, &
-                     refa, refb
+                refa, refb
 
     !  UTC to other time scales.
     call UTCTAI ( utc1, utc2, tai1, tai2, js )
@@ -2300,20 +2148,6 @@
 !  Transform ICRS star data, epoch J2000.0, to CIRS.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     RC       d      ICRS right ascension at J2000.0 (radians, Note 1)
-!     DC       d      ICRS declination at J2000.0 (radians, Note 1)
-!     PR       d      RA proper motion (radians/year; Note 2)
-!     PD       d      Dec proper motion (radians/year)
-!     PX       d      parallax (arcsec)
-!     RV       d      radial velocity (km/s, +ve if receding)
-!     DATE1    d      TDB as a 2-part...
-!     DATE2    d      ...Julian Date (Note 3)
-!
-!  Returned:
-!     RI,DI    d      CIRS geocentric RA,Dec (radians)
-!     EO       d      equation of the origins (ERA-GST, Note 5)
 !
 !### Notes
 !
@@ -2372,17 +2206,17 @@
 
     implicit none
 
-    real(wp) :: rc
-    real(wp) :: dc
-    real(wp) :: pr
-    real(wp) :: pd
-    real(wp) :: px
-    real(wp) :: rv
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp) :: ri
-    real(wp) :: di
-    real(wp) :: eo
+    real(wp),intent(in) :: rc !! ICRS right ascension at J2000.0 (radians, Note 1)
+    real(wp),intent(in) :: dc !! ICRS declination at J2000.0 (radians, Note 1)
+    real(wp),intent(in) :: pr !! RA proper motion (radians/year; Note 2)
+    real(wp),intent(in) :: pd !! Dec proper motion (radians/year)
+    real(wp),intent(in) :: px !! parallax (arcsec)
+    real(wp),intent(in) :: rv !! radial velocity (km/s, +ve if receding)
+    real(wp),intent(in) :: date1 !! TDB as a 2-part...
+    real(wp),intent(in) :: date2 !! ...Julian Date (Note 3)
+    real(wp),intent(out) :: ri !! CIRS geocentric RA (radians)
+    real(wp),intent(out) :: di !! CIRS geocentric Dec (radians)
+    real(wp),intent(out) :: eo !! equation of the origins (ERA-GST, Note 5)
 
     !  Star-independent astrometry parameters
     real(wp) :: astrom(30)
@@ -2411,33 +2245,6 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     RC,DC    d      ICRS RA,Dec at J2000.0 (radians)
-!     PR       d      RA proper motion (radians/year; Note 3)
-!     PD       d      Dec proper motion (radians/year)
-!     PX       d      parallax (arcsec)
-!     RV       d      radial velocity (km/s, +ve if receding)
-!     ASTROM   d(30)  star-independent astrometry parameters:
-!               (1)      PM time interval (SSB, Julian years)
-!               (2-4)    SSB to observer (vector, au)
-!               (5-7)    Sun to observer (unit vector)
-!               (8)      distance from Sun to observer (au)
-!               (9-11)   v: barycentric observer velocity (vector, c)
-!               (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
-!               (13-21)  bias-precession-nutation matrix
-!               (22)     longitude + s' (radians)
-!               (23)     polar motion xp wrt local meridian (radians)
-!               (24)     polar motion yp wrt local meridian (radians)
-!               (25)     sine of geodetic latitude
-!               (26)     cosine of geodetic latitude
-!               (27)     magnitude of diurnal aberration vector
-!               (28)     "local" Earth rotation angle (radians)
-!               (29)     refraction constant A (radians)
-!               (30)     refraction constant B (radians)
-!
-!  Returned:
-!     RI,DI    d      CIRS RA,Dec (radians)
-!
 !### Notes
 !
 !  1. All the vectors are with respect to BCRS axes.
@@ -2455,15 +2262,31 @@
 
     implicit none
 
-    real(wp) :: rc
-    real(wp) :: dc
-    real(wp) :: pr
-    real(wp) :: pd
-    real(wp) :: px
-    real(wp) :: rv
-    real(wp),dimension(30) :: astrom
-    real(wp) :: ri
-    real(wp) :: di
+    real(wp),intent(in) :: rc !! ICRS RA at J2000.0 (radians)
+    real(wp),intent(in) :: dc !! ICRS Dec at J2000.0 (radians)
+    real(wp),intent(in) :: pr !! RA proper motion (radians/year; Note 3)
+    real(wp),intent(in) :: pd !! Dec proper motion (radians/year)
+    real(wp),intent(in) :: px !! parallax (arcsec)
+    real(wp),intent(in) :: rv !! radial velocity (km/s, +ve if receding)
+    real(wp),dimension(30),intent(in) :: astrom !! star-independent astrometry parameters:
+                                                !! (1)      PM time interval (SSB, Julian years)
+                                                !! (2-4)    SSB to observer (vector, au)
+                                                !! (5-7)    Sun to observer (unit vector)
+                                                !! (8)      distance from Sun to observer (au)
+                                                !! (9-11)   v: barycentric observer velocity (vector, c)
+                                                !! (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
+                                                !! (13-21)  bias-precession-nutation matrix
+                                                !! (22)     longitude + s' (radians)
+                                                !! (23)     polar motion xp wrt local meridian (radians)
+                                                !! (24)     polar motion yp wrt local meridian (radians)
+                                                !! (25)     sine of geodetic latitude
+                                                !! (26)     cosine of geodetic latitude
+                                                !! (27)     magnitude of diurnal aberration vector
+                                                !! (28)     "local" Earth rotation angle (radians)
+                                                !! (29)     refraction constant A (radians)
+                                                !! (30)     refraction constant B (radians)
+    real(wp),intent(out) :: ri !! CIRS RA (radians)
+    real(wp),intent(out) :: di !! CIRS Dec (radians)
 
     real(wp) :: pco(3), pnat(3), ppr(3), pi(3), w
 
@@ -2504,39 +2327,6 @@
 !  used.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     RC,DC    d      ICRS RA,Dec at J2000.0 (radians, Note 1)
-!     PR       d      RA proper motion (radians/year; Note 2)
-!     PD       d      Dec proper motion (radians/year)
-!     PX       d      parallax (arcsec)
-!     RV       d      radial velocity (km/s, +ve if receding)
-!     ASTROM   d(30)  star-independent astrometry parameters:
-!               (1)      PM time interval (SSB, Julian years)
-!               (2-4)    SSB to observer (vector, au)
-!               (5-7)    Sun to observer (unit vector)
-!               (8)      distance from Sun to observer (au)
-!               (9-11)   v: barycentric observer velocity (vector, c)
-!               (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
-!               (13-21)  bias-precession-nutation matrix
-!               (22)     longitude + s' (radians)
-!               (23)     polar motion xp wrt local meridian (radians)
-!               (24)     polar motion yp wrt local meridian (radians)
-!               (25)     sine of geodetic latitude
-!               (26)     cosine of geodetic latitude
-!               (27)     magnitude of diurnal aberration vector
-!               (28)     "local" Earth rotation angle (radians)
-!               (29)     refraction constant A (radians)
-!               (30)     refraction constant B (radians)
-!     N        i       number of bodies (Note 3)
-!     B        d(8,N)  data for each of the NB bodies (Notes 3,4):
-!               (1,I)    mass of the body (solar masses, Note 5)
-!               (2,I)    deflection limiter (Note 6)
-!               (3-5,I)  barycentric position of the body (au)
-!               (6-8,I)  barycentric velocity of the body (au/day)
-!
-!  Returned:
-!     RI,DI    d      CIRS RA,Dec (radians)
 !
 !### Notes
 !
@@ -2584,23 +2374,43 @@
 
     implicit none
 
-    real(wp) :: rc
-    real(wp) :: dc
-    real(wp) :: pr
-    real(wp) :: pd
-    real(wp) :: px
-    real(wp) :: rv
-    real(wp),dimension(30) :: astrom
-    integer :: n
-    real(wp),dimension(8,n) :: b
-    real(wp) :: ri
-    real(wp) :: di
+    real(wp),intent(in) :: rc !! ICRS RA at J2000.0 (radians, Note 1)
+    real(wp),intent(in) :: dc !! ICRS Dec at J2000.0 (radians, Note 1)
+    real(wp),intent(in) :: pr !! RA proper motion (radians/year; Note 2)
+    real(wp),intent(in) :: pd !! Dec proper motion (radians/year)
+    real(wp),intent(in) :: px !! parallax (arcsec)
+    real(wp),intent(in) :: rv !! radial velocity (km/s, +ve if receding)
+    real(wp),dimension(30),intent(in) :: astrom !! star-independent astrometry parameters:
+                                                !! (1)      PM time interval (SSB, Julian years)
+                                                !! (2-4)    SSB to observer (vector, au)
+                                                !! (5-7)    Sun to observer (unit vector)
+                                                !! (8)      distance from Sun to observer (au)
+                                                !! (9-11)   v: barycentric observer velocity (vector, c)
+                                                !! (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
+                                                !! (13-21)  bias-precession-nutation matrix
+                                                !! (22)     longitude + s' (radians)
+                                                !! (23)     polar motion xp wrt local meridian (radians)
+                                                !! (24)     polar motion yp wrt local meridian (radians)
+                                                !! (25)     sine of geodetic latitude
+                                                !! (26)     cosine of geodetic latitude
+                                                !! (27)     magnitude of diurnal aberration vector
+                                                !! (28)     "local" Earth rotation angle (radians)
+                                                !! (29)     refraction constant A (radians)
+                                                !! (30)     refraction constant B (radians)
+    integer,intent(in) :: n !! number of bodies (Note 3)
+    real(wp),dimension(8,n),intent(in) :: b !! data for each of the NB bodies (Notes 3,4):
+                                            !! (1,I)    mass of the body (solar masses, Note 5)
+                                            !! (2,I)    deflection limiter (Note 6)
+                                            !! (3-5,I)  barycentric position of the body (au)
+                                            !! (6-8,I)  barycentric velocity of the body (au/day)
+    real(wp),intent(out) :: ri !!  CIRS RA (radians)
+    real(wp),intent(out) :: di !!  CIRS Dec (radians)
 
     real(wp) :: pco(3), pnat(3), ppr(3), pi(3), w
 
     !  Proper motion and parallax, giving BCRS coordinate direction.
     call PMPX ( rc, dc, pr, pd, px, rv, astrom(1), astrom(2), &
-                    pco )
+                pco )
 
     !  Light deflection, giving BCRS natural direction.
     call LDN ( n, b, astrom(2), pco, pnat )
@@ -2633,41 +2443,18 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     RC,DC    d      ICRS astrometric RA,Dec (radians)
-!     ASTROM   d(30)  star-independent astrometry parameters:
-!               (1)      PM time interval (SSB, Julian years)
-!               (2-4)    SSB to observer (vector, au)
-!               (5-7)    Sun to observer (unit vector)
-!               (8)      distance from Sun to observer (au)
-!               (9-11)   v: barycentric observer velocity (vector, c)
-!               (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
-!               (13-21)  bias-precession-nutation matrix
-!               (22)     longitude + s' (radians)
-!               (23)     polar motion xp wrt local meridian (radians)
-!               (24)     polar motion yp wrt local meridian (radians)
-!               (25)     sine of geodetic latitude
-!               (26)     cosine of geodetic latitude
-!               (27)     magnitude of diurnal aberration vector
-!               (28)     "local" Earth rotation angle (radians)
-!               (29)     refraction constant A (radians)
-!               (30)     refraction constant B (radians)
-!
-!  Returned:
-!     RI,DI    d      CIRS RA,Dec (radians)
-!
 !### Note
 !
-!     All the vectors are with respect to BCRS axes.
+!  All the vectors are with respect to BCRS axes.
 !
 !### References
 !
-!     Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
-!     the Astronomical Almanac, 3rd ed., University Science Books
-!     (2013).
+! * Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
+!   the Astronomical Almanac, 3rd ed., University Science Books
+!   (2013).
 !
-!     Klioner, Sergei A., "A practical relativistic model for micro-
-!     arcsecond astrometry in space", Astr. J. 125, 1580-1597 (2003).
+! * Klioner, Sergei A., "A practical relativistic model for micro-
+!   arcsecond astrometry in space", Astr. J. 125, 1580-1597 (2003).
 !
 !### History
 !  * IAU SOFA revision:  2013 August 31
@@ -2676,11 +2463,27 @@
 
     implicit none
 
-    real(wp) :: rc
-    real(wp) :: dc
-    real(wp),dimension(30) :: astrom
-    real(wp) :: ri
-    real(wp) :: di
+    real(wp),intent(in) :: rc !! ICRS astrometric RA (radians)
+    real(wp),intent(in) :: dc !! ICRS astrometric Dec (radians)
+    real(wp),dimension(30),intent(in) :: astrom !! star-independent astrometry parameters:
+                                                !! (1)      PM time interval (SSB, Julian years)
+                                                !! (2-4)    SSB to observer (vector, au)
+                                                !! (5-7)    Sun to observer (unit vector)
+                                                !! (8)      distance from Sun to observer (au)
+                                                !! (9-11)   v: barycentric observer velocity (vector, c)
+                                                !! (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
+                                                !! (13-21)  bias-precession-nutation matrix
+                                                !! (22)     longitude + s' (radians)
+                                                !! (23)     polar motion xp wrt local meridian (radians)
+                                                !! (24)     polar motion yp wrt local meridian (radians)
+                                                !! (25)     sine of geodetic latitude
+                                                !! (26)     cosine of geodetic latitude
+                                                !! (27)     magnitude of diurnal aberration vector
+                                                !! (28)     "local" Earth rotation angle (radians)
+                                                !! (29)     refraction constant A (radians)
+                                                !! (30)     refraction constant B (radians)
+    real(wp),intent(out) :: ri !! CIRS RA (radians)
+    real(wp),intent(out) :: di !! CIRS Dec (radians)
 
     real(wp) :: pco(3), pnat(3), ppr(3), pi(3), w
 
@@ -2709,35 +2512,6 @@
 !  coordinates, ambient air conditions and observing wavelength.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     RC,DC    d      ICRS right ascension at J2000.0 (radians, Note 1)
-!     PR       d      RA proper motion (radians/year; Note 2)
-!     PD       d      Dec proper motion (radians/year)
-!     PX       d      parallax (arcsec)
-!     RV       d      radial velocity (km/s, +ve if receding)
-!     UTC1     d      UTC as a 2-part...
-!     UTC2     d      ...quasi Julian Date (Notes 3-4)
-!     DUT1     d      UT1-UTC (seconds, Note 5)
-!     ELONG    d      longitude (radians, east +ve, Note 6)
-!     PHI      d      latitude (geodetic, radians, Note 6)
-!     HM       d      height above ellipsoid (m, geodetic, Notes 6,8)
-!     XP,YP    d      polar motion coordinates (radians, Note 7)
-!     PHPA     d      pressure at the observer (hPa = mB, Note 8)
-!     TC       d      ambient temperature at the observer (deg C)
-!     RH       d      relative humidity at the observer (range 0-1)
-!     WL       d      wavelength (micrometers, Note 9)
-!
-!  Returned:
-!     AOB      d      observed azimuth (radians: N=0,E=90)
-!     ZOB      d      observed zenith distance (radians)
-!     HOB      d      observed hour angle (radians)
-!     DOB      d      observed declination (radians)
-!     ROB      d      observed right ascension (CIO-based, radians)
-!     EO       d      equation of the origins (ERA-GST)
-!     J        i      status: +1 = dubious year (Note 4)
-!                              0 = OK
-!                             -1 = unacceptable date
 !
 !### Notes
 !
@@ -2846,31 +2620,34 @@
 
     implicit none
 
-    real(wp) :: rc
-    real(wp) :: dc
-    real(wp) :: pr
-    real(wp) :: pd
-    real(wp) :: px
-    real(wp) :: rv
-    real(wp) :: utc1
-    real(wp) :: utc2
-    real(wp) :: dut1
-    real(wp) :: elong
-    real(wp) :: phi
-    real(wp) :: hm
-    real(wp) :: xp
-    real(wp) :: yp
-    real(wp) :: phpa
-    real(wp) :: tc
-    real(wp) :: rh
-    real(wp) :: wl
-    real(wp) :: aob
-    real(wp) :: zob
-    real(wp) :: hob
-    real(wp) :: dob
-    real(wp) :: rob
-    real(wp) :: eo
-    integer :: j
+    real(wp),intent(in) :: rc !! ICRS right ascension at J2000.0 (radians, Note 1)
+    real(wp),intent(in) :: dc !! ICRS declination at J2000.0 (radians, Note 1)
+    real(wp),intent(in) :: pr !! RA proper motion (radians/year; Note 2)
+    real(wp),intent(in) :: pd !! Dec proper motion (radians/year)
+    real(wp),intent(in) :: px !! parallax (arcsec)
+    real(wp),intent(in) :: rv !! radial velocity (km/s, +ve if receding)
+    real(wp),intent(in) :: utc1 !! UTC as a 2-part...
+    real(wp),intent(in) :: utc2 !! ...quasi Julian Date (Notes 3-4)
+    real(wp),intent(in) :: dut1 !! UT1-UTC (seconds, Note 5)
+    real(wp),intent(in) :: elong !! longitude (radians, east +ve, Note 6)
+    real(wp),intent(in) :: phi !! latitude (geodetic, radians, Note 6)
+    real(wp),intent(in) :: hm !! height above ellipsoid (m, geodetic, Notes 6,8)
+    real(wp),intent(in) :: xp !! polar motion coordinate (radians, Note 7)
+    real(wp),intent(in) :: yp !! polar motion coordinate (radians, Note 7)
+    real(wp),intent(in) :: phpa !! pressure at the observer (hPa = mB, Note 8)
+    real(wp),intent(in) :: tc !! ambient temperature at the observer (deg C)
+    real(wp),intent(in) :: rh !! relative humidity at the observer (range 0-1)
+    real(wp),intent(in) :: wl !! wavelength (micrometers, Note 9)
+    real(wp),intent(out) :: aob !! observed azimuth (radians: N=0,E=90)
+    real(wp),intent(out) :: zob !! observed zenith distance (radians)
+    real(wp),intent(out) :: hob !! observed hour angle (radians)
+    real(wp),intent(out) :: dob !! observed declination (radians)
+    real(wp),intent(out) :: rob !! observed right ascension (CIO-based, radians)
+    real(wp),intent(out) :: eo !! equation of the origins (ERA-GST)
+    integer,intent(out) :: j !! status:
+                             !! * +1 = dubious year (Note 4)
+                             !! *  0 = OK
+                             !! * -1 = unacceptable date
 
     integer :: js
     real(wp) :: astrom(30)
@@ -2878,7 +2655,7 @@
 
     !  Star-independent astrometry parameters.
     call APCO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
-                      phpa, tc, rh, wl, astrom, eo, js )
+                  phpa, tc, rh, wl, astrom, eo, js )
     if ( js>=0 ) then
 
       !  Transform ICRS to CIRS.
