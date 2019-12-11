@@ -4852,14 +4852,6 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     TTA,TTB    d       TT as a 2-part Julian Date (Note 1)
-!     UTA,UTB    d       UT1 as a 2-part Julian Date (Note 1)
-!     XP,YP      d       coordinates of the pole (radians, Note 2)
-!
-!  Returned:
-!     RC2T     d(3,3)    celestial-to-terrestrial matrix (Note 3)
-!
 !### Notes
 !
 !  1. The TT and UT1 dates TTA+TTB and UTA+UTB are Julian Dates,
@@ -4914,13 +4906,13 @@
 
     implicit none
 
-    real(wp) :: tta
-    real(wp) :: ttb
-    real(wp) :: uta
-    real(wp) :: utb
-    real(wp) :: xp
-    real(wp) :: yp
-    real(wp),dimension(3,3) :: rc2t
+    real(wp),intent(in) :: tta !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: ttb !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: uta !! UT1 as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: utb !! UT1 as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: xp !! coordinates of the pole (radians, Note 2)
+    real(wp),intent(in) :: yp !! coordinates of the pole (radians, Note 2)
+    real(wp),dimension(3,3),intent(out) :: rc2t !! celestial-to-terrestrial matrix (Note 3)
 
     real(wp) :: rc2i(3,3), era, sp, rpom(3,3)
 
@@ -4950,14 +4942,6 @@
 !
 !  Status:  obsolete routine.
 !
-!  Given:
-!     RC2I     d(3,3)    celestial-to-intermediate matrix
-!     ERA        d       Earth rotation angle
-!     RPOM     d(3,3)    polar-motion matrix
-!
-!  Returned:
-!     RC2T     d(3,3)    celestial-to-terrestrial matrix
-!
 !### Notes
 !
 !  1. The name of the present routine, C2TCEO, reflects the original
@@ -4981,10 +4965,10 @@
 
     implicit none
 
-    real(wp),dimension(3,3) :: rc2i
-    real(wp) :: era
-    real(wp),dimension(3,3) :: rpom
-    real(wp),dimension(3,3) :: rc2t
+    real(wp),dimension(3,3),intent(in) :: rc2i !! celestial-to-intermediate matrix
+    real(wp),intent(in) :: era !! Earth rotation angle
+    real(wp),dimension(3,3),intent(in) :: rpom !! polar-motion matrix
+    real(wp),dimension(3,3),intent(out) :: rc2t !! celestial-to-terrestrial matrix
 
     !  Call the renamed routine.
     call C2TCIO ( rc2i, era, rpom, rc2t )
@@ -4999,14 +4983,6 @@
 !  Angle and the polar motion matrix).
 !
 !  Status:  support routine.
-!
-!  Given:
-!     RC2I     d(3,3)    celestial-to-intermediate matrix
-!     ERA        d       Earth rotation angle (radians)
-!     RPOM     d(3,3)    polar-motion matrix
-!
-!  Returned:
-!     RC2T     d(3,3)    celestial-to-terrestrial matrix
 !
 !### Notes
 !
@@ -5043,10 +5019,10 @@
 
     implicit none
 
-    real(wp),dimension(3,3) :: rc2i
-    real(wp) :: era
-    real(wp),dimension(3,3) :: rpom
-    real(wp),dimension(3,3) :: rc2t
+    real(wp),dimension(3,3),intent(in) :: rc2i !! celestial-to-intermediate matrix
+    real(wp),intent(in) :: era !! Earth rotation angle (radians)
+    real(wp),dimension(3,3),intent(in) :: rpom !! polar-motion matrix
+    real(wp),dimension(3,3),intent(out) :: rc2t !! celestial-to-terrestrial matrix
 
     real(wp) :: r(3,3)
 
@@ -5065,14 +5041,6 @@
 !  Sidereal Time and the polar motion matrix).
 !
 !  Status:  support routine.
-!
-!  Given:
-!     RBPN     d(3,3)    celestial-to-true matrix
-!     GST        d       Greenwich (apparent) Sidereal Time (radians)
-!     RPOM     d(3,3)    polar-motion matrix
-!
-!  Returned:
-!     RC2T     d(3,3)    celestial-to-terrestrial matrix (Note 2)
 !
 !### Notes
 !
@@ -5109,10 +5077,10 @@
 
     implicit none
 
-    real(wp),dimension(3,3) :: rbpn
-    real(wp) :: gst
-    real(wp),dimension(3,3) :: rpom
-    real(wp),dimension(3,3) :: rc2t
+    real(wp),dimension(3,3),intent(in) :: rbpn !! celestial-to-true matrix
+    real(wp),intent(in) :: gst !! Greenwich (apparent) Sidereal Time (radians)
+    real(wp),dimension(3,3),intent(in) :: rpom !! polar-motion matrix
+    real(wp),dimension(3,3),intent(out) :: rc2t !! celestial-to-terrestrial matrix (Note 2)
 
     real(wp) :: r(3,3)
 
@@ -5130,15 +5098,6 @@
 !  nutation and the polar motion.  IAU 2000.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     TTA,TTB     d       TT as a 2-part Julian Date (Note 1)
-!     UTA,UTB     d       UT1 as a 2-part Julian Date (Note 1)
-!     DPSI,DEPS   d       nutation (Note 2)
-!     XP,YP       d       coordinates of the pole (radians, Note 3)
-!
-!  Returned:
-!     RC2T      d(3,3)    celestial-to-terrestrial matrix (Note 4)
 !
 !### Notes
 !
@@ -5204,18 +5163,18 @@
 
     implicit none
 
-    real(wp) :: tta
-    real(wp) :: ttb
-    real(wp) :: uta
-    real(wp) :: utb
-    real(wp) :: dpsi
-    real(wp) :: deps
-    real(wp) :: xp
-    real(wp) :: yp
-    real(wp),dimension(3,3) :: rc2t
+    real(wp),intent(in) :: tta !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: ttb !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: uta !! UT1 as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: utb !! UT1 as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: dpsi !! nutation (Note 2)
+    real(wp),intent(in) :: deps !! nutation (Note 2)
+    real(wp),intent(in) :: xp !! coordinates of the pole (radians, Note 3)
+    real(wp),intent(in) :: yp !! coordinates of the pole (radians, Note 3)
+    real(wp),dimension(3,3),intent(out) :: rc2t !! celestial-to-terrestrial matrix (Note 4)
 
     real(wp) :: epsa, rb(3,3), rp(3,3), rbp(3,3), rn(3,3), &
-                     rbpn(3,3), gmst, ee, sp, rpom(3,3)
+                rbpn(3,3), gmst, ee, sp, rpom(3,3)
 
     !  Form the celestial-to-true matrix for this TT.
     call PN00 ( tta, ttb, dpsi, deps, &
@@ -5245,15 +5204,6 @@
 !  CIP coordinates and the polar motion.  IAU 2000.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     TTA,TTB    d       TT as a 2-part Julian Date (Note 1)
-!     UTA,UTB    d       UT1 as a 2-part Julian Date (Note 1)
-!     X,Y        d       Celestial Intermediate Pole (Note 2)
-!     XP,YP      d       coordinates of the pole (radians, Note 3)
-!
-!  Returned:
-!     RC2T     d(3,3)    celestial-to-terrestrial matrix (Note 4)
 !
 !### Notes
 !
@@ -5314,15 +5264,15 @@
 
     implicit none
 
-    real(wp) :: tta
-    real(wp) :: ttb
-    real(wp) :: uta
-    real(wp) :: utb
-    real(wp) :: x
-    real(wp) :: y
-    real(wp) :: xp
-    real(wp) :: yp
-    real(wp),dimension(3,3) :: rc2t
+    real(wp),intent(in) :: tta !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: ttb !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: uta !! UT1 as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: utb !! UT1 as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: x !! Celestial Intermediate Pole (Note 2)
+    real(wp),intent(in) :: y !! Celestial Intermediate Pole (Note 2)
+    real(wp),intent(in) :: xp !! coordinates of the pole (radians, Note 3)
+    real(wp),intent(in) :: yp !! coordinates of the pole (radians, Note 3)
+    real(wp),dimension(3,3),intent(out) :: rc2t !! celestial-to-terrestrial matrix (Note 4)
 
     real(wp) :: rc2i(3,3), era, sp, rpom(3,3)
 
@@ -5350,18 +5300,6 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     IY,IM,ID    i     year, month, day in Gregorian calendar (Note 1)
-!
-!  Returned:
-!     DJM0        d     MJD zero-point: always 2400000.5
-!     DJM         d     Modified Julian Date for 0 hrs
-!     J           i     status:
-!                           0 = OK
-!                          -1 = bad year   (Note 3: JD not computed)
-!                          -2 = bad month  (JD not computed)
-!                          -3 = bad day    (JD computed)
-!
 !### Notes
 !
 !  1. The algorithm used is valid from -4800 March 1, but this
@@ -5379,9 +5317,9 @@
 !
 !### Reference
 !
-!     Explanatory Supplement to the Astronomical Almanac,
-!     P. Kenneth Seidelmann (ed), University Science Books (1992),
-!     Section 12.92 (p604).
+!  * Explanatory Supplement to the Astronomical Almanac,
+!    P. Kenneth Seidelmann (ed), University Science Books (1992),
+!    Section 12.92 (p604).
 !
 !### History
 !  * IAU SOFA revision: 2014 November 7
@@ -5390,20 +5328,24 @@
 
     implicit none
 
-    integer :: iy
-    integer :: im
-    integer :: id
-    real(wp) :: djm0
-    real(wp) :: djm
+    integer,intent(in) :: iy !! year in Gregorian calendar (Note 1)
+    integer,intent(in) :: im !! month in Gregorian calendar (Note 1)
+    integer,intent(in) :: id !! day in Gregorian calendar (Note 1)
+    real(wp),intent(out) :: djm0 !! MJD zero-point: always 2400000.5
+    real(wp),intent(out) :: djm !! Modified Julian Date for 0 hrs
+    integer,intent(out) :: j !! status:
+                             !! *  0 = OK
+                             !! * -1 = bad year   (Note 3: JD not computed)
+                             !! * -2 = bad month  (JD not computed)
+                             !! * -3 = bad day    (JD computed)
 
-    integer :: j, ndays, my, iypmy
+    integer :: ndays, my, iypmy
 
     !  Earliest year allowed (4800BC)
     integer,parameter :: iymin = -4799
 
     !  Month lengths in days
-    integer :: mtab(12)
-    data mtab / 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 /
+    integer,dimension(12),parameter :: mtab = [31,28,31,30,31,30,31,31,30,31,30,31]
 
     !  Preset status.
     j = 0
@@ -5413,7 +5355,7 @@
        j = -1
     else
 
-    !     Validate month.
+       !  Validate month.
        if ( im>=1 .and. im<=12 ) then
 
           !  Days in current month.
@@ -5453,12 +5395,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     P        d(3)     p-vector to be copied
-!
-!  Returned:
-!     C        d(3)     copy
-!
 !### History
 !  * IAU SOFA revision: 2000 November 25
 
@@ -5466,8 +5402,8 @@
 
     implicit none
 
-    real(wp),dimension(3) :: p
-    real(wp),dimension(3) :: c
+    real(wp),dimension(3),intent(in) :: p !! p-vector to be copied
+    real(wp),dimension(3),intent(out) :: c !! copy
 
     integer :: i
 
@@ -5484,12 +5420,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     PV       d(3,2)    position/velocity vector to be copied
-!
-!  Returned:
-!     C        d(3,2)    copy
-!
 !### History
 !  * IAU SOFA revision: 2000 November 25
 
@@ -5497,8 +5427,8 @@
 
     implicit none
 
-    real(wp),dimension(3,2) :: pv
-    real(wp),dimension(3,2) :: c
+    real(wp),dimension(3,2),intent(in) :: pv !! position/velocity vector to be copied
+    real(wp),dimension(3,2),intent(out) :: c !! copy
 
     call CP ( pv(1,1), c(1,1) )
     call CP ( pv(1,2), c(1,2) )
@@ -5512,12 +5442,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     R        d(3,3)    r-matrix to be copied
-!
-!  Returned:
-!     C        d(3,3)    copy
-!
 !### History
 !  * IAU SOFA revision: 2000 November 25
 
@@ -5525,8 +5449,8 @@
 
     implicit none
 
-    real(wp),dimension(3,3) :: r
-    real(wp),dimension(3,3) :: c
+    real(wp),dimension(3,3),intent(in) :: r !! r-matrix to be copied
+    real(wp),dimension(3,3),intent(out) :: c !! copy
 
     integer :: i
 
@@ -5543,18 +5467,6 @@
 !  quasi-JD form that includes special provision for leap seconds).
 !
 !  Status:  support routine.
-!
-!  Given:
-!     SCALE      c*(*)  time scale ID (Note 1)
-!     NDP        i      resolution (Note 2)
-!     D1,D2      d      time as a 2-part Julian Date (Notes 3,4)
-!
-!  Returned:
-!     IY,IM,ID   i      year, month, day in Gregorian calendar (Note 5)
-!     IHMSF      i(4)   hours, minutes, seconds, fraction (Note 1)
-!     J          i      status: +1 = dubious year (Note 5)
-!                                0 = OK
-!                               -1 = unacceptable date (Note 6)
 !
 !### Notes
 !
@@ -5604,15 +5516,18 @@
 
     implicit none
 
-    character(len=*) :: scale
-    integer :: ndp
-    real(wp) :: d1
-    real(wp) :: d2
-    integer :: iy
-    integer :: im
-    integer :: id
-    integer,dimension(4) :: ihmsf
-    integer :: j
+    character(len=*),intent(in) :: scale !! time scale ID (Note 1)
+    integer,intent(in) :: ndp !! resolution (Note 2)
+    real(wp),intent(in) :: d1 !! time as a 2-part Julian Date (Notes 3,4)
+    real(wp),intent(in) :: d2 !! time as a 2-part Julian Date (Notes 3,4)
+    integer,intent(out) :: iy !! year in Gregorian calendar (Note 5)
+    integer,intent(out) :: im !! month in Gregorian calendar (Note 5)
+    integer,intent(out) :: id !! day in Gregorian calendar (Note 5)
+    integer,dimension(4),intent(out) :: ihmsf !! hours, minutes, seconds, fraction (Note 1)
+    integer,intent(out) :: j !! status:
+                             !! * +1 = dubious year (Note 5)
+                             !! *  0 = OK
+                             !! * -1 = unacceptable date (Note 6)
 
     logical :: leap
     character(len=1) :: s
@@ -5732,14 +5647,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     NDP       i        resolution (Note 1)
-!     DAYS      d        interval in days
-!
-!  Returned:
-!     SIGN      c        '+' or '-'
-!     IHMSF     i(4)     hours, minutes, seconds, fraction
-!
 !### Notes
 !
 !  1. NDP is interpreted as follows:
@@ -5779,10 +5686,10 @@
 
     implicit none
 
-    integer :: ndp
-    real(wp) :: days
-    character(len=*) :: sign
-    integer,dimension(4) :: ihmsf
+    integer,intent(in) :: ndp !! resolution (Note 1)
+    real(wp),intent(in) :: days !! interval in days
+    character(len=*),intent(out) :: sign !! '+' or '-'
+    integer,dimension(4),intent(out) :: ihmsf !! hours, minutes, seconds, fraction
 
     integer :: nrs, n
     real(wp) :: rs, rm, rh, a, ah, am, as, af
@@ -5881,23 +5788,6 @@
 !
 !  Status:  user-replaceable support routine.
 !
-!  Given:
-!     IY       i     UTC:  year (Notes 1 and 2)
-!     IM       i           month (Note 2)
-!     ID       i           day (Notes 2 and 3)
-!     FD       d           fraction of day (Note 4)
-!
-!  Returned:
-!     DELTAT   d     TAI minus UTC, seconds
-!     J        i     status (Note 5):
-!                       1 = dubious year (Note 1)
-!                       0 = OK
-!                      -1 = bad year
-!                      -2 = bad month
-!                      -3 = bad day (Note 3)
-!                      -4 = bad fraction (Note 4)
-!                      -5 = internal error (Note 5)
-!
 !### Notes
 !
 !  1. UTC began at 1960 January 1.0 (JD 2436934.5) and it is improper
@@ -5957,12 +5847,19 @@
 
     implicit none
 
-    integer :: iy
-    integer :: im
-    integer :: id
-    real(wp) :: fd
-    real(wp) :: deltat
-    integer :: j
+    integer,intent(in) :: iy !! UTC:  year (Notes 1 and 2)
+    integer,intent(in) :: im !! UTC:  month (Note 2)
+    integer,intent(in) :: id !! UTC:  day (Notes 2 and 3)
+    real(wp),intent(in) :: fd !! UTC:  fraction of day (Note 4)
+    real(wp),intent(out) :: deltat !! TAI minus UTC, seconds
+    integer,intent(out) :: j !! status (Note 5):
+                             !! *  1 = dubious year (Note 1)
+                             !! *  0 = OK
+                             !! * -1 = bad year
+                             !! * -2 = bad month
+                             !! * -3 = bad day (Note 3)
+                             !! * -4 = bad fraction (Note 4)
+                             !! * -5 = internal error (Note 5)
 
     !  Release year for this version of DAT
     integer,parameter :: iyv = 2019
@@ -6136,16 +6033,6 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     DATE1,DATE2     d    date, TDB (Notes 1-3)
-!     UT              d    universal time (UT1, fraction of one day)
-!     ELONG           d    longitude (east positive, radians)
-!     U               d    distance from Earth spin axis (km)
-!     V               d    distance north of equatorial plane (km)
-!
-!  Returned:
-!    DTDB         d    TDB-TT (seconds)
-!
 !### Notes
 !
 !  1. The date DATE1+DATE2 is a Julian Date, apportioned in any
@@ -6256,17 +6143,17 @@
 !### History
 !  * IAU SOFA revision: 2010 July 29
 
-    real(wp) function DTDB ( date1, date2, &
-                             ut, elong, u, v )
+    function DTDB ( date1, date2, ut, elong, u, v ) result(TDB_minus_TT)
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp) :: ut
-    real(wp) :: elong
-    real(wp) :: u
-    real(wp) :: v
+    real(wp),intent(in) :: date1 !! date, TDB (Notes 1-3)
+    real(wp),intent(in) :: date2 !! date, TDB (Notes 1-3)
+    real(wp),intent(in) :: ut !! universal time (UT1, fraction of one day)
+    real(wp),intent(in) :: elong !! longitude (east positive, radians)
+    real(wp),intent(in) :: u !! distance from Earth spin axis (km)
+    real(wp),intent(in) :: v !! distance north of equatorial plane (km)
+    real(wp) :: TDB_minus_TT !! TDB-TT (seconds)
 
     !  Degrees to radians
     real(wp),parameter :: dd2r = 1.745329251994329576923691d-2
@@ -7262,7 +7149,7 @@
     !  ============
 
     !  TDB-TT in seconds.
-    DTDB = wt + wf + wj
+    TDB_minus_TT = wt + wf + wj
 
     end function DTDB
 !***********************************************************************
@@ -7274,25 +7161,6 @@
 !  seconds).
 !
 !  Status:  support routine.
-!
-!  Given:
-!     SCALE      c*(*)  time scale ID (Note 1)
-!     IY,IM,ID   i      year, month, day in Gregorian calendar (Note 2)
-!     IHR,IMN    i      hour, minute
-!     SEC        d      seconds
-!
-!  Returned:
-!     D1,D2      d      2-part Julian Date (Notes 3,4)
-!     J          i      status: +3 = both of next two
-!                               +2 = time is after end of day (Note 5)
-!                               +1 = dubious year (Note 6)
-!                                0 = OK
-!                               -1 = bad year
-!                               -2 = bad month
-!                               -3 = bad day
-!                               -4 = bad hour
-!                               -5 = bad minute
-!                               -6 = bad second (<0)
 !
 !### Notes
 !
@@ -7339,20 +7207,30 @@
 
     implicit none
 
-    character(len=*) :: scale
-    integer :: iy
-    integer :: im
-    integer :: id
-    integer :: ihr
-    integer :: imn
-    real(wp) :: sec
-    real(wp) :: d1
-    real(wp) :: d2
-    integer :: j
+    character(len=*),intent(in) :: scale !! time scale ID (Note 1)
+    integer,intent(in) :: iy !! year in Gregorian calendar (Note 2)
+    integer,intent(in) :: im !! month in Gregorian calendar (Note 2)
+    integer,intent(in) :: id !! day in Gregorian calendar (Note 2)
+    integer,intent(in) :: ihr !! hour
+    integer,intent(in) :: imn !! minute
+    real(wp),intent(in) :: sec !! seconds
+    real(wp),intent(out) :: d1 !! 2-part Julian Date (Notes 3,4)
+    real(wp),intent(out) :: d2 !! 2-part Julian Date (Notes 3,4)
+    integer,intent(out) :: j !! status:
+                             !! * +3 = both of next two
+                             !! * +2 = time is after end of day (Note 5)
+                             !! * +1 = dubious year (Note 6)
+                             !! *  0 = OK
+                             !! * -1 = bad year
+                             !! * -2 = bad month
+                             !! * -3 = bad day
+                             !! * -4 = bad hour
+                             !! * -5 = bad minute
+                             !! * -6 = bad second (<0)
 
     integer :: js, iy2, im2, id2
     real(wp) :: dj, w, day, seclim, dat0, dat12, dat24, &
-                     dleap, time
+                dleap, time
 
     main : block
 
@@ -7432,13 +7310,6 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     DATE1,DATE2  d      TT as a 2-part Julian Date (Note 1)
-!     DL,DB        d      ecliptic longitude and latitude (radians)
-!
-!  Returned:
-!     DR,DD        d      ICRS right ascension and declination (radians)
-!
 !### Notes
 !
 !  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
@@ -7476,12 +7347,12 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp) :: dl
-    real(wp) :: db
-    real(wp) :: dr
-    real(wp) :: dd
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: dl !! ecliptic longitude and latitude (radians)
+    real(wp),intent(in) :: db !! ecliptic longitude and latitude (radians)
+    real(wp),intent(out) :: dr !! ICRS right ascension and declination (radians)
+    real(wp),intent(out) :: dd !! ICRS right ascension and declination (radians)
 
     real(wp) :: rm(3,3), v1(3), v2(3), a, b
 
@@ -7509,12 +7380,6 @@
 !  ICRS equatorial to ecliptic rotation matrix, IAU 2006.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1,DATE2  d      TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     RM           d(3,3) ICRS to ecliptic rotation matrix
 !
 !### Notes
 !
@@ -7561,9 +7426,9 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp),dimension(3,3) :: rm
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),dimension(3,3),intent(out) :: rm !! ICRS to ecliptic rotation matrix
 
     real(wp) :: ob, bp(3,3), e(3,3)
 
@@ -7589,14 +7454,6 @@
 !  given the nutation in longitude and the mean obliquity.
 !
 !  Status:  canonical model.
-!
-!  Given:
-!     DATE1,DATE2    d      TT as a 2-part Julian Date (Note 1)
-!     EPSA           d      mean obliquity (Note 2)
-!     DPSI           d      nutation in longitude (Note 3)
-!
-!  Returned:
-!     EE00       d      equation of the equinoxes (Note 4)
 !
 !### Notes
 !
@@ -7641,17 +7498,18 @@
 !### History
 !  * IAU SOFA revision: 2006 November 13
 
-    real(wp) function EE00 ( date1, date2, epsa, dpsi )
+    function EE00 ( date1, date2, epsa, dpsi ) result(res)
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp) :: epsa
-    real(wp) :: dpsi
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: epsa !! mean obliquity (Note 2)
+    real(wp),intent(in) :: dpsi !! nutation in longitude (Note 3)
+    real(wp) :: res !! equation of the equinoxes (Note 4)
 
     !  Equation of the equinoxes.
-    EE00 = dpsi * cos(epsa) + EECT00 ( date1, date2 )
+    res = dpsi * cos(epsa) + EECT00 ( date1, date2 )
 
     end function EE00
 !***********************************************************************
@@ -7661,12 +7519,6 @@
 !  Equation of the equinoxes, compatible with IAU 2000 resolutions.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1,DATE2    d      TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     EE00A      d      equation of the equinoxes (Note 2)
 !
 !### Notes
 !
@@ -7709,12 +7561,13 @@
 !### History
 !  * IAU SOFA revision: 2006 November 13
 
-    real(wp) function EE00A ( date1, date2 )
+    function EE00A ( date1, date2 ) result(res)
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp) :: res !! equation of the equinoxes (Note 2)
 
     real(wp) :: dpsipr, depspr, epsa, dpsi, deps
 
@@ -7728,7 +7581,7 @@
     call NUT00A ( date1, date2, dpsi, deps )
 
     !  Equation of the equinoxes.
-    EE00A = EE00 ( date1, date2, epsa, dpsi )
+    res = EE00 ( date1, date2, epsa, dpsi )
 
     end function EE00A
 !***********************************************************************
@@ -7739,12 +7592,6 @@
 !  using the truncated nutation model IAU 2000B.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1,DATE2   d     TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     EE00B     d     equation of the equinoxes (Note 2)
 !
 !### Notes
 !
@@ -7792,12 +7639,13 @@
 !### History
 !  * IAU SOFA revision: 2006 November 13
 
-    real(wp) function EE00B ( date1, date2 )
+    function EE00B ( date1, date2 ) result(res)
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
+    real(wp),intent(in) :: date1 !!  TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !!  TT as a 2-part Julian Date (Note 1)
+    real(wp) :: res !! equation of the equinoxes (Note 2)
 
     real(wp) :: dpsipr, depspr, epsa, dpsi, deps
 
@@ -7811,7 +7659,7 @@
     call NUT00B ( date1, date2, dpsi, deps )
 
     !  Equation of the equinoxes.
-    EE00B = EE00 ( date1, date2, epsa, dpsi )
+    res = EE00 ( date1, date2, epsa, dpsi )
 
     end function EE00B
 !***********************************************************************
@@ -7822,12 +7670,6 @@
 !  IAU 2006/2000A precession-nutation.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1,DATE2    d      TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     EE06A      d      equation of the equinoxes (Note 2)
 !
 !### Notes
 !
@@ -7862,16 +7704,17 @@
 !### History
 !  * IAU SOFA revision: 2006 October 31
 
-    real(wp) function EE06A ( date1, date2 )
+    function EE06A ( date1, date2 ) result(res)
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp) :: res !! equation of the equinoxes (Note 2)
 
     !  Equation of the equinoxes.
-    EE06A = ANPM ( GST06A ( 0d0, 0d0, date1, date2 ) - &
-                           GMST06 ( 0d0, 0d0, date1, date2 ) )
+    res = ANPM ( GST06A ( 0d0, 0d0, date1, date2 ) - &
+                 GMST06 ( 0d0, 0d0, date1, date2 ) )
 
     end function EE06A
 !***********************************************************************
@@ -7882,12 +7725,6 @@
 !  IAU 2000 resolutions.
 !
 !  Status:  canonical model.
-!
-!  Given:
-!     DATE1,DATE2   d    TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     EECT00    d    complementary terms (Note 2)
 !
 !### Notes
 !
@@ -7956,12 +7793,13 @@
 !### History
 !  * IAU SOFA revision: 2017 October 23
 
-    real(wp) function EECT00 ( date1, date2 )
+    function EECT00 ( date1, date2 ) result(res)
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp) :: res !! complementary terms (Note 2)
 
     !  Time since J2000.0, in Julian centuries
     real(wp) :: t
@@ -8122,7 +7960,7 @@
        end do
        s1 = s1 + ( se1(1,i)*sin(a) + se1(2,i)*cos(a) )
     end do
-    EECT00 = ( s0 + s1 * t ) * das2r
+    res = ( s0 + s1 * t ) * das2r
 
     end function EECT00
 !***********************************************************************
@@ -8132,15 +7970,6 @@
 !  Earth reference ellipsoids.
 !
 !  Status:  canonical.
-!
-!  Given:
-!     N         i     ellipsoid identifier (Note 1)
-!
-!  Returned:
-!     A         d     equatorial radius (meters, Note 2)
-!     F         d     flattening (Note 2)
-!     J         i     status:  0 = OK
-!                             -1 = illegal identifier (Note 3)
 !
 !### Notes
 !
@@ -8183,42 +8012,45 @@
 
     implicit none
 
-    integer :: n
-    real(wp) :: a
-    real(wp) :: f
-    integer :: j
+    integer,intent(in) :: n !! ellipsoid identifier (Note 1)
+    real(wp),intent(out) :: a !! equatorial radius (meters, Note 2)
+    real(wp),intent(out) :: f !! flattening (Note 2)
+    integer,intent(out) :: j !! status:
+                             !! * 0 = OK
+                             !! * -1 = illegal identifier (Note 3)
 
     !  Preset the status to OK
     j = 0
 
     !  Look up A and F for the specified reference ellipsoid.
 
-    if ( n==1 ) then
+    select case (n)
+    case ( 1 )
 
-    !     WGS84.
+       !  WGS84.
        a = 6378137d0
        f = 1d0 / 298.257223563d0
 
-    else if ( n==2 ) then
+    case ( 2 )
 
-    !     GRS80.
+       !  GRS80.
        a = 6378137d0
        f = 1d0 / 298.257222101d0
 
-    else if ( n==3 ) then
+    case ( 3 )
 
-    !     WGS72.
+       !  WGS72.
        a = 6378135d0
        f = 1d0 / 298.26d0
 
-    else
+    case default
 
-    !     Invalid identifier.
+       !  Invalid identifier.
        a = 0d0
        f = 0d0
        j = -1
 
-    end if
+    end select
 
     end subroutine EFORM
 !***********************************************************************
