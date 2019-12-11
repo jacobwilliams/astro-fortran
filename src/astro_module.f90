@@ -280,11 +280,11 @@
 !### References
 !
 !  * Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
-!     the Astronomical Almanac, 3rd ed., University Science Books
-!     (2013).
+!    the Astronomical Almanac, 3rd ed., University Science Books
+!    (2013).
 !
 !  * Klioner, Sergei A., "A practical relativistic model for micro-
-!     arcsecond astrometry in space", Astr. J. 125, 1580-1597 (2003).
+!    arcsecond astrometry in space", Astr. J. 125, 1580-1597 (2003).
 !
 !### History
 !  * IAU SOFA revision:  2013 August 31
@@ -2449,12 +2449,12 @@
 !
 !### References
 !
-! * Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
-!   the Astronomical Almanac, 3rd ed., University Science Books
-!   (2013).
+!  * Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
+!    the Astronomical Almanac, 3rd ed., University Science Books
+!    (2013).
 !
-! * Klioner, Sergei A., "A practical relativistic model for micro-
-!   arcsecond astrometry in space", Astr. J. 125, 1580-1597 (2003).
+!  * Klioner, Sergei A., "A practical relativistic model for micro-
+!    arcsecond astrometry in space", Astr. J. 125, 1580-1597 (2003).
 !
 !### History
 !  * IAU SOFA revision:  2013 August 31
@@ -2678,15 +2678,6 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     RI,DI    d      CIRS geocentric RA,Dec (radians)
-!     DATE1    d      TDB as a 2-part...
-!     DATE2    d      ...Julian Date (Note 1)
-!
-!  Returned:
-!     RC,DC    d      ICRS astrometric RA,Dec (radians)
-!     EO       d      equation of the origins (ERA-GST, Note 4)
-!
 !### Notes
 !
 !  1. The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
@@ -2743,13 +2734,13 @@
 
     implicit none
 
-    real(wp) :: ri
-    real(wp) :: di
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp) :: rc
-    real(wp) :: dc
-    real(wp) :: eo
+    real(wp),intent(in) :: ri !! CIRS geocentric RA (radians)
+    real(wp),intent(in) :: di !! CIRS geocentric Dec (radians)
+    real(wp),intent(in) :: date1 !! TDB as a 2-part...
+    real(wp),intent(in) :: date2 !! ...Julian Date (Note 1)
+    real(wp),intent(out) :: rc !! ICRS astrometric RA (radians)
+    real(wp),intent(out) :: dc !! ICRS astrometric Dec (radians)
+    real(wp),intent(out) :: eo !! equation of the origins (ERA-GST, Note 4)
 
     !  Star-independent astrometry parameters
     real(wp) :: astrom(30)
@@ -2776,29 +2767,6 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     RI,DI    d      CIRS RA,Dec (radians)
-!     ASTROM   d(30)  star-independent astrometry parameters:
-!               (1)      PM time interval (SSB, Julian years)
-!               (2-4)    SSB to observer (vector, au)
-!               (5-7)    Sun to observer (unit vector)
-!               (8)      distance from Sun to observer (au)
-!               (9-11)   v: barycentric observer velocity (vector, c)
-!               (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
-!               (13-21)  bias-precession-nutation matrix
-!               (22)     longitude + s' (radians)
-!               (23)     polar motion xp wrt local meridian (radians)
-!               (24)     polar motion yp wrt local meridian (radians)
-!               (25)     sine of geodetic latitude
-!               (26)     cosine of geodetic latitude
-!               (27)     magnitude of diurnal aberration vector
-!               (28)     "local" Earth rotation angle (radians)
-!               (29)     refraction constant A (radians)
-!               (30)     refraction constant B (radians)
-!
-!  Returned:
-!     RC,DC    d      ICRS astrometric RA,Dec (radians)
-!
 !### Notes
 !
 !  1. Only the Sun is taken into account in the light deflection
@@ -2817,15 +2785,31 @@
 
     implicit none
 
-    real(wp) :: ri
-    real(wp) :: di
-    real(wp),dimension(30) :: astrom
-    real(wp) :: rc
-    real(wp) :: dc
+    real(wp),intent(in) :: ri !! CIRS RA (radians)
+    real(wp),intent(in) :: di !! CIRS Dec (radians)
+    real(wp),dimension(30),intent(in) :: astrom !! star-independent astrometry parameters:
+                                                !! (1)      PM time interval (SSB, Julian years)
+                                                !! (2-4)    SSB to observer (vector, au)
+                                                !! (5-7)    Sun to observer (unit vector)
+                                                !! (8)      distance from Sun to observer (au)
+                                                !! (9-11)   v: barycentric observer velocity (vector, c)
+                                                !! (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
+                                                !! (13-21)  bias-precession-nutation matrix
+                                                !! (22)     longitude + s' (radians)
+                                                !! (23)     polar motion xp wrt local meridian (radians)
+                                                !! (24)     polar motion yp wrt local meridian (radians)
+                                                !! (25)     sine of geodetic latitude
+                                                !! (26)     cosine of geodetic latitude
+                                                !! (27)     magnitude of diurnal aberration vector
+                                                !! (28)     "local" Earth rotation angle (radians)
+                                                !! (29)     refraction constant A (radians)
+                                                !! (30)     refraction constant B (radians)
+    real(wp),intent(out) :: rc !! ICRS astrometric RA (radians)
+    real(wp),intent(out) :: dc !! ICRS astrometric Dec (radians)
 
     integer :: j, i
     real(wp) :: pi(3), ppr(3), pnat(3), pco(3), w, d(3), &
-                     before(3), r2, r, after(3)
+                before(3), r2, r, after(3)
 
     !  CIRS RA,Dec to Cartesian.
     call S2C ( ri, di, pi )
@@ -2911,35 +2895,6 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     RI,DI    d      CIRS RA,Dec (radians)
-!     ASTROM   d(30)  star-independent astrometry parameters:
-!               (1)      PM time interval (SSB, Julian years)
-!               (2-4)    SSB to observer (vector, au)
-!               (5-7)    Sun to observer (unit vector)
-!               (8)      distance from Sun to observer (au)
-!               (9-11)   v: barycentric observer velocity (vector, c)
-!               (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
-!               (13-21)  bias-precession-nutation matrix
-!               (22)     longitude + s' (radians)
-!               (23)     polar motion xp wrt local meridian (radians)
-!               (24)     polar motion yp wrt local meridian (radians)
-!               (25)     sine of geodetic latitude
-!               (26)     cosine of geodetic latitude
-!               (27)     magnitude of diurnal aberration vector
-!               (28)     "local" Earth rotation angle (radians)
-!               (29)     refraction constant A (radians)
-!               (30)     refraction constant B (radians)
-!     N        i       number of bodies (Note 3)
-!     B        d(8,N)  data for each of the NB bodies (Notes 3,4):
-!               (1,I)    mass of the body (solar masses, Note 5)
-!               (2,I)    deflection limiter (Note 6)
-!               (3-5,I)  barycentric position of the body (au)
-!               (6-8,I)  barycentric velocity of the body (au/day)
-!
-!  Returned:
-!     RC,DC    d      ICRS astrometric RA,Dec (radians)
-!
 !### Notes
 !
 !  1. Iterative techniques are used for the aberration and light
@@ -2987,17 +2942,37 @@
 
     implicit none
 
-    real(wp) :: ri
-    real(wp) :: di
-    real(wp),dimension(30) :: astrom
-    integer :: n
-    real(wp),dimension(8,n) :: b
-    real(wp) :: rc
-    real(wp) :: dc
+    real(wp),intent(in) :: ri !! CIRS RA (radians)
+    real(wp),intent(in) :: di !! CIRS Dec (radians)
+    real(wp),dimension(30),intent(in) :: astrom !! star-independent astrometry parameters:
+                                                !! (1)      PM time interval (SSB, Julian years)
+                                                !! (2-4)    SSB to observer (vector, au)
+                                                !! (5-7)    Sun to observer (unit vector)
+                                                !! (8)      distance from Sun to observer (au)
+                                                !! (9-11)   v: barycentric observer velocity (vector, c)
+                                                !! (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
+                                                !! (13-21)  bias-precession-nutation matrix
+                                                !! (22)     longitude + s' (radians)
+                                                !! (23)     polar motion xp wrt local meridian (radians)
+                                                !! (24)     polar motion yp wrt local meridian (radians)
+                                                !! (25)     sine of geodetic latitude
+                                                !! (26)     cosine of geodetic latitude
+                                                !! (27)     magnitude of diurnal aberration vector
+                                                !! (28)     "local" Earth rotation angle (radians)
+                                                !! (29)     refraction constant A (radians)
+                                                !! (30)     refraction constant B (radians)
+    integer,intent(in) :: n !! number of bodies (Note 3)
+    real(wp),dimension(8,n),intent(in) :: b !! data for each of the NB bodies (Notes 3,4):
+                                            !! (1,I)    mass of the body (solar masses, Note 5)
+                                            !! (2,I)    deflection limiter (Note 6)
+                                            !! (3-5,I)  barycentric position of the body (au)
+                                            !! (6-8,I)  barycentric velocity of the body (au/day)
+    real(wp),intent(out) :: rc !! ICRS astrometric RA (radians)
+    real(wp),intent(out) :: dc !! ICRS astrometric Dec (radians)
 
     integer :: j, i
     real(wp) :: pi(3), ppr(3), pnat(3), pco(3), w, d(3), &
-                     before(3), r2, r, after(3)
+                before(3), r2, r, after(3)
 
     !  CIRS RA,Dec to Cartesian.
     call S2C ( ri, di, pi )
@@ -3072,31 +3047,6 @@
 !  coordinates, ambient air conditions and observing wavelength.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     RI       d      CIRS right ascension (CIO-based, radians)
-!     DI       d      CIRS declination (radians)
-!     UTC1     d      UTC as a 2-part...
-!     UTC2     d      ...quasi Julian Date (Notes 1,2)
-!     DUT1     d      UT1-UTC (seconds, Note 3)
-!     ELONG    d      longitude (radians, east +ve, Note 4)
-!     PHI      d      geodetic latitude (radians, Note 4)
-!     HM       d      height above ellipsoid (m, geodetic Notes 4,6)
-!     XP,YP    d      polar motion coordinates (radians, Note 5)
-!     PHPA     d      pressure at the observer (hPa = mB, Note 6)
-!     TC       d      ambient temperature at the observer (deg C)
-!     RH       d      relative humidity at the observer (range 0-1)
-!     WL       d      wavelength (micrometers, Note 7)
-!
-!  Returned:
-!     AOB      d      observed azimuth (radians: N=0,E=90)
-!     ZOB      d      observed zenith distance (radians)
-!     HOB      d      observed hour angle (radians)
-!     DOB      d      observed declination (radians)
-!     ROB      d      observed right ascension (CIO-based, radians)
-!     J        i      status: +1 = dubious year (Note 2)
-!                              0 = OK
-!                             -1 = unacceptable date
 !
 !### Notes
 !
@@ -3196,33 +3146,35 @@
 
     implicit none
 
-    real(wp) :: ri
-    real(wp) :: di
-    real(wp) :: utc1
-    real(wp) :: utc2
-    real(wp) :: dut1
-    real(wp) :: elong
-    real(wp) :: phi
-    real(wp) :: hm
-    real(wp) :: xp
-    real(wp) :: yp
-    real(wp) :: phpa
-    real(wp) :: tc
-    real(wp) :: rh
-    real(wp) :: wl
-    real(wp) :: aob
-    real(wp) :: zob
-    real(wp) :: hob
-    real(wp) :: dob
-    real(wp) :: rob
-    integer :: j
+    real(wp),intent(in) :: ri !! CIRS right ascension (CIO-based, radians)
+    real(wp),intent(in) :: di !! CIRS declination (radians)
+    real(wp),intent(in) :: utc1 !! UTC as a 2-part...
+    real(wp),intent(in) :: utc2 !! ...quasi Julian Date (Notes 1,2)
+    real(wp),intent(in) :: dut1 !! UT1-UTC (seconds, Note 3)
+    real(wp),intent(in) :: elong !! longitude (radians, east +ve, Note 4)
+    real(wp),intent(in) :: phi !! geodetic latitude (radians, Note 4)
+    real(wp),intent(in) :: hm !! height above ellipsoid (m, geodetic Notes 4,6)
+    real(wp),intent(in) :: xp !! polar motion coordinates (radians, Note 5)
+    real(wp),intent(in) :: yp !! polar motion coordinates (radians, Note 5)
+    real(wp),intent(in) :: phpa !! pressure at the observer (hPa = mB, Note 6)
+    real(wp),intent(in) :: tc !! ambient temperature at the observer (deg C)
+    real(wp),intent(in) :: rh !! relative humidity at the observer (range 0-1)
+    real(wp),intent(in) :: wl !! wavelength (micrometers, Note 7)
+    real(wp),intent(out) :: aob !! observed azimuth (radians: N=0,E=90)
+    real(wp),intent(out) :: zob !! observed zenith distance (radians)
+    real(wp),intent(out) :: hob !! observed hour angle (radians)
+    real(wp),intent(out) :: dob !! observed declination (radians)
+    real(wp),intent(out) :: rob !! observed right ascension (CIO-based, radians)
+    integer,intent(out) :: j !! status: +1 = dubious year (Note 2)
+                             !!  0 = OK
+                             !! -1 = unacceptable date
 
     integer :: js
     real(wp) :: astrom(30)
 
     !  Star-independent astrometry parameters for CIRS->observed.
     call APIO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
-                      phpa, tc, rh, wl, astrom, js )
+                  phpa, tc, rh, wl, astrom, js )
 
     !  Abort if bad UTC.
     if ( js>=0 ) then
@@ -3248,34 +3200,6 @@
 !  calling APIO[13] or APCO[13].
 !
 !  Status:  support routine.
-!
-!  Given:
-!     RI       d      CIRS right ascension
-!     DI       d      CIRS declination
-!     ASTROM   d(30)  star-independent astrometry parameters:
-!               (1)      PM time interval (SSB, Julian years)
-!               (2-4)    SSB to observer (vector, au)
-!               (5-7)    Sun to observer (unit vector)
-!               (8)      distance from Sun to observer (au)
-!               (9-11)   v: barycentric observer velocity (vector, c)
-!               (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
-!               (13-21)  bias-precession-nutation matrix
-!               (22)     longitude + s' (radians)
-!               (23)     polar motion xp wrt local meridian (radians)
-!               (24)     polar motion yp wrt local meridian (radians)
-!               (25)     sine of geodetic latitude
-!               (26)     cosine of geodetic latitude
-!               (27)     magnitude of diurnal aberration vector
-!               (28)     "local" Earth rotation angle (radians)
-!               (29)     refraction constant A (radians)
-!               (30)     refraction constant B (radians)
-!
-!  Returned:
-!     AOB      d      observed azimuth (radians: N=0,E=90)
-!     ZOB      d      observed zenith distance (radians)
-!     HOB      d      observed hour angle (radians)
-!     DOB      d      observed declination (CIO-based, radians)
-!     ROB      d      observed right ascension (CIO-based, radians)
 !
 !### Notes
 !
@@ -3331,23 +3255,39 @@
 
     implicit none
 
-    real(wp) :: ri
-    real(wp) :: di
-    real(wp),dimension(30) :: astrom
-    real(wp) :: aob
-    real(wp) :: zob
-    real(wp) :: hob
-    real(wp) :: dob
-    real(wp) :: rob
+    real(wp),intent(in) :: ri !! CIRS right ascension
+    real(wp),intent(in) :: di !! CIRS declination
+    real(wp),dimension(30),intent(in) :: astrom !! star-independent astrometry parameters:
+                                                !! (1)      PM time interval (SSB, Julian years)
+                                                !! (2-4)    SSB to observer (vector, au)
+                                                !! (5-7)    Sun to observer (unit vector)
+                                                !! (8)      distance from Sun to observer (au)
+                                                !! (9-11)   v: barycentric observer velocity (vector, c)
+                                                !! (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
+                                                !! (13-21)  bias-precession-nutation matrix
+                                                !! (22)     longitude + s' (radians)
+                                                !! (23)     polar motion xp wrt local meridian (radians)
+                                                !! (24)     polar motion yp wrt local meridian (radians)
+                                                !! (25)     sine of geodetic latitude
+                                                !! (26)     cosine of geodetic latitude
+                                                !! (27)     magnitude of diurnal aberration vector
+                                                !! (28)     "local" Earth rotation angle (radians)
+                                                !! (29)     refraction constant A (radians)
+                                                !! (30)     refraction constant B (radians)
+    real(wp),intent(out) :: aob !! observed azimuth (radians: N=0,E=90)
+    real(wp),intent(out) :: zob !! observed zenith distance (radians)
+    real(wp),intent(out) :: hob !! observed hour angle (radians)
+    real(wp),intent(out) :: dob !! observed declination (CIO-based, radians)
+    real(wp),intent(out) :: rob !! observed right ascension (CIO-based, radians)
 
     !  Minimum sine and cosine of altitude for refraction purposes
     real(wp),parameter :: selmin = 0.05d0
     real(wp),parameter :: celmin = 1d-6
 
     real(wp) :: v(3), x, y, z, xhd, yhd, zhd, f, &
-                     xhdt, yhdt, zhdt, xaet, yaet, zaet, azobs, &
-                     r, tz, w, del, cosdel, xaeo, yaeo, zaeo, &
-                     zdobs, hmobs, dcobs, raobs
+                xhdt, yhdt, zhdt, xaet, yaet, zaet, azobs, &
+                r, tz, w, del, cosdel, xaeo, yaeo, zaeo, &
+                zdobs, hmobs, dcobs, raobs
 
     !  CIRS RA,Dec to Cartesian -HA,Dec.
     call S2C ( ri-astrom(28), di, v )
@@ -3430,28 +3370,6 @@
 !  and observing wavelength.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     TYPE     c*(*)  type of coordinates - 'R', 'H' or 'A' (Notes 1,2)
-!     OB1      d      observed Az, HA or RA (radians; Az is N=0,E=90)
-!     OB2      d      observed ZD or Dec (radians)
-!     UTC1     d      UTC as a 2-part...
-!     UTC2     d      ...quasi Julian Date (Notes 3,4)
-!     DUT1     d      UT1-UTC (seconds, Note 5)
-!     ELONG    d      longitude (radians, east +ve, Note 6)
-!     PHI      d      geodetic latitude (radians, Note 6)
-!     HM       d      height above ellipsoid (m, geodetic Notes 6,8)
-!     XP,YP    d      polar motion coordinates (radians, Note 7)
-!     PHPA     d      pressure at the observer (hPa = mB, Note 8)
-!     TC       d      ambient temperature at the observer (deg C)
-!     RH       d      relative humidity at the observer (range 0-1)
-!     WL       d      wavelength (micrometers, Note 9)
-!
-!  Returned:
-!     RC,DC    d      ICRS astrometric RA,Dec (radians)
-!     J        i      status: +1 = dubious year (Note 4)
-!                                   0 = OK
-!                                  -1 = unacceptable date
 !
 !### Notes
 !
@@ -3560,31 +3478,33 @@
 
     implicit none
 
-    character(len=*) :: type
-    real(wp) :: ob1
-    real(wp) :: ob2
-    real(wp) :: utc1
-    real(wp) :: utc2
-    real(wp) :: dut1
-    real(wp) :: elong
-    real(wp) :: phi
-    real(wp) :: hm
-    real(wp) :: xp
-    real(wp) :: yp
-    real(wp) :: phpa
-    real(wp) :: tc
-    real(wp) :: rh
-    real(wp) :: wl
-    real(wp) :: rc
-    real(wp) :: dc
-    integer :: j
+    character(len=*),intent(in) :: type !! type of coordinates - 'R', 'H' or 'A' (Notes 1,2)
+    real(wp),intent(in) :: ob1 !! observed Az, HA or RA (radians; Az is N=0,E=90)
+    real(wp),intent(in) :: ob2 !! observed ZD or Dec (radians)
+    real(wp),intent(in) :: utc1 !! UTC as a 2-part...
+    real(wp),intent(in) :: utc2 !! ...quasi Julian Date (Notes 3,4)
+    real(wp),intent(in) :: dut1 !! UT1-UTC (seconds, Note 5)
+    real(wp),intent(in) :: elong !! longitude (radians, east +ve, Note 6)
+    real(wp),intent(in) :: phi !! geodetic latitude (radians, Note 6)
+    real(wp),intent(in) :: hm !! height above ellipsoid (m, geodetic Notes 6,8)
+    real(wp),intent(in) :: xp !! polar motion coordinates (radians, Note 7)
+    real(wp),intent(in) :: yp !! polar motion coordinates (radians, Note 7)
+    real(wp),intent(in) :: phpa !! pressure at the observer (hPa = mB, Note 8)
+    real(wp),intent(in) :: tc !! ambient temperature at the observer (deg C)
+    real(wp),intent(in) :: rh !! relative humidity at the observer (range 0-1)
+    real(wp),intent(in) :: wl !! wavelength (micrometers, Note 9)
+    real(wp),intent(out) :: rc !! ICRS astrometric RA (radians)
+    real(wp),intent(out) :: dc !! ICRS astrometric Dec (radians)
+    integer,intent(out) :: j !! status: +1 = dubious year (Note 4)
+                             !!  0 = OK
+                             !! -1 = unacceptable date
 
     integer :: js
     real(wp) :: astrom(30), eo, ri, di
 
     !  Star-independent astrometry parameters.
     call APCO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
-                      phpa, tc, rh, wl, astrom, eo, js )
+                  phpa, tc, rh, wl, astrom, eo, js )
 
     !  Abort if bad UTC.
     if ( js>=0 ) then
@@ -3609,29 +3529,6 @@
 !  ambient air conditions and observing wavelength.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     TYPE     c*(*)  type of coordinates - 'R', 'H' or 'A' (Notes 1,2)
-!     OB1      d      observed Az, HA or RA (radians; Az is N=0,E=90)
-!     OB2      d      observed ZD or Dec (radians)
-!     UTC1     d      UTC as a 2-part...
-!     UTC2     d      ...quasi Julian Date (Notes 3,4)
-!     DUT1     d      UT1-UTC (seconds, Note 5)
-!     ELONG    d      longitude (radians, east +ve, Note 6)
-!     PHI      d      geodetic latitude (radians, Note 6)
-!     HM       d      height above the ellipsoid (meters, Notes 6,8)
-!     XP,YP    d      polar motion coordinates (radians, Note 7)
-!     PHPA     d      pressure at the observer (hPa = mB, Note 8)
-!     TC       d      ambient temperature at the observer (deg C)
-!     RH       d      relative humidity at the observer (range 0-1)
-!     WL       d      wavelength (micrometers, Note 9)
-!
-!  Returned:
-!     RI       d      CIRS right ascension (CIO-based, radians)
-!     DI       d      CIRS declination (radians)
-!     J        i      status: +1 = dubious year (Note 2)
-!                              0 = OK
-!                             -1 = unacceptable date
 !
 !### Notes
 !
@@ -3740,31 +3637,33 @@
 
     implicit none
 
-    character(len=*) :: type
-    real(wp) :: ob1
-    real(wp) :: ob2
-    real(wp) :: utc1
-    real(wp) :: utc2
-    real(wp) :: dut1
-    real(wp) :: elong
-    real(wp) :: phi
-    real(wp) :: hm
-    real(wp) :: xp
-    real(wp) :: yp
-    real(wp) :: phpa
-    real(wp) :: tc
-    real(wp) :: rh
-    real(wp) :: wl
-    real(wp) :: ri
-    real(wp) :: di
-    integer :: j
+    character(len=*),intent(in) :: type !! type of coordinates - 'R', 'H' or 'A' (Notes 1,2)
+    real(wp),intent(in) :: ob1 !! observed Az, HA or RA (radians; Az is N=0,E=90)
+    real(wp),intent(in) :: ob2 !! observed ZD or Dec (radians)
+    real(wp),intent(in) :: utc1 !! UTC as a 2-part...
+    real(wp),intent(in) :: utc2 !! ...quasi Julian Date (Notes 3,4)
+    real(wp),intent(in) :: dut1 !! UT1-UTC (seconds, Note 5)
+    real(wp),intent(in) :: elong !! longitude (radians, east +ve, Note 6)
+    real(wp),intent(in) :: phi !! geodetic latitude (radians, Note 6)
+    real(wp),intent(in) :: hm !! height above the ellipsoid (meters, Notes 6,8)
+    real(wp),intent(in) :: xp !! polar motion coordinates (radians, Note 7)
+    real(wp),intent(in) :: yp !! polar motion coordinates (radians, Note 7)
+    real(wp),intent(in) :: phpa !! pressure at the observer (hPa = mB, Note 8)
+    real(wp),intent(in) :: tc !! ambient temperature at the observer (deg C)
+    real(wp),intent(in) :: rh !! relative humidity at the observer (range 0-1)
+    real(wp),intent(in) :: wl !! wavelength (micrometers, Note 9)
+    real(wp),intent(out) :: ri !! CIRS right ascension (CIO-based, radians)
+    real(wp),intent(out) :: di !! CIRS declination (radians)
+    integer,intent(out) :: j !! status: +1 = dubious year (Note 2)
+                             !!  0 = OK
+                             !! -1 = unacceptable date
 
     integer :: js
     real(wp) :: astrom(30)
 
     !  Star-independent astrometry parameters for CIRS->observed.
     call APIO13 ( utc1, utc2, dut1, elong, phi, hm, xp, yp, &
-                      phpa, tc, rh, wl, astrom, js )
+                  phpa, tc, rh, wl, astrom, js )
 
     !  Abort if bad UTC.
     if ( js>=0 ) then
@@ -3791,32 +3690,6 @@
 !  APIO[13] or APCO[13].
 !
 !  Status:  support routine.
-!
-!  Given:
-!     TYPE     c*(*)  type of coordinates: 'R', 'H' or 'A' (Note 2)
-!     OB1      d      observed Az, HA or RA (radians; Az is N=0,E=90)
-!     OB2      d      observed ZD or Dec (radians)
-!     ASTROM   d(30)  star-independent astrometry parameters:
-!               (1)      PM time interval (SSB, Julian years)
-!               (2-4)    SSB to observer (vector, au)
-!               (5-7)    Sun to observer (unit vector)
-!               (8)      distance from Sun to observer (au)
-!               (9-11)   v: barycentric observer velocity (vector, c)
-!               (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
-!               (13-21)  bias-precession-nutation matrix
-!               (22)     longitude + s' (radians)
-!               (23)     polar motion xp wrt local meridian (radians)
-!               (24)     polar motion yp wrt local meridian (radians)
-!               (25)     sine of geodetic latitude
-!               (26)     cosine of geodetic latitude
-!               (27)     magnitude of diurnal aberration vector
-!               (28)     "local" Earth rotation angle (radians)
-!               (29)     refraction constant A (radians)
-!               (30)     refraction constant B (radians)
-!
-!  Returned:
-!     RI       d      CIRS right ascension (CIO-based, radians)
-!     DI       d      CIRS declination (radians)
 !
 !### Notes
 !
@@ -3871,12 +3744,28 @@
 
     implicit none
 
-    character(len=*) :: type
-    real(wp) :: ob1
-    real(wp) :: ob2
-    real(wp),dimension(30) :: astrom
-    real(wp) :: ri
-    real(wp) :: di
+    character(len=*),intent(in) :: type !! type of coordinates: 'R', 'H' or 'A' (Note 2)
+    real(wp),intent(in) :: ob1 !! observed Az, HA or RA (radians; Az is N=0,E=90)
+    real(wp),intent(in) :: ob2 !! observed ZD or Dec (radians)
+    real(wp),dimension(30),intent(in) :: astrom !! star-independent astrometry parameters:
+                                                !! (1)      PM time interval (SSB, Julian years)
+                                                !! (2-4)    SSB to observer (vector, au)
+                                                !! (5-7)    Sun to observer (unit vector)
+                                                !! (8)      distance from Sun to observer (au)
+                                                !! (9-11)   v: barycentric observer velocity (vector, c)
+                                                !! (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
+                                                !! (13-21)  bias-precession-nutation matrix
+                                                !! (22)     longitude + s' (radians)
+                                                !! (23)     polar motion xp wrt local meridian (radians)
+                                                !! (24)     polar motion yp wrt local meridian (radians)
+                                                !! (25)     sine of geodetic latitude
+                                                !! (26)     cosine of geodetic latitude
+                                                !! (27)     magnitude of diurnal aberration vector
+                                                !! (28)     "local" Earth rotation angle (radians)
+                                                !! (29)     refraction constant A (radians)
+                                                !! (30)     refraction constant B (radians)
+    real(wp),intent(out) :: ri !! CIRS right ascension (CIO-based, radians)
+    real(wp),intent(out) :: di !! CIRS declination (radians)
 
     character(len=1) :: c
     real(wp) :: c1, c2, sphi, cphi, ce, xaeo, yaeo, zaeo, v(3), &
@@ -3913,16 +3802,16 @@
        zaeo = cos(c2)
     else
 
-    !     If RA,Dec, convert to HA,Dec.
+       !  If RA,Dec, convert to HA,Dec.
        if ( c=='R' ) c1 = astrom(28) - c1
 
-    !     To Cartesian -HA,DeC.
+       !  To Cartesian -HA,DeC.
        call S2C ( -c1, c2, v )
        xmhdo = v(1)
        ymhdo = v(2)
        zmhdo = v(3)
 
-    !     To Cartesian Az,El (S=0,E=90).
+       !  To Cartesian Az,El (S=0,E=90).
        xaeo = sphi*xmhdo - cphi*zmhdo
        yaeo = ymhdo
        zaeo = cphi*xmhdo + sphi*zmhdo
@@ -3991,10 +3880,6 @@
 !
 !  Status:  canonical model.
 !
-!  Returned:
-!     DPSIBI,DEPSBI  d   longitude and obliquity corrections
-!     DRA            d   the ICRS RA of the J2000.0 mean equinox
-!
 !### Notes
 !
 !  1. The frame bias corrections in longitude and obliquity (radians)
@@ -4014,14 +3899,14 @@
 !
 !### References
 !
-!     Chapront, J., Chapront-Touze, M. & Francou, G., Astron.Astrophys.,
-!     387, 700, 2002.
+!  * Chapront, J., Chapront-Touze, M. & Francou, G., Astron.Astrophys.,
+!    387, 700, 2002.
 !
-!     Mathews, P.M., Herring, T.A., Buffet, B.A., "Modeling of nutation
-!     and precession   New nutation series for nonrigid Earth and
-!     insights into the Earth's interior", J.Geophys.Res., 107, B4,
-!     2002.  The MHB2000 code itself was obtained on 9th September 2002
-!     from ftp://maia.usno.navy.mil/conv2000/chapter5/IAU2000A.
+!  * Mathews, P.M., Herring, T.A., Buffet, B.A., "Modeling of nutation
+!    and precession   New nutation series for nonrigid Earth and
+!    insights into the Earth's interior", J.Geophys.Res., 107, B4,
+!    2002.  The MHB2000 code itself was obtained on 9th September 2002
+!    from ftp://maia.usno.navy.mil/conv2000/chapter5/IAU2000A.
 !
 !### History
 !  * IAU SOFA revision: 2009 December 15
@@ -4030,9 +3915,9 @@
 
     implicit none
 
-    real(wp) :: dpsibi
-    real(wp) :: depsbi
-    real(wp) :: dra
+    real(wp),intent(out) :: dpsibi !! longitude correction
+    real(wp),intent(out) :: depsbi !! obliquity correction
+    real(wp),intent(out) :: dra !! the ICRS RA of the J2000.0 mean equinox
 
     !  The frame bias corrections in longitude and obliquity
     real(wp),parameter :: dpbias = -0.041775d0 * das2r
@@ -4054,14 +3939,6 @@
 !  Frame bias and precession, IAU 2000.
 !
 !  Status:  canonical model.
-!
-!  Given:
-!     DATE1,DATE2    d       TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     RB           d(3,3)    frame bias matrix (Note 2)
-!     RP           d(3,3)    precession matrix (Note 3)
-!     RBP          d(3,3)    bias-precession matrix (Note 4)
 !
 !### Notes
 !
@@ -4097,13 +3974,13 @@
 !
 !### Reference
 !
-!     Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
-!     "Expressions for the Celestial Intermediate Pole and Celestial
-!     Ephemeris Origin consistent with the IAU 2000A precession-nutation
-!     model", Astron.Astrophys. 400, 1145-1154 (2003)
+!  * Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
+!    "Expressions for the Celestial Intermediate Pole and Celestial
+!    Ephemeris Origin consistent with the IAU 2000A precession-nutation
+!    model", Astron.Astrophys. 400, 1145-1154 (2003)
 !
-!     n.b. The celestial ephemeris origin (CEO) was renamed "celestial
-!          intermediate origin" (CIO) by IAU 2006 Resolution 2.
+!  * n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+!    intermediate origin" (CIO) by IAU 2006 Resolution 2.
 !
 !### History
 !  * IAU SOFA revision: 2013 August 21
@@ -4112,17 +3989,17 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp),dimension(3,3) :: rb
-    real(wp),dimension(3,3) :: rp
-    real(wp),dimension(3,3) :: rbp
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),dimension(3,3),intent(out) :: rb !! frame bias matrix (Note 2)
+    real(wp),dimension(3,3),intent(out) :: rp !! precession matrix (Note 3)
+    real(wp),dimension(3,3),intent(out) :: rbp !! bias-precession matrix (Note 4)
 
     !  J2000.0 obliquity (Lieske et al. 1977)
     real(wp),parameter :: eps0 = 84381.448d0 * das2r
 
     real(wp) :: t, dpsibi, depsbi, dra0, psia77, oma77, chia, &
-                     dpsipr, depspr, psia, oma, rbw(3,3)
+                dpsipr, depspr, psia, oma, rbw(3,3)
 
     !  Interval between fundamental epoch J2000.0 and current date (JC).
     t = ( ( date1-dj00 ) + date2 ) / djc
@@ -4172,14 +4049,6 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     DATE1,DATE2    d       TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     RB           d(3,3)    frame bias matrix (Note 2)
-!     RP           d(3,3)    precession matrix (Note 3)
-!     RBP          d(3,3)    bias-precession matrix (Note 4)
-!
 !### Notes
 !
 !  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
@@ -4212,9 +4081,9 @@
 !
 !### References
 !
-!     Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
+!  * Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 !
-!     Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
+!  * Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 !
 !### History
 !  * IAU SOFA revision: 2013 August 21
@@ -4223,11 +4092,11 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp),dimension(3,3) :: rb
-    real(wp),dimension(3,3) :: rp
-    real(wp),dimension(3,3) :: rbp
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),dimension(3,3),intent(out) :: rb !! frame bias matrix (Note 2)
+    real(wp),dimension(3,3),intent(out) :: rp !! precession matrix (Note 3)
+    real(wp),dimension(3,3),intent(out) :: rbp !! bias-precession matrix (Note 4)
 
     !  JD for MJD 0
     real(wp),parameter :: djm0 = 2400000.5d0
@@ -4261,12 +4130,6 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     RBPN      d(3,3)    celestial-to-true matrix (Note 1)
-!
-!  Returned:
-!     X,Y         d       Celestial Intermediate Pole (Note 2)
-!
 !### Notes
 !
 !  1. The matrix RBPN transforms vectors from GCRS to true equator (and
@@ -4278,13 +4141,13 @@
 !
 !### Reference
 !
-!     Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
-!     "Expressions for the Celestial Intermediate Pole and Celestial
-!     Ephemeris Origin consistent with the IAU 2000A precession-nutation
-!     model", Astron.Astrophys. 400, 1145-1154 (2003)
+!  * Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
+!    "Expressions for the Celestial Intermediate Pole and Celestial
+!    Ephemeris Origin consistent with the IAU 2000A precession-nutation
+!    model", Astron.Astrophys. 400, 1145-1154 (2003)
 !
-!     n.b. The celestial ephemeris origin (CEO) was renamed "celestial
-!          intermediate origin" (CIO) by IAU 2006 Resolution 2.
+!  * n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+!    intermediate origin" (CIO) by IAU 2006 Resolution 2.
 !
 !### History
 !  * IAU SOFA revision: 2010 January 18
@@ -4293,9 +4156,9 @@
 
     implicit none
 
-    real(wp),dimension(3,3) :: rbpn
-    real(wp) :: x
-    real(wp) :: y
+    real(wp),dimension(3,3),intent(in) :: rbpn !! celestial-to-true matrix (Note 1)
+    real(wp),intent(out) :: x !! Celestial Intermediate Pole (Note 2)
+    real(wp),intent(out) :: y !! Celestial Intermediate Pole (Note 2)
 
     !  Extract the X,Y coordinates.
     x = rbpn(3,1)
@@ -4310,12 +4173,6 @@
 !  IAU 2000A precession-nutation model.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1,DATE2    d       TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     RC2I         d(3,3)    celestial-to-intermediate matrix (Note 2)
 !
 !### Notes
 !
@@ -4355,16 +4212,16 @@
 !
 !### References
 !
-!     Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
-!     "Expressions for the Celestial Intermediate Pole and Celestial
-!     Ephemeris Origin consistent with the IAU 2000A precession-nutation
-!     model", Astron.Astrophys. 400, 1145-1154 (2003)
+!  * Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
+!    "Expressions for the Celestial Intermediate Pole and Celestial
+!    Ephemeris Origin consistent with the IAU 2000A precession-nutation
+!    model", Astron.Astrophys. 400, 1145-1154 (2003)
 !
-!     n.b. The celestial ephemeris origin (CEO) was renamed "celestial
-!          intermediate origin" (CIO) by IAU 2006 Resolution 2.
+!  * n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+!    intermediate origin" (CIO) by IAU 2006 Resolution 2.
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
 !### History
 !  * IAU SOFA revision: 2010 January 18
@@ -4373,9 +4230,9 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp),dimension(3,3) :: rc2i
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),dimension(3,3),intent(out) :: rc2i !! celestial-to-intermediate matrix (Note 2)
 
     real(wp) :: rbpn(3,3)
 
@@ -4394,12 +4251,6 @@
 !  IAU 2000B precession-nutation model.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1,DATE2    d       TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     RC2I         d(3,3)    celestial-to-intermediate matrix (Note 2)
 !
 !### Notes
 !
@@ -4439,16 +4290,16 @@
 !
 !### References
 !
-!     Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
-!     "Expressions for the Celestial Intermediate Pole and Celestial
-!     Ephemeris Origin consistent with the IAU 2000A precession-nutation
-!     model", Astron.Astrophys. 400, 1145-1154 (2003)
+!  * Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
+!    "Expressions for the Celestial Intermediate Pole and Celestial
+!    Ephemeris Origin consistent with the IAU 2000A precession-nutation
+!    model", Astron.Astrophys. 400, 1145-1154 (2003)
 !
-!     n.b. The celestial ephemeris origin (CEO) was renamed "celestial
-!          intermediate origin" (CIO) by IAU 2006 Resolution 2.
+!  * n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+!    intermediate origin" (CIO) by IAU 2006 Resolution 2.
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
 !### History
 !  * IAU SOFA revision: 2010 January 18
@@ -4457,9 +4308,9 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp),dimension(3,3) :: rc2i
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),dimension(3,3),intent(out) :: rc2i !! celestial-to-intermediate matrix (Note 2)
 
     real(wp) :: rbpn(3,3)
 
@@ -4478,12 +4329,6 @@
 !  IAU 2006 precession and IAU 2000A nutation models.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1,DATE2    d       TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     RC2I         d(3,3)    celestial-to-intermediate matrix (Note 2)
 !
 !### Notes
 !
@@ -4520,12 +4365,12 @@
 !
 !### References
 !
-!     McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG
+!  * McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG
 !
-!     Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
+!  * Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 !
-!     Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
+!  * Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 !
 !### History
 !  * IAU SOFA revision: 2007 May 11
@@ -4534,9 +4379,9 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp),dimension(3,3) :: rc2i
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),dimension(3,3),intent(out) :: rc2i !! celestial-to-intermediate matrix (Note 2)
 
     real(wp) :: rbpn(3,3), x, y, s
 
@@ -4561,13 +4406,6 @@
 !  the bias-precession-nutation matrix.  IAU 2000.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1,DATE2    d       TT as a 2-part Julian Date (Note 1)
-!     RBPN         d(3,3)    celestial-to-true matrix (Note 2)
-!
-!  Returned:
-!     RC2I         d(3,3)    celestial-to-intermediate matrix (Note 3)
 !
 !### Notes
 !
@@ -4610,16 +4448,16 @@
 !
 !### References
 !
-!     Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
-!     "Expressions for the Celestial Intermediate Pole and Celestial
-!     Ephemeris Origin consistent with the IAU 2000A precession-nutation
-!     model", Astron.Astrophys. 400, 1145-1154 (2003)
+!  * Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
+!    "Expressions for the Celestial Intermediate Pole and Celestial
+!    Ephemeris Origin consistent with the IAU 2000A precession-nutation
+!    model", Astron.Astrophys. 400, 1145-1154 (2003)
 !
-!     n.b. The celestial ephemeris origin (CEO) was renamed "celestial
-!          intermediate origin" (CIO) by IAU 2006 Resolution 2.
+!  * n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+!    intermediate origin" (CIO) by IAU 2006 Resolution 2.
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
 !### History
 !  * IAU SOFA revision: 2010 January 18
@@ -4628,10 +4466,10 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp),dimension(3,3) :: rbpn
-    real(wp),dimension(3,3) :: rc2i
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),dimension(3,3),intent(in) :: rbpn !! celestial-to-true matrix (Note 2)
+    real(wp),dimension(3,3),intent(out) :: rc2i !! celestial-to-intermediate matrix (Note 3)
 
     real(wp) :: x, y
 
@@ -4650,13 +4488,6 @@
 !  date when the CIP X,Y coordinates are known.  IAU 2000.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1,DATE2    d      TT as a 2-part Julian Date (Note 1)
-!     X,Y            d      Celestial Intermediate Pole (Note 2)
-!
-!  Returned:
-!     RC2I         d(3,3)   celestial-to-intermediate matrix (Note 3)
 !
 !### Notes
 !
@@ -4699,8 +4530,8 @@
 !
 !### Reference
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
 !### History
 !  * IAU SOFA revision: 2007 June 1
@@ -4709,11 +4540,11 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp) :: x
-    real(wp) :: y
-    real(wp),dimension(3,3) :: rc2i
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: x !! Celestial Intermediate Pole (Note 2)
+    real(wp),intent(in) :: y !! Celestial Intermediate Pole (Note 2)
+    real(wp),dimension(3,3),intent(out) :: rc2i !! celestial-to-intermediate matrix (Note 3)
 
     !  Compute s and then the matrix.
     call C2IXYS ( x, y, S00 ( date1, date2, x, y ), rc2i )
@@ -4727,13 +4558,6 @@
 !  X,Y and the CIO locator s.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     X,Y        d       Celestial Intermediate Pole (Note 1)
-!     S          d       the CIO locator s (Note 2)
-!
-!  Returned:
-!     RC2I     d(3,3)    celestial-to-intermediate matrix (Note 3)
 !
 !### Notes
 !
@@ -4757,8 +4581,8 @@
 !
 !### Reference
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
 !### History
 !  * IAU SOFA revision: 2014 November 7
@@ -4767,10 +4591,10 @@
 
     implicit none
 
-    real(wp) :: x
-    real(wp) :: y
-    real(wp) :: s
-    real(wp),dimension(3,3) :: rc2i
+    real(wp),intent(in) :: x !! Celestial Intermediate Pole (Note 1)
+    real(wp),intent(in) :: y !! Celestial Intermediate Pole (Note 1)
+    real(wp),intent(in) :: s !! the CIO locator s (Note 2)
+    real(wp),dimension(3,3) :: rc2i !! celestial-to-intermediate matrix (Note 3)
 
     real(wp) :: r2, e, d
 
@@ -4798,13 +4622,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     P        d(3)      p-vector
-!
-!  Returned:
-!     THETA    d         longitude angle (radians)
-!     PHI      d         latitude angle (radians)
-!
 !### Notes
 !
 !  1. P can have any magnitude; only its direction is used.
@@ -4820,9 +4637,9 @@
 
     implicit none
 
-    real(wp),dimension(3) :: p
-    real(wp) :: theta
-    real(wp) :: phi
+    real(wp),dimension(3),intent(in) :: p !! p-vector
+    real(wp),intent(out) :: theta !! longitude angle (radians)
+    real(wp),intent(out) :: phi !! latitude angle (radians)
 
     real(wp) :: x, y, z, d2
 
@@ -4852,14 +4669,6 @@
 !  the polar motion, using the IAU 2000A nutation model.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     TTA,TTB    d       TT as a 2-part Julian Date (Note 1)
-!     UTA,UTB    d       UT1 as a 2-part Julian Date (Note 1)
-!     XP,YP      d       coordinates of the pole (radians, Note 2)
-!
-!  Returned:
-!     RC2T     d(3,3)    celestial-to-terrestrial matrix (Note 3)
 !
 !### Notes
 !
@@ -4908,8 +4717,8 @@
 !
 !### Reference
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
 !### History
 !  * IAU SOFA revision: 2009 April 1
@@ -4918,13 +4727,13 @@
 
     implicit none
 
-    real(wp) :: tta
-    real(wp) :: ttb
-    real(wp) :: uta
-    real(wp) :: utb
-    real(wp) :: xp
-    real(wp) :: yp
-    real(wp),dimension(3,3) :: rc2t
+    real(wp),intent(in) :: tta !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: ttb !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: uta !! UT1 as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: utb !! UT1 as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: xp !! coordinates of the pole (radians, Note 2)
+    real(wp),intent(in) :: yp !! coordinates of the pole (radians, Note 2)
+    real(wp),dimension(3,3),intent(out) :: rc2t !! celestial-to-terrestrial matrix (Note 3)
 
     real(wp) :: rc2i(3,3), era, sp, rpom(3,3)
 
@@ -4952,14 +4761,6 @@
 !  the polar motion, using the IAU 2000B nutation model.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     TTA,TTB    d       TT as a 2-part Julian Date (Note 1)
-!     UTA,UTB    d       UT1 as a 2-part Julian Date (Note 1)
-!     XP,YP      d       coordinates of the pole (radians, Note 2)
-!
-!  Returned:
-!     RC2T     d(3,3)    celestial-to-terrestrial matrix (Note 3)
 !
 !### Notes
 !
@@ -5008,8 +4809,8 @@
 !
 !### Reference
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
 !### History
 !  * IAU SOFA revision: 2009 April 1
@@ -5018,13 +4819,13 @@
 
     implicit none
 
-    real(wp) :: tta
-    real(wp) :: ttb
-    real(wp) :: uta
-    real(wp) :: utb
-    real(wp) :: xp
-    real(wp) :: yp
-    real(wp),dimension(3,3) :: rc2t
+    real(wp),intent(in) :: tta !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: ttb !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: uta !! UT1 as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: utb !! UT1 as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: xp !! coordinates of the pole (radians, Note 2)
+    real(wp),intent(in) :: yp !! coordinates of the pole (radians, Note 2)
+    real(wp),dimension(3,3),intent(out) :: rc2t !! celestial-to-terrestrial matrix (Note 3)
 
     real(wp) :: rc2i(3,3), era, rpom(3,3)
 
@@ -5103,8 +4904,8 @@
 !
 !### Reference
 !
-!     McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG
+!  * McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG
 !
 !### History
 !  * IAU SOFA revision: 2009 April 1
@@ -5232,8 +5033,8 @@
 !
 !### Reference
 !
-!     McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG
+!  * McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG
 !
 !### History
 !  * IAU SOFA revision: 2013 August 24
@@ -5298,8 +5099,8 @@
 !
 !### Reference
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
 !### History
 !  * IAU SOFA revision: 2013 August 24
@@ -5392,8 +5193,8 @@
 !
 !### Reference
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
 !### History
 !  * IAU SOFA revision: 2009 April 1
@@ -5503,8 +5304,8 @@
 !
 ! Reference:
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
 !### History
 !  * IAU SOFA revision: 2009 April 1
@@ -6434,23 +6235,23 @@
 !
 !### References
 !
-!     Fairhead, L., & Bretagnon, P., Astron.Astrophys., 229, 240-247
+!  * Fairhead, L., & Bretagnon, P., Astron.Astrophys., 229, 240-247
 !     (1990).
 !
-!     IAU 2006 Resolution 3.
+!  * IAU 2006 Resolution 3.
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
-!     Moyer, T.D., Cel.Mech., 23, 33 (1981).
+!  * Moyer, T.D., Cel.Mech., 23, 33 (1981).
 !
-!     Murray, C.A., Vectorial Astrometry, Adam Hilger (1983).
+!  * Murray, C.A., Vectorial Astrometry, Adam Hilger (1983).
 !
-!     Seidelmann, P.K. et al., Explanatory Supplement to the
-!     Astronomical Almanac, Chapter 2, University Science Books (1992).
+!  * Seidelmann, P.K. et al., Explanatory Supplement to the
+!    Astronomical Almanac, Chapter 2, University Science Books (1992).
 !
-!     Simon, J.L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-!     Francou, G. & Laskar, J., Astron.Astrophys., 282, 663-683 (1994).
+!  * Simon, J.L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+!    Francou, G. & Laskar, J., Astron.Astrophys., 282, 663-683 (1994).
 !
 !### History
 !  * IAU SOFA revision: 2010 July 29
@@ -7830,12 +7631,12 @@
 !
 !### References
 !
-!     Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
-!     implement the IAU 2000 definition of UT1", Astronomy &
-!     Astrophysics, 406, 1135-1149 (2003)
+!  * Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
+!    implement the IAU 2000 definition of UT1", Astronomy &
+!    Astrophysics, 406, 1135-1149 (2003)
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
 !### History
 !  * IAU SOFA revision: 2006 November 13
@@ -7898,12 +7699,12 @@
 !
 !### References
 !
-!     Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
-!     implement the IAU 2000 definition of UT1", Astronomy &
-!     Astrophysics, 406, 1135-1149 (2003)
+!  * Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
+!    implement the IAU 2000 definition of UT1", Astronomy &
+!    Astrophysics, 406, 1135-1149 (2003)
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
 !### History
 !  * IAU SOFA revision: 2006 November 13
@@ -7977,16 +7778,16 @@
 !
 !### References
 !
-!     Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
-!     implement the IAU 2000 definition of UT1", Astronomy &
-!     Astrophysics, 406, 1135-1149 (2003)
+!  * Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
+!    implement the IAU 2000 definition of UT1", Astronomy &
+!    Astrophysics, 406, 1135-1149 (2003)
 !
-!     McCarthy, D.D. & Luzum, B.J., "An abridged model of the
-!     precession-nutation of the celestial pole", Celestial Mechanics &
-!     Dynamical Astronomy, 85, 37-49 (2003)
+!  * McCarthy, D.D. & Luzum, B.J., "An abridged model of the
+!    precession-nutation of the celestial pole", Celestial Mechanics &
+!    Dynamical Astronomy, 85, 37-49 (2003)
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
 !### History
 !  * IAU SOFA revision: 2006 November 13
@@ -8055,8 +7856,8 @@
 !
 !### Reference
 !
-!     McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG
+!  * McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG
 !
 !### History
 !  * IAU SOFA revision: 2006 October 31
@@ -8140,17 +7941,17 @@
 !
 !### References
 !
-!     Capitaine, N. & Gontier, A.-M., Astron.Astrophys., 275,
-!     645-650 (1993)
+!  * Capitaine, N. & Gontier, A.-M., Astron.Astrophys., 275,
+!    645-650 (1993)
 !
-!     Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
-!     implement the IAU 2000 definition of UT1", Astron.Astrophys.,
-!     406, 1135-1149 (2003)
+!  * Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
+!    implement the IAU 2000 definition of UT1", Astron.Astrophys.,
+!    406, 1135-1149 (2003)
 !
-!     IAU Resolution C7, Recommendation 3 (1994)
+!  * IAU Resolution C7, Recommendation 3 (1994)
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
 !### History
 !  * IAU SOFA revision: 2017 October 23
@@ -8363,17 +8164,17 @@
 !
 !### References
 !
-!     Department of Defense World Geodetic System 1984, National Imagery
-!     and Mapping Agency Technical Report 8350.2, Third Edition, p3-2.
+!  * Department of Defense World Geodetic System 1984, National Imagery
+!    and Mapping Agency Technical Report 8350.2, Third Edition, p3-2.
 !
-!     Moritz, H., Bull. Geodesique 66-2, 187 (1992).
+!  * Moritz, H., Bull. Geodesique 66-2, 187 (1992).
 !
-!     The Department of Defense World Geodetic System 1972, World
-!     Geodetic System Committee, May 1974.
+!  * The Department of Defense World Geodetic System 1972, World
+!    Geodetic System Committee, May 1974.
 !
-!     Explanatory Supplement to the Astronomical Almanac,
-!     P. Kenneth Seidelmann (ed), University Science Books (1992),
-!     p220.
+!  * Explanatory Supplement to the Astronomical Almanac,
+!    P. Kenneth Seidelmann (ed), University Science Books (1992),
+!    p220.
 !
 !### History
 !  * IAU SOFA revision: 2010 January 18
@@ -8464,9 +8265,9 @@
 !
 !### References
 !
-!     Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
+!  * Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 !
-!     Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
+!  * Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 !
 !### History
 !  * IAU SOFA revision: 2007 February 13
@@ -8521,9 +8322,9 @@
 !
 !### References
 !
-!     Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
+!  * Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 !
-!     Wallace, P. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
+!  * Wallace, P. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 !
 !### History
 !  * IAU SOFA revision: 2008 February 24
@@ -11360,10 +11161,10 @@
 !
 !### References
 !
-!     IAU Resolution C7, Recommendation 3 (1994)
+!  * IAU Resolution C7, Recommendation 3 (1994)
 !
-!     Capitaine, N. & Gontier, A.-M., Astron.Astrophys., 275,
-!     645-650 (1993)
+!  * Capitaine, N. & Gontier, A.-M., Astron.Astrophys., 275,
+!    645-650 (1993)
 !
 !### History
 !  * IAU SOFA revision: 2017 October 12
@@ -11440,11 +11241,11 @@
 !
 !### References
 !
-!     Capitaine N., Guinot B. and McCarthy D.D, 2000, Astron.
-!     Astrophys., 355, 398-405.
+!  * Capitaine N., Guinot B. and McCarthy D.D, 2000, Astron.
+!    Astrophys., 355, 398-405.
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
 !### History
 !  * IAU SOFA revision: 2009 December 15
@@ -11501,11 +11302,11 @@
 !
 !### References
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
-!     Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-!     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
+!  * Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+!    Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 !
 !### History
 !  * IAU SOFA revision: 2009 December 15
@@ -11552,14 +11353,14 @@
 !
 !### References
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
-!     Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-!     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
+!  * Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+!    Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 !
-!     Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
-!     Astron.Astrophys.Supp.Ser. 135, 111
+!  * Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
+!    Astron.Astrophys.Supp.Ser. 135, 111
 !
 !### History
 !  * IAU SOFA revision: 2009 December 15
@@ -11600,11 +11401,11 @@
 !
 !### References
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
-!     Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-!     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
+!  * Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+!    Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 !
 !### History
 !  * IAU SOFA revision: 2009 December 15
@@ -11652,14 +11453,14 @@
 !
 !### References
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
-!     Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-!     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
+!  * Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+!    Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 !
-!     Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
-!     Astron.Astrophys.Supp.Ser. 135, 111
+!  * Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
+!    Astron.Astrophys.Supp.Ser. 135, 111
 !
 !### History
 !  * IAU SOFA revision: 2009 December 15
@@ -11699,11 +11500,11 @@
 !
 !### References
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
-!     Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-!     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
+!  * Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+!    Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 !
 !### History
 !  * IAU SOFA revision: 2009 December 15
@@ -11750,11 +11551,11 @@
 !
 !### References
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
-!     Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-!     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
+!  * Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+!    Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 !
 !### History
 !  * IAU SOFA revision: 2009 December 15
@@ -11801,14 +11602,14 @@
 !
 !### References
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
-!     Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-!     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
+!  * Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+!    Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 !
-!     Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
-!     Astron.Astrophys.Supp.Ser. 135, 111
+!  * Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
+!    Astron.Astrophys.Supp.Ser. 135, 111
 !
 !### History
 !  * IAU SOFA revision: 2009 December 15
@@ -11848,14 +11649,14 @@
 !
 !### References
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
-!     Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-!     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
+!  * Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+!    Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 !
-!     Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
-!     Astron.Astrophys.Supp.Ser. 135, 111
+!  * Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
+!    Astron.Astrophys.Supp.Ser. 135, 111
 !
 !### History
 !  * IAU SOFA revision: 2009 December 15
@@ -11895,11 +11696,11 @@
 !
 !### References
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
-!     Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-!     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
+!  * Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+!    Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 !
 !### History
 !  * IAU SOFA revision: 2009 December 15
@@ -11939,11 +11740,11 @@
 !
 !### References
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
-!     Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-!     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
+!  * Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+!    Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 !
 !### History
 !  * IAU SOFA revision: 2009 December 15
@@ -11991,14 +11792,14 @@
 !
 !### References
 !
-!     Kinoshita, H. and Souchay J. 1990, Celest.Mech. and Dyn.Astron.
-!     48, 187
+!  * Kinoshita, H. and Souchay J. 1990, Celest.Mech. and Dyn.Astron.
+!    48, 187
 !
-!     Lieske, J.H., Lederle, T., Fricke, W. & Morando, B. 1977,
-!     Astron.Astrophys. 58, 1-16
+!  * Lieske, J.H., Lederle, T., Fricke, W. & Morando, B. 1977,
+!    Astron.Astrophys. 58, 1-16
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
 !### History
 !  * IAU SOFA revision: 2009 December 15
@@ -12038,14 +11839,14 @@
 !
 !### References
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
-!     Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-!     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
+!  * Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+!    Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 !
-!     Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
-!     Astron.Astrophys.Supp.Ser. 135, 111
+!  * Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
+!    Astron.Astrophys.Supp.Ser. 135, 111
 !
 !### History
 !  * IAU SOFA revision: 2009 December 15
@@ -12085,11 +11886,11 @@
 !
 !### References
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
-!     Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-!     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
+!  * Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+!    Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 !
 !### History
 !  * IAU SOFA revision: 2009 December 15
@@ -12129,14 +11930,14 @@
 !
 !### References
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
-!     Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-!     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
+!  * Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+!    Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 !
-!     Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
-!     Astron.Astrophys.Supp.Ser. 135, 111
+!  * Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
+!    Astron.Astrophys.Supp.Ser. 135, 111
 !
 !### History
 !  * IAU SOFA revision: 2009 December 15
@@ -12226,24 +12027,24 @@
 !
 !### References
 !
-!     Aoki, S. et al., 1983, "Conversion matrix of epoch B1950.0
-!     FK4-based positions of stars to epoch J2000.0 positions in
-!     accordance with the new IAU resolutions".  Astron.Astrophys.
-!     128, 263-267.
+!  * Aoki, S. et al., 1983, "Conversion matrix of epoch B1950.0
+!    FK4-based positions of stars to epoch J2000.0 positions in
+!    accordance with the new IAU resolutions".  Astron.Astrophys.
+!    128, 263-267.
 !
-!     Seidelmann, P.K. (ed), 1992, "Explanatory Supplement to the
-!     Astronomical Almanac", ISBN 0-935702-68-7.
+!  * Seidelmann, P.K. (ed), 1992, "Explanatory Supplement to the
+!    Astronomical Almanac", ISBN 0-935702-68-7.
 !
-!     Smith, C.A. et al., 1989, "The transformation of astrometric
-!     catalog systems to the equinox J2000.0".  Astron.J. 97, 265.
+!  * Smith, C.A. et al., 1989, "The transformation of astrometric
+!    catalog systems to the equinox J2000.0".  Astron.J. 97, 265.
 !
-!     Standish, E.M., 1982, "Conversion of positions and proper motions
-!     from B1950.0 to the IAU system at J2000.0".  Astron.Astrophys.,
-!     115, 1, 20-22.
+!  * Standish, E.M., 1982, "Conversion of positions and proper motions
+!    from B1950.0 to the IAU system at J2000.0".  Astron.Astrophys.,
+!    115, 1, 20-22.
 !
-!     Yallop, B.D. et al., 1989, "Transformation of mean star places
-!     from FK4 B1950.0 to FK5 J2000.0 using matrices in 6-space".
-!     Astron.J. 97, 274.
+!  * Yallop, B.D. et al., 1989, "Transformation of mean star places
+!    from FK4 B1950.0 to FK5 J2000.0 using matrices in 6-space".
+!    Astron.J. 97, 274.
 !
 !### History
 !  * IAU SOFA revision:  2018 January 11
@@ -12419,13 +12220,13 @@
 !
 !### References
 !
-!     Aoki, S. et al., 1983, "Conversion matrix of epoch B1950.0
-!     FK4-based positions of stars to epoch J2000.0 positions in
-!     accordance with the new IAU resolutions".  Astron.Astrophys.
-!     128, 263-267.
+!  * Aoki, S. et al., 1983, "Conversion matrix of epoch B1950.0
+!    FK4-based positions of stars to epoch J2000.0 positions in
+!    accordance with the new IAU resolutions".  Astron.Astrophys.
+!    128, 263-267.
 !
-!     Seidelmann, P.K. (ed), 1992, "Explanatory Supplement to the
-!     Astronomical Almanac", ISBN 0-935702-68-7.
+!  * Seidelmann, P.K. (ed), 1992, "Explanatory Supplement to the
+!    Astronomical Almanac", ISBN 0-935702-68-7.
 !
 !### History
 !  * IAU SOFA revision:  2018 January 11
@@ -12572,24 +12373,24 @@
 !
 !### References
 !
-!     Aoki, S. et al., 1983, "Conversion matrix of epoch B1950.0
-!     FK4-based positions of stars to epoch J2000.0 positions in
-!     accordance with the new IAU resolutions".  Astron.Astrophys.
-!     128, 263-267.
+!  * Aoki, S. et al., 1983, "Conversion matrix of epoch B1950.0
+!    FK4-based positions of stars to epoch J2000.0 positions in
+!    accordance with the new IAU resolutions".  Astron.Astrophys.
+!    128, 263-267.
 !
-!     Seidelmann, P.K. (ed), 1992, "Explanatory Supplement to the
-!     Astronomical Almanac", ISBN 0-935702-68-7.
+!  * Seidelmann, P.K. (ed), 1992, "Explanatory Supplement to the
+!    Astronomical Almanac", ISBN 0-935702-68-7.
 !
-!     Smith, C.A. et al., 1989, "The transformation of astrometric
-!     catalog systems to the equinox J2000.0".  Astron.J. 97, 265.
+!  * Smith, C.A. et al., 1989, "The transformation of astrometric
+!    catalog systems to the equinox J2000.0".  Astron.J. 97, 265.
 !
-!     Standish, E.M., 1982, "Conversion of positions and proper motions
-!     from B1950.0 to the IAU system at J2000.0".  Astron.Astrophys.,
-!     115, 1, 20-22.
+!  * Standish, E.M., 1982, "Conversion of positions and proper motions
+!    from B1950.0 to the IAU system at J2000.0".  Astron.Astrophys.,
+!    115, 1, 20-22.
 !
-!     Yallop, B.D. et al., 1989, "Transformation of mean star places
-!     from FK4 B1950.0 to FK5 J2000.0 using matrices in 6-space".
-!     Astron.J. 97, 274.
+!  * Yallop, B.D. et al., 1989, "Transformation of mean star places
+!    from FK4 B1950.0 to FK5 J2000.0 using matrices in 6-space".
+!    Astron.J. 97, 274.
 !
 !### History
 !  * IAU SOFA revision:  2018 January 11
@@ -13689,12 +13490,12 @@
 !
 !### References
 !
-!     Green, R.M., Spherical Astronomy, Cambridge University Press,
-!     (1985) Section 4.5, p96.
+!  * Green, R.M., Spherical Astronomy, Cambridge University Press,
+!    (1985) Section 4.5, p96.
 !
-!     Explanatory Supplement to the Astronomical Almanac,
-!     P. Kenneth Seidelmann (ed), University Science Books (1992),
-!     Section 4.22, p202.
+!  * Explanatory Supplement to the Astronomical Almanac,
+!    P. Kenneth Seidelmann (ed), University Science Books (1992),
+!    Section 4.22, p202.
 !
 !### History
 !  * IAU SOFA revision: 2009 November 2
@@ -13794,12 +13595,12 @@
 !
 !### References
 !
-!     Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
-!     implement the IAU 2000 definition of UT1", Astronomy &
-!     Astrophysics, 406, 1135-1149 (2003)
+!  * Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
+!    implement the IAU 2000 definition of UT1", Astronomy &
+!    Astrophysics, 406, 1135-1149 (2003)
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
 !### History
 !  * IAU SOFA revision: 2009 December 15
@@ -13963,10 +13764,10 @@
 !
 !### References
 !
-!     Transactions of the International Astronomical Union,
-!     XVIII B, 67 (1983).
+!  * Transactions of the International Astronomical Union,
+!    XVIII B, 67 (1983).
 !
-!     Aoki et al., Astron.Astrophys., 105, 359-361 (1982).
+!  * Aoki et al., Astron.Astrophys., 105, 359-361 (1982).
 !
 !### History
 !  * IAU SOFA revision: 2017 October 12
@@ -14063,12 +13864,12 @@
 !
 !### References
 !
-!     Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
-!     implement the IAU 2000 definition of UT1", Astronomy &
-!     Astrophysics, 406, 1135-1149 (2003)
+!  * Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
+!    implement the IAU 2000 definition of UT1", Astronomy &
+!    Astrophysics, 406, 1135-1149 (2003)
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
 !### History
 !  * IAU SOFA revision: 2007 December 8
@@ -14147,16 +13948,16 @@
 !
 !### References
 !
-!     Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
-!     implement the IAU 2000 definition of UT1", Astronomy &
-!     Astrophysics, 406, 1135-1149 (2003)
+!  * Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
+!    implement the IAU 2000 definition of UT1", Astronomy &
+!    Astrophysics, 406, 1135-1149 (2003)
 !
-!     McCarthy, D.D. & Luzum, B.J., "An abridged model of the
-!     precession-nutation of the celestial pole", Celestial Mechanics &
-!     Dynamical Astronomy, 85, 37-49 (2003)
+!  * McCarthy, D.D. & Luzum, B.J., "An abridged model of the
+!    precession-nutation of the celestial pole", Celestial Mechanics &
+!    Dynamical Astronomy, 85, 37-49 (2003)
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
 !### History
 !  * IAU SOFA revision: 2007 December 8
@@ -14383,10 +14184,10 @@
 !
 !### References
 !
-!     Explanatory Supplement to the Astronomical Almanac,
-!     P. Kenneth Seidelmann (ed), University Science Books (1992)
+!  * Explanatory Supplement to the Astronomical Almanac,
+!    P. Kenneth Seidelmann (ed), University Science Books (1992)
 !
-!     IAU Resolution C7, Recommendation 3 (1994)
+!  * IAU Resolution C7, Recommendation 3 (1994)
 !
 !### History
 !  * IAU SOFA revision: 2007 December 8
@@ -15178,12 +14979,12 @@
 !
 !### References
 !
-!     Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
-!     the Astronomical Almanac, 3rd ed., University Science Books
-!     (2013).
+!  * Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
+!    the Astronomical Almanac, 3rd ed., University Science Books
+!    (2013).
 !
-!     Klioner, Sergei A., "A practical relativistic model for micro-
-!     arcsecond astrometry in space", Astr. J. 125, 1580-1597 (2003).
+!  * Klioner, Sergei A., "A practical relativistic model for micro-
+!    arcsecond astrometry in space", Astr. J. 125, 1580-1597 (2003).
 !
 !### History
 !  * IAU SOFA revision:  2013 September 3
@@ -15434,13 +15235,13 @@
 !
 !### References
 !
-!     Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
-!     expressions, valid for long time intervals, Astron.Astrophys. 534,
-!     A22
+!  * Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
+!    expressions, valid for long time intervals, Astron.Astrophys. 534,
+!    A22
 !
-!     Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
-!     expressions, valid for long time intervals (Corrigendum),
-!     Astron.Astrophys. 541, C1
+!  * Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
+!    expressions, valid for long time intervals (Corrigendum),
+!    Astron.Astrophys. 541, C1
 !
 !### History
 !  * IAU SOFA revision: 2016 February 9
@@ -15516,13 +15317,13 @@
 !
 !### References
 !
-!     Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
-!     expressions, valid for long time intervals, Astron.Astrophys. 534,
-!     A22
+!  * Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
+!    expressions, valid for long time intervals, Astron.Astrophys. 534,
+!    A22
 !
-!     Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
-!     expressions, valid for long time intervals (Corrigendum),
-!     Astron.Astrophys. 541, C1
+!  * Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
+!    expressions, valid for long time intervals (Corrigendum),
+!    Astron.Astrophys. 541, C1
 !
 !### History
 !  * IAU SOFA revision: 2015 December 6
@@ -15601,13 +15402,13 @@
 !
 !### References
 !
-!     Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
-!     expressions, valid for long time intervals, Astron.Astrophys. 534,
-!     A22
+!  * Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
+!    expressions, valid for long time intervals, Astron.Astrophys. 534,
+!    A22
 !
-!     Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
-!     expressions, valid for long time intervals (Corrigendum),
-!     Astron.Astrophys. 541, C1
+!  * Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
+!    expressions, valid for long time intervals (Corrigendum),
+!    Astron.Astrophys. 541, C1
 !
 !### History
 !  * IAU SOFA revision: 2016 February 9
@@ -15674,13 +15475,13 @@
 !
 !### References
 !
-!     Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
-!     expressions, valid for long time intervals, Astron.Astrophys. 534,
-!     A22
+!  * Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
+!    expressions, valid for long time intervals, Astron.Astrophys. 534,
+!    A22
 !
-!     Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
-!     expressions, valid for long time intervals (Corrigendum),
-!     Astron.Astrophys. 541, C1
+!  * Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
+!    expressions, valid for long time intervals (Corrigendum),
+!    Astron.Astrophys. 541, C1
 !
 !### History
 !  * IAU SOFA revision: 2015 December 6
@@ -15753,13 +15554,13 @@
 !
 !### References
 !
-!     Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
-!     expressions, valid for long time intervals, Astron.Astrophys. 534,
-!     A22
+!  * Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
+!    expressions, valid for long time intervals, Astron.Astrophys. 534,
+!    A22
 !
-!     Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
-!     expressions, valid for long time intervals (Corrigendum),
-!     Astron.Astrophys. 541, C1
+!  * Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
+!    expressions, valid for long time intervals (Corrigendum),
+!    Astron.Astrophys. 541, C1
 !
 !### History
 !  * IAU SOFA revision: 2015 December 6
@@ -15818,13 +15619,13 @@
 !
 !### References
 !
-!     Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
-!     expressions, valid for long time intervals, Astron.Astrophys. 534,
-!     A22
+!  * Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
+!    expressions, valid for long time intervals, Astron.Astrophys. 534,
+!    A22
 !
-!     Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
-!     expressions, valid for long time intervals (Corrigendum),
-!     Astron.Astrophys. 541, C1
+!  * Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
+!    expressions, valid for long time intervals (Corrigendum),
+!    Astron.Astrophys. 541, C1
 !
 !### History
 !  * IAU SOFA revision: 2016 February 9
@@ -15948,13 +15749,13 @@
 !
 !### References
 !
-!     Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
-!     expressions, valid for long time intervals, Astron.Astrophys. 534,
-!     A22
+!  * Vondrak, J., Capitaine, N. and Wallace, P., 2011, New precession
+!    expressions, valid for long time intervals, Astron.Astrophys. 534,
+!    A22
 !
-!     Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
-!     expressions, valid for long time intervals (Corrigendum),
-!     Astron.Astrophys. 541, C1
+!  * Vondrak, J., Capitaine, N. and Wallace, P., 2012, New precession
+!    expressions, valid for long time intervals (Corrigendum),
+!    Astron.Astrophys. 541, C1
 !
 !### History
 !  * IAU SOFA revision: 2016 February 9
@@ -16234,10 +16035,10 @@
 !
 !### References
 !
-!     Capitaine, N., Wallace, P.T. & Chapront, J., 2005, Astron.
-!     Astrophys. 432, 355
+!  * Capitaine, N., Wallace, P.T. & Chapront, J., 2005, Astron.
+!    Astrophys. 432, 355
 !
-!     Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
+!  * Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 !
 !### History
 !  * IAU SOFA revision: 2007 May 11
@@ -16432,24 +16233,24 @@
 !
 !### References
 !
-!     Chapront, J., Chapront-Touze, M. & Francou, G. 2002,
-!     Astron.Astrophys. 387, 700
+!  * Chapront, J., Chapront-Touze, M. & Francou, G. 2002,
+!    Astron.Astrophys. 387, 700
 !
-!     Lieske, J.H., Lederle, T., Fricke, W. & Morando, B. 1977,
-!     Astron.Astrophys. 58, 1-16
+!  * Lieske, J.H., Lederle, T., Fricke, W. & Morando, B. 1977,
+!    Astron.Astrophys. 58, 1-16
 !
-!     Mathews, P.M., Herring, T.A., Buffet, B.A. 2002, J.Geophys.Res.
-!     107, B4.  The MHB_2000 code itself was obtained on 9th September
-!     2002 from ftp//maia.usno.navy.mil/conv2000/chapter5/IAU2000A.
+!  * Mathews, P.M., Herring, T.A., Buffet, B.A. 2002, J.Geophys.Res.
+!    107, B4.  The MHB_2000 code itself was obtained on 9th September
+!    2002 from ftp//maia.usno.navy.mil/conv2000/chapter5/IAU2000A.
 !
-!     Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-!     Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
+!  * Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+!    Francou, G., Laskar, J. 1994, Astron.Astrophys. 282, 663-683
 !
-!     Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
-!     Astron.Astrophys.Supp.Ser. 135, 111
+!  * Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M. 1999,
+!    Astron.Astrophys.Supp.Ser. 135, 111
 !
-!     Wallace, P.T., "Software for Implementing the IAU 2000
-!     Resolutions", in IERS Workshop 5.1 (2002)
+!  * Wallace, P.T., "Software for Implementing the IAU 2000
+!    Resolutions", in IERS Workshop 5.1 (2002)
 !
 !### History
 !  * IAU SOFA revision: 2009 December 15
@@ -19782,19 +19583,19 @@
 !
 !### References
 !
-!     Lieske, J.H., Lederle, T., Fricke, W., Morando, B., "Expressions
-!     for the precession quantities based upon the IAU /1976/ system of
-!     astronomical constants", Astron.Astrophys. 58, 1-2, 1-16. (1977)
+!  * Lieske, J.H., Lederle, T., Fricke, W., Morando, B., "Expressions
+!    for the precession quantities based upon the IAU /1976/ system of
+!    astronomical constants", Astron.Astrophys. 58, 1-2, 1-16. (1977)
 !
-!     Luzum, B., private communication, 2001 (Fortran code
-!     MHB_2000_SHORT)
+!  * Luzum, B., private communication, 2001 (Fortran code
+!    MHB_2000_SHORT)
 !
-!     McCarthy, D.D. & Luzum, B.J., "An abridged model of the
-!     precession-nutation of the celestial pole", Cel.Mech.Dyn.Astron.
-!     85, 37-49 (2003)
+!  * McCarthy, D.D. & Luzum, B.J., "An abridged model of the
+!    precession-nutation of the celestial pole", Cel.Mech.Dyn.Astron.
+!    85, 37-49 (2003)
 !
-!     Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-!     Francou, G., Laskar, J., Astron.Astrophys. 282, 663-683 (1994)
+!  * Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+!    Francou, G., Laskar, J., Astron.Astrophys. 282, 663-683 (1994)
 !
 !### History
 !  * IAU SOFA revision: 2009 December 15
@@ -21952,9 +21753,9 @@
 !
 !### References
 !
-!     Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
+!  * Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 !
-!     Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
+!  * Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 !
 !### History
 !  * IAU SOFA revision: 2009 December 21
@@ -22030,10 +21831,10 @@
 !
 !### References
 !
-!     Lieske, J.H., 1979, Astron.Astrophys. 73, 282.
-!      equations (6) & (7), p283.
+!  * Lieske, J.H., 1979, Astron.Astrophys. 73, 282.
+!    equations (6) & (7), p283.
 !
-!     Kaplan, G.H., 1981, USNO circular no. 163, pA2.
+!  * Kaplan, G.H., 1981, USNO circular no. 163, pA2.
 !
 !### History
 !  * IAU SOFA revision: 2009 December 18
@@ -22126,11 +21927,11 @@
 !
 !### References
 !
-!     1984 Astronomical Almanac, pp B39-B41.
+!  * 1984 Astronomical Almanac, pp B39-B41.
 !
-!     Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
-!     the Astronomical Almanac, 3rd ed., University Science Books
-!     (2013), Section 7.2.
+!  * Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
+!    the Astronomical Almanac, 3rd ed., University Science Books
+!    (2013), Section 7.2.
 !
 !### History
 !  * IAU SOFA revision:  2017 March 11
@@ -22475,13 +22276,13 @@
 !
 !### Reference
 !
-!     Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
-!     "Expressions for the Celestial Intermediate Pole and Celestial
-!     Ephemeris Origin consistent with the IAU 2000A precession-nutation
-!     model", Astron.Astrophys. 400, 1145-1154 (2003)
+!  * Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
+!    "Expressions for the Celestial Intermediate Pole and Celestial
+!    Ephemeris Origin consistent with the IAU 2000A precession-nutation
+!    model", Astron.Astrophys. 400, 1145-1154 (2003)
 !
-!     n.b. The celestial ephemeris origin (CEO) was renamed "celestial
-!          intermediate origin" (CIO) by IAU 2006 Resolution 2.
+!  * n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+!    intermediate origin" (CIO) by IAU 2006 Resolution 2.
 !
 !### History
 !  * IAU SOFA revision: 2010 January 18
@@ -22601,8 +22402,8 @@
 !     Ephemeris Origin consistent with the IAU 2000A precession-nutation
 !     model", Astron.Astrophys. 400, 1145-1154 (2003).
 !
-!     n.b. The celestial ephemeris origin (CEO) was renamed "celestial
-!          intermediate origin" (CIO) by IAU 2006 Resolution 2.
+!  * n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+!    intermediate origin" (CIO) by IAU 2006 Resolution 2.
 !
 !### History
 !  * IAU SOFA revision: 2010 January 18
@@ -22712,8 +22513,8 @@
 !     Ephemeris Origin consistent with the IAU 2000A precession-nutation
 !     model", Astron.Astrophys. 400, 1145-1154 (2003).
 !
-!     n.b. The celestial ephemeris origin (CEO) was renamed "celestial
-!          intermediate origin" (CIO) by IAU 2006 Resolution 2.
+!  * n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+!    intermediate origin" (CIO) by IAU 2006 Resolution 2.
 !
 !### History
 !  * IAU SOFA revision: 2010 January 18
@@ -22815,9 +22616,9 @@
 !
 !### References
 !
-!     Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
+!  * Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 !
-!     Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
+!  * Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 !
 !### History
 !  * IAU SOFA revision: 2013 November 14
@@ -22945,7 +22746,7 @@
 !
 !### Reference
 !
-!     Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
+!  * Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 !
 !### History
 !  * IAU SOFA revision: 2009 December 15
@@ -23287,8 +23088,8 @@
 !
 !### Reference
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
 !### History
 !  * IAU SOFA revision: 2009 December 15
@@ -23430,18 +23231,18 @@
 !
 !### References
 !
-!     Lieske, J.H., Lederle, T., Fricke, W. & Morando, B., "Expressions
-!     for the precession quantities based upon the IAU (1976) System of
-!     Astronomical Constants", Astron.Astrophys., 58, 1-16 (1977)
+!  * Lieske, J.H., Lederle, T., Fricke, W. & Morando, B., "Expressions
+!    for the precession quantities based upon the IAU (1976) System of
+!    Astronomical Constants", Astron.Astrophys., 58, 1-16 (1977)
 !
-!     Mathews, P.M., Herring, T.A., Buffet, B.A., "Modeling of nutation
-!     and precession   New nutation series for nonrigid Earth and
-!     insights into the Earth's interior", J.Geophys.Res., 107, B4,
-!     2002.  The MHB2000 code itself was obtained on 9th September 2002
-!     from ftp://maia.usno.navy.mil/conv2000/chapter5/IAU2000A.
+!  * Mathews, P.M., Herring, T.A., Buffet, B.A., "Modeling of nutation
+!    and precession   New nutation series for nonrigid Earth and
+!    insights into the Earth's interior", J.Geophys.Res., 107, B4,
+!    2002.  The MHB2000 code itself was obtained on 9th September 2002
+!    from ftp://maia.usno.navy.mil/conv2000/chapter5/IAU2000A.
 !
-!     Wallace, P.T., "Software for Implementing the IAU 2000
-!     Resolutions", in IERS Workshop 5.1 (2002).
+!  * Wallace, P.T., "Software for Implementing the IAU 2000
+!    Resolutions", in IERS Workshop 5.1 (2002).
 !
 !### History
 !  * IAU SOFA revision: 2009 December 15
@@ -24077,12 +23878,12 @@
 !
 !### References
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
-!     Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
-!     the Astronomical Almanac, 3rd ed., University Science Books
-!     (2013), Section 7.4.3.3.
+!  * Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
+!    the Astronomical Almanac, 3rd ed., University Science Books
+!    (2013), Section 7.4.3.3.
 !
 !### History
 !  * IAU SOFA revision:  2013 June 25
@@ -24419,25 +24220,25 @@
 !
 !### References
 !
-!     Crane, R.K., Meeks, M.L. (ed), "Refraction Effects in the Neutral
-!     Atmosphere", Methods of Experimental Physics: Astrophysics 12B,
-!     Academic Press, 1976.
+!  * Crane, R.K., Meeks, M.L. (ed), "Refraction Effects in the Neutral
+!    Atmosphere", Methods of Experimental Physics: Astrophysics 12B,
+!    Academic Press, 1976.
 !
-!     Gill, Adrian E., "Atmosphere-Ocean Dynamics", Academic Press,
-!     1982.
+!  * Gill, Adrian E., "Atmosphere-Ocean Dynamics", Academic Press,
+!    1982.
 !
-!     Green, R.M., "Spherical Astronomy", Cambridge University Press,
-!     1987.
+!  * Green, R.M., "Spherical Astronomy", Cambridge University Press,
+!    1987.
 !
-!     Hohenkerk, C.Y., & Sinclair, A.T., NAO Technical Note No. 63,
-!     1985.
+!  * Hohenkerk, C.Y., & Sinclair, A.T., NAO Technical Note No. 63,
+!    1985.
 !
-!     Rueger, J.M., "Refractive Index Formulae for Electronic Distance
-!     Measurement with Radio and Millimetre Waves", in Unisurv Report
-!     S-68, School of Surveying and Spatial Information Systems,
-!     University of New South Wales, Sydney, Australia, 2002.
+!  * Rueger, J.M., "Refractive Index Formulae for Electronic Distance
+!    Measurement with Radio and Millimetre Waves", in Unisurv Report
+!    S-68, School of Surveying and Spatial Information Systems,
+!    University of New South Wales, Sydney, Australia, 2002.
 !
-!     Stone, Ronald C., P.A.S.P. 108, 1051-1058, 1996.
+!  * Stone, Ronald C., P.A.S.P. 108, 1051-1058, 1996.
 !
 !### History
 !  * IAU SOFA revision: 2016 December 20
@@ -24960,16 +24761,16 @@
 !
 !### References
 !
-!     Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
-!     "Expressions for the Celestial Intermediate Pole and Celestial
-!     Ephemeris Origin consistent with the IAU 2000A precession-nutation
-!     model", Astron.Astrophys. 400, 1145-1154 (2003)
+!  * Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
+!    "Expressions for the Celestial Intermediate Pole and Celestial
+!    Ephemeris Origin consistent with the IAU 2000A precession-nutation
+!    model", Astron.Astrophys. 400, 1145-1154 (2003)
 !
-!     n.b. The celestial ephemeris origin (CEO) was renamed "celestial
-!          intermediate origin" (CIO) by IAU 2006 Resolution 2.
+!  * n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+!    intermediate origin" (CIO) by IAU 2006 Resolution 2.
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
 !### History
 !  * IAU SOFA revision: 2010 January 18
@@ -25340,16 +25141,16 @@
 !
 !### References
 !
-!     Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
-!     "Expressions for the Celestial Intermediate Pole and Celestial
-!     Ephemeris Origin consistent with the IAU 2000A precession-nutation
-!     model", Astron.Astrophys. 400, 1145-1154 (2003)
+!  * Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
+!    "Expressions for the Celestial Intermediate Pole and Celestial
+!    Ephemeris Origin consistent with the IAU 2000A precession-nutation
+!    model", Astron.Astrophys. 400, 1145-1154 (2003)
 !
-!     n.b. The celestial ephemeris origin (CEO) was renamed "celestial
-!          intermediate origin" (CIO) by IAU 2006 Resolution 2.
+!  * n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+!    intermediate origin" (CIO) by IAU 2006 Resolution 2.
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
 !### History
 !  * IAU SOFA revision: 2010 January 18
@@ -25426,16 +25227,16 @@
 !
 !### References
 !
-!     Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
-!     "Expressions for the Celestial Intermediate Pole and Celestial
-!     Ephemeris Origin consistent with the IAU 2000A precession-nutation
-!     model", Astron.Astrophys. 400, 1145-1154 (2003)
+!  * Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
+!    "Expressions for the Celestial Intermediate Pole and Celestial
+!    Ephemeris Origin consistent with the IAU 2000A precession-nutation
+!    model", Astron.Astrophys. 400, 1145-1154 (2003)
 !
-!     n.b. The celestial ephemeris origin (CEO) was renamed "celestial
-!          intermediate origin" (CIO) by IAU 2006 Resolution 2.
+!  * n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+!    intermediate origin" (CIO) by IAU 2006 Resolution 2.
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
 !### History
 !  * IAU SOFA revision: 2010 January 18
@@ -25515,11 +25316,11 @@
 !
 !### References
 !
-!     Capitaine, N., Wallace, P.T. & Chapront, J., 2003, Astron.
-!     Astrophys. 432, 355
+!  * Capitaine, N., Wallace, P.T. & Chapront, J., 2003, Astron.
+!    Astrophys. 432, 355
 !
-!     McCarthy, D.D., Petit, G. (eds.) 2004, IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG
+!  * McCarthy, D.D., Petit, G. (eds.) 2004, IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG
 !
 !### History
 !  * IAU SOFA revision:  2009 December 15
@@ -25888,20 +25689,20 @@
 !
 !### References
 !
-!     Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
-!     "Expressions for the Celestial Intermediate Pole and Celestial
-!     Ephemeris Origin consistent with the IAU 2000A precession-nutation
-!     model", Astron.Astrophys. 400, 1145-1154 (2003)
+!  * Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
+!    "Expressions for the Celestial Intermediate Pole and Celestial
+!    Ephemeris Origin consistent with the IAU 2000A precession-nutation
+!    model", Astron.Astrophys. 400, 1145-1154 (2003)
 !
-!     n.b. The celestial ephemeris origin (CEO) was renamed "celestial
-!          intermediate origin" (CIO) by IAU 2006 Resolution 2.
+!  * n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+!    intermediate origin" (CIO) by IAU 2006 Resolution 2.
 !
-!     Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
+!  * Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 !
-!     McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG
+!  * McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG
 !
-!     Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
+!  * Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 !
 !### History
 !  * IAU SOFA revision: 2010 January 18
@@ -26216,8 +26017,8 @@
 !
 !### Reference
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
 !### History
 !  * IAU SOFA revision: 2009 December 15
@@ -26720,11 +26521,11 @@
 !
 !### References
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
-!     Explanatory Supplement to the Astronomical Almanac,
-!     P. Kenneth Seidelmann (ed), University Science Books (1992)
+!  * Explanatory Supplement to the Astronomical Almanac,
+!    P. Kenneth Seidelmann (ed), University Science Books (1992)
 !
 !### History
 !  * IAU SOFA revision: 2019 June 20
@@ -26784,8 +26585,8 @@
 !
 !### Reference
 !
-!     Explanatory Supplement to the Astronomical Almanac,
-!     P. Kenneth Seidelmann (ed), University Science Books (1992)
+!  * Explanatory Supplement to the Astronomical Almanac,
+!    P. Kenneth Seidelmann (ed), University Science Books (1992)
 !
 !### History
 !  * IAU SOFA revision: 2019 June 20
@@ -26862,11 +26663,11 @@
 !
 !### References
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
-!     Explanatory Supplement to the Astronomical Almanac,
-!     P. Kenneth Seidelmann (ed), University Science Books (1992)
+!  * Explanatory Supplement to the Astronomical Almanac,
+!    P. Kenneth Seidelmann (ed), University Science Books (1992)
 !
 !### History
 !  * IAU SOFA revision: 2019 June 20
@@ -27036,10 +26837,10 @@
 !
 !### References
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),.
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),.
 !     IERS Technical Note No. 32, BKG (2004)
 !
-!     IAU 2000 Resolution B1.9
+!  * IAU 2000 Resolution B1.9
 !
 !### History
 !  * IAU SOFA revision: 2019 June 20
@@ -27202,10 +27003,10 @@
 !
 !### References
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
-!     IAU 2006 Resolution 3
+!  * IAU 2006 Resolution 3
 !
 !### History
 !  * IAU SOFA revision: 2019 June 20
@@ -27447,11 +27248,11 @@
 !
 !### References
 !
-!     Calabretta M.R. & Greisen, E.W., 2002, "Representations of
-!     celestial coordinates in FITS", Astron.Astrophys. 395, 1077
+!  * Calabretta M.R. & Greisen, E.W., 2002, "Representations of
+!    celestial coordinates in FITS", Astron.Astrophys. 395, 1077
 !
-!     Green, R.M., "Spherical Astronomy", Cambridge University Press,
-!     1987, Chapter 13.
+!  * Green, R.M., "Spherical Astronomy", Cambridge University Press,
+!    1987, Chapter 13.
 !
 !### History
 !  * IAU SOFA revision:  2018 January 2
@@ -27569,11 +27370,11 @@
 !
 !### References
 !
-!     Calabretta M.R. & Greisen, E.W., 2002, "Representations of
-!     celestial coordinates in FITS", Astron.Astrophys. 395, 1077
+!  * Calabretta M.R. & Greisen, E.W., 2002, "Representations of
+!    celestial coordinates in FITS", Astron.Astrophys. 395, 1077
 !
-!     Green, R.M., "Spherical Astronomy", Cambridge University Press,
-!     1987, Chapter 13.
+!  * Green, R.M., "Spherical Astronomy", Cambridge University Press,
+!    1987, Chapter 13.
 !
 !### History
 !  * IAU SOFA revision:  2018 January 2
@@ -27661,11 +27462,11 @@
 !
 !### References
 !
-!     Calabretta M.R. & Greisen, E.W., 2002, "Representations of
-!     celestial coordinates in FITS", Astron.Astrophys. 395, 1077
+!  * Calabretta M.R. & Greisen, E.W., 2002, "Representations of
+!    celestial coordinates in FITS", Astron.Astrophys. 395, 1077
 !
-!     Green, R.M., "Spherical Astronomy", Cambridge University Press,
-!     1987, Chapter 13.
+!  * Green, R.M., "Spherical Astronomy", Cambridge University Press,
+!    1987, Chapter 13.
 !
 !### History
 !  * IAU SOFA revision:  2018 January 2
@@ -27742,11 +27543,11 @@
 !
 !### References
 !
-!     Calabretta M.R. & Greisen, E.W., 2002, "Representations of
-!     celestial coordinates in FITS", Astron.Astrophys. 395, 1077
+!  * Calabretta M.R. & Greisen, E.W., 2002, "Representations of
+!    celestial coordinates in FITS", Astron.Astrophys. 395, 1077
 !
-!     Green, R.M., "Spherical Astronomy", Cambridge University Press,
-!     1987, Chapter 13.
+!  * Green, R.M., "Spherical Astronomy", Cambridge University Press,
+!    1987, Chapter 13.
 !
 !### History
 !  * IAU SOFA revision:  2018 January 2
@@ -27828,11 +27629,11 @@
 !
 !### References
 !
-!     Calabretta M.R. & Greisen, E.W., 2002, "Representations of
-!     celestial coordinates in FITS", Astron.Astrophys. 395, 1077
+!  * Calabretta M.R. & Greisen, E.W., 2002, "Representations of
+!    celestial coordinates in FITS", Astron.Astrophys. 395, 1077
 !
-!     Green, R.M., "Spherical Astronomy", Cambridge University Press,
-!     1987, Chapter 13.
+!  * Green, R.M., "Spherical Astronomy", Cambridge University Press,
+!    1987, Chapter 13.
 !
 !### History
 !  * IAU SOFA revision:  2018 January 2
@@ -27939,11 +27740,11 @@
 !
 !### References
 !
-!     Calabretta M.R. & Greisen, E.W., 2002, "Representations of
-!     celestial coordinates in FITS", Astron.Astrophys. 395, 1077
+!  * Calabretta M.R. & Greisen, E.W., 2002, "Representations of
+!    celestial coordinates in FITS", Astron.Astrophys. 395, 1077
 !
-!     Green, R.M., "Spherical Astronomy", Cambridge University Press,
-!     1987, Chapter 13.
+!  * Green, R.M., "Spherical Astronomy", Cambridge University Press,
+!    1987, Chapter 13.
 !
 !### History
 !  * IAU SOFA revision:  2018 January 2
@@ -28131,11 +27932,11 @@
 !
 !### References
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
-!     Explanatory Supplement to the Astronomical Almanac,
-!     P. Kenneth Seidelmann (ed), University Science Books (1992)
+!  * Explanatory Supplement to the Astronomical Almanac,
+!    P. Kenneth Seidelmann (ed), University Science Books (1992)
 !
 !### History
 !  * IAU SOFA revision: 2019 June 20
@@ -28191,10 +27992,10 @@
 !
 !### References
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
-!     IAU 2000 Resolution B1.9
+!  * IAU 2000 Resolution B1.9
 !
 !### History
 !  * IAU SOFA revision: 2019 June 20
@@ -28271,10 +28072,10 @@
 !
 !### References
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
-!     IAU 2006 Resolution 3
+!  * IAU 2006 Resolution 3
 !
 !### History
 !  * IAU SOFA revision: 2019 June 20
@@ -28334,8 +28135,8 @@
 !
 !### Reference
 !
-!     Explanatory Supplement to the Astronomical Almanac,
-!     P. Kenneth Seidelmann (ed), University Science Books (1992)
+!  * Explanatory Supplement to the Astronomical Almanac,
+!    P. Kenneth Seidelmann (ed), University Science Books (1992)
 !
 !### History
 !  * IAU SOFA revision: 2019 June 20
@@ -28396,8 +28197,8 @@
 !
 !### Reference
 !
-!     Explanatory Supplement to the Astronomical Almanac,
-!     P. Kenneth Seidelmann (ed), University Science Books (1992)
+!  * Explanatory Supplement to the Astronomical Almanac,
+!    P. Kenneth Seidelmann (ed), University Science Books (1992)
 !
 !### History
 !  * IAU SOFA revision: 2019 June 20
@@ -28457,8 +28258,8 @@
 !
 !### Reference
 !
-!     Explanatory Supplement to the Astronomical Almanac,
-!     P. Kenneth Seidelmann (ed), University Science Books (1992)
+!  * Explanatory Supplement to the Astronomical Almanac,
+!    P. Kenneth Seidelmann (ed), University Science Books (1992)
 !
 !### History
 !  * IAU SOFA revision: 2019 June 20
@@ -28538,11 +28339,11 @@
 !
 !### References
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
-!     Explanatory Supplement to the Astronomical Almanac,
-!     P. Kenneth Seidelmann (ed), University Science Books (1992)
+!  * Explanatory Supplement to the Astronomical Almanac,
+!    P. Kenneth Seidelmann (ed), University Science Books (1992)
 !
 !### History
 !  * IAU SOFA revision: 2019 June 20
@@ -28682,11 +28483,11 @@
 !
 !### References
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
-!     Explanatory Supplement to the Astronomical Almanac,
-!     P. Kenneth Seidelmann (ed), University Science Books (1992)
+!  * Explanatory Supplement to the Astronomical Almanac,
+!    P. Kenneth Seidelmann (ed), University Science Books (1992)
 !
 !### History
 !  * IAU SOFA revision: 2019 June 20
@@ -28818,11 +28619,11 @@
 !
 !### References
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
-!     Explanatory Supplement to the Astronomical Almanac,
-!     P. Kenneth Seidelmann (ed), University Science Books (1992)
+!  * Explanatory Supplement to the Astronomical Almanac,
+!    P. Kenneth Seidelmann (ed), University Science Books (1992)
 !
 !### History
 !  * IAU SOFA revision: 2013 August 12
@@ -28922,21 +28723,21 @@
 !
 !### References
 !
-!     Capitaine, N., Wallace, P.T. & Chapront, J., 2003,
-!     Astron.Astrophys., 412, 567
+!  * Capitaine, N., Wallace, P.T. & Chapront, J., 2003,
+!    Astron.Astrophys., 412, 567
 !
-!     Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
+!  * Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 !
-!     McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG
+!  * McCarthy, D. D., Petit, G. (eds.), 2004, IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG
 !
-!     Simon, J.L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
-!     Francou, G. & Laskar, J., Astron.Astrophys., 1994, 282, 663
+!  * Simon, J.L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+!    Francou, G. & Laskar, J., Astron.Astrophys., 1994, 282, 663
 !
-!     Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M., 1999,
-!     Astron.Astrophys.Supp.Ser. 135, 111
+!  * Souchay, J., Loysel, B., Kinoshita, H., Folgueira, M., 1999,
+!    Astron.Astrophys.Supp.Ser. 135, 111
 !
-!     Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
+!  * Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 !
 !### History
 !  * IAU SOFA revision: 2013 December 2
@@ -31426,8 +31227,8 @@
 !
 !### Reference
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
 !### History
 !  * IAU SOFA revision: 2006 November 13
@@ -31503,8 +31304,8 @@
 !
 !### Reference
 !
-!     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
-!     IERS Technical Note No. 32, BKG (2004)
+!  * McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+!    IERS Technical Note No. 32, BKG (2004)
 !
 !### History
 !  * IAU SOFA revision: 2006 November 13
@@ -31580,9 +31381,9 @@
 !
 !### References
 !
-!     Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
+!  * Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855
 !
-!     Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
+!  * Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 !
 !### History
 !  * IAU SOFA revision: 2013 May 14
