@@ -8061,12 +8061,6 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     DATE1,DATE2    d      TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     EO06A      d      equation of the origins in radians
-!
 !### Notes
 !
 !  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
@@ -8104,12 +8098,13 @@
 !### History
 !  * IAU SOFA revision: 2007 February 13
 
-    real(wp) function EO06A ( date1, date2 )
+    function EO06A ( date1, date2 ) result(res)
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp) :: res !! equation of the origins in radians
 
     real(wp) :: r(3,3), x, y, s
     !  Classical nutation x precession x bias matrix.
@@ -8122,7 +8117,7 @@
     s = S06 ( date1, date2, x, y )
 
     !  Solve for the EO.
-    EO06A = EORS ( r, s )
+    res = EORS ( r, s )
 
     end function EO06A
 !***********************************************************************
@@ -8133,13 +8128,6 @@
 !  quantity s.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     RNPB    d(3,3)    classical nutation x precession x bias matrix
-!     S         d       the quantity s (the CIO locator)
-!
-!  Returned:
-!     EORS  d       the equation of the origins in radians.
 !
 !### Notes
 !
@@ -8161,12 +8149,13 @@
 !### History
 !  * IAU SOFA revision: 2008 February 24
 
-    real(wp) function EORS ( rnpb, s )
+    function EORS ( rnpb, s ) result(res)
 
     implicit none
 
-    real(wp),dimension(3,3) :: rnpb
-    real(wp) :: s
+    real(wp),dimension(3,3),intent(in) :: rnpb !! classical nutation x precession x bias matrix
+    real(wp),intent(in) :: s !! the quantity s (the CIO locator)
+    real(wp) :: res !! the equation of the origins in radians.
 
     real(wp) :: x, ax, xs, ys, zs, p, q
 
@@ -8179,9 +8168,9 @@
     p = rnpb(1,1)*xs + rnpb(1,2)*ys + rnpb(1,3)*zs
     q = rnpb(2,1)*xs + rnpb(2,2)*ys + rnpb(2,3)*zs
     if ( p/=0d0 .or. q/=0d0 ) then
-       EORS = s - atan2 ( q, p )
+       res = s - atan2 ( q, p )
     else
-       EORS = s
+       res = s
     end if
 
     end function EORS
@@ -8193,32 +8182,28 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     DJ1,DJ2   d         Julian Date (see note)
-!
-!  The result is the Besselian Epoch.
-!
 !### Note
 !
-!     The Julian Date is supplied in two pieces, in the usual SOFA
-!     manner, which is designed to preserve time resolution.  The
-!     Julian Date is available as a single number by adding DJ1 and
-!     DJ2.  The maximum resolution is achieved if DJ1 is 2451545D0
-!     (J2000.0).
+!  The Julian Date is supplied in two pieces, in the usual SOFA
+!  manner, which is designed to preserve time resolution.  The
+!  Julian Date is available as a single number by adding DJ1 and
+!  DJ2.  The maximum resolution is achieved if DJ1 is 2451545D0
+!  (J2000.0).
 !
 !### Reference
 !
-!     Lieske, J.H., 1979, Astron.Astrophys. 73, 282.
+!  * Lieske, J.H., 1979, Astron.Astrophys. 73, 282.
 !
 !### History
 !  * IAU SOFA revision: 2013 August 7
 
-    real(wp) function EPB ( dj1, dj2 )
+    function EPB ( dj1, dj2 ) result(res)
 
     implicit none
 
-    real(wp) :: dj1
-    real(wp) :: dj2
+    real(wp),intent(in) :: dj1 !! Julian Date (see note)
+    real(wp),intent(in) :: dj2 !! Julian Date (see note)
+    real(wp) :: res !! the Besselian Epoch
 
     !  J2000.0 minus B1900.0 (2415019.81352) in days
     real(wp),parameter :: d1900 = 36524.68648d0
@@ -8226,7 +8211,7 @@
     !  Length of tropical year B1900 (days)
     real(wp),parameter :: ty = 365.242198781d0
 
-    EPB = 1900d0 + ( ( dj1-dj00 ) + ( dj2+d1900 ) ) / ty
+    res = 1900d0 + ( ( dj1-dj00 ) + ( dj2+d1900 ) ) / ty
 
     end function EPB
 !***********************************************************************
@@ -8236,13 +8221,6 @@
 !  Besselian Epoch to Julian Date.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     EPB         d     Besselian Epoch (e.g. 1957.3D0)
-!
-!  Returned:
-!     DJM0        d     MJD zero-point: always 2400000.5
-!     DJM         d     Modified Julian Date
 !
 !### Note
 !
@@ -8262,15 +8240,15 @@
 
     implicit none
 
-    real(wp) :: epb
-    real(wp) :: djm0
-    real(wp) :: djm
+    real(wp),intent(in)  :: epb !! Besselian Epoch (e.g. 1957.3D0)
+    real(wp),intent(out) :: djm0 !! MJD zero-point: always 2400000.5
+    real(wp),intent(out) :: djm !! Modified Julian Date
 
     !  Length of tropical year B1900 (days)
     real(wp),parameter :: ty = 365.242198781d0
 
     djm0 = 2400000.5d0
-    djm  =   15019.81352d0 + ( epb-1900d0 ) * ty
+    djm  = 15019.81352d0 + ( epb-1900d0 ) * ty
 
     end subroutine EPB2JD
 !***********************************************************************
@@ -8281,34 +8259,30 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     DJ1,DJ2   d         Julian Date (see note)
-!
-!  The result is the Julian Epoch.
-!
 !### Note
 !
-!     The Julian Date is supplied in two pieces, in the usual SOFA
-!     manner, which is designed to preserve time resolution.  The
-!     Julian Date is available as a single number by adding DJ1 and
-!     DJ2.  The maximum resolution is achieved if DJ1 is 2451545D0
-!     (J2000.0).
+!  The Julian Date is supplied in two pieces, in the usual SOFA
+!  manner, which is designed to preserve time resolution.  The
+!  Julian Date is available as a single number by adding DJ1 and
+!  DJ2.  The maximum resolution is achieved if DJ1 is 2451545D0
+!  (J2000.0).
 !
 !### Reference
 !
-!     Lieske, J.H., 1979, Astron.Astrophys. 73, 282.
+!  * Lieske, J.H., 1979, Astron.Astrophys. 73, 282.
 !
 !### History
 !  * IAU SOFA revision: 2009 December 15
 
-    real(wp) function EPJ ( dj1, dj2 )
+    function EPJ ( dj1, dj2 ) result(jd)
 
     implicit none
 
-    real(wp) :: dj1
-    real(wp) :: dj2
+    real(wp),intent(in) :: dj1 !! Julian Date (see note)
+    real(wp),intent(in) :: dj2 !! Julian Date (see note)
+    real(wp) :: jd !! the Julian Epoch.
 
-    EPJ = 2000d0 + ( ( dj1-dj00 ) + dj2 ) / djy
+    jd = 2000d0 + ( ( dj1-dj00 ) + dj2 ) / djy
 
     end function EPJ
 !***********************************************************************
@@ -8319,23 +8293,16 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     EPJ         d     Julian Epoch (e.g. 1996.8D0)
-!
-!  Returned:
-!     DJM0        d     MJD zero-point: always 2400000.5
-!     DJM         d     Modified Julian Date
-!
 !### Note
 !
-!     The Julian Date is returned in two pieces, in the usual SOFA
-!     manner, which is designed to preserve time resolution.  The
-!     Julian Date is available as a single number by adding DJM0 and
-!     DJM.
+!  The Julian Date is returned in two pieces, in the usual SOFA
+!  manner, which is designed to preserve time resolution.  The
+!  Julian Date is available as a single number by adding DJM0 and
+!  DJM.
 !
 !### Reference
 !
-!     Lieske, J.H., 1979, Astron.Astrophys. 73, 282.
+!  * Lieske, J.H., 1979, Astron.Astrophys. 73, 282.
 !
 !### History
 !  * IAU SOFA revision: 2008 May 11
@@ -8344,12 +8311,12 @@
 
     implicit none
 
-    real(wp) :: epj
-    real(wp) :: djm0
-    real(wp) :: djm
+    real(wp),intent(in) :: epj !! Julian Epoch (e.g. 1996.8D0)
+    real(wp),intent(out) :: djm0 !! MJD zero-point: always 2400000.5
+    real(wp),intent(out) :: djm !! Modified Julian Date
 
     djm0 = 2400000.5d0
-    djm  =   51544.5d0 + ( epj-2000d0 ) * 365.25d0
+    djm  = 51544.5d0 + ( epj-2000d0 ) * 365.25d0
 
     end subroutine EPJ2JD
 !***********************************************************************
@@ -8360,16 +8327,6 @@
 !  respect to the Barycentric Celestial Reference System.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1    d        TDB date part A (Note 1)
-!     DATE2    d        TDB date part B (Note 1)
-!
-!  Returned:
-!     PVH      d(3,2)   heliocentric Earth position/velocity (au,au/day)
-!     PVB      d(3,2)   barycentric Earth position/velocity (au,au/day)
-!     JSTAT    i        status: 0 = OK
-!                              +1 = warning: date outside 1900-2100 AD
 !
 !### Notes
 !
@@ -8446,15 +8403,16 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp),dimension(3,2) :: pvh
-    real(wp),dimension(3,2) :: pvb
-    integer :: jstat
+    real(wp),intent(in) :: date1 !! TDB date part A (Note 1)
+    real(wp),intent(in) :: date2 !! TDB date part B (Note 1)
+    real(wp),dimension(3,2),intent(out) :: pvh !!  heliocentric Earth position/velocity (au,au/day)
+    real(wp),dimension(3,2),intent(out) :: pvb !!  barycentric Earth position/velocity (au,au/day)
+    integer,intent(out) :: jstat !! status:
+                                 !! * 0 = OK
+                                 !! * +1 = warning: date outside 1900-2100 AD
 
     real(wp) :: t, t2, xyz, xyzd, a, b, c, ct, p, cp, &
-                     ph(3), vh(3), pb(3), vb(3), x, y, z
-
+                ph(3), vh(3), pb(3), vb(3), x, y, z
     integer :: i, j, k
 
     !
@@ -10754,15 +10712,15 @@
     !  X then Y then Z.
     do k=1,3
 
-    !     Initialize position and velocity component.
+       !  Initialize position and velocity component.
        xyz = 0d0
        xyzd = 0d0
 
-    !     ------------------------------------------------
-    !     Obtain component of Sun to Earth ecliptic vector
-    !     ------------------------------------------------
+       !  ------------------------------------------------
+       !  Obtain component of Sun to Earth ecliptic vector
+       !  ------------------------------------------------
 
-    !     Sun to Earth, T^0 terms.
+       !  Sun to Earth, T^0 terms.
        do j=1,ne0(k)
           a = e0(1,j,k)
           b = e0(2,j,k)
@@ -10772,7 +10730,7 @@
           xyzd = xyzd - a*c*sin(p)
        end do
 
-    !     Sun to Earth, T^1 terms.
+       !  Sun to Earth, T^1 terms.
        do j=1,ne1(k)
           a = e1(1,j,k)
           b = e1(2,j,k)
@@ -10784,7 +10742,7 @@
           xyzd = xyzd + a*(cp-ct*sin(p))
        end do
 
-    !     Sun to Earth, T^2 terms.
+       !  Sun to Earth, T^2 terms.
        do j=1,ne2(k)
           a = e2(1,j,k)
           b = e2(2,j,k)
@@ -10796,15 +10754,15 @@
           xyzd = xyzd + a*t*(2d0*cp-ct*sin(p))
        end do
 
-    !     Heliocentric Earth position and velocity component.
+       !  Heliocentric Earth position and velocity component.
        ph(k) = xyz
        vh(k) = xyzd / djy
 
-    !     ------------------------------------------------
-    !     Obtain component of SSB to Earth ecliptic vector
-    !     ------------------------------------------------
+       !  ------------------------------------------------
+       !  Obtain component of SSB to Earth ecliptic vector
+       !  ------------------------------------------------
 
-    !     SSB to Sun, T^0 terms.
+       !  SSB to Sun, T^0 terms.
        do j=1,ns0(k)
           a = s0(1,j,k)
           b = s0(2,j,k)
@@ -10814,7 +10772,7 @@
           xyzd = xyzd - a*c*sin(p)
        end do
 
-    !     SSB to Sun, T^1 terms.
+       !  SSB to Sun, T^1 terms.
        do j=1,ns1(k)
           a = s1(1,j,k)
           b = s1(2,j,k)
@@ -10826,7 +10784,7 @@
           xyzd = xyzd + a*(cp-ct*sin(p))
        end do
 
-    !     SSB to Sun, T^2 terms.
+       !  SSB to Sun, T^2 terms.
        do j=1,ns2(k)
           a = s2(1,j,k)
           b = s2(2,j,k)
@@ -10838,11 +10796,11 @@
           xyzd = xyzd + a*t*(2d0*cp-ct*sin(p))
        end do
 
-    !     Barycentric Earth position and velocity component.
+       !  Barycentric Earth position and velocity component.
        pb(k) = xyz
        vb(k) = xyzd / djy
 
-    !     Next Cartesian component.
+       !  Next Cartesian component.
     end do
 
     !  Rotate from ecliptic to ICRF coordinates and return the results.
@@ -10882,13 +10840,6 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     DATE1,DATE2  d      TT as a 2-part Julian Date (Note 1)
-!     DR,DD        d      ICRS right ascension and declination (radians)
-!
-!  Returned:
-!     DL,DB        d      ecliptic longitude and latitude (radians)
-!
 !### Notes
 !
 !  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
@@ -10926,12 +10877,12 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp) :: dr
-    real(wp) :: dd
-    real(wp) :: dl
-    real(wp) :: db
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: dr !! ICRS right ascension (radians)
+    real(wp),intent(in) :: dd !! ICRS declination (radians)
+    real(wp),intent(out) :: dl !! ecliptic longitude (radians)
+    real(wp),intent(out) :: db !! ecliptic latitude (radians)
 
     real(wp) :: rm(3,3), v1(3), v2(3), a, b
 
@@ -10959,12 +10910,6 @@
 !  Equation of the equinoxes, IAU 1994 model.
 !
 !  Status:  canonical model.
-!
-!  Given:
-!     DATE1,DATE2     d         TDB date (Note 1)
-!
-!  Returned:
-!     EQEQ94      d         equation of the equinoxes (Note 2)
 !
 !### Notes
 !
@@ -11001,12 +10946,13 @@
 !### History
 !  * IAU SOFA revision: 2017 October 12
 
-    real(wp) function EQEQ94 ( date1, date2 )
+    function EQEQ94 ( date1, date2 ) result(eqe)
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
+    real(wp),intent(in) :: date1 !! TDB date (Note 1)
+    real(wp),intent(in) :: date2 !! TDB date (Note 1)
+    real(wp) :: eqe !! equation of the equinoxes (Note 2)
 
     real(wp) :: t, om, dpsi, deps, eps0
 
@@ -11024,8 +10970,8 @@
     eps0 = OBL80 ( date1, date2 )
 
     !  Equation of the equinoxes.
-    EQEQ94 = dpsi * cos(eps0) + das2r * ( 0.00264d0 * sin(om) + &
-                                          0.000063d0 * sin(om+om))
+    eqe = dpsi * cos(eps0) + das2r * ( 0.00264d0 * sin(om) + &
+                                       0.000063d0 * sin(om+om))
 
     end function EQEQ94
 !***********************************************************************
@@ -11035,12 +10981,6 @@
 !  Earth rotation angle (IAU 2000 model).
 !
 !  Status:  canonical model.
-!
-!  Given:
-!     DJ1,DJ2     d      UT1 as a 2-part Julian Date (see note)
-!
-!  The result is the Earth rotation angle (radians), in the range 0 to
-!  2pi.
 !
 !### Notes
 !
@@ -11082,12 +11022,13 @@
 !### History
 !  * IAU SOFA revision: 2009 December 15
 
-    real(wp) function ERA00 ( dj1, dj2 )
+    function ERA00 ( dj1, dj2 ) result(era)
 
     implicit none
 
-    real(wp) :: dj1
-    real(wp) :: dj2
+    real(wp),intent(in) :: dj1 !! UT1 as a 2-part Julian Date (see note)
+    real(wp),intent(in) :: dj2 !! UT1 as a 2-part Julian Date (see note)
+    real(wp) :: era !! the Earth rotation angle (radians), in the range 0 to 2pi.
 
     real(wp) :: d1, d2, t, f
 
@@ -11105,8 +11046,8 @@
     f = mod ( d1, 1d0 ) + mod ( d2, 1d0 )
 
     !  Earth rotation angle at this UT1.
-    ERA00 = ANP ( d2pi * ( f + 0.7790572732640d0 &
-                             + 0.00273781191135448d0 * t ) )
+    era = ANP ( d2pi * ( f + 0.7790572732640d0 &
+                           + 0.00273781191135448d0 * t ) )
 
     end function ERA00
 !***********************************************************************
@@ -11117,12 +11058,6 @@
 !  mean elongation of the Moon from the Sun.
 !
 !  Status:  canonical model.
-!
-!  Given:
-!     T           d    TDB, Julian centuries since J2000.0 (Note 1)
-!
-!  Returned:
-!     FAD03   d    D, radians (Note 2)
 !
 !### Notes
 !
@@ -11143,21 +11078,22 @@
 !### History
 !  * IAU SOFA revision: 2009 December 15
 
-    real(wp) function FAD03 ( t )
+    function FAD03 ( t ) result(fa)
 
     implicit none
 
-    real(wp) :: t
+    real(wp),intent(in) :: t !! TDB, Julian centuries since J2000.0 (Note 1)
+    real(wp) :: fa !! D, radians (Note 2)
 
     !  Arcseconds in a full circle.
     real(wp),parameter :: turnas = 1296000d0
 
     !  Mean elongation of the Moon from the Sun (IERS Conventions 2003).
-    FAD03 = mod (  1072260.703692d0 + &
-                  t*( 1602961601.2090d0 + &
-                  t*(        - 6.3706d0 + &
-                  t*(          0.006593d0 + &
-                  t*(        - 0.00003169d0 )))), turnas ) * das2r
+    fa = mod (  1072260.703692d0 + &
+                t*( 1602961601.2090d0 + &
+                t*(        - 6.3706d0 + &
+                t*(          0.006593d0 + &
+                t*(        - 0.00003169d0 )))), turnas ) * das2r
 
     end function FAD03
 !***********************************************************************
@@ -11168,12 +11104,6 @@
 !  mean longitude of Earth.
 !
 !  Status:  canonical model.
-!
-!  Given:
-!     T           d    TDB, Julian centuries since J2000.0 (Note 1)
-!
-!  Returned:
-!     FAE03   d    mean longitude of Earth, radians (Note 2)
 !
 !### Notes
 !
@@ -11197,14 +11127,15 @@
 !### History
 !  * IAU SOFA revision: 2009 December 15
 
-    real(wp) function FAE03 ( t )
+    function FAE03 ( t ) result(fae)
 
     implicit none
 
-    real(wp) :: t
+    real(wp),intent(in) :: t !! TDB, Julian centuries since J2000.0 (Note 1)
+    real(wp) :: fae !! mean longitude of Earth, radians (Note 2)
 
     !  Mean longitude of Earth (IERS Conventions 2003).
-    FAE03= mod ( 1.753470314d0 + 628.3075849991d0 * t, d2pi )
+    fae = mod ( 1.753470314d0 + 628.3075849991d0 * t, d2pi )
 
     end function FAE03
 !***********************************************************************
@@ -11217,12 +11148,6 @@
 !
 !  Status:  canonical model.
 !
-!  Given:
-!     T           d    TDB, Julian centuries since J2000.0 (Note 1)
-!
-!  Returned:
-!     FAF03   d    F, radians (Note 2)
-!
 !### Notes
 !
 !  1. Though T is strictly TDB, it is usually more convenient to use TT,
@@ -11242,22 +11167,23 @@
 !### History
 !  * IAU SOFA revision: 2009 December 15
 
-    real(wp) function FAF03 ( t )
+    function FAF03 ( t ) result(f)
 
     implicit none
 
-    real(wp) :: t
+    real(wp),intent(in) :: t !! TDB, Julian centuries since J2000.0 (Note 1)
+    real(wp) :: f !! F, radians (Note 2)
 
     !  Arcseconds in a full circle.
     real(wp),parameter :: turnas = 1296000d0
 
     !  Mean longitude of the Moon minus that of the ascending node
     !  (IERS Conventions 2003).
-    FAF03 = mod (       335779.526232d0 + &
-                      t*( 1739527262.8478d0 + &
-                      t*(       - 12.7512d0 + &
-                      t*(       -  0.001037d0 + &
-                      t*(          0.00000417d0 )))), turnas ) * das2r
+    f = mod ( 335779.526232d0 + &
+               t*( 1739527262.8478d0 + &
+               t*(       - 12.7512d0 + &
+               t*(       -  0.001037d0 + &
+               t*(          0.00000417d0 )))), turnas ) * das2r
 
     end function FAF03
 !***********************************************************************
@@ -11268,12 +11194,6 @@
 !  mean longitude of Jupiter.
 !
 !  Status:  canonical model.
-!
-!  Given:
-!     T           d    TDB, Julian centuries since J2000.0 (Note 1)
-!
-!  Returned:
-!     FAJU03  d    mean longitude of Jupiter, radians (Note 2)
 !
 !### Notes
 !
@@ -11297,14 +11217,15 @@
 !### History
 !  * IAU SOFA revision: 2009 December 15
 
-    real(wp) function FAJU03 ( t )
+    real(wp) function FAJU03 ( t ) result(fa)
 
     implicit none
 
-    real(wp) :: t
+    real(wp),intent(in) :: t !! TDB, Julian centuries since J2000.0 (Note 1)
+    real(wp) :: fa !! mean longitude of Jupiter, radians (Note 2)
 
     !  Mean longitude of Jupiter (IERS Conventions 2003).
-    FAJU03= mod ( 0.599546497d0 + 52.9690962641d0 * t, d2pi )
+    fa = mod ( 0.599546497d0 + 52.9690962641d0 * t, d2pi )
 
     end function FAJU03
 !***********************************************************************
@@ -11315,12 +11236,6 @@
 !  mean anomaly of the Moon.
 !
 !  Status:  canonical model.
-!
-!  Given:
-!     T           d    TDB, Julian centuries since J2000.0 (Note 1)
-!
-!  Returned:
-!     FAL03   d    l, radians (Note 2)
 !
 !### Notes
 !
@@ -11341,21 +11256,22 @@
 !### History
 !  * IAU SOFA revision: 2009 December 15
 
-    real(wp) function FAL03 ( t )
+    function FAL03 ( t ) result(l)
 
     implicit none
 
-    real(wp) :: t
+    real(wp),intent(in) :: t !! TDB, Julian centuries since J2000.0 (Note 1)
+    real(wp) :: l !! l, radians (Note 2)
 
     !  Arcseconds in a full circle.
     real(wp),parameter :: turnas = 1296000d0
 
     !  Mean anomaly of the Moon (IERS Conventions 2003).
-    FAL03 = mod (   485868.249036d0 + &
-                  t*( 1717915923.2178d0 + &
-                  t*(         31.8792d0 + &
-                  t*(          0.051635d0 + &
-                  t*(        - 0.00024470d0 )))), turnas ) * das2r
+    l = mod ( 485868.249036d0 + &
+              t*( 1717915923.2178d0 + &
+              t*(         31.8792d0 + &
+              t*(          0.051635d0 + &
+              t*(        - 0.00024470d0 )))), turnas ) * das2r
 
     end function FAL03
 !***********************************************************************
