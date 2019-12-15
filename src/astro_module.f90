@@ -11219,7 +11219,7 @@
 !### History
 !  * IAU SOFA revision: 2009 December 15
 
-    real(wp) function FAJU03 ( t ) result(fa)
+    function FAJU03 ( t ) result(fa)
 
     implicit none
 
