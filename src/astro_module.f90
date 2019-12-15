@@ -22,6 +22,8 @@
 !  * get rid of the "Called:" blocks in the headers
 !  * added RESULT() to functions.
 !
+!  * changed DATA statements to PARAMETERs
+!
 !### Original SOFA Copyright Notice
 !
 !  Copyright (C) 2019
@@ -11283,12 +11285,6 @@
 !
 !  Status:  canonical model.
 !
-!  Given:
-!     T           d    TDB, Julian centuries since J2000.0 (Note 1)
-!
-!  Returned:
-!     FALP03  d    l', radians (Note 2)
-!
 !### Notes
 !
 !  1. Though T is strictly TDB, it is usually more convenient to use TT,
@@ -11308,21 +11304,22 @@
 !### History
 !  * IAU SOFA revision: 2009 December 15
 
-    real(wp) function FALP03 ( t )
+    function FALP03 ( t ) result(res)
 
     implicit none
 
-    real(wp) :: t
+    real(wp),intent(in) :: t !! TDB, Julian centuries since J2000.0 (Note 1)
+    real(wp) :: res !! l', radians (Note 2)
 
     !  Arcseconds in a full circle.
     real(wp),parameter :: turnas = 1296000d0
 
     !  Mean anomaly of the Sun (IERS Conventions 2003).
-    FALP03 = mod ( 1287104.793048d0 + &
-                   t*( 129596581.0481d0 + &
-                   t*(       - 0.5532d0 + &
-                   t*(         0.000136d0 + &
-                   t*(       - 0.00001149d0 )))), turnas ) * das2r
+    res = mod ( 1287104.793048d0 + &
+                t*( 129596581.0481d0 + &
+                t*(       - 0.5532d0 + &
+                t*(         0.000136d0 + &
+                t*(       - 0.00001149d0 )))), turnas ) * das2r
 
     end function FALP03
 !***********************************************************************
@@ -11334,12 +11331,6 @@
 !
 !  Status:  canonical model.
 !
-!  Given:
-!     T           d    TDB, Julian centuries since J2000.0 (Note 1)
-!
-!  Returned:
-!     FAMA03  d    mean longitude of Mars, radians (Note 2)
-!
 !### Notes
 !
 !  1. Though T is strictly TDB, it is usually more convenient to use TT,
@@ -11362,14 +11353,15 @@
 !### History
 !  * IAU SOFA revision: 2009 December 15
 
-    real(wp) function FAMA03 ( t )
+    function FAMA03 ( t ) result(res)
 
     implicit none
 
-    real(wp) :: t
+    real(wp),intent(in) :: t !! TDB, Julian centuries since J2000.0 (Note 1)
+    real(wp) :: res !! mean longitude of Mars, radians (Note 2)
 
     !  Mean longitude of Mars (IERS Conventions 2003).
-    FAMA03= mod ( 6.203480913d0 + 334.0612426700d0 * t, d2pi )
+    res = mod ( 6.203480913d0 + 334.0612426700d0 * t, d2pi )
 
     end function FAMA03
 !***********************************************************************
@@ -11381,12 +11373,6 @@
 !
 !  Status:  canonical model.
 !
-!  Given:
-!     T           d    TDB, Julian centuries since J2000.0 (Note 1)
-!
-!  Returned:
-!     FAME03  d    mean longitude of Mercury, radians (Note 2)
-!
 !### Notes
 !
 !  1. Though T is strictly TDB, it is usually more convenient to use TT,
@@ -11409,14 +11395,15 @@
 !### History
 !  * IAU SOFA revision: 2009 December 15
 
-    real(wp) function FAME03 ( t )
+    function FAME03 ( t ) result(res)
 
     implicit none
 
-    real(wp) :: t
+    real(wp),intent(in) :: t !! TDB, Julian centuries since J2000.0 (Note 1)
+    real(wp) :: res !! mean longitude of Mercury, radians (Note 2)
 
     !  Mean longitude of Mercury (IERS Conventions 2003).
-    FAME03 = mod ( 4.402608842d0 + 2608.7903141574d0 * t, d2pi )
+    res = mod ( 4.402608842d0 + 2608.7903141574d0 * t, d2pi )
 
     end function FAME03
 !***********************************************************************
@@ -11427,12 +11414,6 @@
 !  mean longitude of Neptune.
 !
 !  Status:  canonical model.
-!
-!  Given:
-!     T           d    TDB, Julian centuries since J2000.0 (Note 1)
-!
-!  Returned:
-!     FANE03  d    mean longitude of Neptune, radians (Note 2)
 !
 !### Notes
 !
@@ -11453,14 +11434,15 @@
 !### History
 !  * IAU SOFA revision: 2009 December 15
 
-    real(wp) function FANE03 ( t )
+    function FANE03 ( t ) result(res)
 
     implicit none
 
-    real(wp) :: t
+    real(wp),intent(in) :: t !! TDB, Julian centuries since J2000.0 (Note 1)
+    real(wp) :: res !! mean longitude of Neptune, radians (Note 2)
 
     !  Mean longitude of Neptune (IERS Conventions 2003).
-    FANE03= mod ( 5.311886287d0 + 3.8133035638d0 * t, d2pi )
+    res = mod ( 5.311886287d0 + 3.8133035638d0 * t, d2pi )
 
     end function FANE03
 !***********************************************************************
@@ -11471,12 +11453,6 @@
 !  mean longitude of the Moon's ascending node.
 !
 !  Status:  canonical model.
-!
-!  Given:
-!     T           d    TDB, Julian centuries since J2000.0 (Note 1)
-!
-!  Returned:
-!     FAOM03  d    Omega, radians (Note 2)
 !
 !### Notes
 !
@@ -11497,21 +11473,22 @@
 !### History
 !  * IAU SOFA revision: 2009 December 15
 
-    real(wp) function FAOM03 ( t )
+    function FAOM03 ( t ) result(res)
 
     implicit none
 
-    real(wp) :: t
+    real(wp),intent(in) :: t !! TDB, Julian centuries since J2000.0 (Note 1)
+    real(wp) :: res !! Omega, radians (Note 2)
 
     !  Arcseconds in a full circle.
     real(wp),parameter :: turnas = 1296000d0
 
     !  Mean longitude of the Moon's ascending node (IERS Conventions 2003).
-    FAOM03 = mod (      450160.398036d0 + &
-                       t*( - 6962890.5431d0 + &
-                       t*(         7.4722d0 + &
-                       t*(         0.007702d0 + &
-                       t*(       - 0.00005939d0 )))), turnas ) * das2r
+    res  = mod ( 450160.398036d0 + &
+                 t*( - 6962890.5431d0 + &
+                 t*(         7.4722d0 + &
+                 t*(         0.007702d0 + &
+                 t*(       - 0.00005939d0 )))), turnas ) * das2r
 
     end function FAOM03
 !***********************************************************************
@@ -11522,12 +11499,6 @@
 !  general accumulated precession in longitude.
 !
 !  Status:  canonical model.
-!
-!  Given:
-!     T           d    TDB, Julian centuries since J2000.0 (Note 1)
-!
-!  Returned:
-!     FAPA03  d    general precession in longitude, radians (Note 2)
 !
 !### Notes
 !
@@ -11552,14 +11523,15 @@
 !### History
 !  * IAU SOFA revision: 2009 December 15
 
-    real(wp) function FAPA03 ( t )
+    function FAPA03 ( t ) result(res)
 
     implicit none
 
-    real(wp) :: t
+    real(wp),intent(in) :: t !! TDB, Julian centuries since J2000.0 (Note 1)
+    real(wp) :: res !! general precession in longitude, radians (Note 2)
 
     !  General accumulated precession in longitude.
-    FAPA03= ( 0.024381750d0 + 0.00000538691d0 * t ) * t
+    res = ( 0.024381750d0 + 0.00000538691d0 * t ) * t
 
     end function FAPA03
 !***********************************************************************
@@ -11570,12 +11542,6 @@
 !  mean longitude of Saturn.
 !
 !  Status:  canonical model.
-!
-!  Given:
-!     T           d    TDB, Julian centuries since J2000.0 (Note 1)
-!
-!  Returned:
-!     FASA03  d    mean longitude of Saturn, radians (Note 2)
 !
 !### Notes
 !
@@ -11599,14 +11565,15 @@
 !### History
 !  * IAU SOFA revision: 2009 December 15
 
-    real(wp) function FASA03 ( t )
+    function FASA03 ( t ) result(res)
 
     implicit none
 
-    real(wp) :: t
+    real(wp),intent(in) :: t !! TDB, Julian centuries since J2000.0 (Note 1)
+    real(wp) :: res !! mean longitude of Saturn, radians (Note 2)
 
     !  Mean longitude of Saturn (IERS Conventions 2003).
-    FASA03= mod ( 0.874016757d0 + 21.3299104960d0 * t, d2pi )
+    res = mod ( 0.874016757d0 + 21.3299104960d0 * t, d2pi )
 
     end function FASA03
 !***********************************************************************
@@ -11617,12 +11584,6 @@
 !  mean longitude of Uranus.
 !
 !  Status:  canonical model.
-!
-!  Given:
-!     T           d    TDB, Julian centuries since J2000.0 (Note 1)
-!
-!  Returned:
-!     FAUR03  d    mean longitude of Uranus, radians (Note 2)
 !
 !### Notes
 !
@@ -11643,14 +11604,15 @@
 !### History
 !  * IAU SOFA revision: 2009 December 15
 
-    real(wp) function FAUR03 ( t )
+    function FAUR03 ( t ) result(res)
 
     implicit none
 
-    real(wp) :: t
+    real(wp),intent(in) :: t !! TDB, Julian centuries since J2000.0 (Note 1)
+    real(wp) :: res !! mean longitude of Uranus, radians (Note 2)
 
     !  Mean longitude of Uranus (IERS Conventions 2003).
-    FAUR03= mod ( 5.481293872d0 + 7.4781598567d0 * t, d2pi )
+    res = mod ( 5.481293872d0 + 7.4781598567d0 * t, d2pi )
 
     end function FAUR03
 !***********************************************************************
@@ -11661,12 +11623,6 @@
 !  mean longitude of Venus.
 !
 !  Status:  canonical model.
-!
-!  Given:
-!     T           d    TDB, Julian centuries since J2000.0 (Note 1)
-!
-!  Returned:
-!     FAVE03  d    mean longitude of Venus, radians (Note 2)
 !
 !### Notes
 !
@@ -11690,14 +11646,15 @@
 !### History
 !  * IAU SOFA revision: 2009 December 15
 
-    real(wp) function FAVE03 ( t )
+    function FAVE03 ( t ) result(res)
 
     implicit none
 
-    real(wp) :: t
+    real(wp),intent(in) :: t !! TDB, Julian centuries since J2000.0 (Note 1)
+    real(wp) :: res !! mean longitude of Venus, radians (Note 2)
 
     !  Mean longitude of Venus (IERS Conventions 2003).
-    FAVE03= mod ( 3.176146697d0 + 1021.3285546211d0 * t, d2pi )
+    res = mod ( 3.176146697d0 + 1021.3285546211d0 * t, d2pi )
 
     end function FAVE03
 !***********************************************************************
@@ -11711,18 +11668,6 @@
 !  This routine converts a star's catalog data from the old FK4
 !  (Bessel-Newcomb) system to the later IAU 1976 FK5 (Fricke) system.
 !
-!  Given:  (all B1950.0, FK4)
-!     R1950,D1950      d     B1950.0 RA,Dec (rad)
-!     DR1950,DD1950    d     B1950.0 proper motions (rad/trop.yr)
-!     P1950            d     parallax (arcsec)
-!     V1950            d     radial velocity (km/s, +ve = moving away)
-!
-!  Returned:  (all J2000.0, FK5)
-!     R2000,D2000      d     J2000.0 RA,Dec (rad)
-!     DR2000,DD2000    d     J2000.0 proper motions (rad/Jul.yr)
-!     P2000            d     parallax (arcsec)
-!     V2000            d     radial velocity (km/s, +ve = moving away)
-!
 !### Notes
 !
 !  1. The proper motions in RA are dRA/dt rather than cos(Dec)*dRA/dt,
@@ -11730,20 +11675,20 @@
 !
 !  2. The conversion is somewhat complicated, for several reasons:
 !
-!     . Change of standard epoch from B1950.0 to J2000.0.
+!     * Change of standard epoch from B1950.0 to J2000.0.
 !
-!     . An intermediate transition date of 1984 January 1.0 TT.
+!     * An intermediate transition date of 1984 January 1.0 TT.
 !
-!     . A change of precession model.
+!     * A change of precession model.
 !
-!     . Change of time unit for proper motion (tropical to Julian).
+!     * Change of time unit for proper motion (tropical to Julian).
 !
-!     . FK4 positions include the E-terms of aberration, to simplify the
+!     * FK4 positions include the E-terms of aberration, to simplify the
 !       hand computation of annual aberration.  FK5 positions assume a
 !       rigorous aberration computation based on the Earth's barycentric
 !       velocity.
 !
-!     . The E-terms also affect proper motions, and in particular cause
+!     * The E-terms also affect proper motions, and in particular cause
 !       objects at large distances to exhibit fictitious proper motions.
 !
 !     The algorithm is based on Smith et al. (1989) and Yallop et al.
@@ -11804,18 +11749,18 @@
 
     implicit none
 
-    real(wp) :: r1950
-    real(wp) :: d1950
-    real(wp) :: dr1950
-    real(wp) :: dd1950
-    real(wp) :: p1950
-    real(wp) :: v1950
-    real(wp) :: r2000
-    real(wp) :: d2000
-    real(wp) :: dr2000
-    real(wp) :: dd2000
-    real(wp) :: p2000
-    real(wp) :: v2000
+    real(wp),intent(in) :: r1950 !! B1950.0 RA (rad)
+    real(wp),intent(in) :: d1950 !! B1950.0 Dec (rad)
+    real(wp),intent(in) :: dr1950 !! B1950.0 proper motions (rad/trop.yr)
+    real(wp),intent(in) :: dd1950 !! B1950.0 proper motions (rad/trop.yr)
+    real(wp),intent(in) :: p1950 !! parallax (arcsec)
+    real(wp),intent(in) :: v1950 !! radial velocity (km/s, +ve = moving away)
+    real(wp),intent(out) :: r2000 !! J2000.0 RA (rad)
+    real(wp),intent(out) :: d2000 !! J2000.0 Dec (rad)
+    real(wp),intent(out) :: dr2000 !! J2000.0 proper motions (rad/Jul.yr)
+    real(wp),intent(out) :: dd2000 !! J2000.0 proper motions (rad/Jul.yr)
+    real(wp),intent(out) :: p2000 !! parallax (arcsec)
+    real(wp),intent(out) :: v2000 !! radial velocity (km/s, +ve = moving away)
 
     !  Radians per year to arcsec per century
     real(wp),parameter :: pmf = 100d0*60d0*60d0*360d0/d2pi
@@ -11927,13 +11872,6 @@
 !  the routine requires the epoch at which the position in the FK4
 !  system was determined.
 !
-!  Given:
-!     R1950,D1950      d     B1950.0 FK4 RA,Dec at epoch (rad)
-!     BEPOCH           d     Besselian epoch (e.g. 1979.3D0)
-!
-!  Returned:
-!     R2000,D2000      d     J2000.0 FK5 RA,Dec (rad)
-!
 !### Notes
 !
 !  1. The epoch BEPOCH is strictly speaking Besselian, but if a Julian
@@ -11983,11 +11921,11 @@
 
     implicit none
 
-    real(wp) :: r1950
-    real(wp) :: d1950
-    real(wp) :: bepoch
-    real(wp) :: r2000
-    real(wp) :: d2000
+    real(wp),intent(in) :: r1950 !! B1950.0 FK4 RA at epoch (rad)
+    real(wp),intent(in) :: d1950 !! B1950.0 FK4 Dec at epoch (rad)
+    real(wp),intent(in) :: bepoch !! Besselian epoch (e.g. 1979.3D0)
+    real(wp),intent(out) :: r2000 !! J2000.0 FK5 RA (rad)
+    real(wp),intent(out) :: d2000 !! J2000.0 FK5 Dec (rad)
 
     !  Radians per year to arcsec per century
     real(wp),parameter :: pmf = 100d0*60d0*60d0*360d0/d2pi
@@ -12061,18 +11999,6 @@
 !
 !  Status:  support routine.
 !
-!  Given:  (all J2000.0, FK5)
-!     R2000,D2000      d     J2000.0 RA,Dec (rad)
-!     DR2000,DD2000    d     J2000.0 proper motions (rad/Jul.yr)
-!     P2000            d     parallax (arcsec)
-!     V2000            d     radial velocity (km/s, +ve = moving away)
-!
-!  Returned:  (all B1950.0, FK4)
-!     R1950,D1950      d     B1950.0 RA,Dec (rad)
-!     DR1950,DD1950    d     B1950.0 proper motions (rad/trop.yr)
-!     P1950            d     parallax (arcsec)
-!     V1950            d     radial velocity (km/s, +ve = moving away)
-!
 !### Notes
 !
 !  1. The proper motions in RA are dRA/dt rather than cos(Dec)*dRA/dt,
@@ -12080,20 +12006,20 @@
 !
 !  2. The conversion is somewhat complicated, for several reasons:
 !
-!     . Change of standard epoch from J2000.0 to B1950.0.
+!     * Change of standard epoch from J2000.0 to B1950.0.
 !
-!     . An intermediate transition date of 1984 January 1.0 TT.
+!     * An intermediate transition date of 1984 January 1.0 TT.
 !
-!     . A change of precession model.
+!     * A change of precession model.
 !
-!     . Change of time unit for proper motion (Julian to tropical).
+!     * Change of time unit for proper motion (Julian to tropical).
 !
-!     . FK4 positions include the E-terms of aberration, to simplify the
+!     * FK4 positions include the E-terms of aberration, to simplify the
 !       hand computation of annual aberration.  FK5 positions assume a
 !       rigorous aberration computation based on the Earth's barycentric
 !       velocity.
 !
-!     . The E-terms also affect proper motions, and in particular cause
+!     * The E-terms also affect proper motions, and in particular cause
 !       objects at large distances to exhibit fictitious proper motions.
 !
 !     The algorithm is based on Smith et al. (1989) and Yallop et al.
@@ -12150,18 +12076,18 @@
 
     implicit none
 
-    real(wp) :: r2000
-    real(wp) :: d2000
-    real(wp) :: dr2000
-    real(wp) :: dd2000
-    real(wp) :: p2000
-    real(wp) :: v2000
-    real(wp) :: r1950
-    real(wp) :: d1950
-    real(wp) :: dr1950
-    real(wp) :: dd1950
-    real(wp) :: p1950
-    real(wp) :: v1950
+    real(wp),intent(in) :: r2000 !! J2000.0 RA (rad)
+    real(wp),intent(in) :: d2000 !! J2000.0 Dec (rad)
+    real(wp),intent(in) :: dr2000 !! J2000.0 proper motions (rad/Jul.yr)
+    real(wp),intent(in) :: dd2000 !! J2000.0 proper motions (rad/Jul.yr)
+    real(wp),intent(in) :: p2000 !! parallax (arcsec)
+    real(wp),intent(in) :: v2000 !! radial velocity (km/s, +ve = moving away)
+    real(wp),intent(out) :: r1950 !! B1950.0 RA (rad)
+    real(wp),intent(out) :: d1950 !! B1950.0 Dec (rad)
+    real(wp),intent(out) :: dr1950 !! B1950.0 proper motions (rad/trop.yr)
+    real(wp),intent(out) :: dd1950 !! B1950.0 proper motions (rad/trop.yr)
+    real(wp),intent(out) :: p1950 !! parallax (arcsec)
+    real(wp),intent(out) :: v1950 !! radial velocity (km/s, +ve = moving away)
 
     !  Radians per year to arcsec per century
     real(wp),parameter :: pmf = 100d0*60d0*60d0*360d0/d2pi
@@ -12284,22 +12210,6 @@
 !
 !  Status:  support routine.
 !
-!  Given (all FK5, equinox J2000.0, epoch J2000.0):
-!     R5        d      RA (radians)
-!     D5        d      Dec (radians)
-!     DR5       d      proper motion in RA (dRA/dt, rad/Jyear)
-!     DD5       d      proper motion in Dec (dDec/dt, rad/Jyear)
-!     PX5       d      parallax (arcsec)
-!     RV5       d      radial velocity (km/s, positive = receding)
-!
-!  Returned (all Hipparcos, epoch J2000.0):
-!     RH        d      RA (radians)
-!     DH        d      Dec (radians)
-!     DRH       d      proper motion in RA (dRA/dt, rad/Jyear)
-!     DDH       d      proper motion in Dec (dDec/dt, rad/Jyear)
-!     PXH       d      parallax (arcsec)
-!     RVH       d      radial velocity (km/s, positive = receding)
-!
 !### Notes
 !
 !  1. This routine transforms FK5 star positions and proper motions into
@@ -12316,7 +12226,7 @@
 !
 !### Reference
 !
-!     F.Mignard & M.Froeschle, Astron.Astrophys., 354, 732-739 (2000).
+!  * F. Mignard & M. Froeschle, Astron.Astrophys., 354, 732-739 (2000).
 !
 !### History
 !  * IAU SOFA revision: 2017 October 12
@@ -12326,21 +12236,21 @@
 
     implicit none
 
-    real(wp) :: r5
-    real(wp) :: d5
-    real(wp) :: dr5
-    real(wp) :: dd5
-    real(wp) :: px5
-    real(wp) :: rv5
-    real(wp) :: rh
-    real(wp) :: dh
-    real(wp) :: drh
-    real(wp) :: ddh
-    real(wp) :: pxh
-    real(wp) :: rvh
+    real(wp),intent(in) :: r5 !! RA (radians)
+    real(wp),intent(in) :: d5 !! Dec (radians)
+    real(wp),intent(in) :: dr5 !! proper motion in RA (dRA/dt, rad/Jyear)
+    real(wp),intent(in) :: dd5 !! proper motion in Dec (dDec/dt, rad/Jyear)
+    real(wp),intent(in) :: px5 !! parallax (arcsec)
+    real(wp),intent(in) :: rv5 !! radial velocity (km/s, positive = receding)
+    real(wp),intent(out) :: rh !! RA (radians)
+    real(wp),intent(out) :: dh !! Dec (radians)
+    real(wp),intent(out) :: drh !! proper motion in RA (dRA/dt, rad/Jyear)
+    real(wp),intent(out) :: ddh !! proper motion in Dec (dDec/dt, rad/Jyear)
+    real(wp),intent(out) :: pxh !! parallax (arcsec)
+    real(wp),intent(out) :: rvh !! radial velocity (km/s, positive = receding)
 
     real(wp) :: pv5(3,2), r5h(3,3), s5h(3), wxp(3), vv(3), &
-                     pvh(3,2)
+                pvh(3,2)
     integer :: j, i
 
     !  FK5 barycentric position/velocity pv-vector (normalized).
@@ -12379,14 +12289,6 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     R2000,D2000      d     J2000.0 FK5 RA,Dec (rad)
-!     BEPOCH           d     Besselian epoch (e.g. 1950D0)
-!
-!  Returned:
-!     R1950,D1950      d     B1950.0 FK4 RA,Dec (rad) at epoch BEPOCH
-!     DR1950,DD1950    d     B1950.0 FK4 proper motions (rad/trop.yr)
-!
 !### Notes
 !
 !  1. In contrast to the FK524 routine, here the FK5 proper motions,
@@ -12421,20 +12323,20 @@
 
     implicit none
 
-    real(wp) :: r2000
-    real(wp) :: d2000
-    real(wp) :: bepoch
-    real(wp) :: r1950
-    real(wp) :: d1950
-    real(wp) :: dr1950
-    real(wp) :: dd1950
+    real(wp),intent(in) :: r2000 !! J2000.0 FK5 RA (rad)
+    real(wp),intent(in) :: d2000 !! J2000.0 FK5 Dec (rad)
+    real(wp),intent(in) :: bepoch !! Besselian epoch (e.g. 1950D0)
+    real(wp),intent(out) :: r1950 !! B1950.0 FK4 RA (rad) at epoch BEPOCH
+    real(wp),intent(out) :: d1950 !! B1950.0 FK4 Dec (rad) at epoch BEPOCH
+    real(wp),intent(out) :: dr1950 !! B1950.0 FK4 proper motions (rad/trop.yr)
+    real(wp),intent(out) :: dd1950 !! B1950.0 FK4 proper motions (rad/trop.yr)
 
     real(wp) :: r, d, pr, pd, px, rv, p(3), w, v(3)
     integer :: i
 
     !  FK5 equinox J2000.0 to FK4 equinox B1950.0.
     call FK524 ( r2000, d2000, 0d0, 0d0, 0d0, 0d0, &
-                     r, d, pr, pd, px, rv )
+                 r, d, pr, pd, px, rv )
 
     !  Spherical to Cartesian.
     call S2C ( r, d, p )
@@ -12467,10 +12369,6 @@
 !
 !  Status:  support routine.
 !
-!  Returned:
-!     R5H     d(3,3)   r-matrix: FK5 rotation wrt Hipparcos (Note 2)
-!     S5H     d(3)     r-vector: FK5 spin wrt Hipparcos (Note 3)
-!
 !### Notes
 !
 !  1. This routine models the FK5 to Hipparcos transformation as a
@@ -12490,7 +12388,7 @@
 !
 !### Reference
 !
-!     F.Mignard & M.Froeschle, Astron.Astrophys., 354, 732-739 (2000).
+!  * F. Mignard & M. Froeschle, Astron.Astrophys., 354, 732-739 (2000).
 !
 !### History
 !  * IAU SOFA revision: 2017 October 12
@@ -12499,8 +12397,8 @@
 
     implicit none
 
-    real(wp),dimension(3,3) :: r5h
-    real(wp),dimension(3) :: s5h
+    real(wp),dimension(3,3),intent(out) :: r5h !! r-matrix: FK5 rotation wrt Hipparcos (Note 2)
+    real(wp),dimension(3),intent(out) :: s5h !! r-vector: FK5 spin wrt Hipparcos (Note 3)
 
     !  FK5 to Hipparcos orientation and spin (radians, radians/year)
     real(wp),parameter :: epx = -19.9d-3 * das2r
@@ -12534,15 +12432,6 @@
 !  Hipparcos catalogue, assuming zero Hipparcos proper motion.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     R5              d      FK5 RA (radians), equinox J2000.0, at date
-!     D5              d      FK5 Dec (radians), equinox J2000.0, at date
-!     DATE1,DATE2     d      TDB date (Notes 1,2)
-!
-!  Returned:
-!     RH              d      Hipparcos RA (radians)
-!     DH              d      Hipparcos Dec (radians)
 !
 !### Notes
 !
@@ -12582,7 +12471,7 @@
 !
 !### Reference
 !
-!     F.Mignard & M.Froeschle, Astron. Astrophys. 354, 732-739 (2000).
+!  * F. Mignard & M. Froeschle, Astron. Astrophys. 354, 732-739 (2000).
 !
 !### History
 !  * IAU SOFA revision: 2012 September 5
@@ -12591,12 +12480,12 @@
 
     implicit none
 
-    real(wp) :: r5
-    real(wp) :: d5
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp) :: rh
-    real(wp) :: dh
+    real(wp),intent(in) :: r5 !! FK5 RA (radians), equinox J2000.0, at date
+    real(wp),intent(in) :: d5 !! FK5 Dec (radians), equinox J2000.0, at date
+    real(wp),intent(in) :: date1 !! TDB date (Notes 1,2)
+    real(wp),intent(in) :: date2 !! TDB date (Notes 1,2)
+    real(wp),intent(out) :: rh !! Hipparcos RA (radians)
+    real(wp),intent(out) :: dh !! Hipparcos Dec (radians)
 
     real(wp) :: t, p5e(3), r5h(3,3), s5h(3), vst(3), rst(3,3), &
                 p5(3), ph(3), w
@@ -12634,15 +12523,6 @@
 !  Form rotation matrix given the Fukushima-Williams angles.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     GAMB       d      F-W angle gamma_bar (radians)
-!     PHIB       d      F-W angle phi_bar (radians)
-!     PSI        d      F-W angle psi (radians)
-!     EPS        d      F-W angle epsilon (radians)
-!
-!  Returned:
-!     R        d(3,3)   rotation matrix
 !
 !### Notes
 !
@@ -12684,7 +12564,7 @@
 !
 !### Reference
 !
-!     Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
+!  * Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
 !
 !### History
 !  * IAU SOFA revision:  2009 December 15
@@ -12693,11 +12573,11 @@
 
     implicit none
 
-    real(wp) :: gamb
-    real(wp) :: phib
-    real(wp) :: psi
-    real(wp) :: eps
-    real(wp),dimension(3,3) :: r
+    real(wp),intent(in) :: gamb !! F-W angle gamma_bar (radians)
+    real(wp),intent(in) :: phib !! F-W angle phi_bar (radians)
+    real(wp),intent(in) :: psi !! F-W angle psi (radians)
+    real(wp),intent(in) :: eps !! F-W angle epsilon (radians)
+    real(wp),dimension(3,3),intent(out) :: r !! rotation matrix
 
     !  Construct the matrix.
     call IR ( r )
@@ -12714,15 +12594,6 @@
 !  CIP X,Y given Fukushima-Williams bias-precession-nutation angles.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     GAMB       d      F-W angle gamma_bar (radians)
-!     PHIB       d      F-W angle phi_bar (radians)
-!     PSI        d      F-W angle psi (radians)
-!     EPS        d      F-W angle epsilon (radians)
-!
-!  Returned:
-!     X,Y        d      CIP unit vector X,Y
 !
 !### Notes
 !
@@ -12750,7 +12621,7 @@
 !
 !### Reference
 !
-!     Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
+!  * Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
 !
 !### History
 !  * IAU SOFA revision:  2013 September 2
@@ -12759,12 +12630,12 @@
 
     implicit none
 
-    real(wp) :: gamb
-    real(wp) :: phib
-    real(wp) :: psi
-    real(wp) :: eps
-    real(wp) :: x
-    real(wp) :: y
+    real(wp),intent(in) :: gamb !! F-W angle gamma_bar (radians)
+    real(wp),intent(in) :: phib !! F-W angle phi_bar (radians)
+    real(wp),intent(in) :: psi !! F-W angle psi (radians)
+    real(wp),intent(in) :: eps !! F-W angle epsilon (radians)
+    real(wp),intent(out) :: x !! CIP unit vector X,Y
+    real(wp),intent(out) :: y !! CIP unit vector X,Y
 
     real(wp) :: r(3,3)
 
@@ -12783,14 +12654,6 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     DL       d      galactic longitude (radians)
-!     DB       d      galactic latitude (radians)
-!
-!  Returned:
-!     DR       d      ICRS right ascension (radians)
-!     DD       d      ICRS declination (radians)
-!
 !### Notes
 !
 !  1. The IAU 1958 system of Galactic coordinates was defined with
@@ -12798,15 +12661,15 @@
 !     interpreting the system in a modern context, several factors have
 !     to be taken into account:
 !
-!     . The inclusion in FK4 positions of the E-terms of aberration.
+!     * The inclusion in FK4 positions of the E-terms of aberration.
 !
-!     . The distortion of the FK4 proper motion system by differential
+!     * The distortion of the FK4 proper motion system by differential
 !       Galactic rotation.
 !
-!     . The use of the B1950.0 equinox rather than the now-standard
+!     * The use of the B1950.0 equinox rather than the now-standard
 !       J2000.0.
 !
-!     . The frame bias between ICRS and the J2000.0 mean place system.
+!     * The frame bias between ICRS and the J2000.0 mean place system.
 !
 !     The Hipparcos Catalogue (Perryman & ESA 1997) provides a rotation
 !     matrix that transforms directly between ICRS and Galactic
@@ -12823,10 +12686,10 @@
 !  2. The inverse transformation is performed by the routine ICRS2G.
 !
 !### Reference
-!     Perryman M.A.C. & ESA, 1997, ESA SP-1200, The Hipparcos and Tycho
-!     catalogues.  Astrometric and photometric star catalogues
-!     derived from the ESA Hipparcos Space Astrometry Mission.  ESA
-!     Publications Division, Noordwijk, Netherlands.
+!  * Perryman M.A.C. & ESA, 1997, ESA SP-1200, The Hipparcos and Tycho
+!    catalogues.  Astrometric and photometric star catalogues
+!    derived from the ESA Hipparcos Space Astrometry Mission.  ESA
+!    Publications Division, Noordwijk, Netherlands.
 !
 !### History
 !  * IAU SOFA revision:  2015 January 9
@@ -12835,10 +12698,10 @@
 
     implicit none
 
-    real(wp) :: dl
-    real(wp) :: db
-    real(wp) :: dr
-    real(wp) :: dd
+    real(wp),intent(in) :: dl !! galactic longitude (radians)
+    real(wp),intent(in) :: db !! galactic latitude (radians)
+    real(wp),intent(out) :: dr !! ICRS right ascension (radians)
+    real(wp),intent(out) :: dd !! ICRS declination (radians)
 
     real(wp) v1(3), v2(3)
 
@@ -12891,18 +12754,6 @@
 !
 !  Status:  canonical transformation.
 !
-!  Given:
-!     N         i     ellipsoid identifier (Note 1)
-!     XYZ       d(3)  geocentric vector (Note 2)
-!
-!  Returned:
-!     ELONG     d     longitude (radians, east +ve, Note 3)
-!     PHI       d     latitude (geodetic, radians, Note 3)
-!     HEIGHT    d     height above ellipsoid (geodetic, Notes 2,3)
-!     J         i     status:  0 = OK
-!                             -1 = illegal identifier (Note 3)
-!                             -2 = internal error (Note 3)
-!
 !### Notes
 !
 !  1. The identifier N is a number that specifies the choice of
@@ -12932,12 +12783,15 @@
 
     implicit none
 
-    integer :: n
-    real(wp),dimension(3) :: xyz
-    real(wp) :: elong
-    real(wp) :: phi
-    real(wp) :: height
-    integer :: j
+    integer,intent(in) :: n !! ellipsoid identifier (Note 1)
+    real(wp),dimension(3),intent(in) :: xyz !! geocentric vector (Note 2)
+    real(wp),intent(out) :: elong !! longitude (radians, east +ve, Note 3)
+    real(wp),intent(out) :: phi !! latitude (geodetic, radians, Note 3)
+    real(wp),intent(out) :: height !! height above ellipsoid (geodetic, Notes 2,3)
+    integer,intent(out) :: j !! status:
+                             !! * 0 = OK
+                             !! * -1 = illegal identifier (Note 3)
+                             !! * -2 = internal error (Note 3)
 
     real(wp) :: a, f
 
@@ -12967,19 +12821,6 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     A         d      equatorial radius (Notes 2,4)
-!     F         d      flattening (Note 3)
-!     XYZ       d(3)   geocentric vector (Note 4)
-!
-!  Returned:
-!     ELONG     d      longitude (radians, east +ve)
-!     PHI       d      latitude (geodetic, radians)
-!     HEIGHT    d      height above ellipsoid (geodetic, Note 4)
-!     J         i      status:  0 = OK
-!                              -1 = illegal F
-!                              -2 = illegal A
-!
 !### Notes
 !
 !  1. This routine is closely based on the GCONV2H subroutine by
@@ -13006,9 +12847,9 @@
 !
 !### Reference
 !
-!     Fukushima, T., "Transformation from Cartesian to geodetic
-!     coordinates accelerated by Halley's method", J.Geodesy (2006)
-!     79: 689-693
+!  * Fukushima, T., "Transformation from Cartesian to geodetic
+!    coordinates accelerated by Halley's method", J.Geodesy (2006)
+!    79: 689-693
 !
 !### History
 !  * IAU SOFA revision: 2014 November 7
@@ -13017,13 +12858,16 @@
 
     implicit none
 
-    real(wp) :: a
-    real(wp) :: f
-    real(wp),dimension(3) :: xyz
-    real(wp) :: elong
-    real(wp) :: phi
-    real(wp) :: height
-    integer :: j
+    real(wp),intent(in) :: a !! equatorial radius (Notes 2,4)
+    real(wp),intent(in) :: f !! flattening (Note 3)
+    real(wp),dimension(3),intent(in) :: xyz !! geocentric vector (Note 4)
+    real(wp),intent(out) :: elong !! longitude (radians, east +ve)
+    real(wp),intent(out) :: phi !! latitude (geodetic, radians)
+    real(wp),intent(out) :: height !! height above ellipsoid (geodetic, Note 4)
+    integer,intent(out) :: j !! status:
+                             !! * 0 = OK
+                             !! * -1 = illegal F
+                             !! * -2 = illegal A
 
     real(wp) :: aeps2, e2, e4t, ec2, ec, b, x, y, z, p2, absz, p, &
                 s0, pn, zc, c0, c02, c03, s02, s03, a02, a0, a03, &
@@ -13128,18 +12972,6 @@
 !
 !  Status:  canonical transformation.
 !
-!  Given:
-!     N         i     ellipsoid identifier (Note 1)
-!     ELONG     d     longitude (radians, east +ve)
-!     PHI       d     latitude (geodetic, radians, Note 3)
-!     HEIGHT    d     height above ellipsoid (geodetic, Notes 2,3)
-!
-!  Returned:
-!     XYZ       d(3)  geocentric vector (Note 2)
-!     J         i     status:  0 = OK
-!                             -1 = illegal identifier (Note 3)
-!                             -2 = illegal case (Note 3)
-!
 !### Notes
 !
 !  1. The identifier N is a number that specifies the choice of
@@ -13170,12 +13002,15 @@
 
     implicit none
 
-    integer :: n
-    real(wp) :: elong
-    real(wp) :: phi
-    real(wp) :: height
-    real(wp),dimension(3) :: xyz
-    integer :: j
+    integer,intent(in) :: n !! ellipsoid identifier (Note 1)
+    real(wp),intent(in) :: elong !! longitude (radians, east +ve)
+    real(wp),intent(in) :: phi !! latitude (geodetic, radians, Note 3)
+    real(wp),intent(in) :: height !! height above ellipsoid (geodetic, Notes 2,3)
+    real(wp),dimension(3),intent(out) :: xyz !! geocentric vector (Note 2)
+    integer,intent(out) :: j !! status:
+                             !! *  0 = OK
+                             !! * -1 = illegal identifier (Note 3)
+                             !! * -2 = illegal case (Note 3)
 
     real(wp) :: a, f
 
@@ -13200,18 +13035,6 @@
 !  ellipsoid of specified form.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     A         d     equatorial radius (Notes 1,4)
-!     F         d     flattening (Notes 2,4)
-!     ELONG     d     longitude (radians, east +ve)
-!     PHI       d     latitude (geodetic, radians, Note 4)
-!     HEIGHT    d     height above ellipsoid (geodetic, Notes 3,4)
-!
-!  Returned:
-!     XYZ       d(3)  geocentric vector (Note 3)
-!     J         i     status:  0 = OK
-!                             -1 = illegal case (Note 4)
 !
 !### Notes
 !
@@ -13252,13 +13075,15 @@
 
     implicit none
 
-    real(wp) :: a
-    real(wp) :: f
-    real(wp) :: elong
-    real(wp) :: phi
-    real(wp) :: height
-    real(wp),dimension(3) :: xyz
-    integer :: j
+    real(wp),intent(in) :: a !! equatorial radius (Notes 1,4)
+    real(wp),intent(in) :: f !! flattening (Notes 2,4)
+    real(wp),intent(in) :: elong !! longitude (radians, east +ve)
+    real(wp),intent(in) :: phi !! latitude (geodetic, radians, Note 4)
+    real(wp),intent(in) :: height !! height above ellipsoid (geodetic, Notes 3,4)
+    real(wp),dimension(3),intent(out) :: xyz !! geocentric vector (Note 3)
+    integer,intent(out) :: j !! status:
+                             !! * 0 = OK
+                             !! * -1 = illegal case (Note 4)
 
     real(wp) :: sp, cp, w, d, ac, as, r
 
@@ -13295,13 +13120,6 @@
 !  resolutions).
 !
 !  Status:  canonical model.
-!
-!  Given:
-!     UTA, UTB     d      UT1 as a 2-part Julian Date (Notes 1,2)
-!     TTA, TTB     d      TT as a 2-part Julian Date (Notes 1,2)
-!
-!  Returned:
-!     GMST00   d      Greenwich mean sidereal time (radians)
 !
 !### Notes
 !
@@ -13353,14 +13171,15 @@
 !### History
 !  * IAU SOFA revision: 2009 December 15
 
-    real(wp) function GMST00 ( uta, utb, tta, ttb )
+    function GMST00 ( uta, utb, tta, ttb ) result(gmst)
 
     implicit none
 
-    real(wp) :: uta
-    real(wp) :: utb
-    real(wp) :: tta
-    real(wp) :: ttb
+    real(wp),intent(in) :: uta !! UT1 as a 2-part Julian Date (Notes 1,2)
+    real(wp),intent(in) :: utb !! UT1 as a 2-part Julian Date (Notes 1,2)
+    real(wp),intent(in) :: tta !! TT as a 2-part Julian Date (Notes 1,2)
+    real(wp),intent(in) :: ttb !! TT as a 2-part Julian Date (Notes 1,2)
+    real(wp) :: gmst !! Greenwich mean sidereal time (radians)
 
     real(wp) :: t
 
@@ -13368,13 +13187,13 @@
     t = ( ( tta-dj00 ) + ttb ) / djc
 
     !  Greenwich Mean Sidereal Time, IAU 2000.
-    GMST00 = ANP ( ERA00 ( uta, utb ) + &
-                           (    0.014506d0   + &
-                           ( 4612.15739966d0 + &
-                           (  + 1.39667721d0 + &
-                           (  - 0.00009344d0 + &
-                           (  + 0.00001882d0 ) &
-                                     * t ) * t ) * t ) * t ) * das2r )
+    gmst = ANP ( ERA00 ( uta, utb ) + &
+                       (    0.014506d0   + &
+                       ( 4612.15739966d0 + &
+                       (  + 1.39667721d0 + &
+                       (  - 0.00009344d0 + &
+                       (  + 0.00001882d0 ) &
+                                 * t ) * t ) * t ) * t ) * das2r )
 
     end function GMST00
 !***********************************************************************
@@ -13384,13 +13203,6 @@
 !  Greenwich mean sidereal time (consistent with IAU 2006 precession).
 !
 !  Status:  canonical model.
-!
-!  Given:
-!     UTA, UTB     d      UT1 as a 2-part Julian Date (Notes 1,2)
-!     TTA, TTB     d      TT as a 2-part Julian Date (Notes 1,2)
-!
-!  Returned:
-!     GMST06   d      Greenwich mean sidereal time (radians)
 !
 !### Notes
 !
@@ -13428,20 +13240,21 @@
 !
 !### Reference
 !
-!     Capitaine, N., Wallace, P.T. & Chapront, J., 2005,
-!     Astron.Astrophys. 432, 355
+!  * Capitaine, N., Wallace, P.T. & Chapront, J., 2005,
+!    Astron.Astrophys. 432, 355
 !
 !### History
 !  * IAU SOFA revision: 2010 March 9
 
-    real(wp) function GMST06 ( uta, utb, tta, ttb )
+    function GMST06 ( uta, utb, tta, ttb ) result(gmst)
 
     implicit none
 
-    real(wp) :: uta
-    real(wp) :: utb
-    real(wp) :: tta
-    real(wp) :: ttb
+    real(wp),intent(in) :: uta !! UT1 as a 2-part Julian Date (Notes 1,2)
+    real(wp),intent(in) :: utb !! UT1 as a 2-part Julian Date (Notes 1,2)
+    real(wp),intent(in) :: tta !! TT as a 2-part Julian Date (Notes 1,2)
+    real(wp),intent(in) :: ttb !! TT as a 2-part Julian Date (Notes 1,2)
+    real(wp) :: gmst !! Greenwich mean sidereal time (radians)
 
     real(wp) :: t
 
@@ -13449,14 +13262,14 @@
     t = ( ( tta-dj00 ) + ttb ) / djc
 
     !  Greenwich mean sidereal time, IAU 2006.
-    GMST06 = ANP ( ERA00 ( uta, utb ) + &
-                           (    0.014506d0    + &
-                           ( 4612.156534d0    + &
-                           (    1.3915817d0   + &
-                           (  - 0.00000044d0  + &
-                           (  - 0.000029956d0 + &
-                           (  - 0.0000000368d0 ) &
-                               * t ) * t ) * t ) * t ) * t ) * das2r )
+    gmst = ANP ( ERA00 ( uta, utb ) + &
+                       (    0.014506d0    + &
+                       ( 4612.156534d0    + &
+                       (    1.3915817d0   + &
+                       (  - 0.00000044d0  + &
+                       (  - 0.000029956d0 + &
+                       (  - 0.0000000368d0 ) &
+                           * t ) * t ) * t ) * t ) * t ) * das2r )
 
     end function GMST06
 !***********************************************************************
@@ -13678,11 +13491,11 @@
 !     that accuracy has been compromised for the sake of speed and
 !     convenience in two respects:
 !
-!     . UT is used instead of TDB (or TT) to compute the precession
+!     * UT is used instead of TDB (or TT) to compute the precession
 !       component of GMST and the equation of the equinoxes.  This
 !       results in errors of order 0.1 mas at present.
 !
-!     . The IAU 2000B abridged nutation model (McCarthy & Luzum, 2001)
+!     * The IAU 2000B abridged nutation model (McCarthy & Luzum, 2001)
 !       is used, introducing errors of up to 1 mas.
 !
 !  3. This GAST is compatible with the IAU 2000 resolutions and must be
@@ -14262,7 +14075,7 @@
 !
 !### Reference
 !
-!     F.Mignard & M.Froeschle, Astron. Astrophys. 354, 732-739 (2000).
+!  * F. Mignard & M. Froeschle, Astron. Astrophys. 354, 732-739 (2000).
 !
 !### History
 !  * IAU SOFA revision: 2012 September 5
@@ -14342,15 +14155,15 @@
 !     interpreting the system in a modern context, several factors have
 !     to be taken into account:
 !
-!     . The inclusion in FK4 positions of the E-terms of aberration.
+!     * The inclusion in FK4 positions of the E-terms of aberration.
 !
-!     . The distortion of the FK4 proper motion system by differential
+!     * The distortion of the FK4 proper motion system by differential
 !       Galactic rotation.
 !
-!     . The use of the B1950.0 equinox rather than the now-standard
+!     * The use of the B1950.0 equinox rather than the now-standard
 !       J2000.0.
 !
-!     . The frame bias between ICRS and the J2000.0 mean place system.
+!     * The frame bias between ICRS and the J2000.0 mean place system.
 !
 !     The Hipparcos Catalogue (Perryman & ESA 1997) provides a rotation
 !     matrix that transforms directly between ICRS and Galactic
@@ -20100,7 +19913,7 @@
 !
 !### Reference
 !
-!     Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
+!  * Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
 !
 !### History
 !  * IAU SOFA revision: 2009 December 15
@@ -20271,11 +20084,11 @@
 !     IAU 2000A frame bias and nutation.  The quoted polynomials are
 !     used in other SOFA routines:
 !
-!     . XY06 contains the polynomial parts of the X and Y series.
+!     * XY06 contains the polynomial parts of the X and Y series.
 !
-!     . S06 contains the polynomial part of the s+XY/2 series.
+!     * S06 contains the polynomial part of the s+XY/2 series.
 !
-!     . PFW06 implements the series for the Fukushima-Williams
+!     * PFW06 implements the series for the Fukushima-Williams
 !       angles that are with respect to the GCRS pole (i.e. the variants
 !       that include frame bias).
 !
@@ -20300,7 +20113,7 @@
 !
 !### Reference
 !
-!     Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
+!  * Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
 !
 !### History
 !  * IAU SOFA revision: 2011 December 6
@@ -20861,7 +20674,7 @@
 !
 !### Reference
 !
-!     Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
+!  * Hilton, J. et al., 2006, Celest.Mech.Dyn.Astron. 94, 351
 !
 !### History
 !  * IAU SOFA revision: 2009 December 15
