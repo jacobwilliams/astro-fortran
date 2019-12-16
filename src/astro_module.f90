@@ -13280,12 +13280,6 @@
 !
 !  Status:  canonical model.
 !
-!  Given:
-!     DJ1, DJ2     d      UT1 Julian Date (see note)
-!
-!  Returned:
-!     GMST82   d      Greenwich mean sidereal time (radians)
-!
 !### Notes
 !
 !  1. The UT1 epoch DJ1+DJ2 is a Julian Date, apportioned in any
@@ -13333,12 +13327,13 @@
 !### History
 !  * IAU SOFA revision: 2017 October 12
 
-    real(wp) function GMST82 ( dj1, dj2 )
+    function GMST82 ( dj1, dj2 ) result(gmst)
 
     implicit none
 
-    real(wp) :: dj1
-    real(wp) :: dj2
+    real(wp),intent(in) :: dj1 !! UT1 Julian Date (see note)
+    real(wp),intent(in) :: dj2 !! UT1 Julian Date (see note)
+    real(wp) :: gmst !! Greenwich mean sidereal time (radians)
 
     !  Coefficients of IAU 1982 GMST-UT1 model
     real(wp),parameter :: a = 24110.54841d0 - d2s/2d0
@@ -13365,7 +13360,7 @@
     f = d2s * ( mod(d1,1d0) + mod(d2,1d0) )
 
     !  GMST at this UT1.
-    GMST82 = ANP ( ds2r * ( (a+(b+(c+d*t)*t)*t) + f ) )
+    gmst = ANP ( ds2r * ( (a+(b+(c+d*t)*t)*t) + f ) )
 
     end function GMST82
 !***********************************************************************
@@ -13376,13 +13371,6 @@
 !  resolutions).
 !
 !  Status:  canonical model.
-!
-!  Given:
-!     UTA, UTB     d      UT1 as a 2-part Julian Date (Notes 1,2)
-!     TTA, TTB     d      TT as a 2-part Julian Date (Notes 1,2)
-!
-!  Returned:
-!     GST00A   d      Greenwich apparent sidereal time (radians)
 !
 !### Notes
 !
@@ -13435,17 +13423,17 @@
 !### History
 !  * IAU SOFA revision: 2007 December 8
 
-    real(wp) function GST00A ( uta, utb, tta, ttb )
+    function GST00A ( uta, utb, tta, ttb ) result(gast)
 
     implicit none
 
-    real(wp) :: uta
-    real(wp) :: utb
-    real(wp) :: tta
-    real(wp) :: ttb
+    real(wp),intent(in) :: uta !! UT1 as a 2-part Julian Date (Notes 1,2)
+    real(wp),intent(in) :: utb !! UT1 as a 2-part Julian Date (Notes 1,2)
+    real(wp),intent(in) :: tta !! TT as a 2-part Julian Date (Notes 1,2)
+    real(wp),intent(in) :: ttb !! TT as a 2-part Julian Date (Notes 1,2)
+    real(wp) :: gast !! Greenwich apparent sidereal time (radians)
 
-    GST00A = ANP ( GMST00 ( uta,utb, tta,ttb ) + &
-                    EE00A ( tta,ttb ) )
+    gast = ANP ( GMST00 ( uta,utb, tta,ttb ) + EE00A ( tta,ttb ) )
 
     end function GST00A
 !***********************************************************************
@@ -13456,12 +13444,6 @@
 !  resolutions but using the truncated nutation model IAU 2000B).
 !
 !  Status:  support routine.
-!
-!  Given:
-!     UTA, UTB     d      UT1 as a 2-part Julian Date (Notes 1,2)
-!
-!  Returned:
-!     GST00B   d      Greenwich apparent sidereal time (radians)
 !
 !### Notes
 !
@@ -13523,15 +13505,15 @@
 !### History
 !  * IAU SOFA revision: 2007 December 8
 
-    real(wp) function GST00B ( uta, utb )
+    function GST00B ( uta, utb ) result(gast)
 
     implicit none
 
-    real(wp) :: uta
-    real(wp) :: utb
+    real(wp),intent(in) :: uta !! UT1 as a 2-part Julian Date (Notes 1,2)
+    real(wp),intent(in) :: utb !! UT1 as a 2-part Julian Date (Notes 1,2)
+    real(wp) :: gast !! Greenwich apparent sidereal time (radians)
 
-    GST00B = ANP ( GMST00 ( uta,utb, uta,utb ) + &
-                   EE00B ( uta,utb ) )
+    gast = ANP ( GMST00 ( uta,utb, uta,utb ) + EE00B ( uta,utb ) )
 
     end function GST00B
 !***********************************************************************
@@ -13541,14 +13523,6 @@
 !  Greenwich apparent sidereal time, IAU 2006, given the NPB matrix.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     UTA, UTB     d      UT1 as a 2-part Julian Date (Notes 1,2)
-!     TTA, TTB     d      TT as a 2-part Julian Date (Notes 1,2)
-!     RNPB       d(3,3)   nutation x precession x bias matrix
-!
-!  Returned:
-!     GST06    d      Greenwich apparent sidereal time (radians)
 !
 !### Notes
 !
@@ -13588,20 +13562,21 @@
 !
 !### Reference
 !
-!     Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
+!  * Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 !
 !### History
 !  * IAU SOFA revision: 2008 January 2
 
-    real(wp) function GST06 ( uta, utb, tta, ttb, rnpb )
+    function GST06 ( uta, utb, tta, ttb, rnpb ) result(gast)
 
     implicit none
 
-    real(wp) :: uta
-    real(wp) :: utb
-    real(wp) :: tta
-    real(wp) :: ttb
-    real(wp),dimension(3,3) :: rnpb
+    real(wp),intent(in) :: uta !! UT1 as a 2-part Julian Date (Notes 1,2)
+    real(wp),intent(in) :: utb !! UT1 as a 2-part Julian Date (Notes 1,2)
+    real(wp),intent(in) :: tta !! TT as a 2-part Julian Date (Notes 1,2)
+    real(wp),intent(in) :: ttb !! TT as a 2-part Julian Date (Notes 1,2)
+    real(wp),dimension(3,3),intent(in) :: rnpb !! nutation x precession x bias matrix
+    real(wp) :: gast !! Greenwich apparent sidereal time (radians)
 
     real(wp) :: x, y, s
 
@@ -13612,8 +13587,7 @@
     s = S06 ( tta, ttb, x, y )
 
     !  Greenwich apparent sidereal time.
-    GST06 = ANP ( ERA00 ( uta, utb ) - &
-                  EORS ( rnpb, s ) )
+    gast = ANP ( ERA00 ( uta, utb ) - EORS ( rnpb, s ) )
 
     end function GST06
 !***********************************************************************
@@ -13624,13 +13598,6 @@
 !  resolutions).
 !
 !  Status:  canonical model.
-!
-!  Given:
-!     UTA, UTB     d      UT1 as a 2-part Julian Date (Notes 1,2)
-!     TTA, TTB     d      TT as a 2-part Julian Date (Notes 1,2)
-!
-!  Returned:
-!     GST06A   d      Greenwich apparent sidereal time (radians)
 !
 !### Notes
 !
@@ -13675,14 +13642,15 @@
 !### History
 !  * IAU SOFA revision: 2010 March 5
 
-    real(wp) function GST06A ( uta, utb, tta, ttb )
+    function GST06A ( uta, utb, tta, ttb ) result(gast)
 
     implicit none
 
-    real(wp) :: uta
-    real(wp) :: utb
-    real(wp) :: tta
-    real(wp) :: ttb
+    real(wp),intent(in) :: uta !! UT1 as a 2-part Julian Date (Notes 1,2)
+    real(wp),intent(in) :: utb !! UT1 as a 2-part Julian Date (Notes 1,2)
+    real(wp),intent(in) :: tta !! TT as a 2-part Julian Date (Notes 1,2)
+    real(wp),intent(in) :: ttb !! TT as a 2-part Julian Date (Notes 1,2)
+    real(wp) :: gast !! Greenwich apparent sidereal time (radians)
 
     real(wp) :: rnpb(3,3)
 
@@ -13690,7 +13658,7 @@
     call PNM06A ( tta, ttb, rnpb )
 
     !  Greenwich apparent sidereal time.
-    GST06A = GST06 ( uta, utb, tta, ttb, rnpb )
+    gast = GST06 ( uta, utb, tta, ttb, rnpb )
 
     end function GST06A
 !***********************************************************************
@@ -13701,12 +13669,6 @@
 !  resolutions).
 !
 !  Status:  support routine.
-!
-!  Given:
-!     UTA, UTB     d      UT1 as a 2-part Julian Date (Notes 1,2)
-!
-!  Returned:
-!     GST94    d      Greenwich apparent sidereal time (radians)
 !
 !### Notes
 !
@@ -13753,15 +13715,15 @@
 !### History
 !  * IAU SOFA revision: 2007 December 8
 
-    real(wp) function GST94 ( uta, utb )
+    function GST94 ( uta, utb ) result(gast)
 
     implicit none
 
-    real(wp) :: uta
-    real(wp) :: utb
+    real(wp),intent(in) :: uta !! UT1 as a 2-part Julian Date (Notes 1,2)
+    real(wp),intent(in) :: utb !! UT1 as a 2-part Julian Date (Notes 1,2)
+    real(wp) :: gast !! Greenwich apparent sidereal time (radians)
 
-    GST94 = ANP ( GMST82 ( uta, utb ) + &
-                  EQEQ94 ( uta, utb ) )
+    gast = ANP ( GMST82 ( uta, utb ) + EQEQ94 ( uta, utb ) )
 
     end function GST94
 !***********************************************************************
@@ -13771,22 +13733,6 @@
 !  Transform Hipparcos star data into the FK5 (J2000.0) system.
 !
 !  Status:  support routine.
-!
-!  Given (all Hipparcos, epoch J2000.0):
-!     RH        d      RA (radians)
-!     DH        d      Dec (radians)
-!     DRH       d      proper motion in RA (dRA/dt, rad/Jyear)
-!     DDH       d      proper motion in Dec (dDec/dt, rad/Jyear)
-!     PXH       d      parallax (arcsec)
-!     RVH       d      radial velocity (km/s, positive = receding)
-!
-!  Returned (all FK5, equinox J2000.0, epoch J2000.0):
-!     R5        d      RA (radians)
-!     D5        d      Dec (radians)
-!     DR5       d      proper motion in RA (dRA/dt, rad/Jyear)
-!     DD5       d      proper motion in Dec (dDec/dt, rad/Jyear)
-!     PX5       d      parallax (arcsec)
-!     RV5       d      radial velocity (km/s, positive = receding)
 !
 !### Notes
 !
@@ -13804,7 +13750,7 @@
 !
 !### Reference
 !
-!     F.Mignard & M.Froeschle, Astron.Astrophys., 354, 732-739 (2000).
+!  * F. Mignard & M. Froeschle, Astron.Astrophys., 354, 732-739 (2000).
 !
 !### History
 !  * IAU SOFA revision: 2017 October 12
@@ -13814,21 +13760,21 @@
 
     implicit none
 
-    real(wp) :: rh
-    real(wp) :: dh
-    real(wp) :: drh
-    real(wp) :: ddh
-    real(wp) :: pxh
-    real(wp) :: rvh
-    real(wp) :: r5
-    real(wp) :: d5
-    real(wp) :: dr5
-    real(wp) :: dd5
-    real(wp) :: px5
-    real(wp) :: rv5
+    real(wp),intent(in) :: rh !! RA (radians) [Hipparcos, epoch J2000.0]
+    real(wp),intent(in) :: dh !! Dec (radians) [Hipparcos, epoch J2000.0]
+    real(wp),intent(in) :: drh !! proper motion in RA (dRA/dt, rad/Jyear) [Hipparcos, epoch J2000.0]
+    real(wp),intent(in) :: ddh !! proper motion in Dec (dDec/dt, rad/Jyear) [Hipparcos, epoch J2000.0]
+    real(wp),intent(in) :: pxh !! parallax (arcsec) [Hipparcos, epoch J2000.0]
+    real(wp),intent(in) :: rvh !! radial velocity (km/s, positive = receding) [Hipparcos, epoch J2000.0]
+    real(wp),intent(out) :: r5 !! RA (radians) [FK5, equinox J2000.0, epoch J2000.0]
+    real(wp),intent(out) :: d5 !! Dec (radians) [FK5, equinox J2000.0, epoch J2000.0]
+    real(wp),intent(out) :: dr5 !! proper motion in RA (dRA/dt, rad/Jyear) [FK5, equinox J2000.0, epoch J2000.0]
+    real(wp),intent(out) :: dd5 !! proper motion in Dec (dDec/dt, rad/Jyear) [FK5, equinox J2000.0, epoch J2000.0]
+    real(wp),intent(out) :: px5 !! parallax (arcsec) [FK5, equinox J2000.0, epoch J2000.0]
+    real(wp),intent(out) :: rv5 !! radial velocity (km/s, positive = receding) [FK5, equinox J2000.0, epoch J2000.0]
 
     real(wp) :: pvh(3,2), r5h(3,3), s5h(3), sh(3), wxp(3), &
-                     vv(3), pv5(3,2)
+                vv(3), pv5(3,2)
     integer :: j, i
 
     !  Hipparcos barycentric position/velocity pv-vector (normalized).
@@ -13870,15 +13816,6 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     HA       d     hour angle (local)
-!     DEC      d     declination
-!     PHI      d     site latitude
-!
-!  Returned:
-!     AZ       d     azimuth
-!     EL       d     altitude (informally, elevation)
-!
 !### Notes
 !
 !  1.  All the arguments are angles in radians.
@@ -13916,16 +13853,16 @@
 !      out.
 !
 !  Last revision:   2018 January 2
-!
+
     subroutine HD2AE ( ha, dec, phi, az, el )
 
     implicit none
 
-    real(wp) :: ha
-    real(wp) :: dec
-    real(wp) :: phi
-    real(wp) :: az
-    real(wp) :: el
+    real(wp),intent(in) :: ha !! hour angle (local)
+    real(wp),intent(in) :: dec !! declination
+    real(wp),intent(in) :: phi !! site latitude
+    real(wp),intent(out) :: az !! azimuth
+    real(wp),intent(out) :: el !! altitude (informally, elevation)
 
     real(wp) :: sh, ch, sd, cd, sp, cp, x, y, z, r, a
 
@@ -13960,14 +13897,6 @@
 !>
 !  Parallactic angle for a given hour angle and declination.
 !
-!  Given:
-!     HA          d     hour angle
-!     DEC         d     declination
-!     PHI         d     site latitude
-!
-!  Returned:
-!     HD2PA   d     parallactic angle
-!
 !### Notes
 !
 !  1.  All the arguments are angles in radians.
@@ -13992,19 +13921,20 @@
 !      arcseconds), and the zero point of HA will also be affected.
 !
 !### Reference
-!     Smart, W.M., "Spherical Astronomy", Cambridge University Press,
-!     6th edition (Green, 1977), p49.
+!  * Smart, W.M., "Spherical Astronomy", Cambridge University Press,
+!    6th edition (Green, 1977), p49.
 !
 !### History
 !  * IAU SOFA revision:  2017 September 12
 
-    real(wp) function HD2PA ( ha, dec, phi )
+    function HD2PA ( ha, dec, phi ) result(res)
 
     implicit none
 
-    real(wp) :: ha
-    real(wp) :: dec
-    real(wp) :: phi
+    real(wp),intent(in) :: ha !! hour angle
+    real(wp),intent(in) :: dec !! declination
+    real(wp),intent(in) :: phi !! site latitude
+    real(wp) :: res !! parallactic angle
 
     real(wp) :: cp, sqsz, cqsz
 
@@ -14012,7 +13942,7 @@
     sqsz = cp*sin(ha)
     cqsz = sin(phi)*cos(dec) - cp*sin(dec)*cos(ha)
     if ( sqsz==0d0 .and. cqsz==0d0 ) cqsz = 1d0
-    HD2PA = atan2(sqsz,cqsz)
+    res = atan2(sqsz,cqsz)
 
     end function HD2PA
 !***********************************************************************
@@ -14023,17 +13953,6 @@
 !  zero Hipparcos proper motion.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     RH              d      Hipparcos RA (radians)
-!     DH              d      Hipparcos Dec (radians)
-!     DATE1,DATE2     d      TDB date (Note 1)
-!
-!  Returned (all FK5, equinox J2000.0, date DATE1+DATE2):
-!     R5              d      RA (radians)
-!     D5              d      Dec (radians)
-!     DR5             d      FK5 RA proper motion (rad/year, Note 4)
-!     DD5             d      Dec proper motion (rad/year, Note 4)
 !
 !### Notes
 !
@@ -14084,14 +14003,14 @@
 
     implicit none
 
-    real(wp) :: rh
-    real(wp) :: dh
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp) :: r5
-    real(wp) :: d5
-    real(wp) :: dr5
-    real(wp) :: dd5
+    real(wp),intent(in) :: rh !! Hipparcos RA (radians)
+    real(wp),intent(in) :: dh !! Hipparcos Dec (radians)
+    real(wp),intent(in) :: date1 !! TDB date (Note 1)
+    real(wp),intent(in) :: date2 !! TDB date (Note 1)
+    real(wp),intent(out) :: r5 !! RA (radians) [FK5, equinox J2000.0, date DATE1+DATE2]
+    real(wp),intent(out) :: d5 !! Dec (radians) [FK5, equinox J2000.0, date DATE1+DATE2]
+    real(wp),intent(out) :: dr5 !! FK5 RA proper motion (rad/year, Note 4) [FK5, equinox J2000.0, date DATE1+DATE2]
+    real(wp),intent(out) :: dd5 !! Dec proper motion (rad/year, Note 4) [FK5, equinox J2000.0, date DATE1+DATE2]
 
     real(wp) :: t, ph(3), r5h(3,3), s5h(3), sh(3), vst(3), &
                 rst(3,3), r5ht(3,3), pv5e(3,2), vv(3), &
@@ -14140,14 +14059,6 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     DR       d      ICRS right ascension (radians)
-!     DD       d      ICRS declination (radians)
-!
-!  Returned:
-!     DL       d      galactic longitude (radians)
-!     DB       d      galactic latitude (radians)
-!
 !### Notes
 !
 !  1. The IAU 1958 system of Galactic coordinates was defined with
@@ -14180,10 +14091,10 @@
 !  2. The inverse transformation is performed by the routine G2ICRS.
 !
 !### Reference
-!     Perryman M.A.C. & ESA, 1997, ESA SP-1200, The Hipparcos and Tycho
-!     catalogues.  Astrometric and photometric star catalogues
-!     derived from the ESA Hipparcos Space Astrometry Mission.  ESA
-!     Publications Division, Noordwijk, Netherlands.
+!  * Perryman M.A.C. & ESA, 1997, ESA SP-1200, The Hipparcos and Tycho
+!    catalogues.  Astrometric and photometric star catalogues
+!    derived from the ESA Hipparcos Space Astrometry Mission.  ESA
+!    Publications Division, Noordwijk, Netherlands.
 !
 !### History
 !  * IAU SOFA revision:  2015 January 9
@@ -14192,10 +14103,10 @@
 
     implicit none
 
-    real(wp) :: dr
-    real(wp) :: dd
-    real(wp) :: dl
-    real(wp) :: db
+    real(wp),intent(in) :: dr !! ICRS right ascension (radians)
+    real(wp),intent(in) :: dd !! ICRS declination (radians)
+    real(wp),intent(out) :: dl !! galactic longitude (radians)
+    real(wp),intent(out) :: db !! galactic latitude (radians)
 
     real(wp) v1(3), v2(3)
 
@@ -14247,9 +14158,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Returned:
-!     R        d(3,3)    r-matrix
-!
 !### History
 !  * IAU SOFA revision: 2012 April 3
 
@@ -14257,7 +14165,7 @@
 
     implicit none
 
-    real(wp),dimension(3,3) :: r
+    real(wp),dimension(3,3),intent(out) :: r !! r-matrix
 
     r(1,1) = 1d0
     r(1,2) = 0d0
@@ -14277,18 +14185,6 @@
 !  Julian Date to Gregorian year, month, day, and fraction of a day.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DJ1,DJ2     d     Julian Date (Notes 1, 2)
-!
-!  Returned:
-!     IY          i     year
-!     IM          i     month
-!     ID          i     day
-!     FD          d     fraction of day
-!     J           i     status:
-!                           0 = OK
-!                          -1 = unacceptable date (Note 1)
 !
 !### Notes
 !
@@ -14313,9 +14209,9 @@
 !
 !### Reference
 !
-!     Explanatory Supplement to the Astronomical Almanac,
-!     P. Kenneth Seidelmann (ed), University Science Books (1992),
-!     Section 12.92 (p604).
+!  * Explanatory Supplement to the Astronomical Almanac,
+!    P. Kenneth Seidelmann (ed), University Science Books (1992),
+!    Section 12.92 (p604).
 !
 !### History
 !  * IAU SOFA revision: 2019 June 20
@@ -14324,13 +14220,15 @@
 
     implicit none
 
-    real(wp) :: dj1
-    real(wp) :: dj2
-    integer :: iy
-    integer :: im
-    integer :: id
-    real(wp) :: fd
-    integer :: j
+    real(wp),intent(in) :: dj1 !! Julian Date (Notes 1, 2)
+    real(wp),intent(in) :: dj2 !! Julian Date (Notes 1, 2)
+    integer,intent(out) :: iy !! year
+    integer,intent(out) :: im !! month
+    integer,intent(out) :: id !! day
+    real(wp),intent(out) :: fd !! fraction of day
+    integer,intent(out) :: j !! status:
+                             !! *  0 = OK
+                             !! * -1 = unacceptable date (Note 1)
 
     !  Minimum and maximum allowed JD
     real(wp),parameter :: djmin = -68569.5d0
@@ -14390,18 +14288,6 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     NDP         i     number of decimal places of days in fraction
-!     DJ1,DJ2     d     DJ1+DJ2 = Julian Date (Note 1)
-!
-!  Returned:
-!     IYMDF       i(4)  year, month, day, fraction in Gregorian
-!                       calendar
-!     J           i     status:
-!                          -1 = date out of range
-!                           0 = OK
-!                          +1 = NDP not 0-9 (interpreted as 0)
-!
 !### Notes
 !
 !  1. The Julian Date is apportioned in any convenient way between
@@ -14427,9 +14313,9 @@
 !
 !### Reference
 !
-!     Explanatory Supplement to the Astronomical Almanac,
-!     P. Kenneth Seidelmann (ed), University Science Books (1992),
-!     Section 12.92 (p604).
+!  * Explanatory Supplement to the Astronomical Almanac,
+!    P. Kenneth Seidelmann (ed), University Science Books (1992),
+!    Section 12.92 (p604).
 !
 !### History
 !  * IAU SOFA revision: 2019 June 20
@@ -14438,11 +14324,14 @@
 
     implicit none
 
-    integer :: ndp
-    real(wp) :: dj1
-    real(wp) :: dj2
-    integer,dimension(4) :: iymdf
-    integer :: j
+    integer,intent(in) :: ndp !! number of decimal places of days in fraction
+    real(wp),intent(in) :: dj1 !! DJ1+DJ2 = Julian Date (Note 1)
+    real(wp),intent(in) :: dj2 !! DJ1+DJ2 = Julian Date (Note 1)
+    integer,dimension(4),intent(out) :: iymdf !! year, month, day, fraction in Gregorian calendar
+    integer,intent(out) :: j !! status:
+                             !! * -1 = date out of range
+                             !! *  0 = OK
+                             !! * +1 = NDP not 0-9 (interpreted as 0)
 
     integer :: js
     real(wp) :: denom, d1, d2, f1, f2, f
@@ -14496,17 +14385,6 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     BM       d      mass of the gravitating body (solar masses)
-!     P        d(3)   direction from observer to source (unit vector)
-!     Q        d(3)   direction from body to source (unit vector)
-!     E        d(3)   direction from body to observer (unit vector)
-!     EM       d      distance from body to observer (au)
-!     DLIM     d      deflection limiter (Note 4)
-!
-!  Returned:
-!     P1       d(3)   observer to deflected source (unit vector)
-!
 !### Notes
 !
 !  1. The algorithm is based on Expr. (70) in Klioner (2003) and
@@ -14554,13 +14432,13 @@
 
     implicit none
 
-    real(wp) :: bm
-    real(wp),dimension(3) :: p
-    real(wp),dimension(3) :: q
-    real(wp),dimension(3) :: e
-    real(wp) :: em
-    real(wp) :: dlim
-    real(wp),dimension(3) :: p1
+    real(wp),intent(in) :: bm !! mass of the gravitating body (solar masses)
+    real(wp),dimension(3),intent(in) :: p !! direction from observer to source (unit vector)
+    real(wp),dimension(3),intent(in) :: q !! direction from body to source (unit vector)
+    real(wp),dimension(3),intent(in) :: e !! direction from body to observer (unit vector)
+    real(wp),intent(in) :: em !! distance from body to observer (au)
+    real(wp),intent(in) :: dlim !! deflection limiter (Note 4)
+    real(wp),dimension(3),intent(out) :: p1 !! observer to deflected source (unit vector)
 
     !  Schwarzschild radius of the Sun (au)
     !  = 2 * 1.32712440041 D20 / (2.99792458 D8)^2 / 1.49597870700 D11
@@ -14596,19 +14474,6 @@
 !  as part of transforming coordinate direction into natural direction.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     N     i        number of bodies (Note 1)
-!     B     d(8,N)   data for each of the N bodies (Notes 1,2):
-!            (1,I)     mass of the body (solar masses, Note 3)
-!            (2,I)     deflection limiter (Note 4)
-!            (3-5,I)   barycentric position of the body (au)
-!            (6-8,I)   barycentric velocity of the body (au/day)
-!     OB    d(3)     barycentric position of the observer (au)
-!     SC    d(3)     observer to star coordinate direction (unit vector)
-!
-!  Returned:
-!     SN    d(3)     observer to deflected star (unit vector)
 !
 !  1. The array B contains N entries, one for each body to be
 !     considered.  If N = 0, no gravitational light deflection will be
@@ -14652,9 +14517,9 @@
 !
 !### Reference
 !
-!     Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
-!     the Astronomical Almanac, 3rd ed., University Science Books
-!     (2013), Section 7.2.4.
+!  * Urban, S. & Seidelmann, P. K. (eds), Explanatory Supplement to
+!    the Astronomical Almanac, 3rd ed., University Science Books
+!    (2013), Section 7.2.4.
 !
 !### History
 !  * IAU SOFA revision:  2017 March 16
@@ -14663,11 +14528,15 @@
 
     implicit none
 
-    integer :: n
-    real(wp),dimension(8,n) :: b
-    real(wp),dimension(3) :: ob
-    real(wp),dimension(3) :: sc
-    real(wp),dimension(3) :: sn
+    integer,intent(in) :: n !! number of bodies (Note 1)
+    real(wp),dimension(8,n),intent(in) :: b !! data for each of the N bodies (Notes 1,2):
+                                            !! (1,I)     mass of the body (solar masses, Note 3)
+                                            !! (2,I)     deflection limiter (Note 4)
+                                            !! (3-5,I)   barycentric position of the body (au)
+                                            !! (6-8,I)   barycentric velocity of the body (au/day)
+    real(wp),dimension(3),intent(in) :: ob !! barycentric position of the observer (au)
+    real(wp),dimension(3),intent(in) :: sc !! observer to star coordinate direction (unit vector)
+    real(wp),dimension(3),intent(out) :: sn !! observer to deflected star (unit vector)
 
     !  Astronomical unit (m, IAU 2012)
     real(wp),parameter :: aum = 149597870.7d3
@@ -14721,14 +14590,6 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     P        d(3)   direction from observer to star (unit vector)
-!     E        d(3)   direction from Sun to observer (unit vector)
-!     EM       d      distance from Sun to observer (au)
-!
-!  Returned:
-!     P1       d(3)   observer to deflected star (unit vector)
-!
 !### Notes
 !
 !  1. The source is presumed to be sufficiently distant that its
@@ -14748,10 +14609,10 @@
 
     implicit none
 
-    real(wp),dimension(3) :: p
-    real(wp),dimension(3) :: e
-    real(wp) :: em
-    real(wp),dimension(3) :: p1
+    real(wp),dimension(3),intent(in) :: p !! direction from observer to star (unit vector)
+    real(wp),dimension(3),intent(in) :: e !! direction from Sun to observer (unit vector)
+    real(wp),intent(in) :: em !! distance from Sun to observer (au)
+    real(wp),dimension(3),intent(out) :: p1 !! observer to deflected star (unit vector)
 
     real(wp) :: dlim
 
@@ -14770,13 +14631,6 @@
 !  of date) to ICRS RA,Dec, using a long-term precession model.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     EPJ       d        Julian epoch (TT)
-!     DL,DB     d        ecliptic longitude and latitude (radians)
-!
-!  Returned:
-!     DR,DD     d        ICRS right ascension and declination (radians)
 !
 !  1. No assumptions are made about whether the coordinates represent
 !     starlight and embody astrometric effects such as parallax or
@@ -14811,11 +14665,11 @@
 
     implicit none
 
-    real(wp) :: epj
-    real(wp) :: dl
-    real(wp) :: db
-    real(wp) :: dr
-    real(wp) :: dd
+    real(wp),intent(in) :: epj !! Julian epoch (TT)
+    real(wp),intent(in) :: dl !! ecliptic longitude (radians)
+    real(wp),intent(in) :: db !! ecliptic latitude (radians)
+    real(wp),intent(out) :: dr !! ICRS right ascension (radians)
+    real(wp),intent(out) :: dd !! ICRS declination (radians)
 
     real(wp) :: rm(3,3), v1(3), v2(3), a, b
 
@@ -14843,12 +14697,6 @@
 !  ICRS equatorial to ecliptic rotation matrix, long-term.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     EPJ       d        Julian epoch (TT)
-!
-!  Returned:
-!     RM        d(3,3)   ICRS to ecliptic rotation matrix
 !
 !### Notes
 !
@@ -14893,8 +14741,8 @@
 
     implicit none
 
-    real(wp) :: epj
-    real(wp),dimension(3,3) :: rm
+    real(wp),intent(in) :: epj !! Julian epoch (TT)
+    real(wp),dimension(3,3),intent(out) :: rm !! ICRS to ecliptic rotation matrix
 
     !  Frame bias (IERS Conventions 2010, Eqs. 5.21 and 5.33)
     real(wp),parameter :: dx = -0.016617d0 * das2r
@@ -14938,13 +14786,6 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     EPJ       d        Julian epoch (TT)
-!     DR,DD     d        ICRS right ascension and declination (radians)
-!
-!  Returned:
-!     DL,DB     d        ecliptic longitude and latitude (radians)
-!
 !  1. No assumptions are made about whether the coordinates represent
 !     starlight and embody astrometric effects such as parallax or
 !     aberration.
@@ -14978,11 +14819,11 @@
 
     implicit none
 
-    real(wp) :: epj
-    real(wp) :: dr
-    real(wp) :: dd
-    real(wp) :: dl
-    real(wp) :: db
+    real(wp),intent(in) :: epj !! Julian epoch (TT)
+    real(wp),intent(in) :: dr !! ICRS right ascension (radians)
+    real(wp),intent(in) :: dd !! ICRS right declination (radians)
+    real(wp),intent(out) :: dl !! ecliptic longitude (radians)
+    real(wp),intent(out) :: db !! ecliptic latitude (radians)
 
     real(wp) :: rm(3,3), v1(3), v2(3), a, b
 
@@ -15010,12 +14851,6 @@
 !  Long-term precession matrix.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     EPJ       d        Julian epoch (TT)
-!
-!  Returned:
-!     RP        d(3,3)   precession matrix, J2000.0 to date
 !
 !### Notes
 !
@@ -15051,8 +14886,8 @@
 
     implicit none
 
-    real(wp) :: epj
-    real(wp),dimension(3,3) :: rp
+    real(wp),intent(in) :: epj !! Julian epoch (TT)
+    real(wp),dimension(3,3),intent(out) :: rp !! precession matrix, J2000.0 to date
 
     integer :: i
     real(wp) :: peqr(3), pecl(3), v(3), w, eqx(3)
@@ -15085,12 +14920,6 @@
 !  Long-term precession matrix, including ICRS frame bias.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     EPJ       d        Julian epoch (TT)
-!
-!  Returned:
-!     RPB       d        precession-bias matrix, J2000.0 to date
 !
 !### Notes
 !
@@ -15130,8 +14959,8 @@
 
     implicit none
 
-    real(wp) :: epj
-    real(wp),dimension(3,3) :: rpb
+    real(wp),intent(in) :: epj !! Julian epoch (TT)
+    real(wp),dimension(3,3),intent(out) :: rpb !! precession-bias matrix, J2000.0 to date
 
     !  Frame bias (IERS Conventions 2010, Eqs. 5.21 and 5.33)
     real(wp),parameter :: dx = -0.016617d0 * das2r
@@ -15159,12 +14988,6 @@
 !  Long-term precession of the ecliptic.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     EPJ       d        Julian epoch (TT)
-!
-!  Returned:
-!     VEC       d(3)     ecliptic pole unit vector
 !
 !### Notes
 !
@@ -15195,8 +15018,8 @@
 
     implicit none
 
-    real(wp) :: epj
-    real(wp),dimension(3) :: vec
+    real(wp),intent(in) :: epj !! Julian epoch (TT)
+    real(wp),dimension(3),intent(out) :: vec !! ecliptic pole unit vector
 
     !  Obliquity at J2000.0 (radians).
     real(wp),parameter :: eps0 = 84381.406d0 * das2r
@@ -15290,12 +15113,6 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     EPJ       d        Julian epoch (TT)
-!
-!  Returned:
-!     VEQ       d(3)     equator pole unit vector
-!
 !### Notes
 !
 !  1. The returned vector is with respect to the J2000.0 mean equator
@@ -15325,8 +15142,8 @@
 
     implicit none
 
-    real(wp) :: epj
-    real(wp),dimension(3) :: veq
+    real(wp),intent(in) :: epj !! Julian epoch (TT)
+    real(wp),dimension(3),intent(out) :: veq !! equator pole unit vector
 
     !  Number of polynomial terms
     integer,parameter :: npol = 4
@@ -15426,12 +15243,6 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     DATE1,DATE2    d       TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     RMATN        d(3,3)    nutation matrix
-!
 !### Notes
 !
 !  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
@@ -15463,9 +15274,9 @@
 !
 !### Reference
 !
-!     Explanatory Supplement to the Astronomical Almanac,
-!     P. Kenneth Seidelmann (ed), University Science Books (1992),
-!     Section 3.222-3 (p114).
+!  * Explanatory Supplement to the Astronomical Almanac,
+!    P. Kenneth Seidelmann (ed), University Science Books (1992),
+!    Section 3.222-3 (p114).
 !
 !### History
 !  * IAU SOFA revision: 2006 November 13
@@ -15474,9 +15285,9 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp),dimension(3,3) :: rmatn
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),dimension(3,3),intent(out) :: rmatn !! nutation matrix
 
     real(wp) :: dpsi, deps, epsa, &
                 rb(3,3), rp(3,3), rbp(3,3), rbpn(3,3)
@@ -15493,12 +15304,6 @@
 !  Form the matrix of nutation for a given date, IAU 2000B model.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1,DATE2   d      TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     RMATN       d(3,3)   nutation matrix
 !
 !### Notes
 !
@@ -15531,9 +15336,9 @@
 !
 !### Reference
 !
-!     Explanatory Supplement to the Astronomical Almanac,
-!     P. Kenneth Seidelmann (ed), University Science Books (1992),
-!     Section 3.222-3 (p114).
+!  * Explanatory Supplement to the Astronomical Almanac,
+!    P. Kenneth Seidelmann (ed), University Science Books (1992),
+!    Section 3.222-3 (p114).
 !
 !### History
 !  * IAU SOFA revision: 2006 November 13
@@ -15542,9 +15347,9 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp),dimension(3,3) :: rmatn
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),dimension(3,3),intent(out) :: rmatn !! nutation matrix
 
     real(wp) :: dpsi, deps, epsa, &
                 rb(3,3), rp(3,3), rbp(3,3), rbpn(3,3)
@@ -15561,12 +15366,6 @@
 !  Form the matrix of nutation for a given date, IAU 2006/2000A model.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1,DATE2    d       TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     RMATN        d(3,3)    nutation matrix
 !
 !### Notes
 !
@@ -15608,9 +15407,9 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp),dimension(3,3) :: rmatn
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),dimension(3,3),intent(out) :: rmatn !! nutation matrix
 
     real(wp) :: eps, dp, de
 
@@ -15632,15 +15431,7 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     EPSA          d       mean obliquity of date (Note 1)
-!     DPSI,DEPS     d       nutation (Note 2)
-!
-!  Returned:
-!     RMATN       d(3,3)    nutation matrix (Note 3)
-!
 !### Notes
-!
 !
 !  1. The supplied mean obliquity EPSA, must be consistent with the
 !     precession-nutation models from which DPSI and DEPS were obtained.
@@ -15656,9 +15447,9 @@
 !
 !### Reference
 !
-!     Explanatory Supplement to the Astronomical Almanac,
-!     P. Kenneth Seidelmann (ed), University Science Books (1992),
-!     Section 3.222-3 (p114).
+!  * Explanatory Supplement to the Astronomical Almanac,
+!    P. Kenneth Seidelmann (ed), University Science Books (1992),
+!    Section 3.222-3 (p114).
 !
 !### History
 !  * IAU SOFA revision: 2006 November 13
@@ -15667,10 +15458,10 @@
 
     implicit none
 
-    real(wp) :: epsa
-    real(wp) :: dpsi
-    real(wp) :: deps
-    real(wp),dimension(3,3) :: rmatn
+    real(wp),intent(in) :: epsa !! mean obliquity of date (Note 1)
+    real(wp),intent(in) :: dpsi !! nutation (Note 2)
+    real(wp),intent(in) :: deps !! nutation (Note 2)
+    real(wp),dimension(3,3),intent(out) :: rmatn !! nutation matrix (Note 3)
 
     !  Build the rotation matrix.
     call IR ( rmatn )
@@ -15687,12 +15478,6 @@
 !  with free core nutation omitted).
 !
 !  Status:  canonical model.
-!
-!  Given:
-!     DATE1,DATE2   d    TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     DPSI,DEPS     d    nutation, luni-solar + planetary (Note 2)
 !
 !### Notes
 !
@@ -15820,10 +15605,10 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp) :: dpsi
-    real(wp) :: deps
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(out) :: dpsi !! nutation, luni-solar + planetary (Note 2)
+    real(wp),intent(out) :: deps !! nutation, luni-solar + planetary (Note 2)
 
     !  Arcseconds in a full circle
     real(wp),parameter :: turnas = 1296000d0
@@ -19051,12 +18836,6 @@
 !
 !  Status:  canonical model.
 !
-!  Given:
-!     DATE1,DATE2   d   TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     DPSI,DEPS     d   nutation, luni-solar + planetary (Note 2)
-!
 !### Notes
 !
 !  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
@@ -19165,10 +18944,10 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp) :: dpsi
-    real(wp) :: deps
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(out) :: dpsi !! nutation, luni-solar + planetary (Note 2)
+    real(wp),intent(out) :: deps !! nutation, luni-solar + planetary (Note 2)
 
     !  Milliarcseconds to radians
     real(wp),parameter :: dmas2r = das2r / 1d3
@@ -19472,12 +19251,6 @@
 !>
 !  IAU 2000A nutation with adjustments to match the IAU 2006 precession.
 !
-!  Given:
-!     DATE1,DATE2   d    TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     DPSI,DEPS     d    nutation, luni-solar + planetary (Note 2)
-!
 !  Status:  canonical model.
 !
 !### Notes
@@ -19518,7 +19291,7 @@
 !
 !### Reference
 !
-!     Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
+!  * Wallace, P.T. & Capitaine, N., 2006, Astron.Astrophys. 459, 981
 !
 !### History
 !  * IAU SOFA revision: 2011 April 3
@@ -19527,10 +19300,10 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp) :: dpsi
-    real(wp) :: deps
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(out) :: dpsi !! nutation, luni-solar + planetary (Note 2)
+    real(wp),intent(out) :: deps !! nutation, luni-solar + planetary (Note 2)
 
     !  Miscellaneous
     real(wp) :: t, fj2, dp, de
@@ -19556,13 +19329,6 @@
 !  Nutation, IAU 1980 model.
 !
 !  Status:  canonical model.
-!
-!  Given:
-!     DATE1,DATE2     d      TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     DPSI            d      nutation in longitude (radians)
-!     DEPS            d      nutation in obliquity (radians)
 !
 !### Notes
 !
@@ -19590,9 +19356,9 @@
 !
 !### Reference
 !
-!     Explanatory Supplement to the Astronomical Almanac,
-!     P. Kenneth Seidelmann (ed), University Science Books (1992),
-!     Section 3.222 (p111).
+!  * Explanatory Supplement to the Astronomical Almanac,
+!    P. Kenneth Seidelmann (ed), University Science Books (1992),
+!    Section 3.222 (p111).
 !
 !### History
 !  * IAU SOFA revision: 2009 December 15
@@ -19601,10 +19367,10 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp) :: dpsi
-    real(wp) :: deps
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(out) :: dpsi !! nutation in longitude (radians)
+    real(wp),intent(out) :: deps !! nutation in obliquity (radians)
 
     !  Units of 0.1 milliarcsecond to radians
     real(wp),parameter :: u2r = das2r/1d4
@@ -19820,12 +19586,6 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     DATE1,DATE2      d       TDB date (Note 1)
-!
-!  Returned:
-!     RMATN          d(3,3)    nutation matrix
-!
 !### Notes
 !
 !  1. The TDB date DATE1+DATE2 is a Julian Date, apportioned in any
@@ -19859,9 +19619,9 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp),dimension(3,3) :: rmatn
+    real(wp),intent(in) :: date1 !! TDB date (Note 1)
+    real(wp),intent(in) :: date2 !! TDB date (Note 1)
+    real(wp),dimension(3,3),intent(out) :: rmatn !! nutation matrix
 
     real(wp) :: dpsi, deps, epsa
 
@@ -19880,12 +19640,6 @@
 !  Mean obliquity of the ecliptic, IAU 2006 precession model.
 !
 !  Status:  canonical model.
-!
-!  Given:
-!     DATE1,DATE2    d     TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     OBL06      d     obliquity of the ecliptic (radians, Note 2)
 !
 !### Notes
 !
@@ -19918,12 +19672,13 @@
 !### History
 !  * IAU SOFA revision: 2009 December 15
 
-    real(wp) function OBL06 ( date1, date2 )
+    function OBL06 ( date1, date2 ) result(obl)
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp) :: obl !! obliquity of the ecliptic (radians, Note 2)
 
     real(wp) :: t
 
@@ -19931,13 +19686,13 @@
     t = ( ( date1-dj00 ) + date2 ) / djc
 
     !  Mean obliquity.
-    OBL06 = ( 84381.406d0       + &
-                (   -46.836769d0    + &
-                (    -0.0001831d0   + &
-                (     0.00200340d0  + &
-                (    -0.000000576d0 + &
-                (    -0.0000000434d0 ) &
-                                 * t ) * t ) * t ) * t ) * t ) * das2r
+    obl = ( 84381.406d0       + &
+          (   -46.836769d0    + &
+          (    -0.0001831d0   + &
+          (     0.00200340d0  + &
+          (    -0.000000576d0 + &
+          (    -0.0000000434d0 ) &
+                      * t ) * t ) * t ) * t ) * t ) * das2r
 
     end function OBL06
 !***********************************************************************
@@ -19947,12 +19702,6 @@
 !  Mean obliquity of the ecliptic, IAU 1980 model.
 !
 !  Status:  canonical model.
-!
-!  Given:
-!     DATE1,DATE2     d      TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     OBL80       d      obliquity of the ecliptic (radians, Note 2)
 !
 !### Notes
 !
@@ -19980,19 +19729,20 @@
 !
 !### Reference
 !
-!     Explanatory Supplement to the Astronomical Almanac,
-!     P. Kenneth Seidelmann (ed), University Science Books (1992),
-!     Expression 3.222-1 (p114).
+!  * Explanatory Supplement to the Astronomical Almanac,
+!    P. Kenneth Seidelmann (ed), University Science Books (1992),
+!    Expression 3.222-1 (p114).
 !
 !### History
 !  * IAU SOFA revision: 2009 December 15
 
-    real(wp) function OBL80 ( date1, date2 )
+    function OBL80 ( date1, date2 ) result(obl)
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp) :: obl !! obliquity of the ecliptic (radians, Note 2)
 
     real(wp) :: t
 
@@ -20000,10 +19750,10 @@
     t = ( ( date1-dj00 ) + date2 ) / djc
 
     !  Mean obliquity of date.
-    OBL80 = das2r * ( 84381.448d0 + &
-                          ( -46.8150d0 + &
-                           ( -0.00059d0 + &
-                              0.001813d0 * t ) * t ) * t )
+    obl = das2r * ( 84381.448d0 + &
+                    ( -46.8150d0 + &
+                     ( -0.00059d0 + &
+                        0.001813d0 * t ) * t ) * t )
 
     end function OBL80
 !***********************************************************************
@@ -20013,27 +19763,6 @@
 !  Precession angles, IAU 2006, equinox based.
 !
 !  Status:  canonical models.
-!
-!  Given:
-!     DATE1,DATE2   d    TT as a 2-part Julian Date (Note 1)
-!
-!  Returned (see Note 2):
-!     EPS0          d    epsilon_0
-!     PSIA          d    psi_A
-!     OMA           d    omega_A
-!     BPA           d    P_A
-!     BQA           d    Q_A
-!     PIA           d    pi_A
-!     BPIA          d    Pi_A
-!     EPSA          d    obliquity epsilon_A
-!     CHIA          d    chi_A
-!     ZA            d    z_A
-!     ZETAA         d    zeta_A
-!     THETAA        d    theta_A
-!     PA            d    p_A
-!     GAM           d    F-W angle gamma_J2000
-!     PHI           d    F-W angle phi_J2000
-!     PSI           d    F-W angle psi_J2000
 !
 !### Notes
 !
@@ -20125,24 +19854,24 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp) :: eps0
-    real(wp) :: psia
-    real(wp) :: oma
-    real(wp) :: bpa
-    real(wp) :: bqa
-    real(wp) :: pia
-    real(wp) :: bpia
-    real(wp) :: epsa
-    real(wp) :: chia
-    real(wp) :: za
-    real(wp) :: zetaa
-    real(wp) :: thetaa
-    real(wp) :: pa
-    real(wp) :: gam
-    real(wp) :: phi
-    real(wp) :: psi
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(out) :: eps0 !! epsilon_0 [see Note 2]
+    real(wp),intent(out) :: psia !! psi_A [see Note 2]
+    real(wp),intent(out) :: oma !! omega_A [see Note 2]
+    real(wp),intent(out) :: bpa !! P_A [see Note 2]
+    real(wp),intent(out) :: bqa !! Q_A [see Note 2]
+    real(wp),intent(out) :: pia !! pi_A [see Note 2]
+    real(wp),intent(out) :: bpia !! Pi_A [see Note 2]
+    real(wp),intent(out) :: epsa !! obliquity epsilon_A [see Note 2]
+    real(wp),intent(out) :: chia !! chi_A [see Note 2]
+    real(wp),intent(out) :: za !! z_A [see Note 2]
+    real(wp),intent(out) :: zetaa !! zeta_A [see Note 2]
+    real(wp),intent(out) :: thetaa !! theta_A [see Note 2]
+    real(wp),intent(out) :: pa !! p_A [see Note 2]
+    real(wp),intent(out) :: gam !! F-W angle gamma_J2000 [see Note 2]
+    real(wp),intent(out) :: phi !! F-W angle phi_J2000 [see Note 2]
+    real(wp),intent(out) :: psi !! F-W angle psi_J2000 [see Note 2]
 
     real(wp) :: t
 
@@ -20291,12 +20020,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     P        d(3)      p-vector
-!
-!  Returned:
-!     PV       d(3,2)    pv-vector
-!
 !### History
 !  * IAU SOFA revision: 2000 November 25
 
@@ -20304,8 +20027,8 @@
 
     implicit none
 
-    real(wp),dimension(3) :: p
-    real(wp),dimension(3,2) :: pv
+    real(wp),dimension(3),intent(in) :: p !! p-vector
+    real(wp),dimension(3,2),intent(out) :: pv !! pv-vector
 
     call CP ( p, pv(1,1) )
     call ZP ( pv(1,2) )
@@ -20318,14 +20041,6 @@
 !  P-vector to spherical polar coordinates.
 !
 !  Status:  vector/matrix support routine.
-!
-!  Given:
-!     P        d(3)      p-vector
-!
-!  Returned:
-!     THETA    d         longitude angle (radians)
-!     PHI      d         latitude angle (radians)
-!     R        d         radial distance
 !
 !### Notes
 !
@@ -20340,10 +20055,10 @@
 
     implicit none
 
-    real(wp),dimension(3) :: p
-    real(wp) :: theta
-    real(wp) :: phi
-    real(wp) :: r
+    real(wp),dimension(3),intent(in) :: p !! p-vector
+    real(wp),intent(out) :: theta !! longitude angle (radians)
+    real(wp),intent(out) :: phi !! latitude angle (radians)
+    real(wp),intent(out) :: r !! radial distance
 
     call C2S ( p, theta, phi )
     call PM ( p, r )
@@ -20356,13 +20071,6 @@
 !  Position-angle from two p-vectors.
 !
 !  Status:  vector/matrix support routine.
-!
-!  Given:
-!     A        d(3)      direction of reference point
-!     B        d(3)      direction of point whose PA is required
-!
-!  Returned:
-!     THETA    d         position angle of B with respect to A (radians)
 !
 !### Notes
 !
@@ -20386,9 +20094,9 @@
 
     implicit none
 
-    real(wp),dimension(3) :: a
-    real(wp),dimension(3) :: b
-    real(wp) :: theta
+    real(wp),dimension(3),intent(in) :: a !! direction of reference point
+    real(wp),dimension(3),intent(in) :: b !! direction of point whose PA is required
+    real(wp),intent(out) :: theta !! position angle of B with respect to A (radians)
 
     real(wp) :: am, au(3), bm, st, ct, xa, ya, za, eta(3), &
                 xi(3), a2b(3)
@@ -20440,15 +20148,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     AL       d       longitude of point A (e.g. RA) in radians
-!     AP       d       latitude of point A (e.g. Dec) in radians
-!     BL       d       longitude of point B
-!     BP       d       latitude of point B
-!
-!  Returned:
-!     THETA    d       position angle of B with respect to A
-!
 !### Notes
 !
 !  1. The result is the bearing (position angle), in radians, of point
@@ -20465,11 +20164,11 @@
 
     implicit none
 
-    real(wp) :: al
-    real(wp) :: ap
-    real(wp) :: bl
-    real(wp) :: bp
-    real(wp) :: theta
+    real(wp),intent(in) :: al !! longitude of point A (e.g. RA) in radians
+    real(wp),intent(in) :: ap !! latitude of point A (e.g. Dec) in radians
+    real(wp),intent(in) :: bl !! longitude of point B
+    real(wp),intent(in) :: bp !! latitude of point B
+    real(wp),intent(out) :: theta !! position angle of B with respect to A
 
     real(wp) :: dl, x, y
 
@@ -20492,14 +20191,6 @@
 !  bias (the offset between ICRS and mean J2000.0) is included.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1,DATE2   d    TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     BZETA         d    1st rotation: radians clockwise around z
-!     BZ            d    3rd rotation: radians clockwise around z
-!     BTHETA        d    2nd rotation: radians counterclockwise around y
 !
 !### Notes
 !
@@ -20547,11 +20238,11 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp) :: bzeta
-    real(wp) :: bz
-    real(wp) :: btheta
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(out) :: bzeta !! 1st rotation: radians clockwise around z
+    real(wp),intent(out) :: bz !! 3rd rotation: radians clockwise around z
+    real(wp),intent(out) :: btheta !! 2nd rotation: radians counterclockwise around y
 
     real(wp) :: r(3,3), r31, r32
 
@@ -20579,13 +20270,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     A        d(3)      first p-vector
-!     B        d(3)      second p-vector
-!
-!  Returned:
-!     ADB      d         A . B
-!
 !### History
 !  * IAU SOFA revision: 2000 November 25
 
@@ -20593,9 +20277,9 @@
 
     implicit none
 
-    real(wp),dimension(3) :: a
-    real(wp),dimension(3) :: b
-    real(wp) :: adb
+    real(wp),dimension(3),intent(in) :: a !! first p-vector
+    real(wp),dimension(3),intent(in) :: b !! second p-vector
+    real(wp),intent(out) :: adb !! A . B
 
     real(wp) :: w
     integer :: i
@@ -20614,15 +20298,6 @@
 !  Precession angles, IAU 2006 (Fukushima-Williams 4-angle formulation).
 !
 !  Status:  canonical model.
-!
-!  Given:
-!     DATE1,DATE2   d    TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     GAMB          d    F-W angle gamma_bar (radians)
-!     PHIB          d    F-W angle phi_bar (radians)
-!     PSIB          d    F-W angle psi_bar (radians)
-!     EPSA          d    F-W angle epsilon_A (radians)
 !
 !### Notes
 !
@@ -20683,12 +20358,12 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp) :: gamb
-    real(wp) :: phib
-    real(wp) :: psib
-    real(wp) :: epsa
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(out) :: gamb !! F-W angle gamma_bar (radians)
+    real(wp),intent(out) :: phib !! F-W angle phi_bar (radians)
+    real(wp),intent(out) :: psib !! F-W angle psi_bar (radians)
+    real(wp),intent(out) :: epsa !! F-W angle epsilon_A (radians)
 
     real(wp) :: t
 
@@ -20732,18 +20407,6 @@
 !  Approximate heliocentric position and velocity of a nominated major
 !  planet:  Mercury, Venus, EMB, Mars, Jupiter, Saturn, Uranus or
 !  Neptune (but not the Earth itself).
-!
-!  Given:
-!     DATE1    d       TDB date part A (Note 1)
-!     DATE2    d       TDB date part B (Note 1)
-!     NP       i       planet (1=Mercury, 2=Venus, 3=EMB ... 8=Neptune)
-!
-!  Returned:
-!     PV       d(3,2)  planet pos,vel (heliocentric, J2000.0, au, au/d)
-!     J        i       status: -1 = illegal NP (outside 1-8)
-!                               0 = OK
-!                              +1 = warning: date outside 1000-3000 AD
-!                              +2 = warning: solution failed to converge
 !
 !### Notes
 !
@@ -20872,9 +20535,10 @@
 !     considered the most serious, overriding failure to converge,
 !     which in turn takes precedence over the remote epoch warning.
 !
-!### Reference  Simon, J.L, Bretagnon, P., Chapront, J.,
-!              Chapront-Touze, M., Francou, G., and Laskar, J.,
-!              Astron.Astrophys., 282, 663 (1994).
+!### Reference
+!  * Simon, J.L, Bretagnon, P., Chapront, J.,
+!    Chapront-Touze, M., Francou, G., and Laskar, J.,
+!    Astron.Astrophys., 282, 663 (1994).
 !
 !### History
 !  * IAU SOFA revision: 2017 October 12
@@ -20883,11 +20547,15 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    integer :: np
-    real(wp),dimension(3,2) :: pv
-    integer :: j
+    real(wp),intent(in) :: date1 !! TDB date part A (Note 1)
+    real(wp),intent(in) :: date2 !! TDB date part B (Note 1)
+    integer,intent(in) :: np !! planet (1=Mercury, 2=Venus, 3=EMB ... 8=Neptune)
+    real(wp),dimension(3,2),intent(out) :: pv !! planet pos,vel (heliocentric, J2000.0, au, au/d)
+    integer,intent(out) :: j !! status:
+                             !! * -1 = illegal NP (outside 1-8)
+                             !! *  0 = OK
+                             !! * +1 = warning: date outside 1000-3000 AD
+                             !! * +2 = warning: solution failed to converge
 
     !  Maximum number of iterations allowed to solve Kepler's equation
     integer,parameter :: kmax = 10
@@ -20904,12 +20572,12 @@
 
     integer :: jstat, i, k
     real(wp) :: amas(8), a(3,8), dlm(3,8), e(3,8), &
-                     pi(3,8), dinc(3,8), omega(3,8), &
-                     kp(9,8), ca(9,8), sa(9,8), &
-                     kq(10,8), cl(10,8), sl(10,8), &
-                     t, da, dl, de, dp, di, dom, dmu, arga, argl, am, &
-                     ae, dae, ae2, at, r, v, si2, xq, xp, tl, xsw, &
-                     xcw, xm2, xf, ci2, xms, xmc, xpxq2, x, y, z
+                pi(3,8), dinc(3,8), omega(3,8), &
+                kp(9,8), ca(9,8), sa(9,8), &
+                kq(10,8), cl(10,8), sl(10,8), &
+                t, da, dl, de, dp, di, dom, dmu, arga, argl, am, &
+                ae, dae, ae2, at, r, v, si2, xq, xp, tl, xsw, &
+                xcw, xm2, xf, ci2, xms, xmc, xpxq2, x, y, z
 
     !  Planetary inverse masses
     data amas / 6023600d0, 408523.5d0, 328900.5d0, 3098710d0, &
@@ -21180,12 +20848,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     P        d(3)      p-vector
-!
-!  Returned:
-!     R        d         modulus
-!
 !### History
 !  * IAU SOFA revision: 2000 November 25
 
@@ -21193,8 +20855,8 @@
 
     implicit none
 
-    real(wp),dimension(3) :: p
-    real(wp) :: r
+    real(wp),dimension(3),intent(in) :: p !! p-vector
+    real(wp),intent(out) :: r !! modulus
 
     integer :: i
     real(wp) :: w, c
@@ -21215,12 +20877,6 @@
 !  date, IAU 2000 model.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1,DATE2   d       TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     RBP         d(3,3)    bias-precession matrix (Note 2)
 !
 !### Notes
 !
@@ -21250,9 +20906,9 @@
 !
 !### Reference
 !
-!     IAU: Trans. International Astronomical Union, Vol. XXIVB;  Proc.
-!     24th General Assembly, Manchester, UK.  Resolutions B1.3, B1.6.
-!     (2000)
+!  * IAU: Trans. International Astronomical Union, Vol. XXIVB;  Proc.
+!    24th General Assembly, Manchester, UK.  Resolutions B1.3, B1.6.
+!    (2000)
 !
 !### History
 !  * IAU SOFA revision: 2009 December 21
@@ -21261,9 +20917,9 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp),dimension(3,3) :: rbp
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),dimension(3,3),intent(out) :: rbp !! bias-precession matrix (Note 2)
 
     real(wp) :: rb(3,3), rp(3,3)
 
@@ -21279,12 +20935,6 @@
 !  date, IAU 2006 model.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1,DATE2   d       TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     RBP         d(3,3)    bias-precession matrix (Note 2)
 !
 !### Notes
 !
@@ -21325,9 +20975,9 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp),dimension(3,3) :: rbp
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),dimension(3,3),intent(out) :: rbp !! bias-precession matrix (Note 2)
 
     real(wp) :: gamb, phib, psib, epsa
 
@@ -21345,12 +20995,6 @@
 !  Precession matrix from J2000.0 to a specified date, IAU 1976 model.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1,DATE2    d       ending date, TT (Note 1)
-!
-!  Returned:
-!     RMATP          d(3,3)  precession matrix, J2000.0 -> DATE1+DATE2
 !
 !### Notes
 !
@@ -21404,9 +21048,9 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp),dimension(3,3) :: rmatp
+    real(wp),intent(in) :: date1 !! ending date, TT (Note 1)
+    real(wp),intent(in) :: date2 !! ending date, TT (Note 1)
+    real(wp),dimension(3,3),intent(out) :: rmatp !! precession matrix, J2000.0 -> DATE1+DATE2
 
     real(wp) :: zeta, z, theta, wmat(3,3)
 
@@ -21429,13 +21073,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     A        d(3)      first p-vector
-!     B        d(3)      second p-vector
-!
-!  Returned:
-!     AMB      d(3)      A - B
-!
 !### History
 !  * IAU SOFA revision: 2000 November 25
 
@@ -21443,9 +21080,9 @@
 
     implicit none
 
-    real(wp),dimension(3) :: a
-    real(wp),dimension(3) :: b
-    real(wp),dimension(3) :: amb
+    real(wp),dimension(3),intent(in) :: a !! first p-vector
+    real(wp),dimension(3),intent(in) :: b !! second p-vector
+    real(wp),dimension(3),intent(out) :: amb !! A - B
 
     integer :: i
 
@@ -21461,18 +21098,6 @@
 !  Proper motion and parallax.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     RC,DC    d      ICRS RA,Dec at catalog epoch (radians)
-!     PR       d      RA proper motion (radians/year; Note 1)
-!     PD       d      Dec proper motion (radians/year)
-!     PX       d      parallax (arcsec)
-!     RV       d      radial velocity (km/s, +ve if receding)
-!     PMT      d      proper motion time interval (SSB, Julian years)
-!     POB      d(3)   SSB to observer vector (au)
-!
-!  Returned:
-!     PCO      d(3)   coordinate direction (BCRS unit vector)
 !
 !### Notes
 !
@@ -21501,15 +21126,15 @@
 
     implicit none
 
-    real(wp) :: rc
-    real(wp) :: dc
-    real(wp) :: pr
-    real(wp) :: pd
-    real(wp) :: px
-    real(wp) :: rv
-    real(wp) :: pmt
-    real(wp),dimension(3) :: pob
-    real(wp),dimension(3) :: pco
+    real(wp),intent(in) :: rc !! ICRS RA at catalog epoch (radians)
+    real(wp),intent(in) :: dc !! ICRS Dec at catalog epoch (radians)
+    real(wp),intent(in) :: pr !! RA proper motion (radians/year; Note 1)
+    real(wp),intent(in) :: pd !! Dec proper motion (radians/year)
+    real(wp),intent(in) :: px !! parallax (arcsec)
+    real(wp),intent(in) :: rv !! radial velocity (km/s, +ve if receding)
+    real(wp),intent(in) :: pmt !! proper motion time interval (SSB, Julian years)
+    real(wp),dimension(3),intent(in) :: pob !! SSB to observer vector (au)
+    real(wp),dimension(3),intent(out) :: pco !! coordinate direction (BCRS unit vector)
 
     !  Days per Julian millennium
     real(wp),parameter :: djm = 365250d0
@@ -21525,7 +21150,7 @@
 
     integer :: i
     real(wp) :: sr, cr, sd, cd, x, y, z, p(3), pdb, &
-                     dt, pxr, w, pdz, pm(3)
+                dt, pxr, w, pdz, pm(3)
 
     !  Catalog spherical coordinates to unit vector (and useful functions).
     sr = sin(rc)
@@ -21568,33 +21193,6 @@
 !  special handling to handle the zero parallax case.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     RA1      d         right ascension (radians), before
-!     DEC1     d         declination (radians), before
-!     PMR1     d         RA proper motion (radians/year), before
-!     PMD1     d         Dec proper motion (radians/year), before
-!     PX1      d         parallax (arcseconds), before
-!     RV1      d         radial velocity (km/s, +ve = receding), before
-!     EP1A     d         "before" epoch, part A (Note 1)
-!     EP1B     d         "before" epoch, part B (Note 1)
-!     EP2A     d         "after" epoch, part A (Note 1)
-!     EP2B     d         "after" epoch, part B (Note 1)
-!
-!  Returned:
-!     RA2      d         right ascension (radians), after
-!     DEC2     d         declination (radians), after
-!     PMR2     d         RA proper motion (radians/year), after
-!     PMD2     d         Dec proper motion (radians/year), after
-!     PX2      d         parallax (arcseconds), after
-!     RV2      d         radial velocity (km/s, +ve = receding), after
-!     J        i         status:
-!                          -1 = system error (should not occur)
-!                           0 = no warnings or errors
-!                           1 = distance overridden (Note 6)
-!                           2 = excessive velocity (Note 7)
-!                           4 = solution didn't converge (Note 8)
-!                        else = binary logical OR of the above warnings
 !
 !### Notes
 !
@@ -21664,23 +21262,29 @@
 
     implicit none
 
-    real(wp) :: ra1
-    real(wp) :: dec1
-    real(wp) :: pmr1
-    real(wp) :: pmd1
-    real(wp) :: px1
-    real(wp) :: rv1
-    real(wp) :: ep1a
-    real(wp) :: ep1b
-    real(wp) :: ep2a
-    real(wp) :: ep2b
-    real(wp) :: ra2
-    real(wp) :: dec2
-    real(wp) :: pmr2
-    real(wp) :: pmd2
-    real(wp) :: px2
-    real(wp) :: rv2
-    integer :: j
+    real(wp),intent(in) :: ra1 !! right ascension (radians), before
+    real(wp),intent(in) :: dec1 !! declination (radians), before
+    real(wp),intent(in) :: pmr1 !! RA proper motion (radians/year), before
+    real(wp),intent(in) :: pmd1 !! Dec proper motion (radians/year), before
+    real(wp),intent(in) :: px1 !! parallax (arcseconds), before
+    real(wp),intent(in) :: rv1 !! radial velocity (km/s, +ve = receding), before
+    real(wp),intent(in) :: ep1a !! "before" epoch, part A (Note 1)
+    real(wp),intent(in) :: ep1b !! "before" epoch, part B (Note 1)
+    real(wp),intent(in) :: ep2a !! "after" epoch, part A (Note 1)
+    real(wp),intent(in) :: ep2b !! "after" epoch, part B (Note 1)
+    real(wp),intent(out) :: ra2 !! right ascension (radians), after
+    real(wp),intent(out) :: dec2 !! declination (radians), after
+    real(wp),intent(out) :: pmr2 !! RA proper motion (radians/year), after
+    real(wp),intent(out) :: pmd2 !! Dec proper motion (radians/year), after
+    real(wp),intent(out) :: px2 !! parallax (arcseconds), after
+    real(wp),intent(out) :: rv2 !! radial velocity (km/s, +ve = receding), after
+    integer,intent(out) :: j !! status:
+                             !!  * -1 = system error (should not occur)
+                             !!  *  0 = no warnings or errors
+                             !!  *  1 = distance overridden (Note 6)
+                             !!  *  2 = excessive velocity (Note 7)
+                             !!  *  4 = solution didn't converge (Note 8)
+                             !!  *  else = binary logical OR of the above warnings
 
     !  Minimum allowed parallax (arcsec)
     real(wp),parameter :: pxmin = 5d-7
@@ -21709,8 +21313,8 @@
 
     !  Carry out the transformation using the modified parallax.
     call STARPM ( ra1, dec1, pmr1, pmd1, px1a, rv1, &
-                      ep1a, ep1b, ep2a, ep2b, &
-                      ra2, dec2, pmr2, pmd2, px2, rv2, j )
+                  ep1a, ep1b, ep2a, ep2b, &
+                  ra2, dec2, pmr2, pmd2, px2, rv2, j )
 
     !  Revise the status.
     if ( mod(j,2) == 0 ) j = j + jpx
@@ -21724,13 +21328,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     P        d(3)      p-vector
-!
-!  Returned:
-!     R        d         modulus
-!     U        d(3)      unit vector
-!
 !### Note
 !     If P is null, the result is null.  Otherwise the result is
 !     a unit vector.
@@ -21742,20 +21339,18 @@
 
     implicit none
 
-    real(wp),dimension(3) :: p
-    real(wp) :: r
-    real(wp),dimension(3) :: u
+    real(wp),dimension(3),intent(in) :: p !! p-vector
+    real(wp),intent(out) :: r !! modulus
+    real(wp),dimension(3),intent(out) :: u !! unit vector
 
     real(wp) :: w
 
     !  Obtain the modulus and test for zero.
     call PM ( p, w )
     if ( w == 0d0 ) then
-
        !  Null vector.
        call ZP ( u )
     else
-
        !  Unit vector.
        call SXP ( 1d0/w, p, u )
     end if
@@ -21773,18 +21368,6 @@
 !  use indirectly.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1,DATE2   d       TT as a 2-part Julian Date (Note 1)
-!     DPSI,DEPS     d       nutation (Note 2)
-!
-!  Returned:
-!     EPSA          d       mean obliquity (Note 3)
-!     RB          d(3,3)    frame bias matrix (Note 4)
-!     RP          d(3,3)    precession matrix (Note 5)
-!     RBP         d(3,3)    bias-precession matrix (Note 6)
-!     RN          d(3,3)    nutation matrix (Note 7)
-!     RBPN        d(3,3)    GCRS-to-true matrix (Note 8)
 !
 !### Notes
 !
@@ -21853,16 +21436,16 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp) :: dpsi
-    real(wp) :: deps
-    real(wp) :: epsa
-    real(wp),dimension(3,3) :: rb
-    real(wp),dimension(3,3) :: rp
-    real(wp),dimension(3,3) :: rbp
-    real(wp),dimension(3,3) :: rn
-    real(wp),dimension(3,3) :: rbpn
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: dpsi !! nutation (Note 2)
+    real(wp),intent(in) :: deps !! nutation (Note 2)
+    real(wp),intent(out) :: epsa !! mean obliquity (Note 3)
+    real(wp),dimension(3,3),intent(out) :: rb !! frame bias matrix (Note 4)
+    real(wp),dimension(3,3),intent(out) :: rp !! precession matrix (Note 5)
+    real(wp),dimension(3,3),intent(out) :: rbp !! bias-precession matrix (Note 6)
+    real(wp),dimension(3,3),intent(out) :: rn !! nutation matrix (Note 7)
+    real(wp),dimension(3,3),intent(out) :: rbpn !! GCRS-to-true matrix (Note 8)
 
     real(wp) :: dpsipr, depspr
 
@@ -21891,18 +21474,6 @@
 !  use indirectly.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1,DATE2   d       TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     DPSI,DEPS     d       nutation (Note 2)
-!     EPSA          d       mean obliquity (Note 3)
-!     RB          d(3,3)    frame bias matrix (Note 4)
-!     RP          d(3,3)    precession matrix (Note 5)
-!     RBP         d(3,3)    bias-precession matrix (Note 6)
-!     RN          d(3,3)    nutation matrix (Note 7)
-!     RBPN        d(3,3)    GCRS-to-true matrix (Notes 8,9)
 !
 !### Notes
 !
@@ -21958,10 +21529,10 @@
 !
 !### Reference
 !
-!     Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
-!     "Expressions for the Celestial Intermediate Pole and Celestial
-!     Ephemeris Origin consistent with the IAU 2000A precession-nutation
-!     model", Astron.Astrophys. 400, 1145-1154 (2003).
+!  * Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
+!    "Expressions for the Celestial Intermediate Pole and Celestial
+!    Ephemeris Origin consistent with the IAU 2000A precession-nutation
+!    model", Astron.Astrophys. 400, 1145-1154 (2003).
 !
 !  * n.b. The celestial ephemeris origin (CEO) was renamed "celestial
 !    intermediate origin" (CIO) by IAU 2006 Resolution 2.
@@ -21974,16 +21545,16 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp) :: dpsi
-    real(wp) :: deps
-    real(wp) :: epsa
-    real(wp),dimension(3,3) :: rb
-    real(wp),dimension(3,3) :: rp
-    real(wp),dimension(3,3) :: rbp
-    real(wp),dimension(3,3) :: rn
-    real(wp),dimension(3,3) :: rbpn
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(out) :: dpsi !! nutation (Note 2)
+    real(wp),intent(out) :: deps !! nutation (Note 2)
+    real(wp),intent(out) :: epsa !! mean obliquity (Note 3)
+    real(wp),dimension(3,3),intent(out) :: rb !! frame bias matrix (Note 4)
+    real(wp),dimension(3,3),intent(out) :: rp !! precession matrix (Note 5)
+    real(wp),dimension(3,3),intent(out) :: rbp !! bias-precession matrix (Note 6)
+    real(wp),dimension(3,3),intent(out) :: rn !! nutation matrix (Note 7)
+    real(wp),dimension(3,3),intent(out) :: rbpn !! GCRS-to-true matrix (Notes 8,9)
 
     !  Nutation.
     call NUT00A ( date1, date2, dpsi, deps )
@@ -22002,18 +21573,6 @@
 !  use indirectly.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1,DATE2   d       TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     DPSI,DEPS     d       nutation (Note 2)
-!     EPSA          d       mean obliquity (Note 3)
-!     RB          d(3,3)    frame bias matrix (Note 4)
-!     RP          d(3,3)    precession matrix (Note 5)
-!     RBP         d(3,3)    bias-precession matrix (Note 6)
-!     RN          d(3,3)    nutation matrix (Note 7)
-!     RBPN        d(3,3)    GCRS-to-true matrix (Notes 8,9)
 !
 !### Notes
 !
@@ -22069,10 +21628,10 @@
 !
 !### Reference
 !
-!     Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
-!     "Expressions for the Celestial Intermediate Pole and Celestial
-!     Ephemeris Origin consistent with the IAU 2000A precession-nutation
-!     model", Astron.Astrophys. 400, 1145-1154 (2003).
+!  * Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
+!    "Expressions for the Celestial Intermediate Pole and Celestial
+!    Ephemeris Origin consistent with the IAU 2000A precession-nutation
+!    model", Astron.Astrophys. 400, 1145-1154 (2003).
 !
 !  * n.b. The celestial ephemeris origin (CEO) was renamed "celestial
 !    intermediate origin" (CIO) by IAU 2006 Resolution 2.
@@ -22085,23 +21644,23 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp) :: dpsi
-    real(wp) :: deps
-    real(wp) :: epsa
-    real(wp),dimension(3,3) :: rb
-    real(wp),dimension(3,3) :: rp
-    real(wp),dimension(3,3) :: rbp
-    real(wp),dimension(3,3) :: rn
-    real(wp),dimension(3,3) :: rbpn
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(out) :: dpsi !! nutation (Note 2)
+    real(wp),intent(out) :: deps !! nutation (Note 2)
+    real(wp),intent(out) :: epsa !! mean obliquity (Note 3)
+    real(wp),dimension(3,3),intent(out) :: rb !! frame bias matrix (Note 4)
+    real(wp),dimension(3,3),intent(out) :: rp !! precession matrix (Note 5)
+    real(wp),dimension(3,3),intent(out) :: rbp !! bias-precession matrix (Note 6)
+    real(wp),dimension(3,3),intent(out) :: rn !! nutation matrix (Note 7)
+    real(wp),dimension(3,3),intent(out) :: rbpn !! GCRS-to-true matrix (Notes 8,9)
 
     !  Nutation.
     call NUT00B ( date1, date2, dpsi, deps )
 
     !  Remaining results.
     call PN00 ( date1, date2, dpsi, deps, &
-                    epsa, rb, rp, rbp, rn, rbpn )
+                epsa, rb, rp, rbp, rn, rbpn )
 
     end subroutine PN00B
 !***********************************************************************
@@ -22113,18 +21672,6 @@
 !  indirectly.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1,DATE2   d       TT as a 2-part Julian Date (Note 1)
-!     DPSI,DEPS     d       nutation (Note 2)
-!
-!  Returned:
-!     EPSA          d       mean obliquity (Note 3)
-!     RB          d(3,3)    frame bias matrix (Note 4)
-!     RP          d(3,3)    precession matrix (Note 5)
-!     RBP         d(3,3)    bias-precession matrix (Note 6)
-!     RN          d(3,3)    nutation matrix (Note 7)
-!     RBPN        d(3,3)    GCRS-to-true matrix (Note 8)
 !
 !### Notes
 !
@@ -22189,16 +21736,16 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp) :: dpsi
-    real(wp) :: deps
-    real(wp) :: epsa
-    real(wp),dimension(3,3) :: rb
-    real(wp),dimension(3,3) :: rp
-    real(wp),dimension(3,3) :: rbp
-    real(wp),dimension(3,3) :: rn
-    real(wp),dimension(3,3) :: rbpn
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: dpsi !! nutation (Note 2)
+    real(wp),intent(in) :: deps !! nutation (Note 2)
+    real(wp),intent(out) :: epsa !! mean obliquity (Note 3)
+    real(wp),dimension(3,3),intent(out) :: rb !! frame bias matrix (Note 4)
+    real(wp),dimension(3,3),intent(out) :: rp !! precession matrix (Note 5)
+    real(wp),dimension(3,3),intent(out) :: rbp !! bias-precession matrix (Note 6)
+    real(wp),dimension(3,3),intent(out) :: rn !! nutation matrix (Note 7)
+    real(wp),dimension(3,3),intent(out) :: rbpn !! GCRS-to-true matrix (Note 8)
 
     !  JD for MJD 0
     real(wp),parameter :: djm0 = 2400000.5d0
@@ -22244,18 +21791,6 @@
 !  indirectly.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1,DATE2   d       TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     DPSI,DEPS     d       nutation (Note 2)
-!     EPSA          d       mean obliquity (Note 3)
-!     RB          d(3,3)    frame bias matrix (Note 4)
-!     RP          d(3,3)    precession matrix (Note 5)
-!     RBP         d(3,3)    bias-precession matrix (Note 6)
-!     RN          d(3,3)    nutation matrix (Note 7)
-!     RBPN        d(3,3)    GCRS-to-true matrix (Notes 8,9)
 !
 !### Notes
 !
@@ -22317,16 +21852,16 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp) :: dpsi
-    real(wp) :: deps
-    real(wp) :: epsa
-    real(wp),dimension(3,3) :: rb
-    real(wp),dimension(3,3) :: rp
-    real(wp),dimension(3,3) :: rbp
-    real(wp),dimension(3,3) :: rn
-    real(wp),dimension(3,3) :: rbpn
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(out) :: dpsi !! nutation (Note 2)
+    real(wp),intent(out) :: deps !! nutation (Note 2)
+    real(wp),intent(out) :: epsa !! mean obliquity (Note 3)
+    real(wp),dimension(3,3),intent(out) :: rb !! frame bias matrix (Note 4)
+    real(wp),dimension(3,3),intent(out) :: rp !! precession matrix (Note 5)
+    real(wp),dimension(3,3),intent(out) :: rbp !! bias-precession matrix (Note 6)
+    real(wp),dimension(3,3),intent(out) :: rn !! nutation matrix (Note 7)
+    real(wp),dimension(3,3),intent(out) :: rbpn !! GCRS-to-true matrix (Notes 8,9)
 
     !  Nutation.
     call NUT06A ( date1, date2, dpsi, deps )
@@ -22344,12 +21879,6 @@
 !  frame bias), equinox-based, IAU 2000A model.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1,DATE2    d       TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     RBPN         d(3,3)    classical NPB matrix (Note 2)
 !
 !### Notes
 !
@@ -22382,9 +21911,9 @@
 !
 !### Reference
 !
-!     IAU: Trans. International Astronomical Union, Vol. XXIVB;  Proc.
-!     24th General Assembly, Manchester, UK.  Resolutions B1.3, B1.6.
-!     (2000)
+!  * IAU: Trans. International Astronomical Union, Vol. XXIVB;  Proc.
+!    24th General Assembly, Manchester, UK.  Resolutions B1.3, B1.6.
+!    (2000)
 !
 !### History
 !  * IAU SOFA revision: 2009 December 21
@@ -22393,9 +21922,9 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp),dimension(3,3) :: rbpn
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),dimension(3,3),intent(out) :: rbpn !! classical NPB matrix (Note 2)
 
     real(wp) :: dpsi, deps, epsa, rb(3,3), rp(3,3), rbp(3,3), &
                 rn(3,3)
@@ -22413,12 +21942,6 @@
 !  frame bias), equinox-based, IAU 2000B model.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1,DATE2    d       TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     RBPN         d(3,3)    bias-precession-nutation matrix (Note 2)
 !
 !### Notes
 !
@@ -22451,9 +21974,9 @@
 !
 !### Reference
 !
-!     IAU: Trans. International Astronomical Union, Vol. XXIVB;  Proc.
-!     24th General Assembly, Manchester, UK.  Resolutions B1.3, B1.6.
-!     (2000)
+!  * IAU: Trans. International Astronomical Union, Vol. XXIVB;  Proc.
+!    24th General Assembly, Manchester, UK.  Resolutions B1.3, B1.6.
+!    (2000)
 !
 !### History
 !  * IAU SOFA revision: 2009 December 21
@@ -22462,9 +21985,9 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp),dimension(3,3) :: rbpn
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),dimension(3,3),intent(out) :: rbpn !! bias-precession-nutation matrix (Note 2)
 
     real(wp) ::  dpsi, deps, epsa, &
                  rb(3,3), rp(3,3), rbp(3,3), rn(3,3)
@@ -22482,12 +22005,6 @@
 !  frame bias), IAU 2006 precession and IAU 2000A nutation models.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1,DATE2    d       TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     RNPB         d(3,3)    bias-precession-nutation matrix (Note 2)
 !
 !### Notes
 !
@@ -22517,7 +22034,7 @@
 !
 !### Reference
 !
-!     Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855.
+!  * Capitaine, N. & Wallace, P.T., 2006, Astron.Astrophys. 450, 855.
 !
 !### History
 !  * IAU SOFA revision: 2009 December 21
@@ -22526,9 +22043,9 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp),dimension(3,3) :: rnpb
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),dimension(3,3),intent(out) :: rnpb !! bias-precession-nutation matrix (Note 2)
 
     real(wp) :: gamb, phib, psib, epsa, dp, de
 
@@ -22550,12 +22067,6 @@
 !  precession model, IAU 1980 nutation model.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1,DATE2     d         TDB date (Note 1)
-!
-!  Returned:
-!     RMATPN          d(3,3)    combined precession/nutation matrix
 !
 !### Notes
 !
@@ -22586,9 +22097,9 @@
 !
 !### Reference
 !
-!     Explanatory Supplement to the Astronomical Almanac,
-!     P. Kenneth Seidelmann (ed), University Science Books (1992),
-!     Section 3.3 (p145).
+!  * Explanatory Supplement to the Astronomical Almanac,
+!    P. Kenneth Seidelmann (ed), University Science Books (1992),
+!    Section 3.3 (p145).
 !
 !### History
 !  * IAU SOFA revision: 2012 September 5
@@ -22597,9 +22108,9 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp),dimension(3,3) :: rmatpn
+    real(wp),intent(in) :: date1 !! TDB date (Note 1)
+    real(wp),intent(in) :: date2 !! TDB date (Note 1)
+    real(wp),dimension(3,3),intent(out) :: rmatpn !! combined precession/nutation matrix
 
     real(wp) :: rmatp(3,3), rmatn(3,3)
 
@@ -22620,13 +22131,6 @@
 !  Form the matrix of polar motion for a given date, IAU 2000.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     XP,YP      d      coordinates of the pole (radians, Note 1)
-!     SP         d      the TIO locator s' (radians, Note 2)
-!
-!  Returned:
-!     RPOM     d(3,3)   polar-motion matrix (Note 3)
 !
 !### Notes
 !
@@ -22659,10 +22163,10 @@
 
     implicit none
 
-    real(wp) :: xp
-    real(wp) :: yp
-    real(wp) :: sp
-    real(wp),dimension(3,3) :: rpom
+    real(wp),intent(in) :: xp !! coordinates of the pole (radians, Note 1)
+    real(wp),intent(in) :: yp !! coordinates of the pole (radians, Note 1)
+    real(wp),intent(in) :: sp !! the TIO locator s' (radians, Note 2)
+    real(wp),dimension(3,3),intent(out) :: rpom !! polar-motion matrix (Note 3)
 
     !  Construct the matrix.
     call IR ( rpom )
@@ -22679,13 +22183,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     A        d(3)      first p-vector
-!     B        d(3)      second p-vector
-!
-!  Returned:
-!     APB      d(3)      A + B
-!
 !### History
 !  * IAU SOFA revision: 2000 November 25
 
@@ -22693,9 +22190,9 @@
 
     implicit none
 
-    real(wp),dimension(3) :: a
-    real(wp),dimension(3) :: b
-    real(wp),dimension(3) :: apb
+    real(wp),dimension(3),intent(in) :: a !! first p-vector
+    real(wp),dimension(3),intent(in) :: b !! second p-vector
+    real(wp),dimension(3),intent(out) :: apb !! A + B
 
     integer :: i
 
@@ -22712,14 +22209,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     A        d(3)      first p-vector
-!     S        d         scalar (multiplier for B)
-!     B        d(3)      second p-vector
-!
-!  Returned:
-!     APSB     d(3)      A + S*B
-!
 !### History
 !  * IAU SOFA revision: 2007 August 18
 
@@ -22727,10 +22216,10 @@
 
     implicit none
 
-    real(wp),dimension(3) :: a
-    real(wp) :: s
-    real(wp),dimension(3) :: b
-    real(wp),dimension(3) :: apsb
+    real(wp),dimension(3),intent(in) :: a !! first p-vector
+    real(wp),intent(in) :: s !! scalar (multiplier for B)
+    real(wp),dimension(3),intent(in) :: b !! second p-vector
+    real(wp),dimension(3),intent(out) :: apsb !! A + S*B
 
     integer :: i
 
@@ -22747,12 +22236,6 @@
 !  (part of MHB2000).
 !
 !  Status:  canonical model.
-!
-!  Given:
-!     DATE1,DATE2    d   TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     DPSIPR,DEPSPR  d   precession corrections (Notes 2,3)
 !
 !### Notes
 !
@@ -22812,10 +22295,10 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp) :: dpsipr
-    real(wp) :: depspr
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(out) :: dpsipr !! precession corrections (Notes 2,3)
+    real(wp),intent(out) :: depspr !! precession corrections (Notes 2,3)
 
     real(wp) :: t
 
@@ -22845,15 +22328,6 @@
 !  the FK5 catalog).
 !
 !  Status:  canonical model.
-!
-!  Given:
-!     DATE01,DATE02  d   TDB starting date (Note 1)
-!     DATE11,DATE12  d   TDB ending date (Note 1)
-!
-!  Returned:
-!     ZETA           d   1st rotation: radians clockwise around z
-!     Z              d   3rd rotation: radians clockwise around z
-!     THETA          d   2nd rotation: radians counterclockwise around y
 !
 !### Notes
 !
@@ -22894,8 +22368,8 @@
 !
 !### Reference
 !
-!     Lieske, J.H., 1979, Astron.Astrophys. 73, 282.
-!      equations (6) & (7), p283.
+!  * Lieske, J.H., 1979, Astron.Astrophys. 73, 282.
+!    equations (6) & (7), p283.
 !
 !### History
 !  * IAU SOFA revision: 2013 November 19
@@ -22905,13 +22379,13 @@
 
     implicit none
 
-    real(wp) :: date01
-    real(wp) :: date02
-    real(wp) :: date11
-    real(wp) :: date12
-    real(wp) :: zeta
-    real(wp) :: z
-    real(wp) :: theta
+    real(wp),intent(in) :: date01 !! TDB starting date (Note 1)
+    real(wp),intent(in) :: date02 !! TDB starting date (Note 1)
+    real(wp),intent(in) :: date11 !! TDB ending date (Note 1)
+    real(wp),intent(in) :: date12 !! TDB ending date (Note 1)
+    real(wp),intent(out) :: zeta !! 1st rotation: radians clockwise around z
+    real(wp),intent(out) :: z !! 3rd rotation: radians clockwise around z
+    real(wp),intent(out) :: theta !! 2nd rotation: radians counterclockwise around y
 
     real(wp) :: t0, t, tas2r, w
 
@@ -22951,12 +22425,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     PV       d(3,2)      pv-vector
-!
-!  Returned:
-!     P        d(3)        p-vector
-!
 !### History
 !  * IAU SOFA revision: 2000 November 25
 
@@ -22964,8 +22432,8 @@
 
     implicit none
 
-    real(wp),dimension(3,2) :: pv
-    real(wp),dimension(3) :: p
+    real(wp),dimension(3,2),intent(in) :: pv !! pv-vector
+    real(wp),dimension(3),intent(out) :: p !! p-vector
 
     call CP ( pv, p )
 
@@ -22977,17 +22445,6 @@
 !  Convert position/velocity from Cartesian to spherical coordinates.
 !
 !  Status:  vector/matrix support routine.
-!
-!  Given:
-!     PV       d(3,2)    pv-vector
-!
-!  Returned:
-!     THETA    d         longitude angle (radians)
-!     PHI      d         latitude angle (radians)
-!     R        d         radial distance
-!     TD       d         rate of change of THETA
-!     PD       d         rate of change of PHI
-!     RD       d         rate of change of R
 !
 !### Notes
 !
@@ -23009,13 +22466,13 @@
 
     implicit none
 
-    real(wp),dimension(3,2) :: pv
-    real(wp) :: theta
-    real(wp) :: phi
-    real(wp) :: r
-    real(wp) :: td
-    real(wp) :: pd
-    real(wp) :: rd
+    real(wp),dimension(3,2),intent(in) :: pv !! pv-vector
+    real(wp),intent(out) :: theta !! longitude angle (radians)
+    real(wp),intent(out) :: phi !! latitude angle (radians)
+    real(wp),intent(out) :: r !! radial distance
+    real(wp),intent(out) :: td !! rate of change of THETA
+    real(wp),intent(out) :: pd !! rate of change of PHI
+    real(wp),intent(out) :: rd !! rate of change of R
 
     real(wp) :: x, y, z, xd, yd, zd, rxy2, rxy, r2, &
                 rtrue, rw, xyp
@@ -23082,19 +22539,12 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     A        d(3,2)      first pv-vector
-!     B        d(3,2)      second pv-vector
-!
-!  Returned:
-!     ADB      d(2)        A . B (see note)
-!
 !### Note
 !
-!     If the position and velocity components of the two pv-vectors are
-!     ( Ap, Av ) and ( Bp, Bv ), the result, A . B, is the pair of
-!     numbers ( Ap . Bp , Ap . Bv + Av . Bp ).  The two numbers are the
-!     dot-product of the two p-vectors and its derivative.
+!  If the position and velocity components of the two pv-vectors are
+!  ( Ap, Av ) and ( Bp, Bv ), the result, A . B, is the pair of
+!  numbers ( Ap . Bp , Ap . Bv + Av . Bp ).  The two numbers are the
+!  dot-product of the two p-vectors and its derivative.
 !
 !### History
 !  * IAU SOFA revision: 2006 November 13
@@ -23103,9 +22553,9 @@
 
     implicit none
 
-    real(wp),dimension(3,2) :: a
-    real(wp),dimension(3,2) :: b
-    real(wp),dimension(2) :: adb
+    real(wp),dimension(3,2),intent(in) :: a !! first pv-vector
+    real(wp),dimension(3,2),intent(in) :: b !! second pv-vector
+    real(wp),dimension(2),intent(out) :: adb !! A . B (see note)
 
     real(wp) :: adbd, addb
 
@@ -23130,13 +22580,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     PV       d(3,2)    pv-vector
-!
-!  Returned:
-!     R        d         modulus of position component
-!     S        d         modulus of velocity component
-!
 !### History
 !  * IAU SOFA revision: 2000 November 25
 
@@ -23144,9 +22587,9 @@
 
     implicit none
 
-    real(wp),dimension(3,2) :: pv
-    real(wp) :: r
-    real(wp) :: s
+    real(wp),dimension(3,2),intent(in) :: pv !! pv-vector
+    real(wp),intent(out) :: r !! modulus of position component
+    real(wp),intent(out) :: s !! modulus of velocity component
 
     !  Distance.
     call PM ( pv(1,1), r )
@@ -23163,13 +22606,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     A        d(3,2)      first pv-vector
-!     B        d(3,2)      second pv-vector
-!
-!  Returned:
-!     AMB      d(3,2)      A - B
-!
 !### History
 !  * IAU SOFA revision: 2006 November 13
 
@@ -23177,9 +22613,9 @@
 
     implicit none
 
-    real(wp),dimension(3,2) :: a
-    real(wp),dimension(3,2) :: b
-    real(wp),dimension(3,2) :: amb
+    real(wp),dimension(3,2),intent(in) :: a !! first pv-vector
+    real(wp),dimension(3,2),intent(in) :: b !! second pv-vector
+    real(wp),dimension(3,2),intent(out) :: amb !! A - B
 
     integer :: i
 
@@ -23196,13 +22632,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     A        d(3,2)      first pv-vector
-!     B        d(3,2)      second pv-vector
-!
-!  Returned:
-!     APB      d(3,2)      A + B
-!
 !### History
 !  * IAU SOFA revision: 2006 November 13
 
@@ -23210,9 +22639,9 @@
 
     implicit none
 
-    real(wp),dimension(3,2) :: a
-    real(wp),dimension(3,2) :: b
-    real(wp),dimension(3,2) :: apb
+    real(wp),dimension(3,2),intent(in) :: a !! first pv-vector
+    real(wp),dimension(3,2),intent(in) :: b !! second pv-vector
+    real(wp),dimension(3,2),intent(out) :: apb !! A + B
 
     integer :: i
 
@@ -23228,21 +22657,6 @@
 !  Convert star position+velocity vector to catalog coordinates.
 !
 !  Status:  support routine.
-!
-!  Given (Note 1):
-!     PV       d(3,2)    pv-vector (au, au/day)
-!
-!  Returned (Note 2):
-!     RA       d         right ascension (radians)
-!     DEC      d         declination (radians)
-!     PMR      d         RA proper motion (radians/year)
-!     PMD      d         Dec proper motion (radians/year)
-!     PX       d         parallax (arcsec)
-!     RV       d         radial velocity (km/s, positive = receding)
-!     J        i         status:
-!                           0 = OK
-!                          -1 = superluminal speed (Note 5)
-!                          -2 = null position vector
 !
 !### Notes
 !
@@ -23299,23 +22713,30 @@
 !
 !### Reference
 !
-!     Stumpff, P., Astron.Astrophys. 144, 232-240 (1985).
+!  * Stumpff, P., Astron.Astrophys. 144, 232-240 (1985).
 !
 !### History
 !  * IAU SOFA revision: 2017 March 16
+!
+!@warning The `pv` argument is documented as an input in the IAU routine,
+!         But the velocity components are changed by this routine. In this
+!         version, it is declared as `intent(inout)`.
 
     subroutine PVSTAR ( pv, ra, dec, pmr, pmd, px, rv, j )
 
     implicit none
 
-    real(wp),dimension(3,2) :: pv
-    real(wp) :: ra
-    real(wp) :: dec
-    real(wp) :: pmr
-    real(wp) :: pmd
-    real(wp) :: px
-    real(wp) :: rv
-    integer :: j
+    real(wp),dimension(3,2),intent(inout) :: pv !! pv-vector (au, au/day) [see Note 1]
+    real(wp),intent(out) :: ra !! right ascension (radians) [see Note 2]
+    real(wp),intent(out) :: dec !! declination (radians) [see Note 2]
+    real(wp),intent(out) :: pmr !! RA proper motion (radians/year) [see Note 2]
+    real(wp),intent(out) :: pmd !! Dec proper motion (radians/year) [see Note 2]
+    real(wp),intent(out) :: px !! parallax (arcsec) [see Note 2]
+    real(wp),intent(out) :: rv !! radial velocity (km/s, positive = receding) [see Note 2]
+    integer,intent(out) :: j !! status [see Note 2]:
+                             !! *  0 = OK
+                             !! * -1 = superluminal speed (Note 5)
+                             !! * -2 = null position vector
 
     !  Julian years to days
     real(wp),parameter :: y2d = 365.25d0
@@ -23330,7 +22751,7 @@
     real(wp),parameter :: c = d2s*cmps/aum
 
     real(wp) :: r, x(3), vr, ur(3), vt, ut(3), bett, betr, d, w, &
-                     del, usr(3), ust(3), a, rad, decd, rd
+                del, usr(3), ust(3), a, rad, decd, rd
 
     !  Isolate the radial component of the velocity (au/day, inertial).
     call PN ( pv(1,1), r, x )
@@ -23400,17 +22821,6 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     ELONG      d       longitude (radians, east +ve, Note 1)
-!     PHI        d       latitude (geodetic, radians, Note 1)
-!     HM         d       height above reference ellipsoid (geodetic, m)
-!     XP,YP      d       coordinates of the pole (radians, Note 2)
-!     SP         d       the TIO locator s' (radians, Note 2)
-!     THETA      d       Earth rotation angle (radians, Note 3)
-!
-!  Returned:
-!     PV         d(3,2)  position/velocity vector (m, m/s, CIRS)
-!
 !### Notes
 !
 !  1. The terrestrial coordinates are with respect to the WGS84
@@ -23453,14 +22863,14 @@
 
     implicit none
 
-    real(wp) :: elong
-    real(wp) :: phi
-    real(wp) :: hm
-    real(wp) :: xp
-    real(wp) :: yp
-    real(wp) :: sp
-    real(wp) :: theta
-    real(wp),dimension(3,2) :: pv
+    real(wp),intent(in) :: elong !! longitude (radians, east +ve, Note 1)
+    real(wp),intent(in) :: phi !! latitude (geodetic, radians, Note 1)
+    real(wp),intent(in) :: hm !! height above reference ellipsoid (geodetic, m)
+    real(wp),intent(in) :: xp !! coordinates of the pole (radians, Note 2)
+    real(wp),intent(in) :: yp !! coordinates of the pole (radians, Note 2)
+    real(wp),intent(in) :: sp !! the TIO locator s' (radians, Note 2)
+    real(wp),intent(in) :: theta !! Earth rotation angle (radians, Note 3)
+    real(wp),dimension(3,2),intent(out) :: pv !! position/velocity vector (m, m/s, CIRS)
 
     !  Earth rotation rate in radians per UT1 second
     real(wp),parameter :: om = 1.00273781191135448d0 * d2pi / d2s
@@ -23501,13 +22911,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     DT       d           time interval
-!     PV       d(3,2)      pv-vector
-!
-!  Returned:
-!     UPV      d(3,2)      p updated, v unchanged
-!
 !### Notes
 !
 !  1. "Update" means "refer the position component of the vector
@@ -23522,9 +22925,9 @@
 
     implicit none
 
-    real(wp) :: dt
-    real(wp),dimension(3,2) :: pv
-    real(wp),dimension(3,2) :: upv
+    real(wp),intent(in) :: dt !! time interval
+    real(wp),dimension(3,2),intent(in) :: pv !! pv-vector
+    real(wp),dimension(3,2),intent(out) :: upv !! p updated, v unchanged
 
     call PPSP ( pv(1,1), dt, pv(1,2), upv(1,1) )
     call CP ( pv(1,2), upv(1,2) )
@@ -23537,13 +22940,6 @@
 !  Update a pv-vector, discarding the velocity component.
 !
 !  Status:  vector/matrix support routine.
-!
-!  Given:
-!     DT       d           time interval
-!     PV       d(3,2)      pv-vector
-!
-!  Returned:
-!     P        d(3)        p-vector
 !
 !### Notes
 !
@@ -23559,9 +22955,9 @@
 
     implicit none
 
-    real(wp) :: dt
-    real(wp),dimension(3,2) :: pv
-    real(wp),dimension(3) :: p
+    real(wp),intent(in) :: dt !! time interval
+    real(wp),dimension(3,2),intent(in) :: pv !! pv-vector
+    real(wp),dimension(3),intent(out) :: p !! p-vector
 
     integer :: i
 
@@ -23578,19 +22974,12 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     A        d(3,2)      first pv-vector
-!     B        d(3,2)      second pv-vector
-!
-!  Returned:
-!     AXB      d(3,2)      A x B
-!
 !### Note
 !
-!     If the position and velocity components of the two pv-vectors are
-!     ( Ap, Av ) and ( Bp, Bv ), the result, A x B, is the pair of
-!     vectors ( Ap x Bp, Ap x Bv + Av x Bp ).  The two vectors are the
-!     cross-product of the two p-vectors and its derivative.
+!  If the position and velocity components of the two pv-vectors are
+!  ( Ap, Av ) and ( Bp, Bv ), the result, A x B, is the pair of
+!  vectors ( Ap x Bp, Ap x Bv + Av x Bp ).  The two vectors are the
+!  cross-product of the two p-vectors and its derivative.
 !
 !### History
 !  * IAU SOFA revision: 2006 November 13
@@ -23599,9 +22988,9 @@
 
     implicit none
 
-    real(wp),dimension(3,2) :: a
-    real(wp),dimension(3,2) :: b
-    real(wp),dimension(3,2) :: axb
+    real(wp),dimension(3,2),intent(in) :: a !! first pv-vector
+    real(wp),dimension(3,2),intent(in) :: b !! second pv-vector
+    real(wp),dimension(3,2),intent(out) :: axb !! A x B
 
     real(wp) :: wa(3,2), wb(3,2), axbd(3), adxb(3)
 
@@ -23626,13 +23015,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     A        d(3)      first p-vector
-!     B        d(3)      second p-vector
-!
-!  Returned:
-!     AXB      d(3)      A x B
-!
 !### History
 !  * IAU SOFA revision: 2000 November 25
 
@@ -23640,9 +23022,9 @@
 
     implicit none
 
-    real(wp),dimension(3) :: a
-    real(wp),dimension(3) :: b
-    real(wp),dimension(3) :: axb
+    real(wp),dimension(3),intent(in) :: a !! first p-vector
+    real(wp),dimension(3),intent(in) :: b !! second p-vector
+    real(wp),dimension(3),intent(out) :: axb !! A x B
 
     real(wp) :: xa, ya, za, xb, yb, zb
 
@@ -23670,16 +23052,6 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     PHPA     d      pressure at the observer (hPa = millibar)
-!     TC       d      ambient temperature at the observer (deg C)
-!     RH       d      relative humidity at the observer (range 0-1)
-!     WL       d      wavelength (micrometers)
-!
-!  Returned:
-!     REFA     d      tan Z coefficient (radians)
-!     REFB     d      tan^3 Z coefficient (radians)
-!
 !### Notes
 !
 !  1. The model balances speed and accuracy to give good results in
@@ -23694,35 +23066,35 @@
 !
 !     The model was tested using the following range of conditions:
 !
-!       lapse rates 0.0055, 0.0065, 0.0075 deg/meter
-!       latitudes 0, 25, 50, 75 degrees
-!       heights 0, 2500, 5000 meters ASL
-!       pressures mean for height -10% to +5% in steps of 5%
-!       temperatures -10 deg to +20 deg with respect to 280 deg at SL
-!       relative humidity 0, 0.5, 1
-!       wavelengths 0.4, 0.6, ... 2 micron, + radio
-!       zenith distances 15, 45, 75 degrees
+!     * lapse rates 0.0055, 0.0065, 0.0075 deg/meter
+!     * latitudes 0, 25, 50, 75 degrees
+!     * heights 0, 2500, 5000 meters ASL
+!     * pressures mean for height -10% to +5% in steps of 5%
+!     * temperatures -10 deg to +20 deg with respect to 280 deg at SL
+!     * relative humidity 0, 0.5, 1
+!     * wavelengths 0.4, 0.6, ... 2 micron, + radio
+!     * zenith distances 15, 45, 75 degrees
 !
 !     The accuracy with respect to raytracing through a model
 !     atmosphere was as follows:
-!
+!```
 !                            worst         RMS
 !
 !       optical/IR           62 mas       8 mas
 !       radio               319 mas      49 mas
-!
+!```
 !     For this particular set of conditions:
 !
-!       lapse rate 0.0065 K/meter
-!       latitude 50 degrees
-!       sea level
-!       pressure 1005 mb
-!       temperature 280.15 K
-!       humidity 80%
-!       wavelength 5740 Angstroms
+!     * lapse rate 0.0065 K/meter
+!     * latitude 50 degrees
+!     * sea level
+!     * pressure 1005 mb
+!     * temperature 280.15 K
+!     * humidity 80%
+!     * wavelength 5740 Angstroms
 !
 !     the results were as follows:
-!
+!```
 !       ZD       raytrace     REFCO  Saastamoinen
 !
 !       10         10.27        10.27        10.27
@@ -23742,7 +23114,7 @@
 !       80        319.13       318.55       319.10
 !
 !      deg        arcsec       arcsec       arcsec
-!
+!```
 !     The values for Saastamoinen's formula (which includes terms
 !     up to tan^5) are taken from Hohenkerk and Sinclair (1985).
 !
@@ -23808,12 +23180,12 @@
 
     implicit none
 
-    real(wp) :: phpa
-    real(wp) :: tc
-    real(wp) :: rh
-    real(wp) :: wl
-    real(wp) :: refa
-    real(wp) :: refb
+    real(wp),intent(in) :: phpa !! pressure at the observer (hPa = millibar)
+    real(wp),intent(in) :: tc !! ambient temperature at the observer (deg C)
+    real(wp),intent(in) :: rh !! relative humidity at the observer (range 0-1)
+    real(wp),intent(in) :: wl !! wavelength (micrometers)
+    real(wp),intent(out) :: refa !! tan Z coefficient (radians)
+    real(wp),intent(out) :: refb !! tan^3 Z coefficient (radians)
 
     logical :: optic
     real(wp) :: p, t, r, w, ps, pw, tk, wlsq, gamma, beta
@@ -23863,12 +23235,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     R        d(3,3)    rotation matrix
-!
-!  Returned:
-!     W        d(3)      rotation vector (Note 1)
-!
 !### Notes
 !
 !  1. A rotation matrix describes a rotation through some angle about
@@ -23891,8 +23257,8 @@
 
     implicit none
 
-    real(wp),dimension(3,3) :: r
-    real(wp),dimension(3) :: w
+    real(wp),dimension(3,3),intent(in) :: r !! rotation matrix
+    real(wp),dimension(3),intent(out) :: w !! rotation vector (Note 1)
 
     real(wp) :: x, y, z, s2, c2, phi, f
 
@@ -23922,12 +23288,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     W        d(3)      rotation vector (Note 1)
-!
-!  Returned:
-!     R        d(3,3)    rotation matrix
-!
 !### Notes
 !
 !  1. A rotation matrix describes a rotation through some angle about
@@ -23947,8 +23307,8 @@
 
     implicit none
 
-    real(wp),dimension(3) :: w
-    real(wp),dimension(3,3) :: r
+    real(wp),dimension(3),intent(in) :: w !! rotation vector (Note 1)
+    real(wp),dimension(3,3),intent(out) :: r !! rotation matrix
 
     real(wp) :: x, y, z, phi, s, c, f
 
@@ -23988,12 +23348,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     PHI      d         angle (radians)
-!
-!  Given and returned:
-!     R        d(3,3)    r-matrix, rotated
-!
 !### Notes
 !
 !  1. Calling this routine with positive PHI incorporates in the
@@ -24001,12 +23355,13 @@
 !     anticlockwise as seen looking towards the origin from positive x.
 !
 !  2. The additional rotation can be represented by this matrix:
-!
+!```
 !         (  1        0            0      )
 !         (                               )
 !         (  0   + cos(PHI)   + sin(PHI)  )
 !         (                               )
 !         (  0   - sin(PHI)   + cos(PHI)  )
+!```
 !
 !### History
 !  * IAU SOFA revision: 2012 April 3
@@ -24015,8 +23370,8 @@
 
     implicit none
 
-    real(wp) :: phi
-    real(wp),dimension(3,3) :: r
+    real(wp),intent(in) :: phi !! angle (radians)
+    real(wp),dimension(3,3),intent(out) :: r !! r-matrix, rotated
 
     real(wp) :: s, c, a21, a22, a23, a31, a32, a33
 
@@ -24046,13 +23401,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     R        d(3,3)    r-matrix
-!     P        d(3)      p-vector
-!
-!  Returned:
-!     RP       d(3)      R * P
-!
 !### History
 !  * IAU SOFA revision: 2006 November 13
 
@@ -24060,9 +23408,9 @@
 
     implicit none
 
-    real(wp),dimension(3,3) :: r
-    real(wp),dimension(3) :: p
-    real(wp),dimension(3) :: rp
+    real(wp),dimension(3,3),intent(in) :: r !! r-matrix
+    real(wp),dimension(3),intent(in) :: p !! p-vector
+    real(wp),dimension(3),intent(out) :: rp !! R * P
 
     real(wp) :: w, wrp(3)
 
@@ -24089,13 +23437,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     R        d(3,3)    r-matrix
-!     PV       d(3,2)    pv-vector
-!
-!  Returned:
-!     RPV      d(3,2)    R * PV
-!
 !### History
 !  * IAU SOFA revision: 2006 November 13
 
@@ -24103,9 +23444,9 @@
 
     implicit none
 
-    real(wp),dimension(3,3) :: r
-    real(wp),dimension(3,2) :: pv
-    real(wp),dimension(3,2) :: rpv
+    real(wp),dimension(3,3),intent(in) :: r !! r-matrix
+    real(wp),dimension(3,2),intent(in) :: pv !! pv-vector
+    real(wp),dimension(3,2),intent(out) :: rpv !! R * PV
 
     call RXP ( r, pv(1,1), rpv(1,1) )
     call RXP ( r, pv(1,2), rpv(1,2) )
@@ -24119,13 +23460,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     A        d(3,3)    first r-matrix
-!     B        d(3,3)    second r-matrix
-!
-!  Returned:
-!     ATB      d(3,3)    A * B
-!
 !### History
 !  * IAU SOFA revision: 2000 November 25
 
@@ -24133,9 +23467,9 @@
 
     implicit none
 
-    real(wp),dimension(3,3) :: a
-    real(wp),dimension(3,3) :: b
-    real(wp),dimension(3,3) :: atb
+    real(wp),dimension(3,3),intent(in) :: a !! first r-matrix
+    real(wp),dimension(3,3),intent(in) :: b !! second r-matrix
+    real(wp),dimension(3,3),intent(out) :: atb !! A * B
 
     integer :: i, j, k
     real(wp) :: w, wm(3,3)
@@ -24160,12 +23494,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     THETA    d         angle (radians)
-!
-!  Given and returned:
-!     R        d(3,3)    r-matrix, rotated
-!
 !### Notes
 !
 !  1. Calling this routine with positive THETA incorporates in the
@@ -24173,12 +23501,13 @@
 !     anticlockwise as seen looking towards the origin from positive y.
 !
 !  2. The additional rotation can be represented by this matrix:
-!
+!```
 !         (  + cos(THETA)     0      - sin(THETA)  )
 !         (                                        )
 !         (       0           1           0        )
 !         (                                        )
 !         (  + sin(THETA)     0      + cos(THETA)  )
+!```
 !
 !### History
 !  * IAU SOFA revision: 2012 April 3
@@ -24187,8 +23516,8 @@
 
     implicit none
 
-    real(wp) :: theta
-    real(wp),dimension(3,3) :: r
+    real(wp),intent(in) :: theta !! angle (radians)
+    real(wp),dimension(3,3),intent(out) :: r !! r-matrix, rotated
 
     real(wp) :: s, c, a11, a12, a13, a31, a32, a33
 
@@ -24218,12 +23547,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     PSI      d         angle (radians)
-!
-!  Given and returned:
-!     R        d(3,3)    r-matrix, rotated
-!
 !### Notes
 !
 !  1. Calling this routine with positive PSI incorporates in the
@@ -24231,12 +23554,13 @@
 !     anticlockwise as seen looking towards the origin from positive z.
 !
 !  2. The additional rotation can be represented by this matrix:
-!
+!```
 !         (  + cos(PSI)   + sin(PSI)     0  )
 !         (                                 )
 !         (  - sin(PSI)   + cos(PSI)     0  )
 !         (                                 )
 !         (       0            0         1  )
+!```
 !
 !### History
 !  * IAU SOFA revision: 2012 April 3
@@ -24245,8 +23569,8 @@
 
     implicit none
 
-    real(wp) :: psi
-    real(wp),dimension(3,3) :: r
+    real(wp),intent(in) :: psi !! angle (radians)
+    real(wp),dimension(3,3),intent(out) :: r !! r-matrix, rotated
 
     real(wp) :: s, c, a11, a12, a13, a21, a22, a23
 
@@ -24277,13 +23601,6 @@
 !  coordinates.  Compatible with IAU 2000A precession-nutation.
 !
 !  Status:  canonical model.
-!
-!  Given:
-!     DATE1,DATE2    d      TT as a 2-part Julian Date (Note 1)
-!     X,Y            d      CIP coordinates (Note 3)
-!
-!  Returned:
-!     S00        d      the CIO locator s in radians (Note 2)
 !
 !### Notes
 !
@@ -24336,14 +23653,15 @@
 !### History
 !  * IAU SOFA revision: 2010 January 18
 
-    real(wp) function S00 ( date1, date2, x, y )
+    function S00 ( date1, date2, x, y ) result(s)
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp) :: x
-    real(wp) :: y
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: x !! CIP coordinates (Note 3)
+    real(wp),intent(in) :: y !! CIP coordinates (Note 3)
+    real(wp) :: s !! the CIO locator s in radians (Note 2)
 
     !  Time since J2000.0, in Julian centuries
     real(wp) :: t
@@ -24360,12 +23678,12 @@
     !  ---------------------
 
     !  Number of terms in the series
-    integer,parameter :: nsp=6
-    integer,parameter :: ns0=33
-    integer,parameter :: ns1=3
-    integer,parameter :: ns2=25
-    integer,parameter :: ns3=4
-    integer,parameter :: ns4=1
+    integer,parameter :: nsp = 6
+    integer,parameter :: ns0 = 33
+    integer,parameter :: ns1 = 3
+    integer,parameter :: ns2 = 25
+    integer,parameter :: ns3 = 4
+    integer,parameter :: ns4 = 1
 
     !  Polynomial coefficients
     real(wp) :: sp ( nsp )
@@ -24641,12 +23959,12 @@
        s4 = s4 + ( ss4(1,i)*sin(a) + ss4(2,i)*cos(a) )
     end do
 
-    S00 = ( s0 + &
-              ( s1 + &
-              ( s2 + &
-              ( s3 + &
-              ( s4 + &
-                s5 * t ) * t ) * t ) * t ) * t ) * das2r - x*y/2d0
+    s = ( s0 + &
+        ( s1 + &
+        ( s2 + &
+        ( s3 + &
+        ( s4 + &
+          s5 * t ) * t ) * t ) * t ) * t ) * das2r - x*y/2d0
 
     end function S00
 !***********************************************************************
@@ -24658,12 +23976,6 @@
 !  precession-nutation model.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1,DATE2    d      TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     S00A       d      the CIO locator s in radians (Note 2)
 !
 !### Notes
 !
@@ -24716,12 +24028,13 @@
 !### History
 !  * IAU SOFA revision: 2010 January 18
 
-    real(wp) function S00A ( date1, date2 )
+    function S00A ( date1, date2 ) result(s)
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp) :: s !! the CIO locator s in radians (Note 2)
 
     real(wp) :: rbpn(3,3), x, y
 
@@ -24732,7 +24045,7 @@
     call BPN2XY ( rbpn, x, y )
 
     !  Compute the CIO locator s, given the CIP coordinates.
-    S00A = S00 ( date1, date2, x, y )
+    s = S00 ( date1, date2, x, y )
 
     end function S00A
 !***********************************************************************
@@ -24744,12 +24057,6 @@
 !  precession-nutation model.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1,DATE2    d      TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     S00B       d      the CIO locator s in radians (Note 2)
 !
 !### Notes
 !
@@ -24802,12 +24109,13 @@
 !### History
 !  * IAU SOFA revision: 2010 January 18
 
-    real(wp) function S00B ( date1, date2 )
+    function S00B ( date1, date2 ) result(s)
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp) :: s !! the CIO locator s in radians (Note 2)
 
     real(wp) :: rbpn(3,3), x, y
 
@@ -24818,7 +24126,7 @@
     call BPN2XY ( rbpn, x, y )
 
     !  Compute the CIO locator s, given the CIP coordinates.
-    S00B = S00 ( date1, date2, x, y )
+    s = S00 ( date1, date2, x, y )
 
     end function S00B
 !***********************************************************************
@@ -24830,13 +24138,6 @@
 !  coordinates.  Compatible with IAU 2006/2000A precession-nutation.
 !
 !  Status:  canonical model.
-!
-!  Given:
-!     DATE1,DATE2    d      TT as a 2-part Julian Date (Note 1)
-!     X,Y            d      CIP coordinates (Note 3)
-!
-!  Returned:
-!     S06        d      the CIO locator s in radians (Note 2)
 !
 !### Notes
 !
@@ -24886,14 +24187,15 @@
 !### History
 !  * IAU SOFA revision:  2009 December 15
 
-    real(wp) function S06 ( date1, date2, x, y )
+    function S06 ( date1, date2, x, y ) result(s)
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp) :: x
-    real(wp) :: y
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: x !! CIP coordinates (Note 3)
+    real(wp),intent(in) :: y !! CIP coordinates (Note 3)
+    real(wp) :: s !! the CIO locator s in radians (Note 2)
 
     !  Time since J2000.0, in Julian centuries
     real(wp) :: t
@@ -25191,12 +24493,12 @@
        s4 = s4 + ( ss4(1,i)*sin(a) + ss4(2,i)*cos(a) )
     end do
 
-    S06 = ( s0 + &
-              ( s1 + &
-              ( s2 + &
-              ( s3 + &
-              ( s4 + &
-                s5 * t ) * t ) * t ) * t ) * t ) * das2r - x*y/2d0
+    s = ( s0 + &
+        ( s1 + &
+        ( s2 + &
+        ( s3 + &
+        ( s4 + &
+          s5 * t ) * t ) * t ) * t ) * t ) * das2r - x*y/2d0
 
     end function S06
 !***********************************************************************
@@ -25208,12 +24510,6 @@
 !  precession and IAU 2000A nutation models.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1,DATE2    d      TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     S06A       d      the CIO locator s in radians (Note 2)
 !
 !### Notes
 !
@@ -25268,12 +24564,13 @@
 !### History
 !  * IAU SOFA revision: 2010 January 18
 
-    real(wp) function S06A ( date1, date2 )
+    function S06A ( date1, date2 ) result(s)
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp) :: s !! the CIO locator s in radians (Note 2)
 
     real(wp) :: rnpb(3,3), x, y
 
@@ -25284,7 +24581,7 @@
     call BPN2XY ( rnpb, x, y )
 
     !  Compute the CIO locator s, given the CIP coordinates.
-    S06A = S06 ( date1, date2, x, y )
+    s = S06 ( date1, date2, x, y )
 
     end function S06A
 !***********************************************************************
@@ -25295,13 +24592,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     THETA    d         longitude angle (radians)
-!     PHI      d         latitude angle (radians)
-!
-!  Returned:
-!     C        d(3)      direction cosines
-!
 !### History
 !  * IAU SOFA revision: 2000 November 25
 
@@ -25309,9 +24599,9 @@
 
     implicit none
 
-    real(wp) :: theta
-    real(wp) :: phi
-    real(wp),dimension(3) :: c
+    real(wp),intent(in) :: theta !!  longitude angle (radians)
+    real(wp),intent(in) :: phi !!  latitude angle (radians)
+    real(wp),dimension(3),intent(out) :: c !! direction cosines
 
     real(wp) :: cp
 
@@ -25329,14 +24619,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     THETA    d         longitude angle (radians)
-!     PHI      d         latitude angle (radians)
-!     R        d         radial distance
-!
-!  Returned:
-!     P        d(3)      Cartesian coordinates
-!
 !### History
 !  * IAU SOFA revision: 2006 November 13
 
@@ -25344,10 +24626,10 @@
 
     implicit none
 
-    real(wp) :: theta
-    real(wp) :: phi
-    real(wp) :: r
-    real(wp),dimension(3) :: p
+    real(wp),intent(in) :: theta !! longitude angle (radians)
+    real(wp),intent(in) :: phi !! latitude angle (radians)
+    real(wp),intent(in) :: r !! radial distance
+    real(wp),dimension(3),intent(out) :: p !! Cartesian coordinates
 
     real(wp) :: u(3)
 
@@ -25363,17 +24645,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     THETA    d         longitude angle (radians)
-!     PHI      d         latitude angle (radians)
-!     R        d         radial distance
-!     TD       d         rate of change of THETA
-!     PD       d         rate of change of PHI
-!     RD       d         rate of change of R
-!
-!  Returned:
-!     PV       d(3,2)    pv-vector
-!
 !### History
 !  * IAU SOFA revision: 2000 November 25
 
@@ -25381,13 +24652,13 @@
 
     implicit none
 
-    real(wp) :: theta
-    real(wp) :: phi
-    real(wp) :: r
-    real(wp) :: td
-    real(wp) :: pd
-    real(wp) :: rd
-    real(wp),dimension(3,2) :: pv
+    real(wp),intent(in) :: theta !! longitude angle (radians)
+    real(wp),intent(in) :: phi !! latitude angle (radians)
+    real(wp),intent(in) :: r !! radial distance
+    real(wp),intent(in) :: td !! rate of change of THETA
+    real(wp),intent(in) :: pd !! rate of change of PHI
+    real(wp),intent(in) :: rd !! rate of change of R
+    real(wp),dimension(3,2),intent(out) :: pv !! pv-vector
 
     real(wp) :: st, ct, sp, cp, rcp, x, y, rpd, w
 
@@ -25417,14 +24688,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     S1       d         scalar to multiply position component by
-!     S2       d         scalar to multiply velocity component by
-!     PV       d(3,2)    pv-vector
-!
-!  Returned:
-!     SPV      d(3,2)    pv-vector: p scaled by S1, v scaled by S2
-!
 !### History
 !  * IAU SOFA revision: 2006 November 13
 
@@ -25432,10 +24695,10 @@
 
     implicit none
 
-    real(wp) :: s1
-    real(wp) :: s2
-    real(wp),dimension(3,2) :: pv
-    real(wp),dimension(3,2) :: spv
+    real(wp),intent(in) :: s1 !! scalar to multiply position component by
+    real(wp),intent(in) :: s2 !! scalar to multiply velocity component by
+    real(wp),dimension(3,2),intent(in) :: pv !! pv-vector
+    real(wp),dimension(3,2),intent(out) :: spv !! pv-vector: p scaled by S1, v scaled by S2
 
     call SXP ( s1, pv(1,1), spv(1,1) )
     call SXP ( s2, pv(1,2), spv(1,2) )
@@ -25448,13 +24711,6 @@
 !  Angular separation between two p-vectors.
 !
 !  Status:  vector/matrix support routine.
-!
-!  Given:
-!     A        d(3)      first p-vector (not necessarily unit length)
-!     B        d(3)      second p-vector (not necessarily unit length)
-!
-!  Returned:
-!     S        d         angular separation (radians, always positive)
 !
 !### Notes
 !
@@ -25473,9 +24729,9 @@
 
     implicit none
 
-    real(wp),dimension(3) :: a
-    real(wp),dimension(3) :: b
-    real(wp) :: s
+    real(wp),dimension(3),intent(in) :: a !! first p-vector (not necessarily unit length)
+    real(wp),dimension(3),intent(in) :: b !! second p-vector (not necessarily unit length)
+    real(wp),intent(out) :: s !! angular separation (radians, always positive)
 
     real(wp) :: axb(3), ss, cs
 
@@ -25502,15 +24758,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     AL       d         first longitude (radians)
-!     AP       d         first latitude (radians)
-!     BL       d         second longitude (radians)
-!     BP       d         second latitude (radians)
-!
-!  Returned:
-!     S        d         angular separation (radians)
-!
 !### History
 !  * IAU SOFA revision: 2006 November 13
 
@@ -25518,11 +24765,11 @@
 
     implicit none
 
-    real(wp) :: al
-    real(wp) :: ap
-    real(wp) :: bl
-    real(wp) :: bp
-    real(wp) :: s
+    real(wp),intent(in) :: al !! first longitude (radians)
+    real(wp),intent(in) :: ap !! first latitude (radians)
+    real(wp),intent(in) :: bl !! second longitude (radians)
+    real(wp),intent(in) :: bp !! second latitude (radians)
+    real(wp),intent(out) :: s !! angular separation (radians)
 
     real(wp) :: ac(3), bc(3)
 
@@ -25542,12 +24789,6 @@
 !  on the equator of the Celestial Intermediate Pole.
 !
 !  Status:  canonical model.
-!
-!  Given:
-!     DATE1,DATE2    d      TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     SP00       d      the TIO locator s' in radians (Note 2)
 !
 !### Notes
 !
@@ -25584,12 +24825,13 @@
 !### History
 !  * IAU SOFA revision: 2009 December 15
 
-    real(wp) function SP00 ( date1, date2 )
+    function SP00 ( date1, date2 ) result(sp)
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp) :: sp !! the TIO locator s' in radians (Note 2)
 
     !  Time since J2000.0, in Julian centuries
     real(wp) :: t
@@ -25598,7 +24840,7 @@
     t = ( ( date1-dj00 ) + date2 ) / djc
 
     !  Approximate s'.
-    SP00 = -47d-6 * t * das2r
+    sp = -47d-6 * t * das2r
 
     end function SP00
 !***********************************************************************
@@ -25608,33 +24850,6 @@
 !  Star proper motion:  update star catalog data for space motion.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     RA1      d         right ascension (radians), before
-!     DEC1     d         declination (radians), before
-!     PMR1     d         RA proper motion (radians/year), before
-!     PMD1     d         Dec proper motion (radians/year), before
-!     PX1      d         parallax (arcseconds), before
-!     RV1      d         radial velocity (km/s, +ve = receding), before
-!     EP1A     d         "before" epoch, part A (Note 1)
-!     EP1B     d         "before" epoch, part B (Note 1)
-!     EP2A     d         "after" epoch, part A (Note 1)
-!     EP2B     d         "after" epoch, part B (Note 1)
-!
-!  Returned:
-!     RA2      d         right ascension (radians), after
-!     DEC2     d         declination (radians), after
-!     PMR2     d         RA proper motion (radians/year), after
-!     PMD2     d         Dec proper motion (radians/year), after
-!     PX2      d         parallax (arcseconds), after
-!     RV2      d         radial velocity (km/s, +ve = receding), after
-!     J        i         status:
-!                          -1 = system error (should not occur)
-!                           0 = no warnings or errors
-!                           1 = distance overridden (Note 6)
-!                           2 = excessive velocity (Note 7)
-!                           4 = solution didn't converge (Note 8)
-!                        else = binary logical OR of the above warnings
 !
 !### Notes
 !
@@ -25704,23 +24919,29 @@
 
     implicit none
 
-    real(wp) :: ra1
-    real(wp) :: dec1
-    real(wp) :: pmr1
-    real(wp) :: pmd1
-    real(wp) :: px1
-    real(wp) :: rv1
-    real(wp) :: ep1a
-    real(wp) :: ep1b
-    real(wp) :: ep2a
-    real(wp) :: ep2b
-    real(wp) :: ra2
-    real(wp) :: dec2
-    real(wp) :: pmr2
-    real(wp) :: pmd2
-    real(wp) :: px2
-    real(wp) :: rv2
-    integer :: j
+    real(wp),intent(in) :: ra1 !! right ascension (radians), before
+    real(wp),intent(in) :: dec1 !! declination (radians), before
+    real(wp),intent(in) :: pmr1 !! RA proper motion (radians/year), before
+    real(wp),intent(in) :: pmd1 !! Dec proper motion (radians/year), before
+    real(wp),intent(in) :: px1 !! parallax (arcseconds), before
+    real(wp),intent(in) :: rv1 !! radial velocity (km/s, +ve = receding), before
+    real(wp),intent(in) :: ep1a !! "before" epoch, part A (Note 1)
+    real(wp),intent(in) :: ep1b !! "before" epoch, part B (Note 1)
+    real(wp),intent(in) :: ep2a !! "after" epoch, part A (Note 1)
+    real(wp),intent(in) :: ep2b !! "after" epoch, part B (Note 1)
+    real(wp),intent(out) :: ra2 !! right ascension (radians), after
+    real(wp),intent(out) :: dec2 !! declination (radians), after
+    real(wp),intent(out) :: pmr2 !! RA proper motion (radians/year), after
+    real(wp),intent(out) :: pmd2 !! Dec proper motion (radians/year), after
+    real(wp),intent(out) :: px2 !! parallax (arcseconds), after
+    real(wp),intent(out) :: rv2 !! radial velocity (km/s, +ve = receding), after
+    integer,intent(out) :: j !! status:
+                             !! * -1 = system error (should not occur)
+                             !! * 0 = no warnings or errors
+                             !! * 1 = distance overridden (Note 6)
+                             !! * 2 = excessive velocity (Note 7)
+                             !! * 4 = solution didn't converge (Note 8)
+                             !! * else = binary logical OR of the above warnings
 
     !  Astronomical unit (m, IAU 2012)
     real(wp),parameter :: aum = 149597870.7d3
@@ -25729,7 +24950,7 @@
     real(wp),parameter :: c = d2s*cmps/aum
 
     real(wp) :: pv1(3,2), r, tl1, dt, pv(3,2), r2, rdv, v2, &
-                     c2mv2, tl2, pv2(3,2)
+                c2mv2, tl2, pv2(3,2)
     integer :: j1, j2
 
     !  RA,Dec etc. at the "before" epoch to space motion pv-vector.
@@ -25777,23 +24998,6 @@
 !  Convert star catalog coordinates to position+velocity vector.
 !
 !  Status:  support routine.
-!
-!  Given (Note 1):
-!     RA       d         right ascension (radians)
-!     DEC      d         declination (radians)
-!     PMR      d         RA proper motion (radians/year)
-!     PMD      d         Dec proper motion (radians/year)
-!     PX       d         parallax (arcseconds)
-!     RV       d         radial velocity (km/s, positive = receding)
-!
-!  Returned (Note 2):
-!     PV       d(3,2)    pv-vector (au, au/day)
-!     J        i         status:
-!                           0 = no warnings
-!                           1 = distance overridden (Note 6)
-!                           2 = excessive velocity (Note 7)
-!                           4 = solution didn't converge (Note 8)
-!                        else = binary logical OR of the above
 !
 !### Notes
 !
@@ -25865,7 +25069,7 @@
 !
 !### Reference
 !
-!     Stumpff, P., Astron.Astrophys. 144, 232-240 (1985).
+!  * Stumpff, P., Astron.Astrophys. 144, 232-240 (1985).
 !
 !### History
 !  * IAU SOFA revision: 2017 March 16
@@ -25874,14 +25078,19 @@
 
     implicit none
 
-    real(wp) :: ra
-    real(wp) :: dec
-    real(wp) :: pmr
-    real(wp) :: pmd
-    real(wp) :: px
-    real(wp) :: rv
-    real(wp),dimension(3,2) :: pv
-    integer :: j
+    real(wp),intent(in) :: ra !! right ascension (radians) [see Note 1]
+    real(wp),intent(in) :: dec !! declination (radians) [see Note 1]
+    real(wp),intent(in) :: pmr !! RA proper motion (radians/year) [see Note 1]
+    real(wp),intent(in) :: pmd !! Dec proper motion (radians/year) [see Note 1]
+    real(wp),intent(in) :: px !! parallax (arcseconds) [see Note 1]
+    real(wp),intent(in) :: rv !! radial velocity (km/s, positive = receding) [see Note 1]
+    real(wp),dimension(3,2),intent(out) :: pv !! pv-vector (au, au/day) [see Note 2]
+    integer,intent(out) :: j !! status [see Note 2]:
+                             !! * 0 = no warnings
+                             !! * 1 = distance overridden (Note 6)
+                             !! * 2 = excessive velocity (Note 7)
+                             !! * 4 = solution didn't converge (Note 8)
+                             !! * else = binary logical OR of the above
 
     !  Smallest allowed parallax
     real(wp),parameter :: pxmin = 1d-7
@@ -26003,13 +25212,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     S        d         scalar
-!     P        d(3)      p-vector
-!
-!  Returned:
-!     SP       d(3)      S * P
-!
 !### History
 !  * IAU SOFA revision: 2000 November 25
 
@@ -26017,9 +25219,9 @@
 
     implicit none
 
-    real(wp) :: s
-    real(wp),dimension(3) :: p
-    real(wp),dimension(3) :: sp
+    real(wp),intent(in) :: s !! scalar
+    real(wp),dimension(3),intent(in) :: p !! p-vector
+    real(wp),dimension(3),intent(out) :: sp !! S * P
 
     integer :: i
 
@@ -26036,13 +25238,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     S        d         scalar
-!     PV       d(3,2)    pv-vector
-!
-!  Returned:
-!     SPV      d(3,2)    S * PV
-!
 !### History
 !  * IAU SOFA revision: 2006 November 13
 
@@ -26050,9 +25245,9 @@
 
     implicit none
 
-    real(wp) :: s
-    real(wp),dimension(3,2) :: pv
-    real(wp),dimension(3,2) :: spv
+    real(wp),intent(in) :: s !! scalar
+    real(wp),dimension(3,2),intent(in) :: pv !! pv-vector
+    real(wp),dimension(3,2),intent(out) :: spv !! S * PV
 
     call S2XPV ( s, s, pv, spv )
 
@@ -26066,19 +25261,12 @@
 !
 !  Status:  canonical.
 !
-!  Given:
-!     TAI1,TAI2    d      TAI as a 2-part Julian Date
-!
-!  Returned:
-!     TT1,TT2      d      TT as a 2-part Julian Date
-!     J            i      status:  0 = OK
-!
 !### Note
 !
-!     TAI1+TAI2 is Julian Date, apportioned in any convenient way
-!     between the two arguments, for example where TAI1 is the Julian
-!     Day Number and TAI2 is the fraction of a day.  The returned
-!     TT1,TT2 follow suit.
+!  TAI1+TAI2 is Julian Date, apportioned in any convenient way
+!  between the two arguments, for example where TAI1 is the Julian
+!  Day Number and TAI2 is the fraction of a day.  The returned
+!  TT1,TT2 follow suit.
 !
 !### References
 !
@@ -26095,11 +25283,11 @@
 
     implicit none
 
-    real(wp) :: tai1
-    real(wp) :: tai2
-    real(wp) :: tt1
-    real(wp) :: tt2
-    integer :: j
+    real(wp),intent(in) :: tai1 !! TAI as a 2-part Julian Date
+    real(wp),intent(in) :: tai2 !! TAI as a 2-part Julian Date
+    real(wp),intent(out) :: tt1 !! TT as a 2-part Julian Date
+    real(wp),intent(out) :: tt2 !! TT as a 2-part Julian Date
+    integer,intent(out) :: j !! status:  0 = OK
 
     !  TT minus TAI (days).
     real(wp),parameter :: dtat = 32.184d0/86400d0
@@ -26126,14 +25314,6 @@
 !
 !  Status:  canonical.
 !
-!  Given:
-!     TAI1,TAI2    d      TAI as a 2-part Julian Date
-!     DTA          d      UT1-TAI in seconds
-!
-!  Returned:
-!     UT11,UT12    d      UT1 as a 2-part Julian Date
-!     J            i      status:  0 = OK
-!
 !### Notes
 !
 !  1. TAI1+TAI2 is Julian Date, apportioned in any convenient way
@@ -26156,12 +25336,12 @@
 
     implicit none
 
-    real(wp) :: tai1
-    real(wp) :: tai2
-    real(wp) :: dta
-    real(wp) :: ut11
-    real(wp) :: ut12
-    integer :: j
+    real(wp),intent(in) :: tai1 !! TAI as a 2-part Julian Date
+    real(wp),intent(in) :: tai2 !! TAI as a 2-part Julian Date
+    real(wp),intent(in) :: dta !! UT1-TAI in seconds
+    real(wp),intent(out) :: ut11 !! UT1 as a 2-part Julian Date
+    real(wp),intent(out) :: ut12 !! UT1 as a 2-part Julian Date
+    integer,intent(out) :: j !! status:  0 = OK
 
     real(wp) :: dtad
 
@@ -26187,15 +25367,6 @@
 !  Coordinated Universal Time, UTC.
 !
 !  Status:  canonical.
-!
-!  Given:
-!     TAI1,TAI2    d      TAI as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     UTC1,UTC2    d      UTC as a 2-part quasi Julian Date (Notes 1-3)
-!     J            i      status: +1 = dubious year (Note 4)
-!                                  0 = OK
-!                                 -1 = unacceptable date
 !
 !### Notes
 !
@@ -26237,11 +25408,14 @@
 
     implicit none
 
-    real(wp) :: tai1
-    real(wp) :: tai2
-    real(wp) :: utc1
-    real(wp) :: utc2
-    integer :: j
+    real(wp),intent(in) :: tai1 !! TAI as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: tai2 !! TAI as a 2-part Julian Date (Note 1)
+    real(wp),intent(out) :: utc1 !! UTC as a 2-part quasi Julian Date (Notes 1-3)
+    real(wp),intent(out) :: utc2 !! UTC as a 2-part quasi Julian Date (Notes 1-3)
+    integer,intent(out) :: j !! status:
+                             !! * +1 = dubious year (Note 4)
+                             !! * 0 = OK
+                             !! * -1 = unacceptable date
 
     logical :: big1
     integer :: i, js
@@ -26299,13 +25473,6 @@
 !
 !  Status:  canonical.
 !
-!  Given:
-!     TCB1,TCB2    d      TCB as a 2-part Julian Date
-!
-!  Returned:
-!     TDB1,TDB2    d      TDB as a 2-part Julian Date
-!     J            i      status:  0 = OK
-!
 !### Notes
 !
 !  1. TCB1+TCB2 is Julian Date, apportioned in any convenient way
@@ -26333,7 +25500,7 @@
 !
 !### Reference
 !
-!     IAU 2006 Resolution B3
+!  * IAU 2006 Resolution B3
 !
 !### History
 !  * IAU SOFA revision: 2019 June 20
@@ -26342,11 +25509,11 @@
 
     implicit none
 
-    real(wp) :: tcb1
-    real(wp) :: tcb2
-    real(wp) :: tdb1
-    real(wp) :: tdb2
-    integer :: j
+    real(wp),intent(in) :: tcb1 !! TCB as a 2-part Julian Date
+    real(wp),intent(in) :: tcb2 !! TCB as a 2-part Julian Date
+    real(wp),intent(out) :: tdb1 !! TDB as a 2-part Julian Date
+    real(wp),intent(out) :: tdb2 !! TDB as a 2-part Julian Date
+    integer,intent(out) :: j !! status:  0 = OK
 
     !  1977 Jan 1.0 TAI = 1977/1/1 00:00:32.184 TCB, as two-part JD
     real(wp),parameter :: t77td = 2443144d0
@@ -26382,19 +25549,12 @@
 !
 !  Status:  canonical.
 !
-!  Given:
-!     TCG1,TCG2    d      TCG as a 2-part Julian Date
-!
-!  Returned:
-!     TT1,TT2      d      TT as a 2-part Julian Date
-!     J            i      status:  0 = OK
-!
 !### Note
 !
-!     TCG1+TCG2 is Julian Date, apportioned in any convenient way
-!     between the two arguments, for example where TCG1 is the Julian
-!     Day Number and TCG2 is the fraction of a day.  The returned
-!     TT1,TT2 follow suit.
+!  TCG1+TCG2 is Julian Date, apportioned in any convenient way
+!  between the two arguments, for example where TCG1 is the Julian
+!  Day Number and TCG2 is the fraction of a day.  The returned
+!  TT1,TT2 follow suit.
 !
 !### References
 !
@@ -26410,11 +25570,11 @@
 
     implicit none
 
-    real(wp) :: tcg1
-    real(wp) :: tcg2
-    real(wp) :: tt1
-    real(wp) :: tt2
-    integer :: j
+    real(wp),intent(in) :: tcg1 !! TCG as a 2-part Julian Date
+    real(wp),intent(in) :: tcg2 !! TCG as a 2-part Julian Date
+    real(wp),intent(out) :: tt1 !! TT as a 2-part Julian Date
+    real(wp),intent(out) :: tt2 !! TT as a 2-part Julian Date
+    integer,intent(out) :: j !! status:  0 = OK
 
     !  JD for MJD 0
     real(wp),parameter :: djm0 = 2400000.5d0
@@ -26447,13 +25607,6 @@
 !
 !  Status:  canonical.
 !
-!  Given:
-!     TDB1,TDB2    d      TDB as a 2-part Julian Date
-!
-!  Returned:
-!     TCB1,TCB2    d      TCB as a 2-part Julian Date
-!     J            i      status:  0 = OK
-!
 !### Notes
 !
 !  1. TDB1+TDB2 is Julian Date, apportioned in any convenient way
@@ -26481,7 +25634,7 @@
 !
 !### Reference
 !
-!     IAU 2006 Resolution B3
+!  * IAU 2006 Resolution B3
 !
 !### History
 !  * IAU SOFA revision: 2019 June 20
@@ -26491,11 +25644,11 @@
 
     implicit none
 
-    real(wp) :: tdb1
-    real(wp) :: tdb2
-    real(wp) :: tcb1
-    real(wp) :: tcb2
-    integer :: j
+    real(wp),intent(in) :: tdb1 !! TDB as a 2-part Julian Date
+    real(wp),intent(in) :: tdb2 !! TDB as a 2-part Julian Date
+    real(wp),intent(out) :: tcb1 !! TCB as a 2-part Julian Date
+    real(wp),intent(out) :: tcb2 !! TCB as a 2-part Julian Date
+    integer,intent(out) :: j !! status:  0 = OK
 
     !  1977 Jan 1.0 TAI = 1977/1/1 00:00:32.184 TCB, as two-part JD
     real(wp),parameter :: t77td = 2443144d0
@@ -26536,14 +25689,6 @@
 !
 !  Status:  canonical.
 !
-!  Given:
-!     TDB1,TDB2    d      TDB as a 2-part Julian Date
-!     DTR          d      TDB-TT in seconds
-!
-!  Returned:
-!     TT1,TT2      d      TT as a 2-part Julian Date
-!     J            i      status:  0 = OK
-!
 !### Notes
 !
 !  1. TDB1+TDB2 is Julian Date, apportioned in any convenient way
@@ -26576,12 +25721,12 @@
 
     implicit none
 
-    real(wp) :: tdb1
-    real(wp) :: tdb2
-    real(wp) :: dtr
-    real(wp) :: tt1
-    real(wp) :: tt2
-    integer :: j
+    real(wp),intent(in) :: tdb1 !! TDB as a 2-part Julian Date
+    real(wp),intent(in) :: tdb2 !! TDB as a 2-part Julian Date
+    real(wp),intent(in) :: dtr !! TDB-TT in seconds
+    real(wp),intent(out) :: tt1 !! TT as a 2-part Julian Date
+    real(wp),intent(out) :: tt2 !! TT as a 2-part Julian Date
+    integer,intent(out) :: j !! status:  0 = OK
 
     real(wp) :: dtrd
 
@@ -26607,19 +25752,6 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     S          c      sign:  '-' = negative, otherwise positive
-!     IHOUR      i      hours
-!     IMIN       i      minutes
-!     SEC        d      seconds
-!
-!  Returned:
-!     RAD        d      angle in radians
-!     J          i      status:  0 = OK
-!                                1 = IHOUR outside range 0-23
-!                                2 = IMIN outside range 0-59
-!                                3 = SEC outside range 0-59.999...
-!
 !### Notes
 !
 !  1.  If the s argument is a string, only the leftmost character is
@@ -26640,12 +25772,16 @@
 
     implicit none
 
-    character(len=1) :: s
-    integer :: ihour
-    integer :: imin
-    real(wp) :: sec
-    real(wp) :: rad
-    integer :: j
+    character(len=1),intent(in) :: s !! sign:  '-' = negative, otherwise positive
+    integer,intent(in) :: ihour !! hours
+    integer,intent(in) :: imin !! minutes
+    real(wp),intent(in) :: sec !! seconds
+    real(wp),intent(out) :: rad !! angle in radians
+    integer,intent(out) :: j !! status:
+                             !! * 0 = OK
+                             !! * 1 = IHOUR outside range 0-23
+                             !! * 2 = IMIN outside range 0-59
+                             !! * 3 = SEC outside range 0-59.999...
 
     real(wp) :: w
 
@@ -26677,19 +25813,6 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     S          c      sign:  '-' = negative, otherwise positive
-!     IHOUR      i      hours
-!     IMIN       i      minutes
-!     SEC        d      seconds
-!
-!  Returned:
-!     DAYS       d      interval in days
-!     J          i      status:  0 = OK
-!                                1 = IHOUR outside range 0-23
-!                                2 = IMIN outside range 0-59
-!                                3 = SEC outside range 0-59.999...
-!
 !### Notes
 !
 !  1.  If the s argument is a string, only the leftmost character is
@@ -26710,12 +25833,16 @@
 
     implicit none
 
-    character(len=1) :: s
-    integer :: ihour
-    integer :: imin
-    real(wp) :: sec
-    real(wp) :: days
-    integer :: j
+    character(len=1),intent(in) :: s !! sign:  '-' = negative, otherwise positive
+    integer,intent(in) :: ihour !! hours
+    integer,intent(in) :: imin !! minutes
+    real(wp),intent(in) :: sec !! seconds
+    real(wp),intent(out) :: days !! interval in days
+    integer,intent(out) :: j !! status:
+                             !! * 0 = OK
+                             !! * 1 = IHOUR outside range 0-23
+                             !! * 2 = IMIN outside range 0-59
+                             !! * 3 = SEC outside range 0-59.999...
 
     real(wp) :: w
 
@@ -26748,18 +25875,6 @@
 !  coordinates of the tangent point.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     XI,ETA    d       rectangular coordinates of star image (Note 2)
-!     A,B       d       star's spherical coordinates (Note 3)
-!
-!  Returned:
-!     A01,B01   d       tangent point's spherical coordinates, Soln. 1
-!     A02,B02   d       tangent point's spherical coordinates, Soln. 2
-!     N         i       number of solutions:
-!                         0 = no solutions returned (Note 5)
-!                         1 = only the first solution is useful (Note 6)
-!                         2 = both solutions are useful (Note 6)
 !
 !### Notes
 !
@@ -26822,15 +25937,18 @@
 
     implicit none
 
-    real(wp) :: xi
-    real(wp) :: eta
-    real(wp) :: a
-    real(wp) :: b
-    real(wp) :: a01
-    real(wp) :: b01
-    real(wp) :: a02
-    real(wp) :: b02
-    integer :: n
+    real(wp),intent(in) :: xi !! rectangular coordinates of star image (Note 2)
+    real(wp),intent(in) :: eta !! rectangular coordinates of star image (Note 2)
+    real(wp),intent(in) :: a !! star's spherical coordinates (Note 3)
+    real(wp),intent(in) :: b !! star's spherical coordinates (Note 3)
+    real(wp),intent(out) :: a01 !! tangent point's spherical coordinates, Soln. 1
+    real(wp),intent(out) :: b01 !! tangent point's spherical coordinates, Soln. 1
+    real(wp),intent(out) :: a02 !! tangent point's spherical coordinates, Soln. 2
+    real(wp),intent(out) :: b02 !! tangent point's spherical coordinates, Soln. 2
+    integer,intent(out) :: n !! number of solutions:
+                             !! * 0 = no solutions returned (Note 5)
+                             !! * 1 = only the first solution is useful (Note 6)
+                             !! * 2 = both solutions are useful (Note 6)
 
     real(wp) :: xi2, r, sb, cb, rsb, rcb, w2, w, s, c
 
@@ -26872,18 +25990,6 @@
 !  cosines of the tangent point.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     XI,ETA    d       rectangular coordinates of star image (Note 2)
-!     V         d(3)    star's direction cosines (Note 3)
-!
-!  Returned:
-!     V01       d(3)    tangent point's direction cosines, Solution 1
-!     V02       d(3)    tangent point's direction cosines, Solution 2
-!     N         i       number of solutions:
-!                         0 = no solutions returned (Note 4)
-!                         1 = only the first solution is useful (Note 5)
-!                         2 = both solutions are useful (Note 5)
 !
 !### Notes
 !
@@ -26944,12 +26050,15 @@
 
     implicit none
 
-    real(wp) :: xi
-    real(wp) :: eta
-    real(wp),dimension(3) :: v
-    real(wp),dimension(3) :: v01
-    real(wp),dimension(3) :: v02
-    integer :: n
+    real(wp),intent(in) :: xi !! rectangular coordinates of star image (Note 2)
+    real(wp),intent(in) :: eta !! rectangular coordinates of star image (Note 2)
+    real(wp),dimension(3),intent(in) :: v !! star's direction cosines (Note 3)
+    real(wp),dimension(3),intent(out) :: v01 !! tangent point's direction cosines, Solution 1
+    real(wp),dimension(3),intent(out) :: v02 !! tangent point's direction cosines, Solution 2
+    integer,intent(out) :: n !! number of solutions:
+                             !! * 0 = no solutions returned (Note 4)
+                             !! * 1 = only the first solution is useful (Note 5)
+                             !! * 2 = both solutions are useful (Note 5)
 
     real(wp) :: x, y, z, rxy2, xi2, eta2p1, r, rsb, rcb, w2, w, c
 
@@ -26994,13 +26103,6 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     XI,ETA    d       rectangular coordinates of star image (Note 2)
-!     A0,B0     d       tangent point's spherical coordinates
-!
-!  Returned:
-!     A,B       d       star's spherical coordinates
-!
 !  1. The tangent plane projection is also called the "gnomonic
 !     projection" and the "central projection".
 !
@@ -27036,12 +26138,12 @@
 
     implicit none
 
-    real(wp) :: xi
-    real(wp) :: eta
-    real(wp) :: a0
-    real(wp) :: b0
-    real(wp) :: a
-    real(wp) :: b
+    real(wp),intent(in) :: xi !! rectangular coordinates of star image (Note 2)
+    real(wp),intent(in) :: eta !! rectangular coordinates of star image (Note 2)
+    real(wp),intent(in) :: a0 !! tangent point's spherical coordinates
+    real(wp),intent(in) :: b0 !! tangent point's spherical coordinates
+    real(wp),intent(out) :: a !! star's spherical coordinates
+    real(wp),intent(out) :: b !! star's spherical coordinates
 
     real(wp) :: sb0, cb0, d
 
@@ -27061,13 +26163,6 @@
 !  for the direction cosines of the star.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     XI,ETA    d       rectangular coordinates of star image (Note 2)
-!     V0        d(3)    tangent point's direction cosines (Note 4)
-!
-!  Returned:
-!     V         d(3)    star's direction cosines
 !
 !  1. The tangent plane projection is also called the "gnomonic
 !     projection" and the "central projection".
@@ -27117,10 +26212,10 @@
 
     implicit none
 
-    real(wp) :: xi
-    real(wp) :: eta
-    real(wp),dimension(3) :: v0
-    real(wp),dimension(3) :: v
+    real(wp),intent(in) :: xi !! rectangular coordinates of star image (Note 2)
+    real(wp),intent(in) :: eta !! rectangular coordinates of star image (Note 2)
+    real(wp),dimension(3),intent(in) :: v0 !! tangent point's direction cosines (Note 4)
+    real(wp),dimension(3),intent(out) :: v !! star's direction cosines
 
     real(wp) :: x, y, z, r, f
 
@@ -27154,17 +26249,6 @@
 !  rectangular coordinates in the tangent plane.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     A,B       d       star's spherical coordinates
-!     A0,B0     d       tangent point's spherical coordinates
-!
-!  Returned:
-!     XI,ETA    d       rectangular coordinates of star image (Note 2)
-!     J         i       status:  0 = OK
-!                                1 = star too far from axis
-!                                2 = antistar on tangent plane
-!                                3 = antistar too far from axis
 !
 !### Notes
 !
@@ -27203,13 +26287,17 @@
 
     implicit none
 
-    real(wp) :: a
-    real(wp) :: b
-    real(wp) :: a0
-    real(wp) :: b0
-    real(wp) :: xi
-    real(wp) :: eta
-    integer :: j
+    real(wp),intent(in) :: a !! star's spherical coordinates
+    real(wp),intent(in) :: b !! star's spherical coordinates
+    real(wp),intent(in) :: a0 !! tangent point's spherical coordinates
+    real(wp),intent(in) :: b0 !! tangent point's spherical coordinates
+    real(wp),intent(out) :: xi !! rectangular coordinates of star image (Note 2)
+    real(wp),intent(out) :: eta !! rectangular coordinates of star image (Note 2)
+    integer,intent(out) :: j !! status:
+                             !! * 0 = OK
+                             !! * 1 = star too far from axis
+                             !! * 2 = antistar on tangent plane
+                             !! * 3 = antistar too far from axis
 
     real(wp),parameter :: tiny = 1d-6
 
@@ -27254,17 +26342,6 @@
 !  coordinates in the tangent plane.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     V         d(3)       direction cosines of star (Note 4)
-!     V0        d(3)       direction cosines of tangent point (Note 4)
-!
-!  Returned:
-!     XI,ETA    d          tangent plane coordinates of star
-!     J         i          status: 0 = OK
-!                                  1 = star too far from axis
-!                                  2 = antistar on tangent plane
-!                                  3 = antistar too far from axis
 !
 !### Notes
 !
@@ -27314,11 +26391,15 @@
 
     implicit none
 
-    real(wp),dimension(3) :: v
-    real(wp),dimension(3) :: v0
-    real(wp) :: xi
-    real(wp) :: eta
-    integer :: j
+    real(wp),dimension(3),intent(in) :: v !! direction cosines of star (Note 4)
+    real(wp),dimension(3),intent(in) :: v0 !! direction cosines of tangent point (Note 4)
+    real(wp),intent(out) :: xi !! tangent plane coordinates of star
+    real(wp),intent(out) :: eta !! tangent plane coordinates of star
+    integer,intent(out) :: j !! status:
+                             !! * 0 = OK
+                             !! * 1 = star too far from axis
+                             !! * 2 = antistar on tangent plane
+                             !! * 3 = antistar too far from axis
 
     real(wp),parameter :: tiny = 1d-6
 
@@ -27371,12 +26452,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     R        d(3,3)    r-matrix
-!
-!  Returned:
-!     RT       d(3,3)    transpose
-!
 !### History
 !  * IAU SOFA revision: 2000 November 25
 
@@ -27384,8 +26459,8 @@
 
     implicit none
 
-    real(wp),dimension(3,3) :: r
-    real(wp),dimension(3,3) :: rt
+    real(wp),dimension(3,3),intent(in) :: r !! r-matrix
+    real(wp),dimension(3,3),intent(out) :: rt !! transpose
 
     real(wp) :: wm(3,3)
     integer :: i, j
@@ -27406,13 +26481,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     R        d(3,3)    r-matrix
-!     P        d(3)      p-vector
-!
-!  Returned:
-!     TRP      d(3)      R * P
-!
 !### History
 !  * IAU SOFA revision: 2009 July 11
 
@@ -27420,9 +26488,9 @@
 
     implicit none
 
-    real(wp),dimension(3,3) :: r
-    real(wp),dimension(3) :: p
-    real(wp),dimension(3) :: trp
+    real(wp),dimension(3,3),intent(in) :: r !! r-matrix
+    real(wp),dimension(3),intent(in) :: p !! p-vector
+    real(wp),dimension(3),intent(out) :: trp !! R * P
 
     real(wp) :: ri(3,3)
 
@@ -27441,13 +26509,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Given:
-!     R        d(3,3)    r-matrix
-!     PV       d(3,2)    pv-vector
-!
-!  Returned:
-!     TRPV     d(3,2)    R * PV
-!
 !### History
 !  * IAU SOFA revision: 2009 July 11
 
@@ -27455,9 +26516,9 @@
 
     implicit none
 
-    real(wp),dimension(3,3) :: r
-    real(wp),dimension(3,2) :: pv
-    real(wp),dimension(3,2) :: trpv
+    real(wp),dimension(3,3),intent(in) :: r !! r-matrix
+    real(wp),dimension(3,2),intent(in) :: pv !! pv-vector
+    real(wp),dimension(3,2),intent(out) :: trpv !! R * PV
 
     real(wp) :: ri(3,3)
 
@@ -27477,19 +26538,12 @@
 !
 !  Status:  canonical.
 !
-!  Given:
-!     TT1,TT2      d      TT as a 2-part Julian Date
-!
-!  Returned:
-!     TAI1,TAI2    d      TAI as a 2-part Julian Date
-!     J            i      status:  0 = OK
-!
 !### Note
 !
-!     TT1+TT2 is Julian Date, apportioned in any convenient way between
-!     the two arguments, for example where TT1 is the Julian Day Number
-!     and TT2 is the fraction of a day.  The returned TAI1,TAI2 follow
-!     suit.
+!  TT1+TT2 is Julian Date, apportioned in any convenient way between
+!  the two arguments, for example where TT1 is the Julian Day Number
+!  and TT2 is the fraction of a day.  The returned TAI1,TAI2 follow
+!  suit.
 !
 !### References
 !
@@ -27506,11 +26560,11 @@
 
     implicit none
 
-    real(wp) :: tt1
-    real(wp) :: tt2
-    real(wp) :: tai1
-    real(wp) :: tai2
-    integer :: j
+    real(wp),intent(in) :: tt1 !! TT as a 2-part Julian Date
+    real(wp),intent(in) :: tt2 !! TT as a 2-part Julian Date
+    real(wp),intent(out) :: tai1 !! TAI as a 2-part Julian Date
+    real(wp),intent(out) :: tai2 !! TAI as a 2-part Julian Date
+    integer,intent(out) :: j !! status:  0 = OK
 
     !  TT minus TAI (days).
     real(wp),parameter :: dtat = 32.184d0/86400d0
@@ -27537,19 +26591,12 @@
 !
 !  Status:  canonical.
 !
-!  Given:
-!     TT1,TT2      d      TT as a 2-part Julian Date
-!
-!  Returned:
-!     TCG1,TCG2    d      TCG as a 2-part Julian Date
-!     J            i      status:  0 = OK
-!
 !### Note
 !
-!     TT1+TT2 is Julian Date, apportioned in any convenient way between
-!     the two arguments, for example where TT1 is the Julian Day Number
-!     and TT2 is the fraction of a day.  The returned TCG1,TCG2 follow
-!     suit.
+!  TT1+TT2 is Julian Date, apportioned in any convenient way between
+!  the two arguments, for example where TT1 is the Julian Day Number
+!  and TT2 is the fraction of a day.  The returned TCG1,TCG2 follow
+!  suit.
 !
 !### References
 !
@@ -27565,11 +26612,11 @@
 
     implicit none
 
-    real(wp) :: tt1
-    real(wp) :: tt2
-    real(wp) :: tcg1
-    real(wp) :: tcg2
-    integer :: j
+    real(wp),intent(in) :: tt1 !! TT as a 2-part Julian Date
+    real(wp),intent(in) :: tt2 !! TT as a 2-part Julian Date
+    real(wp),intent(out) :: tcg1 !! TCG as a 2-part Julian Date
+    real(wp),intent(out) :: tcg2 !! TCG as a 2-part Julian Date
+    integer,intent(out) :: j !! status:  0 = OK
 
     !  JD for MJD 0
     real(wp),parameter :: djm0 = 2400000.5d0
@@ -27605,14 +26652,6 @@
 !
 !  Status:  canonical.
 !
-!  Given:
-!     TT1,TT2      d      TT as a 2-part Julian Date
-!     DTR          d      TDB-TT in seconds
-!
-!  Returned:
-!     TDB1,TDB2    d      TDB as a 2-part Julian Date
-!     J            i      status:  0 = OK
-!
 !### Notes
 !
 !  1. TT1+TT2 is Julian Date, apportioned in any convenient way between
@@ -27645,12 +26684,12 @@
 
     implicit none
 
-    real(wp) :: tt1
-    real(wp) :: tt2
-    real(wp) :: dtr
-    real(wp) :: tdb1
-    real(wp) :: tdb2
-    integer :: j
+    real(wp),intent(in) :: tt1 !! TT as a 2-part Julian Date
+    real(wp),intent(in) :: tt2 !! TT as a 2-part Julian Date
+    real(wp),intent(in) :: dtr !! TDB-TT in seconds
+    real(wp),intent(out) :: tdb1 !! TDB as a 2-part Julian Date
+    real(wp),intent(out) :: tdb2 !! TDB as a 2-part Julian Date
+    integer,intent(out) :: j !! status:  0 = OK
 
     real(wp) :: dtrd
 
@@ -27677,14 +26716,6 @@
 !
 !  Status:  canonical.
 !
-!  Given:
-!     TT1,TT2      d      TT as a 2-part Julian Date
-!     DT           d      TT-UT1 in seconds
-!
-!  Returned:
-!     UT11,UT12    d      UT1 as a 2-part Julian Date
-!     J            i      status:  0 = OK
-!
 !### Notes
 !
 !  1. TT1+TT2 is Julian Date, apportioned in any convenient way between
@@ -27706,12 +26737,12 @@
 
     implicit none
 
-    real(wp) :: tt1
-    real(wp) :: tt2
-    real(wp) :: dt
-    real(wp) :: ut11
-    real(wp) :: ut12
-    integer :: j
+    real(wp),intent(in) :: tt1 !! TT as a 2-part Julian Date
+    real(wp),intent(in) :: tt2 !! TT as a 2-part Julian Date
+    real(wp),intent(in) :: dt !! TT-UT1 in seconds
+    real(wp),intent(out) :: ut11 !! UT1 as a 2-part Julian Date
+    real(wp),intent(out) :: ut12 !! UT1 as a 2-part Julian Date
+    integer,intent(out) :: j !! status:  0 = OK
 
     real(wp) :: dtd
 
@@ -27738,14 +26769,6 @@
 !
 !  Status:  canonical.
 !
-!  Given:
-!     UT11,UT12    d      UT1 as a 2-part Julian Date
-!     DTA          d      UT1-TAI in seconds
-!
-!  Returned:
-!     TAI1,TAI2    d      TAI as a 2-part Julian Date
-!     J            i      status:  0 = OK
-!
 !### Notes
 !
 !  1. UT11+UT12 is Julian Date, apportioned in any convenient way
@@ -27768,12 +26791,12 @@
 
     implicit none
 
-    real(wp) :: ut11
-    real(wp) :: ut12
-    real(wp) :: dta
-    real(wp) :: tai1
-    real(wp) :: tai2
-    integer :: j
+    real(wp),intent(in) :: ut11 !! UT1 as a 2-part Julian Date
+    real(wp),intent(in) :: ut12 !! UT1 as a 2-part Julian Date
+    real(wp),intent(in) :: dta !! UT1-TAI in seconds
+    real(wp),intent(out) :: tai1 !! TAI as a 2-part Julian Date
+    real(wp),intent(out) :: tai2 !! TAI as a 2-part Julian Date
+    integer,intent(out) :: j !! status:  0 = OK
 
     real(wp) :: dtad
 
@@ -27800,14 +26823,6 @@
 !
 !  Status:  canonical.
 !
-!  Given:
-!     UT11,UT12    d      UT1 as a 2-part Julian Date
-!     DT           d      TT-UT1 in seconds
-!
-!  Returned:
-!     TT1,TT2      d      TT as a 2-part Julian Date
-!     J            i      status:  0 = OK
-!
 !### Notes
 !
 !  1. UT11+UT12 is Julian Date, apportioned in any convenient way
@@ -27829,12 +26844,12 @@
 
     implicit none
 
-    real(wp) :: ut11
-    real(wp) :: ut12
-    real(wp) :: dt
-    real(wp) :: tt1
-    real(wp) :: tt2
-    integer :: j
+    real(wp),intent(in) :: ut11 !! UT1 as a 2-part Julian Date
+    real(wp),intent(in) :: ut12 !! UT1 as a 2-part Julian Date
+    real(wp),intent(in) :: dt !! TT-UT1 in seconds
+    real(wp),intent(out) :: tt1 !! TT as a 2-part Julian Date
+    real(wp),intent(out) :: tt2 !! TT as a 2-part Julian Date
+    integer,intent(out) :: j !! status:  0 = OK
 
     real(wp) :: dtd
 
@@ -27860,16 +26875,6 @@
 !  Universal Time, UTC.
 !
 !  Status:  canonical.
-!
-!  Given:
-!     UT11,UT12    d      UT1 as a 2-part Julian Date (Note 1)
-!     DUT1         d      Delta UT1: UT1-UTC in seconds (Note 2)
-!
-!  Returned:
-!     UTC1,UTC2    d      UTC as a 2-part quasi Julian Date (Notes 3,4)
-!     J            i      status: +1 = dubious year (Note 5)
-!                                  0 = OK
-!                                 -1 = unacceptable date
 !
 !### Notes
 !
@@ -27913,12 +26918,15 @@
 
     implicit none
 
-    real(wp) :: ut11
-    real(wp) :: ut12
-    real(wp) :: dut1
-    real(wp) :: utc1
-    real(wp) :: utc2
-    integer :: j
+    real(wp),intent(in) :: ut11 !! UT1 as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: ut12 !! UT1 as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: dut1 !! Delta UT1: UT1-UTC in seconds (Note 2)
+    real(wp),intent(out) :: utc1 !! UTC as a 2-part quasi Julian Date (Notes 3,4)
+    real(wp),intent(out) :: utc2 !! UTC as a 2-part quasi Julian Date (Notes 3,4)
+    integer,intent(out) :: j !! status:
+                             !! * +1 = dubious year (Note 5)
+                             !! *  0 = OK
+                             !! * -1 = unacceptable date
 
     logical :: big1
     integer :: i, iy, im, id, js
@@ -28008,15 +27016,6 @@
 !
 !  Status:  canonical.
 !
-!  Given:
-!     UTC1,UTC2    d      UTC as a 2-part quasi Julian Date (Notes 1-4)
-!
-!  Returned:
-!     TAI1,TAI2    d      TAI as a 2-part Julian Date (Note 5)
-!     J            i      status: +1 = dubious year (Note 3)
-!                                  0 = OK
-!                                 -1 = unacceptable date
-!
 !### Notes
 !
 !  1. UTC1+UTC2 is quasi Julian Date (see Note 2), apportioned in any
@@ -28057,11 +27056,14 @@
 
     implicit none
 
-    real(wp) :: utc1
-    real(wp) :: utc2
-    real(wp) :: tai1
-    real(wp) :: tai2
-    integer :: j
+    real(wp),intent(in) :: utc1 !! UTC as a 2-part quasi Julian Date (Notes 1-4)
+    real(wp),intent(in) :: utc2 !! UTC as a 2-part quasi Julian Date (Notes 1-4)
+    real(wp),intent(out) :: tai1 !! TAI as a 2-part Julian Date (Note 5)
+    real(wp),intent(out) :: tai2 !! TAI as a 2-part Julian Date (Note 5)
+    integer,intent(out) :: j !! status:
+                             !! * +1 = dubious year (Note 3)
+                             !! * 0 = OK
+                             !! * -1 = unacceptable date
 
     logical :: big1
     integer :: iy, im, id, js, iyt, imt, idt
@@ -28141,16 +27143,6 @@
 !
 !  Status:  canonical.
 !
-!  Given:
-!     UTC1,UTC2    d      UTC as a 2-part quasi Julian Date (Notes 1-4)
-!     DUT1         d      Delta UT1 = UT1-UTC in seconds (Note 5)
-!
-!  Returned:
-!     UT11,UT12    d      UT1 as a 2-part Julian Date (Note 6)
-!     J            i      status: +1 = dubious year (Note 3)
-!                                  0 = OK
-!                                 -1 = unacceptable date
-!
 !### Notes
 !
 !  1. UTC1+UTC2 is quasi Julian Date (see Note 2), apportioned in any
@@ -28188,20 +27180,22 @@
 !
 !### History
 !  * IAU SOFA revision: 2013 August 12
-
 !  * 11/21/2019: for astro_module, renamed the local variable
 !    'dat' to 'd' so as not to conflict with the subroutine DAT.
-!
+
     subroutine UTCUT1 ( utc1, utc2, dut1, ut11, ut12, j )
 
     implicit none
 
-    real(wp) :: utc1
-    real(wp) :: utc2
-    real(wp) :: dut1
-    real(wp) :: ut11
-    real(wp) :: ut12
-    integer :: j
+    real(wp),intent(in) :: utc1 !! UTC as a 2-part quasi Julian Date (Notes 1-4)
+    real(wp),intent(in) :: utc2 !! UTC as a 2-part quasi Julian Date (Notes 1-4)
+    real(wp),intent(in) :: dut1 !! Delta UT1 = UT1-UTC in seconds (Note 5)
+    real(wp),intent(out) :: ut11 !! UT1 as a 2-part Julian Date (Note 6)
+    real(wp),intent(out) :: ut12 !! UT1 as a 2-part Julian Date (Note 6)
+    integer,intent(out) :: j !! status:
+                             !! * +1 = dubious year (Note 3)
+                             !! * 0 = OK
+                             !! * -1 = unacceptable date
 
     integer :: iy, im, id, js, jw
     real(wp) :: w, d, dta, tai1, tai2
@@ -28240,12 +27234,6 @@
 !  on IAU 2006 precession and IAU 2000A nutation.
 !
 !  Status:  canonical model.
-!
-!  Given:
-!     DATE1,DATE2    d       TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     X,Y            d       CIP X,Y coordinates (Note 2)
 !
 !### Notes
 !
@@ -28307,10 +27295,10 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp) :: x
-    real(wp) :: y
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(out) :: x !! CIP X coordinate (Note 2)
+    real(wp),intent(out) :: y !! CIP Y coordinate (Note 2)
 
     !  Maximum power of T in the polynomials for X and Y
     integer,parameter :: maxpt = 5
@@ -30749,13 +29737,6 @@
 !
 !  Status:  support routine.
 !
-!  Given:
-!     DATE1,DATE2   d    TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     X,Y           d    Celestial Intermediate Pole (Note 2)
-!     S             d    the CIO locator s (Note 2)
-!
 !### Notes
 !
 !  1. The TT date DATE1+DATE2 is a Julian Date, apportioned in any
@@ -30798,11 +29779,11 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp) :: x
-    real(wp) :: y
-    real(wp) :: s
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(out) :: x !! Celestial Intermediate Pole (Note 2)
+    real(wp),intent(out) :: y !! Celestial Intermediate Pole (Note 2)
+    real(wp),intent(out) :: s !! the CIO locator s (Note 2)
 
     real(wp) :: rbpn(3,3)
 
@@ -30825,13 +29806,6 @@
 !  precession-nutation model.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1,DATE2   d    TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     X,Y           d    Celestial Intermediate Pole (Note 2)
-!     S             d    the CIO locator s (Note 2)
 !
 !### Notes
 !
@@ -30875,11 +29849,11 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp) :: x
-    real(wp) :: y
-    real(wp) :: s
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(out) :: x !! Celestial Intermediate Pole (Note 2)
+    real(wp),intent(out) :: y !! Celestial Intermediate Pole (Note 2)
+    real(wp),intent(out) :: s !! the CIO locator s (Note 2)
 
     real(wp) :: rbpn(3,3)
 
@@ -30902,13 +29876,6 @@
 !  precession and IAU 2000A nutation models.
 !
 !  Status:  support routine.
-!
-!  Given:
-!     DATE1,DATE2   d    TT as a 2-part Julian Date (Note 1)
-!
-!  Returned:
-!     X,Y           d    Celestial Intermediate Pole (Note 2)
-!     S             d    the CIO locator s (Note 2)
 !
 !### Notes
 !
@@ -30953,11 +29920,11 @@
 
     implicit none
 
-    real(wp) :: date1
-    real(wp) :: date2
-    real(wp) :: x
-    real(wp) :: y
-    real(wp) :: s
+    real(wp),intent(in) :: date1 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(in) :: date2 !! TT as a 2-part Julian Date (Note 1)
+    real(wp),intent(out) :: x !! Celestial Intermediate Pole (Note 2)
+    real(wp),intent(out) :: y !! Celestial Intermediate Pole (Note 2)
+    real(wp),intent(out) :: s !! the CIO locator s (Note 2)
 
     real(wp) :: rbpn(3,3)
 
@@ -30979,9 +29946,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Returned:
-!     P        d(3)      p-vector
-!
 !### History
 !  * IAU SOFA revision: 2000 November 25
 
@@ -30989,7 +29953,7 @@
 
     implicit none
 
-    real(wp),dimension(3) :: p
+    real(wp),dimension(3),intent(out) :: p !! p-vector
 
     integer :: i
 
@@ -31006,9 +29970,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Returned:
-!     PV       d(3,2)      pv-vector
-!
 !### History
 !  * IAU SOFA revision: 2006 November 13
 
@@ -31016,7 +29977,7 @@
 
     implicit none
 
-    real(wp),dimension(3,2) :: pv
+    real(wp),dimension(3,2),intent(out) :: pv !! pv-vector
 
     integer :: i
 
@@ -31033,9 +29994,6 @@
 !
 !  Status:  vector/matrix support routine.
 !
-!  Returned:
-!     R        d(3,3)    r-matrix
-!
 !### History
 !  * IAU SOFA revision: 2012 April 3
 
@@ -31043,7 +30001,7 @@
 
     implicit none
 
-    real(wp),dimension(3,3) :: r
+    real(wp),dimension(3,3),intent(out) :: r !! r-matrix
 
     r(1,1) = 0d0
     r(1,2) = 0d0
