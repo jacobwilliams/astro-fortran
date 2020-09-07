@@ -3,6 +3,8 @@
 
 A refactoring of the IAU SOFA library to modern Fortran standards.
 
+This is based on the 2019-07-22 Fortran 77 SOFA Release.
+
 ### License
 
 The astro-fortran source code and related files and documentation are distributed under a permissive free software [license](https://github.com/jacobwilliams/astro-fortran/blob/master/LICENSE.txt) (BSD-style).
