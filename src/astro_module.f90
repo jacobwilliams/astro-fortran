@@ -11773,7 +11773,7 @@
     call PVMPV ( r0, a, pv1 )
     call PDP ( r0, a, w )
     call SXP ( w, r0, pv2 )
-    call PDP ( r0, a(1,2), w )
+    call PDP ( r0, a(1:3,2), w )
     call SXP ( w, r0, pv2(1,2) )
     call PVPPV ( pv1, pv2, pv3 )
 
@@ -12128,9 +12128,9 @@
     call PPP ( r1, p3, pv )
 
     !  Derivative.
-    call PDP ( r1, a(1,2), w )
+    call PDP ( r1, a(1:3,2), w )
     call SXP ( w, pv, p1 )
-    call SXP ( wr, a(1,2), p2 )
+    call SXP ( wr, a(1:3,2), p2 )
     call PMP ( p2, p1, p3 )
     call PPP ( r1(1,2), p3, pv(1,2) )
 
