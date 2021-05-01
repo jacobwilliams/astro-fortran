@@ -279,9 +279,7 @@
       CALL T_ZR ( STATUS )
 
 !  Report any errors and set up an appropriate exit status:  0 on
-!  success, 1 on any error -- Unix-style.  The EXIT intrinsic is
-!  non-standard but common (which is portable enough for a
-!  regression test).
+!  success, 1 on any error -- Unix-style.
 
       IF ( STATUS ) THEN
          WRITE (*,'(1X,''T_SOFA_F validation successful'')')
@@ -289,9 +287,8 @@
       ELSE
          WRITE (*,'(1X,''T_SOFA_F validation failed!'')')
          JESTAT = 1
+         error stop  ! JW replaced exit()
       END IF
-
-      CALL EXIT(JESTAT)
 
       contains
 
