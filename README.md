@@ -26,7 +26,7 @@ A [FoBiS](https://github.com/szaghi/FoBiS) configuration file (`astro-fortran.fo
 
 ## Documentation
 
-The latest API documentation can be found [here](http://jacobwilliams.github.io/astro-fortran/). This was generated from the source code using [FORD](https://github.com/Fortran-FOSS-Programmers/ford) (note that the included `build.sh` script will also generate these files).
+The latest API documentation can be found [here](http://jacobwilliams.github.io/astro-fortran/). This was generated from the source code using [FORD](https://github.com/Fortran-FOSS-Programmers/ford).
 
 ### License
 
