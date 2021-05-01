@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
+    
+    <meta name="author" content="Jacob Williams" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>EQEC06 &ndash; astro-fortran</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">astro-fortran </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+        
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>EQEC06
+      <small>Subroutine</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 0.3% of total for procedures.">16 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
+    
+     <li><a href='../module/astro_module.html'>astro_module</a></li>
+    
+  
+     <li class="active">EQEC06</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/eqec06.html#src">EQEC06</a>
+  </div>
+</div>
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>
+public subroutine EQEC06(date1, date2, dr, dd, dl, db)
+    
+    
+   
+</h2>
+    
+  
+
+
+    
+    <p>Transformation from ICRS equatorial coordinates to ecliptic
+  coordinates (mean equinox and ecliptic of date) using IAU 2006
+  precession model.</p>
+<p>Status:  support routine.</p>
+<h3>Notes</h3>
+<ol>
+<li>
+<p>The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+     convenient way between the two arguments.  For example,
+     JD(TT)=2450123.7 could be expressed in any of these ways,
+     among others:</p>
+<div class="codehilite"><pre><span></span><code>    DATE1          DATE2
+
+ 2450123.7D0        0D0        (JD method)
+  2451545D0      -1421.3D0     (J2000 method)
+ 2400000.5D0     50123.2D0     (MJD method)
+ 2450123.5D0       0.2D0       (date &amp; time method)
+</code></pre></div>
+
+<p>The JD method is the most natural and convenient to use in
+ cases where the loss of several decimal digits of resolution
+ is acceptable.  The J2000 method is best matched to the way
+ the argument is handled internally and will deliver the
+ optimum resolution.  The MJD method and the date &amp; time methods
+ are both good compromises between resolution and convenience.</p>
+</li>
+<li>
+<p>No assumptions are made about whether the coordinates represent
+     starlight and embody astrometric effects such as parallax or
+     aberration.</p>
+</li>
+<li>
+<p>The transformation is approximately that from mean J2000.0 right
+     ascension and declination to ecliptic longitude and latitude (mean
+     equinox and ecliptic of date), with only frame bias (always less
+     than 25 mas) to disturb this classical picture.</p>
+</li>
+</ol>
+<h3>History</h3>
+<ul>
+<li>IAU SOFA revision: 2016 February 9</li>
+</ul>
+    
+
+    <h3>Arguments</h3>
+    
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-date1~36"></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>date1</strong></td><td><p>TT as a 2-part Julian Date (Note 1)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-date2~36"></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>date2</strong></td><td><p>TT as a 2-part Julian Date (Note 1)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-dr~2"></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>dr</strong></td><td><p>ICRS right ascension (radians)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-dd~2"></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>dd</strong></td><td><p>ICRS declination (radians)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-dl~2"></span>real(kind=wp),</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>dl</strong></td><td><p>ecliptic longitude (radians)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-db~2"></span>real(kind=wp),</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>db</strong></td><td><p>ecliptic latitude (radians)</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    
+    
+    
+    <br>
+    
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Calls</h3>
+      </div>
+      <div class="panel-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~eqec06~~CallsGraph Pages: 1 -->
+<svg id="proceqec06CallsGraph" width="423pt" height="263pt"
+ viewBox="0.00 0.00 423.00 263.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~eqec06~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 259)">
+<title>proc~~eqec06~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-259 419,-259 419,4 -4,4"/>
+<!-- proc~eqec06 -->
+<g id="proc~~eqec06~~CallsGraph_node1" class="node">
+<title>proc~eqec06</title>
+<polygon fill="none" stroke="black" points="55,-129 0,-129 0,-105 55,-105 55,-129"/>
+<text text-anchor="middle" x="27.5" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50">EQEC06</text>
+</g>
+<!-- proc~anp -->
+<g id="proc~~eqec06~~CallsGraph_node2" class="node">
+<title>proc~anp</title>
+<g id="a_proc~~eqec06~~CallsGraph_node2"><a xlink:href=".././proc/anp.html" xlink:title="ANP">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="145,-234 91,-234 91,-210 145,-210 145,-234"/>
+<text text-anchor="middle" x="118" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ANP</text>
+</a>
+</g>
+</g>
+<!-- proc~eqec06&#45;&gt;proc~anp -->
+<g id="proc~~eqec06~~CallsGraph_edge1" class="edge">
+<title>proc~eqec06&#45;&gt;proc~anp</title>
+<path fill="none" stroke="#000000" d="M36.13,-129.15C47.12,-146.17 68.58,-177.67 91,-201 91.65,-201.68 92.32,-202.35 93.01,-203.02"/>
+<polygon fill="#000000" stroke="#000000" points="90.98,-205.9 100.77,-209.94 95.64,-200.68 90.98,-205.9"/>
+</g>
+<!-- proc~rxp -->
+<g id="proc~~eqec06~~CallsGraph_node3" class="node">
+<title>proc~rxp</title>
+<g id="a_proc~~eqec06~~CallsGraph_node3"><a xlink:href=".././proc/rxp.html" xlink:title="RXP">
+<polygon fill="#d9534f" stroke="#d9534f" points="145,-192 91,-192 91,-168 145,-168 145,-192"/>
+<text text-anchor="middle" x="118" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RXP</text>
+</a>
+</g>
+</g>
+<!-- proc~eqec06&#45;&gt;proc~rxp -->
+<g id="proc~~eqec06~~CallsGraph_edge2" class="edge">
+<title>proc~eqec06&#45;&gt;proc~rxp</title>
+<path fill="none" stroke="#000000" d="M45.56,-129.15C58.66,-138.47 76.95,-151.49 91.75,-162.02"/>
+<polygon fill="#000000" stroke="#000000" points="89.81,-164.94 99.99,-167.89 93.87,-159.24 89.81,-164.94"/>
+</g>
+<!-- proc~ecm06 -->
+<g id="proc~~eqec06~~CallsGraph_node4" class="node">
+<title>proc~ecm06</title>
+<g id="a_proc~~eqec06~~CallsGraph_node4"><a xlink:href=".././proc/ecm06.html" xlink:title="ECM06">
+<polygon fill="#d9534f" stroke="#d9534f" points="145,-150 91,-150 91,-126 145,-126 145,-150"/>
+<text text-anchor="middle" x="118" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ECM06</text>
+</a>
+</g>
+</g>
+<!-- proc~eqec06&#45;&gt;proc~ecm06 -->
+<g id="proc~~eqec06~~CallsGraph_edge3" class="edge">
+<title>proc~eqec06&#45;&gt;proc~ecm06</title>
+<path fill="none" stroke="#000000" d="M55.05,-123.3C63.18,-125.23 72.25,-127.38 80.9,-129.43"/>
+<polygon fill="#000000" stroke="#000000" points="80.23,-132.87 90.77,-131.78 81.85,-126.06 80.23,-132.87"/>
+</g>
+<!-- proc~s2c -->
+<g id="proc~~eqec06~~CallsGraph_node5" class="node">
+<title>proc~s2c</title>
+<g id="a_proc~~eqec06~~CallsGraph_node5"><a xlink:href=".././proc/s2c.html" xlink:title="S2C">
+<polygon fill="#d9534f" stroke="#d9534f" points="145,-108 91,-108 91,-84 145,-84 145,-108"/>
+<text text-anchor="middle" x="118" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">S2C</text>
+</a>
+</g>
+</g>
+<!-- proc~eqec06&#45;&gt;proc~s2c -->
+<g id="proc~~eqec06~~CallsGraph_edge4" class="edge">
+<title>proc~eqec06&#45;&gt;proc~s2c</title>
+<path fill="none" stroke="#000000" d="M55.05,-110.7C63.18,-108.77 72.25,-106.62 80.9,-104.57"/>
+<polygon fill="#000000" stroke="#000000" points="81.85,-107.94 90.77,-102.22 80.23,-101.13 81.85,-107.94"/>
+</g>
+<!-- proc~c2s -->
+<g id="proc~~eqec06~~CallsGraph_node6" class="node">
+<title>proc~c2s</title>
+<g id="a_proc~~eqec06~~CallsGraph_node6"><a xlink:href=".././proc/c2s.html" xlink:title="C2S">
+<polygon fill="#d9534f" stroke="#d9534f" points="145,-66 91,-66 91,-42 145,-42 145,-66"/>
+<text text-anchor="middle" x="118" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2S</text>
+</a>
+</g>
+</g>
+<!-- proc~eqec06&#45;&gt;proc~c2s -->
+<g id="proc~~eqec06~~CallsGraph_edge5" class="edge">
+<title>proc~eqec06&#45;&gt;proc~c2s</title>
+<path fill="none" stroke="#000000" d="M45.56,-104.85C58.66,-95.53 76.95,-82.51 91.75,-71.98"/>
+<polygon fill="#000000" stroke="#000000" points="93.87,-74.76 99.99,-66.11 89.81,-69.06 93.87,-74.76"/>
+</g>
+<!-- proc~anpm -->
+<g id="proc~~eqec06~~CallsGraph_node7" class="node">
+<title>proc~anpm</title>
+<g id="a_proc~~eqec06~~CallsGraph_node7"><a xlink:href=".././proc/anpm.html" xlink:title="ANPM">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="145,-24 91,-24 91,0 145,0 145,-24"/>
+<text text-anchor="middle" x="118" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ANPM</text>
+</a>
+</g>
+</g>
+<!-- proc~eqec06&#45;&gt;proc~anpm -->
+<g id="proc~~eqec06~~CallsGraph_edge6" class="edge">
+<title>proc~eqec06&#45;&gt;proc~anpm</title>
+<path fill="none" stroke="#000000" d="M36.13,-104.85C47.12,-87.83 68.58,-56.33 91,-33 91.65,-32.32 92.32,-31.65 93.01,-30.98"/>
+<polygon fill="#000000" stroke="#000000" points="95.64,-33.32 100.77,-24.06 90.98,-28.1 95.64,-33.32"/>
+</g>
+<!-- proc~pmat06 -->
+<g id="proc~~eqec06~~CallsGraph_node8" class="node">
+<title>proc~pmat06</title>
+<g id="a_proc~~eqec06~~CallsGraph_node8"><a xlink:href=".././proc/pmat06.html" xlink:title="PMAT06">
+<polygon fill="#d9534f" stroke="#d9534f" points="235,-190 181,-190 181,-166 235,-166 235,-190"/>
+<text text-anchor="middle" x="208" y="-175.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PMAT06</text>
+</a>
+</g>
+</g>
+<!-- proc~ecm06&#45;&gt;proc~pmat06 -->
+<g id="proc~~eqec06~~CallsGraph_edge7" class="edge">
+<title>proc~ecm06&#45;&gt;proc~pmat06</title>
+<path fill="none" stroke="#000000" d="M145.4,-150C153.66,-153.75 162.9,-157.95 171.66,-161.94"/>
+<polygon fill="#000000" stroke="#000000" points="170.37,-165.19 180.92,-166.14 173.26,-158.82 170.37,-165.19"/>
+</g>
+<!-- proc~obl06 -->
+<g id="proc~~eqec06~~CallsGraph_node9" class="node">
+<title>proc~obl06</title>
+<g id="a_proc~~eqec06~~CallsGraph_node9"><a xlink:href=".././proc/obl06.html" xlink:title="OBL06">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="415,-255 361,-255 361,-231 415,-231 415,-255"/>
+<text text-anchor="middle" x="388" y="-240.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OBL06</text>
+</a>
+</g>
+</g>
+<!-- proc~ecm06&#45;&gt;proc~obl06 -->
+<g id="proc~~eqec06~~CallsGraph_edge8" class="edge">
+<title>proc~ecm06&#45;&gt;proc~obl06</title>
+<path fill="none" stroke="#000000" d="M134.74,-150.05C138.21,-152.88 141.8,-155.97 145,-159 162.36,-175.45 161.78,-184.77 181,-199 216.48,-225.27 227.99,-231.07 271,-241 297.21,-247.05 327.64,-247.33 350.76,-246.22"/>
+<polygon fill="#000000" stroke="#000000" points="351.05,-249.71 360.82,-245.62 350.63,-242.72 351.05,-249.71"/>
+</g>
+<!-- proc~ir -->
+<g id="proc~~eqec06~~CallsGraph_node10" class="node">
+<title>proc~ir</title>
+<g id="a_proc~~eqec06~~CallsGraph_node10"><a xlink:href=".././proc/ir.html" xlink:title="IR">
+<polygon fill="#d9534f" stroke="#d9534f" points="415,-154 361,-154 361,-130 415,-130 415,-154"/>
+<text text-anchor="middle" x="388" y="-139.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">IR</text>
+</a>
+</g>
+</g>
+<!-- proc~ecm06&#45;&gt;proc~ir -->
+<g id="proc~~eqec06~~CallsGraph_edge9" class="edge">
+<title>proc~ecm06&#45;&gt;proc~ir</title>
+<path fill="none" stroke="#000000" d="M145.18,-138.39C193.22,-139.11 295.51,-140.63 350.39,-141.45"/>
+<polygon fill="#000000" stroke="#000000" points="350.66,-144.96 360.71,-141.61 350.76,-137.96 350.66,-144.96"/>
+</g>
+<!-- proc~rx -->
+<g id="proc~~eqec06~~CallsGraph_node11" class="node">
+<title>proc~rx</title>
+<g id="a_proc~~eqec06~~CallsGraph_node11"><a xlink:href=".././proc/rx.html" xlink:title="RX">
+<polygon fill="#d9534f" stroke="#d9534f" points="415,-112 361,-112 361,-88 415,-88 415,-112"/>
+<text text-anchor="middle" x="388" y="-97.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RX</text>
+</a>
+</g>
+</g>
+<!-- proc~ecm06&#45;&gt;proc~rx -->
+<g id="proc~~eqec06~~CallsGraph_edge10" class="edge">
+<title>proc~ecm06&#45;&gt;proc~rx</title>
+<path fill="none" stroke="#000000" d="M145.18,-134.29C193.32,-127.46 295.93,-112.91 350.74,-105.14"/>
+<polygon fill="#000000" stroke="#000000" points="351.3,-108.6 360.71,-103.73 350.32,-101.67 351.3,-108.6"/>
+</g>
+<!-- proc~rxr -->
+<g id="proc~~eqec06~~CallsGraph_node12" class="node">
+<title>proc~rxr</title>
+<g id="a_proc~~eqec06~~CallsGraph_node12"><a xlink:href=".././proc/rxr.html" xlink:title="RXR">
+<polygon fill="#d9534f" stroke="#d9534f" points="235,-72 181,-72 181,-48 235,-48 235,-72"/>
+<text text-anchor="middle" x="208" y="-57.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RXR</text>
+</a>
+</g>
+</g>
+<!-- proc~ecm06&#45;&gt;proc~rxr -->
+<g id="proc~~eqec06~~CallsGraph_edge11" class="edge">
+<title>proc~ecm06&#45;&gt;proc~rxr</title>
+<path fill="none" stroke="#000000" d="M134.26,-125.95C137.82,-123.06 141.57,-119.95 145,-117 159.35,-104.63 175.07,-90.17 187.08,-78.91"/>
+<polygon fill="#000000" stroke="#000000" points="189.51,-81.44 194.39,-72.03 184.71,-76.34 189.51,-81.44"/>
+</g>
+<!-- proc~pfw06 -->
+<g id="proc~~eqec06~~CallsGraph_node13" class="node">
+<title>proc~pfw06</title>
+<g id="a_proc~~eqec06~~CallsGraph_node13"><a xlink:href=".././proc/pfw06.html" xlink:title="PFW06">
+<polygon fill="#d9534f" stroke="#d9534f" points="325,-232 271,-232 271,-208 325,-208 325,-232"/>
+<text text-anchor="middle" x="298" y="-217.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PFW06</text>
+</a>
+</g>
+</g>
+<!-- proc~pmat06&#45;&gt;proc~pfw06 -->
+<g id="proc~~eqec06~~CallsGraph_edge12" class="edge">
+<title>proc~pmat06&#45;&gt;proc~pfw06</title>
+<path fill="none" stroke="#000000" d="M234.45,-190.15C243.21,-194.33 253.17,-199.08 262.52,-203.54"/>
+<polygon fill="#000000" stroke="#000000" points="261.07,-206.73 271.6,-207.88 264.09,-200.41 261.07,-206.73"/>
+</g>
+<!-- proc~fw2m -->
+<g id="proc~~eqec06~~CallsGraph_node14" class="node">
+<title>proc~fw2m</title>
+<g id="a_proc~~eqec06~~CallsGraph_node14"><a xlink:href=".././proc/fw2m.html" xlink:title="FW2M">
+<polygon fill="#d9534f" stroke="#d9534f" points="325,-190 271,-190 271,-166 325,-166 325,-190"/>
+<text text-anchor="middle" x="298" y="-175.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FW2M</text>
+</a>
+</g>
+</g>
+<!-- proc~pmat06&#45;&gt;proc~fw2m -->
+<g id="proc~~eqec06~~CallsGraph_edge13" class="edge">
+<title>proc~pmat06&#45;&gt;proc~fw2m</title>
+<path fill="none" stroke="#000000" d="M235.4,-178C243.39,-178 252.31,-178 260.82,-178"/>
+<polygon fill="#000000" stroke="#000000" points="260.92,-181.5 270.92,-178 260.92,-174.5 260.92,-181.5"/>
+</g>
+<!-- proc~pfw06&#45;&gt;proc~obl06 -->
+<g id="proc~~eqec06~~CallsGraph_edge14" class="edge">
+<title>proc~pfw06&#45;&gt;proc~obl06</title>
+<path fill="none" stroke="#000000" d="M325.4,-226.9C333.48,-229.01 342.51,-231.37 351.1,-233.62"/>
+<polygon fill="#000000" stroke="#000000" points="350.36,-237.04 360.92,-236.18 352.13,-230.27 350.36,-237.04"/>
+</g>
+<!-- proc~fw2m&#45;&gt;proc~ir -->
+<g id="proc~~eqec06~~CallsGraph_edge15" class="edge">
+<title>proc~fw2m&#45;&gt;proc~ir</title>
+<path fill="none" stroke="#000000" d="M325.4,-167.2C333.57,-163.86 342.7,-160.12 351.38,-156.57"/>
+<polygon fill="#000000" stroke="#000000" points="352.99,-159.7 360.92,-152.67 350.34,-153.22 352.99,-159.7"/>
+</g>
+<!-- proc~fw2m&#45;&gt;proc~rx -->
+<g id="proc~~eqec06~~CallsGraph_edge17" class="edge">
+<title>proc~fw2m&#45;&gt;proc~rx</title>
+<path fill="none" stroke="#000000" d="M311.61,-165.97C323.99,-154.26 343.5,-136.08 361,-121 361.96,-120.17 362.95,-119.33 363.96,-118.48"/>
+<polygon fill="#000000" stroke="#000000" points="366.26,-121.12 371.74,-112.05 361.8,-115.72 366.26,-121.12"/>
+</g>
+<!-- proc~rz -->
+<g id="proc~~eqec06~~CallsGraph_node15" class="node">
+<title>proc~rz</title>
+<g id="a_proc~~eqec06~~CallsGraph_node15"><a xlink:href=".././proc/rz.html" xlink:title="RZ">
+<polygon fill="#d9534f" stroke="#d9534f" points="415,-196 361,-196 361,-172 415,-172 415,-196"/>
+<text text-anchor="middle" x="388" y="-181.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RZ</text>
+</a>
+</g>
+</g>
+<!-- proc~fw2m&#45;&gt;proc~rz -->
+<g id="proc~~eqec06~~CallsGraph_edge16" class="edge">
+<title>proc~fw2m&#45;&gt;proc~rz</title>
+<path fill="none" stroke="#000000" d="M325.4,-179.8C333.39,-180.34 342.31,-180.95 350.82,-181.53"/>
+<polygon fill="#000000" stroke="#000000" points="350.7,-185.03 360.92,-182.22 351.18,-178.05 350.7,-185.03"/>
+</g>
+</g>
+</svg>
+</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="597pt" height="32pt"
+ viewBox="0.00 0.00 596.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 592.5,-28 592.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node4" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="388.5,-24 243.5,-24 243.5,0 388.5,0 388.5,-24"/>
+<text text-anchor="middle" x="316" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="465,-24 407,-24 407,0 465,0 465,-24"/>
+<text text-anchor="middle" x="436" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="588.5,-24 483.5,-24 483.5,0 588.5,0 588.5,-24"/>
+<text text-anchor="middle" x="536" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a procedure to one which it calls. Dashed 
+    arrows point from an interface to procedures which implement that interface.
+    This could include the module procedures in a generic interface or the
+    implementation in a submodule of an interface in a parent module.
+    </p>
+    </div></div></div></div>
+      </div>
+    </div>
+     
+     
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/eqec06.html#src">EQEC06</a>
+  </div>
+</div>
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">EQEC06</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span><span class="p">,</span> <span class="n">dr</span><span class="p">,</span> <span class="n">dd</span><span class="p">,</span> <span class="n">dl</span><span class="p">,</span> <span class="n">db</span> <span class="p">)</span>
+
+    <span class="k">implicit none</span>
+
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date1</span> <span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date2</span> <span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">dr</span> <span class="c">!! ICRS right ascension (radians)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">dd</span> <span class="c">!! ICRS declination (radians)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">dl</span> <span class="c">!! ecliptic longitude (radians)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">db</span> <span class="c">!! ecliptic latitude (radians)</span>
+
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">rm</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">v1</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">v2</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span>
+
+    <span class="c">!  Spherical to Cartesian.</span>
+    <span class="k">call </span><span class="n">S2C</span> <span class="p">(</span> <span class="n">dr</span><span class="p">,</span> <span class="n">dd</span><span class="p">,</span> <span class="n">v1</span> <span class="p">)</span>
+
+    <span class="c">!  Rotation matrix, ICRS equatorial to ecliptic.</span>
+    <span class="k">call </span><span class="n">ECM06</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span><span class="p">,</span> <span class="n">rm</span> <span class="p">)</span>
+
+    <span class="c">!  The transformation from ICRS to ecliptic.</span>
+    <span class="k">call </span><span class="n">RXP</span> <span class="p">(</span> <span class="n">rm</span><span class="p">,</span> <span class="n">v1</span><span class="p">,</span> <span class="n">v2</span> <span class="p">)</span>
+
+    <span class="c">!  Cartesian to spherical.</span>
+    <span class="k">call </span><span class="n">C2S</span> <span class="p">(</span> <span class="n">v2</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">)</span>
+
+    <span class="c">!  Express in conventional ranges.</span>
+    <span class="n">dl</span> <span class="o">=</span> <span class="n">ANP</span> <span class="p">(</span> <span class="n">a</span> <span class="p">)</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="n">ANPM</span> <span class="p">(</span> <span class="n">b</span> <span class="p">)</span>
+
+    <span class="k">end subroutine </span><span class="n">EQEC06</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

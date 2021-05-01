@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
+    
+    <meta name="author" content="Jacob Williams" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>REFCO &ndash; astro-fortran</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">astro-fortran </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+        
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>REFCO
+      <small>Subroutine</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 0.6% of total for procedures.">33 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
+    
+     <li><a href='../module/astro_module.html'>astro_module</a></li>
+    
+  
+     <li class="active">REFCO</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/refco.html#src">REFCO</a>
+  </div>
+</div>
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>
+public subroutine REFCO(phpa, tc, rh, wl, refa, refb)
+    
+    
+   
+</h2>
+    
+  
+
+
+    
+    <p>Determine the constants A and B in the atmospheric refraction model
+  dZ = A tan Z + B tan^3 Z.</p>
+<p>Z is the "observed" zenith distance (i.e. affected by refraction)
+  and dZ is what to add to Z to give the "topocentric" (i.e. in vacuo)
+  zenith distance.</p>
+<p>Status:  support routine.</p>
+<h3>Notes</h3>
+<ol>
+<li>
+<p>The model balances speed and accuracy to give good results in
+     applications where performance at low altitudes is not paramount.
+     Performance is maintained across a range of conditions, and
+     applies to both optical/IR and radio.</p>
+</li>
+<li>
+<p>The model omits the effects of (i) height above sea level (apart
+     from the reduced pressure itself), (ii) latitude (i.e. the
+     flattening of the Earth), (iii) variations in tropospheric lapse
+     rate and (iv) dispersive effects in the radio.</p>
+<p>The model was tested using the following range of conditions:</p>
+<ul>
+<li>lapse rates 0.0055, 0.0065, 0.0075 deg/meter</li>
+<li>latitudes 0, 25, 50, 75 degrees</li>
+<li>heights 0, 2500, 5000 meters ASL</li>
+<li>pressures mean for height -10% to +5% in steps of 5%</li>
+<li>temperatures -10 deg to +20 deg with respect to 280 deg at SL</li>
+<li>relative humidity 0, 0.5, 1</li>
+<li>wavelengths 0.4, 0.6, ... 2 micron, + radio</li>
+<li>zenith distances 15, 45, 75 degrees</li>
+</ul>
+<p>The accuracy with respect to raytracing through a model
+ atmosphere was as follows:</p>
+</li>
+</ol>
+<div class="codehilite"><pre><span></span><code>                            worst         RMS
+
+       optical/IR           62 mas       8 mas
+       radio               319 mas      49 mas
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code> <span class="k">For</span> <span class="nv">this</span> <span class="nv">particular</span> <span class="nv">set</span> <span class="nv">of</span> <span class="nv">conditions</span>:
+
+ <span class="o">*</span> <span class="nv">lapse</span> <span class="nv">rate</span> <span class="mi">0</span>.<span class="mi">0065</span> <span class="nv">K</span><span class="o">/</span><span class="nv">meter</span>
+ <span class="o">*</span> <span class="nv">latitude</span> <span class="mi">50</span> <span class="nv">degrees</span>
+ <span class="o">*</span> <span class="nv">sea</span> <span class="nv">level</span>
+ <span class="o">*</span> <span class="nv">pressure</span> <span class="mi">1005</span> <span class="nv">mb</span>
+ <span class="o">*</span> <span class="nv">temperature</span> <span class="mi">280</span>.<span class="mi">15</span> <span class="nv">K</span>
+ <span class="o">*</span> <span class="nv">humidity</span> <span class="mi">80</span><span class="o">%</span>
+ <span class="o">*</span> <span class="nv">wavelength</span> <span class="mi">5740</span> <span class="nv">Angstroms</span>
+
+ <span class="nv">the</span> <span class="nv">results</span> <span class="nv">were</span> <span class="nv">as</span> <span class="nv">follows</span>:
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>       ZD       raytrace     REFCO  Saastamoinen
+
+       10         10.27        10.27        10.27
+       20         21.19        21.20        21.19
+       30         33.61        33.61        33.60
+       40         48.82        48.83        48.81
+       45         58.16        58.18        58.16
+       50         69.28        69.30        69.27
+       55         82.97        82.99        82.95
+       60        100.51       100.54       100.50
+       65        124.23       124.26       124.20
+       70        158.63       158.68       158.61
+       72        177.32       177.37       177.31
+       74        200.35       200.38       200.32
+       76        229.45       229.43       229.42
+       78        267.44       267.29       267.41
+       80        319.13       318.55       319.10
+
+      deg        arcsec       arcsec       arcsec
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code> <span class="nv">The</span> <span class="nv">values</span> <span class="k">for</span> <span class="nv">Saastamoinen</span><span class="s1">&#39;</span><span class="s">s formula (which includes terms</span>
+ <span class="nv">up</span> <span class="nv">to</span> <span class="nv">tan</span><span class="o">^</span><span class="mi">5</span><span class="ss">)</span> <span class="nv">are</span> <span class="nv">taken</span> <span class="nv">from</span> <span class="nv">Hohenkerk</span> <span class="nv">and</span> <span class="nv">Sinclair</span> <span class="ss">(</span><span class="mi">1985</span><span class="ss">)</span>.
+</code></pre></div>
+
+<ol>
+<li>
+<p>A WL value in the range 0-100 selects the optical/IR case and is
+     wavelength in micrometers.  Any value outside this range selects
+     the radio case.</p>
+</li>
+<li>
+<p>Outlandish input parameters are silently limited to mathematically
+     safe values.  Zero pressure is permissible, and causes zeroes to
+     be returned.</p>
+</li>
+<li>
+<p>The algorithm draws on several sources, as follows:</p>
+<p>a) The formula for the saturation vapour pressure of water as
+    a function of temperature and temperature is taken from
+    Equations (A4.5-A4.7) of Gill (1982).</p>
+<p>b) The formula for the water vapour pressure, given the
+    saturation pressure and the relative humidity, is from
+    Crane (1976), Equation (2.5.5).</p>
+<p>c) The refractivity of air is a function of temperature,
+    total pressure, water-vapour pressure and, in the case
+    of optical/IR, wavelength.  The formulae for the two cases are
+    developed from Hohenkerk &amp; Sinclair (1985) and Rueger (2002).</p>
+<p>d) The formula for beta, the ratio of the scale height of the
+    atmosphere to the geocentric distance of the observer, is
+    an adaption of Equation (9) from Stone (1996).  The
+    adaptations, arrived at empirically, consist of (i) a small
+    adjustment to the coefficient and (ii) a humidity term for the
+    radio case only.</p>
+<p>e) The formulae for the refraction constants as a function of
+    n-1 and beta are from Green (1987), Equation (4.31).</p>
+</li>
+</ol>
+<h3>References</h3>
+<ul>
+<li>
+<p>Crane, R.K., Meeks, M.L. (ed), "Refraction Effects in the Neutral
+    Atmosphere", Methods of Experimental Physics: Astrophysics 12B,
+    Academic Press, 1976.</p>
+</li>
+<li>
+<p>Gill, Adrian E., "Atmosphere-Ocean Dynamics", Academic Press,
+    1982.</p>
+</li>
+<li>
+<p>Green, R.M., "Spherical Astronomy", Cambridge University Press,
+    1987.</p>
+</li>
+<li>
+<p>Hohenkerk, C.Y., &amp; Sinclair, A.T., NAO Technical Note No. 63,
+    1985.</p>
+</li>
+<li>
+<p>Rueger, J.M., "Refractive Index Formulae for Electronic Distance
+    Measurement with Radio and Millimetre Waves", in Unisurv Report
+    S-68, School of Surveying and Spatial Information Systems,
+    University of New South Wales, Sydney, Australia, 2002.</p>
+</li>
+<li>
+<p>Stone, Ronald C., P.A.S.P. 108, 1051-1058, 1996.</p>
+</li>
+</ul>
+<h3>History</h3>
+<ul>
+<li>IAU SOFA revision: 2016 December 20</li>
+</ul>
+    
+
+    <h3>Arguments</h3>
+    
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-phpa~7"></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>phpa</strong></td><td><p>pressure at the observer (hPa = millibar)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-tc~7"></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>tc</strong></td><td><p>ambient temperature at the observer (deg C)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-rh~11"></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>rh</strong></td><td><p>relative humidity at the observer (range 0-1)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-wl~7"></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>wl</strong></td><td><p>wavelength (micrometers)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-refa~3"></span>real(kind=wp),</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>refa</strong></td><td><p>tan Z coefficient (radians)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-refb~3"></span>real(kind=wp),</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>refb</strong></td><td><p>tan^3 Z coefficient (radians)</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    
+    
+    
+    <br>
+    
+    
+     
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Called by</h3>
+      </div>
+      <div class="panel-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~refco~~CalledByGraph Pages: 1 -->
+<svg id="procrefcoCalledByGraph" width="244pt" height="158pt"
+ viewBox="0.00 0.00 244.00 158.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~refco~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 154)">
+<title>proc~~refco~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-154 240,-154 240,4 -4,4"/>
+<!-- proc~refco -->
+<g id="proc~~refco~~CalledByGraph_node1" class="node">
+<title>proc~refco</title>
+<polygon fill="none" stroke="black" points="236,-87 182,-87 182,-63 236,-63 236,-87"/>
+<text text-anchor="middle" x="209" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50">REFCO</text>
+</g>
+<!-- proc~apio13 -->
+<g id="proc~~refco~~CalledByGraph_node2" class="node">
+<title>proc~apio13</title>
+<g id="a_proc~~refco~~CalledByGraph_node2"><a xlink:href=".././proc/apio13.html" xlink:title="APIO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-108 91.5,-108 91.5,-84 145.5,-84 145.5,-108"/>
+<text text-anchor="middle" x="118.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APIO13</text>
+</a>
+</g>
+</g>
+<!-- proc~apio13&#45;&gt;proc~refco -->
+<g id="proc~~refco~~CalledByGraph_edge1" class="edge">
+<title>proc~apio13&#45;&gt;proc~refco</title>
+<path fill="none" stroke="#000000" d="M145.57,-89.81C153.87,-87.84 163.2,-85.63 172.07,-83.53"/>
+<polygon fill="#000000" stroke="#000000" points="172.88,-86.93 181.81,-81.22 171.27,-80.12 172.88,-86.93"/>
+</g>
+<!-- proc~apco13 -->
+<g id="proc~~refco~~CalledByGraph_node3" class="node">
+<title>proc~apco13</title>
+<g id="a_proc~~refco~~CalledByGraph_node3"><a xlink:href=".././proc/apco13.html" xlink:title="APCO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="146,-66 91,-66 91,-42 146,-42 146,-66"/>
+<text text-anchor="middle" x="118.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APCO13</text>
+</a>
+</g>
+</g>
+<!-- proc~apco13&#45;&gt;proc~refco -->
+<g id="proc~~refco~~CalledByGraph_edge2" class="edge">
+<title>proc~apco13&#45;&gt;proc~refco</title>
+<path fill="none" stroke="#000000" d="M146.05,-60.3C154.18,-62.23 163.25,-64.38 171.9,-66.43"/>
+<polygon fill="#000000" stroke="#000000" points="171.23,-69.87 181.77,-68.78 172.85,-63.06 171.23,-69.87"/>
+</g>
+<!-- proc~atio13 -->
+<g id="proc~~refco~~CalledByGraph_node4" class="node">
+<title>proc~atio13</title>
+<g id="a_proc~~refco~~CalledByGraph_node4"><a xlink:href=".././proc/atio13.html" xlink:title="ATIO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-150 0.5,-150 0.5,-126 54.5,-126 54.5,-150"/>
+<text text-anchor="middle" x="27.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATIO13</text>
+</a>
+</g>
+</g>
+<!-- proc~atio13&#45;&gt;proc~apio13 -->
+<g id="proc~~refco~~CalledByGraph_edge3" class="edge">
+<title>proc~atio13&#45;&gt;proc~apio13</title>
+<path fill="none" stroke="#000000" d="M54.24,-125.85C63.1,-121.67 73.17,-116.92 82.63,-112.46"/>
+<polygon fill="#000000" stroke="#000000" points="84.27,-115.55 91.82,-108.12 81.28,-109.22 84.27,-115.55"/>
+</g>
+<!-- proc~atoc13 -->
+<g id="proc~~refco~~CalledByGraph_node5" class="node">
+<title>proc~atoc13</title>
+<g id="a_proc~~refco~~CalledByGraph_node5"><a xlink:href=".././proc/atoc13.html" xlink:title="ATOC13">
+<polygon fill="#d9534f" stroke="#d9534f" points="55,-66 0,-66 0,-42 55,-42 55,-66"/>
+<text text-anchor="middle" x="27.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOC13</text>
+</a>
+</g>
+</g>
+<!-- proc~atoc13&#45;&gt;proc~apco13 -->
+<g id="proc~~refco~~CalledByGraph_edge5" class="edge">
+<title>proc~atoc13&#45;&gt;proc~apco13</title>
+<path fill="none" stroke="#000000" d="M55.2,-54C63.21,-54 72.14,-54 80.68,-54"/>
+<polygon fill="#000000" stroke="#000000" points="80.82,-57.5 90.82,-54 80.82,-50.5 80.82,-57.5"/>
+</g>
+<!-- proc~atoi13 -->
+<g id="proc~~refco~~CalledByGraph_node6" class="node">
+<title>proc~atoi13</title>
+<g id="a_proc~~refco~~CalledByGraph_node6"><a xlink:href=".././proc/atoi13.html" xlink:title="ATOI13">
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-108 0.5,-108 0.5,-84 54.5,-84 54.5,-108"/>
+<text text-anchor="middle" x="27.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOI13</text>
+</a>
+</g>
+</g>
+<!-- proc~atoi13&#45;&gt;proc~apio13 -->
+<g id="proc~~refco~~CalledByGraph_edge4" class="edge">
+<title>proc~atoi13&#45;&gt;proc~apio13</title>
+<path fill="none" stroke="#000000" d="M54.72,-96C63.05,-96 72.41,-96 81.32,-96"/>
+<polygon fill="#000000" stroke="#000000" points="81.47,-99.5 91.47,-96 81.47,-92.5 81.47,-99.5"/>
+</g>
+<!-- proc~atco13 -->
+<g id="proc~~refco~~CalledByGraph_node7" class="node">
+<title>proc~atco13</title>
+<g id="a_proc~~refco~~CalledByGraph_node7"><a xlink:href=".././proc/atco13.html" xlink:title="ATCO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-24 0.5,-24 0.5,0 54.5,0 54.5,-24"/>
+<text text-anchor="middle" x="27.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATCO13</text>
+</a>
+</g>
+</g>
+<!-- proc~atco13&#45;&gt;proc~apco13 -->
+<g id="proc~~refco~~CalledByGraph_edge6" class="edge">
+<title>proc~atco13&#45;&gt;proc~apco13</title>
+<path fill="none" stroke="#000000" d="M54.24,-24.15C63.1,-28.33 73.17,-33.08 82.63,-37.54"/>
+<polygon fill="#000000" stroke="#000000" points="81.28,-40.78 91.82,-41.88 84.27,-34.45 81.28,-40.78"/>
+</g>
+</g>
+</svg>
+</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="597pt" height="32pt"
+ viewBox="0.00 0.00 596.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 592.5,-28 592.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node4" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="388.5,-24 243.5,-24 243.5,0 388.5,0 388.5,-24"/>
+<text text-anchor="middle" x="316" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="465,-24 407,-24 407,0 465,0 465,-24"/>
+<text text-anchor="middle" x="436" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="588.5,-24 483.5,-24 483.5,0 588.5,0 588.5,-24"/>
+<text text-anchor="middle" x="536" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a procedure to one which it calls. Dashed 
+    arrows point from an interface to procedures which implement that interface.
+    This could include the module procedures in a generic interface or the
+    implementation in a submodule of an interface in a parent module.
+    </p>
+    </div></div></div></div>
+      </div>
+    </div>
+     
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/refco.html#src">REFCO</a>
+  </div>
+</div>
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">REFCO</span> <span class="p">(</span> <span class="n">phpa</span><span class="p">,</span> <span class="n">tc</span><span class="p">,</span> <span class="n">rh</span><span class="p">,</span> <span class="n">wl</span><span class="p">,</span> <span class="n">refa</span><span class="p">,</span> <span class="n">refb</span> <span class="p">)</span>
+
+    <span class="k">implicit none</span>
+
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">phpa</span> <span class="c">!! pressure at the observer (hPa = millibar)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">tc</span> <span class="c">!! ambient temperature at the observer (deg C)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">rh</span> <span class="c">!! relative humidity at the observer (range 0-1)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">wl</span> <span class="c">!! wavelength (micrometers)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">refa</span> <span class="c">!! tan Z coefficient (radians)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">refb</span> <span class="c">!! tan^3 Z coefficient (radians)</span>
+
+    <span class="kt">logical</span> <span class="kd">::</span> <span class="n">optic</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">p</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">ps</span><span class="p">,</span> <span class="n">pw</span><span class="p">,</span> <span class="n">tk</span><span class="p">,</span> <span class="n">wlsq</span><span class="p">,</span> <span class="nb">gamma</span><span class="p">,</span> <span class="n">beta</span>
+
+    <span class="c">!  Decide whether optical/IR or radio case:  switch at 100 microns.</span>
+    <span class="n">optic</span> <span class="o">=</span> <span class="n">wl</span><span class="o">&lt;=</span><span class="mi">10</span><span class="mf">0.0_wp</span>
+
+    <span class="c">!  Restrict parameters to safe values.</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span><span class="o">-</span><span class="mi">15</span><span class="mf">0.0_wp</span><span class="p">),</span><span class="mi">20</span><span class="mf">0.0_wp</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">phpa</span><span class="p">,</span><span class="mf">0.0_wp</span><span class="p">),</span><span class="mi">1000</span><span class="mf">0.0_wp</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">rh</span><span class="p">,</span><span class="mf">0.0_wp</span><span class="p">),</span><span class="mf">1.0_wp</span><span class="p">)</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">wl</span><span class="p">,</span><span class="mf">0.1_wp</span><span class="p">),</span><span class="mf">1.0e6_wp</span><span class="p">)</span>
+
+    <span class="c">!  Water vapour pressure at the observer.</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="o">&gt;</span><span class="mf">0.0_wp</span><span class="p">)</span> <span class="k">then</span>
+<span class="k">       </span><span class="n">ps</span> <span class="o">=</span> <span class="mi">1</span><span class="mf">0.0_wp</span><span class="o">**</span><span class="p">((</span><span class="mf">0.7859_wp</span><span class="o">+</span><span class="mf">0.03477_wp</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">1.0_wp</span><span class="o">+</span><span class="mf">0.00412_wp</span><span class="o">*</span><span class="n">t</span><span class="p">))</span><span class="o">*</span> <span class="p">&amp;</span>
+                                        <span class="p">(</span><span class="mf">1.0_wp</span><span class="o">+</span><span class="n">p</span><span class="o">*</span><span class="p">(</span><span class="mf">4.5e-6_wp</span><span class="o">+</span><span class="mf">6e-10_wp</span><span class="o">*</span><span class="n">t</span><span class="o">*</span><span class="n">t</span><span class="p">))</span>
+       <span class="n">pw</span> <span class="o">=</span> <span class="n">r</span><span class="o">*</span><span class="n">ps</span><span class="o">/</span><span class="p">(</span><span class="mf">1.0_wp</span><span class="o">-</span><span class="p">(</span><span class="mf">1.0_wp</span><span class="o">-</span><span class="n">r</span><span class="p">)</span><span class="o">*</span><span class="n">ps</span><span class="o">/</span><span class="n">p</span><span class="p">)</span>
+    <span class="k">else</span>
+<span class="k">       </span><span class="n">pw</span> <span class="o">=</span> <span class="mf">0.0_wp</span>
+    <span class="k">end if</span>
+
+    <span class="c">!  Refractive index minus 1 at the observer.</span>
+    <span class="n">tk</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="mi">27</span><span class="mf">3.15_wp</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">optic</span><span class="p">)</span> <span class="k">then</span>
+<span class="k">       </span><span class="n">wlsq</span> <span class="o">=</span> <span class="n">w</span><span class="o">*</span><span class="n">w</span>
+       <span class="nb">gamma</span> <span class="o">=</span> <span class="p">((</span><span class="mi">7</span><span class="mf">7.53484e-6_wp</span><span class="o">+</span><span class="p">(</span><span class="mf">4.39108e-7_wp</span><span class="o">+</span><span class="mf">3.666e-9_wp</span><span class="o">/</span><span class="n">wlsq</span><span class="p">)</span><span class="o">/</span><span class="n">wlsq</span><span class="p">)</span><span class="o">*</span><span class="n">p</span> <span class="p">&amp;</span>
+                                                    <span class="o">-</span><span class="mi">1</span><span class="mf">1.2684e-6_wp</span><span class="o">*</span><span class="n">pw</span><span class="p">)</span><span class="o">/</span><span class="n">tk</span>
+    <span class="k">else</span>
+<span class="k">       </span><span class="nb">gamma</span> <span class="o">=</span> <span class="p">(</span><span class="mi">7</span><span class="mf">7.6890e-6_wp</span><span class="o">*</span><span class="n">p</span><span class="o">-</span><span class="p">(</span><span class="mf">6.3938e-6_wp</span><span class="o">-</span><span class="mf">0.375463_wp</span><span class="o">/</span><span class="n">tk</span><span class="p">)</span><span class="o">*</span><span class="n">pw</span><span class="p">)</span><span class="o">/</span><span class="n">tk</span>
+    <span class="k">end if</span>
+
+    <span class="c">!  Formula for beta adapted from Stone, with empirical adjustments.</span>
+    <span class="n">beta</span><span class="o">=</span><span class="mf">4.4474e-6_wp</span><span class="o">*</span><span class="n">tk</span>
+    <span class="k">if</span> <span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="n">optic</span><span class="p">)</span> <span class="n">beta</span><span class="o">=</span><span class="n">beta</span><span class="o">-</span><span class="mf">0.0074_wp</span><span class="o">*</span><span class="n">pw</span><span class="o">*</span><span class="n">beta</span>
+
+    <span class="c">!  Refraction constants from Green.</span>
+    <span class="n">refa</span> <span class="o">=</span> <span class="nb">gamma</span><span class="o">*</span><span class="p">(</span><span class="mf">1.0_wp</span><span class="o">-</span><span class="n">beta</span><span class="p">)</span>
+    <span class="n">refb</span> <span class="o">=</span> <span class="o">-</span><span class="nb">gamma</span><span class="o">*</span><span class="p">(</span><span class="n">beta</span><span class="o">-</span><span class="nb">gamma</span><span class="o">/</span><span class="mf">2.0_wp</span><span class="p">)</span>
+
+    <span class="k">end subroutine </span><span class="n">REFCO</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

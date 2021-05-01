@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
+    
+    <meta name="author" content="Jacob Williams" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>RXP &ndash; astro-fortran</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">astro-fortran </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+        
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>RXP
+      <small>Subroutine</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 0.3% of total for procedures.">16 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
+    
+     <li><a href='../module/astro_module.html'>astro_module</a></li>
+    
+  
+     <li class="active">RXP</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/rxp.html#src">RXP</a>
+  </div>
+</div>
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>
+public subroutine RXP(r, p, rp)
+    
+    
+   
+</h2>
+    
+  
+
+
+    
+    <p>Multiply a p-vector by an r-matrix.</p>
+<p>Status:  vector/matrix support routine.</p>
+<h3>History</h3>
+<ul>
+<li>IAU SOFA revision: 2006 November 13</li>
+</ul>
+    
+
+    <h3>Arguments</h3>
+    
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-r~12"></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(3,3)</td><td>::</td>
+  <td><strong>r</strong></td><td><p>r-matrix</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-p~11"></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(3)</td><td>::</td>
+  <td><strong>p</strong></td><td><p>p-vector</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-rp~9"></span>real(kind=wp),</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>dimension(3)</td><td>::</td>
+  <td><strong>rp</strong></td><td><p>R * P</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    
+    
+    
+    <br>
+    
+    
+     
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Called by</h3>
+      </div>
+      <div class="panel-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~rxp~~CalledByGraph Pages: 1 -->
+<svg id="procrxpCalledByGraph" width="516pt" height="279pt"
+ viewBox="0.00 0.00 516.00 279.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~rxp~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 275)">
+<title>proc~~rxp~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-275 512,-275 512,4 -4,4"/>
+<!-- proc~rxp -->
+<g id="proc~~rxp~~CalledByGraph_node1" class="node">
+<title>proc~rxp</title>
+<polygon fill="none" stroke="black" points="508,-146 454,-146 454,-122 508,-122 508,-146"/>
+<text text-anchor="middle" x="481" y="-131.6" font-family="Helvetica,sans-Serif" font-size="10.50">RXP</text>
+</g>
+<!-- proc~fk5hz -->
+<g id="proc~~rxp~~CalledByGraph_node2" class="node">
+<title>proc~fk5hz</title>
+<g id="a_proc~~rxp~~CalledByGraph_node2"><a xlink:href=".././proc/fk5hz.html" xlink:title="FK5HZ">
+<polygon fill="#d9534f" stroke="#d9534f" points="326.5,-271 272.5,-271 272.5,-247 326.5,-247 326.5,-271"/>
+<text text-anchor="middle" x="299.5" y="-256.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FK5HZ</text>
+</a>
+</g>
+</g>
+<!-- proc~fk5hz&#45;&gt;proc~rxp -->
+<g id="proc~~rxp~~CalledByGraph_edge1" class="edge">
+<title>proc~fk5hz&#45;&gt;proc~rxp</title>
+<path fill="none" stroke="#000000" d="M326.65,-260.6C352.14,-260.86 390.9,-257.66 418,-239 447.16,-218.92 464.68,-180.26 473.33,-155.87"/>
+<polygon fill="#000000" stroke="#000000" points="476.75,-156.68 476.59,-146.08 470.11,-154.46 476.75,-156.68"/>
+</g>
+<!-- proc~trxp -->
+<g id="proc~~rxp~~CalledByGraph_node5" class="node">
+<title>proc~trxp</title>
+<g id="a_proc~~rxp~~CalledByGraph_node5"><a xlink:href=".././proc/trxp.html" xlink:title="TRXP">
+<polygon fill="#d9534f" stroke="#d9534f" points="417.5,-146 363.5,-146 363.5,-122 417.5,-122 417.5,-146"/>
+<text text-anchor="middle" x="390.5" y="-131.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">TRXP</text>
+</a>
+</g>
+</g>
+<!-- proc~fk5hz&#45;&gt;proc~trxp -->
+<g id="proc~~rxp~~CalledByGraph_edge8" class="edge">
+<title>proc~fk5hz&#45;&gt;proc~trxp</title>
+<path fill="none" stroke="#000000" d="M318.45,-246.78C321.56,-244.13 324.57,-241.17 327,-238 351.49,-206.11 338.51,-186.89 363,-155 363.46,-154.41 363.93,-153.82 364.43,-153.24"/>
+<polygon fill="#000000" stroke="#000000" points="366.88,-155.73 371.55,-146.22 361.97,-150.75 366.88,-155.73"/>
+</g>
+<!-- proc~lteqec -->
+<g id="proc~~rxp~~CalledByGraph_node3" class="node">
+<title>proc~lteqec</title>
+<g id="a_proc~~rxp~~CalledByGraph_node3"><a xlink:href=".././proc/lteqec.html" xlink:title="LTEQEC">
+<polygon fill="#d9534f" stroke="#d9534f" points="417.5,-230 363.5,-230 363.5,-206 417.5,-206 417.5,-230"/>
+<text text-anchor="middle" x="390.5" y="-215.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">LTEQEC</text>
+</a>
+</g>
+</g>
+<!-- proc~lteqec&#45;&gt;proc~rxp -->
+<g id="proc~~rxp~~CalledByGraph_edge2" class="edge">
+<title>proc~lteqec&#45;&gt;proc~rxp</title>
+<path fill="none" stroke="#000000" d="M407.46,-205.87C411,-203.04 414.68,-199.98 418,-197 433.51,-183.07 450.01,-166.19 462.09,-153.41"/>
+<polygon fill="#000000" stroke="#000000" points="464.71,-155.74 468.99,-146.05 459.6,-150.95 464.71,-155.74"/>
+</g>
+<!-- proc~icrs2g -->
+<g id="proc~~rxp~~CalledByGraph_node4" class="node">
+<title>proc~icrs2g</title>
+<g id="a_proc~~rxp~~CalledByGraph_node4"><a xlink:href=".././proc/icrs2g.html" xlink:title="ICRS2G">
+<polygon fill="#d9534f" stroke="#d9534f" points="417.5,-188 363.5,-188 363.5,-164 417.5,-164 417.5,-188"/>
+<text text-anchor="middle" x="390.5" y="-173.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ICRS2G</text>
+</a>
+</g>
+</g>
+<!-- proc~icrs2g&#45;&gt;proc~rxp -->
+<g id="proc~~rxp~~CalledByGraph_edge3" class="edge">
+<title>proc~icrs2g&#45;&gt;proc~rxp</title>
+<path fill="none" stroke="#000000" d="M417.1,-163.85C425.9,-159.67 435.92,-154.92 445.32,-150.46"/>
+<polygon fill="#000000" stroke="#000000" points="446.93,-153.57 454.46,-146.12 443.92,-147.25 446.93,-153.57"/>
+</g>
+<!-- proc~trxp&#45;&gt;proc~rxp -->
+<g id="proc~~rxp~~CalledByGraph_edge4" class="edge">
+<title>proc~trxp&#45;&gt;proc~rxp</title>
+<path fill="none" stroke="#000000" d="M417.57,-134C425.78,-134 435,-134 443.78,-134"/>
+<polygon fill="#000000" stroke="#000000" points="443.81,-137.5 453.81,-134 443.81,-130.5 443.81,-137.5"/>
+</g>
+<!-- proc~eqec06 -->
+<g id="proc~~rxp~~CalledByGraph_node6" class="node">
+<title>proc~eqec06</title>
+<g id="a_proc~~rxp~~CalledByGraph_node6"><a xlink:href=".././proc/eqec06.html" xlink:title="EQEC06">
+<polygon fill="#d9534f" stroke="#d9534f" points="418,-104 363,-104 363,-80 418,-80 418,-104"/>
+<text text-anchor="middle" x="390.5" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">EQEC06</text>
+</a>
+</g>
+</g>
+<!-- proc~eqec06&#45;&gt;proc~rxp -->
+<g id="proc~~rxp~~CalledByGraph_edge5" class="edge">
+<title>proc~eqec06&#45;&gt;proc~rxp</title>
+<path fill="none" stroke="#000000" d="M417.1,-104.15C425.9,-108.33 435.92,-113.08 445.32,-117.54"/>
+<polygon fill="#000000" stroke="#000000" points="443.92,-120.75 454.46,-121.88 446.93,-114.43 443.92,-120.75"/>
+</g>
+<!-- proc~hfk5z -->
+<g id="proc~~rxp~~CalledByGraph_node7" class="node">
+<title>proc~hfk5z</title>
+<g id="a_proc~~rxp~~CalledByGraph_node7"><a xlink:href=".././proc/hfk5z.html" xlink:title="HFK5Z">
+<polygon fill="#d9534f" stroke="#d9534f" points="326.5,-61 272.5,-61 272.5,-37 326.5,-37 326.5,-61"/>
+<text text-anchor="middle" x="299.5" y="-46.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">HFK5Z</text>
+</a>
+</g>
+</g>
+<!-- proc~hfk5z&#45;&gt;proc~rxp -->
+<g id="proc~~rxp~~CalledByGraph_edge6" class="edge">
+<title>proc~hfk5z&#45;&gt;proc~rxp</title>
+<path fill="none" stroke="#000000" d="M326.72,-49.46C351.56,-50.88 389.24,-55.69 418,-71 437.18,-81.21 454.11,-99.4 465.42,-113.62"/>
+<polygon fill="#000000" stroke="#000000" points="462.85,-116.03 471.69,-121.85 468.41,-111.78 462.85,-116.03"/>
+</g>
+<!-- proc~hfk5z&#45;&gt;proc~trxp -->
+<g id="proc~~rxp~~CalledByGraph_edge12" class="edge">
+<title>proc~hfk5z&#45;&gt;proc~trxp</title>
+<path fill="none" stroke="#000000" d="M316.92,-61.16C320.36,-63.94 323.89,-66.97 327,-70 344.86,-87.39 345.14,-95.61 363,-113 363.78,-113.76 364.58,-114.52 365.4,-115.27"/>
+<polygon fill="#000000" stroke="#000000" points="363.21,-118 373.08,-121.84 367.76,-112.68 363.21,-118"/>
+</g>
+<!-- proc~h2fk5 -->
+<g id="proc~~rxp~~CalledByGraph_node8" class="node">
+<title>proc~h2fk5</title>
+<g id="a_proc~~rxp~~CalledByGraph_node8"><a xlink:href=".././proc/h2fk5.html" xlink:title="H2FK5">
+<polygon fill="#d9534f" stroke="#d9534f" points="417.5,-24 363.5,-24 363.5,0 417.5,0 417.5,-24"/>
+<text text-anchor="middle" x="390.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">H2FK5</text>
+</a>
+</g>
+</g>
+<!-- proc~h2fk5&#45;&gt;proc~rxp -->
+<g id="proc~~rxp~~CalledByGraph_edge7" class="edge">
+<title>proc~h2fk5&#45;&gt;proc~rxp</title>
+<path fill="none" stroke="#000000" d="M405.03,-24.15C409.39,-28.35 414.09,-33.21 418,-38 437.72,-62.18 456.61,-92.88 468.25,-112.97"/>
+<polygon fill="#000000" stroke="#000000" points="465.35,-114.95 473.35,-121.9 471.43,-111.48 465.35,-114.95"/>
+</g>
+<!-- proc~g2icrs -->
+<g id="proc~~rxp~~CalledByGraph_node9" class="node">
+<title>proc~g2icrs</title>
+<g id="a_proc~~rxp~~CalledByGraph_node9"><a xlink:href=".././proc/g2icrs.html" xlink:title="G2ICRS">
+<polygon fill="#d9534f" stroke="#d9534f" points="326.5,-229 272.5,-229 272.5,-205 326.5,-205 326.5,-229"/>
+<text text-anchor="middle" x="299.5" y="-214.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">G2ICRS</text>
+</a>
+</g>
+</g>
+<!-- proc~g2icrs&#45;&gt;proc~trxp -->
+<g id="proc~~rxp~~CalledByGraph_edge13" class="edge">
+<title>proc~g2icrs&#45;&gt;proc~trxp</title>
+<path fill="none" stroke="#000000" d="M316.86,-204.79C320.31,-202.01 323.85,-198.99 327,-196 344.57,-179.29 345.43,-171.71 363,-155 363.79,-154.25 364.6,-153.5 365.43,-152.75"/>
+<polygon fill="#000000" stroke="#000000" points="367.78,-155.35 373.14,-146.21 363.25,-150.01 367.78,-155.35"/>
+</g>
+<!-- proc~eceq06 -->
+<g id="proc~~rxp~~CalledByGraph_node10" class="node">
+<title>proc~eceq06</title>
+<g id="a_proc~~rxp~~CalledByGraph_node10"><a xlink:href=".././proc/eceq06.html" xlink:title="ECEQ06">
+<polygon fill="#d9534f" stroke="#d9534f" points="327,-187 272,-187 272,-163 327,-163 327,-187"/>
+<text text-anchor="middle" x="299.5" y="-172.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ECEQ06</text>
+</a>
+</g>
+</g>
+<!-- proc~eceq06&#45;&gt;proc~trxp -->
+<g id="proc~~rxp~~CalledByGraph_edge9" class="edge">
+<title>proc~eceq06&#45;&gt;proc~trxp</title>
+<path fill="none" stroke="#000000" d="M326.72,-162.92C335.32,-158.96 345.03,-154.49 354.19,-150.27"/>
+<polygon fill="#000000" stroke="#000000" points="355.85,-153.36 363.47,-145.99 352.92,-147 355.85,-153.36"/>
+</g>
+<!-- proc~lteceq -->
+<g id="proc~~rxp~~CalledByGraph_node11" class="node">
+<title>proc~lteceq</title>
+<g id="a_proc~~rxp~~CalledByGraph_node11"><a xlink:href=".././proc/lteceq.html" xlink:title="LTECEQ">
+<polygon fill="#d9534f" stroke="#d9534f" points="326.5,-145 272.5,-145 272.5,-121 326.5,-121 326.5,-145"/>
+<text text-anchor="middle" x="299.5" y="-130.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">LTECEQ</text>
+</a>
+</g>
+</g>
+<!-- proc~lteceq&#45;&gt;proc~trxp -->
+<g id="proc~~rxp~~CalledByGraph_edge10" class="edge">
+<title>proc~lteceq&#45;&gt;proc~trxp</title>
+<path fill="none" stroke="#000000" d="M326.72,-133.29C335.05,-133.39 344.41,-133.49 353.32,-133.59"/>
+<polygon fill="#000000" stroke="#000000" points="353.43,-137.09 363.47,-133.71 353.51,-130.1 353.43,-137.09"/>
+</g>
+<!-- proc~pvtob -->
+<g id="proc~~rxp~~CalledByGraph_node12" class="node">
+<title>proc~pvtob</title>
+<g id="a_proc~~rxp~~CalledByGraph_node12"><a xlink:href=".././proc/pvtob.html" xlink:title="PVTOB">
+<polygon fill="#d9534f" stroke="#d9534f" points="326.5,-103 272.5,-103 272.5,-79 326.5,-79 326.5,-103"/>
+<text text-anchor="middle" x="299.5" y="-88.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PVTOB</text>
+</a>
+</g>
+</g>
+<!-- proc~pvtob&#45;&gt;proc~trxp -->
+<g id="proc~~rxp~~CalledByGraph_edge11" class="edge">
+<title>proc~pvtob&#45;&gt;proc~trxp</title>
+<path fill="none" stroke="#000000" d="M325.77,-103.21C334.96,-107.65 345.5,-112.74 355.34,-117.49"/>
+<polygon fill="#000000" stroke="#000000" points="353.95,-120.71 364.48,-121.91 357,-114.41 353.95,-120.71"/>
+</g>
+<!-- proc~apco -->
+<g id="proc~~rxp~~CalledByGraph_node13" class="node">
+<title>proc~apco</title>
+<g id="a_proc~~rxp~~CalledByGraph_node13"><a xlink:href=".././proc/apco.html" xlink:title="APCO">
+<polygon fill="#d9534f" stroke="#d9534f" points="236,-124 182,-124 182,-100 236,-100 236,-124"/>
+<text text-anchor="middle" x="209" y="-109.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APCO</text>
+</a>
+</g>
+</g>
+<!-- proc~apco&#45;&gt;proc~pvtob -->
+<g id="proc~~rxp~~CalledByGraph_edge14" class="edge">
+<title>proc~apco&#45;&gt;proc~pvtob</title>
+<path fill="none" stroke="#000000" d="M236.07,-105.81C244.37,-103.84 253.7,-101.63 262.57,-99.53"/>
+<polygon fill="#000000" stroke="#000000" points="263.38,-102.93 272.31,-97.22 261.77,-96.12 263.38,-102.93"/>
+</g>
+<!-- proc~apio -->
+<g id="proc~~rxp~~CalledByGraph_node14" class="node">
+<title>proc~apio</title>
+<g id="a_proc~~rxp~~CalledByGraph_node14"><a xlink:href=".././proc/apio.html" xlink:title="APIO">
+<polygon fill="#d9534f" stroke="#d9534f" points="236,-82 182,-82 182,-58 236,-58 236,-82"/>
+<text text-anchor="middle" x="209" y="-67.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APIO</text>
+</a>
+</g>
+</g>
+<!-- proc~apio&#45;&gt;proc~pvtob -->
+<g id="proc~~rxp~~CalledByGraph_edge15" class="edge">
+<title>proc~apio&#45;&gt;proc~pvtob</title>
+<path fill="none" stroke="#000000" d="M236.07,-76.19C244.37,-78.16 253.7,-80.37 262.57,-82.47"/>
+<polygon fill="#000000" stroke="#000000" points="261.77,-85.88 272.31,-84.78 263.38,-79.07 261.77,-85.88"/>
+</g>
+<!-- proc~apio13 -->
+<g id="proc~~rxp~~CalledByGraph_node15" class="node">
+<title>proc~apio13</title>
+<g id="a_proc~~rxp~~CalledByGraph_node15"><a xlink:href=".././proc/apio13.html" xlink:title="APIO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-82 91.5,-82 91.5,-58 145.5,-58 145.5,-82"/>
+<text text-anchor="middle" x="118.5" y="-67.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APIO13</text>
+</a>
+</g>
+</g>
+<!-- proc~apio13&#45;&gt;proc~apio -->
+<g id="proc~~rxp~~CalledByGraph_edge17" class="edge">
+<title>proc~apio13&#45;&gt;proc~apio</title>
+<path fill="none" stroke="#000000" d="M145.57,-70C153.78,-70 163,-70 171.78,-70"/>
+<polygon fill="#000000" stroke="#000000" points="171.81,-73.5 181.81,-70 171.81,-66.5 171.81,-73.5"/>
+</g>
+<!-- proc~apco13 -->
+<g id="proc~~rxp~~CalledByGraph_node16" class="node">
+<title>proc~apco13</title>
+<g id="a_proc~~rxp~~CalledByGraph_node16"><a xlink:href=".././proc/apco13.html" xlink:title="APCO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="146,-124 91,-124 91,-100 146,-100 146,-124"/>
+<text text-anchor="middle" x="118.5" y="-109.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APCO13</text>
+</a>
+</g>
+</g>
+<!-- proc~apco13&#45;&gt;proc~apco -->
+<g id="proc~~rxp~~CalledByGraph_edge16" class="edge">
+<title>proc~apco13&#45;&gt;proc~apco</title>
+<path fill="none" stroke="#000000" d="M146.05,-112C154.09,-112 163.06,-112 171.62,-112"/>
+<polygon fill="#000000" stroke="#000000" points="171.77,-115.5 181.77,-112 171.77,-108.5 171.77,-115.5"/>
+</g>
+<!-- proc~atio13 -->
+<g id="proc~~rxp~~CalledByGraph_node17" class="node">
+<title>proc~atio13</title>
+<g id="a_proc~~rxp~~CalledByGraph_node17"><a xlink:href=".././proc/atio13.html" xlink:title="ATIO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-82 0.5,-82 0.5,-58 54.5,-58 54.5,-82"/>
+<text text-anchor="middle" x="27.5" y="-67.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATIO13</text>
+</a>
+</g>
+</g>
+<!-- proc~atio13&#45;&gt;proc~apio13 -->
+<g id="proc~~rxp~~CalledByGraph_edge18" class="edge">
+<title>proc~atio13&#45;&gt;proc~apio13</title>
+<path fill="none" stroke="#000000" d="M54.72,-70C63.05,-70 72.41,-70 81.32,-70"/>
+<polygon fill="#000000" stroke="#000000" points="81.47,-73.5 91.47,-70 81.47,-66.5 81.47,-73.5"/>
+</g>
+<!-- proc~atoc13 -->
+<g id="proc~~rxp~~CalledByGraph_node18" class="node">
+<title>proc~atoc13</title>
+<g id="a_proc~~rxp~~CalledByGraph_node18"><a xlink:href=".././proc/atoc13.html" xlink:title="ATOC13">
+<polygon fill="#d9534f" stroke="#d9534f" points="55,-166 0,-166 0,-142 55,-142 55,-166"/>
+<text text-anchor="middle" x="27.5" y="-151.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOC13</text>
+</a>
+</g>
+</g>
+<!-- proc~atoc13&#45;&gt;proc~apco13 -->
+<g id="proc~~rxp~~CalledByGraph_edge20" class="edge">
+<title>proc~atoc13&#45;&gt;proc~apco13</title>
+<path fill="none" stroke="#000000" d="M54.24,-141.85C63.1,-137.67 73.17,-132.92 82.63,-128.46"/>
+<polygon fill="#000000" stroke="#000000" points="84.27,-131.55 91.82,-124.12 81.28,-125.22 84.27,-131.55"/>
+</g>
+<!-- proc~atoi13 -->
+<g id="proc~~rxp~~CalledByGraph_node19" class="node">
+<title>proc~atoi13</title>
+<g id="a_proc~~rxp~~CalledByGraph_node19"><a xlink:href=".././proc/atoi13.html" xlink:title="ATOI13">
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-40 0.5,-40 0.5,-16 54.5,-16 54.5,-40"/>
+<text text-anchor="middle" x="27.5" y="-25.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOI13</text>
+</a>
+</g>
+</g>
+<!-- proc~atoi13&#45;&gt;proc~apio13 -->
+<g id="proc~~rxp~~CalledByGraph_edge19" class="edge">
+<title>proc~atoi13&#45;&gt;proc~apio13</title>
+<path fill="none" stroke="#000000" d="M54.24,-40.15C63.1,-44.33 73.17,-49.08 82.63,-53.54"/>
+<polygon fill="#000000" stroke="#000000" points="81.28,-56.78 91.82,-57.88 84.27,-50.45 81.28,-56.78"/>
+</g>
+<!-- proc~atco13 -->
+<g id="proc~~rxp~~CalledByGraph_node20" class="node">
+<title>proc~atco13</title>
+<g id="a_proc~~rxp~~CalledByGraph_node20"><a xlink:href=".././proc/atco13.html" xlink:title="ATCO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-124 0.5,-124 0.5,-100 54.5,-100 54.5,-124"/>
+<text text-anchor="middle" x="27.5" y="-109.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATCO13</text>
+</a>
+</g>
+</g>
+<!-- proc~atco13&#45;&gt;proc~apco13 -->
+<g id="proc~~rxp~~CalledByGraph_edge21" class="edge">
+<title>proc~atco13&#45;&gt;proc~apco13</title>
+<path fill="none" stroke="#000000" d="M54.72,-112C62.9,-112 72.08,-112 80.84,-112"/>
+<polygon fill="#000000" stroke="#000000" points="80.85,-115.5 90.85,-112 80.85,-108.5 80.85,-115.5"/>
+</g>
+</g>
+</svg>
+</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="597pt" height="32pt"
+ viewBox="0.00 0.00 596.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 592.5,-28 592.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node4" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="388.5,-24 243.5,-24 243.5,0 388.5,0 388.5,-24"/>
+<text text-anchor="middle" x="316" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="465,-24 407,-24 407,0 465,0 465,-24"/>
+<text text-anchor="middle" x="436" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="588.5,-24 483.5,-24 483.5,0 588.5,0 588.5,-24"/>
+<text text-anchor="middle" x="536" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a procedure to one which it calls. Dashed 
+    arrows point from an interface to procedures which implement that interface.
+    This could include the module procedures in a generic interface or the
+    implementation in a submodule of an interface in a parent module.
+    </p>
+    </div></div></div></div>
+      </div>
+    </div>
+     
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/rxp.html#src">RXP</a>
+  </div>
+</div>
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">RXP</span> <span class="p">(</span> <span class="n">r</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">rp</span> <span class="p">)</span>
+
+    <span class="k">implicit none</span>
+
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">r</span> <span class="c">!! r-matrix</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">p</span> <span class="c">!! p-vector</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">rp</span> <span class="c">!! R * P</span>
+
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">w</span><span class="p">,</span> <span class="n">wrp</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span>
+
+    <span class="c">!  Matrix R * vector P.</span>
+    <span class="k">do </span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span>
+       <span class="n">w</span> <span class="o">=</span> <span class="mf">0.0_wp</span>
+       <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span>
+          <span class="n">w</span> <span class="o">=</span> <span class="n">w</span> <span class="o">+</span> <span class="n">r</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="n">p</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+       <span class="k">end do</span>
+<span class="k">       </span><span class="n">wrp</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">=</span> <span class="n">w</span>
+    <span class="k">end do</span>
+
+    <span class="c">!  Return the result.</span>
+    <span class="k">call </span><span class="n">CP</span> <span class="p">(</span> <span class="n">wrp</span><span class="p">,</span> <span class="n">rp</span> <span class="p">)</span>
+
+    <span class="k">end subroutine </span><span class="n">RXP</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

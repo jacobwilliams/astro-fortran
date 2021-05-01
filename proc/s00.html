@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
+    
+    <meta name="author" content="Jacob Williams" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>S00 &ndash; astro-fortran</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">astro-fortran </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+        
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>S00
+      <small>Function</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 1.5% of total for procedures.">80 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
+    
+     <li><a href='../module/astro_module.html'>astro_module</a></li>
+    
+  
+     <li class="active">S00</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/s00.html#src">S00</a>
+  </div>
+</div>
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>
+public function S00(date1, date2, x, y) result(s)
+    
+    
+   
+</h2>
+    
+  
+
+
+    
+    <p>The CIO locator s, positioning the Celestial Intermediate Origin on
+  the equator of the Celestial Intermediate Pole, given the CIP's X,Y
+  coordinates.  Compatible with IAU 2000A precession-nutation.</p>
+<p>Status:  canonical model.</p>
+<h3>Notes</h3>
+<ol>
+<li>
+<p>The TT date DATE1+DATE2 is a Julian Date, apportioned in any
+     convenient way between the two arguments.  For example,
+     JD(TT)=2450123.7 could be expressed in any of these ways,
+     among others:</p>
+<div class="codehilite"><pre><span></span><code>    DATE1          DATE2
+
+ 2450123.7D0        0D0        (JD method)
+  2451545D0      -1421.3D0     (J2000 method)
+ 2400000.5D0     50123.2D0     (MJD method)
+ 2450123.5D0       0.2D0       (date &amp; time method)
+</code></pre></div>
+
+<p>The JD method is the most natural and convenient to use in
+ cases where the loss of several decimal digits of resolution
+ is acceptable.  The J2000 method is best matched to the way
+ the argument is handled internally and will deliver the
+ optimum resolution.  The MJD method and the date &amp; time methods
+ are both good compromises between resolution and convenience.</p>
+</li>
+<li>
+<p>The CIO locator s is the difference between the right ascensions
+     of the same point in two systems:  the two systems are the GCRS
+     and the CIP,CIO, and the point is the ascending node of the
+     CIP equator.  The quantity s remains below 0.1 arcsecond
+     throughout 1900-2100.</p>
+</li>
+<li>
+<p>The series used to compute s is in fact for s+XY/2, where X and Y
+     are the x and y components of the CIP unit vector;  this series is
+     more compact than a direct series for s would be.  This routine
+     requires X,Y to be supplied by the caller, who is responsible for
+     providing values that are consistent with the supplied date.</p>
+</li>
+<li>
+<p>The model is consistent with the IAU 2000A precession-nutation.</p>
+</li>
+</ol>
+<h3>References</h3>
+<ul>
+<li>
+<p>Capitaine, N., Chapront, J., Lambert, S. and Wallace, P.,
+    "Expressions for the Celestial Intermediate Pole and Celestial
+    Ephemeris Origin consistent with the IAU 2000A precession-nutation
+    model", Astron.Astrophys. 400, 1145-1154 (2003)</p>
+</li>
+<li>
+<p>n.b. The celestial ephemeris origin (CEO) was renamed "celestial
+    intermediate origin" (CIO) by IAU 2006 Resolution 2.</p>
+</li>
+<li>
+<p>McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)</p>
+</li>
+</ul>
+<h3>History</h3>
+<ul>
+<li>IAU SOFA revision: 2010 January 18</li>
+</ul>
+    
+
+    <h3>Arguments</h3>
+    
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-date1~11"></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>date1</strong></td><td><p>TT as a 2-part Julian Date (Note 1)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-date2~11"></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>date2</strong></td><td><p>TT as a 2-part Julian Date (Note 1)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-x"></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>x</strong></td><td><p>CIP coordinates (Note 3)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-y"></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>y</strong></td><td><p>CIP coordinates (Note 3)</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    
+    
+    
+    
+    
+    
+    
+   <h3>Return Value <small><span class="anchor" id="variable-s~2"></span>real(kind=wp)
+  </small></h3>
+    <p>the CIO locator s in radians (Note 2)</p>
+    
+    
+    <br>
+    
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Calls</h3>
+      </div>
+      <div class="panel-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~s00~~CallsGraph Pages: 1 -->
+<svg id="procs00CallsGraph" width="153pt" height="326pt"
+ viewBox="0.00 0.00 153.00 326.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~s00~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 322)">
+<title>proc~~s00~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-322 149,-322 149,4 -4,4"/>
+<!-- proc~s00 -->
+<g id="proc~~s00~~CallsGraph_node1" class="node">
+<title>proc~s00</title>
+<polygon fill="none" stroke="black" points="54,-171 0,-171 0,-147 54,-147 54,-171"/>
+<text text-anchor="middle" x="27" y="-156.6" font-family="Helvetica,sans-Serif" font-size="10.50">S00</text>
+</g>
+<!-- proc~faom03 -->
+<g id="proc~~s00~~CallsGraph_node2" class="node">
+<title>proc~faom03</title>
+<g id="a_proc~~s00~~CallsGraph_node2"><a xlink:href=".././proc/faom03.html" xlink:title="FAOM03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="145,-318 90,-318 90,-294 145,-294 145,-318"/>
+<text text-anchor="middle" x="117.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAOM03</text>
+</a>
+</g>
+</g>
+<!-- proc~s00&#45;&gt;proc~faom03 -->
+<g id="proc~~s00~~CallsGraph_edge1" class="edge">
+<title>proc~s00&#45;&gt;proc~faom03</title>
+<path fill="none" stroke="#000000" d="M31.92,-171.11C40.01,-194.81 60.3,-248.19 90,-285 90.48,-285.6 90.99,-286.19 91.51,-286.78"/>
+<polygon fill="#000000" stroke="#000000" points="89.31,-289.52 98.95,-293.92 94.15,-284.47 89.31,-289.52"/>
+</g>
+<!-- proc~falp03 -->
+<g id="proc~~s00~~CallsGraph_node3" class="node">
+<title>proc~falp03</title>
+<g id="a_proc~~s00~~CallsGraph_node3"><a xlink:href=".././proc/falp03.html" xlink:title="FALP03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="144.5,-276 90.5,-276 90.5,-252 144.5,-252 144.5,-276"/>
+<text text-anchor="middle" x="117.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FALP03</text>
+</a>
+</g>
+</g>
+<!-- proc~s00&#45;&gt;proc~falp03 -->
+<g id="proc~~s00~~CallsGraph_edge2" class="edge">
+<title>proc~s00&#45;&gt;proc~falp03</title>
+<path fill="none" stroke="#000000" d="M35.52,-171.18C46.36,-188.25 67.58,-219.8 90,-243 90.75,-243.78 91.54,-244.56 92.34,-245.33"/>
+<polygon fill="#000000" stroke="#000000" points="90.11,-248.03 99.94,-251.99 94.73,-242.76 90.11,-248.03"/>
+</g>
+<!-- proc~fad03 -->
+<g id="proc~~s00~~CallsGraph_node4" class="node">
+<title>proc~fad03</title>
+<g id="a_proc~~s00~~CallsGraph_node4"><a xlink:href=".././proc/fad03.html" xlink:title="FAD03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="144.5,-234 90.5,-234 90.5,-210 144.5,-210 144.5,-234"/>
+<text text-anchor="middle" x="117.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAD03</text>
+</a>
+</g>
+</g>
+<!-- proc~s00&#45;&gt;proc~fad03 -->
+<g id="proc~~s00~~CallsGraph_edge3" class="edge">
+<title>proc~s00&#45;&gt;proc~fad03</title>
+<path fill="none" stroke="#000000" d="M45.06,-171.15C58.16,-180.47 76.45,-193.49 91.25,-204.02"/>
+<polygon fill="#000000" stroke="#000000" points="89.31,-206.94 99.49,-209.89 93.37,-201.24 89.31,-206.94"/>
+</g>
+<!-- proc~faf03 -->
+<g id="proc~~s00~~CallsGraph_node5" class="node">
+<title>proc~faf03</title>
+<g id="a_proc~~s00~~CallsGraph_node5"><a xlink:href=".././proc/faf03.html" xlink:title="FAF03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="144.5,-192 90.5,-192 90.5,-168 144.5,-168 144.5,-192"/>
+<text text-anchor="middle" x="117.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAF03</text>
+</a>
+</g>
+</g>
+<!-- proc~s00&#45;&gt;proc~faf03 -->
+<g id="proc~~s00~~CallsGraph_edge4" class="edge">
+<title>proc~s00&#45;&gt;proc~faf03</title>
+<path fill="none" stroke="#000000" d="M54.07,-165.19C62.37,-167.16 71.7,-169.37 80.57,-171.47"/>
+<polygon fill="#000000" stroke="#000000" points="79.77,-174.88 90.31,-173.78 81.38,-168.07 79.77,-174.88"/>
+</g>
+<!-- proc~fae03 -->
+<g id="proc~~s00~~CallsGraph_node6" class="node">
+<title>proc~fae03</title>
+<g id="a_proc~~s00~~CallsGraph_node6"><a xlink:href=".././proc/fae03.html" xlink:title="FAE03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="144.5,-150 90.5,-150 90.5,-126 144.5,-126 144.5,-150"/>
+<text text-anchor="middle" x="117.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAE03</text>
+</a>
+</g>
+</g>
+<!-- proc~s00&#45;&gt;proc~fae03 -->
+<g id="proc~~s00~~CallsGraph_edge5" class="edge">
+<title>proc~s00&#45;&gt;proc~fae03</title>
+<path fill="none" stroke="#000000" d="M54.07,-152.81C62.37,-150.84 71.7,-148.63 80.57,-146.53"/>
+<polygon fill="#000000" stroke="#000000" points="81.38,-149.93 90.31,-144.22 79.77,-143.12 81.38,-149.93"/>
+</g>
+<!-- proc~fave03 -->
+<g id="proc~~s00~~CallsGraph_node7" class="node">
+<title>proc~fave03</title>
+<g id="a_proc~~s00~~CallsGraph_node7"><a xlink:href=".././proc/fave03.html" xlink:title="FAVE03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="144.5,-108 90.5,-108 90.5,-84 144.5,-84 144.5,-108"/>
+<text text-anchor="middle" x="117.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAVE03</text>
+</a>
+</g>
+</g>
+<!-- proc~s00&#45;&gt;proc~fave03 -->
+<g id="proc~~s00~~CallsGraph_edge6" class="edge">
+<title>proc~s00&#45;&gt;proc~fave03</title>
+<path fill="none" stroke="#000000" d="M45.06,-146.85C58.16,-137.53 76.45,-124.51 91.25,-113.98"/>
+<polygon fill="#000000" stroke="#000000" points="93.37,-116.76 99.49,-108.11 89.31,-111.06 93.37,-116.76"/>
+</g>
+<!-- proc~fapa03 -->
+<g id="proc~~s00~~CallsGraph_node8" class="node">
+<title>proc~fapa03</title>
+<g id="a_proc~~s00~~CallsGraph_node8"><a xlink:href=".././proc/fapa03.html" xlink:title="FAPA03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="144.5,-66 90.5,-66 90.5,-42 144.5,-42 144.5,-66"/>
+<text text-anchor="middle" x="117.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAPA03</text>
+</a>
+</g>
+</g>
+<!-- proc~s00&#45;&gt;proc~fapa03 -->
+<g id="proc~~s00~~CallsGraph_edge7" class="edge">
+<title>proc~s00&#45;&gt;proc~fapa03</title>
+<path fill="none" stroke="#000000" d="M35.52,-146.82C46.36,-129.75 67.58,-98.2 90,-75 90.75,-74.22 91.54,-73.44 92.34,-72.67"/>
+<polygon fill="#000000" stroke="#000000" points="94.73,-75.24 99.94,-66.01 90.11,-69.97 94.73,-75.24"/>
+</g>
+<!-- proc~fal03 -->
+<g id="proc~~s00~~CallsGraph_node9" class="node">
+<title>proc~fal03</title>
+<g id="a_proc~~s00~~CallsGraph_node9"><a xlink:href=".././proc/fal03.html" xlink:title="FAL03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="144.5,-24 90.5,-24 90.5,0 144.5,0 144.5,-24"/>
+<text text-anchor="middle" x="117.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAL03</text>
+</a>
+</g>
+</g>
+<!-- proc~s00&#45;&gt;proc~fal03 -->
+<g id="proc~~s00~~CallsGraph_edge8" class="edge">
+<title>proc~s00&#45;&gt;proc~fal03</title>
+<path fill="none" stroke="#000000" d="M31.92,-146.89C40.01,-123.19 60.3,-69.81 90,-33 90.48,-32.4 90.99,-31.81 91.51,-31.22"/>
+<polygon fill="#000000" stroke="#000000" points="94.15,-33.53 98.95,-24.08 89.31,-28.48 94.15,-33.53"/>
+</g>
+</g>
+</svg>
+</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="597pt" height="32pt"
+ viewBox="0.00 0.00 596.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 592.5,-28 592.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node4" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="388.5,-24 243.5,-24 243.5,0 388.5,0 388.5,-24"/>
+<text text-anchor="middle" x="316" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="465,-24 407,-24 407,0 465,0 465,-24"/>
+<text text-anchor="middle" x="436" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="588.5,-24 483.5,-24 483.5,0 588.5,0 588.5,-24"/>
+<text text-anchor="middle" x="536" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a procedure to one which it calls. Dashed 
+    arrows point from an interface to procedures which implement that interface.
+    This could include the module procedures in a generic interface or the
+    implementation in a submodule of an interface in a parent module.
+    </p>
+    </div></div></div></div>
+      </div>
+    </div>
+     
+     
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Called by</h3>
+      </div>
+      <div class="panel-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~s00~~CalledByGraph Pages: 1 -->
+<svg id="procs00CalledByGraph" width="424pt" height="221pt"
+ viewBox="0.00 0.00 424.00 221.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~s00~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 217)">
+<title>proc~~s00~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-217 420,-217 420,4 -4,4"/>
+<!-- proc~s00 -->
+<g id="proc~~s00~~CalledByGraph_node1" class="node">
+<title>proc~s00</title>
+<polygon fill="none" stroke="black" points="416,-129 362,-129 362,-105 416,-105 416,-129"/>
+<text text-anchor="middle" x="389" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50">S00</text>
+</g>
+<!-- proc~s00b -->
+<g id="proc~~s00~~CalledByGraph_node2" class="node">
+<title>proc~s00b</title>
+<g id="a_proc~~s00~~CalledByGraph_node2"><a xlink:href=".././proc/s00b.html" xlink:title="S00B">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="325.5,-213 271.5,-213 271.5,-189 325.5,-189 325.5,-213"/>
+<text text-anchor="middle" x="298.5" y="-198.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">S00B</text>
+</a>
+</g>
+</g>
+<!-- proc~s00b&#45;&gt;proc~s00 -->
+<g id="proc~~s00~~CalledByGraph_edge1" class="edge">
+<title>proc~s00b&#45;&gt;proc~s00</title>
+<path fill="none" stroke="#000000" d="M315.46,-188.87C319,-186.04 322.68,-182.98 326,-180 341.51,-166.07 358.01,-149.19 370.09,-136.41"/>
+<polygon fill="#000000" stroke="#000000" points="372.71,-138.74 376.99,-129.05 367.6,-133.95 372.71,-138.74"/>
+</g>
+<!-- proc~s00a -->
+<g id="proc~~s00~~CalledByGraph_node3" class="node">
+<title>proc~s00a</title>
+<g id="a_proc~~s00~~CalledByGraph_node3"><a xlink:href=".././proc/s00a.html" xlink:title="S00A">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="325.5,-171 271.5,-171 271.5,-147 325.5,-147 325.5,-171"/>
+<text text-anchor="middle" x="298.5" y="-156.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">S00A</text>
+</a>
+</g>
+</g>
+<!-- proc~s00a&#45;&gt;proc~s00 -->
+<g id="proc~~s00~~CalledByGraph_edge3" class="edge">
+<title>proc~s00a&#45;&gt;proc~s00</title>
+<path fill="none" stroke="#000000" d="M325.1,-146.85C333.9,-142.67 343.92,-137.92 353.32,-133.46"/>
+<polygon fill="#000000" stroke="#000000" points="354.93,-136.57 362.46,-129.12 351.92,-130.25 354.93,-136.57"/>
+</g>
+<!-- proc~xys00a -->
+<g id="proc~~s00~~CalledByGraph_node4" class="node">
+<title>proc~xys00a</title>
+<g id="a_proc~~s00~~CalledByGraph_node4"><a xlink:href=".././proc/xys00a.html" xlink:title="XYS00A">
+<polygon fill="#d9534f" stroke="#d9534f" points="326,-129 271,-129 271,-105 326,-105 326,-129"/>
+<text text-anchor="middle" x="298.5" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">XYS00A</text>
+</a>
+</g>
+</g>
+<!-- proc~xys00a&#45;&gt;proc~s00 -->
+<g id="proc~~s00~~CalledByGraph_edge2" class="edge">
+<title>proc~xys00a&#45;&gt;proc~s00</title>
+<path fill="none" stroke="#000000" d="M326.05,-117C334.09,-117 343.06,-117 351.62,-117"/>
+<polygon fill="#000000" stroke="#000000" points="351.77,-120.5 361.77,-117 351.77,-113.5 351.77,-120.5"/>
+</g>
+<!-- proc~xys00b -->
+<g id="proc~~s00~~CalledByGraph_node5" class="node">
+<title>proc~xys00b</title>
+<g id="a_proc~~s00~~CalledByGraph_node5"><a xlink:href=".././proc/xys00b.html" xlink:title="XYS00B">
+<polygon fill="#d9534f" stroke="#d9534f" points="326,-87 271,-87 271,-63 326,-63 326,-87"/>
+<text text-anchor="middle" x="298.5" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">XYS00B</text>
+</a>
+</g>
+</g>
+<!-- proc~xys00b&#45;&gt;proc~s00 -->
+<g id="proc~~s00~~CalledByGraph_edge4" class="edge">
+<title>proc~xys00b&#45;&gt;proc~s00</title>
+<path fill="none" stroke="#000000" d="M325.1,-87.15C333.9,-91.33 343.92,-96.08 353.32,-100.54"/>
+<polygon fill="#000000" stroke="#000000" points="351.92,-103.75 362.46,-104.88 354.93,-97.43 351.92,-103.75"/>
+</g>
+<!-- proc~c2ixy -->
+<g id="proc~~s00~~CalledByGraph_node6" class="node">
+<title>proc~c2ixy</title>
+<g id="a_proc~~s00~~CalledByGraph_node6"><a xlink:href=".././proc/c2ixy.html" xlink:title="C2IXY">
+<polygon fill="#d9534f" stroke="#d9534f" points="325.5,-45 271.5,-45 271.5,-21 325.5,-21 325.5,-45"/>
+<text text-anchor="middle" x="298.5" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2IXY</text>
+</a>
+</g>
+</g>
+<!-- proc~c2ixy&#45;&gt;proc~s00 -->
+<g id="proc~~s00~~CalledByGraph_edge5" class="edge">
+<title>proc~c2ixy&#45;&gt;proc~s00</title>
+<path fill="none" stroke="#000000" d="M315.46,-45.13C319,-47.96 322.68,-51.02 326,-54 341.51,-67.93 358.01,-84.81 370.09,-97.59"/>
+<polygon fill="#000000" stroke="#000000" points="367.6,-100.05 376.99,-104.95 372.71,-95.26 367.6,-100.05"/>
+</g>
+<!-- proc~c2ibpn -->
+<g id="proc~~s00~~CalledByGraph_node7" class="node">
+<title>proc~c2ibpn</title>
+<g id="a_proc~~s00~~CalledByGraph_node7"><a xlink:href=".././proc/c2ibpn.html" xlink:title="C2IBPN">
+<polygon fill="#d9534f" stroke="#d9534f" points="235,-66 181,-66 181,-42 235,-42 235,-66"/>
+<text text-anchor="middle" x="208" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2IBPN</text>
+</a>
+</g>
+</g>
+<!-- proc~c2ibpn&#45;&gt;proc~c2ixy -->
+<g id="proc~~s00~~CalledByGraph_edge6" class="edge">
+<title>proc~c2ibpn&#45;&gt;proc~c2ixy</title>
+<path fill="none" stroke="#000000" d="M235.07,-47.81C243.37,-45.84 252.7,-43.63 261.57,-41.53"/>
+<polygon fill="#000000" stroke="#000000" points="262.38,-44.93 271.31,-39.22 260.77,-38.12 262.38,-44.93"/>
+</g>
+<!-- proc~c2txy -->
+<g id="proc~~s00~~CalledByGraph_node8" class="node">
+<title>proc~c2txy</title>
+<g id="a_proc~~s00~~CalledByGraph_node8"><a xlink:href=".././proc/c2txy.html" xlink:title="C2TXY">
+<polygon fill="#d9534f" stroke="#d9534f" points="235,-24 181,-24 181,0 235,0 235,-24"/>
+<text text-anchor="middle" x="208" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2TXY</text>
+</a>
+</g>
+</g>
+<!-- proc~c2txy&#45;&gt;proc~c2ixy -->
+<g id="proc~~s00~~CalledByGraph_edge7" class="edge">
+<title>proc~c2txy&#45;&gt;proc~c2ixy</title>
+<path fill="none" stroke="#000000" d="M235.07,-18.19C243.37,-20.16 252.7,-22.37 261.57,-24.47"/>
+<polygon fill="#000000" stroke="#000000" points="260.77,-27.88 271.31,-26.78 262.38,-21.07 260.77,-27.88"/>
+</g>
+<!-- proc~c2i00a -->
+<g id="proc~~s00~~CalledByGraph_node9" class="node">
+<title>proc~c2i00a</title>
+<g id="a_proc~~s00~~CalledByGraph_node9"><a xlink:href=".././proc/c2i00a.html" xlink:title="C2I00A">
+<polygon fill="#d9534f" stroke="#d9534f" points="145,-87 91,-87 91,-63 145,-63 145,-87"/>
+<text text-anchor="middle" x="118" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2I00A</text>
+</a>
+</g>
+</g>
+<!-- proc~c2i00a&#45;&gt;proc~c2ibpn -->
+<g id="proc~~s00~~CalledByGraph_edge8" class="edge">
+<title>proc~c2i00a&#45;&gt;proc~c2ibpn</title>
+<path fill="none" stroke="#000000" d="M145.4,-68.7C153.48,-66.77 162.51,-64.62 171.1,-62.57"/>
+<polygon fill="#000000" stroke="#000000" points="172,-65.95 180.92,-60.22 170.38,-59.14 172,-65.95"/>
+</g>
+<!-- proc~c2i00b -->
+<g id="proc~~s00~~CalledByGraph_node10" class="node">
+<title>proc~c2i00b</title>
+<g id="a_proc~~s00~~CalledByGraph_node10"><a xlink:href=".././proc/c2i00b.html" xlink:title="C2I00B">
+<polygon fill="#d9534f" stroke="#d9534f" points="145,-45 91,-45 91,-21 145,-21 145,-45"/>
+<text text-anchor="middle" x="118" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2I00B</text>
+</a>
+</g>
+</g>
+<!-- proc~c2i00b&#45;&gt;proc~c2ibpn -->
+<g id="proc~~s00~~CalledByGraph_edge9" class="edge">
+<title>proc~c2i00b&#45;&gt;proc~c2ibpn</title>
+<path fill="none" stroke="#000000" d="M145.4,-39.3C153.48,-41.23 162.51,-43.38 171.1,-45.43"/>
+<polygon fill="#000000" stroke="#000000" points="170.38,-48.86 180.92,-47.78 172,-42.05 170.38,-48.86"/>
+</g>
+<!-- proc~c2t00b -->
+<g id="proc~~s00~~CalledByGraph_node11" class="node">
+<title>proc~c2t00b</title>
+<g id="a_proc~~s00~~CalledByGraph_node11"><a xlink:href=".././proc/c2t00b.html" xlink:title="C2T00B">
+<polygon fill="#d9534f" stroke="#d9534f" points="55,-45 0,-45 0,-21 55,-21 55,-45"/>
+<text text-anchor="middle" x="27.5" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2T00B</text>
+</a>
+</g>
+</g>
+<!-- proc~c2t00b&#45;&gt;proc~c2i00b -->
+<g id="proc~~s00~~CalledByGraph_edge11" class="edge">
+<title>proc~c2t00b&#45;&gt;proc~c2i00b</title>
+<path fill="none" stroke="#000000" d="M55.05,-33C63.09,-33 72.06,-33 80.62,-33"/>
+<polygon fill="#000000" stroke="#000000" points="80.77,-36.5 90.77,-33 80.77,-29.5 80.77,-36.5"/>
+</g>
+<!-- proc~c2t00a -->
+<g id="proc~~s00~~CalledByGraph_node12" class="node">
+<title>proc~c2t00a</title>
+<g id="a_proc~~s00~~CalledByGraph_node12"><a xlink:href=".././proc/c2t00a.html" xlink:title="C2T00A">
+<polygon fill="#d9534f" stroke="#d9534f" points="55,-87 0,-87 0,-63 55,-63 55,-87"/>
+<text text-anchor="middle" x="27.5" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2T00A</text>
+</a>
+</g>
+</g>
+<!-- proc~c2t00a&#45;&gt;proc~c2i00a -->
+<g id="proc~~s00~~CalledByGraph_edge10" class="edge">
+<title>proc~c2t00a&#45;&gt;proc~c2i00a</title>
+<path fill="none" stroke="#000000" d="M55.05,-75C63.09,-75 72.06,-75 80.62,-75"/>
+<polygon fill="#000000" stroke="#000000" points="80.77,-78.5 90.77,-75 80.77,-71.5 80.77,-78.5"/>
+</g>
+</g>
+</svg>
+</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="597pt" height="32pt"
+ viewBox="0.00 0.00 596.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 592.5,-28 592.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node4" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="388.5,-24 243.5,-24 243.5,0 388.5,0 388.5,-24"/>
+<text text-anchor="middle" x="316" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="465,-24 407,-24 407,0 465,0 465,-24"/>
+<text text-anchor="middle" x="436" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="588.5,-24 483.5,-24 483.5,0 588.5,0 588.5,-24"/>
+<text text-anchor="middle" x="536" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a procedure to one which it calls. Dashed 
+    arrows point from an interface to procedures which implement that interface.
+    This could include the module procedures in a generic interface or the
+    implementation in a submodule of an interface in a parent module.
+    </p>
+    </div></div></div></div>
+      </div>
+    </div>
+     
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/s00.html#src">S00</a>
+  </div>
+</div>
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span></span>    <span class="k">function </span><span class="n">S00</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="p">)</span> <span class="k">result</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+    <span class="k">implicit none</span>
+
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date1</span> <span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date2</span> <span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">x</span> <span class="c">!! CIP coordinates (Note 3)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">y</span> <span class="c">!! CIP coordinates (Note 3)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">s</span> <span class="c">!! the CIO locator s in radians (Note 2)</span>
+
+    <span class="c">!  Time since J2000.0, in Julian centuries</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">t</span>
+
+    <span class="c">!  Miscellaneous</span>
+    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">a</span><span class="p">,</span> <span class="n">s0</span><span class="p">,</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">,</span> <span class="n">s3</span><span class="p">,</span> <span class="n">s4</span><span class="p">,</span> <span class="n">s5</span>
+
+    <span class="c">!  Fundamental arguments</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">fa</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+
+    <span class="c">!  ---------------------</span>
+    <span class="c">!  The series for s+XY/2</span>
+    <span class="c">!  ---------------------</span>
+
+    <span class="c">!  Number of terms in the series</span>
+    <span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">nsp</span> <span class="o">=</span> <span class="mi">6</span>
+    <span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">ns0</span> <span class="o">=</span> <span class="mi">33</span>
+    <span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">ns1</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">ns2</span> <span class="o">=</span> <span class="mi">25</span>
+    <span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">ns3</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">ns4</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="c">!  Polynomial coefficients</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="n">nsp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">sp</span> <span class="o">=</span> <span class="p">[</span> <span class="p">&amp;</span>
+                 <span class="mi">9</span><span class="mf">4.0e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+               <span class="mi">380</span><span class="mf">8.35e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+               <span class="o">-</span><span class="mi">11</span><span class="mf">9.94e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+             <span class="o">-</span><span class="mi">7257</span><span class="mf">4.09e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                 <span class="mi">2</span><span class="mf">7.70e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                 <span class="mi">1</span><span class="mf">5.61e-6_wp</span> <span class="p">]</span>
+
+    <span class="c">!  Coefficients of l,l&#39;,F,D,Om,LVe,LE,pA</span>
+
+    <span class="c">!  Argument coefficients for t^0</span>
+    <span class="kt">integer</span><span class="p">,</span> <span class="k">dimension</span><span class="p">(</span> <span class="mi">8</span><span class="p">,</span> <span class="n">ns0</span> <span class="p">),</span> <span class="k">parameter</span> <span class="kd">::</span> <span class="n">ks0</span> <span class="o">=</span> <span class="nb">reshape</span><span class="p">([</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">8</span><span class="p">,</span><span class="o">-</span><span class="mi">13</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span> <span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="n">ns0</span><span class="p">])</span>
+
+    <span class="c">!  Argument coefficients for t^1</span>
+    <span class="kt">integer</span><span class="p">,</span> <span class="k">dimension</span><span class="p">(</span> <span class="mi">8</span><span class="p">,</span> <span class="n">ns1</span> <span class="p">),</span> <span class="k">parameter</span> <span class="kd">::</span> <span class="n">ks1</span> <span class="o">=</span> <span class="nb">reshape</span><span class="p">([</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span> <span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="n">ns1</span><span class="p">])</span>
+
+    <span class="c">!  Argument coefficients for t^2</span>
+    <span class="kt">integer</span><span class="p">,</span> <span class="k">dimension</span><span class="p">(</span> <span class="mi">8</span><span class="p">,</span> <span class="n">ns2</span> <span class="p">),</span> <span class="k">parameter</span> <span class="kd">::</span> <span class="n">ks2</span> <span class="o">=</span> <span class="nb">reshape</span><span class="p">([</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span> <span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="n">ns2</span><span class="p">])</span>
+
+    <span class="c">!  Argument coefficients for t^3</span>
+    <span class="kt">integer</span><span class="p">,</span> <span class="k">dimension</span><span class="p">(</span> <span class="mi">8</span><span class="p">,</span> <span class="n">ns3</span> <span class="p">),</span> <span class="k">parameter</span> <span class="kd">::</span> <span class="n">ks3</span> <span class="o">=</span> <span class="nb">reshape</span><span class="p">([</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span> <span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="n">ns3</span><span class="p">])</span>
+
+    <span class="c">!  Argument coefficients for t^4</span>
+    <span class="kt">integer</span><span class="p">,</span> <span class="k">dimension</span><span class="p">(</span> <span class="mi">8</span><span class="p">,</span> <span class="n">ns4</span> <span class="p">),</span> <span class="k">parameter</span> <span class="kd">::</span> <span class="n">ks4</span> <span class="o">=</span> <span class="nb">reshape</span><span class="p">([</span> <span class="p">&amp;</span>
+      <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span> <span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="n">ns4</span><span class="p">])</span>
+
+    <span class="c">!  Sine and cosine coefficients</span>
+
+    <span class="c">!  Sine and cosine coefficients for t^0</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(</span> <span class="mi">2</span><span class="p">,</span> <span class="n">ns0</span> <span class="p">),</span> <span class="k">parameter</span> <span class="kd">::</span> <span class="n">ss0</span> <span class="o">=</span> <span class="nb">reshape</span><span class="p">([</span> <span class="p">&amp;</span>
+                <span class="o">-</span><span class="mi">264</span><span class="mf">0.73e-6_wp</span><span class="p">,</span>          <span class="o">+</span><span class="mf">0.39e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                  <span class="o">-</span><span class="mi">6</span><span class="mf">3.53e-6_wp</span><span class="p">,</span>          <span class="o">+</span><span class="mf">0.02e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                  <span class="o">-</span><span class="mi">1</span><span class="mf">1.75e-6_wp</span><span class="p">,</span>          <span class="o">-</span><span class="mf">0.01e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                  <span class="o">-</span><span class="mi">1</span><span class="mf">1.21e-6_wp</span><span class="p">,</span>          <span class="o">-</span><span class="mf">0.01e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">+</span><span class="mf">4.57e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">-</span><span class="mf">2.02e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">-</span><span class="mf">1.98e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">+</span><span class="mf">1.72e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">+</span><span class="mf">1.41e-6_wp</span><span class="p">,</span>          <span class="o">+</span><span class="mf">0.01e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">+</span><span class="mf">1.26e-6_wp</span><span class="p">,</span>          <span class="o">+</span><span class="mf">0.01e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">+</span><span class="mf">0.63e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">+</span><span class="mf">0.63e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">-</span><span class="mf">0.46e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">-</span><span class="mf">0.45e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">-</span><span class="mf">0.36e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">+</span><span class="mf">0.24e-6_wp</span><span class="p">,</span>          <span class="o">+</span><span class="mf">0.12e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">-</span><span class="mf">0.32e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">-</span><span class="mf">0.28e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">-</span><span class="mf">0.27e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">-</span><span class="mf">0.26e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">+</span><span class="mf">0.21e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">-</span><span class="mf">0.19e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">-</span><span class="mf">0.18e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">+</span><span class="mf">0.10e-6_wp</span><span class="p">,</span>          <span class="o">-</span><span class="mf">0.05e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">-</span><span class="mf">0.15e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">+</span><span class="mf">0.14e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">+</span><span class="mf">0.14e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">-</span><span class="mf">0.14e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">-</span><span class="mf">0.14e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">-</span><span class="mf">0.13e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">+</span><span class="mf">0.11e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">-</span><span class="mf">0.11e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">-</span><span class="mf">0.11e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span> <span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="n">ns0</span><span class="p">])</span>
+
+    <span class="c">!  Sine and cosine coefficients for t^1</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(</span> <span class="mi">2</span><span class="p">,</span> <span class="n">ns1</span> <span class="p">),</span> <span class="k">parameter</span> <span class="kd">::</span> <span class="n">ss1</span> <span class="o">=</span> <span class="nb">reshape</span><span class="p">([</span> <span class="p">&amp;</span>
+                   <span class="o">-</span><span class="mf">0.07e-6_wp</span><span class="p">,</span>          <span class="o">+</span><span class="mf">3.57e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">+</span><span class="mf">1.71e-6_wp</span><span class="p">,</span>          <span class="o">-</span><span class="mf">0.03e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                    <span class="mf">0.00e-6_wp</span><span class="p">,</span>          <span class="o">+</span><span class="mf">0.48e-6_wp</span> <span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="n">ns1</span><span class="p">])</span>
+
+    <span class="c">!  Sine and cosine coefficients for t^2</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(</span> <span class="mi">2</span><span class="p">,</span> <span class="n">ns2</span> <span class="p">),</span> <span class="k">parameter</span> <span class="kd">::</span> <span class="n">ss2</span> <span class="o">=</span> <span class="nb">reshape</span><span class="p">([</span> <span class="p">&amp;</span>
+                 <span class="o">+</span><span class="mi">74</span><span class="mf">3.53e-6_wp</span><span class="p">,</span>          <span class="o">-</span><span class="mf">0.17e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                  <span class="o">+</span><span class="mi">5</span><span class="mf">6.91e-6_wp</span><span class="p">,</span>          <span class="o">+</span><span class="mf">0.06e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">+</span><span class="mf">9.84e-6_wp</span><span class="p">,</span>          <span class="o">-</span><span class="mf">0.01e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">-</span><span class="mf">8.85e-6_wp</span><span class="p">,</span>          <span class="o">+</span><span class="mf">0.01e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">-</span><span class="mf">6.38e-6_wp</span><span class="p">,</span>          <span class="o">-</span><span class="mf">0.05e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">-</span><span class="mf">3.07e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">+</span><span class="mf">2.23e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">+</span><span class="mf">1.67e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">+</span><span class="mf">1.30e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">+</span><span class="mf">0.93e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">+</span><span class="mf">0.68e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">-</span><span class="mf">0.55e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">+</span><span class="mf">0.53e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">-</span><span class="mf">0.27e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">-</span><span class="mf">0.27e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">-</span><span class="mf">0.26e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">-</span><span class="mf">0.25e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">+</span><span class="mf">0.22e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">-</span><span class="mf">0.21e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">+</span><span class="mf">0.20e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">+</span><span class="mf">0.17e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">+</span><span class="mf">0.13e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">-</span><span class="mf">0.13e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">-</span><span class="mf">0.12e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">-</span><span class="mf">0.11e-6_wp</span><span class="p">,</span>           <span class="mf">0.00e-6_wp</span> <span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="n">ns2</span><span class="p">])</span>
+
+    <span class="c">!  Sine and cosine coefficients for t^3</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(</span> <span class="mi">2</span><span class="p">,</span> <span class="n">ns3</span> <span class="p">),</span> <span class="k">parameter</span> <span class="kd">::</span> <span class="n">ss3</span> <span class="o">=</span> <span class="nb">reshape</span><span class="p">([</span> <span class="p">&amp;</span>
+                   <span class="o">+</span><span class="mf">0.30e-6_wp</span><span class="p">,</span>         <span class="o">-</span><span class="mi">2</span><span class="mf">3.51e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">-</span><span class="mf">0.03e-6_wp</span><span class="p">,</span>          <span class="o">-</span><span class="mf">1.39e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                   <span class="o">-</span><span class="mf">0.01e-6_wp</span><span class="p">,</span>          <span class="o">-</span><span class="mf">0.24e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                    <span class="mf">0.00e-6_wp</span><span class="p">,</span>          <span class="o">+</span><span class="mf">0.22e-6_wp</span> <span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="n">ns3</span><span class="p">])</span>
+
+    <span class="c">!  Sine and cosine coefficients for t^4</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(</span> <span class="mi">2</span><span class="p">,</span> <span class="n">ns4</span> <span class="p">),</span> <span class="k">parameter</span> <span class="kd">::</span> <span class="n">ss4</span> <span class="o">=</span> <span class="nb">reshape</span><span class="p">([</span> <span class="p">&amp;</span>
+                   <span class="o">-</span><span class="mf">0.26e-6_wp</span><span class="p">,</span>          <span class="o">-</span><span class="mf">0.01e-6_wp</span> <span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="n">ns4</span><span class="p">])</span>
+
+    <span class="c">!  Interval between fundamental epoch J2000.0 and current date (JC).</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="p">(</span> <span class="p">(</span> <span class="n">date1</span><span class="o">-</span><span class="n">dj00</span> <span class="p">)</span> <span class="o">+</span> <span class="n">date2</span> <span class="p">)</span> <span class="o">/</span> <span class="n">djc</span>
+
+    <span class="c">!  Fundamental Arguments (from IERS Conventions 2003)</span>
+
+    <span class="c">!  Mean anomaly of the Moon.</span>
+    <span class="n">fa</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">FAL03</span> <span class="p">(</span> <span class="n">t</span> <span class="p">)</span>
+
+    <span class="c">!  Mean anomaly of the Sun.</span>
+    <span class="n">fa</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">FALP03</span> <span class="p">(</span> <span class="n">t</span> <span class="p">)</span>
+
+    <span class="c">!  Mean longitude of the Moon minus that of the ascending node.</span>
+    <span class="n">fa</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="n">FAF03</span> <span class="p">(</span> <span class="n">t</span> <span class="p">)</span>
+
+    <span class="c">!  Mean elongation of the Moon from the Sun.</span>
+    <span class="n">fa</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">=</span> <span class="n">FAD03</span> <span class="p">(</span> <span class="n">t</span> <span class="p">)</span>
+
+    <span class="c">!  Mean longitude of the ascending node of the Moon.</span>
+    <span class="n">fa</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">=</span> <span class="n">FAOM03</span> <span class="p">(</span> <span class="n">t</span> <span class="p">)</span>
+
+    <span class="c">!  Mean longitude of Venus.</span>
+    <span class="n">fa</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="o">=</span> <span class="n">FAVE03</span> <span class="p">(</span> <span class="n">t</span> <span class="p">)</span>
+
+    <span class="c">!  Mean longitude of Earth.</span>
+    <span class="n">fa</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="o">=</span> <span class="n">FAE03</span> <span class="p">(</span> <span class="n">t</span> <span class="p">)</span>
+
+    <span class="c">!  General precession in longitude.</span>
+    <span class="n">fa</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">=</span> <span class="n">FAPA03</span> <span class="p">(</span> <span class="n">t</span> <span class="p">)</span>
+
+    <span class="c">!  Evaluate s.</span>
+    <span class="n">s0</span> <span class="o">=</span> <span class="n">sp</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">s1</span> <span class="o">=</span> <span class="n">sp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">s2</span> <span class="o">=</span> <span class="n">sp</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">s3</span> <span class="o">=</span> <span class="n">sp</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">s4</span> <span class="o">=</span> <span class="n">sp</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">s5</span> <span class="o">=</span> <span class="n">sp</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+
+    <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="n">ns0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span>
+       <span class="n">a</span> <span class="o">=</span> <span class="mf">0.0_wp</span>
+       <span class="k">do </span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span>
+          <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="kt">real</span><span class="p">(</span><span class="n">ks0</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">),</span><span class="n">wp</span><span class="p">)</span><span class="o">*</span><span class="n">fa</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+       <span class="k">end do</span>
+<span class="k">       </span><span class="n">s0</span> <span class="o">=</span> <span class="n">s0</span> <span class="o">+</span> <span class="p">(</span> <span class="n">ss0</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="n">ss0</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="nb">cos</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">)</span>
+    <span class="k">end do</span>
+
+<span class="k">    do </span><span class="n">i</span> <span class="o">=</span> <span class="n">ns1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span>
+       <span class="n">a</span> <span class="o">=</span> <span class="mf">0.0_wp</span>
+       <span class="k">do </span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span>
+          <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="kt">real</span><span class="p">(</span><span class="n">ks1</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">),</span><span class="n">wp</span><span class="p">)</span><span class="o">*</span><span class="n">fa</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+       <span class="k">end do</span>
+<span class="k">       </span><span class="n">s1</span> <span class="o">=</span> <span class="n">s1</span> <span class="o">+</span> <span class="p">(</span> <span class="n">ss1</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="n">ss1</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="nb">cos</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">)</span>
+    <span class="k">end do</span>
+
+<span class="k">    do </span><span class="n">i</span> <span class="o">=</span> <span class="n">ns2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span>
+       <span class="n">a</span> <span class="o">=</span> <span class="mf">0.0_wp</span>
+       <span class="k">do </span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span>
+          <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="kt">real</span><span class="p">(</span><span class="n">ks2</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">),</span><span class="n">wp</span><span class="p">)</span><span class="o">*</span><span class="n">fa</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+       <span class="k">end do</span>
+<span class="k">       </span><span class="n">s2</span> <span class="o">=</span> <span class="n">s2</span> <span class="o">+</span> <span class="p">(</span> <span class="n">ss2</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="n">ss2</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="nb">cos</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">)</span>
+    <span class="k">end do</span>
+
+<span class="k">    do </span><span class="n">i</span> <span class="o">=</span> <span class="n">ns3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span>
+       <span class="n">a</span> <span class="o">=</span> <span class="mf">0.0_wp</span>
+       <span class="k">do </span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span>
+          <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="kt">real</span><span class="p">(</span><span class="n">ks3</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">),</span><span class="n">wp</span><span class="p">)</span><span class="o">*</span><span class="n">fa</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+       <span class="k">end do</span>
+<span class="k">       </span><span class="n">s3</span> <span class="o">=</span> <span class="n">s3</span> <span class="o">+</span> <span class="p">(</span> <span class="n">ss3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="n">ss3</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="nb">cos</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">)</span>
+    <span class="k">end do</span>
+
+<span class="k">    do </span><span class="n">i</span> <span class="o">=</span> <span class="n">ns4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span>
+       <span class="n">a</span> <span class="o">=</span> <span class="mf">0.0_wp</span>
+       <span class="k">do </span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span>
+          <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="kt">real</span><span class="p">(</span><span class="n">ks4</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">),</span><span class="n">wp</span><span class="p">)</span><span class="o">*</span><span class="n">fa</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+       <span class="k">end do</span>
+<span class="k">       </span><span class="n">s4</span> <span class="o">=</span> <span class="n">s4</span> <span class="o">+</span> <span class="p">(</span> <span class="n">ss4</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="n">ss4</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="nb">cos</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">)</span>
+    <span class="k">end do</span>
+
+<span class="k">    </span><span class="n">s</span> <span class="o">=</span> <span class="p">(</span> <span class="n">s0</span> <span class="o">+</span> <span class="p">&amp;</span>
+        <span class="p">(</span> <span class="n">s1</span> <span class="o">+</span> <span class="p">&amp;</span>
+        <span class="p">(</span> <span class="n">s2</span> <span class="o">+</span> <span class="p">&amp;</span>
+        <span class="p">(</span> <span class="n">s3</span> <span class="o">+</span> <span class="p">&amp;</span>
+        <span class="p">(</span> <span class="n">s4</span> <span class="o">+</span> <span class="p">&amp;</span>
+          <span class="n">s5</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">das2r</span> <span class="o">-</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">/</span><span class="mf">2.0_wp</span>
+
+    <span class="k">end function </span><span class="n">S00</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

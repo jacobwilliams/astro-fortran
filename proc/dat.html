@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
+    
+    <meta name="author" content="Jacob Williams" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>DAT &ndash; astro-fortran</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">astro-fortran </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+        
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>DAT
+      <small>Subroutine</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 0.9% of total for procedures.">50 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
+    
+     <li><a href='../module/astro_module.html'>astro_module</a></li>
+    
+  
+     <li class="active">DAT</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/dat.html#src">DAT</a>
+  </div>
+</div>
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>
+public subroutine DAT(iy, im, id, fd, deltat, j)
+    
+    
+   
+</h2>
+    
+  
+
+
+    
+    <p>For a given UTC date, calculate Delta(AT) = TAI-UTC.</p>
+<div class="codehilite"><pre><span></span><code> <span class="p">:-</span><span class="s s-Atom">-----------------------------------------:</span>
+ <span class="s s-Atom">:</span>                                          <span class="s s-Atom">:</span>
+ <span class="s s-Atom">:</span>                 <span class="nv">IMPORTANT</span>                <span class="s s-Atom">:</span>
+ <span class="s s-Atom">:</span>                                          <span class="s s-Atom">:</span>
+ <span class="s s-Atom">:</span>  <span class="nv">A</span> <span class="s s-Atom">new</span> <span class="s s-Atom">version</span> <span class="s s-Atom">of</span> <span class="s s-Atom">this</span> <span class="s s-Atom">routine</span> <span class="s s-Atom">must</span> <span class="s s-Atom">be</span>   <span class="s s-Atom">:</span>
+ <span class="s s-Atom">:</span>  <span class="s s-Atom">produced</span> <span class="s s-Atom">whenever</span> <span class="s s-Atom">a</span> <span class="s s-Atom">new</span> <span class="s s-Atom">leap</span> <span class="s s-Atom">second</span> <span class="o">is</span>  <span class="s s-Atom">:</span>
+ <span class="s s-Atom">:</span>  <span class="s s-Atom">announced</span><span class="p">.</span>  <span class="nv">There</span> <span class="s s-Atom">are</span> <span class="s s-Atom">five</span> <span class="s s-Atom">items</span> <span class="s s-Atom">to</span>     <span class="s s-Atom">:</span>
+ <span class="s s-Atom">:</span>  <span class="s s-Atom">change</span> <span class="s s-Atom">on</span> <span class="s s-Atom">each</span> <span class="s s-Atom">such</span> <span class="nn">occasion</span><span class="p">:</span>           <span class="s s-Atom">:</span>
+ <span class="s s-Atom">:</span>                                          <span class="s s-Atom">:</span>
+ <span class="s s-Atom">:</span>  <span class="mi">1</span><span class="p">)</span> <span class="nv">The</span> <span class="s s-Atom">parameter</span> <span class="nv">NDAT</span> <span class="s s-Atom">must</span> <span class="s s-Atom">be</span>           <span class="s s-Atom">:</span>
+ <span class="s s-Atom">:</span>     <span class="s s-Atom">increased</span> <span class="s s-Atom">by</span> <span class="mf">1.</span>                      <span class="s s-Atom">:</span>
+ <span class="s s-Atom">:</span>                                          <span class="s s-Atom">:</span>
+ <span class="s s-Atom">:</span>  <span class="mi">2</span><span class="p">)</span> <span class="nv">The</span> <span class="s s-Atom">set</span> <span class="s s-Atom">of</span> <span class="nv">DATA</span> <span class="s s-Atom">statements</span> <span class="s s-Atom">that</span>      <span class="s s-Atom">:</span>
+ <span class="s s-Atom">:</span>     <span class="s s-Atom">initialize</span> <span class="s s-Atom">the</span> <span class="s s-Atom">arrays</span> <span class="nv">IDAT</span> <span class="s s-Atom">and</span>       <span class="s s-Atom">:</span>
+ <span class="s s-Atom">:</span>     <span class="nv">DATS</span> <span class="s s-Atom">must</span> <span class="s s-Atom">be</span> <span class="s s-Atom">extended</span> <span class="s s-Atom">by</span> <span class="s s-Atom">one</span> <span class="s s-Atom">line</span><span class="p">.</span>   <span class="s s-Atom">:</span>
+ <span class="s s-Atom">:</span>                                          <span class="s s-Atom">:</span>
+ <span class="s s-Atom">:</span>  <span class="mi">3</span><span class="p">)</span> <span class="nv">The</span> <span class="s s-Atom">parameter</span> <span class="nv">IYV</span> <span class="s s-Atom">must</span> <span class="s s-Atom">be</span> <span class="s s-Atom">set</span> <span class="s s-Atom">to</span>     <span class="s s-Atom">:</span>
+ <span class="s s-Atom">:</span>     <span class="s s-Atom">the</span> <span class="s s-Atom">current</span> <span class="s s-Atom">year</span><span class="p">.</span>                    <span class="s s-Atom">:</span>
+ <span class="s s-Atom">:</span>                                          <span class="s s-Atom">:</span>
+ <span class="s s-Atom">:</span>  <span class="mi">4</span><span class="p">)</span> <span class="nv">The</span> <span class="s2">&quot;Latest leap second&quot;</span> <span class="s s-Atom">comment</span>     <span class="s s-Atom">:</span>
+ <span class="s s-Atom">:</span>     <span class="s s-Atom">below</span> <span class="s s-Atom">must</span> <span class="s s-Atom">be</span> <span class="s s-Atom">set</span> <span class="s s-Atom">to</span> <span class="s s-Atom">the</span> <span class="s s-Atom">new</span> <span class="s s-Atom">leap</span>    <span class="s s-Atom">:</span>
+ <span class="s s-Atom">:</span>     <span class="s s-Atom">second</span> <span class="s s-Atom">date</span><span class="p">.</span>                         <span class="s s-Atom">:</span>
+ <span class="s s-Atom">:</span>                                          <span class="s s-Atom">:</span>
+ <span class="s s-Atom">:</span>  <span class="mi">5</span><span class="p">)</span> <span class="nv">The</span> <span class="s2">&quot;This revision&quot;</span> <span class="s s-Atom">comment</span><span class="p">,</span> <span class="s s-Atom">later</span><span class="p">,</span>  <span class="s s-Atom">:</span>
+ <span class="s s-Atom">:</span>     <span class="s s-Atom">must</span> <span class="s s-Atom">be</span> <span class="s s-Atom">set</span> <span class="s s-Atom">to</span> <span class="s s-Atom">the</span> <span class="s s-Atom">current</span> <span class="s s-Atom">date</span><span class="p">.</span>     <span class="s s-Atom">:</span>
+ <span class="s s-Atom">:</span>                                          <span class="s s-Atom">:</span>
+ <span class="s s-Atom">:</span>  <span class="nv">Change</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="s s-Atom">must</span> <span class="s s-Atom">also</span> <span class="s s-Atom">be</span> <span class="s s-Atom">carried</span> <span class="s s-Atom">out</span>     <span class="s s-Atom">:</span>
+ <span class="s s-Atom">:</span>  <span class="s s-Atom">whenever</span> <span class="s s-Atom">the</span> <span class="s s-Atom">routine</span> <span class="o">is</span> <span class="s s-Atom">re</span><span class="o">-</span><span class="s s-Atom">issued</span><span class="p">,</span>      <span class="s s-Atom">:</span>
+ <span class="s s-Atom">:</span>  <span class="s s-Atom">even</span> <span class="s s-Atom">if</span> <span class="s s-Atom">no</span> <span class="s s-Atom">leap</span> <span class="s s-Atom">seconds</span> <span class="s s-Atom">have</span> <span class="s s-Atom">been</span>       <span class="s s-Atom">:</span>
+ <span class="s s-Atom">:</span>  <span class="s s-Atom">added</span><span class="p">.</span>                                  <span class="s s-Atom">:</span>
+ <span class="s s-Atom">:</span>                                          <span class="s s-Atom">:</span>
+ <span class="s s-Atom">:</span>  <span class="nv">Latest</span> <span class="s s-Atom">leap</span> <span class="nn">second</span><span class="p">:</span>  <span class="mi">2016</span> <span class="nv">December</span> <span class="mi">31</span>   <span class="s s-Atom">:</span>
+ <span class="s s-Atom">:</span>                                          <span class="s s-Atom">:</span>
+ <span class="s s-Atom">:</span><span class="k">__________________________________________</span><span class="s s-Atom">:</span>
+</code></pre></div>
+
+<p>Status:  user-replaceable support routine.</p>
+<h3>Notes</h3>
+<ol>
+<li>
+<p>UTC began at 1960 January 1.0 (JD 2436934.5) and it is improper
+     to call the routine with an earlier date.  If this is attempted,
+     zero is returned together with a warning status.</p>
+<p>Because leap seconds cannot, in principle, be predicted in
+ advance, a reliable check for dates beyond the valid range is
+ impossible.  To guard against gross errors, a year five or more
+ after the release year of the present routine (see parameter IYV)
+ is considered dubious.  In this case a warning status is returned
+ but the result is computed in the normal way.</p>
+<p>For both too-early and too-late years, the warning status is J=+1.
+ This is distinct from the error status J=-1, which signifies a
+ year so early that JD could not be computed.</p>
+</li>
+<li>
+<p>If the specified date is for a day which ends with a leap second,
+     the TAI-UTC value returned is for the period leading up to the
+     leap second.  If the date is for a day which begins as a leap
+     second ends, the TAI-UTC returned is for the period following the
+     leap second.</p>
+</li>
+<li>
+<p>The day number must be in the normal calendar range, for example
+     1 through 30 for April.  The "almanac" convention of allowing
+     such dates as January 0 and December 32 is not supported in this
+     routine, in order to avoid confusion near leap seconds.</p>
+</li>
+<li>
+<p>The fraction of day is used only for dates before the introduction
+     of leap seconds, the first of which occurred at the end of 1971.
+     It is tested for validity (0 to 1 is the valid range) even if not
+     used;  if invalid, zero is used and status J=-4 is returned.  For
+     many applications, setting FD to zero is acceptable;  the
+     resulting error is always less than 3 ms (and occurs only
+     pre-1972).</p>
+</li>
+<li>
+<p>The status value returned in the case where there are multiple
+     errors refers to the first error detected.  For example, if the
+     month and day are 13 and 32 respectively, J=-2 (bad month) will be
+     returned.  The "internal error" status refers to a case that is
+     impossible but causes some compilers to issue a warning.</p>
+</li>
+<li>
+<p>In cases where a valid result is not available, zero is returned.</p>
+</li>
+</ol>
+<h3>References</h3>
+<ol>
+<li>
+<p>For dates from 1961 January 1 onwards, the expressions from the
+     file ftp://maia.usno.navy.mil/ser7/tai-utc.dat are used.</p>
+</li>
+<li>
+<p>The 5ms timestep at 1961 January 1 is taken from 2.58.1 (p87) of
+     the 1992 Explanatory Supplement.</p>
+</li>
+</ol>
+<h3>History</h3>
+<ul>
+<li>IAU SOFA revision: 2019 July 5</li>
+</ul>
+    
+
+    <h3>Arguments</h3>
+    
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-iy~3"></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>iy</strong></td><td><p>UTC:  year (Notes 1 and 2)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-im~3"></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>im</strong></td><td><p>UTC:  month (Note 2)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-id~3"></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>id</strong></td><td><p>UTC:  day (Notes 2 and 3)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-fd"></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>fd</strong></td><td><p>UTC:  fraction of day (Note 4)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-deltat"></span>real(kind=wp),</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>deltat</strong></td><td><p>TAI minus UTC, seconds</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-j~10"></span>integer,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>j</strong></td><td><p>status (Note 5):
+ *  1 = dubious year (Note 1)
+ *  0 = OK
+ * -1 = bad year
+ * -2 = bad month
+ * -3 = bad day (Note 3)
+ * -4 = bad fraction (Note 4)
+ * -5 = internal error (Note 5)</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    
+    
+    
+    <br>
+    
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Calls</h3>
+      </div>
+      <div class="panel-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~dat~~CallsGraph Pages: 1 -->
+<svg id="procdatCallsGraph" width="152pt" height="32pt"
+ viewBox="0.00 0.00 152.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~dat~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>proc~~dat~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 148,-28 148,4 -4,4"/>
+<!-- proc~dat -->
+<g id="proc~~dat~~CallsGraph_node1" class="node">
+<title>proc~dat</title>
+<polygon fill="none" stroke="black" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">DAT</text>
+</g>
+<!-- proc~cal2jd -->
+<g id="proc~~dat~~CallsGraph_node2" class="node">
+<title>proc~cal2jd</title>
+<g id="a_proc~~dat~~CallsGraph_node2"><a xlink:href=".././proc/cal2jd.html" xlink:title="CAL2JD">
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-24 90,-24 90,0 144,0 144,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">CAL2JD</text>
+</a>
+</g>
+</g>
+<!-- proc~dat&#45;&gt;proc~cal2jd -->
+<g id="proc~~dat~~CallsGraph_edge1" class="edge">
+<title>proc~dat&#45;&gt;proc~cal2jd</title>
+<path fill="none" stroke="#000000" d="M54.4,-12C62.39,-12 71.31,-12 79.82,-12"/>
+<polygon fill="#000000" stroke="#000000" points="79.92,-15.5 89.92,-12 79.92,-8.5 79.92,-15.5"/>
+</g>
+</g>
+</svg>
+</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="597pt" height="32pt"
+ viewBox="0.00 0.00 596.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 592.5,-28 592.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node4" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="388.5,-24 243.5,-24 243.5,0 388.5,0 388.5,-24"/>
+<text text-anchor="middle" x="316" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="465,-24 407,-24 407,0 465,0 465,-24"/>
+<text text-anchor="middle" x="436" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="588.5,-24 483.5,-24 483.5,0 588.5,0 588.5,-24"/>
+<text text-anchor="middle" x="536" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a procedure to one which it calls. Dashed 
+    arrows point from an interface to procedures which implement that interface.
+    This could include the module procedures in a generic interface or the
+    implementation in a submodule of an interface in a parent module.
+    </p>
+    </div></div></div></div>
+      </div>
+    </div>
+     
+     
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Called by</h3>
+      </div>
+      <div class="panel-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~dat~~CalledByGraph Pages: 1 -->
+<svg id="procdatCalledByGraph" width="426pt" height="203pt"
+ viewBox="0.00 0.00 426.00 203.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~dat~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 199)">
+<title>proc~~dat~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-199 422,-199 422,4 -4,4"/>
+<!-- proc~dat -->
+<g id="proc~~dat~~CalledByGraph_node1" class="node">
+<title>proc~dat</title>
+<polygon fill="none" stroke="black" points="418,-108 364,-108 364,-84 418,-84 418,-108"/>
+<text text-anchor="middle" x="391" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50">DAT</text>
+</g>
+<!-- proc~utctai -->
+<g id="proc~~dat~~CalledByGraph_node2" class="node">
+<title>proc~utctai</title>
+<g id="a_proc~~dat~~CalledByGraph_node2"><a xlink:href=".././proc/utctai.html" xlink:title="UTCTAI">
+<polygon fill="#d9534f" stroke="#d9534f" points="327.5,-108 273.5,-108 273.5,-84 327.5,-84 327.5,-108"/>
+<text text-anchor="middle" x="300.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">UTCTAI</text>
+</a>
+</g>
+</g>
+<!-- proc~utctai&#45;&gt;proc~dat -->
+<g id="proc~~dat~~CalledByGraph_edge1" class="edge">
+<title>proc~utctai&#45;&gt;proc~dat</title>
+<path fill="none" stroke="#000000" d="M327.57,-96C335.78,-96 345,-96 353.78,-96"/>
+<polygon fill="#000000" stroke="#000000" points="353.81,-99.5 363.81,-96 353.81,-92.5 353.81,-99.5"/>
+</g>
+<!-- proc~dtf2d -->
+<g id="proc~~dat~~CalledByGraph_node3" class="node">
+<title>proc~dtf2d</title>
+<g id="a_proc~~dat~~CalledByGraph_node3"><a xlink:href=".././proc/dtf2d.html" xlink:title="DTF2D">
+<polygon fill="#d9534f" stroke="#d9534f" points="327.5,-150 273.5,-150 273.5,-126 327.5,-126 327.5,-150"/>
+<text text-anchor="middle" x="300.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">DTF2D</text>
+</a>
+</g>
+</g>
+<!-- proc~dtf2d&#45;&gt;proc~dat -->
+<g id="proc~~dat~~CalledByGraph_edge2" class="edge">
+<title>proc~dtf2d&#45;&gt;proc~dat</title>
+<path fill="none" stroke="#000000" d="M327.1,-125.85C335.9,-121.67 345.92,-116.92 355.32,-112.46"/>
+<polygon fill="#000000" stroke="#000000" points="356.93,-115.57 364.46,-108.12 353.92,-109.25 356.93,-115.57"/>
+</g>
+<!-- proc~utcut1 -->
+<g id="proc~~dat~~CalledByGraph_node4" class="node">
+<title>proc~utcut1</title>
+<g id="a_proc~~dat~~CalledByGraph_node4"><a xlink:href=".././proc/utcut1.html" xlink:title="UTCUT1">
+<polygon fill="#d9534f" stroke="#d9534f" points="237,-150 182,-150 182,-126 237,-126 237,-150"/>
+<text text-anchor="middle" x="209.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">UTCUT1</text>
+</a>
+</g>
+</g>
+<!-- proc~utcut1&#45;&gt;proc~dat -->
+<g id="proc~~dat~~CalledByGraph_edge3" class="edge">
+<title>proc~utcut1&#45;&gt;proc~dat</title>
+<path fill="none" stroke="#000000" d="M234.78,-150.05C259.17,-160.4 297.42,-171.81 328,-159 348.59,-150.38 365.8,-131.21 376.82,-116.27"/>
+<polygon fill="#000000" stroke="#000000" points="379.69,-118.27 382.57,-108.08 373.96,-114.25 379.69,-118.27"/>
+</g>
+<!-- proc~utcut1&#45;&gt;proc~utctai -->
+<g id="proc~~dat~~CalledByGraph_edge9" class="edge">
+<title>proc~utcut1&#45;&gt;proc~utctai</title>
+<path fill="none" stroke="#000000" d="M236.24,-125.85C245.1,-121.67 255.17,-116.92 264.63,-112.46"/>
+<polygon fill="#000000" stroke="#000000" points="266.27,-115.55 273.82,-108.12 263.28,-109.22 266.27,-115.55"/>
+</g>
+<!-- proc~ut1utc -->
+<g id="proc~~dat~~CalledByGraph_node5" class="node">
+<title>proc~ut1utc</title>
+<g id="a_proc~~dat~~CalledByGraph_node5"><a xlink:href=".././proc/ut1utc.html" xlink:title="UT1UTC">
+<polygon fill="#d9534f" stroke="#d9534f" points="328,-66 273,-66 273,-42 328,-42 328,-66"/>
+<text text-anchor="middle" x="300.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">UT1UTC</text>
+</a>
+</g>
+</g>
+<!-- proc~ut1utc&#45;&gt;proc~dat -->
+<g id="proc~~dat~~CalledByGraph_edge4" class="edge">
+<title>proc~ut1utc&#45;&gt;proc~dat</title>
+<path fill="none" stroke="#000000" d="M327.1,-66.15C335.9,-70.33 345.92,-75.08 355.32,-79.54"/>
+<polygon fill="#000000" stroke="#000000" points="353.92,-82.75 364.46,-83.88 356.93,-76.43 353.92,-82.75"/>
+</g>
+<!-- proc~d2dtf -->
+<g id="proc~~dat~~CalledByGraph_node6" class="node">
+<title>proc~d2dtf</title>
+<g id="a_proc~~dat~~CalledByGraph_node6"><a xlink:href=".././proc/d2dtf.html" xlink:title="D2DTF">
+<polygon fill="#d9534f" stroke="#d9534f" points="327.5,-24 273.5,-24 273.5,0 327.5,0 327.5,-24"/>
+<text text-anchor="middle" x="300.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">D2DTF</text>
+</a>
+</g>
+</g>
+<!-- proc~d2dtf&#45;&gt;proc~dat -->
+<g id="proc~~dat~~CalledByGraph_edge5" class="edge">
+<title>proc~d2dtf&#45;&gt;proc~dat</title>
+<path fill="none" stroke="#000000" d="M317.46,-24.13C321,-26.96 324.68,-30.02 328,-33 343.51,-46.93 360.01,-63.81 372.09,-76.59"/>
+<polygon fill="#000000" stroke="#000000" points="369.6,-79.05 378.99,-83.95 374.71,-74.26 369.6,-79.05"/>
+</g>
+<!-- proc~apio13 -->
+<g id="proc~~dat~~CalledByGraph_node7" class="node">
+<title>proc~apio13</title>
+<g id="a_proc~~dat~~CalledByGraph_node7"><a xlink:href=".././proc/apio13.html" xlink:title="APIO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-88 91.5,-88 91.5,-64 145.5,-64 145.5,-88"/>
+<text text-anchor="middle" x="118.5" y="-73.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APIO13</text>
+</a>
+</g>
+</g>
+<!-- proc~apio13&#45;&gt;proc~utctai -->
+<g id="proc~~dat~~CalledByGraph_edge6" class="edge">
+<title>proc~apio13&#45;&gt;proc~utctai</title>
+<path fill="none" stroke="#000000" d="M145.83,-73.24C169.77,-71.32 206,-69.93 237,-75 245.77,-76.43 254.97,-78.93 263.53,-81.71"/>
+<polygon fill="#000000" stroke="#000000" points="262.62,-85.1 273.22,-85.06 264.91,-78.48 262.62,-85.1"/>
+</g>
+<!-- proc~apio13&#45;&gt;proc~utcut1 -->
+<g id="proc~~dat~~CalledByGraph_edge10" class="edge">
+<title>proc~apio13&#45;&gt;proc~utcut1</title>
+<path fill="none" stroke="#000000" d="M137.08,-88.25C150.09,-97.31 168.01,-109.79 182.64,-119.99"/>
+<polygon fill="#000000" stroke="#000000" points="181.05,-123.14 191.26,-125.99 185.05,-117.4 181.05,-123.14"/>
+</g>
+<!-- proc~taiutc -->
+<g id="proc~~dat~~CalledByGraph_node8" class="node">
+<title>proc~taiutc</title>
+<g id="a_proc~~dat~~CalledByGraph_node8"><a xlink:href=".././proc/taiutc.html" xlink:title="TAIUTC">
+<polygon fill="#d9534f" stroke="#d9534f" points="236.5,-108 182.5,-108 182.5,-84 236.5,-84 236.5,-108"/>
+<text text-anchor="middle" x="209.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">TAIUTC</text>
+</a>
+</g>
+</g>
+<!-- proc~taiutc&#45;&gt;proc~utctai -->
+<g id="proc~~dat~~CalledByGraph_edge7" class="edge">
+<title>proc~taiutc&#45;&gt;proc~utctai</title>
+<path fill="none" stroke="#000000" d="M236.72,-96C245.05,-96 254.41,-96 263.32,-96"/>
+<polygon fill="#000000" stroke="#000000" points="263.47,-99.5 273.47,-96 263.47,-92.5 263.47,-99.5"/>
+</g>
+<!-- proc~apco13 -->
+<g id="proc~~dat~~CalledByGraph_node9" class="node">
+<title>proc~apco13</title>
+<g id="a_proc~~dat~~CalledByGraph_node9"><a xlink:href=".././proc/apco13.html" xlink:title="APCO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="146,-166 91,-166 91,-142 146,-142 146,-166"/>
+<text text-anchor="middle" x="118.5" y="-151.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APCO13</text>
+</a>
+</g>
+</g>
+<!-- proc~apco13&#45;&gt;proc~utctai -->
+<g id="proc~~dat~~CalledByGraph_edge8" class="edge">
+<title>proc~apco13&#45;&gt;proc~utctai</title>
+<path fill="none" stroke="#000000" d="M146.03,-161.79C170.76,-167.54 208.06,-172.31 237,-159 259.34,-148.73 255.28,-134.05 273,-117 273.78,-116.25 274.59,-115.49 275.42,-114.74"/>
+<polygon fill="#000000" stroke="#000000" points="277.77,-117.33 283.11,-108.18 273.23,-112.01 277.77,-117.33"/>
+</g>
+<!-- proc~apco13&#45;&gt;proc~utcut1 -->
+<g id="proc~~dat~~CalledByGraph_edge11" class="edge">
+<title>proc~apco13&#45;&gt;proc~utcut1</title>
+<path fill="none" stroke="#000000" d="M146.2,-149.2C154.3,-147.74 163.34,-146.12 171.96,-144.57"/>
+<polygon fill="#000000" stroke="#000000" points="172.59,-148.01 181.82,-142.8 171.35,-141.12 172.59,-148.01"/>
+</g>
+<!-- proc~atio13 -->
+<g id="proc~~dat~~CalledByGraph_node10" class="node">
+<title>proc~atio13</title>
+<g id="a_proc~~dat~~CalledByGraph_node10"><a xlink:href=".././proc/atio13.html" xlink:title="ATIO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-101 0.5,-101 0.5,-77 54.5,-77 54.5,-101"/>
+<text text-anchor="middle" x="27.5" y="-86.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATIO13</text>
+</a>
+</g>
+</g>
+<!-- proc~atio13&#45;&gt;proc~apio13 -->
+<g id="proc~~dat~~CalledByGraph_edge12" class="edge">
+<title>proc~atio13&#45;&gt;proc~apio13</title>
+<path fill="none" stroke="#000000" d="M54.72,-85.17C63.05,-83.95 72.41,-82.59 81.32,-81.29"/>
+<polygon fill="#000000" stroke="#000000" points="82.08,-84.71 91.47,-79.8 81.06,-77.78 82.08,-84.71"/>
+</g>
+<!-- proc~atoc13 -->
+<g id="proc~~dat~~CalledByGraph_node11" class="node">
+<title>proc~atoc13</title>
+<g id="a_proc~~dat~~CalledByGraph_node11"><a xlink:href=".././proc/atoc13.html" xlink:title="ATOC13">
+<polygon fill="#d9534f" stroke="#d9534f" points="55,-195 0,-195 0,-171 55,-171 55,-195"/>
+<text text-anchor="middle" x="27.5" y="-180.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOC13</text>
+</a>
+</g>
+</g>
+<!-- proc~atoc13&#45;&gt;proc~apco13 -->
+<g id="proc~~dat~~CalledByGraph_edge14" class="edge">
+<title>proc~atoc13&#45;&gt;proc~apco13</title>
+<path fill="none" stroke="#000000" d="M55.2,-174.3C63.39,-171.63 72.53,-168.65 81.24,-165.81"/>
+<polygon fill="#000000" stroke="#000000" points="82.39,-169.12 90.82,-162.69 80.22,-162.47 82.39,-169.12"/>
+</g>
+<!-- proc~atoi13 -->
+<g id="proc~~dat~~CalledByGraph_node12" class="node">
+<title>proc~atoi13</title>
+<g id="a_proc~~dat~~CalledByGraph_node12"><a xlink:href=".././proc/atoi13.html" xlink:title="ATOI13">
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-59 0.5,-59 0.5,-35 54.5,-35 54.5,-59"/>
+<text text-anchor="middle" x="27.5" y="-44.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOI13</text>
+</a>
+</g>
+</g>
+<!-- proc~atoi13&#45;&gt;proc~apio13 -->
+<g id="proc~~dat~~CalledByGraph_edge13" class="edge">
+<title>proc~atoi13&#45;&gt;proc~apio13</title>
+<path fill="none" stroke="#000000" d="M54.72,-55.54C63.23,-58.32 72.82,-61.44 81.9,-64.4"/>
+<polygon fill="#000000" stroke="#000000" points="80.87,-67.75 91.47,-67.52 83.04,-61.09 80.87,-67.75"/>
+</g>
+<!-- proc~atco13 -->
+<g id="proc~~dat~~CalledByGraph_node13" class="node">
+<title>proc~atco13</title>
+<g id="a_proc~~dat~~CalledByGraph_node13"><a xlink:href=".././proc/atco13.html" xlink:title="ATCO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-153 0.5,-153 0.5,-129 54.5,-129 54.5,-153"/>
+<text text-anchor="middle" x="27.5" y="-138.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATCO13</text>
+</a>
+</g>
+</g>
+<!-- proc~atco13&#45;&gt;proc~apco13 -->
+<g id="proc~~dat~~CalledByGraph_edge15" class="edge">
+<title>proc~atco13&#45;&gt;proc~apco13</title>
+<path fill="none" stroke="#000000" d="M54.72,-144.83C62.9,-146.03 72.08,-147.37 80.84,-148.65"/>
+<polygon fill="#000000" stroke="#000000" points="80.45,-152.13 90.85,-150.11 81.46,-145.2 80.45,-152.13"/>
+</g>
+</g>
+</svg>
+</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="597pt" height="32pt"
+ viewBox="0.00 0.00 596.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 592.5,-28 592.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node4" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="388.5,-24 243.5,-24 243.5,0 388.5,0 388.5,-24"/>
+<text text-anchor="middle" x="316" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="465,-24 407,-24 407,0 465,0 465,-24"/>
+<text text-anchor="middle" x="436" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="588.5,-24 483.5,-24 483.5,0 588.5,0 588.5,-24"/>
+<text text-anchor="middle" x="536" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a procedure to one which it calls. Dashed 
+    arrows point from an interface to procedures which implement that interface.
+    This could include the module procedures in a generic interface or the
+    implementation in a submodule of an interface in a parent module.
+    </p>
+    </div></div></div></div>
+      </div>
+    </div>
+     
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/dat.html#src">DAT</a>
+  </div>
+</div>
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">DAT</span> <span class="p">(</span> <span class="n">iy</span><span class="p">,</span> <span class="n">im</span><span class="p">,</span> <span class="n">id</span><span class="p">,</span> <span class="n">fd</span><span class="p">,</span> <span class="n">deltat</span><span class="p">,</span> <span class="n">j</span> <span class="p">)</span>
+
+    <span class="k">implicit none</span>
+
+<span class="k">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">iy</span> <span class="c">!! UTC:  year (Notes 1 and 2)</span>
+    <span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">im</span> <span class="c">!! UTC:  month (Note 2)</span>
+    <span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">id</span> <span class="c">!! UTC:  day (Notes 2 and 3)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">fd</span> <span class="c">!! UTC:  fraction of day (Note 4)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">deltat</span> <span class="c">!! TAI minus UTC, seconds</span>
+    <span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">j</span> <span class="c">!! status (Note 5):</span>
+                             <span class="c">!! *  1 = dubious year (Note 1)</span>
+                             <span class="c">!! *  0 = OK</span>
+                             <span class="c">!! * -1 = bad year</span>
+                             <span class="c">!! * -2 = bad month</span>
+                             <span class="c">!! * -3 = bad day (Note 3)</span>
+                             <span class="c">!! * -4 = bad fraction (Note 4)</span>
+                             <span class="c">!! * -5 = internal error (Note 5)</span>
+
+    <span class="c">!  Release year for this version of DAT</span>
+    <span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">iyv</span> <span class="o">=</span> <span class="mi">2019</span>
+
+    <span class="c">!  Number of Delta(AT) changes (increase by 1 for each new leap second)</span>
+    <span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">ndat</span> <span class="o">=</span> <span class="mi">42</span>
+
+    <span class="c">!  Number of Delta(AT) expressions before leap seconds were introduced</span>
+    <span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">nera1</span> <span class="o">=</span> <span class="mi">14</span>
+
+    <span class="c">!  Dates (year, month) on which new Delta(AT) came into force</span>
+    <span class="kt">integer</span><span class="p">,</span><span class="k">dimension</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">ndat</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">idat</span> <span class="o">=</span> <span class="nb">reshape</span><span class="p">([</span> <span class="mi">1960</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1961</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1961</span><span class="p">,</span>  <span class="mi">8</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1962</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1963</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1964</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1964</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1964</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1965</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1965</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1965</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1965</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1966</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1968</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1972</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1972</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1973</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1974</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1975</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1976</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1977</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1978</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1979</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1980</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1981</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1982</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1983</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1985</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1988</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1990</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1991</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1992</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1993</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1994</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1996</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1997</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">1999</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">2006</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">2009</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">2012</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">2015</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                            <span class="mi">2017</span><span class="p">,</span>  <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="n">ndat</span><span class="p">])</span>
+
+    <span class="c">!  New Delta(AT) which came into force on the given dates</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="n">ndat</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">dats</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.4178180_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mf">1.4228180_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mf">1.3728180_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mf">1.8458580_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mf">1.9458580_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mf">3.2401300_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mf">3.3401300_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mf">3.4401300_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mf">3.5401300_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mf">3.6401300_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mf">3.7401300_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mf">3.8401300_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mf">4.3131700_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mf">4.2131700_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mi">1</span><span class="mf">0.0_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mi">1</span><span class="mf">1.0_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mi">1</span><span class="mf">2.0_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mi">1</span><span class="mf">3.0_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mi">1</span><span class="mf">4.0_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mi">1</span><span class="mf">5.0_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mi">1</span><span class="mf">6.0_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mi">1</span><span class="mf">7.0_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mi">1</span><span class="mf">8.0_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mi">1</span><span class="mf">9.0_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mi">2</span><span class="mf">0.0_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mi">2</span><span class="mf">1.0_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mi">2</span><span class="mf">2.0_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mi">2</span><span class="mf">3.0_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mi">2</span><span class="mf">4.0_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mi">2</span><span class="mf">5.0_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mi">2</span><span class="mf">6.0_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mi">2</span><span class="mf">7.0_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mi">2</span><span class="mf">8.0_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mi">2</span><span class="mf">9.0_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mi">3</span><span class="mf">0.0_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mi">3</span><span class="mf">1.0_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mi">3</span><span class="mf">2.0_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mi">3</span><span class="mf">3.0_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mi">3</span><span class="mf">4.0_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mi">3</span><span class="mf">5.0_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mi">3</span><span class="mf">6.0_wp</span><span class="p">,&amp;</span>
+                                                  <span class="mi">3</span><span class="mf">7.0_wp</span><span class="p">]</span>
+
+    <span class="c">!  Reference dates (MJD) and drift rates (s/day), pre leap seconds</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">nera1</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">drift</span> <span class="o">=</span> <span class="nb">reshape</span><span class="p">([</span><span class="mi">3730</span><span class="mf">0.0_wp</span><span class="p">,</span> <span class="mf">0.001296_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                              <span class="mi">3730</span><span class="mf">0.0_wp</span><span class="p">,</span> <span class="mf">0.001296_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                              <span class="mi">3730</span><span class="mf">0.0_wp</span><span class="p">,</span> <span class="mf">0.001296_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                              <span class="mi">3766</span><span class="mf">5.0_wp</span><span class="p">,</span> <span class="mf">0.0011232_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                              <span class="mi">3766</span><span class="mf">5.0_wp</span><span class="p">,</span> <span class="mf">0.0011232_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                              <span class="mi">3876</span><span class="mf">1.0_wp</span><span class="p">,</span> <span class="mf">0.001296_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                              <span class="mi">3876</span><span class="mf">1.0_wp</span><span class="p">,</span> <span class="mf">0.001296_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                              <span class="mi">3876</span><span class="mf">1.0_wp</span><span class="p">,</span> <span class="mf">0.001296_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                              <span class="mi">3876</span><span class="mf">1.0_wp</span><span class="p">,</span> <span class="mf">0.001296_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                              <span class="mi">3876</span><span class="mf">1.0_wp</span><span class="p">,</span> <span class="mf">0.001296_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                              <span class="mi">3876</span><span class="mf">1.0_wp</span><span class="p">,</span> <span class="mf">0.001296_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                              <span class="mi">3876</span><span class="mf">1.0_wp</span><span class="p">,</span> <span class="mf">0.001296_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                              <span class="mi">3912</span><span class="mf">6.0_wp</span><span class="p">,</span> <span class="mf">0.002592_wp</span><span class="p">,</span> <span class="p">&amp;</span>
+                                                              <span class="mi">3912</span><span class="mf">6.0_wp</span><span class="p">,</span> <span class="mf">0.002592_wp</span> <span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="n">nera1</span><span class="p">])</span>
+
+    <span class="c">!  Miscellaneous local variables</span>
+    <span class="kt">logical</span> <span class="kd">::</span> <span class="n">more</span>
+    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">js</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="k">is</span>
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">da</span><span class="p">,</span> <span class="n">djm0</span><span class="p">,</span> <span class="n">djm</span>
+
+    <span class="n">main</span> <span class="p">:</span> <span class="k">block</span>
+
+      <span class="c">!  Initialize the result to zero and the status to OK.</span>
+      <span class="n">da</span> <span class="o">=</span> <span class="mf">0.0_wp</span>
+      <span class="n">js</span> <span class="o">=</span> <span class="mi">0</span>
+
+      <span class="c">!  If invalid fraction of a day, set error status and give up.</span>
+      <span class="k">if</span> <span class="p">(</span> <span class="n">fd</span><span class="o">&lt;</span><span class="mf">0.0_wp</span> <span class="p">.</span><span class="nb">or</span><span class="p">.</span> <span class="n">fd</span><span class="o">&gt;</span><span class="mf">1.0_wp</span> <span class="p">)</span> <span class="k">then</span>
+<span class="k">        </span><span class="n">js</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span>
+        <span class="k">exit </span><span class="n">main</span>
+      <span class="k">end if</span>
+
+      <span class="c">!  Convert the date into an MJD.</span>
+      <span class="k">call </span><span class="n">CAL2JD</span> <span class="p">(</span> <span class="n">iy</span><span class="p">,</span> <span class="n">im</span><span class="p">,</span> <span class="n">id</span><span class="p">,</span> <span class="n">djm0</span><span class="p">,</span> <span class="n">djm</span><span class="p">,</span> <span class="n">js</span> <span class="p">)</span>
+
+      <span class="c">!  If invalid year, month, or day, give up.</span>
+      <span class="k">if</span> <span class="p">(</span> <span class="n">js</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">)</span> <span class="k">exit </span><span class="n">main</span>
+
+      <span class="c">!  If pre-UTC year, set warning status and give up.</span>
+      <span class="k">if</span> <span class="p">(</span> <span class="n">iy</span> <span class="o">&lt;</span> <span class="n">idat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">)</span> <span class="k">then</span>
+<span class="k">        </span><span class="n">js</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">exit </span><span class="n">main</span>
+      <span class="k">end if</span>
+
+      <span class="c">!  If suspiciously late year, set warning status but proceed.</span>
+      <span class="k">if</span> <span class="p">(</span> <span class="n">iy</span> <span class="o">&gt;</span> <span class="n">iyv</span><span class="o">+</span><span class="mi">5</span> <span class="p">)</span> <span class="n">js</span> <span class="o">=</span> <span class="mi">1</span>
+
+      <span class="c">!  Combine year and month.</span>
+      <span class="n">m</span> <span class="o">=</span> <span class="mi">12</span><span class="o">*</span><span class="n">iy</span><span class="o">+</span><span class="n">im</span>
+
+      <span class="c">!  Find the most recent table entry.</span>
+      <span class="k">is</span> <span class="o">=</span> <span class="mi">0</span>
+      <span class="n">more</span> <span class="o">=</span> <span class="p">.</span><span class="n">true</span><span class="p">.</span>
+      <span class="k">do </span><span class="n">n</span><span class="o">=</span><span class="n">ndat</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="n">more</span> <span class="p">)</span> <span class="k">then</span>
+<span class="k">            is</span> <span class="o">=</span> <span class="n">n</span>
+            <span class="n">more</span> <span class="o">=</span> <span class="n">m</span> <span class="o">&lt;</span> <span class="p">(</span> <span class="mi">12</span><span class="o">*</span><span class="n">idat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="n">idat</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="p">)</span>
+        <span class="k">end if</span>
+<span class="k">      end do</span>
+
+      <span class="c">!  Prevent underflow warnings.</span>
+      <span class="k">if</span> <span class="p">(</span> <span class="k">is</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="p">)</span> <span class="k">then</span>
+<span class="k">        </span><span class="n">js</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span>
+        <span class="k">exit </span><span class="n">main</span>
+      <span class="k">end if</span>
+
+      <span class="c">!  Get the Delta(AT).</span>
+      <span class="n">da</span> <span class="o">=</span> <span class="n">dats</span><span class="p">(</span><span class="k">is</span><span class="p">)</span>
+
+      <span class="c">!  If pre-1972, adjust for drift.</span>
+      <span class="k">if</span> <span class="p">(</span> <span class="k">is</span> <span class="o">&lt;=</span> <span class="n">nera1</span> <span class="p">)</span> <span class="n">da</span> <span class="o">=</span> <span class="n">da</span> <span class="o">+</span> <span class="p">&amp;</span>
+                                <span class="p">(</span> <span class="n">djm</span> <span class="o">+</span> <span class="n">fd</span> <span class="o">-</span> <span class="n">drift</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="k">is</span><span class="p">)</span> <span class="p">)</span> <span class="o">*</span> <span class="n">drift</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="k">is</span><span class="p">)</span>
+
+    <span class="k">end block </span><span class="n">main</span>
+
+    <span class="c">!  Return the Delta(AT) value and the status.</span>
+    <span class="n">deltat</span> <span class="o">=</span> <span class="n">da</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="n">js</span>
+
+    <span class="k">end subroutine </span><span class="n">DAT</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

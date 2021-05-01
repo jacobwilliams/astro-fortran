@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
+    
+    <meta name="author" content="Jacob Williams" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>ATOI13 &ndash; astro-fortran</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">astro-fortran </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+        
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>ATOI13
+      <small>Subroutine</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 0.5% of total for procedures.">28 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
+    
+     <li><a href='../module/astro_module.html'>astro_module</a></li>
+    
+  
+     <li class="active">ATOI13</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/atoi13.html#src">ATOI13</a>
+  </div>
+</div>
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>
+public subroutine ATOI13(type, ob1, ob2, utc1, utc2, dut1, elong, phi, hm, xp, yp, phpa, tc, rh, wl, ri, di, j)
+    
+    
+   
+</h2>
+    
+  
+
+
+    
+    <p>Observed place to CIRS.  The caller supplies UTC, site coordinates,
+  ambient air conditions and observing wavelength.</p>
+<p>Status:  support routine.</p>
+<h3>Notes</h3>
+<ol>
+<li>
+<p>"Observed" Az,ZD means the position that would be seen by a
+      perfect geodetically aligned theodolite.  (Zenith distance is
+      used rather than altitude in order to reflect the fact that no
+      allowance is made for depression of the horizon.)  This is
+      related to the observed HA,Dec via the standard rotation, using
+      the geodetic latitude (corrected for polar motion), while the
+      observed HA and RA are related simply through the Earth rotation
+      angle and the site longitude.  "Observed" RA,Dec or HA,Dec thus
+      means the position that would be seen by a perfect equatorial
+      with its polar axis aligned to the Earth's axis of rotation.</p>
+</li>
+<li>
+<p>Only the first character of the TYPE argument is significant.
+      'R' or 'r' indicates that OB1 and OB2 are the observed right
+      ascension and declination;  'H' or 'h' indicates that they are
+      hour angle (west +ve) and declination;  anything else ('A' or
+      'a' is recommended) indicates that OB1 and OB2 are azimuth
+      (north zero, east 90 deg) and zenith distance.</p>
+</li>
+<li>
+<p>UTC1+UTC2 is quasi Julian Date (see Note 2), apportioned in any
+      convenient way between the two arguments, for example where UTC1
+      is the Julian Day Number and UTC2 is the fraction of a day.</p>
+<p>However, JD cannot unambiguously represent UTC during a leap
+  second unless special measures are taken.  The convention in the
+  present routine is that the JD day represents UTC days whether
+  the length is 86399, 86400 or 86401 SI seconds.</p>
+<p>Applications should use the routine DTF2D to convert from
+  calendar date and time of day into 2-part quasi Julian Date, as
+  it implements the leap-second-ambiguity convention just
+  described.</p>
+</li>
+<li>
+<p>The warning status "dubious year" flags UTCs that predate the
+      introduction of the time scale or that are too far in the
+      future to be trusted.  See DAT for further details.</p>
+</li>
+<li>
+<p>UT1-UTC is tabulated in IERS bulletins.  It increases by exactly
+      one second at the end of each positive UTC leap second,
+      introduced in order to keep UT1-UTC within +/- 0.9s.  n.b. This
+      practice is under review, and in the future UT1-UTC may grow
+      essentially without limit.</p>
+</li>
+<li>
+<p>The geographical coordinates are with respect to the WGS84
+      reference ellipsoid.  TAKE CARE WITH THE LONGITUDE SIGN:  the
+      longitude required by the present routine is east-positive
+      (i.e. right-handed), in accordance with geographical convention.</p>
+</li>
+<li>
+<p>The polar motion XP,YP can be obtained from IERS bulletins.  The
+      values are the coordinates (in radians) of the Celestial
+      Intermediate Pole with respect to the International Terrestrial
+      Reference System (see IERS Conventions 2003), measured along the
+      meridians 0 and 90 deg west respectively.  For many applications,
+      XP and YP can be set to zero.</p>
+</li>
+<li>
+<p>If hm, the height above the ellipsoid of the observing station
+      in meters, is not known but phpa, the pressure in hPa (=mB), is
+      available, an adequate estimate of hm can be obtained from the
+      expression</p>
+<div class="codehilite"><pre><span></span><code>    hm = -29.3 * tsl * log ( phpa / 1013.25 );
+</code></pre></div>
+
+<p>where tsl is the approximate sea-level air temperature in K
+  (See Astrophysical Quantities, C.W.Allen, 3rd edition, section
+  52).  Similarly, if the pressure phpa is not known, it can be
+  estimated from the height of the observing station, hm, as
+  follows:</p>
+<div class="codehilite"><pre><span></span><code>    phpa = 1013.25 * exp ( -hm / ( 29.3 * tsl ) );
+</code></pre></div>
+
+<p>Note, however, that the refraction is nearly proportional to
+  the pressure and that an accurate phpa value is important for
+  precise work.</p>
+</li>
+<li>
+<p>The argument WL specifies the observing wavelength in
+      micrometers.  The transition from optical to radio is assumed to
+      occur at 100 micrometers (about 3000 GHz).</p>
+</li>
+<li>
+<p>The accuracy of the result is limited by the corrections for
+      refraction, which use a simple A<em>tan(z) + B</em>tan^3(z) model.
+      Providing the meteorological parameters are known accurately and
+      there are no gross local effects, the predicted astrometric
+      coordinates should be within 0.05 arcsec (optical) or 1 arcsec
+      (radio) for a zenith distance of less than 70 degrees, better
+      than 30 arcsec (optical or radio) at 85 degrees and better
+      than 20 arcmin (optical) or 30 arcmin (radio) at the horizon.</p>
+<p>Without refraction, the complementary routines ATIO13 and
+  ATOI13 are self-consistent to better than 1 microarcsecond
+  all over the celestial sphere.  With refraction included,
+  consistency falls off at high zenith distances, but is still
+  better than 0.05 arcsec at 85 degrees.</p>
+</li>
+<li>
+<p>It is advisable to take great care with units, as even unlikely
+      values of the input parameters are accepted and processed in
+      accordance with the models used.</p>
+</li>
+</ol>
+<h3>History</h3>
+<ul>
+<li>IAU SOFA revision:  2013 July 6</li>
+</ul>
+    
+
+    <h3>Arguments</h3>
+    
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-type~2"></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>type</strong></td><td><p>type of coordinates - 'R', 'H' or 'A' (Notes 1,2)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ob1~2"></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>ob1</strong></td><td><p>observed Az, HA or RA (radians; Az is N=0,E=90)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ob2~2"></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>ob2</strong></td><td><p>observed ZD or Dec (radians)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-utc1~6"></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>utc1</strong></td><td><p>UTC as a 2-part...</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-utc2~6"></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>utc2</strong></td><td><p>...quasi Julian Date (Notes 3,4)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-dut1~6"></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>dut1</strong></td><td><p>UT1-UTC (seconds, Note 5)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-elong~9"></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>elong</strong></td><td><p>longitude (radians, east +ve, Note 6)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-phi~10"></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>phi</strong></td><td><p>geodetic latitude (radians, Note 6)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-hm~8"></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>hm</strong></td><td><p>height above the ellipsoid (meters, Notes 6,8)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-xp~8"></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>xp</strong></td><td><p>polar motion coordinates (radians, Note 7)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-yp~8"></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>yp</strong></td><td><p>polar motion coordinates (radians, Note 7)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-phpa~6"></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>phpa</strong></td><td><p>pressure at the observer (hPa = mB, Note 8)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-tc~6"></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>tc</strong></td><td><p>ambient temperature at the observer (deg C)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-rh~6"></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>rh</strong></td><td><p>relative humidity at the observer (range 0-1)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-wl~6"></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>wl</strong></td><td><p>wavelength (micrometers, Note 9)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ri~10"></span>real(kind=wp),</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>ri</strong></td><td><p>CIRS right ascension (CIO-based, radians)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-di~10"></span>real(kind=wp),</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>di</strong></td><td><p>CIRS declination (radians)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-j~7"></span>integer,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>j</strong></td><td><p>0 = OK
+ -1 = unacceptable date</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    
+    
+    
+    <br>
+    
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Calls</h3>
+      </div>
+      <div class="panel-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~atoi13~~CallsGraph Pages: 1 -->
+<svg id="procatoi13CallsGraph" width="517pt" height="630pt"
+ viewBox="0.00 0.00 517.00 630.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~atoi13~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 626)">
+<title>proc~~atoi13~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-626 513,-626 513,4 -4,4"/>
+<!-- proc~atoi13 -->
+<g id="proc~~atoi13~~CallsGraph_node1" class="node">
+<title>proc~atoi13</title>
+<polygon fill="none" stroke="black" points="54,-148 0,-148 0,-124 54,-124 54,-148"/>
+<text text-anchor="middle" x="27" y="-133.6" font-family="Helvetica,sans-Serif" font-size="10.50">ATOI13</text>
+</g>
+<!-- proc~apio13 -->
+<g id="proc~~atoi13~~CallsGraph_node2" class="node">
+<title>proc~apio13</title>
+<g id="a_proc~~atoi13~~CallsGraph_node2"><a xlink:href=".././proc/apio13.html" xlink:title="APIO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-250 90,-250 90,-226 144,-226 144,-250"/>
+<text text-anchor="middle" x="117" y="-235.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APIO13</text>
+</a>
+</g>
+</g>
+<!-- proc~atoi13&#45;&gt;proc~apio13 -->
+<g id="proc~~atoi13~~CallsGraph_edge1" class="edge">
+<title>proc~atoi13&#45;&gt;proc~apio13</title>
+<path fill="none" stroke="#000000" d="M38.44,-148.1C53.39,-165.43 81.07,-197.52 99,-218.3"/>
+<polygon fill="#000000" stroke="#000000" points="96.39,-220.63 105.57,-225.91 101.69,-216.06 96.39,-220.63"/>
+</g>
+<!-- proc~atoiq -->
+<g id="proc~~atoi13~~CallsGraph_node3" class="node">
+<title>proc~atoiq</title>
+<g id="a_proc~~atoi13~~CallsGraph_node3"><a xlink:href=".././proc/atoiq.html" xlink:title="ATOIQ">
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-86 90,-86 90,-62 144,-62 144,-86"/>
+<text text-anchor="middle" x="117" y="-71.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOIQ</text>
+</a>
+</g>
+</g>
+<!-- proc~atoi13&#45;&gt;proc~atoiq -->
+<g id="proc~~atoi13~~CallsGraph_edge2" class="edge">
+<title>proc~atoi13&#45;&gt;proc~atoiq</title>
+<path fill="none" stroke="#000000" d="M45.39,-123.75C58.24,-114.69 75.96,-102.21 90.43,-92.01"/>
+<polygon fill="#000000" stroke="#000000" points="92.79,-94.63 98.95,-86.01 88.76,-88.91 92.79,-94.63"/>
+</g>
+<!-- proc~utctai -->
+<g id="proc~~atoi13~~CallsGraph_node4" class="node">
+<title>proc~utctai</title>
+<g id="a_proc~~atoi13~~CallsGraph_node4"><a xlink:href=".././proc/utctai.html" xlink:title="UTCTAI">
+<polygon fill="#d9534f" stroke="#d9534f" points="325,-251 271,-251 271,-227 325,-227 325,-251"/>
+<text text-anchor="middle" x="298" y="-236.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">UTCTAI</text>
+</a>
+</g>
+</g>
+<!-- proc~apio13&#45;&gt;proc~utctai -->
+<g id="proc~~atoi13~~CallsGraph_edge3" class="edge">
+<title>proc~apio13&#45;&gt;proc~utctai</title>
+<path fill="none" stroke="#000000" d="M144.24,-238.52C155.28,-238.71 168.27,-238.91 180,-239 207.13,-239.22 237.79,-239.21 260.92,-239.15"/>
+<polygon fill="#000000" stroke="#000000" points="260.99,-242.65 270.98,-239.12 260.97,-235.65 260.99,-242.65"/>
+</g>
+<!-- proc~taitt -->
+<g id="proc~~atoi13~~CallsGraph_node6" class="node">
+<title>proc~taitt</title>
+<g id="a_proc~~atoi13~~CallsGraph_node6"><a xlink:href=".././proc/taitt.html" xlink:title="TAITT">
+<polygon fill="#d9534f" stroke="#d9534f" points="234.5,-352 180.5,-352 180.5,-328 234.5,-328 234.5,-352"/>
+<text text-anchor="middle" x="207.5" y="-337.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">TAITT</text>
+</a>
+</g>
+</g>
+<!-- proc~apio13&#45;&gt;proc~taitt -->
+<g id="proc~~atoi13~~CallsGraph_edge4" class="edge">
+<title>proc~apio13&#45;&gt;proc~taitt</title>
+<path fill="none" stroke="#000000" d="M125.98,-250.28C137.04,-266.82 158.15,-296.78 180,-319 180.76,-319.77 181.55,-320.55 182.36,-321.31"/>
+<polygon fill="#000000" stroke="#000000" points="180.14,-324.02 189.98,-327.95 184.74,-318.74 180.14,-324.02"/>
+</g>
+<!-- proc~apio -->
+<g id="proc~~atoi13~~CallsGraph_node7" class="node">
+<title>proc~apio</title>
+<g id="a_proc~~atoi13~~CallsGraph_node7"><a xlink:href=".././proc/apio.html" xlink:title="APIO">
+<polygon fill="#d9534f" stroke="#d9534f" points="234.5,-412 180.5,-412 180.5,-388 234.5,-388 234.5,-412"/>
+<text text-anchor="middle" x="207.5" y="-397.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APIO</text>
+</a>
+</g>
+</g>
+<!-- proc~apio13&#45;&gt;proc~apio -->
+<g id="proc~~atoi13~~CallsGraph_edge5" class="edge">
+<title>proc~apio13&#45;&gt;proc~apio</title>
+<path fill="none" stroke="#000000" d="M123.48,-250.15C133.72,-272.54 156.84,-321.63 180,-361 183.6,-367.11 187.79,-373.55 191.77,-379.4"/>
+<polygon fill="#000000" stroke="#000000" points="189.15,-381.76 197.73,-387.97 194.89,-377.76 189.15,-381.76"/>
+</g>
+<!-- proc~utcut1 -->
+<g id="proc~~atoi13~~CallsGraph_node8" class="node">
+<title>proc~utcut1</title>
+<g id="a_proc~~atoi13~~CallsGraph_node8"><a xlink:href=".././proc/utcut1.html" xlink:title="UTCUT1">
+<polygon fill="#d9534f" stroke="#d9534f" points="235,-310 180,-310 180,-286 235,-286 235,-310"/>
+<text text-anchor="middle" x="207.5" y="-295.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">UTCUT1</text>
+</a>
+</g>
+</g>
+<!-- proc~apio13&#45;&gt;proc~utcut1 -->
+<g id="proc~~atoi13~~CallsGraph_edge6" class="edge">
+<title>proc~apio13&#45;&gt;proc~utcut1</title>
+<path fill="none" stroke="#000000" d="M135.91,-250.14C148.62,-258.76 165.9,-270.48 180.18,-280.16"/>
+<polygon fill="#000000" stroke="#000000" points="178.38,-283.16 188.62,-285.88 182.3,-277.37 178.38,-283.16"/>
+</g>
+<!-- proc~era00 -->
+<g id="proc~~atoi13~~CallsGraph_node11" class="node">
+<title>proc~era00</title>
+<g id="a_proc~~atoi13~~CallsGraph_node11"><a xlink:href=".././proc/era00.html" xlink:title="ERA00">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="234.5,-146 180.5,-146 180.5,-122 234.5,-122 234.5,-146"/>
+<text text-anchor="middle" x="207.5" y="-131.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ERA00</text>
+</a>
+</g>
+</g>
+<!-- proc~apio13&#45;&gt;proc~era00 -->
+<g id="proc~~atoi13~~CallsGraph_edge7" class="edge">
+<title>proc~apio13&#45;&gt;proc~era00</title>
+<path fill="none" stroke="#000000" d="M125.55,-225.97C136.43,-209.12 157.69,-177.96 180,-155 180.76,-154.22 181.54,-153.45 182.35,-152.68"/>
+<polygon fill="#000000" stroke="#000000" points="184.73,-155.24 189.95,-146.03 180.12,-149.97 184.73,-155.24"/>
+</g>
+<!-- proc~refco -->
+<g id="proc~~atoi13~~CallsGraph_node12" class="node">
+<title>proc~refco</title>
+<g id="a_proc~~atoi13~~CallsGraph_node12"><a xlink:href=".././proc/refco.html" xlink:title="REFCO">
+<polygon fill="#d9534f" stroke="#d9534f" points="234.5,-230 180.5,-230 180.5,-206 234.5,-206 234.5,-230"/>
+<text text-anchor="middle" x="207.5" y="-215.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">REFCO</text>
+</a>
+</g>
+</g>
+<!-- proc~apio13&#45;&gt;proc~refco -->
+<g id="proc~~atoi13~~CallsGraph_edge8" class="edge">
+<title>proc~apio13&#45;&gt;proc~refco</title>
+<path fill="none" stroke="#000000" d="M144.07,-232.11C152.28,-230.25 161.5,-228.17 170.28,-226.18"/>
+<polygon fill="#000000" stroke="#000000" points="171.32,-229.54 180.31,-223.92 169.78,-222.71 171.32,-229.54"/>
+</g>
+<!-- proc~sp00 -->
+<g id="proc~~atoi13~~CallsGraph_node13" class="node">
+<title>proc~sp00</title>
+<g id="a_proc~~atoi13~~CallsGraph_node13"><a xlink:href=".././proc/sp00.html" xlink:title="SP00">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="234.5,-188 180.5,-188 180.5,-164 234.5,-164 234.5,-188"/>
+<text text-anchor="middle" x="207.5" y="-173.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SP00</text>
+</a>
+</g>
+</g>
+<!-- proc~apio13&#45;&gt;proc~sp00 -->
+<g id="proc~~atoi13~~CallsGraph_edge9" class="edge">
+<title>proc~apio13&#45;&gt;proc~sp00</title>
+<path fill="none" stroke="#000000" d="M135.48,-225.75C148.42,-216.69 166.23,-204.21 180.79,-194.01"/>
+<polygon fill="#000000" stroke="#000000" points="183.17,-196.62 189.35,-188.01 179.15,-190.88 183.17,-196.62"/>
+</g>
+<!-- proc~anp -->
+<g id="proc~~atoi13~~CallsGraph_node5" class="node">
+<title>proc~anp</title>
+<g id="a_proc~~atoi13~~CallsGraph_node5"><a xlink:href=".././proc/anp.html" xlink:title="ANP">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="325,-126 271,-126 271,-102 325,-102 325,-126"/>
+<text text-anchor="middle" x="298" y="-111.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ANP</text>
+</a>
+</g>
+</g>
+<!-- proc~atoiq&#45;&gt;proc~anp -->
+<g id="proc~~atoi13~~CallsGraph_edge10" class="edge">
+<title>proc~atoiq&#45;&gt;proc~anp</title>
+<path fill="none" stroke="#000000" d="M144.03,-79.82C174.78,-86.69 226.14,-98.17 260.77,-105.9"/>
+<polygon fill="#000000" stroke="#000000" points="260.42,-109.41 270.94,-108.18 261.94,-102.58 260.42,-109.41"/>
+</g>
+<!-- proc~s2c -->
+<g id="proc~~atoi13~~CallsGraph_node9" class="node">
+<title>proc~s2c</title>
+<g id="a_proc~~atoi13~~CallsGraph_node9"><a xlink:href=".././proc/s2c.html" xlink:title="S2C">
+<polygon fill="#d9534f" stroke="#d9534f" points="234.5,-66 180.5,-66 180.5,-42 234.5,-42 234.5,-66"/>
+<text text-anchor="middle" x="207.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">S2C</text>
+</a>
+</g>
+</g>
+<!-- proc~atoiq&#45;&gt;proc~s2c -->
+<g id="proc~~atoi13~~CallsGraph_edge11" class="edge">
+<title>proc~atoiq&#45;&gt;proc~s2c</title>
+<path fill="none" stroke="#000000" d="M144.07,-68.11C152.28,-66.25 161.5,-64.17 170.28,-62.18"/>
+<polygon fill="#000000" stroke="#000000" points="171.32,-65.54 180.31,-59.92 169.78,-58.71 171.32,-65.54"/>
+</g>
+<!-- proc~c2s -->
+<g id="proc~~atoi13~~CallsGraph_node10" class="node">
+<title>proc~c2s</title>
+<g id="a_proc~~atoi13~~CallsGraph_node10"><a xlink:href=".././proc/c2s.html" xlink:title="C2S">
+<polygon fill="#d9534f" stroke="#d9534f" points="234.5,-24 180.5,-24 180.5,0 234.5,0 234.5,-24"/>
+<text text-anchor="middle" x="207.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2S</text>
+</a>
+</g>
+</g>
+<!-- proc~atoiq&#45;&gt;proc~c2s -->
+<g id="proc~~atoi13~~CallsGraph_edge12" class="edge">
+<title>proc~atoiq&#45;&gt;proc~c2s</title>
+<path fill="none" stroke="#000000" d="M135.48,-61.75C148.42,-52.69 166.23,-40.21 180.79,-30.01"/>
+<polygon fill="#000000" stroke="#000000" points="183.17,-32.62 189.35,-24.01 179.15,-26.88 183.17,-32.62"/>
+</g>
+<!-- proc~jd2cal -->
+<g id="proc~~atoi13~~CallsGraph_node14" class="node">
+<title>proc~jd2cal</title>
+<g id="a_proc~~atoi13~~CallsGraph_node14"><a xlink:href=".././proc/jd2cal.html" xlink:title="JD2CAL">
+<polygon fill="#d9534f" stroke="#d9534f" points="415,-328 361,-328 361,-304 415,-304 415,-328"/>
+<text text-anchor="middle" x="388" y="-313.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">JD2CAL</text>
+</a>
+</g>
+</g>
+<!-- proc~utctai&#45;&gt;proc~jd2cal -->
+<g id="proc~~atoi13~~CallsGraph_edge13" class="edge">
+<title>proc~utctai&#45;&gt;proc~jd2cal</title>
+<path fill="none" stroke="#000000" d="M312.12,-251.23C324.54,-262.72 343.8,-280.3 361,-295 361.97,-295.83 362.96,-296.67 363.97,-297.51"/>
+<polygon fill="#000000" stroke="#000000" points="361.82,-300.27 371.76,-303.92 366.26,-294.87 361.82,-300.27"/>
+</g>
+<!-- proc~dat -->
+<g id="proc~~atoi13~~CallsGraph_node18" class="node">
+<title>proc~dat</title>
+<g id="a_proc~~atoi13~~CallsGraph_node18"><a xlink:href=".././proc/dat.html" xlink:title="DAT">
+<polygon fill="#d9534f" stroke="#d9534f" points="415,-286 361,-286 361,-262 415,-262 415,-286"/>
+<text text-anchor="middle" x="388" y="-271.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">DAT</text>
+</a>
+</g>
+</g>
+<!-- proc~utctai&#45;&gt;proc~dat -->
+<g id="proc~~atoi13~~CallsGraph_edge14" class="edge">
+<title>proc~utctai&#45;&gt;proc~dat</title>
+<path fill="none" stroke="#000000" d="M325.4,-249.5C333.57,-252.75 342.7,-256.38 351.38,-259.83"/>
+<polygon fill="#000000" stroke="#000000" points="350.33,-263.18 360.92,-263.63 352.92,-256.68 350.33,-263.18"/>
+</g>
+<!-- proc~cal2jd -->
+<g id="proc~~atoi13~~CallsGraph_node19" class="node">
+<title>proc~cal2jd</title>
+<g id="a_proc~~atoi13~~CallsGraph_node19"><a xlink:href=".././proc/cal2jd.html" xlink:title="CAL2JD">
+<polygon fill="#d9534f" stroke="#d9534f" points="507,-266 453,-266 453,-242 507,-242 507,-266"/>
+<text text-anchor="middle" x="480" y="-251.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">CAL2JD</text>
+</a>
+</g>
+</g>
+<!-- proc~utctai&#45;&gt;proc~cal2jd -->
+<g id="proc~~atoi13~~CallsGraph_edge15" class="edge">
+<title>proc~utctai&#45;&gt;proc~cal2jd</title>
+<path fill="none" stroke="#000000" d="M325.17,-241.18C356.1,-243.76 407.75,-248.06 442.57,-250.96"/>
+<polygon fill="#000000" stroke="#000000" points="442.54,-254.47 452.79,-251.82 443.12,-247.5 442.54,-254.47"/>
+</g>
+<!-- proc~pvtob -->
+<g id="proc~~atoi13~~CallsGraph_node16" class="node">
+<title>proc~pvtob</title>
+<g id="a_proc~~atoi13~~CallsGraph_node16"><a xlink:href=".././proc/pvtob.html" xlink:title="PVTOB">
+<polygon fill="#d9534f" stroke="#d9534f" points="325,-412 271,-412 271,-388 325,-388 325,-412"/>
+<text text-anchor="middle" x="298" y="-397.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PVTOB</text>
+</a>
+</g>
+</g>
+<!-- proc~apio&#45;&gt;proc~pvtob -->
+<g id="proc~~atoi13~~CallsGraph_edge17" class="edge">
+<title>proc~apio&#45;&gt;proc~pvtob</title>
+<path fill="none" stroke="#000000" d="M234.57,-400C242.78,-400 252,-400 260.78,-400"/>
+<polygon fill="#000000" stroke="#000000" points="260.81,-403.5 270.81,-400 260.81,-396.5 260.81,-403.5"/>
+</g>
+<!-- proc~aper -->
+<g id="proc~~atoi13~~CallsGraph_node17" class="node">
+<title>proc~aper</title>
+<g id="a_proc~~atoi13~~CallsGraph_node17"><a xlink:href=".././proc/aper.html" xlink:title="APER">
+<polygon fill="#d9534f" stroke="#d9534f" points="325,-454 271,-454 271,-430 325,-430 325,-454"/>
+<text text-anchor="middle" x="298" y="-439.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APER</text>
+</a>
+</g>
+</g>
+<!-- proc~apio&#45;&gt;proc~aper -->
+<g id="proc~~atoi13~~CallsGraph_edge16" class="edge">
+<title>proc~apio&#45;&gt;proc~aper</title>
+<path fill="none" stroke="#000000" d="M234.1,-412.15C242.9,-416.33 252.92,-421.08 262.32,-425.54"/>
+<polygon fill="#000000" stroke="#000000" points="260.92,-428.75 271.46,-429.88 263.93,-422.43 260.92,-428.75"/>
+</g>
+<!-- proc~utcut1&#45;&gt;proc~utctai -->
+<g id="proc~~atoi13~~CallsGraph_edge21" class="edge">
+<title>proc~utcut1&#45;&gt;proc~utctai</title>
+<path fill="none" stroke="#000000" d="M226.84,-285.78C239.5,-277.33 256.53,-265.98 270.64,-256.57"/>
+<polygon fill="#000000" stroke="#000000" points="272.61,-259.47 278.99,-251.01 268.73,-253.64 272.61,-259.47"/>
+</g>
+<!-- proc~utcut1&#45;&gt;proc~jd2cal -->
+<g id="proc~~atoi13~~CallsGraph_edge18" class="edge">
+<title>proc~utcut1&#45;&gt;proc~jd2cal</title>
+<path fill="none" stroke="#000000" d="M235.22,-300.69C265.98,-303.8 316.66,-308.91 350.91,-312.36"/>
+<polygon fill="#000000" stroke="#000000" points="350.67,-315.85 360.97,-313.37 351.37,-308.89 350.67,-315.85"/>
+</g>
+<!-- proc~taiut1 -->
+<g id="proc~~atoi13~~CallsGraph_node15" class="node">
+<title>proc~taiut1</title>
+<g id="a_proc~~atoi13~~CallsGraph_node15"><a xlink:href=".././proc/taiut1.html" xlink:title="TAIUT1">
+<polygon fill="#d9534f" stroke="#d9534f" points="325,-369 271,-369 271,-345 325,-345 325,-369"/>
+<text text-anchor="middle" x="298" y="-354.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">TAIUT1</text>
+</a>
+</g>
+</g>
+<!-- proc~utcut1&#45;&gt;proc~taiut1 -->
+<g id="proc~~atoi13~~CallsGraph_edge20" class="edge">
+<title>proc~utcut1&#45;&gt;proc~taiut1</title>
+<path fill="none" stroke="#000000" d="M226.84,-310.22C239.5,-318.67 256.53,-330.02 270.64,-339.43"/>
+<polygon fill="#000000" stroke="#000000" points="268.73,-342.36 278.99,-344.99 272.61,-336.53 268.73,-342.36"/>
+</g>
+<!-- proc~utcut1&#45;&gt;proc~dat -->
+<g id="proc~~atoi13~~CallsGraph_edge19" class="edge">
+<title>proc~utcut1&#45;&gt;proc~dat</title>
+<path fill="none" stroke="#000000" d="M235.22,-294.41C265.98,-290.27 316.66,-283.46 350.91,-278.85"/>
+<polygon fill="#000000" stroke="#000000" points="351.52,-282.3 360.97,-277.5 350.59,-275.36 351.52,-282.3"/>
+</g>
+<!-- proc~era00&#45;&gt;proc~anp -->
+<g id="proc~~atoi13~~CallsGraph_edge22" class="edge">
+<title>proc~era00&#45;&gt;proc~anp</title>
+<path fill="none" stroke="#000000" d="M234.57,-128.11C242.78,-126.25 252,-124.17 260.78,-122.18"/>
+<polygon fill="#000000" stroke="#000000" points="261.82,-125.54 270.81,-119.92 260.28,-118.71 261.82,-125.54"/>
+</g>
+<!-- proc~pom00 -->
+<g id="proc~~atoi13~~CallsGraph_node20" class="node">
+<title>proc~pom00</title>
+<g id="a_proc~~atoi13~~CallsGraph_node20"><a xlink:href=".././proc/pom00.html" xlink:title="POM00">
+<polygon fill="#d9534f" stroke="#d9534f" points="415,-538 361,-538 361,-514 415,-514 415,-538"/>
+<text text-anchor="middle" x="388" y="-523.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">POM00</text>
+</a>
+</g>
+</g>
+<!-- proc~pvtob&#45;&gt;proc~pom00 -->
+<g id="proc~~atoi13~~CallsGraph_edge23" class="edge">
+<title>proc~pvtob&#45;&gt;proc~pom00</title>
+<path fill="none" stroke="#000000" d="M315.75,-412.05C319.02,-414.79 322.27,-417.84 325,-421 347.44,-446.98 366.33,-482.18 377.16,-504.49"/>
+<polygon fill="#000000" stroke="#000000" points="374.11,-506.22 381.56,-513.76 380.43,-503.22 374.11,-506.22"/>
+</g>
+<!-- proc~gd2gc -->
+<g id="proc~~atoi13~~CallsGraph_node21" class="node">
+<title>proc~gd2gc</title>
+<g id="a_proc~~atoi13~~CallsGraph_node21"><a xlink:href=".././proc/gd2gc.html" xlink:title="GD2GC">
+<polygon fill="#d9534f" stroke="#d9534f" points="415,-412 361,-412 361,-388 415,-388 415,-412"/>
+<text text-anchor="middle" x="388" y="-397.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">GD2GC</text>
+</a>
+</g>
+</g>
+<!-- proc~pvtob&#45;&gt;proc~gd2gc -->
+<g id="proc~~atoi13~~CallsGraph_edge24" class="edge">
+<title>proc~pvtob&#45;&gt;proc~gd2gc</title>
+<path fill="none" stroke="#000000" d="M325.4,-400C333.39,-400 342.31,-400 350.82,-400"/>
+<polygon fill="#000000" stroke="#000000" points="350.92,-403.5 360.92,-400 350.92,-396.5 350.92,-403.5"/>
+</g>
+<!-- proc~trxp -->
+<g id="proc~~atoi13~~CallsGraph_node22" class="node">
+<title>proc~trxp</title>
+<g id="a_proc~~atoi13~~CallsGraph_node22"><a xlink:href=".././proc/trxp.html" xlink:title="TRXP">
+<polygon fill="#d9534f" stroke="#d9534f" points="415,-370 361,-370 361,-346 415,-346 415,-370"/>
+<text text-anchor="middle" x="388" y="-355.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">TRXP</text>
+</a>
+</g>
+</g>
+<!-- proc~pvtob&#45;&gt;proc~trxp -->
+<g id="proc~~atoi13~~CallsGraph_edge25" class="edge">
+<title>proc~pvtob&#45;&gt;proc~trxp</title>
+<path fill="none" stroke="#000000" d="M324.45,-387.85C333.21,-383.67 343.17,-378.92 352.52,-374.46"/>
+<polygon fill="#000000" stroke="#000000" points="354.09,-377.59 361.6,-370.12 351.07,-371.27 354.09,-377.59"/>
+</g>
+<!-- proc~dat&#45;&gt;proc~cal2jd -->
+<g id="proc~~atoi13~~CallsGraph_edge26" class="edge">
+<title>proc~dat&#45;&gt;proc~cal2jd</title>
+<path fill="none" stroke="#000000" d="M415.03,-268.22C423.72,-266.28 433.57,-264.09 442.89,-262.02"/>
+<polygon fill="#000000" stroke="#000000" points="443.71,-265.43 452.71,-259.84 442.19,-258.59 443.71,-265.43"/>
+</g>
+<!-- proc~ry -->
+<g id="proc~~atoi13~~CallsGraph_node25" class="node">
+<title>proc~ry</title>
+<g id="a_proc~~atoi13~~CallsGraph_node25"><a xlink:href=".././proc/ry.html" xlink:title="RY">
+<polygon fill="#d9534f" stroke="#d9534f" points="507,-538 453,-538 453,-514 507,-514 507,-538"/>
+<text text-anchor="middle" x="480" y="-523.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RY</text>
+</a>
+</g>
+</g>
+<!-- proc~pom00&#45;&gt;proc~ry -->
+<g id="proc~~atoi13~~CallsGraph_edge30" class="edge">
+<title>proc~pom00&#45;&gt;proc~ry</title>
+<path fill="none" stroke="#000000" d="M415.03,-526C423.63,-526 433.36,-526 442.59,-526"/>
+<polygon fill="#000000" stroke="#000000" points="442.72,-529.5 452.71,-526 442.71,-522.5 442.72,-529.5"/>
+</g>
+<!-- proc~ir -->
+<g id="proc~~atoi13~~CallsGraph_node26" class="node">
+<title>proc~ir</title>
+<g id="a_proc~~atoi13~~CallsGraph_node26"><a xlink:href=".././proc/ir.html" xlink:title="IR">
+<polygon fill="#d9534f" stroke="#d9534f" points="507,-496 453,-496 453,-472 507,-472 507,-496"/>
+<text text-anchor="middle" x="480" y="-481.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">IR</text>
+</a>
+</g>
+</g>
+<!-- proc~pom00&#45;&gt;proc~ir -->
+<g id="proc~~atoi13~~CallsGraph_edge27" class="edge">
+<title>proc~pom00&#45;&gt;proc~ir</title>
+<path fill="none" stroke="#000000" d="M415.03,-513.85C423.99,-509.67 434.17,-504.92 443.73,-500.46"/>
+<polygon fill="#000000" stroke="#000000" points="445.45,-503.52 453.03,-496.12 442.48,-497.18 445.45,-503.52"/>
+</g>
+<!-- proc~rz -->
+<g id="proc~~atoi13~~CallsGraph_node27" class="node">
+<title>proc~rz</title>
+<g id="a_proc~~atoi13~~CallsGraph_node27"><a xlink:href=".././proc/rz.html" xlink:title="RZ">
+<polygon fill="#d9534f" stroke="#d9534f" points="507,-622 453,-622 453,-598 507,-598 507,-622"/>
+<text text-anchor="middle" x="480" y="-607.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RZ</text>
+</a>
+</g>
+</g>
+<!-- proc~pom00&#45;&gt;proc~rz -->
+<g id="proc~~atoi13~~CallsGraph_edge28" class="edge">
+<title>proc~pom00&#45;&gt;proc~rz</title>
+<path fill="none" stroke="#000000" d="M399.93,-538.14C411.94,-551.24 432.05,-572.43 451,-589 451.98,-589.85 452.99,-590.71 454.02,-591.57"/>
+<polygon fill="#000000" stroke="#000000" points="452.08,-594.5 462.09,-597.96 456.43,-589.01 452.08,-594.5"/>
+</g>
+<!-- proc~rx -->
+<g id="proc~~atoi13~~CallsGraph_node29" class="node">
+<title>proc~rx</title>
+<g id="a_proc~~atoi13~~CallsGraph_node29"><a xlink:href=".././proc/rx.html" xlink:title="RX">
+<polygon fill="#d9534f" stroke="#d9534f" points="507,-580 453,-580 453,-556 507,-556 507,-580"/>
+<text text-anchor="middle" x="480" y="-565.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RX</text>
+</a>
+</g>
+</g>
+<!-- proc~pom00&#45;&gt;proc~rx -->
+<g id="proc~~atoi13~~CallsGraph_edge29" class="edge">
+<title>proc~pom00&#45;&gt;proc~rx</title>
+<path fill="none" stroke="#000000" d="M415.03,-538.15C423.99,-542.33 434.17,-547.08 443.73,-551.54"/>
+<polygon fill="#000000" stroke="#000000" points="442.48,-554.82 453.03,-555.88 445.45,-548.48 442.48,-554.82"/>
+</g>
+<!-- proc~eform -->
+<g id="proc~~atoi13~~CallsGraph_node23" class="node">
+<title>proc~eform</title>
+<g id="a_proc~~atoi13~~CallsGraph_node23"><a xlink:href=".././proc/eform.html" xlink:title="EFORM">
+<polygon fill="#d9534f" stroke="#d9534f" points="507,-454 453,-454 453,-430 507,-430 507,-454"/>
+<text text-anchor="middle" x="480" y="-439.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">EFORM</text>
+</a>
+</g>
+</g>
+<!-- proc~gd2gc&#45;&gt;proc~eform -->
+<g id="proc~~atoi13~~CallsGraph_edge31" class="edge">
+<title>proc~gd2gc&#45;&gt;proc~eform</title>
+<path fill="none" stroke="#000000" d="M415.03,-412.15C423.99,-416.33 434.17,-421.08 443.73,-425.54"/>
+<polygon fill="#000000" stroke="#000000" points="442.48,-428.82 453.03,-429.88 445.45,-422.48 442.48,-428.82"/>
+</g>
+<!-- proc~gd2gce -->
+<g id="proc~~atoi13~~CallsGraph_node30" class="node">
+<title>proc~gd2gce</title>
+<g id="a_proc~~atoi13~~CallsGraph_node30"><a xlink:href=".././proc/gd2gce.html" xlink:title="GD2GCE">
+<polygon fill="#d9534f" stroke="#d9534f" points="509,-412 451,-412 451,-388 509,-388 509,-412"/>
+<text text-anchor="middle" x="480" y="-397.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">GD2GCE</text>
+</a>
+</g>
+</g>
+<!-- proc~gd2gc&#45;&gt;proc~gd2gce -->
+<g id="proc~~atoi13~~CallsGraph_edge32" class="edge">
+<title>proc~gd2gc&#45;&gt;proc~gd2gce</title>
+<path fill="none" stroke="#000000" d="M415.03,-400C423,-400 431.95,-400 440.56,-400"/>
+<polygon fill="#000000" stroke="#000000" points="440.82,-403.5 450.82,-400 440.82,-396.5 440.82,-403.5"/>
+</g>
+<!-- proc~rxp -->
+<g id="proc~~atoi13~~CallsGraph_node24" class="node">
+<title>proc~rxp</title>
+<g id="a_proc~~atoi13~~CallsGraph_node24"><a xlink:href=".././proc/rxp.html" xlink:title="RXP">
+<polygon fill="#d9534f" stroke="#d9534f" points="507,-370 453,-370 453,-346 507,-346 507,-370"/>
+<text text-anchor="middle" x="480" y="-355.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RXP</text>
+</a>
+</g>
+</g>
+<!-- proc~trxp&#45;&gt;proc~rxp -->
+<g id="proc~~atoi13~~CallsGraph_edge33" class="edge">
+<title>proc~trxp&#45;&gt;proc~rxp</title>
+<path fill="none" stroke="#000000" d="M415.03,-358C423.63,-358 433.36,-358 442.59,-358"/>
+<polygon fill="#000000" stroke="#000000" points="442.72,-361.5 452.71,-358 442.71,-354.5 442.72,-361.5"/>
+</g>
+<!-- proc~tr -->
+<g id="proc~~atoi13~~CallsGraph_node28" class="node">
+<title>proc~tr</title>
+<g id="a_proc~~atoi13~~CallsGraph_node28"><a xlink:href=".././proc/tr.html" xlink:title="TR">
+<polygon fill="#d9534f" stroke="#d9534f" points="507,-328 453,-328 453,-304 507,-304 507,-328"/>
+<text text-anchor="middle" x="480" y="-313.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">TR</text>
+</a>
+</g>
+</g>
+<!-- proc~trxp&#45;&gt;proc~tr -->
+<g id="proc~~atoi13~~CallsGraph_edge34" class="edge">
+<title>proc~trxp&#45;&gt;proc~tr</title>
+<path fill="none" stroke="#000000" d="M415.03,-345.85C423.99,-341.67 434.17,-336.92 443.73,-332.46"/>
+<polygon fill="#000000" stroke="#000000" points="445.45,-335.52 453.03,-328.12 442.48,-329.18 445.45,-335.52"/>
+</g>
+</g>
+</svg>
+</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="597pt" height="32pt"
+ viewBox="0.00 0.00 596.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 592.5,-28 592.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node4" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="388.5,-24 243.5,-24 243.5,0 388.5,0 388.5,-24"/>
+<text text-anchor="middle" x="316" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="465,-24 407,-24 407,0 465,0 465,-24"/>
+<text text-anchor="middle" x="436" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="588.5,-24 483.5,-24 483.5,0 588.5,0 588.5,-24"/>
+<text text-anchor="middle" x="536" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a procedure to one which it calls. Dashed 
+    arrows point from an interface to procedures which implement that interface.
+    This could include the module procedures in a generic interface or the
+    implementation in a submodule of an interface in a parent module.
+    </p>
+    </div></div></div></div>
+      </div>
+    </div>
+     
+     
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/atoi13.html#src">ATOI13</a>
+  </div>
+</div>
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">ATOI13</span> <span class="p">(</span> <span class="k">type</span><span class="p">,</span> <span class="n">ob1</span><span class="p">,</span> <span class="n">ob2</span><span class="p">,</span> <span class="n">utc1</span><span class="p">,</span> <span class="n">utc2</span><span class="p">,</span> <span class="n">dut1</span><span class="p">,</span> <span class="p">&amp;</span>
+                        <span class="n">elong</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">hm</span><span class="p">,</span> <span class="n">xp</span><span class="p">,</span> <span class="n">yp</span><span class="p">,</span> <span class="n">phpa</span><span class="p">,</span> <span class="n">tc</span><span class="p">,</span> <span class="n">rh</span><span class="p">,</span> <span class="n">wl</span><span class="p">,</span> <span class="p">&amp;</span>
+                        <span class="n">ri</span><span class="p">,</span> <span class="n">di</span><span class="p">,</span> <span class="n">j</span> <span class="p">)</span>
+
+    <span class="k">implicit none</span>
+
+<span class="k">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="k">type</span> <span class="c">!! type of coordinates - &#39;R&#39;, &#39;H&#39; or &#39;A&#39; (Notes 1,2)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">ob1</span> <span class="c">!! observed Az, HA or RA (radians; Az is N=0,E=90)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">ob2</span> <span class="c">!! observed ZD or Dec (radians)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">utc1</span> <span class="c">!! UTC as a 2-part...</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">utc2</span> <span class="c">!! ...quasi Julian Date (Notes 3,4)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">dut1</span> <span class="c">!! UT1-UTC (seconds, Note 5)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">elong</span> <span class="c">!! longitude (radians, east +ve, Note 6)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">phi</span> <span class="c">!! geodetic latitude (radians, Note 6)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">hm</span> <span class="c">!! height above the ellipsoid (meters, Notes 6,8)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">xp</span> <span class="c">!! polar motion coordinates (radians, Note 7)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">yp</span> <span class="c">!! polar motion coordinates (radians, Note 7)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">phpa</span> <span class="c">!! pressure at the observer (hPa = mB, Note 8)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">tc</span> <span class="c">!! ambient temperature at the observer (deg C)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">rh</span> <span class="c">!! relative humidity at the observer (range 0-1)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">wl</span> <span class="c">!! wavelength (micrometers, Note 9)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">ri</span> <span class="c">!! CIRS right ascension (CIO-based, radians)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">di</span> <span class="c">!! CIRS declination (radians)</span>
+    <span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">j</span> <span class="c">!! status: +1 = dubious year (Note 2)</span>
+                             <span class="c">!!  0 = OK</span>
+                             <span class="c">!! -1 = unacceptable date</span>
+
+    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">js</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">astrom</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+
+    <span class="c">!  Star-independent astrometry parameters for CIRS-&gt;observed.</span>
+    <span class="k">call </span><span class="n">APIO13</span> <span class="p">(</span> <span class="n">utc1</span><span class="p">,</span> <span class="n">utc2</span><span class="p">,</span> <span class="n">dut1</span><span class="p">,</span> <span class="n">elong</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">hm</span><span class="p">,</span> <span class="n">xp</span><span class="p">,</span> <span class="n">yp</span><span class="p">,</span> <span class="p">&amp;</span>
+                  <span class="n">phpa</span><span class="p">,</span> <span class="n">tc</span><span class="p">,</span> <span class="n">rh</span><span class="p">,</span> <span class="n">wl</span><span class="p">,</span> <span class="n">astrom</span><span class="p">,</span> <span class="n">js</span> <span class="p">)</span>
+
+    <span class="c">!  Abort if bad UTC.</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="n">js</span><span class="o">&gt;=</span><span class="mi">0</span> <span class="p">)</span> <span class="k">then</span>
+
+      <span class="c">!  Transform observed to CIRS.</span>
+      <span class="k">call </span><span class="n">ATOIQ</span> <span class="p">(</span> <span class="k">type</span><span class="p">,</span> <span class="n">ob1</span><span class="p">,</span> <span class="n">ob2</span><span class="p">,</span> <span class="n">astrom</span><span class="p">,</span> <span class="n">ri</span><span class="p">,</span> <span class="n">di</span> <span class="p">)</span>
+
+    <span class="k">end if</span>
+
+    <span class="c">!  Return OK/warning status.</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="n">js</span>
+
+    <span class="k">end subroutine </span><span class="n">ATOI13</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

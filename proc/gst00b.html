@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
+    
+    <meta name="author" content="Jacob Williams" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>GST00B &ndash; astro-fortran</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">astro-fortran </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+        
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>GST00B
+      <small>Function</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 0.1% of total for procedures.">7 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
+    
+     <li><a href='../module/astro_module.html'>astro_module</a></li>
+    
+  
+     <li class="active">GST00B</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/gst00b.html#src">GST00B</a>
+  </div>
+</div>
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>
+public function GST00B(uta, utb) result(gast)
+    
+    
+   
+</h2>
+    
+  
+
+
+    
+    <p>Greenwich Apparent Sidereal Time (consistent with IAU 2000
+  resolutions but using the truncated nutation model IAU 2000B).</p>
+<p>Status:  support routine.</p>
+<h3>Notes</h3>
+<ol>
+<li>
+<p>The UT1 date UTA+UTB is a Julian Date, apportioned in any
+     convenient way between the argument pair.  For example,
+     JD=2450123.7 could be expressed in any of these ways, among
+     others:</p>
+<div class="codehilite"><pre><span></span><code>     UTA            UTB
+
+ 2450123.7D0        0D0        (JD method)
+  2451545D0      -1421.3D0     (J2000 method)
+ 2400000.5D0     50123.2D0     (MJD method)
+ 2450123.5D0       0.2D0       (date &amp; time method)
+</code></pre></div>
+
+<p>The JD method is the most natural and convenient to use in cases
+ where the loss of several decimal digits of resolution is
+ acceptable.  The J2000 and MJD methods are good compromises
+ between resolution and convenience.  For UT, the date &amp; time
+ method is best matched to the algorithm that is used by the Earth
+ Rotation Angle routine, called internally:  maximum accuracy (or,
+ at least, minimum noise) is delivered when the UTA argument is for
+ 0hrs UT1 on the day in question and the UTB argument lies in the
+ range 0 to 1, or vice versa.</p>
+</li>
+<li>
+<p>The result is compatible with the IAU 2000 resolutions, except
+     that accuracy has been compromised for the sake of speed and
+     convenience in two respects:</p>
+<ul>
+<li>
+<p>UT is used instead of TDB (or TT) to compute the precession
+   component of GMST and the equation of the equinoxes.  This
+   results in errors of order 0.1 mas at present.</p>
+</li>
+<li>
+<p>The IAU 2000B abridged nutation model (McCarthy &amp; Luzum, 2001)
+   is used, introducing errors of up to 1 mas.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>This GAST is compatible with the IAU 2000 resolutions and must be
+     used only in conjunction with other IAU 2000 compatible components
+     such as precession-nutation.</p>
+</li>
+<li>
+<p>The result is returned in the range 0 to 2pi.</p>
+</li>
+<li>
+<p>The algorithm is from Capitaine et al. (2003) and IERS Conventions
+     2003.</p>
+</li>
+</ol>
+<h3>References</h3>
+<ul>
+<li>
+<p>Capitaine, N., Wallace, P.T. and McCarthy, D.D., "Expressions to
+    implement the IAU 2000 definition of UT1", Astronomy &amp;
+    Astrophysics, 406, 1135-1149 (2003)</p>
+</li>
+<li>
+<p>McCarthy, D.D. &amp; Luzum, B.J., "An abridged model of the
+    precession-nutation of the celestial pole", Celestial Mechanics &amp;
+    Dynamical Astronomy, 85, 37-49 (2003)</p>
+</li>
+<li>
+<p>McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+    IERS Technical Note No. 32, BKG (2004)</p>
+</li>
+</ul>
+<h3>History</h3>
+<ul>
+<li>IAU SOFA revision: 2007 December 8</li>
+</ul>
+    
+
+    <h3>Arguments</h3>
+    
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-uta~4"></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>uta</strong></td><td><p>UT1 as a 2-part Julian Date (Notes 1,2)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-utb~4"></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>utb</strong></td><td><p>UT1 as a 2-part Julian Date (Notes 1,2)</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    
+    
+    
+    
+    
+    
+    
+   <h3>Return Value <small><span class="anchor" id="variable-gast~2"></span>real(kind=wp)
+  </small></h3>
+    <p>Greenwich apparent sidereal time (radians)</p>
+    
+    
+    <br>
+    
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Calls</h3>
+      </div>
+      <div class="panel-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~gst00b~~CallsGraph Pages: 1 -->
+<svg id="procgst00bCallsGraph" width="428pt" height="423pt"
+ viewBox="0.00 0.00 428.00 423.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~gst00b~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 419)">
+<title>proc~~gst00b~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-419 424,-419 424,4 -4,4"/>
+<!-- proc~gst00b -->
+<g id="proc~~gst00b~~CallsGraph_node1" class="node">
+<title>proc~gst00b</title>
+<polygon fill="none" stroke="black" points="55,-102 0,-102 0,-78 55,-78 55,-102"/>
+<text text-anchor="middle" x="27.5" y="-87.6" font-family="Helvetica,sans-Serif" font-size="10.50">GST00B</text>
+</g>
+<!-- proc~anp -->
+<g id="proc~~gst00b~~CallsGraph_node2" class="node">
+<title>proc~anp</title>
+<g id="a_proc~~gst00b~~CallsGraph_node2"><a xlink:href=".././proc/anp.html" xlink:title="ANP">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="329,-64 275,-64 275,-40 329,-40 329,-64"/>
+<text text-anchor="middle" x="302" y="-49.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ANP</text>
+</a>
+</g>
+</g>
+<!-- proc~gst00b&#45;&gt;proc~anp -->
+<g id="proc~~gst00b~~CallsGraph_edge1" class="edge">
+<title>proc~gst00b&#45;&gt;proc~anp</title>
+<path fill="none" stroke="#000000" d="M55.19,-87.59C95.26,-83.81 173.27,-75.77 239,-65 247.41,-63.62 256.41,-61.89 264.87,-60.14"/>
+<polygon fill="#000000" stroke="#000000" points="265.8,-63.52 274.85,-58.02 264.34,-56.67 265.8,-63.52"/>
+</g>
+<!-- proc~ee00b -->
+<g id="proc~~gst00b~~CallsGraph_node3" class="node">
+<title>proc~ee00b</title>
+<g id="a_proc~~gst00b~~CallsGraph_node3"><a xlink:href=".././proc/ee00b.html" xlink:title="EE00B">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146.5,-184 92.5,-184 92.5,-160 146.5,-160 146.5,-184"/>
+<text text-anchor="middle" x="119.5" y="-169.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">EE00B</text>
+</a>
+</g>
+</g>
+<!-- proc~gst00b&#45;&gt;proc~ee00b -->
+<g id="proc~~gst00b~~CallsGraph_edge2" class="edge">
+<title>proc~gst00b&#45;&gt;proc~ee00b</title>
+<path fill="none" stroke="#000000" d="M41.78,-102.1C56.4,-115.42 80.12,-137.03 97.32,-152.7"/>
+<polygon fill="#000000" stroke="#000000" points="95.42,-155.7 105.17,-159.85 100.13,-150.53 95.42,-155.7"/>
+</g>
+<!-- proc~gmst00 -->
+<g id="proc~~gst00b~~CallsGraph_node4" class="node">
+<title>proc~gmst00</title>
+<g id="a_proc~~gst00b~~CallsGraph_node4"><a xlink:href=".././proc/gmst00.html" xlink:title="GMST00">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="148,-62 91,-62 91,-38 148,-38 148,-62"/>
+<text text-anchor="middle" x="119.5" y="-47.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">GMST00</text>
+</a>
+</g>
+</g>
+<!-- proc~gst00b&#45;&gt;proc~gmst00 -->
+<g id="proc~~gst00b~~CallsGraph_edge3" class="edge">
+<title>proc~gst00b&#45;&gt;proc~gmst00</title>
+<path fill="none" stroke="#000000" d="M55.02,-78.22C63.48,-74.45 73.01,-70.22 82.05,-66.2"/>
+<polygon fill="#000000" stroke="#000000" points="83.52,-69.38 91.24,-62.12 80.68,-62.98 83.52,-69.38"/>
+</g>
+<!-- proc~ee00 -->
+<g id="proc~~gst00b~~CallsGraph_node5" class="node">
+<title>proc~ee00</title>
+<g id="a_proc~~gst00b~~CallsGraph_node5"><a xlink:href=".././proc/ee00.html" xlink:title="EE00">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="238.5,-268 184.5,-268 184.5,-244 238.5,-244 238.5,-268"/>
+<text text-anchor="middle" x="211.5" y="-253.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">EE00</text>
+</a>
+</g>
+</g>
+<!-- proc~ee00b&#45;&gt;proc~ee00 -->
+<g id="proc~~gst00b~~CallsGraph_edge7" class="edge">
+<title>proc~ee00b&#45;&gt;proc~ee00</title>
+<path fill="none" stroke="#000000" d="M131.83,-184.01C144.25,-197 164.95,-218.1 184,-235 184.83,-235.74 185.69,-236.49 186.56,-237.23"/>
+<polygon fill="#000000" stroke="#000000" points="184.63,-240.18 194.57,-243.85 189.09,-234.78 184.63,-240.18"/>
+</g>
+<!-- proc~obl80 -->
+<g id="proc~~gst00b~~CallsGraph_node6" class="node">
+<title>proc~obl80</title>
+<g id="a_proc~~gst00b~~CallsGraph_node6"><a xlink:href=".././proc/obl80.html" xlink:title="OBL80">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="238.5,-226 184.5,-226 184.5,-202 238.5,-202 238.5,-226"/>
+<text text-anchor="middle" x="211.5" y="-211.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OBL80</text>
+</a>
+</g>
+</g>
+<!-- proc~ee00b&#45;&gt;proc~obl80 -->
+<g id="proc~~gst00b~~CallsGraph_edge5" class="edge">
+<title>proc~ee00b&#45;&gt;proc~obl80</title>
+<path fill="none" stroke="#000000" d="M146.53,-184.15C155.49,-188.33 165.67,-193.08 175.23,-197.54"/>
+<polygon fill="#000000" stroke="#000000" points="173.98,-200.82 184.53,-201.88 176.95,-194.48 173.98,-200.82"/>
+</g>
+<!-- proc~nut00b -->
+<g id="proc~~gst00b~~CallsGraph_node7" class="node">
+<title>proc~nut00b</title>
+<g id="a_proc~~gst00b~~CallsGraph_node7"><a xlink:href=".././proc/nut00b.html" xlink:title="NUT00B">
+<polygon fill="#d9534f" stroke="#d9534f" points="239,-184 184,-184 184,-160 239,-160 239,-184"/>
+<text text-anchor="middle" x="211.5" y="-169.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">NUT00B</text>
+</a>
+</g>
+</g>
+<!-- proc~ee00b&#45;&gt;proc~nut00b -->
+<g id="proc~~gst00b~~CallsGraph_edge6" class="edge">
+<title>proc~ee00b&#45;&gt;proc~nut00b</title>
+<path fill="none" stroke="#000000" d="M146.53,-172C155.06,-172 164.69,-172 173.85,-172"/>
+<polygon fill="#000000" stroke="#000000" points="173.9,-175.5 183.9,-172 173.9,-168.5 173.9,-175.5"/>
+</g>
+<!-- proc~pr00 -->
+<g id="proc~~gst00b~~CallsGraph_node8" class="node">
+<title>proc~pr00</title>
+<g id="a_proc~~gst00b~~CallsGraph_node8"><a xlink:href=".././proc/pr00.html" xlink:title="PR00">
+<polygon fill="#d9534f" stroke="#d9534f" points="238.5,-142 184.5,-142 184.5,-118 238.5,-118 238.5,-142"/>
+<text text-anchor="middle" x="211.5" y="-127.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PR00</text>
+</a>
+</g>
+</g>
+<!-- proc~ee00b&#45;&gt;proc~pr00 -->
+<g id="proc~~gst00b~~CallsGraph_edge4" class="edge">
+<title>proc~ee00b&#45;&gt;proc~pr00</title>
+<path fill="none" stroke="#000000" d="M146.53,-159.85C155.49,-155.67 165.67,-150.92 175.23,-146.46"/>
+<polygon fill="#000000" stroke="#000000" points="176.95,-149.52 184.53,-142.12 173.98,-143.18 176.95,-149.52"/>
+</g>
+<!-- proc~gmst00&#45;&gt;proc~anp -->
+<g id="proc~~gst00b~~CallsGraph_edge8" class="edge">
+<title>proc~gmst00&#45;&gt;proc~anp</title>
+<path fill="none" stroke="#000000" d="M148.31,-50.31C179.58,-50.65 230.49,-51.22 264.83,-51.6"/>
+<polygon fill="#000000" stroke="#000000" points="264.88,-55.1 274.92,-51.71 264.96,-48.1 264.88,-55.1"/>
+</g>
+<!-- proc~era00 -->
+<g id="proc~~gst00b~~CallsGraph_node9" class="node">
+<title>proc~era00</title>
+<g id="a_proc~~gst00b~~CallsGraph_node9"><a xlink:href=".././proc/era00.html" xlink:title="ERA00">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="238.5,-24 184.5,-24 184.5,0 238.5,0 238.5,-24"/>
+<text text-anchor="middle" x="211.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ERA00</text>
+</a>
+</g>
+</g>
+<!-- proc~gmst00&#45;&gt;proc~era00 -->
+<g id="proc~~gst00b~~CallsGraph_edge9" class="edge">
+<title>proc~gmst00&#45;&gt;proc~era00</title>
+<path fill="none" stroke="#000000" d="M148.48,-38.18C156.9,-34.63 166.24,-30.69 175.07,-26.96"/>
+<polygon fill="#000000" stroke="#000000" points="176.52,-30.14 184.38,-23.03 173.8,-23.7 176.52,-30.14"/>
+</g>
+<!-- proc~eect00 -->
+<g id="proc~~gst00b~~CallsGraph_node10" class="node">
+<title>proc~eect00</title>
+<g id="a_proc~~gst00b~~CallsGraph_node10"><a xlink:href=".././proc/eect00.html" xlink:title="EECT00">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="329,-268 275,-268 275,-244 329,-244 329,-268"/>
+<text text-anchor="middle" x="302" y="-253.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">EECT00</text>
+</a>
+</g>
+</g>
+<!-- proc~ee00&#45;&gt;proc~eect00 -->
+<g id="proc~~gst00b~~CallsGraph_edge10" class="edge">
+<title>proc~ee00&#45;&gt;proc~eect00</title>
+<path fill="none" stroke="#000000" d="M238.57,-256C246.78,-256 256,-256 264.78,-256"/>
+<polygon fill="#000000" stroke="#000000" points="264.81,-259.5 274.81,-256 264.81,-252.5 264.81,-259.5"/>
+</g>
+<!-- proc~era00&#45;&gt;proc~anp -->
+<g id="proc~~gst00b~~CallsGraph_edge11" class="edge">
+<title>proc~era00&#45;&gt;proc~anp</title>
+<path fill="none" stroke="#000000" d="M238.57,-23.78C247.05,-27.62 256.6,-31.93 265.64,-36.02"/>
+<polygon fill="#000000" stroke="#000000" points="264.25,-39.23 274.81,-40.16 267.14,-32.85 264.25,-39.23"/>
+</g>
+<!-- proc~faom03 -->
+<g id="proc~~gst00b~~CallsGraph_node11" class="node">
+<title>proc~faom03</title>
+<g id="a_proc~~gst00b~~CallsGraph_node11"><a xlink:href=".././proc/faom03.html" xlink:title="FAOM03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="420,-415 365,-415 365,-391 420,-391 420,-415"/>
+<text text-anchor="middle" x="392.5" y="-400.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAOM03</text>
+</a>
+</g>
+</g>
+<!-- proc~eect00&#45;&gt;proc~faom03 -->
+<g id="proc~~gst00b~~CallsGraph_edge12" class="edge">
+<title>proc~eect00&#45;&gt;proc~faom03</title>
+<path fill="none" stroke="#000000" d="M306.92,-268.11C315.01,-291.81 335.3,-345.19 365,-382 365.48,-382.6 365.99,-383.19 366.51,-383.78"/>
+<polygon fill="#000000" stroke="#000000" points="364.31,-386.52 373.95,-390.92 369.15,-381.47 364.31,-386.52"/>
+</g>
+<!-- proc~falp03 -->
+<g id="proc~~gst00b~~CallsGraph_node12" class="node">
+<title>proc~falp03</title>
+<g id="a_proc~~gst00b~~CallsGraph_node12"><a xlink:href=".././proc/falp03.html" xlink:title="FALP03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="419.5,-373 365.5,-373 365.5,-349 419.5,-349 419.5,-373"/>
+<text text-anchor="middle" x="392.5" y="-358.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FALP03</text>
+</a>
+</g>
+</g>
+<!-- proc~eect00&#45;&gt;proc~falp03 -->
+<g id="proc~~gst00b~~CallsGraph_edge13" class="edge">
+<title>proc~eect00&#45;&gt;proc~falp03</title>
+<path fill="none" stroke="#000000" d="M310.52,-268.18C321.36,-285.25 342.58,-316.8 365,-340 365.75,-340.78 366.54,-341.56 367.34,-342.33"/>
+<polygon fill="#000000" stroke="#000000" points="365.11,-345.03 374.94,-348.99 369.73,-339.76 365.11,-345.03"/>
+</g>
+<!-- proc~fad03 -->
+<g id="proc~~gst00b~~CallsGraph_node13" class="node">
+<title>proc~fad03</title>
+<g id="a_proc~~gst00b~~CallsGraph_node13"><a xlink:href=".././proc/fad03.html" xlink:title="FAD03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="419.5,-331 365.5,-331 365.5,-307 419.5,-307 419.5,-331"/>
+<text text-anchor="middle" x="392.5" y="-316.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAD03</text>
+</a>
+</g>
+</g>
+<!-- proc~eect00&#45;&gt;proc~fad03 -->
+<g id="proc~~gst00b~~CallsGraph_edge14" class="edge">
+<title>proc~eect00&#45;&gt;proc~fad03</title>
+<path fill="none" stroke="#000000" d="M320.06,-268.15C333.16,-277.47 351.45,-290.49 366.25,-301.02"/>
+<polygon fill="#000000" stroke="#000000" points="364.31,-303.94 374.49,-306.89 368.37,-298.24 364.31,-303.94"/>
+</g>
+<!-- proc~faf03 -->
+<g id="proc~~gst00b~~CallsGraph_node14" class="node">
+<title>proc~faf03</title>
+<g id="a_proc~~gst00b~~CallsGraph_node14"><a xlink:href=".././proc/faf03.html" xlink:title="FAF03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="419.5,-289 365.5,-289 365.5,-265 419.5,-265 419.5,-289"/>
+<text text-anchor="middle" x="392.5" y="-274.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAF03</text>
+</a>
+</g>
+</g>
+<!-- proc~eect00&#45;&gt;proc~faf03 -->
+<g id="proc~~gst00b~~CallsGraph_edge15" class="edge">
+<title>proc~eect00&#45;&gt;proc~faf03</title>
+<path fill="none" stroke="#000000" d="M329.07,-262.19C337.37,-264.16 346.7,-266.37 355.57,-268.47"/>
+<polygon fill="#000000" stroke="#000000" points="354.77,-271.88 365.31,-270.78 356.38,-265.07 354.77,-271.88"/>
+</g>
+<!-- proc~fae03 -->
+<g id="proc~~gst00b~~CallsGraph_node15" class="node">
+<title>proc~fae03</title>
+<g id="a_proc~~gst00b~~CallsGraph_node15"><a xlink:href=".././proc/fae03.html" xlink:title="FAE03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="419.5,-247 365.5,-247 365.5,-223 419.5,-223 419.5,-247"/>
+<text text-anchor="middle" x="392.5" y="-232.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAE03</text>
+</a>
+</g>
+</g>
+<!-- proc~eect00&#45;&gt;proc~fae03 -->
+<g id="proc~~gst00b~~CallsGraph_edge16" class="edge">
+<title>proc~eect00&#45;&gt;proc~fae03</title>
+<path fill="none" stroke="#000000" d="M329.07,-249.81C337.37,-247.84 346.7,-245.63 355.57,-243.53"/>
+<polygon fill="#000000" stroke="#000000" points="356.38,-246.93 365.31,-241.22 354.77,-240.12 356.38,-246.93"/>
+</g>
+<!-- proc~fave03 -->
+<g id="proc~~gst00b~~CallsGraph_node16" class="node">
+<title>proc~fave03</title>
+<g id="a_proc~~gst00b~~CallsGraph_node16"><a xlink:href=".././proc/fave03.html" xlink:title="FAVE03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="419.5,-205 365.5,-205 365.5,-181 419.5,-181 419.5,-205"/>
+<text text-anchor="middle" x="392.5" y="-190.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAVE03</text>
+</a>
+</g>
+</g>
+<!-- proc~eect00&#45;&gt;proc~fave03 -->
+<g id="proc~~gst00b~~CallsGraph_edge17" class="edge">
+<title>proc~eect00&#45;&gt;proc~fave03</title>
+<path fill="none" stroke="#000000" d="M320.06,-243.85C333.16,-234.53 351.45,-221.51 366.25,-210.98"/>
+<polygon fill="#000000" stroke="#000000" points="368.37,-213.76 374.49,-205.11 364.31,-208.06 368.37,-213.76"/>
+</g>
+<!-- proc~fapa03 -->
+<g id="proc~~gst00b~~CallsGraph_node17" class="node">
+<title>proc~fapa03</title>
+<g id="a_proc~~gst00b~~CallsGraph_node17"><a xlink:href=".././proc/fapa03.html" xlink:title="FAPA03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="419.5,-163 365.5,-163 365.5,-139 419.5,-139 419.5,-163"/>
+<text text-anchor="middle" x="392.5" y="-148.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAPA03</text>
+</a>
+</g>
+</g>
+<!-- proc~eect00&#45;&gt;proc~fapa03 -->
+<g id="proc~~gst00b~~CallsGraph_edge18" class="edge">
+<title>proc~eect00&#45;&gt;proc~fapa03</title>
+<path fill="none" stroke="#000000" d="M310.52,-243.82C321.36,-226.75 342.58,-195.2 365,-172 365.75,-171.22 366.54,-170.44 367.34,-169.67"/>
+<polygon fill="#000000" stroke="#000000" points="369.73,-172.24 374.94,-163.01 365.11,-166.97 369.73,-172.24"/>
+</g>
+<!-- proc~fal03 -->
+<g id="proc~~gst00b~~CallsGraph_node18" class="node">
+<title>proc~fal03</title>
+<g id="a_proc~~gst00b~~CallsGraph_node18"><a xlink:href=".././proc/fal03.html" xlink:title="FAL03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="419.5,-121 365.5,-121 365.5,-97 419.5,-97 419.5,-121"/>
+<text text-anchor="middle" x="392.5" y="-106.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAL03</text>
+</a>
+</g>
+</g>
+<!-- proc~eect00&#45;&gt;proc~fal03 -->
+<g id="proc~~gst00b~~CallsGraph_edge19" class="edge">
+<title>proc~eect00&#45;&gt;proc~fal03</title>
+<path fill="none" stroke="#000000" d="M306.92,-243.89C315.01,-220.19 335.3,-166.81 365,-130 365.48,-129.4 365.99,-128.81 366.51,-128.22"/>
+<polygon fill="#000000" stroke="#000000" points="369.15,-130.53 373.95,-121.08 364.31,-125.48 369.15,-130.53"/>
+</g>
+</g>
+</svg>
+</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="597pt" height="32pt"
+ viewBox="0.00 0.00 596.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 592.5,-28 592.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node4" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="388.5,-24 243.5,-24 243.5,0 388.5,0 388.5,-24"/>
+<text text-anchor="middle" x="316" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="465,-24 407,-24 407,0 465,0 465,-24"/>
+<text text-anchor="middle" x="436" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="588.5,-24 483.5,-24 483.5,0 588.5,0 588.5,-24"/>
+<text text-anchor="middle" x="536" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a procedure to one which it calls. Dashed 
+    arrows point from an interface to procedures which implement that interface.
+    This could include the module procedures in a generic interface or the
+    implementation in a submodule of an interface in a parent module.
+    </p>
+    </div></div></div></div>
+      </div>
+    </div>
+     
+     
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/gst00b.html#src">GST00B</a>
+  </div>
+</div>
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span></span>    <span class="k">function </span><span class="n">GST00B</span> <span class="p">(</span> <span class="n">uta</span><span class="p">,</span> <span class="n">utb</span> <span class="p">)</span> <span class="k">result</span><span class="p">(</span><span class="n">gast</span><span class="p">)</span>
+
+    <span class="k">implicit none</span>
+
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">uta</span> <span class="c">!! UT1 as a 2-part Julian Date (Notes 1,2)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">utb</span> <span class="c">!! UT1 as a 2-part Julian Date (Notes 1,2)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">gast</span> <span class="c">!! Greenwich apparent sidereal time (radians)</span>
+
+    <span class="n">gast</span> <span class="o">=</span> <span class="n">ANP</span> <span class="p">(</span> <span class="n">GMST00</span> <span class="p">(</span> <span class="n">uta</span><span class="p">,</span><span class="n">utb</span><span class="p">,</span> <span class="n">uta</span><span class="p">,</span><span class="n">utb</span> <span class="p">)</span> <span class="o">+</span> <span class="n">EE00B</span> <span class="p">(</span> <span class="n">uta</span><span class="p">,</span><span class="n">utb</span> <span class="p">)</span> <span class="p">)</span>
+
+    <span class="k">end function </span><span class="n">GST00B</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

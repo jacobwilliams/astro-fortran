@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
+    
+    <meta name="author" content="Jacob Williams" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>JDCALF &ndash; astro-fortran</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">astro-fortran </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+        
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>JDCALF
+      <small>Subroutine</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 0.7% of total for procedures.">37 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
+    
+     <li><a href='../module/astro_module.html'>astro_module</a></li>
+    
+  
+     <li class="active">JDCALF</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/jdcalf.html#src">JDCALF</a>
+  </div>
+</div>
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>
+public subroutine JDCALF(ndp, dj1, dj2, iymdf, j)
+    
+    
+   
+</h2>
+    
+  
+
+
+    
+    <p>Julian Date to Gregorian Calendar, expressed in a form convenient
+  for formatting messages:  rounded to a specified precision, and with
+  the fields stored in a single array.</p>
+<p>Status:  support routine.</p>
+<h3>Notes</h3>
+<ol>
+<li>
+<p>The Julian Date is apportioned in any convenient way between
+     the arguments DJ1 and DJ2.  For example, JD=2450123.7 could
+     be expressed in any of these ways, among others:</p>
+<div class="codehilite"><pre><span></span><code>     DJ1            DJ2
+
+ 2450123.7D0        0D0        (JD method)
+  2451545D0      -1421.3D0     (J2000 method)
+ 2400000.5D0     50123.2D0     (MJD method)
+ 2450123.5D0       0.2D0       (date &amp; time method)
+</code></pre></div>
+
+</li>
+<li>
+<p>In early eras the conversion is from the "Proleptic Gregorian
+     Calendar";  no account is taken of the date(s) of adoption of
+     the Gregorian Calendar, nor is the AD/BC numbering convention
+     observed.</p>
+</li>
+<li>
+<p>Refer to the routine JD2CAL.</p>
+</li>
+<li>
+<p>NDP should be 4 or less if internal overflows are to be
+     avoided on machines which use 16-bit integers.</p>
+</li>
+</ol>
+<h3>Reference</h3>
+<ul>
+<li>Explanatory Supplement to the Astronomical Almanac,
+    P. Kenneth Seidelmann (ed), University Science Books (1992),
+    Section 12.92 (p604).</li>
+</ul>
+<h3>History</h3>
+<ul>
+<li>IAU SOFA revision: 2019 June 20</li>
+</ul>
+    
+
+    <h3>Arguments</h3>
+    
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ndp~5"></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>ndp</strong></td><td><p>number of decimal places of days in fraction</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-dj1~6"></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>dj1</strong></td><td><p>DJ1+DJ2 = Julian Date (Note 1)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-dj2~6"></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>dj2</strong></td><td><p>DJ1+DJ2 = Julian Date (Note 1)</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-iymdf"></span>integer,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>dimension(4)</td><td>::</td>
+  <td><strong>iymdf</strong></td><td><p>year, month, day, fraction in Gregorian calendar</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-j~18"></span>integer,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>j</strong></td><td><ul>
+<li>-1 = date out of range</li>
+<li>0 = OK</li>
+<li>+1 = NDP not 0-9 (interpreted as 0)</li>
+</ul></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    
+    
+    
+    
+     
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/jdcalf.html#src">JDCALF</a>
+  </div>
+</div>
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">JDCALF</span> <span class="p">(</span> <span class="n">ndp</span><span class="p">,</span> <span class="n">dj1</span><span class="p">,</span> <span class="n">dj2</span><span class="p">,</span> <span class="n">iymdf</span><span class="p">,</span> <span class="n">j</span> <span class="p">)</span>
+
+    <span class="k">implicit none</span>
+
+<span class="k">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">ndp</span> <span class="c">!! number of decimal places of days in fraction</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">dj1</span> <span class="c">!! DJ1+DJ2 = Julian Date (Note 1)</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">dj2</span> <span class="c">!! DJ1+DJ2 = Julian Date (Note 1)</span>
+    <span class="kt">integer</span><span class="p">,</span><span class="k">dimension</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">iymdf</span> <span class="c">!! year, month, day, fraction in Gregorian calendar</span>
+    <span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">j</span> <span class="c">!! status:</span>
+                             <span class="c">!! * -1 = date out of range</span>
+                             <span class="c">!! *  0 = OK</span>
+                             <span class="c">!! * +1 = NDP not 0-9 (interpreted as 0)</span>
+
+    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">js</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">denom</span><span class="p">,</span> <span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">,</span> <span class="n">f</span>
+
+    <span class="c">!  Denominator of fraction (e.g. 100 for 2 decimal places).</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="n">ndp</span><span class="o">&gt;=</span><span class="mi">0</span> <span class="p">.</span><span class="nb">and</span><span class="p">.</span> <span class="n">ndp</span><span class="o">&lt;=</span><span class="mi">9</span> <span class="p">)</span> <span class="k">then</span>
+<span class="k">       </span><span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
+       <span class="n">denom</span> <span class="o">=</span> <span class="kt">real</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="n">ndp</span><span class="p">,</span><span class="n">wp</span><span class="p">)</span>
+    <span class="k">else</span>
+<span class="k">       </span><span class="n">j</span> <span class="o">=</span> <span class="mi">1</span>
+       <span class="n">denom</span> <span class="o">=</span> <span class="mf">1.0_wp</span>
+    <span class="k">end if</span>
+
+    <span class="c">!  Copy the date, big then small, and realign to midnight.</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="nb">abs</span><span class="p">(</span><span class="n">dj1</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">dj2</span><span class="p">)</span> <span class="p">)</span> <span class="k">then</span>
+<span class="k">       </span><span class="n">d1</span> <span class="o">=</span> <span class="n">dj1</span>
+       <span class="n">d2</span> <span class="o">=</span> <span class="n">dj2</span>
+    <span class="k">else</span>
+<span class="k">       </span><span class="n">d1</span> <span class="o">=</span> <span class="n">dj2</span>
+       <span class="n">d2</span> <span class="o">=</span> <span class="n">dj1</span>
+    <span class="k">end if</span>
+<span class="k">    </span><span class="n">d2</span> <span class="o">=</span> <span class="n">d2</span> <span class="o">-</span> <span class="mf">0.5_wp</span>
+
+    <span class="c">!  Separate days and fractions.</span>
+    <span class="n">f1</span> <span class="o">=</span> <span class="nb">mod</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span><span class="mf">1.0_wp</span><span class="p">)</span>
+    <span class="n">f2</span> <span class="o">=</span> <span class="nb">mod</span><span class="p">(</span><span class="n">d2</span><span class="p">,</span><span class="mf">1.0_wp</span><span class="p">)</span>
+    <span class="n">d1</span> <span class="o">=</span> <span class="nb">anint</span><span class="p">(</span><span class="n">d1</span><span class="o">-</span><span class="n">f1</span><span class="p">)</span>
+    <span class="n">d2</span> <span class="o">=</span> <span class="nb">anint</span><span class="p">(</span><span class="n">d2</span><span class="o">-</span><span class="n">f2</span><span class="p">)</span>
+
+    <span class="c">!  Round the total fraction to the specified number of places.</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">anint</span><span class="p">((</span> <span class="n">f1</span><span class="o">+</span><span class="n">f2</span> <span class="p">)</span> <span class="o">*</span> <span class="n">denom</span><span class="p">)</span> <span class="o">/</span> <span class="n">denom</span>
+
+    <span class="c">!  Re-assemble the rounded date and re-align to noon.</span>
+    <span class="n">d2</span> <span class="o">=</span> <span class="n">d2</span> <span class="o">+</span> <span class="n">f</span> <span class="o">+</span> <span class="mf">0.5_wp</span>
+
+    <span class="c">!  Convert to Gregorian calendar.</span>
+    <span class="k">call </span><span class="n">JD2CAL</span> <span class="p">(</span> <span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">iymdf</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">iymdf</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">iymdf</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">f</span><span class="p">,</span> <span class="n">js</span> <span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="n">js</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">)</span> <span class="k">then</span>
+<span class="k">       </span><span class="n">iymdf</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">=</span> <span class="nb">nint</span><span class="p">(</span><span class="n">f</span><span class="o">*</span><span class="n">denom</span><span class="p">)</span>
+    <span class="k">else</span>
+<span class="k">       </span><span class="n">j</span> <span class="o">=</span> <span class="n">js</span>
+    <span class="k">end if</span>
+
+<span class="k">    end subroutine </span><span class="n">JDCALF</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>
