@@ -5857,13 +5857,14 @@
     real(wp),intent(in) :: fd !! UTC:  fraction of day (Note 4)
     real(wp),intent(out) :: deltat !! TAI minus UTC, seconds
     integer,intent(out) :: j !! status (Note 5):
-                             !! *  1 = dubious year (Note 1)
-                             !! *  0 = OK
-                             !! * -1 = bad year
-                             !! * -2 = bad month
-                             !! * -3 = bad day (Note 3)
-                             !! * -4 = bad fraction (Note 4)
-                             !! * -5 = internal error (Note 5)
+                             !!
+                             !!  *  1 = dubious year (Note 1)
+                             !!  *  0 = OK
+                             !!  * -1 = bad year
+                             !!  * -2 = bad month
+                             !!  * -3 = bad day (Note 3)
+                             !!  * -4 = bad fraction (Note 4)
+                             !!  * -5 = internal error (Note 5)
 
     !  Release year for this version of DAT
     integer,parameter :: iyv = 2019
