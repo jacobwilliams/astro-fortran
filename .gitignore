@@ -36,3 +36,6 @@ bin
 doc
 lib
 archive
+
+# mac
+.DS_Store
