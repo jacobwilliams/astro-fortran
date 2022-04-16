@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,45 +43,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-        
+              
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                                       </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -95,50 +68,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>PMP
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 0.2% of total for procedures.">10 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
-    
      <li><a href='../module/astro_module.html'>astro_module</a></li>
-    
-  
      <li class="active">PMP</li>
   </ol>
 </div>
@@ -154,32 +106,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -187,99 +116,47 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-public subroutine PMP(a, b, amb)
+    <h2>public subroutine PMP(a, b, amb)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>P-vector subtraction.</p>
 <p>Status:  vector/matrix support routine.</p>
 <h3>History</h3>
 <ul>
 <li>IAU SOFA revision: 2000 November 25</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-a~8"></span>real(kind=wp),</td>
-  <td>intent(in),</td>
-  <td></td>
-  
-  <td>dimension(3)</td><td>::</td>
+<td>intent(in),</td>
+  <td></td>  <td>dimension(3)</td><td>::</td>
   <td><strong>a</strong></td><td><p>first p-vector</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-b~6"></span>real(kind=wp),</td>
-  <td>intent(in),</td>
-  <td></td>
-  
-  <td>dimension(3)</td><td>::</td>
+<td>intent(in),</td>
+  <td></td>  <td>dimension(3)</td><td>::</td>
   <td><strong>b</strong></td><td><p>second p-vector</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-amb"></span>real(kind=wp),</td>
-  <td>intent(out),</td>
-  <td></td>
-  
-  <td>dimension(3)</td><td>::</td>
+<td>intent(out),</td>
+  <td></td>  <td>dimension(3)</td><td>::</td>
   <td><strong>amb</strong></td><td><p>A - B</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
-     
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Called by</h3>
@@ -291,76 +168,265 @@ public subroutine PMP(a, b, amb)
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: proc~~pmp~~CalledByGraph Pages: 1 -->
-<svg id="procpmpCalledByGraph" width="242pt" height="116pt"
- viewBox="0.00 0.00 242.00 116.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="proc~~pmp~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
+<svg id="procpmpCalledByGraph" width="334pt" height="365pt"
+ viewBox="0.00 0.00 334.00 365.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~pmp~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 361)">
 <title>proc~~pmp~~CalledByGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-112 238,-112 238,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-361 330,-361 330,4 -4,4"/>
 <!-- proc~pmp -->
 <g id="proc~~pmp~~CalledByGraph_node1" class="node">
 <title>proc~pmp</title>
-<polygon fill="none" stroke="black" points="234,-66 180,-66 180,-42 234,-42 234,-66"/>
-<text text-anchor="middle" x="207" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50">PMP</text>
+<polygon fill="none" stroke="black" points="326,-213 272,-213 272,-189 326,-189 326,-213"/>
+<text text-anchor="middle" x="299" y="-198.6" font-family="Helvetica,sans-Serif" font-size="10.50">PMP</text>
 </g>
 <!-- proc~pap -->
 <g id="proc~~pmp~~CalledByGraph_node2" class="node">
 <title>proc~pap</title>
 <g id="a_proc~~pmp~~CalledByGraph_node2"><a xlink:href=".././proc/pap.html" xlink:title="PAP">
-<polygon fill="#d9534f" stroke="#d9534f" points="144,-108 90,-108 90,-84 144,-84 144,-108"/>
-<text text-anchor="middle" x="117" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PAP</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="236,-357 182,-357 182,-333 236,-333 236,-357"/>
+<text text-anchor="middle" x="209" y="-342.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PAP</text>
 </a>
 </g>
 </g>
 <!-- proc~pap&#45;&gt;proc~pmp -->
 <g id="proc~~pmp~~CalledByGraph_edge1" class="edge">
 <title>proc~pap&#45;&gt;proc~pmp</title>
-<path fill="none" stroke="#000000" d="M143.45,-83.85C152.21,-79.67 162.17,-74.92 171.52,-70.46"/>
-<polygon fill="#000000" stroke="#000000" points="173.09,-73.59 180.6,-66.12 170.07,-67.27 173.09,-73.59"/>
-</g>
-<!-- proc~fk524 -->
-<g id="proc~~pmp~~CalledByGraph_node3" class="node">
-<title>proc~fk524</title>
-<g id="a_proc~~pmp~~CalledByGraph_node3"><a xlink:href=".././proc/fk524.html" xlink:title="FK524">
-<polygon fill="#d9534f" stroke="#d9534f" points="144,-66 90,-66 90,-42 144,-42 144,-66"/>
-<text text-anchor="middle" x="117" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FK524</text>
-</a>
-</g>
-</g>
-<!-- proc~fk524&#45;&gt;proc~pmp -->
-<g id="proc~~pmp~~CalledByGraph_edge2" class="edge">
-<title>proc~fk524&#45;&gt;proc~pmp</title>
-<path fill="none" stroke="#000000" d="M144.4,-54C152.39,-54 161.31,-54 169.82,-54"/>
-<polygon fill="#000000" stroke="#000000" points="169.92,-57.5 179.92,-54 169.92,-50.5 169.92,-57.5"/>
+<path fill="none" stroke="#000000" d="M227.19,-332.86C230.35,-330.16 233.45,-327.16 236,-324 261.48,-292.44 280.41,-248.7 290.29,-222.78"/>
+<polygon fill="#000000" stroke="#000000" points="293.66,-223.75 293.85,-213.16 287.1,-221.32 293.66,-223.75"/>
 </g>
 <!-- proc~fk45z -->
-<g id="proc~~pmp~~CalledByGraph_node4" class="node">
+<g id="proc~~pmp~~CalledByGraph_node3" class="node">
 <title>proc~fk45z</title>
-<g id="a_proc~~pmp~~CalledByGraph_node4"><a xlink:href=".././proc/fk45z.html" xlink:title="FK45Z">
-<polygon fill="#d9534f" stroke="#d9534f" points="144,-24 90,-24 90,0 144,0 144,-24"/>
-<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FK45Z</text>
+<g id="a_proc~~pmp~~CalledByGraph_node3"><a xlink:href=".././proc/fk45z.html" xlink:title="FK45Z">
+<polygon fill="#d9534f" stroke="#d9534f" points="236,-315 182,-315 182,-291 236,-291 236,-315"/>
+<text text-anchor="middle" x="209" y="-300.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FK45Z</text>
 </a>
 </g>
 </g>
 <!-- proc~fk45z&#45;&gt;proc~pmp -->
-<g id="proc~~pmp~~CalledByGraph_edge3" class="edge">
+<g id="proc~~pmp~~CalledByGraph_edge2" class="edge">
 <title>proc~fk45z&#45;&gt;proc~pmp</title>
-<path fill="none" stroke="#000000" d="M143.45,-24.15C152.21,-28.33 162.17,-33.08 171.52,-37.54"/>
-<polygon fill="#000000" stroke="#000000" points="170.07,-40.73 180.6,-41.88 173.09,-34.41 170.07,-40.73"/>
+<path fill="none" stroke="#000000" d="M226.2,-290.91C229.57,-288.13 233,-285.08 236,-282 254.35,-263.16 272.27,-238.92 284.09,-221.89"/>
+<polygon fill="#000000" stroke="#000000" points="287.24,-223.48 289.99,-213.25 281.46,-219.53 287.24,-223.48"/>
+</g>
+<!-- proc~fk524 -->
+<g id="proc~~pmp~~CalledByGraph_node4" class="node">
+<title>proc~fk524</title>
+<g id="a_proc~~pmp~~CalledByGraph_node4"><a xlink:href=".././proc/fk524.html" xlink:title="FK524">
+<polygon fill="#d9534f" stroke="#d9534f" points="236,-273 182,-273 182,-249 236,-249 236,-273"/>
+<text text-anchor="middle" x="209" y="-258.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FK524</text>
+</a>
+</g>
+</g>
+<!-- proc~fk524&#45;&gt;proc~pmp -->
+<g id="proc~~pmp~~CalledByGraph_edge8" class="edge">
+<title>proc~fk524&#45;&gt;proc~pmp</title>
+<path fill="none" stroke="#000000" d="M227.81,-248.86C240.45,-240.24 257.63,-228.52 271.83,-218.84"/>
+<polygon fill="#000000" stroke="#000000" points="273.93,-221.65 280.22,-213.12 269.98,-215.87 273.93,-221.65"/>
+</g>
+<!-- proc~h2fk5 -->
+<g id="proc~~pmp~~CalledByGraph_node5" class="node">
+<title>proc~h2fk5</title>
+<g id="a_proc~~pmp~~CalledByGraph_node5"><a xlink:href=".././proc/h2fk5.html" xlink:title="H2FK5">
+<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-234 91.5,-234 91.5,-210 145.5,-210 145.5,-234"/>
+<text text-anchor="middle" x="118.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">H2FK5</text>
+</a>
+</g>
+</g>
+<!-- proc~h2fk5&#45;&gt;proc~pmp -->
+<g id="proc~~pmp~~CalledByGraph_edge4" class="edge">
+<title>proc~h2fk5&#45;&gt;proc~pmp</title>
+<path fill="none" stroke="#000000" d="M145.84,-218.9C176.51,-215.29 227.35,-209.31 261.74,-205.27"/>
+<polygon fill="#000000" stroke="#000000" points="262.32,-208.72 271.84,-204.08 261.5,-201.77 262.32,-208.72"/>
+</g>
+<!-- proc~pvstar -->
+<g id="proc~~pmp~~CalledByGraph_node6" class="node">
+<title>proc~pvstar</title>
+<g id="a_proc~~pmp~~CalledByGraph_node6"><a xlink:href=".././proc/pvstar.html" xlink:title="PVSTAR">
+<polygon fill="#d9534f" stroke="#d9534f" points="236,-193 182,-193 182,-169 236,-169 236,-193"/>
+<text text-anchor="middle" x="209" y="-178.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PVSTAR</text>
+</a>
+</g>
+</g>
+<!-- proc~h2fk5&#45;&gt;proc~pvstar -->
+<g id="proc~~pmp~~CalledByGraph_edge10" class="edge">
+<title>proc~h2fk5&#45;&gt;proc~pvstar</title>
+<path fill="none" stroke="#000000" d="M145.57,-209.92C154.05,-205.99 163.6,-201.57 172.64,-197.38"/>
+<polygon fill="#000000" stroke="#000000" points="174.2,-200.51 181.81,-193.13 171.26,-194.16 174.2,-200.51"/>
+</g>
+<!-- proc~starpv -->
+<g id="proc~~pmp~~CalledByGraph_node7" class="node">
+<title>proc~starpv</title>
+<g id="a_proc~~pmp~~CalledByGraph_node7"><a xlink:href=".././proc/starpv.html" xlink:title="STARPV">
+<polygon fill="#d9534f" stroke="#d9534f" points="236,-151 182,-151 182,-127 236,-127 236,-151"/>
+<text text-anchor="middle" x="209" y="-136.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">STARPV</text>
+</a>
+</g>
+</g>
+<!-- proc~h2fk5&#45;&gt;proc~starpv -->
+<g id="proc~~pmp~~CalledByGraph_edge13" class="edge">
+<title>proc~h2fk5&#45;&gt;proc~starpv</title>
+<path fill="none" stroke="#000000" d="M135.86,-209.79C139.31,-207.01 142.85,-203.99 146,-201 163.57,-184.29 164.5,-176.79 182,-160 182.8,-159.24 183.62,-158.47 184.45,-157.71"/>
+<polygon fill="#000000" stroke="#000000" points="186.93,-160.19 192.23,-151.02 182.37,-154.88 186.93,-160.19"/>
+</g>
+<!-- proc~pvstar&#45;&gt;proc~pmp -->
+<g id="proc~~pmp~~CalledByGraph_edge5" class="edge">
+<title>proc~pvstar&#45;&gt;proc~pmp</title>
+<path fill="none" stroke="#000000" d="M236.4,-187C244.48,-188.84 253.51,-190.89 262.1,-192.84"/>
+<polygon fill="#000000" stroke="#000000" points="261.39,-196.27 271.92,-195.07 262.94,-189.44 261.39,-196.27"/>
+</g>
+<!-- proc~starpv&#45;&gt;proc~pmp -->
+<g id="proc~~pmp~~CalledByGraph_edge6" class="edge">
+<title>proc~starpv&#45;&gt;proc~pmp</title>
+<path fill="none" stroke="#000000" d="M227.39,-151.25C240.24,-160.31 257.96,-172.79 272.43,-182.99"/>
+<polygon fill="#000000" stroke="#000000" points="270.76,-186.09 280.95,-188.99 274.79,-180.37 270.76,-186.09"/>
+</g>
+<!-- proc~ldn -->
+<g id="proc~~pmp~~CalledByGraph_node8" class="node">
+<title>proc~ldn</title>
+<g id="a_proc~~pmp~~CalledByGraph_node8"><a xlink:href=".././proc/ldn.html" xlink:title="LDN">
+<polygon fill="#d9534f" stroke="#d9534f" points="236,-108 182,-108 182,-84 236,-84 236,-108"/>
+<text text-anchor="middle" x="209" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">LDN</text>
+</a>
+</g>
+</g>
+<!-- proc~ldn&#45;&gt;proc~pmp -->
+<g id="proc~~pmp~~CalledByGraph_edge7" class="edge">
+<title>proc~ldn&#45;&gt;proc~pmp</title>
+<path fill="none" stroke="#000000" d="M225.37,-108.01C229,-111.11 232.76,-114.56 236,-118 254.58,-137.74 272.77,-163.01 284.59,-180.45"/>
+<polygon fill="#000000" stroke="#000000" points="281.7,-182.42 290.16,-188.79 287.52,-178.53 281.7,-182.42"/>
+</g>
+<!-- proc~pvmpv -->
+<g id="proc~~pmp~~CalledByGraph_node9" class="node">
+<title>proc~pvmpv</title>
+<g id="a_proc~~pmp~~CalledByGraph_node9"><a xlink:href=".././proc/pvmpv.html" xlink:title="PVMPV">
+<polygon fill="#d9534f" stroke="#d9534f" points="236,-45 182,-45 182,-21 236,-21 236,-45"/>
+<text text-anchor="middle" x="209" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PVMPV</text>
+</a>
+</g>
+</g>
+<!-- proc~pvmpv&#45;&gt;proc~pmp -->
+<g id="proc~~pmp~~CalledByGraph_edge3" class="edge">
+<title>proc~pvmpv&#45;&gt;proc~pmp</title>
+<path fill="none" stroke="#000000" d="M218.06,-45.31C223.36,-53.58 230.35,-64.8 236,-75 255.93,-110.99 276.53,-154.28 288.25,-179.61"/>
+<polygon fill="#000000" stroke="#000000" points="285.21,-181.37 292.56,-188.99 291.57,-178.44 285.21,-181.37"/>
+</g>
+<!-- proc~fk52h -->
+<g id="proc~~pmp~~CalledByGraph_node10" class="node">
+<title>proc~fk52h</title>
+<g id="a_proc~~pmp~~CalledByGraph_node10"><a xlink:href=".././proc/fk52h.html" xlink:title="FK52H">
+<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-150 91.5,-150 91.5,-126 145.5,-126 145.5,-150"/>
+<text text-anchor="middle" x="118.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FK52H</text>
+</a>
+</g>
+</g>
+<!-- proc~fk52h&#45;&gt;proc~pvstar -->
+<g id="proc~~pmp~~CalledByGraph_edge11" class="edge">
+<title>proc~fk52h&#45;&gt;proc~pvstar</title>
+<path fill="none" stroke="#000000" d="M144.62,-150.21C153.76,-154.65 164.25,-159.74 174.03,-164.49"/>
+<polygon fill="#000000" stroke="#000000" points="172.6,-167.69 183.12,-168.91 175.65,-161.39 172.6,-167.69"/>
+</g>
+<!-- proc~fk52h&#45;&gt;proc~starpv -->
+<g id="proc~~pmp~~CalledByGraph_edge14" class="edge">
+<title>proc~fk52h&#45;&gt;proc~starpv</title>
+<path fill="none" stroke="#000000" d="M145.57,-138.29C153.78,-138.39 163,-138.49 171.78,-138.59"/>
+<polygon fill="#000000" stroke="#000000" points="171.77,-142.09 181.81,-138.7 171.85,-135.09 171.77,-142.09"/>
+</g>
+<!-- proc~fk425 -->
+<g id="proc~~pmp~~CalledByGraph_node11" class="node">
+<title>proc~fk425</title>
+<g id="a_proc~~pmp~~CalledByGraph_node11"><a xlink:href=".././proc/fk425.html" xlink:title="FK425">
+<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-24 91.5,-24 91.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="118.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FK425</text>
+</a>
+</g>
+</g>
+<!-- proc~fk425&#45;&gt;proc~pvmpv -->
+<g id="proc~~pmp~~CalledByGraph_edge18" class="edge">
+<title>proc~fk425&#45;&gt;proc~pvmpv</title>
+<path fill="none" stroke="#000000" d="M145.57,-18.19C153.87,-20.16 163.2,-22.37 172.07,-24.47"/>
+<polygon fill="#000000" stroke="#000000" points="171.27,-27.88 181.81,-26.78 172.88,-21.07 171.27,-27.88"/>
 </g>
 <!-- proc~fk54z -->
-<g id="proc~~pmp~~CalledByGraph_node5" class="node">
+<g id="proc~~pmp~~CalledByGraph_node12" class="node">
 <title>proc~fk54z</title>
-<g id="a_proc~~pmp~~CalledByGraph_node5"><a xlink:href=".././proc/fk54z.html" xlink:title="FK54Z">
-<polygon fill="#d9534f" stroke="#d9534f" points="54,-66 0,-66 0,-42 54,-42 54,-66"/>
-<text text-anchor="middle" x="27" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FK54Z</text>
+<g id="a_proc~~pmp~~CalledByGraph_node12"><a xlink:href=".././proc/fk54z.html" xlink:title="FK54Z">
+<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-276 91.5,-276 91.5,-252 145.5,-252 145.5,-276"/>
+<text text-anchor="middle" x="118.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FK54Z</text>
 </a>
 </g>
 </g>
 <!-- proc~fk54z&#45;&gt;proc~fk524 -->
-<g id="proc~~pmp~~CalledByGraph_edge4" class="edge">
+<g id="proc~~pmp~~CalledByGraph_edge9" class="edge">
 <title>proc~fk54z&#45;&gt;proc~fk524</title>
-<path fill="none" stroke="#000000" d="M54.4,-54C62.39,-54 71.31,-54 79.82,-54"/>
-<polygon fill="#000000" stroke="#000000" points="79.92,-57.5 89.92,-54 79.92,-50.5 79.92,-57.5"/>
+<path fill="none" stroke="#000000" d="M145.57,-263.12C153.78,-262.84 163,-262.53 171.78,-262.23"/>
+<polygon fill="#000000" stroke="#000000" points="171.93,-265.72 181.81,-261.89 171.69,-258.73 171.93,-265.72"/>
+</g>
+<!-- proc~aticqn -->
+<g id="proc~~pmp~~CalledByGraph_node13" class="node">
+<title>proc~aticqn</title>
+<g id="a_proc~~pmp~~CalledByGraph_node13"><a xlink:href=".././proc/aticqn.html" xlink:title="ATICQN">
+<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-66 91.5,-66 91.5,-42 145.5,-42 145.5,-66"/>
+<text text-anchor="middle" x="118.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATICQN</text>
+</a>
+</g>
+</g>
+<!-- proc~aticqn&#45;&gt;proc~ldn -->
+<g id="proc~~pmp~~CalledByGraph_edge16" class="edge">
+<title>proc~aticqn&#45;&gt;proc~ldn</title>
+<path fill="none" stroke="#000000" d="M145.1,-66.15C153.9,-70.33 163.92,-75.08 173.32,-79.54"/>
+<polygon fill="#000000" stroke="#000000" points="171.92,-82.75 182.46,-83.88 174.93,-76.43 171.92,-82.75"/>
+</g>
+<!-- proc~starpm -->
+<g id="proc~~pmp~~CalledByGraph_node14" class="node">
+<title>proc~starpm</title>
+<g id="a_proc~~pmp~~CalledByGraph_node14"><a xlink:href=".././proc/starpm.html" xlink:title="STARPM">
+<polygon fill="#d9534f" stroke="#d9534f" points="146,-192 91,-192 91,-168 146,-168 146,-192"/>
+<text text-anchor="middle" x="118.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">STARPM</text>
+</a>
+</g>
+</g>
+<!-- proc~starpm&#45;&gt;proc~pvstar -->
+<g id="proc~~pmp~~CalledByGraph_edge12" class="edge">
+<title>proc~starpm&#45;&gt;proc~pvstar</title>
+<path fill="none" stroke="#000000" d="M146.05,-180.3C154.09,-180.39 163.06,-180.49 171.62,-180.59"/>
+<polygon fill="#000000" stroke="#000000" points="171.73,-184.09 181.77,-180.7 171.81,-177.09 171.73,-184.09"/>
+</g>
+<!-- proc~starpm&#45;&gt;proc~starpv -->
+<g id="proc~~pmp~~CalledByGraph_edge15" class="edge">
+<title>proc~starpm&#45;&gt;proc~starpv</title>
+<path fill="none" stroke="#000000" d="M145.57,-167.92C154.05,-163.99 163.6,-159.57 172.64,-155.38"/>
+<polygon fill="#000000" stroke="#000000" points="174.2,-158.51 181.81,-151.13 171.26,-152.16 174.2,-158.51"/>
+</g>
+<!-- proc~atciqn -->
+<g id="proc~~pmp~~CalledByGraph_node15" class="node">
+<title>proc~atciqn</title>
+<g id="a_proc~~pmp~~CalledByGraph_node15"><a xlink:href=".././proc/atciqn.html" xlink:title="ATCIQN">
+<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-108 91.5,-108 91.5,-84 145.5,-84 145.5,-108"/>
+<text text-anchor="middle" x="118.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATCIQN</text>
+</a>
+</g>
+</g>
+<!-- proc~atciqn&#45;&gt;proc~ldn -->
+<g id="proc~~pmp~~CalledByGraph_edge17" class="edge">
+<title>proc~atciqn&#45;&gt;proc~ldn</title>
+<path fill="none" stroke="#000000" d="M145.57,-96C153.78,-96 163,-96 171.78,-96"/>
+<polygon fill="#000000" stroke="#000000" points="171.81,-99.5 181.81,-96 171.81,-92.5 171.81,-99.5"/>
+</g>
+<!-- proc~pmsafe -->
+<g id="proc~~pmp~~CalledByGraph_node16" class="node">
+<title>proc~pmsafe</title>
+<g id="a_proc~~pmp~~CalledByGraph_node16"><a xlink:href=".././proc/pmsafe.html" xlink:title="PMSAFE">
+<polygon fill="#d9534f" stroke="#d9534f" points="55,-192 0,-192 0,-168 55,-168 55,-192"/>
+<text text-anchor="middle" x="27.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PMSAFE</text>
+</a>
+</g>
+</g>
+<!-- proc~pmsafe&#45;&gt;proc~starpm -->
+<g id="proc~~pmp~~CalledByGraph_edge19" class="edge">
+<title>proc~pmsafe&#45;&gt;proc~starpm</title>
+<path fill="none" stroke="#000000" d="M55.2,-180C63.21,-180 72.14,-180 80.68,-180"/>
+<polygon fill="#000000" stroke="#000000" points="80.82,-183.5 90.82,-180 80.82,-176.5 80.82,-183.5"/>
 </g>
 </g>
 </svg>
@@ -425,34 +491,11 @@ public subroutine PMP(a, b, amb)
     </div></div></div></div>
       </div>
     </div>
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -460,71 +503,57 @@ public subroutine PMP(a, b, amb)
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">PMP</span> <span class="p">(</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">amb</span> <span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">PMP</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">amb</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">a</span> <span class="c">!! first p-vector</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">b</span> <span class="c">!! second p-vector</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">amb</span> <span class="c">!! A - B</span>
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="c">!! first p-vector</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="c">!! second p-vector</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">amb</span><span class="w"> </span><span class="c">!! A - B</span>
 
-    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">i</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="w"></span>
 
-    <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span>
-       <span class="n">amb</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">a</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">-</span> <span class="n">b</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-    <span class="k">end do</span>
+<span class="w">    </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="w"></span>
+<span class="w">       </span><span class="n">amb</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">end do</span>
 
-<span class="k">    end subroutine </span><span class="n">PMP</span>
+<span class="k">    end subroutine </span><span class="n">PMP</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>astro-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -550,14 +579,11 @@ public subroutine PMP(a, b, amb)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

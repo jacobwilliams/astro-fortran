@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,45 +43,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-        
+              
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                                       </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -95,50 +68,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>FK425
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 1.1% of total for procedures.">60 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
-    
      <li><a href='../module/astro_module.html'>astro_module</a></li>
-    
-  
      <li class="active">FK425</li>
   </ol>
 </div>
@@ -154,32 +106,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -187,24 +116,14 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-public subroutine FK425(r1950, d1950, dr1950, dd1950, p1950, v1950, r2000, d2000, dr2000, dd2000, p2000, v2000)
+    <h2>public subroutine FK425(r1950, d1950, dr1950, dd1950, p1950, v1950, r2000, d2000, dr2000, dd2000, p2000, v2000)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>Convert B1950.0 FK4 star catalog data to J2000.0 FK5.</p>
 <p>Status:  support routine.</p>
 <p>This routine converts a star's catalog data from the old FK4
@@ -302,209 +221,87 @@ public subroutine FK425(r1950, d1950, dr1950, dd1950, p1950, v1950, r2000, d2000
 <ul>
 <li>IAU SOFA revision:  2018 January 11</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-r1950"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>r1950</strong></td><td><p>B1950.0 RA (rad)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-d1950"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>d1950</strong></td><td><p>B1950.0 Dec (rad)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-dr1950"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>dr1950</strong></td><td><p>B1950.0 proper motions (rad/trop.yr)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-dd1950"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>dd1950</strong></td><td><p>B1950.0 proper motions (rad/trop.yr)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-p1950"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>p1950</strong></td><td><p>parallax (arcsec)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-v1950"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>v1950</strong></td><td><p>radial velocity (km/s, +ve = moving away)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-r2000"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>r2000</strong></td><td><p>J2000.0 RA (rad)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-d2000"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>d2000</strong></td><td><p>J2000.0 Dec (rad)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-dr2000"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>dr2000</strong></td><td><p>J2000.0 proper motions (rad/Jul.yr)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-dd2000"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>dd2000</strong></td><td><p>J2000.0 proper motions (rad/Jul.yr)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-p2000"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>p2000</strong></td><td><p>parallax (arcsec)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-v2000"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>v2000</strong></td><td><p>radial velocity (km/s, +ve = moving away)</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Calls</h3>
@@ -516,29 +313,29 @@ public subroutine FK425(r1950, d1950, dr1950, dd1950, p1950, v1950, r2000, d2000
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: proc~~fk425~~CallsGraph Pages: 1 -->
-<svg id="procfk425CallsGraph" width="152pt" height="284pt"
- viewBox="0.00 0.00 152.00 284.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg id="procfk425CallsGraph" width="242pt" height="284pt"
+ viewBox="0.00 0.00 242.00 284.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="proc~~fk425~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 280)">
 <title>proc~~fk425~~CallsGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-280 148,-280 148,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-280 238,-280 238,4 -4,4"/>
 <!-- proc~fk425 -->
 <g id="proc~~fk425~~CallsGraph_node1" class="node">
 <title>proc~fk425</title>
 <polygon fill="none" stroke="black" points="54,-150 0,-150 0,-126 54,-126 54,-150"/>
 <text text-anchor="middle" x="27" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50">FK425</text>
 </g>
-<!-- proc~pvmpv -->
+<!-- proc~s2pv -->
 <g id="proc~~fk425~~CallsGraph_node2" class="node">
-<title>proc~pvmpv</title>
-<g id="a_proc~~fk425~~CallsGraph_node2"><a xlink:href=".././proc/pvmpv.html" xlink:title="PVMPV">
+<title>proc~s2pv</title>
+<g id="a_proc~~fk425~~CallsGraph_node2"><a xlink:href=".././proc/s2pv.html" xlink:title="S2PV">
 <polygon fill="#d9534f" stroke="#d9534f" points="144,-276 90,-276 90,-252 144,-252 144,-276"/>
-<text text-anchor="middle" x="117" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PVMPV</text>
+<text text-anchor="middle" x="117" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">S2PV</text>
 </a>
 </g>
 </g>
-<!-- proc~fk425&#45;&gt;proc~pvmpv -->
+<!-- proc~fk425&#45;&gt;proc~s2pv -->
 <g id="proc~~fk425~~CallsGraph_edge1" class="edge">
-<title>proc~fk425&#45;&gt;proc~pvmpv</title>
+<title>proc~fk425&#45;&gt;proc~s2pv</title>
 <path fill="none" stroke="#000000" d="M33.44,-150.24C42.97,-170.82 64.12,-213.04 90,-243 90.6,-243.69 91.22,-244.38 91.86,-245.06"/>
 <polygon fill="#000000" stroke="#000000" points="89.55,-247.68 99.25,-251.95 94.32,-242.57 89.55,-247.68"/>
 </g>
@@ -602,35 +399,65 @@ public subroutine FK425(r1950, d1950, dr1950, dd1950, p1950, v1950, r2000, d2000
 <path fill="none" stroke="#000000" d="M53.45,-125.85C62.21,-121.67 72.17,-116.92 81.52,-112.46"/>
 <polygon fill="#000000" stroke="#000000" points="83.09,-115.59 90.6,-108.12 80.07,-109.27 83.09,-115.59"/>
 </g>
-<!-- proc~s2pv -->
-<g id="proc~~fk425~~CallsGraph_node7" class="node">
-<title>proc~s2pv</title>
-<g id="a_proc~~fk425~~CallsGraph_node7"><a xlink:href=".././proc/s2pv.html" xlink:title="S2PV">
-<polygon fill="#d9534f" stroke="#d9534f" points="144,-66 90,-66 90,-42 144,-42 144,-66"/>
-<text text-anchor="middle" x="117" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">S2PV</text>
-</a>
-</g>
-</g>
-<!-- proc~fk425&#45;&gt;proc~s2pv -->
-<g id="proc~~fk425~~CallsGraph_edge6" class="edge">
-<title>proc~fk425&#45;&gt;proc~s2pv</title>
-<path fill="none" stroke="#000000" d="M39.04,-125.99C51.15,-113 71.35,-91.9 90,-75 90.82,-74.26 91.66,-73.51 92.51,-72.77"/>
-<polygon fill="#000000" stroke="#000000" points="94.97,-75.27 100.36,-66.15 90.46,-69.92 94.97,-75.27"/>
-</g>
 <!-- proc~anp -->
-<g id="proc~~fk425~~CallsGraph_node8" class="node">
+<g id="proc~~fk425~~CallsGraph_node7" class="node">
 <title>proc~anp</title>
-<g id="a_proc~~fk425~~CallsGraph_node8"><a xlink:href=".././proc/anp.html" xlink:title="ANP">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="144,-24 90,-24 90,0 144,0 144,-24"/>
-<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ANP</text>
+<g id="a_proc~~fk425~~CallsGraph_node7"><a xlink:href=".././proc/anp.html" xlink:title="ANP">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="144,-66 90,-66 90,-42 144,-42 144,-66"/>
+<text text-anchor="middle" x="117" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ANP</text>
 </a>
 </g>
 </g>
 <!-- proc~fk425&#45;&gt;proc~anp -->
-<g id="proc~~fk425~~CallsGraph_edge7" class="edge">
+<g id="proc~~fk425~~CallsGraph_edge6" class="edge">
 <title>proc~fk425&#45;&gt;proc~anp</title>
+<path fill="none" stroke="#000000" d="M39.04,-125.99C51.15,-113 71.35,-91.9 90,-75 90.82,-74.26 91.66,-73.51 92.51,-72.77"/>
+<polygon fill="#000000" stroke="#000000" points="94.97,-75.27 100.36,-66.15 90.46,-69.92 94.97,-75.27"/>
+</g>
+<!-- proc~pvmpv -->
+<g id="proc~~fk425~~CallsGraph_node8" class="node">
+<title>proc~pvmpv</title>
+<g id="a_proc~~fk425~~CallsGraph_node8"><a xlink:href=".././proc/pvmpv.html" xlink:title="PVMPV">
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-24 90,-24 90,0 144,0 144,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PVMPV</text>
+</a>
+</g>
+</g>
+<!-- proc~fk425&#45;&gt;proc~pvmpv -->
+<g id="proc~~fk425~~CallsGraph_edge7" class="edge">
+<title>proc~fk425&#45;&gt;proc~pvmpv</title>
 <path fill="none" stroke="#000000" d="M33.44,-125.76C42.97,-105.18 64.12,-62.96 90,-33 90.6,-32.31 91.22,-31.62 91.86,-30.94"/>
 <polygon fill="#000000" stroke="#000000" points="94.32,-33.43 99.25,-24.05 89.55,-28.32 94.32,-33.43"/>
+</g>
+<!-- proc~ppp -->
+<g id="proc~~fk425~~CallsGraph_node9" class="node">
+<title>proc~ppp</title>
+<g id="a_proc~~fk425~~CallsGraph_node9"><a xlink:href=".././proc/ppp.html" xlink:title="PPP">
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-108 180,-108 180,-84 234,-84 234,-108"/>
+<text text-anchor="middle" x="207" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PPP</text>
+</a>
+</g>
+</g>
+<!-- proc~pvppv&#45;&gt;proc~ppp -->
+<g id="proc~~fk425~~CallsGraph_edge8" class="edge">
+<title>proc~pvppv&#45;&gt;proc~ppp</title>
+<path fill="none" stroke="#000000" d="M144.4,-96C152.39,-96 161.31,-96 169.82,-96"/>
+<polygon fill="#000000" stroke="#000000" points="169.92,-99.5 179.92,-96 169.92,-92.5 169.92,-99.5"/>
+</g>
+<!-- proc~pmp -->
+<g id="proc~~fk425~~CallsGraph_node10" class="node">
+<title>proc~pmp</title>
+<g id="a_proc~~fk425~~CallsGraph_node10"><a xlink:href=".././proc/pmp.html" xlink:title="PMP">
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 180,-24 180,0 234,0 234,-24"/>
+<text text-anchor="middle" x="207" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PMP</text>
+</a>
+</g>
+</g>
+<!-- proc~pvmpv&#45;&gt;proc~pmp -->
+<g id="proc~~fk425~~CallsGraph_edge9" class="edge">
+<title>proc~pvmpv&#45;&gt;proc~pmp</title>
+<path fill="none" stroke="#000000" d="M144.4,-12C152.39,-12 161.31,-12 169.82,-12"/>
+<polygon fill="#000000" stroke="#000000" points="169.92,-15.5 179.92,-12 169.92,-8.5 169.92,-15.5"/>
 </g>
 </g>
 </svg>
@@ -695,35 +522,11 @@ public subroutine FK425(r1950, d1950, dr1950, dd1950, p1950, v1950, r2000, d2000
     </div></div></div></div>
       </div>
     </div>
-     
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -731,168 +534,154 @@ public subroutine FK425(r1950, d1950, dr1950, dd1950, p1950, v1950, r2000, d2000
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">FK425</span> <span class="p">(</span> <span class="n">r1950</span><span class="p">,</span> <span class="n">d1950</span><span class="p">,</span> <span class="p">&amp;</span>
-                       <span class="n">dr1950</span><span class="p">,</span> <span class="n">dd1950</span><span class="p">,</span> <span class="n">p1950</span><span class="p">,</span> <span class="n">v1950</span><span class="p">,</span> <span class="p">&amp;</span>
-                       <span class="n">r2000</span><span class="p">,</span> <span class="n">d2000</span><span class="p">,</span> <span class="p">&amp;</span>
-                       <span class="n">dr2000</span><span class="p">,</span> <span class="n">dd2000</span><span class="p">,</span> <span class="n">p2000</span><span class="p">,</span> <span class="n">v2000</span> <span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">FK425</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">r1950</span><span class="p">,</span><span class="w"> </span><span class="n">d1950</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                       </span><span class="n">dr1950</span><span class="p">,</span><span class="w"> </span><span class="n">dd1950</span><span class="p">,</span><span class="w"> </span><span class="n">p1950</span><span class="p">,</span><span class="w"> </span><span class="n">v1950</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                       </span><span class="n">r2000</span><span class="p">,</span><span class="w"> </span><span class="n">d2000</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                       </span><span class="n">dr2000</span><span class="p">,</span><span class="w"> </span><span class="n">dd2000</span><span class="p">,</span><span class="w"> </span><span class="n">p2000</span><span class="p">,</span><span class="w"> </span><span class="n">v2000</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">r1950</span> <span class="c">!! B1950.0 RA (rad)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">d1950</span> <span class="c">!! B1950.0 Dec (rad)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">dr1950</span> <span class="c">!! B1950.0 proper motions (rad/trop.yr)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">dd1950</span> <span class="c">!! B1950.0 proper motions (rad/trop.yr)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">p1950</span> <span class="c">!! parallax (arcsec)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">v1950</span> <span class="c">!! radial velocity (km/s, +ve = moving away)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">r2000</span> <span class="c">!! J2000.0 RA (rad)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">d2000</span> <span class="c">!! J2000.0 Dec (rad)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">dr2000</span> <span class="c">!! J2000.0 proper motions (rad/Jul.yr)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">dd2000</span> <span class="c">!! J2000.0 proper motions (rad/Jul.yr)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">p2000</span> <span class="c">!! parallax (arcsec)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">v2000</span> <span class="c">!! radial velocity (km/s, +ve = moving away)</span>
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">r1950</span><span class="w"> </span><span class="c">!! B1950.0 RA (rad)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">d1950</span><span class="w"> </span><span class="c">!! B1950.0 Dec (rad)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dr1950</span><span class="w"> </span><span class="c">!! B1950.0 proper motions (rad/trop.yr)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dd1950</span><span class="w"> </span><span class="c">!! B1950.0 proper motions (rad/trop.yr)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">p1950</span><span class="w"> </span><span class="c">!! parallax (arcsec)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">v1950</span><span class="w"> </span><span class="c">!! radial velocity (km/s, +ve = moving away)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">r2000</span><span class="w"> </span><span class="c">!! J2000.0 RA (rad)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">d2000</span><span class="w"> </span><span class="c">!! J2000.0 Dec (rad)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dr2000</span><span class="w"> </span><span class="c">!! J2000.0 proper motions (rad/Jul.yr)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dd2000</span><span class="w"> </span><span class="c">!! J2000.0 proper motions (rad/Jul.yr)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">p2000</span><span class="w"> </span><span class="c">!! parallax (arcsec)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">v2000</span><span class="w"> </span><span class="c">!! radial velocity (km/s, +ve = moving away)</span>
 
-    <span class="c">!  Radians per year to arcsec per century</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">pmf</span> <span class="o">=</span> <span class="mi">10</span><span class="mf">0.0_wp</span><span class="o">*</span><span class="mi">6</span><span class="mf">0.0_wp</span><span class="o">*</span><span class="mi">6</span><span class="mf">0.0_wp</span><span class="o">*</span><span class="mi">36</span><span class="mf">0.0_wp</span><span class="o">/</span><span class="n">d2pi</span>
+<span class="w">    </span><span class="c">!  Radians per year to arcsec per century</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">pmf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="mf">0.0_wp</span><span class="o">*</span><span class="mi">6</span><span class="mf">0.0_wp</span><span class="o">*</span><span class="mi">6</span><span class="mf">0.0_wp</span><span class="o">*</span><span class="mi">36</span><span class="mf">0.0_wp</span><span class="o">/</span><span class="n">d2pi</span><span class="w"></span>
 
-    <span class="c">!  Small number to avoid arithmetic problems</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="nb">tiny</span> <span class="o">=</span> <span class="mf">1e-30_wp</span>
+<span class="w">    </span><span class="c">!  Small number to avoid arithmetic problems</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="nb">tiny</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1e-30_wp</span><span class="w"></span>
 
-    <span class="c">!  Miscellaneous</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">r</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">ur</span><span class="p">,</span> <span class="n">ud</span><span class="p">,</span> <span class="n">px</span><span class="p">,</span> <span class="n">rv</span><span class="p">,</span> <span class="n">pxvf</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">rd</span>
-    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">l</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">i</span>
+<span class="w">    </span><span class="c">!  Miscellaneous</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="n">ur</span><span class="p">,</span><span class="w"> </span><span class="n">ud</span><span class="p">,</span><span class="w"> </span><span class="n">px</span><span class="p">,</span><span class="w"> </span><span class="n">rv</span><span class="p">,</span><span class="w"> </span><span class="n">pxvf</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">rd</span><span class="w"></span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"></span>
 
-    <span class="c">!  Pv-vectors</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">r0</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">pv1</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">pv2</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">pv3</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="w">    </span><span class="c">!  Pv-vectors</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">r0</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">pv1</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">pv2</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">pv3</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Functions</span>
-    <span class="c">!</span>
-    <span class="c">!  CANONICAL CONSTANTS  (Seidelmann 1992)</span>
-    <span class="c">!</span>
+<span class="w">    </span><span class="c">!  Functions</span>
+<span class="w">    </span><span class="c">!</span>
+<span class="w">    </span><span class="c">!  CANONICAL CONSTANTS  (Seidelmann 1992)</span>
+<span class="w">    </span><span class="c">!</span>
 
-    <span class="c">!  Km per sec to AU per tropical century</span>
-    <span class="c">!  = 86400 * 36524.2198782 / 149597870.7</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">vf</span> <span class="o">=</span> <span class="mi">2</span><span class="mf">1.095_wp</span>
+<span class="w">    </span><span class="c">!  Km per sec to AU per tropical century</span>
+<span class="w">    </span><span class="c">!  = 86400 * 36524.2198782 / 149597870.7</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">vf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="mf">1.095_wp</span><span class="w"></span>
 
-    <span class="c">!  Constant pv-vector (cf. Seidelmann 3.591-2, vectors A and Adot)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a</span> <span class="o">=</span> <span class="nb">reshape</span><span class="p">([&amp;</span>
-        <span class="o">-</span><span class="mf">1.62557e-6_wp</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.31919e-6_wp</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.13843e-6_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-        <span class="o">+</span><span class="mf">1.245e-3_wp</span><span class="p">,</span>   <span class="o">-</span><span class="mf">1.580e-3_wp</span><span class="p">,</span>   <span class="o">-</span><span class="mf">0.659e-3_wp</span> <span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="w">    </span><span class="c">!  Constant pv-vector (cf. Seidelmann 3.591-2, vectors A and Adot)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">reshape</span><span class="p">([&amp;</span><span class="w"></span>
+<span class="w">        </span><span class="o">-</span><span class="mf">1.62557e-6_wp</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.31919e-6_wp</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.13843e-6_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">        </span><span class="o">+</span><span class="mf">1.245e-3_wp</span><span class="p">,</span><span class="w">   </span><span class="o">-</span><span class="mf">1.580e-3_wp</span><span class="p">,</span><span class="w">   </span><span class="o">-</span><span class="mf">0.659e-3_wp</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span><span class="w"></span>
 
-    <span class="c">!  3x2 matrix of pv-vectors (cf. Seidelmann 3.591-4, matrix M)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">em</span> <span class="o">=</span> <span class="nb">reshape</span><span class="p">([&amp;</span>
-       <span class="o">+</span><span class="mf">0.9999256782_wp</span><span class="p">,</span>     <span class="o">-</span><span class="mf">0.0111820611_wp</span><span class="p">,</span>     <span class="o">-</span><span class="mf">0.0048579477_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-       <span class="o">+</span><span class="mf">0.00000242395018_wp</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.00000002710663_wp</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.00000001177656_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-       <span class="o">+</span><span class="mf">0.0111820610_wp</span><span class="p">,</span>     <span class="o">+</span><span class="mf">0.9999374784_wp</span><span class="p">,</span>     <span class="o">-</span><span class="mf">0.0000271765_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-       <span class="o">+</span><span class="mf">0.00000002710663_wp</span><span class="p">,</span> <span class="o">+</span><span class="mf">0.00000242397878_wp</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.00000000006587_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-       <span class="o">+</span><span class="mf">0.0048579479_wp</span><span class="p">,</span>     <span class="o">-</span><span class="mf">0.0000271474_wp</span><span class="p">,</span>     <span class="o">+</span><span class="mf">0.9999881997_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-       <span class="o">+</span><span class="mf">0.00000001177656_wp</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.00000000006582_wp</span><span class="p">,</span> <span class="o">+</span><span class="mf">0.00000242410173_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-       <span class="o">-</span><span class="mf">0.000551_wp</span><span class="p">,</span>         <span class="o">-</span><span class="mf">0.238565_wp</span><span class="p">,</span>         <span class="o">+</span><span class="mf">0.435739_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-       <span class="o">+</span><span class="mf">0.99994704_wp</span><span class="p">,</span>       <span class="o">-</span><span class="mf">0.01118251_wp</span><span class="p">,</span>       <span class="o">-</span><span class="mf">0.00485767_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-       <span class="o">+</span><span class="mf">0.238514_wp</span><span class="p">,</span>         <span class="o">-</span><span class="mf">0.002667_wp</span><span class="p">,</span>         <span class="o">-</span><span class="mf">0.008541_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-       <span class="o">+</span><span class="mf">0.01118251_wp</span><span class="p">,</span>       <span class="o">+</span><span class="mf">0.99995883_wp</span><span class="p">,</span>       <span class="o">-</span><span class="mf">0.00002718_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-       <span class="o">-</span><span class="mf">0.435623_wp</span><span class="p">,</span>         <span class="o">+</span><span class="mf">0.012254_wp</span><span class="p">,</span>         <span class="o">+</span><span class="mf">0.002117_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-       <span class="o">+</span><span class="mf">0.00485767_wp</span><span class="p">,</span>       <span class="o">-</span><span class="mf">0.00002714_wp</span><span class="p">,</span>       <span class="o">+</span><span class="mf">1.00000956_wp</span> <span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="w">    </span><span class="c">!  3x2 matrix of pv-vectors (cf. Seidelmann 3.591-4, matrix M)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">em</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">reshape</span><span class="p">([&amp;</span><span class="w"></span>
+<span class="w">       </span><span class="o">+</span><span class="mf">0.9999256782_wp</span><span class="p">,</span><span class="w">     </span><span class="o">-</span><span class="mf">0.0111820611_wp</span><span class="p">,</span><span class="w">     </span><span class="o">-</span><span class="mf">0.0048579477_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">       </span><span class="o">+</span><span class="mf">0.00000242395018_wp</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.00000002710663_wp</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.00000001177656_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">       </span><span class="o">+</span><span class="mf">0.0111820610_wp</span><span class="p">,</span><span class="w">     </span><span class="o">+</span><span class="mf">0.9999374784_wp</span><span class="p">,</span><span class="w">     </span><span class="o">-</span><span class="mf">0.0000271765_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">       </span><span class="o">+</span><span class="mf">0.00000002710663_wp</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0.00000242397878_wp</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.00000000006587_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">       </span><span class="o">+</span><span class="mf">0.0048579479_wp</span><span class="p">,</span><span class="w">     </span><span class="o">-</span><span class="mf">0.0000271474_wp</span><span class="p">,</span><span class="w">     </span><span class="o">+</span><span class="mf">0.9999881997_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">       </span><span class="o">+</span><span class="mf">0.00000001177656_wp</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.00000000006582_wp</span><span class="p">,</span><span class="w"> </span><span class="o">+</span><span class="mf">0.00000242410173_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">       </span><span class="o">-</span><span class="mf">0.000551_wp</span><span class="p">,</span><span class="w">         </span><span class="o">-</span><span class="mf">0.238565_wp</span><span class="p">,</span><span class="w">         </span><span class="o">+</span><span class="mf">0.435739_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">       </span><span class="o">+</span><span class="mf">0.99994704_wp</span><span class="p">,</span><span class="w">       </span><span class="o">-</span><span class="mf">0.01118251_wp</span><span class="p">,</span><span class="w">       </span><span class="o">-</span><span class="mf">0.00485767_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">       </span><span class="o">+</span><span class="mf">0.238514_wp</span><span class="p">,</span><span class="w">         </span><span class="o">-</span><span class="mf">0.002667_wp</span><span class="p">,</span><span class="w">         </span><span class="o">-</span><span class="mf">0.008541_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">       </span><span class="o">+</span><span class="mf">0.01118251_wp</span><span class="p">,</span><span class="w">       </span><span class="o">+</span><span class="mf">0.99995883_wp</span><span class="p">,</span><span class="w">       </span><span class="o">-</span><span class="mf">0.00002718_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">       </span><span class="o">-</span><span class="mf">0.435623_wp</span><span class="p">,</span><span class="w">         </span><span class="o">+</span><span class="mf">0.012254_wp</span><span class="p">,</span><span class="w">         </span><span class="o">+</span><span class="mf">0.002117_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">       </span><span class="o">+</span><span class="mf">0.00485767_wp</span><span class="p">,</span><span class="w">       </span><span class="o">-</span><span class="mf">0.00002714_wp</span><span class="p">,</span><span class="w">       </span><span class="o">+</span><span class="mf">1.00000956_wp</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span><span class="w"></span>
 
-    <span class="c">!  The FK4 data (units radians and arcsec per tropical century).</span>
-    <span class="n">r</span> <span class="o">=</span> <span class="n">r1950</span>
-    <span class="n">d</span> <span class="o">=</span> <span class="n">d1950</span>
-    <span class="n">ur</span> <span class="o">=</span> <span class="n">dr1950</span><span class="o">*</span><span class="n">pmf</span>
-    <span class="n">ud</span> <span class="o">=</span> <span class="n">dd1950</span><span class="o">*</span><span class="n">pmf</span>
-    <span class="n">px</span> <span class="o">=</span> <span class="n">p1950</span>
-    <span class="n">rv</span> <span class="o">=</span> <span class="n">v1950</span>
+<span class="w">    </span><span class="c">!  The FK4 data (units radians and arcsec per tropical century).</span>
+<span class="w">    </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r1950</span><span class="w"></span>
+<span class="w">    </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d1950</span><span class="w"></span>
+<span class="w">    </span><span class="n">ur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dr1950</span><span class="o">*</span><span class="n">pmf</span><span class="w"></span>
+<span class="w">    </span><span class="n">ud</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dd1950</span><span class="o">*</span><span class="n">pmf</span><span class="w"></span>
+<span class="w">    </span><span class="n">px</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p1950</span><span class="w"></span>
+<span class="w">    </span><span class="n">rv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v1950</span><span class="w"></span>
 
-    <span class="c">!  Express as a pv-vector.</span>
-    <span class="n">pxvf</span> <span class="o">=</span> <span class="n">px</span><span class="o">*</span><span class="n">vf</span>
-    <span class="n">w</span> <span class="o">=</span> <span class="n">rv</span><span class="o">*</span><span class="n">pxvf</span>
-    <span class="k">call </span><span class="n">S2PV</span> <span class="p">(</span> <span class="n">r</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="mf">1.0_wp</span><span class="p">,</span> <span class="n">ur</span><span class="p">,</span> <span class="n">ud</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">r0</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Express as a pv-vector.</span>
+<span class="w">    </span><span class="n">pxvf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">px</span><span class="o">*</span><span class="n">vf</span><span class="w"></span>
+<span class="w">    </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rv</span><span class="o">*</span><span class="n">pxvf</span><span class="w"></span>
+<span class="w">    </span><span class="k">call </span><span class="n">S2PV</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0_wp</span><span class="p">,</span><span class="w"> </span><span class="n">ur</span><span class="p">,</span><span class="w"> </span><span class="n">ud</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">r0</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Allow for E-terms (cf. Seidelmann 3.591-2).</span>
-    <span class="k">call </span><span class="n">PVMPV</span> <span class="p">(</span> <span class="n">r0</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">pv1</span> <span class="p">)</span>
-    <span class="k">call </span><span class="n">PDP</span> <span class="p">(</span> <span class="n">r0</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">w</span> <span class="p">)</span>
-    <span class="k">call </span><span class="n">SXP</span> <span class="p">(</span> <span class="n">w</span><span class="p">,</span> <span class="n">r0</span><span class="p">,</span> <span class="n">pv2</span> <span class="p">)</span>
-    <span class="k">call </span><span class="n">PDP</span> <span class="p">(</span> <span class="n">r0</span><span class="p">,</span> <span class="n">a</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">w</span> <span class="p">)</span>
-    <span class="k">call </span><span class="n">SXP</span> <span class="p">(</span> <span class="n">w</span><span class="p">,</span> <span class="n">r0</span><span class="p">,</span> <span class="n">pv2</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span>
-    <span class="k">call </span><span class="n">PVPPV</span> <span class="p">(</span> <span class="n">pv1</span><span class="p">,</span> <span class="n">pv2</span><span class="p">,</span> <span class="n">pv3</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Allow for E-terms (cf. Seidelmann 3.591-2).</span>
+<span class="w">    </span><span class="k">call </span><span class="n">PVMPV</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">r0</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">pv1</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">call </span><span class="n">PDP</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">r0</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">call </span><span class="n">SXP</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">r0</span><span class="p">,</span><span class="w"> </span><span class="n">pv2</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">call </span><span class="n">PDP</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">r0</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">call </span><span class="n">SXP</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">r0</span><span class="p">,</span><span class="w"> </span><span class="n">pv2</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">call </span><span class="n">PVPPV</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">pv1</span><span class="p">,</span><span class="w"> </span><span class="n">pv2</span><span class="p">,</span><span class="w"> </span><span class="n">pv3</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Convert pv-vector to Fricke system (cf. Seidelmann 3.591-3).</span>
-    <span class="k">do </span><span class="n">l</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span>
-       <span class="k">do </span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span>
-          <span class="n">w</span> <span class="o">=</span> <span class="mf">0.0_wp</span>
-          <span class="k">do </span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span>
-             <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span>
-                <span class="n">w</span> <span class="o">=</span> <span class="n">w</span> <span class="o">+</span> <span class="n">em</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">l</span><span class="p">)</span><span class="o">*</span><span class="n">pv3</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span>
-             <span class="k">end do</span>
+<span class="w">    </span><span class="c">!  Convert pv-vector to Fricke system (cf. Seidelmann 3.591-3).</span>
+<span class="w">    </span><span class="k">do </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="w"></span>
+<span class="w">       </span><span class="k">do </span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="w"></span>
+<span class="w">          </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_wp</span><span class="w"></span>
+<span class="w">          </span><span class="k">do </span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="w"></span>
+<span class="w">             </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="w"></span>
+<span class="w">                </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">em</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">l</span><span class="p">)</span><span class="o">*</span><span class="n">pv3</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span><span class="w"></span>
+<span class="w">             </span><span class="k">end do</span>
 <span class="k">          end do</span>
-<span class="k">          </span><span class="n">pv1</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">l</span><span class="p">)</span> <span class="o">=</span> <span class="n">w</span>
-       <span class="k">end do</span>
-<span class="k">    end do</span>
+<span class="k">          </span><span class="n">pv1</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">l</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">w</span><span class="w"></span>
+<span class="w">       </span><span class="k">end do</span>
+<span class="k">    end do</span><span class="w"></span>
 
-    <span class="c">!  Revert to catalog form.</span>
-    <span class="k">call </span><span class="n">PV2S</span> <span class="p">(</span> <span class="n">pv1</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">ur</span><span class="p">,</span> <span class="n">ud</span><span class="p">,</span> <span class="n">rd</span> <span class="p">)</span>
-    <span class="k">if</span> <span class="p">(</span> <span class="n">px</span><span class="o">&gt;</span><span class="nb">tiny</span> <span class="p">)</span> <span class="k">then</span>
-<span class="k">       </span><span class="n">rv</span> <span class="o">=</span> <span class="n">rd</span><span class="o">/</span><span class="n">pxvf</span>
-       <span class="n">px</span> <span class="o">=</span> <span class="n">px</span><span class="o">/</span><span class="n">w</span>
-    <span class="k">end if</span>
+<span class="w">    </span><span class="c">!  Revert to catalog form.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">PV2S</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">pv1</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">ur</span><span class="p">,</span><span class="w"> </span><span class="n">ud</span><span class="p">,</span><span class="w"> </span><span class="n">rd</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">px</span><span class="o">&gt;</span><span class="nb">tiny</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">       </span><span class="n">rv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rd</span><span class="o">/</span><span class="n">pxvf</span><span class="w"></span>
+<span class="w">       </span><span class="n">px</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">px</span><span class="o">/</span><span class="n">w</span><span class="w"></span>
+<span class="w">    </span><span class="k">end if</span><span class="w"></span>
 
-    <span class="c">!  Return the results.</span>
-    <span class="n">r2000</span> <span class="o">=</span> <span class="n">ANP</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
-    <span class="n">d2000</span> <span class="o">=</span> <span class="n">d</span>
-    <span class="n">dr2000</span> <span class="o">=</span> <span class="n">ur</span><span class="o">/</span><span class="n">pmf</span>
-    <span class="n">dd2000</span> <span class="o">=</span> <span class="n">ud</span><span class="o">/</span><span class="n">pmf</span>
-    <span class="n">v2000</span> <span class="o">=</span> <span class="n">rv</span>
-    <span class="n">p2000</span> <span class="o">=</span> <span class="n">px</span>
+<span class="w">    </span><span class="c">!  Return the results.</span>
+<span class="w">    </span><span class="n">r2000</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ANP</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">d2000</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="w"></span>
+<span class="w">    </span><span class="n">dr2000</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ur</span><span class="o">/</span><span class="n">pmf</span><span class="w"></span>
+<span class="w">    </span><span class="n">dd2000</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ud</span><span class="o">/</span><span class="n">pmf</span><span class="w"></span>
+<span class="w">    </span><span class="n">v2000</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rv</span><span class="w"></span>
+<span class="w">    </span><span class="n">p2000</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">px</span><span class="w"></span>
 
-    <span class="k">end subroutine </span><span class="n">FK425</span>
+<span class="w">    </span><span class="k">end subroutine </span><span class="n">FK425</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>astro-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -918,14 +707,11 @@ public subroutine FK425(r1950, d1950, dr1950, dd1950, p1950, v1950, r2000, d2000
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

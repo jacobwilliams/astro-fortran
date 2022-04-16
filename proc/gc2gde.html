@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,45 +43,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-        
+              
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                                       </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -95,50 +68,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>GC2GDE
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 1.2% of total for procedures.">66 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
-    
      <li><a href='../module/astro_module.html'>astro_module</a></li>
-    
-  
      <li class="active">GC2GDE</li>
   </ol>
 </div>
@@ -154,32 +106,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -187,24 +116,14 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-public subroutine GC2GDE(a, f, xyz, elong, phi, height, j)
+    <h2>public subroutine GC2GDE(a, f, xyz, elong, phi, height, j)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>Transform geocentric coordinates to geodetic for a reference
   ellipsoid of specified form.</p>
 <p>Status:  support routine.</p>
@@ -250,139 +169,61 @@ public subroutine GC2GDE(a, f, xyz, elong, phi, height, j)
 <ul>
 <li>IAU SOFA revision: 2014 November 7</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-a~4"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>a</strong></td><td><p>equatorial radius (Notes 2,4)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-f~3"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>f</strong></td><td><p>flattening (Note 3)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-xyz~2"></span>real(kind=wp),</td>
-  <td>intent(in),</td>
-  <td></td>
-  
-  <td>dimension(3)</td><td>::</td>
+<td>intent(in),</td>
+  <td></td>  <td>dimension(3)</td><td>::</td>
   <td><strong>xyz</strong></td><td><p>geocentric vector (Note 4)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-elong~11"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>elong</strong></td><td><p>longitude (radians, east +ve)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-phi~13"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>phi</strong></td><td><p>latitude (geodetic, radians)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-height~2"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>height</strong></td><td><p>height above ellipsoid (geodetic, Note 4)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-j~14"></span>integer,</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>j</strong></td><td><ul>
 <li>0 = OK</li>
 <li>-1 = illegal F</li>
 <li>-2 = illegal A</li>
 </ul></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
-     
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Called by</h3>
@@ -483,34 +324,11 @@ public subroutine GC2GDE(a, f, xyz, elong, phi, height, j)
     </div></div></div></div>
       </div>
     </div>
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -518,165 +336,151 @@ public subroutine GC2GDE(a, f, xyz, elong, phi, height, j)
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">GC2GDE</span> <span class="p">(</span> <span class="n">a</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">xyz</span><span class="p">,</span> <span class="n">elong</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">j</span> <span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">GC2GDE</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">xyz</span><span class="p">,</span><span class="w"> </span><span class="n">elong</span><span class="p">,</span><span class="w"> </span><span class="n">phi</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">a</span> <span class="c">!! equatorial radius (Notes 2,4)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">f</span> <span class="c">!! flattening (Note 3)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">xyz</span> <span class="c">!! geocentric vector (Note 4)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">elong</span> <span class="c">!! longitude (radians, east +ve)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">phi</span> <span class="c">!! latitude (geodetic, radians)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">height</span> <span class="c">!! height above ellipsoid (geodetic, Note 4)</span>
-    <span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">j</span> <span class="c">!! status:</span>
-                             <span class="c">!! * 0 = OK</span>
-                             <span class="c">!! * -1 = illegal F</span>
-                             <span class="c">!! * -2 = illegal A</span>
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="c">!! equatorial radius (Notes 2,4)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="c">!! flattening (Note 3)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">xyz</span><span class="w"> </span><span class="c">!! geocentric vector (Note 4)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">elong</span><span class="w"> </span><span class="c">!! longitude (radians, east +ve)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">phi</span><span class="w"> </span><span class="c">!! latitude (geodetic, radians)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="c">!! height above ellipsoid (geodetic, Note 4)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="c">!! status:</span>
+<span class="w">                             </span><span class="c">!! * 0 = OK</span>
+<span class="w">                             </span><span class="c">!! * -1 = illegal F</span>
+<span class="w">                             </span><span class="c">!! * -2 = illegal A</span>
 
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">aeps2</span><span class="p">,</span> <span class="n">e2</span><span class="p">,</span> <span class="n">e4t</span><span class="p">,</span> <span class="n">ec2</span><span class="p">,</span> <span class="n">ec</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">absz</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="p">&amp;</span>
-                <span class="n">s0</span><span class="p">,</span> <span class="n">pn</span><span class="p">,</span> <span class="n">zc</span><span class="p">,</span> <span class="n">c0</span><span class="p">,</span> <span class="n">c02</span><span class="p">,</span> <span class="n">c03</span><span class="p">,</span> <span class="n">s02</span><span class="p">,</span> <span class="n">s03</span><span class="p">,</span> <span class="n">a02</span><span class="p">,</span> <span class="n">a0</span><span class="p">,</span> <span class="n">a03</span><span class="p">,</span> <span class="p">&amp;</span>
-                <span class="n">d0</span><span class="p">,</span> <span class="n">f0</span><span class="p">,</span> <span class="n">b0</span><span class="p">,</span> <span class="n">s1</span><span class="p">,</span> <span class="n">cc</span><span class="p">,</span> <span class="n">s12</span><span class="p">,</span> <span class="n">cc2</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">aeps2</span><span class="p">,</span><span class="w"> </span><span class="n">e2</span><span class="p">,</span><span class="w"> </span><span class="n">e4t</span><span class="p">,</span><span class="w"> </span><span class="n">ec2</span><span class="p">,</span><span class="w"> </span><span class="n">ec</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">,</span><span class="w"> </span><span class="n">p2</span><span class="p">,</span><span class="w"> </span><span class="n">absz</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                </span><span class="n">s0</span><span class="p">,</span><span class="w"> </span><span class="n">pn</span><span class="p">,</span><span class="w"> </span><span class="n">zc</span><span class="p">,</span><span class="w"> </span><span class="n">c0</span><span class="p">,</span><span class="w"> </span><span class="n">c02</span><span class="p">,</span><span class="w"> </span><span class="n">c03</span><span class="p">,</span><span class="w"> </span><span class="n">s02</span><span class="p">,</span><span class="w"> </span><span class="n">s03</span><span class="p">,</span><span class="w"> </span><span class="n">a02</span><span class="p">,</span><span class="w"> </span><span class="n">a0</span><span class="p">,</span><span class="w"> </span><span class="n">a03</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                </span><span class="n">d0</span><span class="p">,</span><span class="w"> </span><span class="n">f0</span><span class="p">,</span><span class="w"> </span><span class="n">b0</span><span class="p">,</span><span class="w"> </span><span class="n">s1</span><span class="p">,</span><span class="w"> </span><span class="n">cc</span><span class="p">,</span><span class="w"> </span><span class="n">s12</span><span class="p">,</span><span class="w"> </span><span class="n">cc2</span><span class="w"></span>
 
-    <span class="c">!  -------------</span>
-    <span class="c">!  Preliminaries</span>
-    <span class="c">!  -------------</span>
+<span class="w">    </span><span class="c">!  -------------</span>
+<span class="w">    </span><span class="c">!  Preliminaries</span>
+<span class="w">    </span><span class="c">!  -------------</span>
 
-    <span class="c">!  Validate ellipsoid parameters.</span>
-    <span class="k">if</span> <span class="p">(</span> <span class="n">f</span><span class="o">&lt;</span><span class="mf">0.0_wp</span> <span class="p">.</span><span class="nb">or</span><span class="p">.</span> <span class="n">f</span><span class="o">&gt;=</span><span class="mf">1.0_wp</span> <span class="p">)</span> <span class="k">then</span>
-<span class="k">       </span><span class="n">j</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-       <span class="k">return</span>
-<span class="k">    else if</span> <span class="p">(</span> <span class="n">a</span> <span class="o">&lt;=</span> <span class="mf">0.0_wp</span> <span class="p">)</span> <span class="k">then</span>
-<span class="k">       </span><span class="n">j</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>
-       <span class="k">return</span>
+<span class="w">    </span><span class="c">!  Validate ellipsoid parameters.</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">f</span><span class="o">&lt;</span><span class="mf">0.0_wp</span><span class="w"> </span><span class="p">.</span><span class="nb">or</span><span class="p">.</span><span class="w"> </span><span class="n">f</span><span class="o">&gt;=</span><span class="mf">1.0_wp</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">       </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"></span>
+<span class="w">       </span><span class="k">return</span>
+<span class="k">    else if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">0.0_wp</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">       </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">2</span><span class="w"></span>
+<span class="w">       </span><span class="k">return</span>
+<span class="k">    end if</span><span class="w"></span>
+
+<span class="w">    </span><span class="c">!  Functions of ellipsoid parameters (with further validation of F).</span>
+<span class="w">    </span><span class="n">aeps2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="mf">1.0e-32_wp</span><span class="w"></span>
+<span class="w">    </span><span class="n">e2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mf">2.0_wp</span><span class="o">-</span><span class="n">f</span><span class="p">)</span><span class="o">*</span><span class="n">f</span><span class="w"></span>
+<span class="w">    </span><span class="n">e4t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e2</span><span class="o">*</span><span class="n">e2</span><span class="o">*</span><span class="mf">1.5_wp</span><span class="w"></span>
+<span class="w">    </span><span class="n">ec2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0_wp</span><span class="o">-</span><span class="n">e2</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">ec2</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">0.0_wp</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">       </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"></span>
+<span class="w">       </span><span class="k">return</span>
 <span class="k">    end if</span>
+<span class="k">    </span><span class="n">ec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="n">ec2</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="o">*</span><span class="n">ec</span><span class="w"></span>
 
-    <span class="c">!  Functions of ellipsoid parameters (with further validation of F).</span>
-    <span class="n">aeps2</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="mf">1.0e-32_wp</span>
-    <span class="n">e2</span> <span class="o">=</span> <span class="p">(</span><span class="mf">2.0_wp</span><span class="o">-</span><span class="n">f</span><span class="p">)</span><span class="o">*</span><span class="n">f</span>
-    <span class="n">e4t</span> <span class="o">=</span> <span class="n">e2</span><span class="o">*</span><span class="n">e2</span><span class="o">*</span><span class="mf">1.5_wp</span>
-    <span class="n">ec2</span> <span class="o">=</span> <span class="mf">1.0_wp</span><span class="o">-</span><span class="n">e2</span>
-    <span class="k">if</span> <span class="p">(</span> <span class="n">ec2</span> <span class="o">&lt;=</span> <span class="mf">0.0_wp</span> <span class="p">)</span> <span class="k">then</span>
-<span class="k">       </span><span class="n">j</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-       <span class="k">return</span>
-<span class="k">    end if</span>
-<span class="k">    </span><span class="n">ec</span> <span class="o">=</span> <span class="nb">sqrt</span><span class="p">(</span><span class="n">ec2</span><span class="p">)</span>
-    <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">ec</span>
+<span class="w">    </span><span class="c">!  Cartesian components.</span>
+<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xyz</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xyz</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xyz</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Cartesian components.</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">xyz</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">xyz</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-    <span class="n">z</span> <span class="o">=</span> <span class="n">xyz</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="w">    </span><span class="c">!  Distance from polar axis squared.</span>
+<span class="w">    </span><span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="o">*</span><span class="n">y</span><span class="w"></span>
 
-    <span class="c">!  Distance from polar axis squared.</span>
-    <span class="n">p2</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">y</span>
+<span class="w">    </span><span class="c">!  Longitude.</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">p2</span><span class="o">&gt;</span><span class="mf">0.0_wp</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">       </span><span class="n">elong</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atan2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">       </span><span class="n">elong</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_wp</span><span class="w"></span>
+<span class="w">    </span><span class="k">end if</span><span class="w"></span>
 
-    <span class="c">!  Longitude.</span>
-    <span class="k">if</span> <span class="p">(</span> <span class="n">p2</span><span class="o">&gt;</span><span class="mf">0.0_wp</span> <span class="p">)</span> <span class="k">then</span>
-<span class="k">       </span><span class="n">elong</span> <span class="o">=</span> <span class="n">atan2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">else</span>
-<span class="k">       </span><span class="n">elong</span> <span class="o">=</span> <span class="mf">0.0_wp</span>
-    <span class="k">end if</span>
+<span class="w">    </span><span class="c">!  Unsigned z-coordinate.</span>
+<span class="w">    </span><span class="n">absz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Unsigned z-coordinate.</span>
-    <span class="n">absz</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<span class="w">    </span><span class="c">!  Proceed unless polar case.</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">p2</span><span class="o">&gt;</span><span class="n">aeps2</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
 
-    <span class="c">!  Proceed unless polar case.</span>
-    <span class="k">if</span> <span class="p">(</span> <span class="n">p2</span><span class="o">&gt;</span><span class="n">aeps2</span> <span class="p">)</span> <span class="k">then</span>
+<span class="w">       </span><span class="c">!  Distance from polar axis.</span>
+<span class="w">       </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="n">p2</span><span class="p">)</span><span class="w"></span>
 
-       <span class="c">!  Distance from polar axis.</span>
-       <span class="n">p</span> <span class="o">=</span> <span class="nb">sqrt</span><span class="p">(</span><span class="n">p2</span><span class="p">)</span>
+<span class="w">       </span><span class="c">!  Normalization.</span>
+<span class="w">       </span><span class="n">s0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">absz</span><span class="o">/</span><span class="n">a</span><span class="w"></span>
+<span class="w">       </span><span class="n">pn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">/</span><span class="n">a</span><span class="w"></span>
+<span class="w">       </span><span class="n">zc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ec</span><span class="o">*</span><span class="n">s0</span><span class="w"></span>
 
-       <span class="c">!  Normalization.</span>
-       <span class="n">s0</span> <span class="o">=</span> <span class="n">absz</span><span class="o">/</span><span class="n">a</span>
-       <span class="n">pn</span> <span class="o">=</span> <span class="n">p</span><span class="o">/</span><span class="n">a</span>
-       <span class="n">zc</span> <span class="o">=</span> <span class="n">ec</span><span class="o">*</span><span class="n">s0</span>
+<span class="w">       </span><span class="c">!  Prepare Newton correction factors.</span>
+<span class="w">       </span><span class="n">c0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ec</span><span class="o">*</span><span class="n">pn</span><span class="w"></span>
+<span class="w">       </span><span class="n">c02</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c0</span><span class="o">*</span><span class="n">c0</span><span class="w"></span>
+<span class="w">       </span><span class="n">c03</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c02</span><span class="o">*</span><span class="n">c0</span><span class="w"></span>
+<span class="w">       </span><span class="n">s02</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s0</span><span class="o">*</span><span class="n">s0</span><span class="w"></span>
+<span class="w">       </span><span class="n">s03</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s02</span><span class="o">*</span><span class="n">s0</span><span class="w"></span>
+<span class="w">       </span><span class="n">a02</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c02</span><span class="o">+</span><span class="n">s02</span><span class="w"></span>
+<span class="w">       </span><span class="n">a0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="n">a02</span><span class="p">)</span><span class="w"></span>
+<span class="w">       </span><span class="n">a03</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a02</span><span class="o">*</span><span class="n">a0</span><span class="w"></span>
+<span class="w">       </span><span class="n">d0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zc</span><span class="o">*</span><span class="n">a03</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e2</span><span class="o">*</span><span class="n">s03</span><span class="w"></span>
+<span class="w">       </span><span class="n">f0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pn</span><span class="o">*</span><span class="n">a03</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">e2</span><span class="o">*</span><span class="n">c03</span><span class="w"></span>
 
-       <span class="c">!  Prepare Newton correction factors.</span>
-       <span class="n">c0</span> <span class="o">=</span> <span class="n">ec</span><span class="o">*</span><span class="n">pn</span>
-       <span class="n">c02</span> <span class="o">=</span> <span class="n">c0</span><span class="o">*</span><span class="n">c0</span>
-       <span class="n">c03</span> <span class="o">=</span> <span class="n">c02</span><span class="o">*</span><span class="n">c0</span>
-       <span class="n">s02</span> <span class="o">=</span> <span class="n">s0</span><span class="o">*</span><span class="n">s0</span>
-       <span class="n">s03</span> <span class="o">=</span> <span class="n">s02</span><span class="o">*</span><span class="n">s0</span>
-       <span class="n">a02</span> <span class="o">=</span> <span class="n">c02</span><span class="o">+</span><span class="n">s02</span>
-       <span class="n">a0</span> <span class="o">=</span> <span class="nb">sqrt</span><span class="p">(</span><span class="n">a02</span><span class="p">)</span>
-       <span class="n">a03</span> <span class="o">=</span> <span class="n">a02</span><span class="o">*</span><span class="n">a0</span>
-       <span class="n">d0</span> <span class="o">=</span> <span class="n">zc</span><span class="o">*</span><span class="n">a03</span> <span class="o">+</span> <span class="n">e2</span><span class="o">*</span><span class="n">s03</span>
-       <span class="n">f0</span> <span class="o">=</span> <span class="n">pn</span><span class="o">*</span><span class="n">a03</span> <span class="o">-</span> <span class="n">e2</span><span class="o">*</span><span class="n">c03</span>
+<span class="w">       </span><span class="c">!  Prepare Halley correction factor.</span>
+<span class="w">       </span><span class="n">b0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e4t</span><span class="o">*</span><span class="n">s02</span><span class="o">*</span><span class="n">c02</span><span class="o">*</span><span class="n">pn</span><span class="o">*</span><span class="p">(</span><span class="n">a0</span><span class="o">-</span><span class="n">ec</span><span class="p">)</span><span class="w"></span>
+<span class="w">       </span><span class="n">s1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d0</span><span class="o">*</span><span class="n">f0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b0</span><span class="o">*</span><span class="n">s0</span><span class="w"></span>
+<span class="w">       </span><span class="n">cc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ec</span><span class="o">*</span><span class="p">(</span><span class="n">f0</span><span class="o">*</span><span class="n">f0</span><span class="o">-</span><span class="n">b0</span><span class="o">*</span><span class="n">c0</span><span class="p">)</span><span class="w"></span>
 
-       <span class="c">!  Prepare Halley correction factor.</span>
-       <span class="n">b0</span> <span class="o">=</span> <span class="n">e4t</span><span class="o">*</span><span class="n">s02</span><span class="o">*</span><span class="n">c02</span><span class="o">*</span><span class="n">pn</span><span class="o">*</span><span class="p">(</span><span class="n">a0</span><span class="o">-</span><span class="n">ec</span><span class="p">)</span>
-       <span class="n">s1</span> <span class="o">=</span> <span class="n">d0</span><span class="o">*</span><span class="n">f0</span> <span class="o">-</span> <span class="n">b0</span><span class="o">*</span><span class="n">s0</span>
-       <span class="n">cc</span> <span class="o">=</span> <span class="n">ec</span><span class="o">*</span><span class="p">(</span><span class="n">f0</span><span class="o">*</span><span class="n">f0</span><span class="o">-</span><span class="n">b0</span><span class="o">*</span><span class="n">c0</span><span class="p">)</span>
+<span class="w">       </span><span class="c">!  Evaluate latitude and height.</span>
+<span class="w">       </span><span class="n">phi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">atan</span><span class="p">(</span><span class="n">s1</span><span class="o">/</span><span class="n">cc</span><span class="p">)</span><span class="w"></span>
+<span class="w">       </span><span class="n">s12</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s1</span><span class="o">*</span><span class="n">s1</span><span class="w"></span>
+<span class="w">       </span><span class="n">cc2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cc</span><span class="o">*</span><span class="n">cc</span><span class="w"></span>
+<span class="w">       </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="o">*</span><span class="n">cc</span><span class="o">+</span><span class="n">absz</span><span class="o">*</span><span class="n">s1</span><span class="o">-</span><span class="n">a</span><span class="o">*</span><span class="nb">sqrt</span><span class="p">(</span><span class="n">ec2</span><span class="o">*</span><span class="n">s12</span><span class="o">+</span><span class="n">cc2</span><span class="p">))</span><span class="o">/</span><span class="nb">sqrt</span><span class="p">(</span><span class="n">s12</span><span class="o">+</span><span class="n">cc2</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"></span>
 
-       <span class="c">!  Evaluate latitude and height.</span>
-       <span class="n">phi</span> <span class="o">=</span> <span class="nb">atan</span><span class="p">(</span><span class="n">s1</span><span class="o">/</span><span class="n">cc</span><span class="p">)</span>
-       <span class="n">s12</span> <span class="o">=</span> <span class="n">s1</span><span class="o">*</span><span class="n">s1</span>
-       <span class="n">cc2</span> <span class="o">=</span> <span class="n">cc</span><span class="o">*</span><span class="n">cc</span>
-       <span class="n">height</span> <span class="o">=</span> <span class="p">(</span><span class="n">p</span><span class="o">*</span><span class="n">cc</span><span class="o">+</span><span class="n">absz</span><span class="o">*</span><span class="n">s1</span><span class="o">-</span><span class="n">a</span><span class="o">*</span><span class="nb">sqrt</span><span class="p">(</span><span class="n">ec2</span><span class="o">*</span><span class="n">s12</span><span class="o">+</span><span class="n">cc2</span><span class="p">))</span><span class="o">/</span><span class="nb">sqrt</span><span class="p">(</span><span class="n">s12</span><span class="o">+</span><span class="n">cc2</span><span class="p">)</span>
-    <span class="k">else</span>
+<span class="w">       </span><span class="c">!  Exception: pole.</span>
+<span class="w">       </span><span class="n">phi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dpi</span><span class="o">/</span><span class="mf">2.0_wp</span><span class="w"></span>
+<span class="w">       </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">absz</span><span class="o">-</span><span class="n">b</span><span class="w"></span>
+<span class="w">    </span><span class="k">end if</span><span class="w"></span>
 
-       <span class="c">!  Exception: pole.</span>
-       <span class="n">phi</span> <span class="o">=</span> <span class="n">dpi</span><span class="o">/</span><span class="mf">2.0_wp</span>
-       <span class="n">height</span> <span class="o">=</span> <span class="n">absz</span><span class="o">-</span><span class="n">b</span>
-    <span class="k">end if</span>
+<span class="w">    </span><span class="c">!  Restore sign of latitude.</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">z</span><span class="o">&lt;</span><span class="mf">0.0_wp</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">phi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">phi</span><span class="w"></span>
 
-    <span class="c">!  Restore sign of latitude.</span>
-    <span class="k">if</span> <span class="p">(</span> <span class="n">z</span><span class="o">&lt;</span><span class="mf">0.0_wp</span> <span class="p">)</span> <span class="n">phi</span> <span class="o">=</span> <span class="o">-</span><span class="n">phi</span>
+<span class="w">    </span><span class="c">!  OK status.</span>
+<span class="w">    </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
 
-    <span class="c">!  OK status.</span>
-    <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
-
-    <span class="k">end subroutine </span><span class="n">GC2GDE</span>
+<span class="w">    </span><span class="k">end subroutine </span><span class="n">GC2GDE</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>astro-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -702,14 +506,11 @@ public subroutine GC2GDE(a, f, xyz, elong, phi, height, j)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

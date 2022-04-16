@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,45 +43,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-        
+              
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                                       </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -95,50 +68,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>EQEQ94
       <small>Function</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 0.2% of total for procedures.">12 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
-    
      <li><a href='../module/astro_module.html'>astro_module</a></li>
-    
-  
      <li class="active">EQEQ94</li>
   </ol>
 </div>
@@ -154,32 +106,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -187,24 +116,14 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-public function EQEQ94(date1, date2) result(eqe)
+    <h2>public function EQEQ94(date1, date2) result(eqe)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>Equation of the equinoxes, IAU 1994 model.</p>
 <p>Status:  canonical model.</p>
 <h3>Notes</h3>
@@ -250,68 +169,29 @@ public function EQEQ94(date1, date2) result(eqe)
 <ul>
 <li>IAU SOFA revision: 2017 October 12</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-date1~8"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>date1</strong></td><td><p>TDB date (Note 1)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-date2~8"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>date2</strong></td><td><p>TDB date (Note 1)</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
-    
-    
-    
-    
-   <h3>Return Value <small><span class="anchor" id="variable-eqe"></span>real(kind=wp)
-  </small></h3>
+   <h3>Return Value <small><span class="anchor" id="variable-eqe"></span>real(kind=wp)</small></h3>
     <p>equation of the equinoxes (Note 2)</p>
-    
-    
     <br>
-    
-    
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Calls</h3>
@@ -323,46 +203,46 @@ public function EQEQ94(date1, date2) result(eqe)
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: proc~~eqeq94~~CallsGraph Pages: 1 -->
-<svg id="proceqeq94CallsGraph" width="244pt" height="86pt"
- viewBox="0.00 0.00 244.00 86.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="proc~~eqeq94~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 82)">
+<svg id="proceqeq94CallsGraph" width="244pt" height="112pt"
+ viewBox="0.00 0.00 244.00 112.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~eqeq94~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 108)">
 <title>proc~~eqeq94~~CallsGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-82 240,-82 240,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-108 240,-108 240,4 -4,4"/>
 <!-- proc~eqeq94 -->
 <g id="proc~~eqeq94~~CallsGraph_node1" class="node">
 <title>proc~eqeq94</title>
-<polygon fill="none" stroke="black" points="56,-66 0,-66 0,-42 56,-42 56,-66"/>
-<text text-anchor="middle" x="28" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50">EQEQ94</text>
-</g>
-<!-- proc~anpm -->
-<g id="proc~~eqeq94~~CallsGraph_node2" class="node">
-<title>proc~anpm</title>
-<g id="a_proc~~eqeq94~~CallsGraph_node2"><a xlink:href=".././proc/anpm.html" xlink:title="ANPM">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="236,-65 182,-65 182,-41 236,-41 236,-65"/>
-<text text-anchor="middle" x="209" y="-50.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ANPM</text>
-</a>
-</g>
-</g>
-<!-- proc~eqeq94&#45;&gt;proc~anpm -->
-<g id="proc~~eqeq94~~CallsGraph_edge1" class="edge">
-<title>proc~eqeq94&#45;&gt;proc~anpm</title>
-<path fill="none" stroke="#000000" d="M56.12,-65.16C67.06,-69.11 79.94,-73.04 92,-75 115.69,-78.84 122.35,-79.07 146,-75 154.74,-73.5 163.88,-70.88 172.37,-67.97"/>
-<polygon fill="#000000" stroke="#000000" points="173.79,-71.18 181.98,-64.46 171.39,-64.6 173.79,-71.18"/>
+<polygon fill="none" stroke="black" points="56,-64 0,-64 0,-40 56,-40 56,-64"/>
+<text text-anchor="middle" x="28" y="-49.6" font-family="Helvetica,sans-Serif" font-size="10.50">EQEQ94</text>
 </g>
 <!-- proc~obl80 -->
-<g id="proc~~eqeq94~~CallsGraph_node3" class="node">
+<g id="proc~~eqeq94~~CallsGraph_node2" class="node">
 <title>proc~obl80</title>
-<g id="a_proc~~eqeq94~~CallsGraph_node3"><a xlink:href=".././proc/obl80.html" xlink:title="OBL80">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-66 92,-66 92,-42 146,-42 146,-66"/>
-<text text-anchor="middle" x="119" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OBL80</text>
+<g id="a_proc~~eqeq94~~CallsGraph_node2"><a xlink:href=".././proc/obl80.html" xlink:title="OBL80">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-104 92,-104 92,-80 146,-80 146,-104"/>
+<text text-anchor="middle" x="119" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OBL80</text>
 </a>
 </g>
 </g>
 <!-- proc~eqeq94&#45;&gt;proc~obl80 -->
-<g id="proc~~eqeq94~~CallsGraph_edge2" class="edge">
+<g id="proc~~eqeq94~~CallsGraph_edge1" class="edge">
 <title>proc~eqeq94&#45;&gt;proc~obl80</title>
-<path fill="none" stroke="#000000" d="M56.19,-54C64.25,-54 73.22,-54 81.77,-54"/>
-<polygon fill="#000000" stroke="#000000" points="81.89,-57.5 91.89,-54 81.89,-50.5 81.89,-57.5"/>
+<path fill="none" stroke="#000000" d="M55.7,-64C64.22,-67.83 73.77,-72.12 82.79,-76.17"/>
+<polygon fill="#000000" stroke="#000000" points="81.37,-79.38 91.93,-80.28 84.24,-72.99 81.37,-79.38"/>
+</g>
+<!-- proc~anpm -->
+<g id="proc~~eqeq94~~CallsGraph_node3" class="node">
+<title>proc~anpm</title>
+<g id="a_proc~~eqeq94~~CallsGraph_node3"><a xlink:href=".././proc/anpm.html" xlink:title="ANPM">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="236,-44 182,-44 182,-20 236,-20 236,-44"/>
+<text text-anchor="middle" x="209" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ANPM</text>
+</a>
+</g>
+</g>
+<!-- proc~eqeq94&#45;&gt;proc~anpm -->
+<g id="proc~~eqeq94~~CallsGraph_edge2" class="edge">
+<title>proc~eqeq94&#45;&gt;proc~anpm</title>
+<path fill="none" stroke="#000000" d="M56.19,-48.96C87.03,-45.52 137.48,-39.88 171.67,-36.06"/>
+<polygon fill="#000000" stroke="#000000" points="172.18,-39.52 181.73,-34.94 171.4,-32.57 172.18,-39.52"/>
 </g>
 <!-- proc~nut80 -->
 <g id="proc~~eqeq94~~CallsGraph_node4" class="node">
@@ -376,14 +256,14 @@ public function EQEQ94(date1, date2) result(eqe)
 <!-- proc~eqeq94&#45;&gt;proc~nut80 -->
 <g id="proc~~eqeq94~~CallsGraph_edge3" class="edge">
 <title>proc~eqeq94&#45;&gt;proc~nut80</title>
-<path fill="none" stroke="#000000" d="M54.74,-41.85C63.6,-37.67 73.67,-32.92 83.13,-28.46"/>
-<polygon fill="#000000" stroke="#000000" points="84.77,-31.55 92.32,-24.12 81.78,-25.22 84.77,-31.55"/>
+<path fill="none" stroke="#000000" d="M55.7,-40C64.22,-36.17 73.77,-31.88 82.79,-27.83"/>
+<polygon fill="#000000" stroke="#000000" points="84.24,-31.01 91.93,-23.72 81.37,-24.62 84.24,-31.01"/>
 </g>
 <!-- proc~nut80&#45;&gt;proc~anpm -->
 <g id="proc~~eqeq94~~CallsGraph_edge4" class="edge">
 <title>proc~nut80&#45;&gt;proc~anpm</title>
-<path fill="none" stroke="#000000" d="M145.93,-24.08C154.36,-28.01 163.86,-32.43 172.84,-36.62"/>
-<polygon fill="#000000" stroke="#000000" points="171.41,-39.81 181.95,-40.87 174.37,-33.47 171.41,-39.81"/>
+<path fill="none" stroke="#000000" d="M146.4,-18C154.48,-19.84 163.51,-21.89 172.1,-23.84"/>
+<polygon fill="#000000" stroke="#000000" points="171.39,-27.27 181.92,-26.07 172.94,-20.44 171.39,-27.27"/>
 </g>
 </g>
 </svg>
@@ -448,8 +328,6 @@ public function EQEQ94(date1, date2) result(eqe)
     </div></div></div></div>
       </div>
     </div>
-     
-     
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Called by</h3>
@@ -550,34 +428,11 @@ public function EQEQ94(date1, date2) result(eqe)
     </div></div></div></div>
       </div>
     </div>
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -585,84 +440,70 @@ public function EQEQ94(date1, date2) result(eqe)
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">function </span><span class="n">EQEQ94</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span> <span class="p">)</span> <span class="k">result</span><span class="p">(</span><span class="n">eqe</span><span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">function </span><span class="n">EQEQ94</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="p">,</span><span class="w"> </span><span class="n">date2</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">eqe</span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date1</span> <span class="c">!! TDB date (Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date2</span> <span class="c">!! TDB date (Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">eqe</span> <span class="c">!! equation of the equinoxes (Note 2)</span>
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date1</span><span class="w"> </span><span class="c">!! TDB date (Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date2</span><span class="w"> </span><span class="c">!! TDB date (Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">eqe</span><span class="w"> </span><span class="c">!! equation of the equinoxes (Note 2)</span>
 
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">t</span><span class="p">,</span> <span class="n">om</span><span class="p">,</span> <span class="n">dpsi</span><span class="p">,</span> <span class="n">deps</span><span class="p">,</span> <span class="n">eps0</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">om</span><span class="p">,</span><span class="w"> </span><span class="n">dpsi</span><span class="p">,</span><span class="w"> </span><span class="n">deps</span><span class="p">,</span><span class="w"> </span><span class="n">eps0</span><span class="w"></span>
 
-    <span class="c">!  Interval between fundamental epoch J2000.0 and given date (JC).</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="p">(</span> <span class="p">(</span> <span class="n">date1</span><span class="o">-</span><span class="n">dj00</span> <span class="p">)</span> <span class="o">+</span> <span class="n">date2</span> <span class="p">)</span> <span class="o">/</span> <span class="n">djc</span>
+<span class="w">    </span><span class="c">!  Interval between fundamental epoch J2000.0 and given date (JC).</span>
+<span class="w">    </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="o">-</span><span class="n">dj00</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">date2</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">djc</span><span class="w"></span>
 
-    <span class="c">!  Longitude of the mean ascending node of the lunar orbit on the</span>
-    <span class="c">!  ecliptic, measured from the mean equinox of date.</span>
-    <span class="n">om</span> <span class="o">=</span> <span class="n">ANPM</span><span class="p">(</span> <span class="p">(</span> <span class="mi">45016</span><span class="mf">0.280_wp</span> <span class="o">+</span> <span class="p">(</span> <span class="o">-</span><span class="mi">48289</span><span class="mf">0.539_wp</span> <span class="o">+</span> <span class="p">&amp;</span>
-               <span class="p">(</span> <span class="mf">7.455_wp</span> <span class="o">+</span> <span class="mf">0.008_wp</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">das2r</span> <span class="p">&amp;</span>
-                 <span class="o">+</span> <span class="nb">mod</span><span class="p">(</span><span class="o">-</span><span class="mf">5.0_wp</span><span class="o">*</span><span class="n">t</span><span class="p">,</span><span class="mf">1.0_wp</span><span class="p">)</span> <span class="o">*</span> <span class="n">d2pi</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Longitude of the mean ascending node of the lunar orbit on the</span>
+<span class="w">    </span><span class="c">!  ecliptic, measured from the mean equinox of date.</span>
+<span class="w">    </span><span class="n">om</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ANPM</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="mi">45016</span><span class="mf">0.280_wp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="o">-</span><span class="mi">48289</span><span class="mf">0.539_wp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">               </span><span class="p">(</span><span class="w"> </span><span class="mf">7.455_wp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.008_wp</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">das2r</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                 </span><span class="o">+</span><span class="w"> </span><span class="nb">mod</span><span class="p">(</span><span class="o">-</span><span class="mf">5.0_wp</span><span class="o">*</span><span class="n">t</span><span class="p">,</span><span class="mf">1.0_wp</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">d2pi</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Nutation components and mean obliquity.</span>
-    <span class="k">call </span><span class="n">NUT80</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span><span class="p">,</span> <span class="n">dpsi</span><span class="p">,</span> <span class="n">deps</span> <span class="p">)</span>
-    <span class="n">eps0</span> <span class="o">=</span> <span class="n">OBL80</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Nutation components and mean obliquity.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">NUT80</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="p">,</span><span class="w"> </span><span class="n">date2</span><span class="p">,</span><span class="w"> </span><span class="n">dpsi</span><span class="p">,</span><span class="w"> </span><span class="n">deps</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">eps0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OBL80</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="p">,</span><span class="w"> </span><span class="n">date2</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Equation of the equinoxes.</span>
-    <span class="n">eqe</span> <span class="o">=</span> <span class="n">dpsi</span> <span class="o">*</span> <span class="nb">cos</span><span class="p">(</span><span class="n">eps0</span><span class="p">)</span> <span class="o">+</span> <span class="n">das2r</span> <span class="o">*</span> <span class="p">(</span> <span class="mf">0.00264_wp</span> <span class="o">*</span> <span class="nb">sin</span><span class="p">(</span><span class="n">om</span><span class="p">)</span> <span class="o">+</span> <span class="p">&amp;</span>
-                                       <span class="mf">0.000063_wp</span> <span class="o">*</span> <span class="nb">sin</span><span class="p">(</span><span class="n">om</span><span class="o">+</span><span class="n">om</span><span class="p">))</span>
+<span class="w">    </span><span class="c">!  Equation of the equinoxes.</span>
+<span class="w">    </span><span class="n">eqe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dpsi</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">cos</span><span class="p">(</span><span class="n">eps0</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">das2r</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="mf">0.00264_wp</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="n">om</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                       </span><span class="mf">0.000063_wp</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="n">om</span><span class="o">+</span><span class="n">om</span><span class="p">))</span><span class="w"></span>
 
-    <span class="k">end function </span><span class="n">EQEQ94</span>
+<span class="w">    </span><span class="k">end function </span><span class="n">EQEQ94</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>astro-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -688,14 +529,11 @@ public function EQEQ94(date1, date2) result(eqe)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

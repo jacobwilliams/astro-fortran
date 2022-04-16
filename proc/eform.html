@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,45 +43,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-        
+              
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                                       </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -95,50 +68,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>EFORM
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 0.4% of total for procedures.">23 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
-    
      <li><a href='../module/astro_module.html'>astro_module</a></li>
-    
-  
      <li class="active">EFORM</li>
   </ol>
 </div>
@@ -154,32 +106,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -187,24 +116,14 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-public subroutine EFORM(n, a, f, j)
+    <h2>public subroutine EFORM(n, a, f, j)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>Earth reference ellipsoids.</p>
 <p>Status:  canonical.</p>
 <h3>Notes</h3>
@@ -254,93 +173,42 @@ public subroutine EFORM(n, a, f, j)
 <ul>
 <li>IAU SOFA revision: 2010 January 18</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-n~3"></span>integer,</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>n</strong></td><td><p>ellipsoid identifier (Note 1)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-a~3"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>a</strong></td><td><p>equatorial radius (meters, Note 2)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-f~2"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>f</strong></td><td><p>flattening (Note 2)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-j~12"></span>integer,</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>j</strong></td><td><ul>
 <li>0 = OK</li>
 <li>-1 = illegal identifier (Note 3)</li>
 </ul></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
-     
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Called by</h3>
@@ -360,38 +228,38 @@ public subroutine EFORM(n, a, f, j)
 <!-- proc~eform -->
 <g id="proc~~eform~~CalledByGraph_node1" class="node">
 <title>proc~eform</title>
-<polygon fill="none" stroke="black" points="506,-108 452,-108 452,-84 506,-84 506,-108"/>
-<text text-anchor="middle" x="479" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50">EFORM</text>
-</g>
-<!-- proc~gc2gd -->
-<g id="proc~~eform~~CalledByGraph_node2" class="node">
-<title>proc~gc2gd</title>
-<g id="a_proc~~eform~~CalledByGraph_node2"><a xlink:href=".././proc/gc2gd.html" xlink:title="GC2GD">
-<polygon fill="#d9534f" stroke="#d9534f" points="416,-129 362,-129 362,-105 416,-105 416,-129"/>
-<text text-anchor="middle" x="389" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">GC2GD</text>
-</a>
-</g>
-</g>
-<!-- proc~gc2gd&#45;&gt;proc~eform -->
-<g id="proc~~eform~~CalledByGraph_edge1" class="edge">
-<title>proc~gc2gd&#45;&gt;proc~eform</title>
-<path fill="none" stroke="#000000" d="M416.4,-110.7C424.48,-108.77 433.51,-106.62 442.1,-104.57"/>
-<polygon fill="#000000" stroke="#000000" points="443,-107.95 451.92,-102.22 441.38,-101.14 443,-107.95"/>
+<polygon fill="none" stroke="black" points="506,-66 452,-66 452,-42 506,-42 506,-66"/>
+<text text-anchor="middle" x="479" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50">EFORM</text>
 </g>
 <!-- proc~gd2gc -->
-<g id="proc~~eform~~CalledByGraph_node3" class="node">
+<g id="proc~~eform~~CalledByGraph_node2" class="node">
 <title>proc~gd2gc</title>
-<g id="a_proc~~eform~~CalledByGraph_node3"><a xlink:href=".././proc/gd2gc.html" xlink:title="GD2GC">
+<g id="a_proc~~eform~~CalledByGraph_node2"><a xlink:href=".././proc/gd2gc.html" xlink:title="GD2GC">
 <polygon fill="#d9534f" stroke="#d9534f" points="416,-87 362,-87 362,-63 416,-63 416,-87"/>
 <text text-anchor="middle" x="389" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">GD2GC</text>
 </a>
 </g>
 </g>
 <!-- proc~gd2gc&#45;&gt;proc~eform -->
-<g id="proc~~eform~~CalledByGraph_edge2" class="edge">
+<g id="proc~~eform~~CalledByGraph_edge1" class="edge">
 <title>proc~gd2gc&#45;&gt;proc~eform</title>
-<path fill="none" stroke="#000000" d="M416.4,-81.3C424.48,-83.23 433.51,-85.38 442.1,-87.43"/>
-<polygon fill="#000000" stroke="#000000" points="441.38,-90.86 451.92,-89.78 443,-84.05 441.38,-90.86"/>
+<path fill="none" stroke="#000000" d="M416.4,-68.7C424.48,-66.77 433.51,-64.62 442.1,-62.57"/>
+<polygon fill="#000000" stroke="#000000" points="443,-65.95 451.92,-60.22 441.38,-59.14 443,-65.95"/>
+</g>
+<!-- proc~gc2gd -->
+<g id="proc~~eform~~CalledByGraph_node3" class="node">
+<title>proc~gc2gd</title>
+<g id="a_proc~~eform~~CalledByGraph_node3"><a xlink:href=".././proc/gc2gd.html" xlink:title="GC2GD">
+<polygon fill="#d9534f" stroke="#d9534f" points="416,-45 362,-45 362,-21 416,-21 416,-45"/>
+<text text-anchor="middle" x="389" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">GC2GD</text>
+</a>
+</g>
+</g>
+<!-- proc~gc2gd&#45;&gt;proc~eform -->
+<g id="proc~~eform~~CalledByGraph_edge2" class="edge">
+<title>proc~gc2gd&#45;&gt;proc~eform</title>
+<path fill="none" stroke="#000000" d="M416.4,-39.3C424.48,-41.23 433.51,-43.38 442.1,-45.43"/>
+<polygon fill="#000000" stroke="#000000" points="441.38,-48.86 451.92,-47.78 443,-42.05 441.38,-48.86"/>
 </g>
 <!-- proc~pvtob -->
 <g id="proc~~eform~~CalledByGraph_node4" class="node">
@@ -438,25 +306,10 @@ public subroutine EFORM(n, a, f, j)
 <path fill="none" stroke="#000000" d="M236.4,-60.3C244.48,-62.23 253.51,-64.38 262.1,-66.43"/>
 <polygon fill="#000000" stroke="#000000" points="261.38,-69.86 271.92,-68.78 263,-63.05 261.38,-69.86"/>
 </g>
-<!-- proc~apco13 -->
-<g id="proc~~eform~~CalledByGraph_node7" class="node">
-<title>proc~apco13</title>
-<g id="a_proc~~eform~~CalledByGraph_node7"><a xlink:href=".././proc/apco13.html" xlink:title="APCO13">
-<polygon fill="#d9534f" stroke="#d9534f" points="146,-108 91,-108 91,-84 146,-84 146,-108"/>
-<text text-anchor="middle" x="118.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APCO13</text>
-</a>
-</g>
-</g>
-<!-- proc~apco13&#45;&gt;proc~apco -->
-<g id="proc~~eform~~CalledByGraph_edge6" class="edge">
-<title>proc~apco13&#45;&gt;proc~apco</title>
-<path fill="none" stroke="#000000" d="M146.05,-96C154.09,-96 163.06,-96 171.62,-96"/>
-<polygon fill="#000000" stroke="#000000" points="171.77,-99.5 181.77,-96 171.77,-92.5 171.77,-99.5"/>
-</g>
 <!-- proc~apio13 -->
-<g id="proc~~eform~~CalledByGraph_node8" class="node">
+<g id="proc~~eform~~CalledByGraph_node7" class="node">
 <title>proc~apio13</title>
-<g id="a_proc~~eform~~CalledByGraph_node8"><a xlink:href=".././proc/apio13.html" xlink:title="APIO13">
+<g id="a_proc~~eform~~CalledByGraph_node7"><a xlink:href=".././proc/apio13.html" xlink:title="APIO13">
 <polygon fill="#d9534f" stroke="#d9534f" points="145.5,-66 91.5,-66 91.5,-42 145.5,-42 145.5,-66"/>
 <text text-anchor="middle" x="118.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APIO13</text>
 </a>
@@ -468,65 +321,80 @@ public subroutine EFORM(n, a, f, j)
 <path fill="none" stroke="#000000" d="M145.57,-54C153.78,-54 163,-54 171.78,-54"/>
 <polygon fill="#000000" stroke="#000000" points="171.81,-57.5 181.81,-54 171.81,-50.5 171.81,-57.5"/>
 </g>
-<!-- proc~atco13 -->
-<g id="proc~~eform~~CalledByGraph_node9" class="node">
-<title>proc~atco13</title>
-<g id="a_proc~~eform~~CalledByGraph_node9"><a xlink:href=".././proc/atco13.html" xlink:title="ATCO13">
-<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-150 0.5,-150 0.5,-126 54.5,-126 54.5,-150"/>
-<text text-anchor="middle" x="27.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATCO13</text>
+<!-- proc~apco13 -->
+<g id="proc~~eform~~CalledByGraph_node8" class="node">
+<title>proc~apco13</title>
+<g id="a_proc~~eform~~CalledByGraph_node8"><a xlink:href=".././proc/apco13.html" xlink:title="APCO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="146,-108 91,-108 91,-84 146,-84 146,-108"/>
+<text text-anchor="middle" x="118.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APCO13</text>
 </a>
 </g>
 </g>
-<!-- proc~atco13&#45;&gt;proc~apco13 -->
-<g id="proc~~eform~~CalledByGraph_edge8" class="edge">
-<title>proc~atco13&#45;&gt;proc~apco13</title>
-<path fill="none" stroke="#000000" d="M54.24,-125.85C63.1,-121.67 73.17,-116.92 82.63,-112.46"/>
-<polygon fill="#000000" stroke="#000000" points="84.27,-115.55 91.82,-108.12 81.28,-109.22 84.27,-115.55"/>
+<!-- proc~apco13&#45;&gt;proc~apco -->
+<g id="proc~~eform~~CalledByGraph_edge6" class="edge">
+<title>proc~apco13&#45;&gt;proc~apco</title>
+<path fill="none" stroke="#000000" d="M146.05,-96C154.09,-96 163.06,-96 171.62,-96"/>
+<polygon fill="#000000" stroke="#000000" points="171.77,-99.5 181.77,-96 171.77,-92.5 171.77,-99.5"/>
 </g>
 <!-- proc~atoc13 -->
-<g id="proc~~eform~~CalledByGraph_node10" class="node">
+<g id="proc~~eform~~CalledByGraph_node9" class="node">
 <title>proc~atoc13</title>
-<g id="a_proc~~eform~~CalledByGraph_node10"><a xlink:href=".././proc/atoc13.html" xlink:title="ATOC13">
-<polygon fill="#d9534f" stroke="#d9534f" points="55,-108 0,-108 0,-84 55,-84 55,-108"/>
-<text text-anchor="middle" x="27.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOC13</text>
+<g id="a_proc~~eform~~CalledByGraph_node9"><a xlink:href=".././proc/atoc13.html" xlink:title="ATOC13">
+<polygon fill="#d9534f" stroke="#d9534f" points="55,-150 0,-150 0,-126 55,-126 55,-150"/>
+<text text-anchor="middle" x="27.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOC13</text>
 </a>
 </g>
 </g>
 <!-- proc~atoc13&#45;&gt;proc~apco13 -->
-<g id="proc~~eform~~CalledByGraph_edge9" class="edge">
+<g id="proc~~eform~~CalledByGraph_edge10" class="edge">
 <title>proc~atoc13&#45;&gt;proc~apco13</title>
-<path fill="none" stroke="#000000" d="M55.2,-96C63.21,-96 72.14,-96 80.68,-96"/>
-<polygon fill="#000000" stroke="#000000" points="80.82,-99.5 90.82,-96 80.82,-92.5 80.82,-99.5"/>
+<path fill="none" stroke="#000000" d="M54.24,-125.85C63.1,-121.67 73.17,-116.92 82.63,-112.46"/>
+<polygon fill="#000000" stroke="#000000" points="84.27,-115.55 91.82,-108.12 81.28,-109.22 84.27,-115.55"/>
+</g>
+<!-- proc~atio13 -->
+<g id="proc~~eform~~CalledByGraph_node10" class="node">
+<title>proc~atio13</title>
+<g id="a_proc~~eform~~CalledByGraph_node10"><a xlink:href=".././proc/atio13.html" xlink:title="ATIO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-66 0.5,-66 0.5,-42 54.5,-42 54.5,-66"/>
+<text text-anchor="middle" x="27.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATIO13</text>
+</a>
+</g>
+</g>
+<!-- proc~atio13&#45;&gt;proc~apio13 -->
+<g id="proc~~eform~~CalledByGraph_edge8" class="edge">
+<title>proc~atio13&#45;&gt;proc~apio13</title>
+<path fill="none" stroke="#000000" d="M54.72,-54C63.05,-54 72.41,-54 81.32,-54"/>
+<polygon fill="#000000" stroke="#000000" points="81.47,-57.5 91.47,-54 81.47,-50.5 81.47,-57.5"/>
 </g>
 <!-- proc~atoi13 -->
 <g id="proc~~eform~~CalledByGraph_node11" class="node">
 <title>proc~atoi13</title>
 <g id="a_proc~~eform~~CalledByGraph_node11"><a xlink:href=".././proc/atoi13.html" xlink:title="ATOI13">
-<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-66 0.5,-66 0.5,-42 54.5,-42 54.5,-66"/>
-<text text-anchor="middle" x="27.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOI13</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-24 0.5,-24 0.5,0 54.5,0 54.5,-24"/>
+<text text-anchor="middle" x="27.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOI13</text>
 </a>
 </g>
 </g>
 <!-- proc~atoi13&#45;&gt;proc~apio13 -->
-<g id="proc~~eform~~CalledByGraph_edge10" class="edge">
+<g id="proc~~eform~~CalledByGraph_edge9" class="edge">
 <title>proc~atoi13&#45;&gt;proc~apio13</title>
-<path fill="none" stroke="#000000" d="M54.72,-54C63.05,-54 72.41,-54 81.32,-54"/>
-<polygon fill="#000000" stroke="#000000" points="81.47,-57.5 91.47,-54 81.47,-50.5 81.47,-57.5"/>
+<path fill="none" stroke="#000000" d="M54.24,-24.15C63.1,-28.33 73.17,-33.08 82.63,-37.54"/>
+<polygon fill="#000000" stroke="#000000" points="81.28,-40.78 91.82,-41.88 84.27,-34.45 81.28,-40.78"/>
 </g>
-<!-- proc~atio13 -->
+<!-- proc~atco13 -->
 <g id="proc~~eform~~CalledByGraph_node12" class="node">
-<title>proc~atio13</title>
-<g id="a_proc~~eform~~CalledByGraph_node12"><a xlink:href=".././proc/atio13.html" xlink:title="ATIO13">
-<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-24 0.5,-24 0.5,0 54.5,0 54.5,-24"/>
-<text text-anchor="middle" x="27.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATIO13</text>
+<title>proc~atco13</title>
+<g id="a_proc~~eform~~CalledByGraph_node12"><a xlink:href=".././proc/atco13.html" xlink:title="ATCO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-108 0.5,-108 0.5,-84 54.5,-84 54.5,-108"/>
+<text text-anchor="middle" x="27.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATCO13</text>
 </a>
 </g>
 </g>
-<!-- proc~atio13&#45;&gt;proc~apio13 -->
+<!-- proc~atco13&#45;&gt;proc~apco13 -->
 <g id="proc~~eform~~CalledByGraph_edge11" class="edge">
-<title>proc~atio13&#45;&gt;proc~apio13</title>
-<path fill="none" stroke="#000000" d="M54.24,-24.15C63.1,-28.33 73.17,-33.08 82.63,-37.54"/>
-<polygon fill="#000000" stroke="#000000" points="81.28,-40.78 91.82,-41.88 84.27,-34.45 81.28,-40.78"/>
+<title>proc~atco13&#45;&gt;proc~apco13</title>
+<path fill="none" stroke="#000000" d="M54.72,-96C62.9,-96 72.08,-96 80.84,-96"/>
+<polygon fill="#000000" stroke="#000000" points="80.85,-99.5 90.85,-96 80.85,-92.5 80.85,-99.5"/>
 </g>
 </g>
 </svg>
@@ -591,34 +459,11 @@ public subroutine EFORM(n, a, f, j)
     </div></div></div></div>
       </div>
     </div>
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -626,101 +471,87 @@ public subroutine EFORM(n, a, f, j)
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">EFORM</span> <span class="p">(</span> <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">j</span> <span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">EFORM</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">n</span> <span class="c">!! ellipsoid identifier (Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">a</span> <span class="c">!! equatorial radius (meters, Note 2)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">f</span> <span class="c">!! flattening (Note 2)</span>
-    <span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">j</span> <span class="c">!! status:</span>
-                             <span class="c">!! * 0 = OK</span>
-                             <span class="c">!! * -1 = illegal identifier (Note 3)</span>
+<span class="k">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="c">!! ellipsoid identifier (Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="c">!! equatorial radius (meters, Note 2)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="c">!! flattening (Note 2)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="c">!! status:</span>
+<span class="w">                             </span><span class="c">!! * 0 = OK</span>
+<span class="w">                             </span><span class="c">!! * -1 = illegal identifier (Note 3)</span>
 
-    <span class="c">!  Preset the status to OK</span>
-    <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="w">    </span><span class="c">!  Preset the status to OK</span>
+<span class="w">    </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
 
-    <span class="c">!  Look up A and F for the specified reference ellipsoid.</span>
+<span class="w">    </span><span class="c">!  Look up A and F for the specified reference ellipsoid.</span>
 
-    <span class="k">select case</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span>
-    <span class="k">case</span> <span class="p">(</span> <span class="mi">1</span> <span class="p">)</span>
+<span class="w">    </span><span class="k">select case</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-       <span class="c">!  WGS84.</span>
-       <span class="n">a</span> <span class="o">=</span> <span class="mi">637813</span><span class="mf">7.0_wp</span>
-       <span class="n">f</span> <span class="o">=</span> <span class="mf">1.0_wp</span> <span class="o">/</span> <span class="mi">29</span><span class="mf">8.257223563_wp</span>
+<span class="w">       </span><span class="c">!  WGS84.</span>
+<span class="w">       </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">637813</span><span class="mf">7.0_wp</span><span class="w"></span>
+<span class="w">       </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0_wp</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">29</span><span class="mf">8.257223563_wp</span><span class="w"></span>
 
-    <span class="k">case</span> <span class="p">(</span> <span class="mi">2</span> <span class="p">)</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-       <span class="c">!  GRS80.</span>
-       <span class="n">a</span> <span class="o">=</span> <span class="mi">637813</span><span class="mf">7.0_wp</span>
-       <span class="n">f</span> <span class="o">=</span> <span class="mf">1.0_wp</span> <span class="o">/</span> <span class="mi">29</span><span class="mf">8.257222101_wp</span>
+<span class="w">       </span><span class="c">!  GRS80.</span>
+<span class="w">       </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">637813</span><span class="mf">7.0_wp</span><span class="w"></span>
+<span class="w">       </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0_wp</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">29</span><span class="mf">8.257222101_wp</span><span class="w"></span>
 
-    <span class="k">case</span> <span class="p">(</span> <span class="mi">3</span> <span class="p">)</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-       <span class="c">!  WGS72.</span>
-       <span class="n">a</span> <span class="o">=</span> <span class="mi">637813</span><span class="mf">5.0_wp</span>
-       <span class="n">f</span> <span class="o">=</span> <span class="mf">1.0_wp</span> <span class="o">/</span> <span class="mi">29</span><span class="mf">8.26_wp</span>
+<span class="w">       </span><span class="c">!  WGS72.</span>
+<span class="w">       </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">637813</span><span class="mf">5.0_wp</span><span class="w"></span>
+<span class="w">       </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0_wp</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">29</span><span class="mf">8.26_wp</span><span class="w"></span>
 
-    <span class="k">case </span><span class="n">default</span>
+<span class="w">    </span><span class="k">case </span><span class="n">default</span><span class="w"></span>
 
-       <span class="c">!  Invalid identifier.</span>
-       <span class="n">a</span> <span class="o">=</span> <span class="mf">0.0_wp</span>
-       <span class="n">f</span> <span class="o">=</span> <span class="mf">0.0_wp</span>
-       <span class="n">j</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="w">       </span><span class="c">!  Invalid identifier.</span>
+<span class="w">       </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_wp</span><span class="w"></span>
+<span class="w">       </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_wp</span><span class="w"></span>
+<span class="w">       </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"></span>
 
-    <span class="k">end select</span>
+<span class="w">    </span><span class="k">end select</span>
 
-<span class="k">    end subroutine </span><span class="n">EFORM</span>
+<span class="k">    end subroutine </span><span class="n">EFORM</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>astro-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -746,14 +577,11 @@ public subroutine EFORM(n, a, f, j)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

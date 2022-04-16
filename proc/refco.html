@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,45 +43,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-        
+              
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                                       </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -95,50 +68,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>REFCO
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 0.6% of total for procedures.">33 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
-    
      <li><a href='../module/astro_module.html'>astro_module</a></li>
-    
-  
      <li class="active">REFCO</li>
   </ol>
 </div>
@@ -154,32 +106,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -187,24 +116,14 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-public subroutine REFCO(phpa, tc, rh, wl, refa, refb)
+    <h2>public subroutine REFCO(phpa, tc, rh, wl, refa, refb)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>Determine the constants A and B in the atmospheric refraction model
   dZ = A tan Z + B tan^3 Z.</p>
 <p>Z is the "observed" zenith distance (i.e. affected by refraction)
@@ -349,120 +268,51 @@ public subroutine REFCO(phpa, tc, rh, wl, refa, refb)
 <ul>
 <li>IAU SOFA revision: 2016 December 20</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-phpa~7"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>phpa</strong></td><td><p>pressure at the observer (hPa = millibar)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-tc~7"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>tc</strong></td><td><p>ambient temperature at the observer (deg C)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-rh~11"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>rh</strong></td><td><p>relative humidity at the observer (range 0-1)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-wl~7"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>wl</strong></td><td><p>wavelength (micrometers)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-refa~3"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>refa</strong></td><td><p>tan Z coefficient (radians)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-refb~3"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>refb</strong></td><td><p>tan^3 Z coefficient (radians)</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
-     
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Called by</h3>
@@ -485,93 +335,93 @@ public subroutine REFCO(phpa, tc, rh, wl, refa, refb)
 <polygon fill="none" stroke="black" points="236,-87 182,-87 182,-63 236,-63 236,-87"/>
 <text text-anchor="middle" x="209" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50">REFCO</text>
 </g>
-<!-- proc~apco13 -->
-<g id="proc~~refco~~CalledByGraph_node2" class="node">
-<title>proc~apco13</title>
-<g id="a_proc~~refco~~CalledByGraph_node2"><a xlink:href=".././proc/apco13.html" xlink:title="APCO13">
-<polygon fill="#d9534f" stroke="#d9534f" points="146,-108 91,-108 91,-84 146,-84 146,-108"/>
-<text text-anchor="middle" x="118.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APCO13</text>
-</a>
-</g>
-</g>
-<!-- proc~apco13&#45;&gt;proc~refco -->
-<g id="proc~~refco~~CalledByGraph_edge1" class="edge">
-<title>proc~apco13&#45;&gt;proc~refco</title>
-<path fill="none" stroke="#000000" d="M146.05,-89.7C154.18,-87.77 163.25,-85.62 171.9,-83.57"/>
-<polygon fill="#000000" stroke="#000000" points="172.85,-86.94 181.77,-81.22 171.23,-80.13 172.85,-86.94"/>
-</g>
 <!-- proc~apio13 -->
-<g id="proc~~refco~~CalledByGraph_node3" class="node">
+<g id="proc~~refco~~CalledByGraph_node2" class="node">
 <title>proc~apio13</title>
-<g id="a_proc~~refco~~CalledByGraph_node3"><a xlink:href=".././proc/apio13.html" xlink:title="APIO13">
-<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-66 91.5,-66 91.5,-42 145.5,-42 145.5,-66"/>
-<text text-anchor="middle" x="118.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APIO13</text>
+<g id="a_proc~~refco~~CalledByGraph_node2"><a xlink:href=".././proc/apio13.html" xlink:title="APIO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-108 91.5,-108 91.5,-84 145.5,-84 145.5,-108"/>
+<text text-anchor="middle" x="118.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APIO13</text>
 </a>
 </g>
 </g>
 <!-- proc~apio13&#45;&gt;proc~refco -->
-<g id="proc~~refco~~CalledByGraph_edge2" class="edge">
+<g id="proc~~refco~~CalledByGraph_edge1" class="edge">
 <title>proc~apio13&#45;&gt;proc~refco</title>
-<path fill="none" stroke="#000000" d="M145.57,-60.19C153.87,-62.16 163.2,-64.37 172.07,-66.47"/>
-<polygon fill="#000000" stroke="#000000" points="171.27,-69.88 181.81,-68.78 172.88,-63.07 171.27,-69.88"/>
+<path fill="none" stroke="#000000" d="M145.57,-89.81C153.87,-87.84 163.2,-85.63 172.07,-83.53"/>
+<polygon fill="#000000" stroke="#000000" points="172.88,-86.93 181.81,-81.22 171.27,-80.12 172.88,-86.93"/>
 </g>
-<!-- proc~atco13 -->
-<g id="proc~~refco~~CalledByGraph_node4" class="node">
-<title>proc~atco13</title>
-<g id="a_proc~~refco~~CalledByGraph_node4"><a xlink:href=".././proc/atco13.html" xlink:title="ATCO13">
-<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-150 0.5,-150 0.5,-126 54.5,-126 54.5,-150"/>
-<text text-anchor="middle" x="27.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATCO13</text>
+<!-- proc~apco13 -->
+<g id="proc~~refco~~CalledByGraph_node3" class="node">
+<title>proc~apco13</title>
+<g id="a_proc~~refco~~CalledByGraph_node3"><a xlink:href=".././proc/apco13.html" xlink:title="APCO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="146,-66 91,-66 91,-42 146,-42 146,-66"/>
+<text text-anchor="middle" x="118.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APCO13</text>
 </a>
 </g>
 </g>
-<!-- proc~atco13&#45;&gt;proc~apco13 -->
-<g id="proc~~refco~~CalledByGraph_edge3" class="edge">
-<title>proc~atco13&#45;&gt;proc~apco13</title>
-<path fill="none" stroke="#000000" d="M54.24,-125.85C63.1,-121.67 73.17,-116.92 82.63,-112.46"/>
-<polygon fill="#000000" stroke="#000000" points="84.27,-115.55 91.82,-108.12 81.28,-109.22 84.27,-115.55"/>
+<!-- proc~apco13&#45;&gt;proc~refco -->
+<g id="proc~~refco~~CalledByGraph_edge2" class="edge">
+<title>proc~apco13&#45;&gt;proc~refco</title>
+<path fill="none" stroke="#000000" d="M146.05,-60.3C154.18,-62.23 163.25,-64.38 171.9,-66.43"/>
+<polygon fill="#000000" stroke="#000000" points="171.23,-69.87 181.77,-68.78 172.85,-63.06 171.23,-69.87"/>
 </g>
 <!-- proc~atoc13 -->
-<g id="proc~~refco~~CalledByGraph_node5" class="node">
+<g id="proc~~refco~~CalledByGraph_node4" class="node">
 <title>proc~atoc13</title>
-<g id="a_proc~~refco~~CalledByGraph_node5"><a xlink:href=".././proc/atoc13.html" xlink:title="ATOC13">
-<polygon fill="#d9534f" stroke="#d9534f" points="55,-108 0,-108 0,-84 55,-84 55,-108"/>
-<text text-anchor="middle" x="27.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOC13</text>
+<g id="a_proc~~refco~~CalledByGraph_node4"><a xlink:href=".././proc/atoc13.html" xlink:title="ATOC13">
+<polygon fill="#d9534f" stroke="#d9534f" points="55,-66 0,-66 0,-42 55,-42 55,-66"/>
+<text text-anchor="middle" x="27.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOC13</text>
 </a>
 </g>
 </g>
 <!-- proc~atoc13&#45;&gt;proc~apco13 -->
-<g id="proc~~refco~~CalledByGraph_edge4" class="edge">
+<g id="proc~~refco~~CalledByGraph_edge5" class="edge">
 <title>proc~atoc13&#45;&gt;proc~apco13</title>
-<path fill="none" stroke="#000000" d="M55.2,-96C63.21,-96 72.14,-96 80.68,-96"/>
-<polygon fill="#000000" stroke="#000000" points="80.82,-99.5 90.82,-96 80.82,-92.5 80.82,-99.5"/>
+<path fill="none" stroke="#000000" d="M55.2,-54C63.21,-54 72.14,-54 80.68,-54"/>
+<polygon fill="#000000" stroke="#000000" points="80.82,-57.5 90.82,-54 80.82,-50.5 80.82,-57.5"/>
+</g>
+<!-- proc~atio13 -->
+<g id="proc~~refco~~CalledByGraph_node5" class="node">
+<title>proc~atio13</title>
+<g id="a_proc~~refco~~CalledByGraph_node5"><a xlink:href=".././proc/atio13.html" xlink:title="ATIO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-150 0.5,-150 0.5,-126 54.5,-126 54.5,-150"/>
+<text text-anchor="middle" x="27.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATIO13</text>
+</a>
+</g>
+</g>
+<!-- proc~atio13&#45;&gt;proc~apio13 -->
+<g id="proc~~refco~~CalledByGraph_edge3" class="edge">
+<title>proc~atio13&#45;&gt;proc~apio13</title>
+<path fill="none" stroke="#000000" d="M54.24,-125.85C63.1,-121.67 73.17,-116.92 82.63,-112.46"/>
+<polygon fill="#000000" stroke="#000000" points="84.27,-115.55 91.82,-108.12 81.28,-109.22 84.27,-115.55"/>
 </g>
 <!-- proc~atoi13 -->
 <g id="proc~~refco~~CalledByGraph_node6" class="node">
 <title>proc~atoi13</title>
 <g id="a_proc~~refco~~CalledByGraph_node6"><a xlink:href=".././proc/atoi13.html" xlink:title="ATOI13">
-<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-66 0.5,-66 0.5,-42 54.5,-42 54.5,-66"/>
-<text text-anchor="middle" x="27.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOI13</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-108 0.5,-108 0.5,-84 54.5,-84 54.5,-108"/>
+<text text-anchor="middle" x="27.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOI13</text>
 </a>
 </g>
 </g>
 <!-- proc~atoi13&#45;&gt;proc~apio13 -->
-<g id="proc~~refco~~CalledByGraph_edge5" class="edge">
+<g id="proc~~refco~~CalledByGraph_edge4" class="edge">
 <title>proc~atoi13&#45;&gt;proc~apio13</title>
-<path fill="none" stroke="#000000" d="M54.72,-54C63.05,-54 72.41,-54 81.32,-54"/>
-<polygon fill="#000000" stroke="#000000" points="81.47,-57.5 91.47,-54 81.47,-50.5 81.47,-57.5"/>
+<path fill="none" stroke="#000000" d="M54.72,-96C63.05,-96 72.41,-96 81.32,-96"/>
+<polygon fill="#000000" stroke="#000000" points="81.47,-99.5 91.47,-96 81.47,-92.5 81.47,-99.5"/>
 </g>
-<!-- proc~atio13 -->
+<!-- proc~atco13 -->
 <g id="proc~~refco~~CalledByGraph_node7" class="node">
-<title>proc~atio13</title>
-<g id="a_proc~~refco~~CalledByGraph_node7"><a xlink:href=".././proc/atio13.html" xlink:title="ATIO13">
+<title>proc~atco13</title>
+<g id="a_proc~~refco~~CalledByGraph_node7"><a xlink:href=".././proc/atco13.html" xlink:title="ATCO13">
 <polygon fill="#d9534f" stroke="#d9534f" points="54.5,-24 0.5,-24 0.5,0 54.5,0 54.5,-24"/>
-<text text-anchor="middle" x="27.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATIO13</text>
+<text text-anchor="middle" x="27.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATCO13</text>
 </a>
 </g>
 </g>
-<!-- proc~atio13&#45;&gt;proc~apio13 -->
+<!-- proc~atco13&#45;&gt;proc~apco13 -->
 <g id="proc~~refco~~CalledByGraph_edge6" class="edge">
-<title>proc~atio13&#45;&gt;proc~apio13</title>
+<title>proc~atco13&#45;&gt;proc~apco13</title>
 <path fill="none" stroke="#000000" d="M54.24,-24.15C63.1,-28.33 73.17,-33.08 82.63,-37.54"/>
 <polygon fill="#000000" stroke="#000000" points="81.28,-40.78 91.82,-41.88 84.27,-34.45 81.28,-40.78"/>
 </g>
@@ -638,34 +488,11 @@ public subroutine REFCO(phpa, tc, rh, wl, refa, refb)
     </div></div></div></div>
       </div>
     </div>
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -673,107 +500,93 @@ public subroutine REFCO(phpa, tc, rh, wl, refa, refb)
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">REFCO</span> <span class="p">(</span> <span class="n">phpa</span><span class="p">,</span> <span class="n">tc</span><span class="p">,</span> <span class="n">rh</span><span class="p">,</span> <span class="n">wl</span><span class="p">,</span> <span class="n">refa</span><span class="p">,</span> <span class="n">refb</span> <span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">REFCO</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">phpa</span><span class="p">,</span><span class="w"> </span><span class="n">tc</span><span class="p">,</span><span class="w"> </span><span class="n">rh</span><span class="p">,</span><span class="w"> </span><span class="n">wl</span><span class="p">,</span><span class="w"> </span><span class="n">refa</span><span class="p">,</span><span class="w"> </span><span class="n">refb</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">phpa</span> <span class="c">!! pressure at the observer (hPa = millibar)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">tc</span> <span class="c">!! ambient temperature at the observer (deg C)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">rh</span> <span class="c">!! relative humidity at the observer (range 0-1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">wl</span> <span class="c">!! wavelength (micrometers)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">refa</span> <span class="c">!! tan Z coefficient (radians)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">refb</span> <span class="c">!! tan^3 Z coefficient (radians)</span>
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">phpa</span><span class="w"> </span><span class="c">!! pressure at the observer (hPa = millibar)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tc</span><span class="w"> </span><span class="c">!! ambient temperature at the observer (deg C)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">rh</span><span class="w"> </span><span class="c">!! relative humidity at the observer (range 0-1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">wl</span><span class="w"> </span><span class="c">!! wavelength (micrometers)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">refa</span><span class="w"> </span><span class="c">!! tan Z coefficient (radians)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">refb</span><span class="w"> </span><span class="c">!! tan^3 Z coefficient (radians)</span>
 
-    <span class="kt">logical</span> <span class="kd">::</span> <span class="n">optic</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">p</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">ps</span><span class="p">,</span> <span class="n">pw</span><span class="p">,</span> <span class="n">tk</span><span class="p">,</span> <span class="n">wlsq</span><span class="p">,</span> <span class="nb">gamma</span><span class="p">,</span> <span class="n">beta</span>
+<span class="w">    </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">optic</span><span class="w"></span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">ps</span><span class="p">,</span><span class="w"> </span><span class="n">pw</span><span class="p">,</span><span class="w"> </span><span class="n">tk</span><span class="p">,</span><span class="w"> </span><span class="n">wlsq</span><span class="p">,</span><span class="w"> </span><span class="nb">gamma</span><span class="p">,</span><span class="w"> </span><span class="n">beta</span><span class="w"></span>
 
-    <span class="c">!  Decide whether optical/IR or radio case:  switch at 100 microns.</span>
-    <span class="n">optic</span> <span class="o">=</span> <span class="n">wl</span><span class="o">&lt;=</span><span class="mi">10</span><span class="mf">0.0_wp</span>
+<span class="w">    </span><span class="c">!  Decide whether optical/IR or radio case:  switch at 100 microns.</span>
+<span class="w">    </span><span class="n">optic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wl</span><span class="o">&lt;=</span><span class="mi">10</span><span class="mf">0.0_wp</span><span class="w"></span>
 
-    <span class="c">!  Restrict parameters to safe values.</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span><span class="o">-</span><span class="mi">15</span><span class="mf">0.0_wp</span><span class="p">),</span><span class="mi">20</span><span class="mf">0.0_wp</span><span class="p">)</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">phpa</span><span class="p">,</span><span class="mf">0.0_wp</span><span class="p">),</span><span class="mi">1000</span><span class="mf">0.0_wp</span><span class="p">)</span>
-    <span class="n">r</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">rh</span><span class="p">,</span><span class="mf">0.0_wp</span><span class="p">),</span><span class="mf">1.0_wp</span><span class="p">)</span>
-    <span class="n">w</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">wl</span><span class="p">,</span><span class="mf">0.1_wp</span><span class="p">),</span><span class="mf">1.0e6_wp</span><span class="p">)</span>
+<span class="w">    </span><span class="c">!  Restrict parameters to safe values.</span>
+<span class="w">    </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span><span class="o">-</span><span class="mi">15</span><span class="mf">0.0_wp</span><span class="p">),</span><span class="mi">20</span><span class="mf">0.0_wp</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">phpa</span><span class="p">,</span><span class="mf">0.0_wp</span><span class="p">),</span><span class="mi">1000</span><span class="mf">0.0_wp</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">rh</span><span class="p">,</span><span class="mf">0.0_wp</span><span class="p">),</span><span class="mf">1.0_wp</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">wl</span><span class="p">,</span><span class="mf">0.1_wp</span><span class="p">),</span><span class="mf">1.0e6_wp</span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Water vapour pressure at the observer.</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="o">&gt;</span><span class="mf">0.0_wp</span><span class="p">)</span> <span class="k">then</span>
-<span class="k">       </span><span class="n">ps</span> <span class="o">=</span> <span class="mi">1</span><span class="mf">0.0_wp</span><span class="o">**</span><span class="p">((</span><span class="mf">0.7859_wp</span><span class="o">+</span><span class="mf">0.03477_wp</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">1.0_wp</span><span class="o">+</span><span class="mf">0.00412_wp</span><span class="o">*</span><span class="n">t</span><span class="p">))</span><span class="o">*</span> <span class="p">&amp;</span>
-                                        <span class="p">(</span><span class="mf">1.0_wp</span><span class="o">+</span><span class="n">p</span><span class="o">*</span><span class="p">(</span><span class="mf">4.5e-6_wp</span><span class="o">+</span><span class="mf">6e-10_wp</span><span class="o">*</span><span class="n">t</span><span class="o">*</span><span class="n">t</span><span class="p">))</span>
-       <span class="n">pw</span> <span class="o">=</span> <span class="n">r</span><span class="o">*</span><span class="n">ps</span><span class="o">/</span><span class="p">(</span><span class="mf">1.0_wp</span><span class="o">-</span><span class="p">(</span><span class="mf">1.0_wp</span><span class="o">-</span><span class="n">r</span><span class="p">)</span><span class="o">*</span><span class="n">ps</span><span class="o">/</span><span class="n">p</span><span class="p">)</span>
-    <span class="k">else</span>
-<span class="k">       </span><span class="n">pw</span> <span class="o">=</span> <span class="mf">0.0_wp</span>
-    <span class="k">end if</span>
+<span class="w">    </span><span class="c">!  Water vapour pressure at the observer.</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="o">&gt;</span><span class="mf">0.0_wp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">       </span><span class="n">ps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="mf">0.0_wp</span><span class="o">**</span><span class="p">((</span><span class="mf">0.7859_wp</span><span class="o">+</span><span class="mf">0.03477_wp</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">1.0_wp</span><span class="o">+</span><span class="mf">0.00412_wp</span><span class="o">*</span><span class="n">t</span><span class="p">))</span><span class="o">*</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                        </span><span class="p">(</span><span class="mf">1.0_wp</span><span class="o">+</span><span class="n">p</span><span class="o">*</span><span class="p">(</span><span class="mf">4.5e-6_wp</span><span class="o">+</span><span class="mf">6e-10_wp</span><span class="o">*</span><span class="n">t</span><span class="o">*</span><span class="n">t</span><span class="p">))</span><span class="w"></span>
+<span class="w">       </span><span class="n">pw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="o">*</span><span class="n">ps</span><span class="o">/</span><span class="p">(</span><span class="mf">1.0_wp</span><span class="o">-</span><span class="p">(</span><span class="mf">1.0_wp</span><span class="o">-</span><span class="n">r</span><span class="p">)</span><span class="o">*</span><span class="n">ps</span><span class="o">/</span><span class="n">p</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">       </span><span class="n">pw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_wp</span><span class="w"></span>
+<span class="w">    </span><span class="k">end if</span><span class="w"></span>
 
-    <span class="c">!  Refractive index minus 1 at the observer.</span>
-    <span class="n">tk</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="mi">27</span><span class="mf">3.15_wp</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">optic</span><span class="p">)</span> <span class="k">then</span>
-<span class="k">       </span><span class="n">wlsq</span> <span class="o">=</span> <span class="n">w</span><span class="o">*</span><span class="n">w</span>
-       <span class="nb">gamma</span> <span class="o">=</span> <span class="p">((</span><span class="mi">7</span><span class="mf">7.53484e-6_wp</span><span class="o">+</span><span class="p">(</span><span class="mf">4.39108e-7_wp</span><span class="o">+</span><span class="mf">3.666e-9_wp</span><span class="o">/</span><span class="n">wlsq</span><span class="p">)</span><span class="o">/</span><span class="n">wlsq</span><span class="p">)</span><span class="o">*</span><span class="n">p</span> <span class="p">&amp;</span>
-                                                    <span class="o">-</span><span class="mi">1</span><span class="mf">1.2684e-6_wp</span><span class="o">*</span><span class="n">pw</span><span class="p">)</span><span class="o">/</span><span class="n">tk</span>
-    <span class="k">else</span>
-<span class="k">       </span><span class="nb">gamma</span> <span class="o">=</span> <span class="p">(</span><span class="mi">7</span><span class="mf">7.6890e-6_wp</span><span class="o">*</span><span class="n">p</span><span class="o">-</span><span class="p">(</span><span class="mf">6.3938e-6_wp</span><span class="o">-</span><span class="mf">0.375463_wp</span><span class="o">/</span><span class="n">tk</span><span class="p">)</span><span class="o">*</span><span class="n">pw</span><span class="p">)</span><span class="o">/</span><span class="n">tk</span>
-    <span class="k">end if</span>
+<span class="w">    </span><span class="c">!  Refractive index minus 1 at the observer.</span>
+<span class="w">    </span><span class="n">tk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">27</span><span class="mf">3.15_wp</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">optic</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">       </span><span class="n">wlsq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">w</span><span class="o">*</span><span class="n">w</span><span class="w"></span>
+<span class="w">       </span><span class="nb">gamma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="mi">7</span><span class="mf">7.53484e-6_wp</span><span class="o">+</span><span class="p">(</span><span class="mf">4.39108e-7_wp</span><span class="o">+</span><span class="mf">3.666e-9_wp</span><span class="o">/</span><span class="n">wlsq</span><span class="p">)</span><span class="o">/</span><span class="n">wlsq</span><span class="p">)</span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                    </span><span class="o">-</span><span class="mi">1</span><span class="mf">1.2684e-6_wp</span><span class="o">*</span><span class="n">pw</span><span class="p">)</span><span class="o">/</span><span class="n">tk</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">       </span><span class="nb">gamma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">7</span><span class="mf">7.6890e-6_wp</span><span class="o">*</span><span class="n">p</span><span class="o">-</span><span class="p">(</span><span class="mf">6.3938e-6_wp</span><span class="o">-</span><span class="mf">0.375463_wp</span><span class="o">/</span><span class="n">tk</span><span class="p">)</span><span class="o">*</span><span class="n">pw</span><span class="p">)</span><span class="o">/</span><span class="n">tk</span><span class="w"></span>
+<span class="w">    </span><span class="k">end if</span><span class="w"></span>
 
-    <span class="c">!  Formula for beta adapted from Stone, with empirical adjustments.</span>
-    <span class="n">beta</span><span class="o">=</span><span class="mf">4.4474e-6_wp</span><span class="o">*</span><span class="n">tk</span>
-    <span class="k">if</span> <span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="n">optic</span><span class="p">)</span> <span class="n">beta</span><span class="o">=</span><span class="n">beta</span><span class="o">-</span><span class="mf">0.0074_wp</span><span class="o">*</span><span class="n">pw</span><span class="o">*</span><span class="n">beta</span>
+<span class="w">    </span><span class="c">!  Formula for beta adapted from Stone, with empirical adjustments.</span>
+<span class="w">    </span><span class="n">beta</span><span class="o">=</span><span class="mf">4.4474e-6_wp</span><span class="o">*</span><span class="n">tk</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="n">optic</span><span class="p">)</span><span class="w"> </span><span class="n">beta</span><span class="o">=</span><span class="n">beta</span><span class="o">-</span><span class="mf">0.0074_wp</span><span class="o">*</span><span class="n">pw</span><span class="o">*</span><span class="n">beta</span><span class="w"></span>
 
-    <span class="c">!  Refraction constants from Green.</span>
-    <span class="n">refa</span> <span class="o">=</span> <span class="nb">gamma</span><span class="o">*</span><span class="p">(</span><span class="mf">1.0_wp</span><span class="o">-</span><span class="n">beta</span><span class="p">)</span>
-    <span class="n">refb</span> <span class="o">=</span> <span class="o">-</span><span class="nb">gamma</span><span class="o">*</span><span class="p">(</span><span class="n">beta</span><span class="o">-</span><span class="nb">gamma</span><span class="o">/</span><span class="mf">2.0_wp</span><span class="p">)</span>
+<span class="w">    </span><span class="c">!  Refraction constants from Green.</span>
+<span class="w">    </span><span class="n">refa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">gamma</span><span class="o">*</span><span class="p">(</span><span class="mf">1.0_wp</span><span class="o">-</span><span class="n">beta</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">refb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="nb">gamma</span><span class="o">*</span><span class="p">(</span><span class="n">beta</span><span class="o">-</span><span class="nb">gamma</span><span class="o">/</span><span class="mf">2.0_wp</span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">end subroutine </span><span class="n">REFCO</span>
+<span class="w">    </span><span class="k">end subroutine </span><span class="n">REFCO</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>astro-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -799,14 +612,11 @@ public subroutine REFCO(phpa, tc, rh, wl, refa, refb)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

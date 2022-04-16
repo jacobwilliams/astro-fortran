@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,45 +43,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-        
+              
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                                       </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -95,50 +68,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>NUT06A
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 0.2% of total for procedures.">13 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
-    
      <li><a href='../module/astro_module.html'>astro_module</a></li>
-    
-  
      <li class="active">NUT06A</li>
   </ol>
 </div>
@@ -154,32 +106,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -187,24 +116,14 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-public subroutine NUT06A(date1, date2, dpsi, deps)
+    <h2>public subroutine NUT06A(date1, date2, dpsi, deps)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>IAU 2000A nutation with adjustments to match the IAU 2006 precession.</p>
 <p>Status:  canonical model.</p>
 <h3>Notes</h3>
@@ -256,89 +175,39 @@ public subroutine NUT06A(date1, date2, dpsi, deps)
 <ul>
 <li>IAU SOFA revision: 2011 April 3</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-date1~44"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>date1</strong></td><td><p>TT as a 2-part Julian Date (Note 1)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-date2~44"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>date2</strong></td><td><p>TT as a 2-part Julian Date (Note 1)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-dpsi~6"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>dpsi</strong></td><td><p>nutation, luni-solar + planetary (Note 2)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-deps~5"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>deps</strong></td><td><p>nutation, luni-solar + planetary (Note 2)</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Calls</h3>
@@ -376,153 +245,153 @@ public subroutine NUT06A(date1, date2, dpsi, deps)
 <path fill="none" stroke="#000000" d="M55.2,-222C63.21,-222 72.14,-222 80.68,-222"/>
 <polygon fill="#000000" stroke="#000000" points="80.82,-225.5 90.82,-222 80.82,-218.5 80.82,-225.5"/>
 </g>
-<!-- proc~fal03 -->
-<g id="proc~~nut06a~~CallsGraph_node3" class="node">
-<title>proc~fal03</title>
-<g id="a_proc~~nut06a~~CallsGraph_node3"><a xlink:href=".././proc/fal03.html" xlink:title="FAL03">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="236.5,-444 182.5,-444 182.5,-420 236.5,-420 236.5,-444"/>
-<text text-anchor="middle" x="209.5" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAL03</text>
-</a>
-</g>
-</g>
-<!-- proc~nut00a&#45;&gt;proc~fal03 -->
-<g id="proc~~nut06a~~CallsGraph_edge2" class="edge">
-<title>proc~nut00a&#45;&gt;proc~fal03</title>
-<path fill="none" stroke="#000000" d="M121.05,-234.14C125.6,-265.82 141.21,-352.65 182,-411 182.36,-411.51 182.73,-412.02 183.12,-412.51"/>
-<polygon fill="#000000" stroke="#000000" points="180.85,-415.2 190.32,-419.95 185.88,-410.33 180.85,-415.2"/>
-</g>
-<!-- proc~faf03 -->
-<g id="proc~~nut06a~~CallsGraph_node4" class="node">
-<title>proc~faf03</title>
-<g id="a_proc~~nut06a~~CallsGraph_node4"><a xlink:href=".././proc/faf03.html" xlink:title="FAF03">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="236.5,-402 182.5,-402 182.5,-378 236.5,-378 236.5,-402"/>
-<text text-anchor="middle" x="209.5" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAF03</text>
-</a>
-</g>
-</g>
-<!-- proc~nut00a&#45;&gt;proc~faf03 -->
-<g id="proc~~nut06a~~CallsGraph_edge3" class="edge">
-<title>proc~nut00a&#45;&gt;proc~faf03</title>
-<path fill="none" stroke="#000000" d="M122.44,-234.09C129.33,-260.63 148.54,-325.11 182,-369 182.45,-369.6 182.93,-370.18 183.42,-370.76"/>
-<polygon fill="#000000" stroke="#000000" points="180.96,-373.25 190.53,-377.79 185.88,-368.27 180.96,-373.25"/>
-</g>
 <!-- proc~faom03 -->
-<g id="proc~~nut06a~~CallsGraph_node5" class="node">
+<g id="proc~~nut06a~~CallsGraph_node3" class="node">
 <title>proc~faom03</title>
-<g id="a_proc~~nut06a~~CallsGraph_node5"><a xlink:href=".././proc/faom03.html" xlink:title="FAOM03">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="237,-360 182,-360 182,-336 237,-336 237,-360"/>
-<text text-anchor="middle" x="209.5" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAOM03</text>
+<g id="a_proc~~nut06a~~CallsGraph_node3"><a xlink:href=".././proc/faom03.html" xlink:title="FAOM03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="237,-444 182,-444 182,-420 237,-420 237,-444"/>
+<text text-anchor="middle" x="209.5" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAOM03</text>
 </a>
 </g>
 </g>
 <!-- proc~nut00a&#45;&gt;proc~faom03 -->
-<g id="proc~~nut06a~~CallsGraph_edge11" class="edge">
+<g id="proc~~nut06a~~CallsGraph_edge2" class="edge">
 <title>proc~nut00a&#45;&gt;proc~faom03</title>
-<path fill="none" stroke="#000000" d="M124.98,-234.27C134.57,-254.88 155.88,-297.14 182,-327 182.61,-327.7 183.24,-328.39 183.9,-329.07"/>
-<polygon fill="#000000" stroke="#000000" points="181.69,-331.79 191.42,-335.98 186.43,-326.64 181.69,-331.79"/>
+<path fill="none" stroke="#000000" d="M121.05,-234.14C125.6,-265.82 141.21,-352.65 182,-411 182.36,-411.51 182.73,-412.02 183.12,-412.51"/>
+<polygon fill="#000000" stroke="#000000" points="180.85,-415.2 190.32,-419.95 185.88,-410.33 180.85,-415.2"/>
 </g>
 <!-- proc~faur03 -->
-<g id="proc~~nut06a~~CallsGraph_node6" class="node">
+<g id="proc~~nut06a~~CallsGraph_node4" class="node">
 <title>proc~faur03</title>
-<g id="a_proc~~nut06a~~CallsGraph_node6"><a xlink:href=".././proc/faur03.html" xlink:title="FAUR03">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="236.5,-318 182.5,-318 182.5,-294 236.5,-294 236.5,-318"/>
-<text text-anchor="middle" x="209.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAUR03</text>
+<g id="a_proc~~nut06a~~CallsGraph_node4"><a xlink:href=".././proc/faur03.html" xlink:title="FAUR03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="236.5,-402 182.5,-402 182.5,-378 236.5,-378 236.5,-402"/>
+<text text-anchor="middle" x="209.5" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAUR03</text>
 </a>
 </g>
 </g>
 <!-- proc~nut00a&#45;&gt;proc~faur03 -->
-<g id="proc~~nut06a~~CallsGraph_edge4" class="edge">
+<g id="proc~~nut06a~~CallsGraph_edge3" class="edge">
 <title>proc~nut00a&#45;&gt;proc~faur03</title>
-<path fill="none" stroke="#000000" d="M130.62,-234.03C142.81,-247.04 163.17,-268.15 182,-285 182.83,-285.74 183.69,-286.49 184.55,-287.24"/>
-<polygon fill="#000000" stroke="#000000" points="182.62,-290.18 192.55,-293.86 187.08,-284.79 182.62,-290.18"/>
-</g>
-<!-- proc~fapa03 -->
-<g id="proc~~nut06a~~CallsGraph_node7" class="node">
-<title>proc~fapa03</title>
-<g id="a_proc~~nut06a~~CallsGraph_node7"><a xlink:href=".././proc/fapa03.html" xlink:title="FAPA03">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="236.5,-276 182.5,-276 182.5,-252 236.5,-252 236.5,-276"/>
-<text text-anchor="middle" x="209.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAPA03</text>
-</a>
-</g>
-</g>
-<!-- proc~nut00a&#45;&gt;proc~fapa03 -->
-<g id="proc~~nut06a~~CallsGraph_edge5" class="edge">
-<title>proc~nut00a&#45;&gt;proc~fapa03</title>
-<path fill="none" stroke="#000000" d="M145.24,-234.15C154.1,-238.33 164.17,-243.08 173.63,-247.54"/>
-<polygon fill="#000000" stroke="#000000" points="172.28,-250.78 182.82,-251.88 175.27,-244.45 172.28,-250.78"/>
-</g>
-<!-- proc~fave03 -->
-<g id="proc~~nut06a~~CallsGraph_node8" class="node">
-<title>proc~fave03</title>
-<g id="a_proc~~nut06a~~CallsGraph_node8"><a xlink:href=".././proc/fave03.html" xlink:title="FAVE03">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="236.5,-234 182.5,-234 182.5,-210 236.5,-210 236.5,-234"/>
-<text text-anchor="middle" x="209.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAVE03</text>
-</a>
-</g>
-</g>
-<!-- proc~nut00a&#45;&gt;proc~fave03 -->
-<g id="proc~~nut06a~~CallsGraph_edge6" class="edge">
-<title>proc~nut00a&#45;&gt;proc~fave03</title>
-<path fill="none" stroke="#000000" d="M146.2,-222C154.36,-222 163.47,-222 172.15,-222"/>
-<polygon fill="#000000" stroke="#000000" points="172.43,-225.5 182.43,-222 172.43,-218.5 172.43,-225.5"/>
+<path fill="none" stroke="#000000" d="M122.44,-234.09C129.33,-260.63 148.54,-325.11 182,-369 182.45,-369.6 182.93,-370.18 183.42,-370.76"/>
+<polygon fill="#000000" stroke="#000000" points="180.96,-373.25 190.53,-377.79 185.88,-368.27 180.96,-373.25"/>
 </g>
 <!-- proc~faju03 -->
-<g id="proc~~nut06a~~CallsGraph_node9" class="node">
+<g id="proc~~nut06a~~CallsGraph_node5" class="node">
 <title>proc~faju03</title>
-<g id="a_proc~~nut06a~~CallsGraph_node9"><a xlink:href=".././proc/faju03.html" xlink:title="FAJU03">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="236.5,-192 182.5,-192 182.5,-168 236.5,-168 236.5,-192"/>
-<text text-anchor="middle" x="209.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAJU03</text>
+<g id="a_proc~~nut06a~~CallsGraph_node5"><a xlink:href=".././proc/faju03.html" xlink:title="FAJU03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="236.5,-360 182.5,-360 182.5,-336 236.5,-336 236.5,-360"/>
+<text text-anchor="middle" x="209.5" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAJU03</text>
 </a>
 </g>
 </g>
 <!-- proc~nut00a&#45;&gt;proc~faju03 -->
-<g id="proc~~nut06a~~CallsGraph_edge7" class="edge">
+<g id="proc~~nut06a~~CallsGraph_edge4" class="edge">
 <title>proc~nut00a&#45;&gt;proc~faju03</title>
-<path fill="none" stroke="#000000" d="M145.24,-209.85C154.1,-205.67 164.17,-200.92 173.63,-196.46"/>
-<polygon fill="#000000" stroke="#000000" points="175.27,-199.55 182.82,-192.12 172.28,-193.22 175.27,-199.55"/>
-</g>
-<!-- proc~fame03 -->
-<g id="proc~~nut06a~~CallsGraph_node10" class="node">
-<title>proc~fame03</title>
-<g id="a_proc~~nut06a~~CallsGraph_node10"><a xlink:href=".././proc/fame03.html" xlink:title="FAME03">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="237,-150 182,-150 182,-126 237,-126 237,-150"/>
-<text text-anchor="middle" x="209.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAME03</text>
-</a>
-</g>
-</g>
-<!-- proc~nut00a&#45;&gt;proc~fame03 -->
-<g id="proc~~nut06a~~CallsGraph_edge9" class="edge">
-<title>proc~nut00a&#45;&gt;proc~fame03</title>
-<path fill="none" stroke="#000000" d="M130.62,-209.97C142.81,-196.96 163.17,-175.85 182,-159 182.83,-158.26 183.69,-157.51 184.55,-156.76"/>
-<polygon fill="#000000" stroke="#000000" points="187.08,-159.21 192.55,-150.14 182.62,-153.82 187.08,-159.21"/>
+<path fill="none" stroke="#000000" d="M124.98,-234.27C134.57,-254.88 155.88,-297.14 182,-327 182.61,-327.7 183.24,-328.39 183.9,-329.07"/>
+<polygon fill="#000000" stroke="#000000" points="181.69,-331.79 191.42,-335.98 186.43,-326.64 181.69,-331.79"/>
 </g>
 <!-- proc~fasa03 -->
-<g id="proc~~nut06a~~CallsGraph_node11" class="node">
+<g id="proc~~nut06a~~CallsGraph_node6" class="node">
 <title>proc~fasa03</title>
-<g id="a_proc~~nut06a~~CallsGraph_node11"><a xlink:href=".././proc/fasa03.html" xlink:title="FASA03">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="236.5,-108 182.5,-108 182.5,-84 236.5,-84 236.5,-108"/>
-<text text-anchor="middle" x="209.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FASA03</text>
+<g id="a_proc~~nut06a~~CallsGraph_node6"><a xlink:href=".././proc/fasa03.html" xlink:title="FASA03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="236.5,-318 182.5,-318 182.5,-294 236.5,-294 236.5,-318"/>
+<text text-anchor="middle" x="209.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FASA03</text>
 </a>
 </g>
 </g>
 <!-- proc~nut00a&#45;&gt;proc~fasa03 -->
-<g id="proc~~nut06a~~CallsGraph_edge10" class="edge">
+<g id="proc~~nut06a~~CallsGraph_edge6" class="edge">
 <title>proc~nut00a&#45;&gt;proc~fasa03</title>
-<path fill="none" stroke="#000000" d="M124.98,-209.73C134.57,-189.12 155.88,-146.86 182,-117 182.61,-116.3 183.24,-115.61 183.9,-114.93"/>
-<polygon fill="#000000" stroke="#000000" points="186.43,-117.36 191.42,-108.02 181.69,-112.21 186.43,-117.36"/>
+<path fill="none" stroke="#000000" d="M130.62,-234.03C142.81,-247.04 163.17,-268.15 182,-285 182.83,-285.74 183.69,-286.49 184.55,-287.24"/>
+<polygon fill="#000000" stroke="#000000" points="182.62,-290.18 192.55,-293.86 187.08,-284.79 182.62,-290.18"/>
+</g>
+<!-- proc~fame03 -->
+<g id="proc~~nut06a~~CallsGraph_node7" class="node">
+<title>proc~fame03</title>
+<g id="a_proc~~nut06a~~CallsGraph_node7"><a xlink:href=".././proc/fame03.html" xlink:title="FAME03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="237,-276 182,-276 182,-252 237,-252 237,-276"/>
+<text text-anchor="middle" x="209.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAME03</text>
+</a>
+</g>
+</g>
+<!-- proc~nut00a&#45;&gt;proc~fame03 -->
+<g id="proc~~nut06a~~CallsGraph_edge5" class="edge">
+<title>proc~nut00a&#45;&gt;proc~fame03</title>
+<path fill="none" stroke="#000000" d="M145.24,-234.15C154.1,-238.33 164.17,-243.08 173.63,-247.54"/>
+<polygon fill="#000000" stroke="#000000" points="172.28,-250.78 182.82,-251.88 175.27,-244.45 172.28,-250.78"/>
 </g>
 <!-- proc~fae03 -->
-<g id="proc~~nut06a~~CallsGraph_node12" class="node">
+<g id="proc~~nut06a~~CallsGraph_node8" class="node">
 <title>proc~fae03</title>
-<g id="a_proc~~nut06a~~CallsGraph_node12"><a xlink:href=".././proc/fae03.html" xlink:title="FAE03">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="236.5,-66 182.5,-66 182.5,-42 236.5,-42 236.5,-66"/>
-<text text-anchor="middle" x="209.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAE03</text>
+<g id="a_proc~~nut06a~~CallsGraph_node8"><a xlink:href=".././proc/fae03.html" xlink:title="FAE03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="236.5,-234 182.5,-234 182.5,-210 236.5,-210 236.5,-234"/>
+<text text-anchor="middle" x="209.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAE03</text>
 </a>
 </g>
 </g>
 <!-- proc~nut00a&#45;&gt;proc~fae03 -->
-<g id="proc~~nut06a~~CallsGraph_edge8" class="edge">
+<g id="proc~~nut06a~~CallsGraph_edge7" class="edge">
 <title>proc~nut00a&#45;&gt;proc~fae03</title>
+<path fill="none" stroke="#000000" d="M146.2,-222C154.36,-222 163.47,-222 172.15,-222"/>
+<polygon fill="#000000" stroke="#000000" points="172.43,-225.5 182.43,-222 172.43,-218.5 172.43,-225.5"/>
+</g>
+<!-- proc~fal03 -->
+<g id="proc~~nut06a~~CallsGraph_node9" class="node">
+<title>proc~fal03</title>
+<g id="a_proc~~nut06a~~CallsGraph_node9"><a xlink:href=".././proc/fal03.html" xlink:title="FAL03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="236.5,-192 182.5,-192 182.5,-168 236.5,-168 236.5,-192"/>
+<text text-anchor="middle" x="209.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAL03</text>
+</a>
+</g>
+</g>
+<!-- proc~nut00a&#45;&gt;proc~fal03 -->
+<g id="proc~~nut06a~~CallsGraph_edge8" class="edge">
+<title>proc~nut00a&#45;&gt;proc~fal03</title>
+<path fill="none" stroke="#000000" d="M145.24,-209.85C154.1,-205.67 164.17,-200.92 173.63,-196.46"/>
+<polygon fill="#000000" stroke="#000000" points="175.27,-199.55 182.82,-192.12 172.28,-193.22 175.27,-199.55"/>
+</g>
+<!-- proc~fapa03 -->
+<g id="proc~~nut06a~~CallsGraph_node10" class="node">
+<title>proc~fapa03</title>
+<g id="a_proc~~nut06a~~CallsGraph_node10"><a xlink:href=".././proc/fapa03.html" xlink:title="FAPA03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="236.5,-150 182.5,-150 182.5,-126 236.5,-126 236.5,-150"/>
+<text text-anchor="middle" x="209.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAPA03</text>
+</a>
+</g>
+</g>
+<!-- proc~nut00a&#45;&gt;proc~fapa03 -->
+<g id="proc~~nut06a~~CallsGraph_edge9" class="edge">
+<title>proc~nut00a&#45;&gt;proc~fapa03</title>
+<path fill="none" stroke="#000000" d="M130.62,-209.97C142.81,-196.96 163.17,-175.85 182,-159 182.83,-158.26 183.69,-157.51 184.55,-156.76"/>
+<polygon fill="#000000" stroke="#000000" points="187.08,-159.21 192.55,-150.14 182.62,-153.82 187.08,-159.21"/>
+</g>
+<!-- proc~faf03 -->
+<g id="proc~~nut06a~~CallsGraph_node11" class="node">
+<title>proc~faf03</title>
+<g id="a_proc~~nut06a~~CallsGraph_node11"><a xlink:href=".././proc/faf03.html" xlink:title="FAF03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="236.5,-108 182.5,-108 182.5,-84 236.5,-84 236.5,-108"/>
+<text text-anchor="middle" x="209.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAF03</text>
+</a>
+</g>
+</g>
+<!-- proc~nut00a&#45;&gt;proc~faf03 -->
+<g id="proc~~nut06a~~CallsGraph_edge10" class="edge">
+<title>proc~nut00a&#45;&gt;proc~faf03</title>
+<path fill="none" stroke="#000000" d="M124.98,-209.73C134.57,-189.12 155.88,-146.86 182,-117 182.61,-116.3 183.24,-115.61 183.9,-114.93"/>
+<polygon fill="#000000" stroke="#000000" points="186.43,-117.36 191.42,-108.02 181.69,-112.21 186.43,-117.36"/>
+</g>
+<!-- proc~fave03 -->
+<g id="proc~~nut06a~~CallsGraph_node12" class="node">
+<title>proc~fave03</title>
+<g id="a_proc~~nut06a~~CallsGraph_node12"><a xlink:href=".././proc/fave03.html" xlink:title="FAVE03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="236.5,-66 182.5,-66 182.5,-42 236.5,-42 236.5,-66"/>
+<text text-anchor="middle" x="209.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAVE03</text>
+</a>
+</g>
+</g>
+<!-- proc~nut00a&#45;&gt;proc~fave03 -->
+<g id="proc~~nut06a~~CallsGraph_edge11" class="edge">
+<title>proc~nut00a&#45;&gt;proc~fave03</title>
 <path fill="none" stroke="#000000" d="M122.44,-209.91C129.33,-183.37 148.54,-118.89 182,-75 182.45,-74.4 182.93,-73.82 183.42,-73.24"/>
 <polygon fill="#000000" stroke="#000000" points="185.88,-75.73 190.53,-66.21 180.96,-70.75 185.88,-75.73"/>
 </g>
@@ -604,8 +473,6 @@ public subroutine NUT06A(date1, date2, dpsi, deps)
     </div></div></div></div>
       </div>
     </div>
-     
-     
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Called by</h3>
@@ -625,13 +492,28 @@ public subroutine NUT06A(date1, date2, dpsi, deps)
 <!-- proc~nut06a -->
 <g id="proc~~nut06a~~CalledByGraph_node1" class="node">
 <title>proc~nut06a</title>
-<polygon fill="none" stroke="black" points="331,-150 276,-150 276,-126 331,-126 331,-150"/>
-<text text-anchor="middle" x="303.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50">NUT06A</text>
+<polygon fill="none" stroke="black" points="331,-192 276,-192 276,-168 331,-168 331,-192"/>
+<text text-anchor="middle" x="303.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50">NUT06A</text>
+</g>
+<!-- proc~num06a -->
+<g id="proc~~nut06a~~CalledByGraph_node2" class="node">
+<title>proc~num06a</title>
+<g id="a_proc~~nut06a~~CalledByGraph_node2"><a xlink:href=".././proc/num06a.html" xlink:title="NUM06A">
+<polygon fill="#d9534f" stroke="#d9534f" points="240,-234 182,-234 182,-210 240,-210 240,-234"/>
+<text text-anchor="middle" x="211" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">NUM06A</text>
+</a>
+</g>
+</g>
+<!-- proc~num06a&#45;&gt;proc~nut06a -->
+<g id="proc~~nut06a~~CalledByGraph_edge1" class="edge">
+<title>proc~num06a&#45;&gt;proc~nut06a</title>
+<path fill="none" stroke="#000000" d="M238.18,-209.85C247.18,-205.67 257.42,-200.92 267.04,-196.46"/>
+<polygon fill="#000000" stroke="#000000" points="268.79,-199.51 276.38,-192.12 265.84,-193.16 268.79,-199.51"/>
 </g>
 <!-- proc~pn06a -->
-<g id="proc~~nut06a~~CalledByGraph_node2" class="node">
+<g id="proc~~nut06a~~CalledByGraph_node3" class="node">
 <title>proc~pn06a</title>
-<g id="a_proc~~nut06a~~CalledByGraph_node2"><a xlink:href=".././proc/pn06a.html" xlink:title="PN06A">
+<g id="a_proc~~nut06a~~CalledByGraph_node3"><a xlink:href=".././proc/pn06a.html" xlink:title="PN06A">
 <polygon fill="#d9534f" stroke="#d9534f" points="238,-192 184,-192 184,-168 238,-168 238,-192"/>
 <text text-anchor="middle" x="211" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PN06A</text>
 </a>
@@ -640,13 +522,13 @@ public subroutine NUT06A(date1, date2, dpsi, deps)
 <!-- proc~pn06a&#45;&gt;proc~nut06a -->
 <g id="proc~~nut06a~~CalledByGraph_edge2" class="edge">
 <title>proc~pn06a&#45;&gt;proc~nut06a</title>
-<path fill="none" stroke="#000000" d="M238.18,-167.85C247.18,-163.67 257.42,-158.92 267.04,-154.46"/>
-<polygon fill="#000000" stroke="#000000" points="268.79,-157.51 276.38,-150.12 265.84,-151.16 268.79,-157.51"/>
+<path fill="none" stroke="#000000" d="M238.18,-180C246.75,-180 256.44,-180 265.65,-180"/>
+<polygon fill="#000000" stroke="#000000" points="265.75,-183.5 275.75,-180 265.75,-176.5 265.75,-183.5"/>
 </g>
 <!-- proc~pnm06a -->
-<g id="proc~~nut06a~~CalledByGraph_node3" class="node">
+<g id="proc~~nut06a~~CalledByGraph_node4" class="node">
 <title>proc~pnm06a</title>
-<g id="a_proc~~nut06a~~CalledByGraph_node3"><a xlink:href=".././proc/pnm06a.html" xlink:title="PNM06A">
+<g id="a_proc~~nut06a~~CalledByGraph_node4"><a xlink:href=".././proc/pnm06a.html" xlink:title="PNM06A">
 <polygon fill="#d9534f" stroke="#d9534f" points="239,-150 183,-150 183,-126 239,-126 239,-150"/>
 <text text-anchor="middle" x="211" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PNM06A</text>
 </a>
@@ -655,66 +537,51 @@ public subroutine NUT06A(date1, date2, dpsi, deps)
 <!-- proc~pnm06a&#45;&gt;proc~nut06a -->
 <g id="proc~~nut06a~~CalledByGraph_edge3" class="edge">
 <title>proc~pnm06a&#45;&gt;proc~nut06a</title>
-<path fill="none" stroke="#000000" d="M239.15,-138C247.54,-138 256.91,-138 265.82,-138"/>
-<polygon fill="#000000" stroke="#000000" points="265.99,-141.5 275.99,-138 265.99,-134.5 265.99,-141.5"/>
+<path fill="none" stroke="#000000" d="M238.18,-150.15C247.18,-154.33 257.42,-159.08 267.04,-163.54"/>
+<polygon fill="#000000" stroke="#000000" points="265.84,-166.84 276.38,-167.88 268.79,-160.49 265.84,-166.84"/>
 </g>
-<!-- proc~num06a -->
-<g id="proc~~nut06a~~CalledByGraph_node4" class="node">
-<title>proc~num06a</title>
-<g id="a_proc~~nut06a~~CalledByGraph_node4"><a xlink:href=".././proc/num06a.html" xlink:title="NUM06A">
-<polygon fill="#d9534f" stroke="#d9534f" points="240,-108 182,-108 182,-84 240,-84 240,-108"/>
-<text text-anchor="middle" x="211" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">NUM06A</text>
-</a>
-</g>
-</g>
-<!-- proc~num06a&#45;&gt;proc~nut06a -->
-<g id="proc~~nut06a~~CalledByGraph_edge1" class="edge">
-<title>proc~num06a&#45;&gt;proc~nut06a</title>
-<path fill="none" stroke="#000000" d="M238.18,-108.15C247.18,-112.33 257.42,-117.08 267.04,-121.54"/>
-<polygon fill="#000000" stroke="#000000" points="265.84,-124.84 276.38,-125.88 268.79,-118.49 265.84,-124.84"/>
-</g>
-<!-- proc~xys06a -->
+<!-- proc~s06a -->
 <g id="proc~~nut06a~~CalledByGraph_node5" class="node">
-<title>proc~xys06a</title>
-<g id="a_proc~~nut06a~~CalledByGraph_node5"><a xlink:href=".././proc/xys06a.html" xlink:title="XYS06A">
-<polygon fill="#d9534f" stroke="#d9534f" points="146,-276 91,-276 91,-252 146,-252 146,-276"/>
-<text text-anchor="middle" x="118.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">XYS06A</text>
+<title>proc~s06a</title>
+<g id="a_proc~~nut06a~~CalledByGraph_node5"><a xlink:href=".././proc/s06a.html" xlink:title="S06A">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="145.5,-276 91.5,-276 91.5,-252 145.5,-252 145.5,-276"/>
+<text text-anchor="middle" x="118.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">S06A</text>
 </a>
 </g>
 </g>
-<!-- proc~xys06a&#45;&gt;proc~pnm06a -->
+<!-- proc~s06a&#45;&gt;proc~pnm06a -->
 <g id="proc~~nut06a~~CalledByGraph_edge4" class="edge">
-<title>proc~xys06a&#45;&gt;proc~pnm06a</title>
+<title>proc~s06a&#45;&gt;proc~pnm06a</title>
 <path fill="none" stroke="#000000" d="M137.46,-251.79C140.57,-249.14 143.58,-246.17 146,-243 170.67,-210.73 156.9,-190.94 182,-159 182.48,-158.39 182.98,-157.79 183.5,-157.2"/>
 <polygon fill="#000000" stroke="#000000" points="186.15,-159.5 191.01,-150.09 181.34,-154.42 186.15,-159.5"/>
 </g>
-<!-- proc~c2i06a -->
-<g id="proc~~nut06a~~CalledByGraph_node6" class="node">
-<title>proc~c2i06a</title>
-<g id="a_proc~~nut06a~~CalledByGraph_node6"><a xlink:href=".././proc/c2i06a.html" xlink:title="C2I06A">
-<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-234 91.5,-234 91.5,-210 145.5,-210 145.5,-234"/>
-<text text-anchor="middle" x="118.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2I06A</text>
-</a>
-</g>
-</g>
-<!-- proc~c2i06a&#45;&gt;proc~pnm06a -->
-<g id="proc~~nut06a~~CalledByGraph_edge5" class="edge">
-<title>proc~c2i06a&#45;&gt;proc~pnm06a</title>
-<path fill="none" stroke="#000000" d="M135.89,-209.82C139.34,-207.04 142.87,-204.01 146,-201 163.72,-183.95 164.06,-175.81 182,-159 182.92,-158.14 183.88,-157.27 184.86,-156.42"/>
-<polygon fill="#000000" stroke="#000000" points="187.09,-159.11 192.64,-150.09 182.68,-153.68 187.09,-159.11"/>
-</g>
 <!-- proc~apci13 -->
-<g id="proc~~nut06a~~CalledByGraph_node7" class="node">
+<g id="proc~~nut06a~~CalledByGraph_node6" class="node">
 <title>proc~apci13</title>
-<g id="a_proc~~nut06a~~CalledByGraph_node7"><a xlink:href=".././proc/apci13.html" xlink:title="APCI13">
-<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-192 91.5,-192 91.5,-168 145.5,-168 145.5,-192"/>
-<text text-anchor="middle" x="118.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APCI13</text>
+<g id="a_proc~~nut06a~~CalledByGraph_node6"><a xlink:href=".././proc/apci13.html" xlink:title="APCI13">
+<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-234 91.5,-234 91.5,-210 145.5,-210 145.5,-234"/>
+<text text-anchor="middle" x="118.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APCI13</text>
 </a>
 </g>
 </g>
 <!-- proc~apci13&#45;&gt;proc~pnm06a -->
-<g id="proc~~nut06a~~CalledByGraph_edge6" class="edge">
+<g id="proc~~nut06a~~CalledByGraph_edge5" class="edge">
 <title>proc~apci13&#45;&gt;proc~pnm06a</title>
+<path fill="none" stroke="#000000" d="M135.89,-209.82C139.34,-207.04 142.87,-204.01 146,-201 163.72,-183.95 164.06,-175.81 182,-159 182.92,-158.14 183.88,-157.27 184.86,-156.42"/>
+<polygon fill="#000000" stroke="#000000" points="187.09,-159.11 192.64,-150.09 182.68,-153.68 187.09,-159.11"/>
+</g>
+<!-- proc~eo06a -->
+<g id="proc~~nut06a~~CalledByGraph_node7" class="node">
+<title>proc~eo06a</title>
+<g id="a_proc~~nut06a~~CalledByGraph_node7"><a xlink:href=".././proc/eo06a.html" xlink:title="EO06A">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="145.5,-192 91.5,-192 91.5,-168 145.5,-168 145.5,-192"/>
+<text text-anchor="middle" x="118.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">EO06A</text>
+</a>
+</g>
+</g>
+<!-- proc~eo06a&#45;&gt;proc~pnm06a -->
+<g id="proc~~nut06a~~CalledByGraph_edge6" class="edge">
+<title>proc~eo06a&#45;&gt;proc~pnm06a</title>
 <path fill="none" stroke="#000000" d="M145.68,-167.85C154.68,-163.67 164.92,-158.92 174.54,-154.46"/>
 <polygon fill="#000000" stroke="#000000" points="176.29,-157.51 183.88,-150.12 173.34,-151.16 176.29,-157.51"/>
 </g>
@@ -728,145 +595,145 @@ public subroutine NUT06A(date1, date2, dpsi, deps)
 </g>
 </g>
 <!-- proc~gst06a&#45;&gt;proc~pnm06a -->
-<g id="proc~~nut06a~~CalledByGraph_edge7" class="edge">
+<g id="proc~~nut06a~~CalledByGraph_edge8" class="edge">
 <title>proc~gst06a&#45;&gt;proc~pnm06a</title>
 <path fill="none" stroke="#000000" d="M146.16,-138C154.48,-138 163.82,-138 172.73,-138"/>
 <polygon fill="#000000" stroke="#000000" points="172.9,-141.5 182.9,-138 172.9,-134.5 172.9,-141.5"/>
 </g>
-<!-- proc~eo06a -->
-<g id="proc~~nut06a~~CalledByGraph_node9" class="node">
-<title>proc~eo06a</title>
-<g id="a_proc~~nut06a~~CalledByGraph_node9"><a xlink:href=".././proc/eo06a.html" xlink:title="EO06A">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="145.5,-108 91.5,-108 91.5,-84 145.5,-84 145.5,-108"/>
-<text text-anchor="middle" x="118.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">EO06A</text>
-</a>
-</g>
-</g>
-<!-- proc~eo06a&#45;&gt;proc~pnm06a -->
-<g id="proc~~nut06a~~CalledByGraph_edge8" class="edge">
-<title>proc~eo06a&#45;&gt;proc~pnm06a</title>
-<path fill="none" stroke="#000000" d="M145.68,-108.15C154.68,-112.33 164.92,-117.08 174.54,-121.54"/>
-<polygon fill="#000000" stroke="#000000" points="173.34,-124.84 183.88,-125.88 176.29,-118.49 173.34,-124.84"/>
-</g>
 <!-- proc~apco13 -->
-<g id="proc~~nut06a~~CalledByGraph_node10" class="node">
+<g id="proc~~nut06a~~CalledByGraph_node9" class="node">
 <title>proc~apco13</title>
-<g id="a_proc~~nut06a~~CalledByGraph_node10"><a xlink:href=".././proc/apco13.html" xlink:title="APCO13">
-<polygon fill="#d9534f" stroke="#d9534f" points="146,-66 91,-66 91,-42 146,-42 146,-66"/>
-<text text-anchor="middle" x="118.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APCO13</text>
+<g id="a_proc~~nut06a~~CalledByGraph_node9"><a xlink:href=".././proc/apco13.html" xlink:title="APCO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="146,-108 91,-108 91,-84 146,-84 146,-108"/>
+<text text-anchor="middle" x="118.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APCO13</text>
 </a>
 </g>
 </g>
 <!-- proc~apco13&#45;&gt;proc~pnm06a -->
-<g id="proc~~nut06a~~CalledByGraph_edge9" class="edge">
+<g id="proc~~nut06a~~CalledByGraph_edge7" class="edge">
 <title>proc~apco13&#45;&gt;proc~pnm06a</title>
-<path fill="none" stroke="#000000" d="M135.89,-66.18C139.34,-68.96 142.87,-71.99 146,-75 163.72,-92.05 164.06,-100.19 182,-117 182.92,-117.86 183.88,-118.73 184.86,-119.58"/>
-<polygon fill="#000000" stroke="#000000" points="182.68,-122.32 192.64,-125.91 187.09,-116.89 182.68,-122.32"/>
+<path fill="none" stroke="#000000" d="M145.68,-108.15C154.68,-112.33 164.92,-117.08 174.54,-121.54"/>
+<polygon fill="#000000" stroke="#000000" points="173.34,-124.84 183.88,-125.88 176.29,-118.49 173.34,-124.84"/>
 </g>
-<!-- proc~s06a -->
-<g id="proc~~nut06a~~CalledByGraph_node11" class="node">
-<title>proc~s06a</title>
-<g id="a_proc~~nut06a~~CalledByGraph_node11"><a xlink:href=".././proc/s06a.html" xlink:title="S06A">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="145.5,-24 91.5,-24 91.5,0 145.5,0 145.5,-24"/>
-<text text-anchor="middle" x="118.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">S06A</text>
+<!-- proc~xys06a -->
+<g id="proc~~nut06a~~CalledByGraph_node10" class="node">
+<title>proc~xys06a</title>
+<g id="a_proc~~nut06a~~CalledByGraph_node10"><a xlink:href=".././proc/xys06a.html" xlink:title="XYS06A">
+<polygon fill="#d9534f" stroke="#d9534f" points="146,-66 91,-66 91,-42 146,-42 146,-66"/>
+<text text-anchor="middle" x="118.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">XYS06A</text>
 </a>
 </g>
 </g>
-<!-- proc~s06a&#45;&gt;proc~pnm06a -->
+<!-- proc~xys06a&#45;&gt;proc~pnm06a -->
+<g id="proc~~nut06a~~CalledByGraph_edge9" class="edge">
+<title>proc~xys06a&#45;&gt;proc~pnm06a</title>
+<path fill="none" stroke="#000000" d="M135.42,-66.16C138.96,-68.99 142.66,-72.05 146,-75 161.87,-89.02 178.91,-105.9 191.42,-118.65"/>
+<polygon fill="#000000" stroke="#000000" points="189.08,-121.27 198.57,-126 194.1,-116.39 189.08,-121.27"/>
+</g>
+<!-- proc~c2i06a -->
+<g id="proc~~nut06a~~CalledByGraph_node11" class="node">
+<title>proc~c2i06a</title>
+<g id="a_proc~~nut06a~~CalledByGraph_node11"><a xlink:href=".././proc/c2i06a.html" xlink:title="C2I06A">
+<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-24 91.5,-24 91.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="118.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2I06A</text>
+</a>
+</g>
+</g>
+<!-- proc~c2i06a&#45;&gt;proc~pnm06a -->
 <g id="proc~~nut06a~~CalledByGraph_edge10" class="edge">
-<title>proc~s06a&#45;&gt;proc~pnm06a</title>
-<path fill="none" stroke="#000000" d="M137.46,-24.21C140.57,-26.86 143.58,-29.83 146,-33 170.67,-65.27 156.9,-85.06 182,-117 182.48,-117.61 182.98,-118.21 183.5,-118.8"/>
-<polygon fill="#000000" stroke="#000000" points="181.34,-121.58 191.01,-125.91 186.15,-116.5 181.34,-121.58"/>
+<title>proc~c2i06a&#45;&gt;proc~pnm06a</title>
+<path fill="none" stroke="#000000" d="M136.55,-24.04C139.88,-26.79 143.2,-29.83 146,-33 169.04,-59.05 188.67,-94.46 199.9,-116.77"/>
+<polygon fill="#000000" stroke="#000000" points="196.76,-118.32 204.32,-125.75 203.04,-115.23 196.76,-118.32"/>
+</g>
+<!-- proc~atoc13 -->
+<g id="proc~~nut06a~~CalledByGraph_node12" class="node">
+<title>proc~atoc13</title>
+<g id="a_proc~~nut06a~~CalledByGraph_node12"><a xlink:href=".././proc/atoc13.html" xlink:title="ATOC13">
+<polygon fill="#d9534f" stroke="#d9534f" points="55,-108 0,-108 0,-84 55,-84 55,-108"/>
+<text text-anchor="middle" x="27.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOC13</text>
+</a>
+</g>
+</g>
+<!-- proc~atoc13&#45;&gt;proc~apco13 -->
+<g id="proc~~nut06a~~CalledByGraph_edge14" class="edge">
+<title>proc~atoc13&#45;&gt;proc~apco13</title>
+<path fill="none" stroke="#000000" d="M55.2,-96C63.21,-96 72.14,-96 80.68,-96"/>
+<polygon fill="#000000" stroke="#000000" points="80.82,-99.5 90.82,-96 80.82,-92.5 80.82,-99.5"/>
+</g>
+<!-- proc~atci13 -->
+<g id="proc~~nut06a~~CalledByGraph_node13" class="node">
+<title>proc~atci13</title>
+<g id="a_proc~~nut06a~~CalledByGraph_node13"><a xlink:href=".././proc/atci13.html" xlink:title="ATCI13">
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-255 0.5,-255 0.5,-231 54.5,-231 54.5,-255"/>
+<text text-anchor="middle" x="27.5" y="-240.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATCI13</text>
+</a>
+</g>
+</g>
+<!-- proc~atci13&#45;&gt;proc~apci13 -->
+<g id="proc~~nut06a~~CalledByGraph_edge11" class="edge">
+<title>proc~atci13&#45;&gt;proc~apci13</title>
+<path fill="none" stroke="#000000" d="M54.72,-236.81C63.14,-234.83 72.62,-232.59 81.61,-230.47"/>
+<polygon fill="#000000" stroke="#000000" points="82.54,-233.85 91.47,-228.14 80.93,-227.03 82.54,-233.85"/>
+</g>
+<!-- proc~c2t06a -->
+<g id="proc~~nut06a~~CalledByGraph_node14" class="node">
+<title>proc~c2t06a</title>
+<g id="a_proc~~nut06a~~CalledByGraph_node14"><a xlink:href=".././proc/c2t06a.html" xlink:title="C2T06A">
+<polygon fill="#d9534f" stroke="#d9534f" points="55,-24 0,-24 0,0 55,0 55,-24"/>
+<text text-anchor="middle" x="27.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2T06A</text>
+</a>
+</g>
+</g>
+<!-- proc~c2t06a&#45;&gt;proc~c2i06a -->
+<g id="proc~~nut06a~~CalledByGraph_edge16" class="edge">
+<title>proc~c2t06a&#45;&gt;proc~c2i06a</title>
+<path fill="none" stroke="#000000" d="M55.2,-12C63.36,-12 72.47,-12 81.15,-12"/>
+<polygon fill="#000000" stroke="#000000" points="81.43,-15.5 91.43,-12 81.43,-8.5 81.43,-15.5"/>
 </g>
 <!-- proc~ee06a -->
-<g id="proc~~nut06a~~CalledByGraph_node12" class="node">
+<g id="proc~~nut06a~~CalledByGraph_node15" class="node">
 <title>proc~ee06a</title>
-<g id="a_proc~~nut06a~~CalledByGraph_node12"><a xlink:href=".././proc/ee06a.html" xlink:title="EE06A">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="54.5,-129 0.5,-129 0.5,-105 54.5,-105 54.5,-129"/>
-<text text-anchor="middle" x="27.5" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">EE06A</text>
+<g id="a_proc~~nut06a~~CalledByGraph_node15"><a xlink:href=".././proc/ee06a.html" xlink:title="EE06A">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="54.5,-150 0.5,-150 0.5,-126 54.5,-126 54.5,-150"/>
+<text text-anchor="middle" x="27.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">EE06A</text>
 </a>
 </g>
 </g>
 <!-- proc~ee06a&#45;&gt;proc~gst06a -->
-<g id="proc~~nut06a~~CalledByGraph_edge14" class="edge">
+<g id="proc~~nut06a~~CalledByGraph_edge13" class="edge">
 <title>proc~ee06a&#45;&gt;proc~gst06a</title>
-<path fill="none" stroke="#000000" d="M54.72,-123.19C62.9,-125.12 72.08,-127.28 80.84,-129.35"/>
-<polygon fill="#000000" stroke="#000000" points="80.31,-132.82 90.85,-131.71 81.92,-126.01 80.31,-132.82"/>
+<path fill="none" stroke="#000000" d="M54.72,-138C62.9,-138 72.08,-138 80.84,-138"/>
+<polygon fill="#000000" stroke="#000000" points="80.85,-141.5 90.85,-138 80.85,-134.5 80.85,-141.5"/>
 </g>
 <!-- proc~atic13 -->
-<g id="proc~~nut06a~~CalledByGraph_node13" class="node">
+<g id="proc~~nut06a~~CalledByGraph_node16" class="node">
 <title>proc~atic13</title>
-<g id="a_proc~~nut06a~~CalledByGraph_node13"><a xlink:href=".././proc/atic13.html" xlink:title="ATIC13">
+<g id="a_proc~~nut06a~~CalledByGraph_node16"><a xlink:href=".././proc/atic13.html" xlink:title="ATIC13">
 <polygon fill="#d9534f" stroke="#d9534f" points="54.5,-213 0.5,-213 0.5,-189 54.5,-189 54.5,-213"/>
 <text text-anchor="middle" x="27.5" y="-198.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATIC13</text>
 </a>
 </g>
 </g>
 <!-- proc~atic13&#45;&gt;proc~apci13 -->
-<g id="proc~~nut06a~~CalledByGraph_edge13" class="edge">
-<title>proc~atic13&#45;&gt;proc~apci13</title>
-<path fill="none" stroke="#000000" d="M54.72,-194.81C63.14,-192.83 72.62,-190.59 81.61,-188.47"/>
-<polygon fill="#000000" stroke="#000000" points="82.54,-191.85 91.47,-186.14 80.93,-185.03 82.54,-191.85"/>
-</g>
-<!-- proc~c2t06a -->
-<g id="proc~~nut06a~~CalledByGraph_node14" class="node">
-<title>proc~c2t06a</title>
-<g id="a_proc~~nut06a~~CalledByGraph_node14"><a xlink:href=".././proc/c2t06a.html" xlink:title="C2T06A">
-<polygon fill="#d9534f" stroke="#d9534f" points="55,-255 0,-255 0,-231 55,-231 55,-255"/>
-<text text-anchor="middle" x="27.5" y="-240.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2T06A</text>
-</a>
-</g>
-</g>
-<!-- proc~c2t06a&#45;&gt;proc~c2i06a -->
-<g id="proc~~nut06a~~CalledByGraph_edge11" class="edge">
-<title>proc~c2t06a&#45;&gt;proc~c2i06a</title>
-<path fill="none" stroke="#000000" d="M55.2,-236.7C63.45,-234.75 72.67,-232.58 81.43,-230.51"/>
-<polygon fill="#000000" stroke="#000000" points="82.5,-233.85 91.43,-228.15 80.89,-227.04 82.5,-233.85"/>
-</g>
-<!-- proc~atoc13 -->
-<g id="proc~~nut06a~~CalledByGraph_node15" class="node">
-<title>proc~atoc13</title>
-<g id="a_proc~~nut06a~~CalledByGraph_node15"><a xlink:href=".././proc/atoc13.html" xlink:title="ATOC13">
-<polygon fill="#d9534f" stroke="#d9534f" points="55,-87 0,-87 0,-63 55,-63 55,-87"/>
-<text text-anchor="middle" x="27.5" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOC13</text>
-</a>
-</g>
-</g>
-<!-- proc~atoc13&#45;&gt;proc~apco13 -->
-<g id="proc~~nut06a~~CalledByGraph_edge16" class="edge">
-<title>proc~atoc13&#45;&gt;proc~apco13</title>
-<path fill="none" stroke="#000000" d="M55.2,-68.7C63.3,-66.79 72.34,-64.66 80.96,-62.62"/>
-<polygon fill="#000000" stroke="#000000" points="81.89,-66 90.82,-60.3 80.28,-59.19 81.89,-66"/>
-</g>
-<!-- proc~atci13 -->
-<g id="proc~~nut06a~~CalledByGraph_node16" class="node">
-<title>proc~atci13</title>
-<g id="a_proc~~nut06a~~CalledByGraph_node16"><a xlink:href=".././proc/atci13.html" xlink:title="ATCI13">
-<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-171 0.5,-171 0.5,-147 54.5,-147 54.5,-171"/>
-<text text-anchor="middle" x="27.5" y="-156.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATCI13</text>
-</a>
-</g>
-</g>
-<!-- proc~atci13&#45;&gt;proc~apci13 -->
 <g id="proc~~nut06a~~CalledByGraph_edge12" class="edge">
-<title>proc~atci13&#45;&gt;proc~apci13</title>
-<path fill="none" stroke="#000000" d="M54.72,-165.19C63.14,-167.17 72.62,-169.41 81.61,-171.53"/>
-<polygon fill="#000000" stroke="#000000" points="80.93,-174.97 91.47,-173.86 82.54,-168.15 80.93,-174.97"/>
+<title>proc~atic13&#45;&gt;proc~apci13</title>
+<path fill="none" stroke="#000000" d="M54.72,-207.19C63.14,-209.17 72.62,-211.41 81.61,-213.53"/>
+<polygon fill="#000000" stroke="#000000" points="80.93,-216.97 91.47,-215.86 82.54,-210.15 80.93,-216.97"/>
 </g>
 <!-- proc~atco13 -->
 <g id="proc~~nut06a~~CalledByGraph_node17" class="node">
 <title>proc~atco13</title>
 <g id="a_proc~~nut06a~~CalledByGraph_node17"><a xlink:href=".././proc/atco13.html" xlink:title="ATCO13">
-<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-45 0.5,-45 0.5,-21 54.5,-21 54.5,-45"/>
-<text text-anchor="middle" x="27.5" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATCO13</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-66 0.5,-66 0.5,-42 54.5,-42 54.5,-66"/>
+<text text-anchor="middle" x="27.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATCO13</text>
 </a>
 </g>
 </g>
 <!-- proc~atco13&#45;&gt;proc~apco13 -->
 <g id="proc~~nut06a~~CalledByGraph_edge15" class="edge">
 <title>proc~atco13&#45;&gt;proc~apco13</title>
-<path fill="none" stroke="#000000" d="M54.72,-39.19C62.9,-41.12 72.08,-43.28 80.84,-45.35"/>
-<polygon fill="#000000" stroke="#000000" points="80.31,-48.82 90.85,-47.71 81.92,-42.01 80.31,-48.82"/>
+<path fill="none" stroke="#000000" d="M54.24,-66.15C63.1,-70.33 73.17,-75.08 82.63,-79.54"/>
+<polygon fill="#000000" stroke="#000000" points="81.28,-82.78 91.82,-83.88 84.27,-76.45 81.28,-82.78"/>
 </g>
 </g>
 </svg>
@@ -931,34 +798,11 @@ public subroutine NUT06A(date1, date2, dpsi, deps)
     </div></div></div></div>
       </div>
     </div>
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -966,82 +810,68 @@ public subroutine NUT06A(date1, date2, dpsi, deps)
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">NUT06A</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span><span class="p">,</span> <span class="n">dpsi</span><span class="p">,</span> <span class="n">deps</span> <span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">NUT06A</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="p">,</span><span class="w"> </span><span class="n">date2</span><span class="p">,</span><span class="w"> </span><span class="n">dpsi</span><span class="p">,</span><span class="w"> </span><span class="n">deps</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date1</span> <span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date2</span> <span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">dpsi</span> <span class="c">!! nutation, luni-solar + planetary (Note 2)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">deps</span> <span class="c">!! nutation, luni-solar + planetary (Note 2)</span>
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date1</span><span class="w"> </span><span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date2</span><span class="w"> </span><span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dpsi</span><span class="w"> </span><span class="c">!! nutation, luni-solar + planetary (Note 2)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">deps</span><span class="w"> </span><span class="c">!! nutation, luni-solar + planetary (Note 2)</span>
 
-    <span class="c">!  Miscellaneous</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">t</span><span class="p">,</span> <span class="n">fj2</span><span class="p">,</span> <span class="n">dp</span><span class="p">,</span> <span class="n">de</span>
+<span class="w">    </span><span class="c">!  Miscellaneous</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">fj2</span><span class="p">,</span><span class="w"> </span><span class="n">dp</span><span class="p">,</span><span class="w"> </span><span class="n">de</span><span class="w"></span>
 
-    <span class="c">!  Interval between fundamental date J2000.0 and given date (JC).</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="p">(</span> <span class="p">(</span> <span class="n">date1</span><span class="o">-</span><span class="n">dj00</span> <span class="p">)</span> <span class="o">+</span> <span class="n">date2</span> <span class="p">)</span> <span class="o">/</span> <span class="n">djc</span>
+<span class="w">    </span><span class="c">!  Interval between fundamental date J2000.0 and given date (JC).</span>
+<span class="w">    </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="o">-</span><span class="n">dj00</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">date2</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">djc</span><span class="w"></span>
 
-    <span class="c">!  Factor correcting for secular variation of J2.</span>
-    <span class="n">fj2</span> <span class="o">=</span> <span class="o">-</span><span class="mf">2.7774e-6_wp</span> <span class="o">*</span> <span class="n">t</span>
+<span class="w">    </span><span class="c">!  Factor correcting for secular variation of J2.</span>
+<span class="w">    </span><span class="n">fj2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mf">2.7774e-6_wp</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"></span>
 
-    <span class="c">!  Obtain IAU 2000A nutation.</span>
-    <span class="k">call </span><span class="n">NUT00A</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span><span class="p">,</span> <span class="n">dp</span><span class="p">,</span> <span class="n">de</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Obtain IAU 2000A nutation.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">NUT00A</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="p">,</span><span class="w"> </span><span class="n">date2</span><span class="p">,</span><span class="w"> </span><span class="n">dp</span><span class="p">,</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Apply P03 adjustments (Wallace &amp; Capitaine, 2006, Eqs.5).</span>
-    <span class="n">dpsi</span> <span class="o">=</span> <span class="n">dp</span> <span class="o">+</span> <span class="n">dp</span> <span class="o">*</span> <span class="p">(</span> <span class="mf">0.4697e-6_wp</span> <span class="o">+</span> <span class="n">fj2</span> <span class="p">)</span>
-    <span class="n">deps</span> <span class="o">=</span> <span class="n">de</span> <span class="o">+</span> <span class="n">de</span> <span class="o">*</span> <span class="n">fj2</span>
+<span class="w">    </span><span class="c">!  Apply P03 adjustments (Wallace &amp; Capitaine, 2006, Eqs.5).</span>
+<span class="w">    </span><span class="n">dpsi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dp</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="mf">0.4697e-6_wp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fj2</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">deps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">fj2</span><span class="w"></span>
 
-    <span class="k">end subroutine </span><span class="n">NUT06A</span>
+<span class="w">    </span><span class="k">end subroutine </span><span class="n">NUT06A</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>astro-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -1067,14 +897,11 @@ public subroutine NUT06A(date1, date2, dpsi, deps)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

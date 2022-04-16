@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,45 +43,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-        
+              
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                                       </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -95,50 +68,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>APER13
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 0.1% of total for procedures.">7 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
-    
      <li><a href='../module/astro_module.html'>astro_module</a></li>
-    
-  
      <li class="active">APER13</li>
   </ol>
 </div>
@@ -154,32 +106,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -187,24 +116,14 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-public subroutine APER13(ut11, ut12, astrom)
+    <h2>public subroutine APER13(ut11, ut12, astrom)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>In the star-independent astrometry parameters, update only the
   Earth rotation angle.  The caller provides UT1 (n.b. not UTC).</p>
 <p>Status:  support routine.</p>
@@ -269,76 +188,35 @@ public subroutine APER13(ut11, ut12, astrom)
 <ul>
 <li>IAU SOFA revision:  2017 March 12</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-ut11"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>ut11</strong></td><td><p>UT1 as a 2-part...</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-ut12"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>ut12</strong></td><td><p>...Julian Date (Note 1)</p></td>
-  
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
+  <td><strong>ut12</strong></td><td></td>
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-astrom~10"></span>real(kind=wp),</td>
-  <td>intent(inout),</td>
-  <td></td>
-  
-  <td>dimension(30)</td><td>::</td>
+<td>intent(inout),</td>
+  <td></td>  <td>dimension(30)</td><td>::</td>
   <td><strong>astrom</strong></td><td><p>star-independent astrometry parameters:
- * In: astrom(22): longitude + s' (radians)
- * Out: astrom(28): "local" Earth rotation angle (radians)</p></td>
-  
+* In: astrom(22): longitude + s' (radians)
+* Out: astrom(28): "local" Earth rotation angle (radians)</p></td>
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Calls</h3>
@@ -350,43 +228,58 @@ public subroutine APER13(ut11, ut12, astrom)
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: proc~~aper13~~CallsGraph Pages: 1 -->
-<svg id="procaper13CallsGraph" width="242pt" height="32pt"
- viewBox="0.00 0.00 242.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="proc~~aper13~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<svg id="procaper13CallsGraph" width="242pt" height="74pt"
+ viewBox="0.00 0.00 242.00 74.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~aper13~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 70)">
 <title>proc~~aper13~~CallsGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 238,-28 238,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-70 238,-70 238,4 -4,4"/>
 <!-- proc~aper13 -->
 <g id="proc~~aper13~~CallsGraph_node1" class="node">
 <title>proc~aper13</title>
-<polygon fill="none" stroke="black" points="54,-24 0,-24 0,0 54,0 54,-24"/>
-<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">APER13</text>
+<polygon fill="none" stroke="black" points="54,-45 0,-45 0,-21 54,-21 54,-45"/>
+<text text-anchor="middle" x="27" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50">APER13</text>
+</g>
+<!-- proc~aper -->
+<g id="proc~~aper13~~CallsGraph_node2" class="node">
+<title>proc~aper</title>
+<g id="a_proc~~aper13~~CallsGraph_node2"><a xlink:href=".././proc/aper.html" xlink:title="APER">
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-66 90,-66 90,-42 144,-42 144,-66"/>
+<text text-anchor="middle" x="117" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APER</text>
+</a>
+</g>
+</g>
+<!-- proc~aper13&#45;&gt;proc~aper -->
+<g id="proc~~aper13~~CallsGraph_edge1" class="edge">
+<title>proc~aper13&#45;&gt;proc~aper</title>
+<path fill="none" stroke="#000000" d="M54.4,-39.3C62.48,-41.23 71.51,-43.38 80.1,-45.43"/>
+<polygon fill="#000000" stroke="#000000" points="79.38,-48.86 89.92,-47.78 81,-42.05 79.38,-48.86"/>
 </g>
 <!-- proc~era00 -->
-<g id="proc~~aper13~~CallsGraph_node2" class="node">
+<g id="proc~~aper13~~CallsGraph_node3" class="node">
 <title>proc~era00</title>
-<g id="a_proc~~aper13~~CallsGraph_node2"><a xlink:href=".././proc/era00.html" xlink:title="ERA00">
+<g id="a_proc~~aper13~~CallsGraph_node3"><a xlink:href=".././proc/era00.html" xlink:title="ERA00">
 <polygon fill="#d94e8f" stroke="#d94e8f" points="144,-24 90,-24 90,0 144,0 144,-24"/>
 <text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ERA00</text>
 </a>
 </g>
 </g>
 <!-- proc~aper13&#45;&gt;proc~era00 -->
-<g id="proc~~aper13~~CallsGraph_edge1" class="edge">
+<g id="proc~~aper13~~CallsGraph_edge2" class="edge">
 <title>proc~aper13&#45;&gt;proc~era00</title>
-<path fill="none" stroke="#000000" d="M54.4,-12C62.39,-12 71.31,-12 79.82,-12"/>
-<polygon fill="#000000" stroke="#000000" points="79.92,-15.5 89.92,-12 79.92,-8.5 79.92,-15.5"/>
+<path fill="none" stroke="#000000" d="M54.4,-26.7C62.48,-24.77 71.51,-22.62 80.1,-20.57"/>
+<polygon fill="#000000" stroke="#000000" points="81,-23.95 89.92,-18.22 79.38,-17.14 81,-23.95"/>
 </g>
 <!-- proc~anp -->
-<g id="proc~~aper13~~CallsGraph_node3" class="node">
+<g id="proc~~aper13~~CallsGraph_node4" class="node">
 <title>proc~anp</title>
-<g id="a_proc~~aper13~~CallsGraph_node3"><a xlink:href=".././proc/anp.html" xlink:title="ANP">
+<g id="a_proc~~aper13~~CallsGraph_node4"><a xlink:href=".././proc/anp.html" xlink:title="ANP">
 <polygon fill="#d94e8f" stroke="#d94e8f" points="234,-24 180,-24 180,0 234,0 234,-24"/>
 <text text-anchor="middle" x="207" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ANP</text>
 </a>
 </g>
 </g>
 <!-- proc~era00&#45;&gt;proc~anp -->
-<g id="proc~~aper13~~CallsGraph_edge2" class="edge">
+<g id="proc~~aper13~~CallsGraph_edge3" class="edge">
 <title>proc~era00&#45;&gt;proc~anp</title>
 <path fill="none" stroke="#000000" d="M144.4,-12C152.39,-12 161.31,-12 169.82,-12"/>
 <polygon fill="#000000" stroke="#000000" points="169.92,-15.5 179.92,-12 169.92,-8.5 169.92,-15.5"/>
@@ -454,35 +347,11 @@ public subroutine APER13(ut11, ut12, astrom)
     </div></div></div></div>
       </div>
     </div>
-     
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -490,69 +359,55 @@ public subroutine APER13(ut11, ut12, astrom)
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">APER13</span> <span class="p">(</span> <span class="n">ut11</span><span class="p">,</span> <span class="n">ut12</span><span class="p">,</span> <span class="n">astrom</span> <span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">APER13</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">ut11</span><span class="p">,</span><span class="w"> </span><span class="n">ut12</span><span class="p">,</span><span class="w"> </span><span class="n">astrom</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">ut11</span> <span class="c">!! UT1 as a 2-part...</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">ut12</span> <span class="c">!! ...Julian Date (Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">30</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span> <span class="kd">::</span> <span class="n">astrom</span> <span class="c">!! star-independent astrometry parameters:</span>
-                                                   <span class="c">!! * In: astrom(22): longitude + s&#39; (radians)</span>
-                                                   <span class="c">!! * Out: astrom(28): &quot;local&quot; Earth rotation angle (radians)</span>
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ut11</span><span class="w"> </span><span class="c">!! UT1 as a 2-part...</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ut12</span><span class="w"> </span><span class="c">!! ...Julian Date (Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">30</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">astrom</span><span class="w"> </span><span class="c">!! star-independent astrometry parameters:</span>
+<span class="w">                                                   </span><span class="c">!! * In: astrom(22): longitude + s&#39; (radians)</span>
+<span class="w">                                                   </span><span class="c">!! * Out: astrom(28): &quot;local&quot; Earth rotation angle (radians)</span>
 
-    <span class="k">call </span><span class="n">APER</span> <span class="p">(</span> <span class="n">ERA00</span> <span class="p">(</span> <span class="n">ut11</span><span class="p">,</span> <span class="n">ut12</span> <span class="p">),</span> <span class="n">astrom</span> <span class="p">)</span>
+<span class="w">    </span><span class="k">call </span><span class="n">APER</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">ERA00</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">ut11</span><span class="p">,</span><span class="w"> </span><span class="n">ut12</span><span class="w"> </span><span class="p">),</span><span class="w"> </span><span class="n">astrom</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">end subroutine </span><span class="n">APER13</span>
+<span class="w">    </span><span class="k">end subroutine </span><span class="n">APER13</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>astro-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -578,14 +433,11 @@ public subroutine APER13(ut11, ut12, astrom)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,45 +43,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-        
+              
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                                       </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -95,50 +68,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>PPSP
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 0.2% of total for procedures.">11 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
-    
      <li><a href='../module/astro_module.html'>astro_module</a></li>
-    
-  
      <li class="active">PPSP</li>
   </ol>
 </div>
@@ -154,32 +106,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -187,114 +116,53 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-public subroutine PPSP(a, s, b, apsb)
+    <h2>public subroutine PPSP(a, s, b, apsb)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>P-vector plus scaled p-vector.</p>
 <p>Status:  vector/matrix support routine.</p>
 <h3>History</h3>
 <ul>
 <li>IAU SOFA revision: 2007 August 18</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-a~10"></span>real(kind=wp),</td>
-  <td>intent(in),</td>
-  <td></td>
-  
-  <td>dimension(3)</td><td>::</td>
+<td>intent(in),</td>
+  <td></td>  <td>dimension(3)</td><td>::</td>
   <td><strong>a</strong></td><td><p>first p-vector</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-s~12"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>s</strong></td><td><p>scalar (multiplier for B)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-b~8"></span>real(kind=wp),</td>
-  <td>intent(in),</td>
-  <td></td>
-  
-  <td>dimension(3)</td><td>::</td>
+<td>intent(in),</td>
+  <td></td>  <td>dimension(3)</td><td>::</td>
   <td><strong>b</strong></td><td><p>second p-vector</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-apsb"></span>real(kind=wp),</td>
-  <td>intent(out),</td>
-  <td></td>
-  
-  <td>dimension(3)</td><td>::</td>
+<td>intent(out),</td>
+  <td></td>  <td>dimension(3)</td><td>::</td>
   <td><strong>apsb</strong></td><td><p>A + S*B</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
-     
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Called by</h3>
@@ -306,31 +174,127 @@ public subroutine PPSP(a, s, b, apsb)
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: proc~~ppsp~~CalledByGraph Pages: 1 -->
-<svg id="procppspCalledByGraph" width="152pt" height="32pt"
- viewBox="0.00 0.00 152.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="proc~~ppsp~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<svg id="procppspCalledByGraph" width="334pt" height="158pt"
+ viewBox="0.00 0.00 334.00 158.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~ppsp~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 154)">
 <title>proc~~ppsp~~CalledByGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 148,-28 148,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-154 330,-154 330,4 -4,4"/>
 <!-- proc~ppsp -->
 <g id="proc~~ppsp~~CalledByGraph_node1" class="node">
 <title>proc~ppsp</title>
-<polygon fill="none" stroke="black" points="144,-24 90,-24 90,0 144,0 144,-24"/>
-<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">PPSP</text>
+<polygon fill="none" stroke="black" points="326,-67 272,-67 272,-43 326,-43 326,-67"/>
+<text text-anchor="middle" x="299" y="-52.6" font-family="Helvetica,sans-Serif" font-size="10.50">PPSP</text>
+</g>
+<!-- proc~ldn -->
+<g id="proc~~ppsp~~CalledByGraph_node2" class="node">
+<title>proc~ldn</title>
+<g id="a_proc~~ppsp~~CalledByGraph_node2"><a xlink:href=".././proc/ldn.html" xlink:title="LDN">
+<polygon fill="#d9534f" stroke="#d9534f" points="236,-108 182,-108 182,-84 236,-84 236,-108"/>
+<text text-anchor="middle" x="209" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">LDN</text>
+</a>
+</g>
+</g>
+<!-- proc~ldn&#45;&gt;proc~ppsp -->
+<g id="proc~~ppsp~~CalledByGraph_edge2" class="edge">
+<title>proc~ldn&#45;&gt;proc~ppsp</title>
+<path fill="none" stroke="#000000" d="M235.93,-83.92C244.36,-79.99 253.86,-75.57 262.84,-71.38"/>
+<polygon fill="#000000" stroke="#000000" points="264.37,-74.53 271.95,-67.13 261.41,-68.19 264.37,-74.53"/>
+</g>
+<!-- proc~pvu -->
+<g id="proc~~ppsp~~CalledByGraph_node3" class="node">
+<title>proc~pvu</title>
+<g id="a_proc~~ppsp~~CalledByGraph_node3"><a xlink:href=".././proc/pvu.html" xlink:title="PVU">
+<polygon fill="#d9534f" stroke="#d9534f" points="236,-27 182,-27 182,-3 236,-3 236,-27"/>
+<text text-anchor="middle" x="209" y="-12.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PVU</text>
+</a>
+</g>
+</g>
+<!-- proc~pvu&#45;&gt;proc~ppsp -->
+<g id="proc~~ppsp~~CalledByGraph_edge3" class="edge">
+<title>proc~pvu&#45;&gt;proc~ppsp</title>
+<path fill="none" stroke="#000000" d="M236.4,-27C244.66,-30.75 253.9,-34.95 262.66,-38.94"/>
+<polygon fill="#000000" stroke="#000000" points="261.37,-42.19 271.92,-43.14 264.26,-35.82 261.37,-42.19"/>
 </g>
 <!-- proc~fk45z -->
-<g id="proc~~ppsp~~CalledByGraph_node2" class="node">
+<g id="proc~~ppsp~~CalledByGraph_node4" class="node">
 <title>proc~fk45z</title>
-<g id="a_proc~~ppsp~~CalledByGraph_node2"><a xlink:href=".././proc/fk45z.html" xlink:title="FK45Z">
-<polygon fill="#d9534f" stroke="#d9534f" points="54,-24 0,-24 0,0 54,0 54,-24"/>
-<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FK45Z</text>
+<g id="a_proc~~ppsp~~CalledByGraph_node4"><a xlink:href=".././proc/fk45z.html" xlink:title="FK45Z">
+<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-66 91.5,-66 91.5,-42 145.5,-42 145.5,-66"/>
+<text text-anchor="middle" x="118.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FK45Z</text>
 </a>
 </g>
 </g>
 <!-- proc~fk45z&#45;&gt;proc~ppsp -->
 <g id="proc~~ppsp~~CalledByGraph_edge1" class="edge">
 <title>proc~fk45z&#45;&gt;proc~ppsp</title>
-<path fill="none" stroke="#000000" d="M54.4,-12C62.39,-12 71.31,-12 79.82,-12"/>
-<polygon fill="#000000" stroke="#000000" points="79.92,-15.5 89.92,-12 79.92,-8.5 79.92,-15.5"/>
+<path fill="none" stroke="#000000" d="M145.84,-54.15C176.51,-54.32 227.35,-54.6 261.74,-54.8"/>
+<polygon fill="#000000" stroke="#000000" points="261.82,-58.3 271.84,-54.85 261.86,-51.3 261.82,-58.3"/>
+</g>
+<!-- proc~fk45z&#45;&gt;proc~pvu -->
+<g id="proc~~ppsp~~CalledByGraph_edge7" class="edge">
+<title>proc~fk45z&#45;&gt;proc~pvu</title>
+<path fill="none" stroke="#000000" d="M145.57,-42.51C154.05,-38.77 163.6,-34.56 172.64,-30.58"/>
+<polygon fill="#000000" stroke="#000000" points="174.07,-33.78 181.81,-26.54 171.24,-27.37 174.07,-33.78"/>
+</g>
+<!-- proc~aticqn -->
+<g id="proc~~ppsp~~CalledByGraph_node5" class="node">
+<title>proc~aticqn</title>
+<g id="a_proc~~ppsp~~CalledByGraph_node5"><a xlink:href=".././proc/aticqn.html" xlink:title="ATICQN">
+<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-150 91.5,-150 91.5,-126 145.5,-126 145.5,-150"/>
+<text text-anchor="middle" x="118.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATICQN</text>
+</a>
+</g>
+</g>
+<!-- proc~aticqn&#45;&gt;proc~ldn -->
+<g id="proc~~ppsp~~CalledByGraph_edge4" class="edge">
+<title>proc~aticqn&#45;&gt;proc~ldn</title>
+<path fill="none" stroke="#000000" d="M145.1,-125.85C153.9,-121.67 163.92,-116.92 173.32,-112.46"/>
+<polygon fill="#000000" stroke="#000000" points="174.93,-115.57 182.46,-108.12 171.92,-109.25 174.93,-115.57"/>
+</g>
+<!-- proc~starpm -->
+<g id="proc~~ppsp~~CalledByGraph_node6" class="node">
+<title>proc~starpm</title>
+<g id="a_proc~~ppsp~~CalledByGraph_node6"><a xlink:href=".././proc/starpm.html" xlink:title="STARPM">
+<polygon fill="#d9534f" stroke="#d9534f" points="146,-24 91,-24 91,0 146,0 146,-24"/>
+<text text-anchor="middle" x="118.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">STARPM</text>
+</a>
+</g>
+</g>
+<!-- proc~starpm&#45;&gt;proc~pvu -->
+<g id="proc~~ppsp~~CalledByGraph_edge6" class="edge">
+<title>proc~starpm&#45;&gt;proc~pvu</title>
+<path fill="none" stroke="#000000" d="M146.05,-12.9C154.09,-13.17 163.06,-13.48 171.62,-13.77"/>
+<polygon fill="#000000" stroke="#000000" points="171.66,-17.27 181.77,-14.11 171.9,-10.27 171.66,-17.27"/>
+</g>
+<!-- proc~atciqn -->
+<g id="proc~~ppsp~~CalledByGraph_node7" class="node">
+<title>proc~atciqn</title>
+<g id="a_proc~~ppsp~~CalledByGraph_node7"><a xlink:href=".././proc/atciqn.html" xlink:title="ATCIQN">
+<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-108 91.5,-108 91.5,-84 145.5,-84 145.5,-108"/>
+<text text-anchor="middle" x="118.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATCIQN</text>
+</a>
+</g>
+</g>
+<!-- proc~atciqn&#45;&gt;proc~ldn -->
+<g id="proc~~ppsp~~CalledByGraph_edge5" class="edge">
+<title>proc~atciqn&#45;&gt;proc~ldn</title>
+<path fill="none" stroke="#000000" d="M145.57,-96C153.78,-96 163,-96 171.78,-96"/>
+<polygon fill="#000000" stroke="#000000" points="171.81,-99.5 181.81,-96 171.81,-92.5 171.81,-99.5"/>
+</g>
+<!-- proc~pmsafe -->
+<g id="proc~~ppsp~~CalledByGraph_node8" class="node">
+<title>proc~pmsafe</title>
+<g id="a_proc~~ppsp~~CalledByGraph_node8"><a xlink:href=".././proc/pmsafe.html" xlink:title="PMSAFE">
+<polygon fill="#d9534f" stroke="#d9534f" points="55,-24 0,-24 0,0 55,0 55,-24"/>
+<text text-anchor="middle" x="27.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PMSAFE</text>
+</a>
+</g>
+</g>
+<!-- proc~pmsafe&#45;&gt;proc~starpm -->
+<g id="proc~~ppsp~~CalledByGraph_edge8" class="edge">
+<title>proc~pmsafe&#45;&gt;proc~starpm</title>
+<path fill="none" stroke="#000000" d="M55.2,-12C63.21,-12 72.14,-12 80.68,-12"/>
+<polygon fill="#000000" stroke="#000000" points="80.82,-15.5 90.82,-12 80.82,-8.5 80.82,-15.5"/>
 </g>
 </g>
 </svg>
@@ -395,34 +359,11 @@ public subroutine PPSP(a, s, b, apsb)
     </div></div></div></div>
       </div>
     </div>
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -430,72 +371,58 @@ public subroutine PPSP(a, s, b, apsb)
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">PPSP</span> <span class="p">(</span> <span class="n">a</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">apsb</span> <span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">PPSP</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">apsb</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">a</span> <span class="c">!! first p-vector</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">s</span> <span class="c">!! scalar (multiplier for B)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">b</span> <span class="c">!! second p-vector</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">apsb</span> <span class="c">!! A + S*B</span>
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="c">!! first p-vector</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="c">!! scalar (multiplier for B)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="c">!! second p-vector</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">apsb</span><span class="w"> </span><span class="c">!! A + S*B</span>
 
-    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">i</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="w"></span>
 
-    <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span>
-       <span class="n">apsb</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">a</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="n">s</span><span class="o">*</span><span class="n">b</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-    <span class="k">end do</span>
+<span class="w">    </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="w"></span>
+<span class="w">       </span><span class="n">apsb</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s</span><span class="o">*</span><span class="n">b</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">end do</span>
 
-<span class="k">    end subroutine </span><span class="n">PPSP</span>
+<span class="k">    end subroutine </span><span class="n">PPSP</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>astro-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -521,14 +448,11 @@ public subroutine PPSP(a, s, b, apsb)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

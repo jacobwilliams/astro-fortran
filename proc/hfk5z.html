@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,45 +43,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-        
+              
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                                       </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -95,50 +68,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>HFK5Z
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 0.4% of total for procedures.">24 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
-    
      <li><a href='../module/astro_module.html'>astro_module</a></li>
-    
-  
      <li class="active">HFK5Z</li>
   </ol>
 </div>
@@ -154,32 +106,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -187,24 +116,14 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-public subroutine HFK5Z(rh, dh, date1, date2, r5, d5, dr5, dd5)
+    <h2>public subroutine HFK5Z(rh, dh, date1, date2, r5, d5, dr5, dd5)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>Transform a Hipparcos star position into FK5 J2000.0, assuming
   zero Hipparcos proper motion.</p>
 <p>Status:  support routine.</p>
@@ -261,149 +180,63 @@ public subroutine HFK5Z(rh, dh, date1, date2, r5, d5, dr5, dd5)
 <ul>
 <li>IAU SOFA revision: 2012 September 5</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-rh~10"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>rh</strong></td><td><p>Hipparcos RA (radians)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-dh~4"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>dh</strong></td><td><p>Hipparcos Dec (radians)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-date1~38"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>date1</strong></td><td><p>TDB date (Note 1)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-date2~38"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>date2</strong></td><td><p>TDB date (Note 1)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-r5~4"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>r5</strong></td><td><p>RA (radians) [FK5, equinox J2000.0, date DATE1+DATE2]</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-d5~4"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>d5</strong></td><td><p>Dec (radians) [FK5, equinox J2000.0, date DATE1+DATE2]</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-dr5~3"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>dr5</strong></td><td><p>FK5 RA proper motion (rad/year, Note 4) [FK5, equinox J2000.0, date DATE1+DATE2]</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-dd5~3"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>dd5</strong></td><td><p>Dec proper motion (rad/year, Note 4) [FK5, equinox J2000.0, date DATE1+DATE2]</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Calls</h3>
@@ -415,193 +248,193 @@ public subroutine HFK5Z(rh, dh, date1, date2, r5, d5, dr5, dd5)
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: proc~~hfk5z~~CallsGraph Pages: 1 -->
-<svg id="prochfk5zCallsGraph" width="242pt" height="384pt"
- viewBox="0.00 0.00 242.00 384.40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="proc~~hfk5z~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 380.4)">
+<svg id="prochfk5zCallsGraph" width="242pt" height="404pt"
+ viewBox="0.00 0.00 242.00 404.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~hfk5z~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 400)">
 <title>proc~~hfk5z~~CallsGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-380.4 238,-380.4 238,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-400 238,-400 238,4 -4,4"/>
 <!-- proc~hfk5z -->
 <g id="proc~~hfk5z~~CallsGraph_node1" class="node">
 <title>proc~hfk5z</title>
-<polygon fill="none" stroke="black" points="54,-189.4 0,-189.4 0,-165.4 54,-165.4 54,-189.4"/>
-<text text-anchor="middle" x="27" y="-175" font-family="Helvetica,sans-Serif" font-size="10.50">HFK5Z</text>
+<polygon fill="none" stroke="black" points="54,-207 0,-207 0,-183 54,-183 54,-207"/>
+<text text-anchor="middle" x="27" y="-192.6" font-family="Helvetica,sans-Serif" font-size="10.50">HFK5Z</text>
 </g>
-<!-- proc~rv2m -->
+<!-- proc~fk5hip -->
 <g id="proc~~hfk5z~~CallsGraph_node2" class="node">
-<title>proc~rv2m</title>
-<g id="a_proc~~hfk5z~~CallsGraph_node2"><a xlink:href=".././proc/rv2m.html" xlink:title="RV2M">
-<polygon fill="#d9534f" stroke="#d9534f" points="234,-106.4 180,-106.4 180,-82.4 234,-82.4 234,-106.4"/>
-<text text-anchor="middle" x="207" y="-92" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RV2M</text>
+<title>proc~fk5hip</title>
+<g id="a_proc~~hfk5z~~CallsGraph_node2"><a xlink:href=".././proc/fk5hip.html" xlink:title="FK5HIP">
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-396 90,-396 90,-372 144,-372 144,-396"/>
+<text text-anchor="middle" x="117" y="-381.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FK5HIP</text>
 </a>
 </g>
 </g>
-<!-- proc~hfk5z&#45;&gt;proc~rv2m -->
-<g id="proc~~hfk5z~~CallsGraph_edge1" class="edge">
-<title>proc~hfk5z&#45;&gt;proc~rv2m</title>
-<path fill="none" stroke="#000000" d="M28.14,-165.34C29.25,-133.33 37.2,-46.2 90,-9.4 109.69,4.32 122.61,1.47 144,-9.4 170.03,-22.63 187.72,-52.48 197.35,-73.03"/>
-<polygon fill="#000000" stroke="#000000" points="194.18,-74.53 201.42,-82.26 200.58,-71.7 194.18,-74.53"/>
-</g>
-<!-- proc~rxp -->
-<g id="proc~~hfk5z~~CallsGraph_node3" class="node">
-<title>proc~rxp</title>
-<g id="a_proc~~hfk5z~~CallsGraph_node3"><a xlink:href=".././proc/rxp.html" xlink:title="RXP">
-<polygon fill="#d9534f" stroke="#d9534f" points="234,-376.4 180,-376.4 180,-352.4 234,-352.4 234,-376.4"/>
-<text text-anchor="middle" x="207" y="-362" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RXP</text>
-</a>
-</g>
-</g>
-<!-- proc~hfk5z&#45;&gt;proc~rxp -->
+<!-- proc~hfk5z&#45;&gt;proc~fk5hip -->
 <g id="proc~~hfk5z~~CallsGraph_edge2" class="edge">
-<title>proc~hfk5z&#45;&gt;proc~rxp</title>
-<path fill="none" stroke="#000000" d="M28.52,-189.46C30.56,-220.7 40.6,-304.65 90,-345.4 112.04,-363.58 144.66,-367.56 169.71,-367.43"/>
-<polygon fill="#000000" stroke="#000000" points="170.02,-370.93 179.92,-367.16 169.83,-363.93 170.02,-370.93"/>
+<title>proc~hfk5z&#45;&gt;proc~fk5hip</title>
+<path fill="none" stroke="#000000" d="M30.14,-207.03C35.78,-236.13 53.2,-311.73 90,-363 90.36,-363.5 90.73,-364 91.12,-364.49"/>
+<polygon fill="#000000" stroke="#000000" points="88.78,-367.1 98.25,-371.84 93.81,-362.23 88.78,-367.1"/>
 </g>
 <!-- proc~sxp -->
-<g id="proc~~hfk5z~~CallsGraph_node4" class="node">
+<g id="proc~~hfk5z~~CallsGraph_node3" class="node">
 <title>proc~sxp</title>
-<g id="a_proc~~hfk5z~~CallsGraph_node4"><a xlink:href=".././proc/sxp.html" xlink:title="SXP">
-<polygon fill="#d9534f" stroke="#d9534f" points="144,-294.4 90,-294.4 90,-270.4 144,-270.4 144,-294.4"/>
-<text text-anchor="middle" x="117" y="-280" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SXP</text>
+<g id="a_proc~~hfk5z~~CallsGraph_node3"><a xlink:href=".././proc/sxp.html" xlink:title="SXP">
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-354 90,-354 90,-330 144,-330 144,-354"/>
+<text text-anchor="middle" x="117" y="-339.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SXP</text>
 </a>
 </g>
 </g>
 <!-- proc~hfk5z&#45;&gt;proc~sxp -->
 <g id="proc~~hfk5z~~CallsGraph_edge3" class="edge">
 <title>proc~hfk5z&#45;&gt;proc~sxp</title>
-<path fill="none" stroke="#000000" d="M35.55,-189.55C46.43,-206.59 67.69,-238.1 90,-261.4 90.65,-262.08 91.32,-262.76 92.01,-263.43"/>
-<polygon fill="#000000" stroke="#000000" points="89.97,-266.3 99.76,-270.35 94.64,-261.08 89.97,-266.3"/>
+<path fill="none" stroke="#000000" d="M31.95,-207.09C40.09,-230.75 60.47,-284.06 90,-321 90.48,-321.59 90.97,-322.18 91.48,-322.77"/>
+<polygon fill="#000000" stroke="#000000" points="89.18,-325.41 98.78,-329.88 94.06,-320.39 89.18,-325.41"/>
 </g>
 <!-- proc~s2c -->
-<g id="proc~~hfk5z~~CallsGraph_node5" class="node">
+<g id="proc~~hfk5z~~CallsGraph_node4" class="node">
 <title>proc~s2c</title>
-<g id="a_proc~~hfk5z~~CallsGraph_node5"><a xlink:href=".././proc/s2c.html" xlink:title="S2C">
-<polygon fill="#d9534f" stroke="#d9534f" points="144,-252.4 90,-252.4 90,-228.4 144,-228.4 144,-252.4"/>
-<text text-anchor="middle" x="117" y="-238" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">S2C</text>
+<g id="a_proc~~hfk5z~~CallsGraph_node4"><a xlink:href=".././proc/s2c.html" xlink:title="S2C">
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-312 90,-312 90,-288 144,-288 144,-312"/>
+<text text-anchor="middle" x="117" y="-297.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">S2C</text>
 </a>
 </g>
 </g>
 <!-- proc~hfk5z&#45;&gt;proc~s2c -->
-<g id="proc~~hfk5z~~CallsGraph_edge4" class="edge">
+<g id="proc~~hfk5z~~CallsGraph_edge8" class="edge">
 <title>proc~hfk5z&#45;&gt;proc~s2c</title>
-<path fill="none" stroke="#000000" d="M44.97,-189.55C57.99,-198.87 76.18,-211.9 90.89,-222.43"/>
-<polygon fill="#000000" stroke="#000000" points="88.92,-225.32 99.08,-228.29 92.99,-219.63 88.92,-225.32"/>
+<path fill="none" stroke="#000000" d="M35.55,-207.15C46.43,-224.19 67.69,-255.69 90,-279 90.65,-279.68 91.32,-280.36 92.01,-281.03"/>
+<polygon fill="#000000" stroke="#000000" points="89.97,-283.9 99.76,-287.95 94.64,-278.68 89.97,-283.9"/>
 </g>
-<!-- proc~trxp -->
-<g id="proc~~hfk5z~~CallsGraph_node6" class="node">
-<title>proc~trxp</title>
-<g id="a_proc~~hfk5z~~CallsGraph_node6"><a xlink:href=".././proc/trxp.html" xlink:title="TRXP">
-<polygon fill="#d9534f" stroke="#d9534f" points="144,-336.4 90,-336.4 90,-312.4 144,-312.4 144,-336.4"/>
-<text text-anchor="middle" x="117" y="-322" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">TRXP</text>
+<!-- proc~pv2s -->
+<g id="proc~~hfk5z~~CallsGraph_node5" class="node">
+<title>proc~pv2s</title>
+<g id="a_proc~~hfk5z~~CallsGraph_node5"><a xlink:href=".././proc/pv2s.html" xlink:title="PV2S">
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-270 90,-270 90,-246 144,-246 144,-270"/>
+<text text-anchor="middle" x="117" y="-255.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PV2S</text>
 </a>
 </g>
 </g>
-<!-- proc~hfk5z&#45;&gt;proc~trxp -->
+<!-- proc~hfk5z&#45;&gt;proc~pv2s -->
 <g id="proc~~hfk5z~~CallsGraph_edge5" class="edge">
-<title>proc~hfk5z&#45;&gt;proc~trxp</title>
-<path fill="none" stroke="#000000" d="M31.95,-189.49C40.09,-213.15 60.47,-266.46 90,-303.4 90.48,-304 90.97,-304.59 91.48,-305.17"/>
-<polygon fill="#000000" stroke="#000000" points="89.18,-307.81 98.78,-312.28 94.06,-302.79 89.18,-307.81"/>
+<title>proc~hfk5z&#45;&gt;proc~pv2s</title>
+<path fill="none" stroke="#000000" d="M44.97,-207.15C57.99,-216.47 76.18,-229.49 90.89,-240.02"/>
+<polygon fill="#000000" stroke="#000000" points="88.92,-242.91 99.08,-245.89 92.99,-237.22 88.92,-242.91"/>
 </g>
-<!-- proc~pxp -->
-<g id="proc~~hfk5z~~CallsGraph_node7" class="node">
-<title>proc~pxp</title>
-<g id="a_proc~~hfk5z~~CallsGraph_node7"><a xlink:href=".././proc/pxp.html" xlink:title="PXP">
-<polygon fill="#d9534f" stroke="#d9534f" points="144,-168.4 90,-168.4 90,-144.4 144,-144.4 144,-168.4"/>
-<text text-anchor="middle" x="117" y="-154" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PXP</text>
+<!-- proc~anp -->
+<g id="proc~~hfk5z~~CallsGraph_node6" class="node">
+<title>proc~anp</title>
+<g id="a_proc~~hfk5z~~CallsGraph_node6"><a xlink:href=".././proc/anp.html" xlink:title="ANP">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="144,-228 90,-228 90,-204 144,-204 144,-228"/>
+<text text-anchor="middle" x="117" y="-213.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ANP</text>
 </a>
 </g>
 </g>
-<!-- proc~hfk5z&#45;&gt;proc~pxp -->
+<!-- proc~hfk5z&#45;&gt;proc~anp -->
 <g id="proc~~hfk5z~~CallsGraph_edge6" class="edge">
-<title>proc~hfk5z&#45;&gt;proc~pxp</title>
-<path fill="none" stroke="#000000" d="M54.4,-171.1C62.48,-169.17 71.51,-167.02 80.1,-164.97"/>
-<polygon fill="#000000" stroke="#000000" points="81,-168.35 89.92,-162.63 79.38,-161.54 81,-168.35"/>
+<title>proc~hfk5z&#45;&gt;proc~anp</title>
+<path fill="none" stroke="#000000" d="M54.4,-201.3C62.48,-203.23 71.51,-205.38 80.1,-207.43"/>
+<polygon fill="#000000" stroke="#000000" points="79.38,-210.86 89.92,-209.78 81,-204.05 79.38,-210.86"/>
 </g>
 <!-- proc~rxr -->
-<g id="proc~~hfk5z~~CallsGraph_node8" class="node">
+<g id="proc~~hfk5z~~CallsGraph_node7" class="node">
 <title>proc~rxr</title>
-<g id="a_proc~~hfk5z~~CallsGraph_node8"><a xlink:href=".././proc/rxr.html" xlink:title="RXR">
-<polygon fill="#d9534f" stroke="#d9534f" points="144,-126.4 90,-126.4 90,-102.4 144,-102.4 144,-126.4"/>
-<text text-anchor="middle" x="117" y="-112" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RXR</text>
+<g id="a_proc~~hfk5z~~CallsGraph_node7"><a xlink:href=".././proc/rxr.html" xlink:title="RXR">
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-186 90,-186 90,-162 144,-162 144,-186"/>
+<text text-anchor="middle" x="117" y="-171.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RXR</text>
 </a>
 </g>
 </g>
 <!-- proc~hfk5z&#45;&gt;proc~rxr -->
 <g id="proc~~hfk5z~~CallsGraph_edge7" class="edge">
 <title>proc~hfk5z&#45;&gt;proc~rxr</title>
-<path fill="none" stroke="#000000" d="M44.97,-165.25C57.99,-155.93 76.18,-142.91 90.89,-132.38"/>
-<polygon fill="#000000" stroke="#000000" points="92.99,-135.18 99.08,-126.51 88.92,-129.49 92.99,-135.18"/>
+<path fill="none" stroke="#000000" d="M54.4,-188.7C62.48,-186.77 71.51,-184.62 80.1,-182.57"/>
+<polygon fill="#000000" stroke="#000000" points="81,-185.95 89.92,-180.22 79.38,-179.14 81,-185.95"/>
 </g>
-<!-- proc~pv2s -->
+<!-- proc~rv2m -->
+<g id="proc~~hfk5z~~CallsGraph_node8" class="node">
+<title>proc~rv2m</title>
+<g id="a_proc~~hfk5z~~CallsGraph_node8"><a xlink:href=".././proc/rv2m.html" xlink:title="RV2M">
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-271 180,-271 180,-247 234,-247 234,-271"/>
+<text text-anchor="middle" x="207" y="-256.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RV2M</text>
+</a>
+</g>
+</g>
+<!-- proc~hfk5z&#45;&gt;proc~rv2m -->
+<g id="proc~~hfk5z~~CallsGraph_edge1" class="edge">
+<title>proc~hfk5z&#45;&gt;proc~rv2m</title>
+<path fill="none" stroke="#000000" d="M41.52,-182.85C63.87,-164.33 109.44,-133.18 144,-153 175.39,-171.01 192.41,-211.74 200.32,-237.14"/>
+<polygon fill="#000000" stroke="#000000" points="197.02,-238.35 203.16,-246.98 203.75,-236.4 197.02,-238.35"/>
+</g>
+<!-- proc~pxp -->
 <g id="proc~~hfk5z~~CallsGraph_node9" class="node">
-<title>proc~pv2s</title>
-<g id="a_proc~~hfk5z~~CallsGraph_node9"><a xlink:href=".././proc/pv2s.html" xlink:title="PV2S">
-<polygon fill="#d9534f" stroke="#d9534f" points="144,-84.4 90,-84.4 90,-60.4 144,-60.4 144,-84.4"/>
-<text text-anchor="middle" x="117" y="-70" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PV2S</text>
+<title>proc~pxp</title>
+<g id="a_proc~~hfk5z~~CallsGraph_node9"><a xlink:href=".././proc/pxp.html" xlink:title="PXP">
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-106 90,-106 90,-82 144,-82 144,-106"/>
+<text text-anchor="middle" x="117" y="-91.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PXP</text>
 </a>
 </g>
 </g>
-<!-- proc~hfk5z&#45;&gt;proc~pv2s -->
-<g id="proc~~hfk5z~~CallsGraph_edge8" class="edge">
-<title>proc~hfk5z&#45;&gt;proc~pv2s</title>
-<path fill="none" stroke="#000000" d="M35.55,-165.25C46.43,-148.21 67.69,-116.71 90,-93.4 90.65,-92.72 91.32,-92.05 92.01,-91.37"/>
-<polygon fill="#000000" stroke="#000000" points="94.64,-93.72 99.76,-84.45 89.97,-88.5 94.64,-93.72"/>
+<!-- proc~hfk5z&#45;&gt;proc~pxp -->
+<g id="proc~~hfk5z~~CallsGraph_edge4" class="edge">
+<title>proc~hfk5z&#45;&gt;proc~pxp</title>
+<path fill="none" stroke="#000000" d="M37.54,-182.75C49.43,-167.65 70.56,-141.37 90,-120 91.97,-117.83 94.08,-115.6 96.2,-113.41"/>
+<polygon fill="#000000" stroke="#000000" points="98.78,-115.77 103.32,-106.2 93.8,-110.85 98.78,-115.77"/>
 </g>
-<!-- proc~anp -->
+<!-- proc~rxp -->
 <g id="proc~~hfk5z~~CallsGraph_node10" class="node">
-<title>proc~anp</title>
-<g id="a_proc~~hfk5z~~CallsGraph_node10"><a xlink:href=".././proc/anp.html" xlink:title="ANP">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="144,-42.4 90,-42.4 90,-18.4 144,-18.4 144,-42.4"/>
-<text text-anchor="middle" x="117" y="-28" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ANP</text>
+<title>proc~rxp</title>
+<g id="a_proc~~hfk5z~~CallsGraph_node10"><a xlink:href=".././proc/rxp.html" xlink:title="RXP">
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-66 180,-66 180,-42 234,-42 234,-66"/>
+<text text-anchor="middle" x="207" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RXP</text>
 </a>
 </g>
 </g>
-<!-- proc~hfk5z&#45;&gt;proc~anp -->
-<g id="proc~~hfk5z~~CallsGraph_edge9" class="edge">
-<title>proc~hfk5z&#45;&gt;proc~anp</title>
-<path fill="none" stroke="#000000" d="M31.95,-165.31C40.09,-141.66 60.47,-88.35 90,-51.4 90.48,-50.81 90.97,-50.22 91.48,-49.64"/>
-<polygon fill="#000000" stroke="#000000" points="94.06,-52.01 98.78,-42.53 89.18,-46.99 94.06,-52.01"/>
-</g>
-<!-- proc~fk5hip -->
-<g id="proc~~hfk5z~~CallsGraph_node11" class="node">
-<title>proc~fk5hip</title>
-<g id="a_proc~~hfk5z~~CallsGraph_node11"><a xlink:href=".././proc/fk5hip.html" xlink:title="FK5HIP">
-<polygon fill="#d9534f" stroke="#d9534f" points="144,-210.4 90,-210.4 90,-186.4 144,-186.4 144,-210.4"/>
-<text text-anchor="middle" x="117" y="-196" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FK5HIP</text>
-</a>
-</g>
-</g>
-<!-- proc~hfk5z&#45;&gt;proc~fk5hip -->
+<!-- proc~hfk5z&#45;&gt;proc~rxp -->
 <g id="proc~~hfk5z~~CallsGraph_edge10" class="edge">
-<title>proc~hfk5z&#45;&gt;proc~fk5hip</title>
-<path fill="none" stroke="#000000" d="M54.4,-183.7C62.48,-185.63 71.51,-187.78 80.1,-189.84"/>
-<polygon fill="#000000" stroke="#000000" points="79.38,-193.26 89.92,-192.18 81,-186.45 79.38,-193.26"/>
+<title>proc~hfk5z&#45;&gt;proc~rxp</title>
+<path fill="none" stroke="#000000" d="M30.34,-182.95C35.87,-157.98 52.22,-100.63 90,-73 112.92,-56.24 145.18,-52.08 169.87,-51.78"/>
+<polygon fill="#000000" stroke="#000000" points="169.91,-55.28 179.94,-51.87 169.97,-48.28 169.91,-55.28"/>
+</g>
+<!-- proc~trxp -->
+<g id="proc~~hfk5z~~CallsGraph_node11" class="node">
+<title>proc~trxp</title>
+<g id="a_proc~~hfk5z~~CallsGraph_node11"><a xlink:href=".././proc/trxp.html" xlink:title="TRXP">
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-26 90,-26 90,-2 144,-2 144,-26"/>
+<text text-anchor="middle" x="117" y="-11.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">TRXP</text>
+</a>
+</g>
+</g>
+<!-- proc~hfk5z&#45;&gt;proc~trxp -->
+<g id="proc~~hfk5z~~CallsGraph_edge9" class="edge">
+<title>proc~hfk5z&#45;&gt;proc~trxp</title>
+<path fill="none" stroke="#000000" d="M31.02,-182.94C38.2,-155.78 58.09,-88.39 90,-40 91.45,-37.81 93.1,-35.65 94.85,-33.57"/>
+<polygon fill="#000000" stroke="#000000" points="97.63,-35.73 101.91,-26.04 92.52,-30.94 97.63,-35.73"/>
+</g>
+<!-- proc~fk5hip&#45;&gt;proc~rv2m -->
+<g id="proc~~hfk5z~~CallsGraph_edge11" class="edge">
+<title>proc~fk5hip&#45;&gt;proc~rv2m</title>
+<path fill="none" stroke="#000000" d="M134.74,-371.94C138.01,-369.2 141.26,-366.16 144,-363 166.34,-337.25 185.25,-302.39 196.12,-280.3"/>
+<polygon fill="#000000" stroke="#000000" points="199.35,-281.65 200.53,-271.12 193.04,-278.62 199.35,-281.65"/>
 </g>
 <!-- proc~trxp&#45;&gt;proc~rxp -->
-<g id="proc~~hfk5z~~CallsGraph_edge11" class="edge">
+<g id="proc~~hfk5z~~CallsGraph_edge13" class="edge">
 <title>proc~trxp&#45;&gt;proc~rxp</title>
-<path fill="none" stroke="#000000" d="M144.4,-336.4C152.66,-340.15 161.9,-344.36 170.66,-348.34"/>
-<polygon fill="#000000" stroke="#000000" points="169.37,-351.6 179.92,-352.55 172.26,-345.22 169.37,-351.6"/>
+<path fill="none" stroke="#000000" d="M144.4,-26C152.66,-29.75 161.9,-33.95 170.66,-37.94"/>
+<polygon fill="#000000" stroke="#000000" points="169.37,-41.19 179.92,-42.14 172.26,-34.82 169.37,-41.19"/>
 </g>
 <!-- proc~tr -->
 <g id="proc~~hfk5z~~CallsGraph_node12" class="node">
 <title>proc~tr</title>
 <g id="a_proc~~hfk5z~~CallsGraph_node12"><a xlink:href=".././proc/tr.html" xlink:title="TR">
-<polygon fill="#d9534f" stroke="#d9534f" points="234,-334.4 180,-334.4 180,-310.4 234,-310.4 234,-334.4"/>
-<text text-anchor="middle" x="207" y="-320" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">TR</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 180,-24 180,0 234,0 234,-24"/>
+<text text-anchor="middle" x="207" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">TR</text>
 </a>
 </g>
 </g>
 <!-- proc~trxp&#45;&gt;proc~tr -->
 <g id="proc~~hfk5z~~CallsGraph_edge12" class="edge">
 <title>proc~trxp&#45;&gt;proc~tr</title>
-<path fill="none" stroke="#000000" d="M144.4,-323.8C152.39,-323.62 161.31,-323.42 169.82,-323.22"/>
-<polygon fill="#000000" stroke="#000000" points="170,-326.72 179.92,-322.99 169.84,-319.72 170,-326.72"/>
-</g>
-<!-- proc~fk5hip&#45;&gt;proc~rv2m -->
-<g id="proc~~hfk5z~~CallsGraph_edge13" class="edge">
-<title>proc~fk5hip&#45;&gt;proc~rv2m</title>
-<path fill="none" stroke="#000000" d="M134.22,-186.34C137.59,-183.55 141.02,-180.49 144,-177.4 162.8,-157.87 180.96,-132.57 192.71,-115.06"/>
-<polygon fill="#000000" stroke="#000000" points="195.65,-116.96 198.24,-106.68 189.81,-113.1 195.65,-116.96"/>
+<path fill="none" stroke="#000000" d="M144.4,-13.4C152.39,-13.22 161.31,-13.02 169.82,-12.82"/>
+<polygon fill="#000000" stroke="#000000" points="170,-16.32 179.92,-12.59 169.84,-9.32 170,-16.32"/>
 </g>
 </g>
 </svg>
@@ -666,35 +499,11 @@ public subroutine HFK5Z(rh, dh, date1, date2, r5, d5, dr5, dd5)
     </div></div></div></div>
       </div>
     </div>
-     
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -702,108 +511,94 @@ public subroutine HFK5Z(rh, dh, date1, date2, r5, d5, dr5, dd5)
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">HFK5Z</span> <span class="p">(</span> <span class="n">rh</span><span class="p">,</span> <span class="n">dh</span><span class="p">,</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span><span class="p">,</span> <span class="n">r5</span><span class="p">,</span> <span class="n">d5</span><span class="p">,</span> <span class="n">dr5</span><span class="p">,</span> <span class="n">dd5</span> <span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">HFK5Z</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">rh</span><span class="p">,</span><span class="w"> </span><span class="n">dh</span><span class="p">,</span><span class="w"> </span><span class="n">date1</span><span class="p">,</span><span class="w"> </span><span class="n">date2</span><span class="p">,</span><span class="w"> </span><span class="n">r5</span><span class="p">,</span><span class="w"> </span><span class="n">d5</span><span class="p">,</span><span class="w"> </span><span class="n">dr5</span><span class="p">,</span><span class="w"> </span><span class="n">dd5</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">rh</span> <span class="c">!! Hipparcos RA (radians)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">dh</span> <span class="c">!! Hipparcos Dec (radians)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date1</span> <span class="c">!! TDB date (Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date2</span> <span class="c">!! TDB date (Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">r5</span> <span class="c">!! RA (radians) [FK5, equinox J2000.0, date DATE1+DATE2]</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">d5</span> <span class="c">!! Dec (radians) [FK5, equinox J2000.0, date DATE1+DATE2]</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">dr5</span> <span class="c">!! FK5 RA proper motion (rad/year, Note 4) [FK5, equinox J2000.0, date DATE1+DATE2]</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">dd5</span> <span class="c">!! Dec proper motion (rad/year, Note 4) [FK5, equinox J2000.0, date DATE1+DATE2]</span>
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">rh</span><span class="w"> </span><span class="c">!! Hipparcos RA (radians)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dh</span><span class="w"> </span><span class="c">!! Hipparcos Dec (radians)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date1</span><span class="w"> </span><span class="c">!! TDB date (Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date2</span><span class="w"> </span><span class="c">!! TDB date (Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">r5</span><span class="w"> </span><span class="c">!! RA (radians) [FK5, equinox J2000.0, date DATE1+DATE2]</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">d5</span><span class="w"> </span><span class="c">!! Dec (radians) [FK5, equinox J2000.0, date DATE1+DATE2]</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dr5</span><span class="w"> </span><span class="c">!! FK5 RA proper motion (rad/year, Note 4) [FK5, equinox J2000.0, date DATE1+DATE2]</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dd5</span><span class="w"> </span><span class="c">!! Dec proper motion (rad/year, Note 4) [FK5, equinox J2000.0, date DATE1+DATE2]</span>
 
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">t</span><span class="p">,</span> <span class="n">ph</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">r5h</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">s5h</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">sh</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">vst</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="p">&amp;</span>
-                <span class="n">rst</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">r5ht</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">pv5e</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">vv</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="p">&amp;</span>
-                <span class="n">w</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">v</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">ph</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">r5h</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">s5h</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">sh</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">vst</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                </span><span class="n">rst</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">r5ht</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">pv5e</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">vv</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="w"></span>
 
-    <span class="c">!  Time interval from fundamental epoch J2000.0 to given date (JY).</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="p">(</span> <span class="p">(</span> <span class="n">date1</span><span class="o">-</span><span class="n">dj00</span> <span class="p">)</span> <span class="o">+</span> <span class="n">date2</span> <span class="p">)</span> <span class="o">/</span> <span class="n">djy</span>
+<span class="w">    </span><span class="c">!  Time interval from fundamental epoch J2000.0 to given date (JY).</span>
+<span class="w">    </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="o">-</span><span class="n">dj00</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">date2</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">djy</span><span class="w"></span>
 
-    <span class="c">!  Hipparcos barycentric position vector (normalized).</span>
-    <span class="k">call </span><span class="n">S2C</span> <span class="p">(</span> <span class="n">rh</span><span class="p">,</span> <span class="n">dh</span><span class="p">,</span> <span class="n">ph</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Hipparcos barycentric position vector (normalized).</span>
+<span class="w">    </span><span class="k">call </span><span class="n">S2C</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">rh</span><span class="p">,</span><span class="w"> </span><span class="n">dh</span><span class="p">,</span><span class="w"> </span><span class="n">ph</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  FK5 to Hipparcos orientation matrix and spin vector.</span>
-    <span class="k">call </span><span class="n">FK5HIP</span> <span class="p">(</span> <span class="n">r5h</span><span class="p">,</span> <span class="n">s5h</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  FK5 to Hipparcos orientation matrix and spin vector.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">FK5HIP</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">r5h</span><span class="p">,</span><span class="w"> </span><span class="n">s5h</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Rotate the spin into the Hipparcos system.</span>
-    <span class="k">call </span><span class="n">RXP</span> <span class="p">(</span> <span class="n">r5h</span><span class="p">,</span> <span class="n">s5h</span><span class="p">,</span> <span class="n">sh</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Rotate the spin into the Hipparcos system.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">RXP</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">r5h</span><span class="p">,</span><span class="w"> </span><span class="n">s5h</span><span class="p">,</span><span class="w"> </span><span class="n">sh</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Accumulated Hipparcos wrt FK5 spin over that interval.</span>
-    <span class="k">call </span><span class="n">SXP</span> <span class="p">(</span> <span class="n">t</span><span class="p">,</span> <span class="n">s5h</span><span class="p">,</span> <span class="n">vst</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Accumulated Hipparcos wrt FK5 spin over that interval.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">SXP</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">s5h</span><span class="p">,</span><span class="w"> </span><span class="n">vst</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Express the accumulated spin as a rotation matrix.</span>
-    <span class="k">call </span><span class="n">RV2M</span> <span class="p">(</span> <span class="n">vst</span><span class="p">,</span> <span class="n">rst</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Express the accumulated spin as a rotation matrix.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">RV2M</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">vst</span><span class="p">,</span><span class="w"> </span><span class="n">rst</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Rotation matrix:  accumulated spin, then FK5 to Hipparcos.</span>
-    <span class="k">call </span><span class="n">RXR</span> <span class="p">(</span> <span class="n">r5h</span><span class="p">,</span> <span class="n">rst</span><span class="p">,</span> <span class="n">r5ht</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Rotation matrix:  accumulated spin, then FK5 to Hipparcos.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">RXR</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">r5h</span><span class="p">,</span><span class="w"> </span><span class="n">rst</span><span class="p">,</span><span class="w"> </span><span class="n">r5ht</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  De-orient &amp; de-spin the Hipparcos position into FK5 J2000.0.</span>
-    <span class="k">call </span><span class="n">TRXP</span> <span class="p">(</span> <span class="n">r5ht</span><span class="p">,</span> <span class="n">ph</span><span class="p">,</span> <span class="n">pv5e</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  De-orient &amp; de-spin the Hipparcos position into FK5 J2000.0.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">TRXP</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">r5ht</span><span class="p">,</span><span class="w"> </span><span class="n">ph</span><span class="p">,</span><span class="w"> </span><span class="n">pv5e</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Apply spin to the position giving a space motion.</span>
-    <span class="k">call </span><span class="n">PXP</span> <span class="p">(</span> <span class="n">sh</span><span class="p">,</span> <span class="n">ph</span><span class="p">,</span> <span class="n">vv</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Apply spin to the position giving a space motion.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">PXP</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">sh</span><span class="p">,</span><span class="w"> </span><span class="n">ph</span><span class="p">,</span><span class="w"> </span><span class="n">vv</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  De-orient &amp; de-spin the Hipparcos space motion into FK5 J2000.0.</span>
-    <span class="k">call </span><span class="n">TRXP</span> <span class="p">(</span> <span class="n">r5ht</span><span class="p">,</span> <span class="n">vv</span><span class="p">,</span> <span class="n">pv5e</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  De-orient &amp; de-spin the Hipparcos space motion into FK5 J2000.0.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">TRXP</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">r5ht</span><span class="p">,</span><span class="w"> </span><span class="n">vv</span><span class="p">,</span><span class="w"> </span><span class="n">pv5e</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  FK5 position/velocity pv-vector to spherical.</span>
-    <span class="k">call </span><span class="n">PV2S</span> <span class="p">(</span> <span class="n">pv5e</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">d5</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">dr5</span><span class="p">,</span> <span class="n">dd5</span><span class="p">,</span> <span class="n">v</span> <span class="p">)</span>
-    <span class="n">r5</span> <span class="o">=</span> <span class="n">ANP</span> <span class="p">(</span> <span class="n">w</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  FK5 position/velocity pv-vector to spherical.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">PV2S</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">pv5e</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">d5</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">dr5</span><span class="p">,</span><span class="w"> </span><span class="n">dd5</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">r5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ANP</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">end subroutine </span><span class="n">HFK5Z</span>
+<span class="w">    </span><span class="k">end subroutine </span><span class="n">HFK5Z</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>astro-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -829,14 +624,11 @@ public subroutine HFK5Z(rh, dh, date1, date2, r5, d5, dr5, dd5)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,45 +43,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-        
+              
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                                       </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -95,50 +68,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>CAL2JD
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 0.6% of total for procedures.">31 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
-    
      <li><a href='../module/astro_module.html'>astro_module</a></li>
-    
-  
      <li class="active">CAL2JD</li>
   </ol>
 </div>
@@ -154,32 +106,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -187,24 +116,14 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-public subroutine CAL2JD(iy, im, id, djm0, djm, j)
+    <h2>public subroutine CAL2JD(iy, im, id, djm0, djm, j)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>Gregorian Calendar to Julian Date.</p>
 <p>Status:  support routine.</p>
 <h3>Notes</h3>
@@ -236,125 +155,56 @@ public subroutine CAL2JD(iy, im, id, djm0, djm, j)
 <ul>
 <li>IAU SOFA revision: 2014 November 7</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-iy"></span>integer,</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>iy</strong></td><td><p>year in Gregorian calendar (Note 1)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-im"></span>integer,</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>im</strong></td><td><p>month in Gregorian calendar (Note 1)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-id"></span>integer,</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>id</strong></td><td><p>day in Gregorian calendar (Note 1)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-djm0"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>djm0</strong></td><td><p>MJD zero-point: always 2400000.5</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-djm"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>djm</strong></td><td><p>Modified Julian Date for 0 hrs</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-j~8"></span>integer,</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>j</strong></td><td><ul>
 <li>0 = OK</li>
 <li>-1 = bad year   (Note 3: JD not computed)</li>
 <li>-2 = bad month  (JD not computed)</li>
 <li>-3 = bad day    (JD computed)</li>
 </ul></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
-     
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Called by</h3>
@@ -366,247 +216,247 @@ public subroutine CAL2JD(iy, im, id, djm0, djm, j)
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: proc~~cal2jd~~CalledByGraph Pages: 1 -->
-<svg id="proccal2jdCalledByGraph" width="516pt" height="245pt"
- viewBox="0.00 0.00 516.00 245.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="proc~~cal2jd~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 241)">
+<svg id="proccal2jdCalledByGraph" width="516pt" height="260pt"
+ viewBox="0.00 0.00 516.00 260.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~cal2jd~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 256)">
 <title>proc~~cal2jd~~CalledByGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-241 512,-241 512,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-256 512,-256 512,4 -4,4"/>
 <!-- proc~cal2jd -->
 <g id="proc~~cal2jd~~CalledByGraph_node1" class="node">
 <title>proc~cal2jd</title>
-<polygon fill="none" stroke="black" points="508,-135 454,-135 454,-111 508,-111 508,-135"/>
-<text text-anchor="middle" x="481" y="-120.6" font-family="Helvetica,sans-Serif" font-size="10.50">CAL2JD</text>
+<polygon fill="none" stroke="black" points="508,-86 454,-86 454,-62 508,-62 508,-86"/>
+<text text-anchor="middle" x="481" y="-71.6" font-family="Helvetica,sans-Serif" font-size="10.50">CAL2JD</text>
 </g>
-<!-- proc~ut1utc -->
+<!-- proc~utctai -->
 <g id="proc~~cal2jd~~CalledByGraph_node2" class="node">
-<title>proc~ut1utc</title>
-<g id="a_proc~~cal2jd~~CalledByGraph_node2"><a xlink:href=".././proc/ut1utc.html" xlink:title="UT1UTC">
-<polygon fill="#d9534f" stroke="#d9534f" points="328,-237 273,-237 273,-213 328,-213 328,-237"/>
-<text text-anchor="middle" x="300.5" y="-222.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">UT1UTC</text>
+<title>proc~utctai</title>
+<g id="a_proc~~cal2jd~~CalledByGraph_node2"><a xlink:href=".././proc/utctai.html" xlink:title="UTCTAI">
+<polygon fill="#d9534f" stroke="#d9534f" points="327.5,-188 273.5,-188 273.5,-164 327.5,-164 327.5,-188"/>
+<text text-anchor="middle" x="300.5" y="-173.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">UTCTAI</text>
 </a>
 </g>
 </g>
-<!-- proc~ut1utc&#45;&gt;proc~cal2jd -->
+<!-- proc~utctai&#45;&gt;proc~cal2jd -->
 <g id="proc~~cal2jd~~CalledByGraph_edge1" class="edge">
-<title>proc~ut1utc&#45;&gt;proc~cal2jd</title>
-<path fill="none" stroke="#000000" d="M326.97,-212.98C350.89,-201.43 387.48,-183.11 418,-165 430.44,-157.62 443.78,-148.72 454.88,-141.02"/>
-<polygon fill="#000000" stroke="#000000" points="457.07,-143.76 463.25,-135.15 453.05,-138.03 457.07,-143.76"/>
+<title>proc~utctai&#45;&gt;proc~cal2jd</title>
+<path fill="none" stroke="#000000" d="M326.97,-163.98C350.89,-152.43 387.48,-134.11 418,-116 430.44,-108.62 443.78,-99.72 454.88,-92.02"/>
+<polygon fill="#000000" stroke="#000000" points="457.07,-94.76 463.25,-86.15 453.05,-89.03 457.07,-94.76"/>
 </g>
 <!-- proc~dat -->
 <g id="proc~~cal2jd~~CalledByGraph_node3" class="node">
 <title>proc~dat</title>
 <g id="a_proc~~cal2jd~~CalledByGraph_node3"><a xlink:href=".././proc/dat.html" xlink:title="DAT">
-<polygon fill="#d9534f" stroke="#d9534f" points="418,-156 364,-156 364,-132 418,-132 418,-156"/>
-<text text-anchor="middle" x="391" y="-141.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">DAT</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="418,-107 364,-107 364,-83 418,-83 418,-107"/>
+<text text-anchor="middle" x="391" y="-92.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">DAT</text>
 </a>
 </g>
 </g>
-<!-- proc~ut1utc&#45;&gt;proc~dat -->
-<g id="proc~~cal2jd~~CalledByGraph_edge6" class="edge">
-<title>proc~ut1utc&#45;&gt;proc~dat</title>
-<path fill="none" stroke="#000000" d="M314.94,-212.7C329.32,-199.54 352.31,-178.49 369.06,-163.16"/>
-<polygon fill="#000000" stroke="#000000" points="371.71,-165.49 376.72,-156.15 366.98,-160.32 371.71,-165.49"/>
+<!-- proc~utctai&#45;&gt;proc~dat -->
+<g id="proc~~cal2jd~~CalledByGraph_edge9" class="edge">
+<title>proc~utctai&#45;&gt;proc~dat</title>
+<path fill="none" stroke="#000000" d="M314.94,-163.7C329.32,-150.54 352.31,-129.49 369.06,-114.16"/>
+<polygon fill="#000000" stroke="#000000" points="371.71,-116.49 376.72,-107.15 366.98,-111.32 371.71,-116.49"/>
 </g>
 <!-- proc~dat&#45;&gt;proc~cal2jd -->
-<g id="proc~~cal2jd~~CalledByGraph_edge2" class="edge">
+<g id="proc~~cal2jd~~CalledByGraph_edge3" class="edge">
 <title>proc~dat&#45;&gt;proc~cal2jd</title>
-<path fill="none" stroke="#000000" d="M418.4,-137.7C426.48,-135.77 435.51,-133.62 444.1,-131.57"/>
-<polygon fill="#000000" stroke="#000000" points="445,-134.95 453.92,-129.22 443.38,-128.14 445,-134.95"/>
+<path fill="none" stroke="#000000" d="M418.4,-88.7C426.48,-86.77 435.51,-84.62 444.1,-82.57"/>
+<polygon fill="#000000" stroke="#000000" points="445,-85.95 453.92,-80.22 443.38,-79.14 445,-85.95"/>
 </g>
 <!-- proc~dtf2d -->
 <g id="proc~~cal2jd~~CalledByGraph_node4" class="node">
 <title>proc~dtf2d</title>
 <g id="a_proc~~cal2jd~~CalledByGraph_node4"><a xlink:href=".././proc/dtf2d.html" xlink:title="DTF2D">
-<polygon fill="#d9534f" stroke="#d9534f" points="327.5,-115 273.5,-115 273.5,-91 327.5,-91 327.5,-115"/>
-<text text-anchor="middle" x="300.5" y="-100.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">DTF2D</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="327.5,-66 273.5,-66 273.5,-42 327.5,-42 327.5,-66"/>
+<text text-anchor="middle" x="300.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">DTF2D</text>
 </a>
 </g>
 </g>
 <!-- proc~dtf2d&#45;&gt;proc~cal2jd -->
-<g id="proc~~cal2jd~~CalledByGraph_edge3" class="edge">
+<g id="proc~~cal2jd~~CalledByGraph_edge4" class="edge">
 <title>proc~dtf2d&#45;&gt;proc~cal2jd</title>
-<path fill="none" stroke="#000000" d="M327.84,-105.95C358.51,-109.39 409.35,-115.08 443.74,-118.94"/>
-<polygon fill="#000000" stroke="#000000" points="443.52,-122.43 453.84,-120.07 444.3,-115.48 443.52,-122.43"/>
+<path fill="none" stroke="#000000" d="M327.84,-56.95C358.51,-60.39 409.35,-66.08 443.74,-69.94"/>
+<polygon fill="#000000" stroke="#000000" points="443.52,-73.43 453.84,-71.07 444.3,-66.48 443.52,-73.43"/>
 </g>
 <!-- proc~dtf2d&#45;&gt;proc~dat -->
-<g id="proc~~cal2jd~~CalledByGraph_edge8" class="edge">
+<g id="proc~~cal2jd~~CalledByGraph_edge11" class="edge">
 <title>proc~dtf2d&#45;&gt;proc~dat</title>
-<path fill="none" stroke="#000000" d="M327.57,-115.08C336.05,-119.01 345.6,-123.43 354.64,-127.62"/>
-<polygon fill="#000000" stroke="#000000" points="353.26,-130.84 363.81,-131.87 356.2,-124.49 353.26,-130.84"/>
+<path fill="none" stroke="#000000" d="M327.57,-66.08C336.05,-70.01 345.6,-74.43 354.64,-78.62"/>
+<polygon fill="#000000" stroke="#000000" points="353.26,-81.84 363.81,-82.87 356.2,-75.49 353.26,-81.84"/>
 </g>
-<!-- proc~utctai -->
+<!-- proc~ut1utc -->
 <g id="proc~~cal2jd~~CalledByGraph_node5" class="node">
-<title>proc~utctai</title>
-<g id="a_proc~~cal2jd~~CalledByGraph_node5"><a xlink:href=".././proc/utctai.html" xlink:title="UTCTAI">
-<polygon fill="#d9534f" stroke="#d9534f" points="327.5,-73 273.5,-73 273.5,-49 327.5,-49 327.5,-73"/>
-<text text-anchor="middle" x="300.5" y="-58.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">UTCTAI</text>
+<title>proc~ut1utc</title>
+<g id="a_proc~~cal2jd~~CalledByGraph_node5"><a xlink:href=".././proc/ut1utc.html" xlink:title="UT1UTC">
+<polygon fill="#d9534f" stroke="#d9534f" points="328,-24 273,-24 273,0 328,0 328,-24"/>
+<text text-anchor="middle" x="300.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">UT1UTC</text>
 </a>
 </g>
 </g>
-<!-- proc~utctai&#45;&gt;proc~cal2jd -->
-<g id="proc~~cal2jd~~CalledByGraph_edge4" class="edge">
-<title>proc~utctai&#45;&gt;proc~cal2jd</title>
-<path fill="none" stroke="#000000" d="M327.84,-70.15C358.64,-80.85 409.79,-98.61 444.18,-110.56"/>
-<polygon fill="#000000" stroke="#000000" points="443.25,-113.94 453.84,-113.92 445.55,-107.33 443.25,-113.94"/>
+<!-- proc~ut1utc&#45;&gt;proc~cal2jd -->
+<g id="proc~~cal2jd~~CalledByGraph_edge2" class="edge">
+<title>proc~ut1utc&#45;&gt;proc~cal2jd</title>
+<path fill="none" stroke="#000000" d="M328.22,-21.28C359.12,-32.01 410.1,-49.72 444.35,-61.62"/>
+<polygon fill="#000000" stroke="#000000" points="443.37,-64.98 453.97,-64.96 445.67,-58.37 443.37,-64.98"/>
 </g>
-<!-- proc~utctai&#45;&gt;proc~dat -->
-<g id="proc~~cal2jd~~CalledByGraph_edge7" class="edge">
-<title>proc~utctai&#45;&gt;proc~dat</title>
-<path fill="none" stroke="#000000" d="M317.44,-73.14C320.98,-75.98 324.67,-79.03 328,-82 343.25,-95.58 359.54,-111.96 371.6,-124.47"/>
-<polygon fill="#000000" stroke="#000000" points="369.07,-126.89 378.51,-131.7 374.13,-122.05 369.07,-126.89"/>
+<!-- proc~ut1utc&#45;&gt;proc~dat -->
+<g id="proc~~cal2jd~~CalledByGraph_edge13" class="edge">
+<title>proc~ut1utc&#45;&gt;proc~dat</title>
+<path fill="none" stroke="#000000" d="M317.44,-24.14C320.98,-26.98 324.67,-30.03 328,-33 343.25,-46.58 359.54,-62.96 371.6,-75.47"/>
+<polygon fill="#000000" stroke="#000000" points="369.07,-77.89 378.51,-82.7 374.13,-73.05 369.07,-77.89"/>
 </g>
 <!-- proc~apio13 -->
 <g id="proc~~cal2jd~~CalledByGraph_node6" class="node">
 <title>proc~apio13</title>
 <g id="a_proc~~cal2jd~~CalledByGraph_node6"><a xlink:href=".././proc/apio13.html" xlink:title="APIO13">
-<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-131 91.5,-131 91.5,-107 145.5,-107 145.5,-131"/>
-<text text-anchor="middle" x="118.5" y="-116.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APIO13</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-128 91.5,-128 91.5,-104 145.5,-104 145.5,-128"/>
+<text text-anchor="middle" x="118.5" y="-113.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APIO13</text>
 </a>
 </g>
 </g>
 <!-- proc~apio13&#45;&gt;proc~utctai -->
-<g id="proc~~cal2jd~~CalledByGraph_edge13" class="edge">
+<g id="proc~~cal2jd~~CalledByGraph_edge5" class="edge">
 <title>proc~apio13&#45;&gt;proc~utctai</title>
-<path fill="none" stroke="#000000" d="M145.56,-126.67C170.28,-132.48 207.88,-137.39 237,-124 259.34,-113.73 255.28,-99.05 273,-82 273.78,-81.25 274.59,-80.49 275.42,-79.74"/>
-<polygon fill="#000000" stroke="#000000" points="277.77,-82.33 283.11,-73.18 273.23,-77.01 277.77,-82.33"/>
+<path fill="none" stroke="#000000" d="M145.79,-110.17C170.34,-106 207.52,-103 237,-115 257,-123.14 274.09,-141.11 285.32,-155.45"/>
+<polygon fill="#000000" stroke="#000000" points="282.75,-157.85 291.53,-163.78 288.37,-153.67 282.75,-157.85"/>
 </g>
 <!-- proc~utcut1 -->
 <g id="proc~~cal2jd~~CalledByGraph_node8" class="node">
 <title>proc~utcut1</title>
 <g id="a_proc~~cal2jd~~CalledByGraph_node8"><a xlink:href=".././proc/utcut1.html" xlink:title="UTCUT1">
-<polygon fill="#d9534f" stroke="#d9534f" points="237,-115 182,-115 182,-91 237,-91 237,-115"/>
-<text text-anchor="middle" x="209.5" y="-100.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">UTCUT1</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="237,-148 182,-148 182,-124 237,-124 237,-148"/>
+<text text-anchor="middle" x="209.5" y="-133.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">UTCUT1</text>
 </a>
 </g>
 </g>
 <!-- proc~apio13&#45;&gt;proc~utcut1 -->
-<g id="proc~~cal2jd~~CalledByGraph_edge17" class="edge">
+<g id="proc~~cal2jd~~CalledByGraph_edge16" class="edge">
 <title>proc~apio13&#45;&gt;proc~utcut1</title>
-<path fill="none" stroke="#000000" d="M145.72,-114.29C153.9,-112.82 163.08,-111.16 171.84,-109.59"/>
-<polygon fill="#000000" stroke="#000000" points="172.63,-113.01 181.85,-107.79 171.39,-106.12 172.63,-113.01"/>
-</g>
-<!-- proc~d2dtf -->
-<g id="proc~~cal2jd~~CalledByGraph_node7" class="node">
-<title>proc~d2dtf</title>
-<g id="a_proc~~cal2jd~~CalledByGraph_node7"><a xlink:href=".././proc/d2dtf.html" xlink:title="D2DTF">
-<polygon fill="#d9534f" stroke="#d9534f" points="327.5,-157 273.5,-157 273.5,-133 327.5,-133 327.5,-157"/>
-<text text-anchor="middle" x="300.5" y="-142.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">D2DTF</text>
-</a>
-</g>
-</g>
-<!-- proc~d2dtf&#45;&gt;proc~dat -->
-<g id="proc~~cal2jd~~CalledByGraph_edge5" class="edge">
-<title>proc~d2dtf&#45;&gt;proc~dat</title>
-<path fill="none" stroke="#000000" d="M327.57,-144.71C335.78,-144.61 345,-144.51 353.78,-144.41"/>
-<polygon fill="#000000" stroke="#000000" points="353.85,-147.91 363.81,-144.3 353.77,-140.91 353.85,-147.91"/>
-</g>
-<!-- proc~utcut1&#45;&gt;proc~dat -->
-<g id="proc~~cal2jd~~CalledByGraph_edge9" class="edge">
-<title>proc~utcut1&#45;&gt;proc~dat</title>
-<path fill="none" stroke="#000000" d="M218.01,-115.08C228.27,-130.29 248.25,-155.69 273,-166 300,-177.25 332.9,-169.34 356.92,-160.01"/>
-<polygon fill="#000000" stroke="#000000" points="358.41,-163.19 366.31,-156.13 355.73,-156.72 358.41,-163.19"/>
-</g>
-<!-- proc~utcut1&#45;&gt;proc~utctai -->
-<g id="proc~~cal2jd~~CalledByGraph_edge10" class="edge">
-<title>proc~utcut1&#45;&gt;proc~utctai</title>
-<path fill="none" stroke="#000000" d="M236.24,-90.85C245.1,-86.67 255.17,-81.92 264.63,-77.46"/>
-<polygon fill="#000000" stroke="#000000" points="266.27,-80.55 273.82,-73.12 263.28,-74.22 266.27,-80.55"/>
+<path fill="none" stroke="#000000" d="M145.72,-121.89C153.9,-123.73 163.08,-125.79 171.84,-127.76"/>
+<polygon fill="#000000" stroke="#000000" points="171.33,-131.23 181.85,-130.01 172.86,-124.4 171.33,-131.23"/>
 </g>
 <!-- proc~taiutc -->
-<g id="proc~~cal2jd~~CalledByGraph_node9" class="node">
+<g id="proc~~cal2jd~~CalledByGraph_node7" class="node">
 <title>proc~taiutc</title>
-<g id="a_proc~~cal2jd~~CalledByGraph_node9"><a xlink:href=".././proc/taiutc.html" xlink:title="TAIUTC">
-<polygon fill="#d9534f" stroke="#d9534f" points="236.5,-73 182.5,-73 182.5,-49 236.5,-49 236.5,-73"/>
-<text text-anchor="middle" x="209.5" y="-58.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">TAIUTC</text>
+<g id="a_proc~~cal2jd~~CalledByGraph_node7"><a xlink:href=".././proc/taiutc.html" xlink:title="TAIUTC">
+<polygon fill="#d9534f" stroke="#d9534f" points="236.5,-190 182.5,-190 182.5,-166 236.5,-166 236.5,-190"/>
+<text text-anchor="middle" x="209.5" y="-175.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">TAIUTC</text>
 </a>
 </g>
 </g>
 <!-- proc~taiutc&#45;&gt;proc~utctai -->
-<g id="proc~~cal2jd~~CalledByGraph_edge11" class="edge">
+<g id="proc~~cal2jd~~CalledByGraph_edge8" class="edge">
 <title>proc~taiutc&#45;&gt;proc~utctai</title>
-<path fill="none" stroke="#000000" d="M236.72,-61C245.05,-61 254.41,-61 263.32,-61"/>
-<polygon fill="#000000" stroke="#000000" points="263.47,-64.5 273.47,-61 263.47,-57.5 263.47,-64.5"/>
+<path fill="none" stroke="#000000" d="M236.72,-177.41C245.05,-177.22 254.41,-177.01 263.32,-176.81"/>
+<polygon fill="#000000" stroke="#000000" points="263.55,-180.31 273.47,-176.59 263.39,-173.31 263.55,-180.31"/>
+</g>
+<!-- proc~utcut1&#45;&gt;proc~utctai -->
+<g id="proc~~cal2jd~~CalledByGraph_edge6" class="edge">
+<title>proc~utcut1&#45;&gt;proc~utctai</title>
+<path fill="none" stroke="#000000" d="M237.2,-148C245.72,-151.83 255.27,-156.12 264.29,-160.17"/>
+<polygon fill="#000000" stroke="#000000" points="262.87,-163.38 273.43,-164.28 265.74,-156.99 262.87,-163.38"/>
+</g>
+<!-- proc~utcut1&#45;&gt;proc~dat -->
+<g id="proc~~cal2jd~~CalledByGraph_edge10" class="edge">
+<title>proc~utcut1&#45;&gt;proc~dat</title>
+<path fill="none" stroke="#000000" d="M237.38,-133.06C261.38,-130.1 297.37,-124.84 328,-117 336.59,-114.8 345.67,-111.91 354.15,-108.96"/>
+<polygon fill="#000000" stroke="#000000" points="355.55,-112.17 363.78,-105.49 353.18,-105.59 355.55,-112.17"/>
 </g>
 <!-- proc~apco13 -->
-<g id="proc~~cal2jd~~CalledByGraph_node10" class="node">
+<g id="proc~~cal2jd~~CalledByGraph_node9" class="node">
 <title>proc~apco13</title>
-<g id="a_proc~~cal2jd~~CalledByGraph_node10"><a xlink:href=".././proc/apco13.html" xlink:title="APCO13">
-<polygon fill="#d9534f" stroke="#d9534f" points="146,-53 91,-53 91,-29 146,-29 146,-53"/>
-<text text-anchor="middle" x="118.5" y="-38.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APCO13</text>
+<g id="a_proc~~cal2jd~~CalledByGraph_node9"><a xlink:href=".././proc/apco13.html" xlink:title="APCO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="146,-220 91,-220 91,-196 146,-196 146,-220"/>
+<text text-anchor="middle" x="118.5" y="-205.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APCO13</text>
 </a>
 </g>
 </g>
 <!-- proc~apco13&#45;&gt;proc~utctai -->
-<g id="proc~~cal2jd~~CalledByGraph_edge12" class="edge">
+<g id="proc~~cal2jd~~CalledByGraph_edge7" class="edge">
 <title>proc~apco13&#45;&gt;proc~utctai</title>
-<path fill="none" stroke="#000000" d="M146.3,-38.2C170.24,-36.3 206.2,-34.96 237,-40 245.77,-41.43 254.97,-43.93 263.53,-46.71"/>
-<polygon fill="#000000" stroke="#000000" points="262.62,-50.1 273.22,-50.06 264.91,-43.48 262.62,-50.1"/>
+<path fill="none" stroke="#000000" d="M146.4,-208.04C170.42,-207.58 206.42,-205.66 237,-199 245.86,-197.07 255.17,-194.16 263.81,-191.06"/>
+<polygon fill="#000000" stroke="#000000" points="265.1,-194.31 273.22,-187.51 262.63,-187.76 265.1,-194.31"/>
 </g>
 <!-- proc~apco13&#45;&gt;proc~utcut1 -->
-<g id="proc~~cal2jd~~CalledByGraph_edge16" class="edge">
+<g id="proc~~cal2jd~~CalledByGraph_edge17" class="edge">
 <title>proc~apco13&#45;&gt;proc~utcut1</title>
-<path fill="none" stroke="#000000" d="M137.08,-53.25C150.09,-62.31 168.01,-74.79 182.64,-84.99"/>
-<polygon fill="#000000" stroke="#000000" points="181.05,-88.14 191.26,-90.99 185.05,-82.4 181.05,-88.14"/>
+<path fill="none" stroke="#000000" d="M134.1,-195.99C146.74,-185.61 165.52,-170.25 182,-157 183,-156.19 184.03,-155.37 185.07,-154.54"/>
+<polygon fill="#000000" stroke="#000000" points="187.41,-157.15 193.06,-148.18 183.05,-151.67 187.41,-157.15"/>
 </g>
-<!-- proc~atco13 -->
-<g id="proc~~cal2jd~~CalledByGraph_node11" class="node">
-<title>proc~atco13</title>
-<g id="a_proc~~cal2jd~~CalledByGraph_node11"><a xlink:href=".././proc/atco13.html" xlink:title="ATCO13">
-<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-66 0.5,-66 0.5,-42 54.5,-42 54.5,-66"/>
-<text text-anchor="middle" x="27.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATCO13</text>
+<!-- proc~d2dtf -->
+<g id="proc~~cal2jd~~CalledByGraph_node10" class="node">
+<title>proc~d2dtf</title>
+<g id="a_proc~~cal2jd~~CalledByGraph_node10"><a xlink:href=".././proc/d2dtf.html" xlink:title="D2DTF">
+<polygon fill="#d9534f" stroke="#d9534f" points="327.5,-108 273.5,-108 273.5,-84 327.5,-84 327.5,-108"/>
+<text text-anchor="middle" x="300.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">D2DTF</text>
 </a>
 </g>
 </g>
-<!-- proc~atco13&#45;&gt;proc~apco13 -->
-<g id="proc~~cal2jd~~CalledByGraph_edge18" class="edge">
-<title>proc~atco13&#45;&gt;proc~apco13</title>
-<path fill="none" stroke="#000000" d="M54.72,-50.17C62.9,-48.97 72.08,-47.63 80.84,-46.35"/>
-<polygon fill="#000000" stroke="#000000" points="81.46,-49.8 90.85,-44.89 80.45,-42.87 81.46,-49.8"/>
+<!-- proc~d2dtf&#45;&gt;proc~dat -->
+<g id="proc~~cal2jd~~CalledByGraph_edge12" class="edge">
+<title>proc~d2dtf&#45;&gt;proc~dat</title>
+<path fill="none" stroke="#000000" d="M327.57,-95.71C335.78,-95.61 345,-95.51 353.78,-95.41"/>
+<polygon fill="#000000" stroke="#000000" points="353.85,-98.91 363.81,-95.3 353.77,-91.91 353.85,-98.91"/>
 </g>
 <!-- proc~atoc13 -->
-<g id="proc~~cal2jd~~CalledByGraph_node12" class="node">
+<g id="proc~~cal2jd~~CalledByGraph_node11" class="node">
 <title>proc~atoc13</title>
-<g id="a_proc~~cal2jd~~CalledByGraph_node12"><a xlink:href=".././proc/atoc13.html" xlink:title="ATOC13">
-<polygon fill="#d9534f" stroke="#d9534f" points="55,-24 0,-24 0,0 55,0 55,-24"/>
-<text text-anchor="middle" x="27.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOC13</text>
+<g id="a_proc~~cal2jd~~CalledByGraph_node11"><a xlink:href=".././proc/atoc13.html" xlink:title="ATOC13">
+<polygon fill="#d9534f" stroke="#d9534f" points="55,-252 0,-252 0,-228 55,-228 55,-252"/>
+<text text-anchor="middle" x="27.5" y="-237.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOC13</text>
 </a>
 </g>
 </g>
 <!-- proc~atoc13&#45;&gt;proc~apco13 -->
-<g id="proc~~cal2jd~~CalledByGraph_edge19" class="edge">
+<g id="proc~~cal2jd~~CalledByGraph_edge18" class="edge">
 <title>proc~atoc13&#45;&gt;proc~apco13</title>
-<path fill="none" stroke="#000000" d="M55.2,-20.7C63.39,-23.37 72.53,-26.35 81.24,-29.19"/>
-<polygon fill="#000000" stroke="#000000" points="80.22,-32.53 90.82,-32.31 82.39,-25.88 80.22,-32.53"/>
+<path fill="none" stroke="#000000" d="M55.2,-230.4C63.39,-227.46 72.53,-224.17 81.24,-221.04"/>
+<polygon fill="#000000" stroke="#000000" points="82.59,-224.27 90.82,-217.59 80.22,-217.68 82.59,-224.27"/>
+</g>
+<!-- proc~atio13 -->
+<g id="proc~~cal2jd~~CalledByGraph_node12" class="node">
+<title>proc~atio13</title>
+<g id="a_proc~~cal2jd~~CalledByGraph_node12"><a xlink:href=".././proc/atio13.html" xlink:title="ATIO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-149 0.5,-149 0.5,-125 54.5,-125 54.5,-149"/>
+<text text-anchor="middle" x="27.5" y="-134.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATIO13</text>
+</a>
+</g>
+</g>
+<!-- proc~atio13&#45;&gt;proc~apio13 -->
+<g id="proc~~cal2jd~~CalledByGraph_edge14" class="edge">
+<title>proc~atio13&#45;&gt;proc~apio13</title>
+<path fill="none" stroke="#000000" d="M54.72,-130.81C63.14,-128.83 72.62,-126.59 81.61,-124.47"/>
+<polygon fill="#000000" stroke="#000000" points="82.54,-127.85 91.47,-122.14 80.93,-121.03 82.54,-127.85"/>
 </g>
 <!-- proc~atoi13 -->
 <g id="proc~~cal2jd~~CalledByGraph_node13" class="node">
 <title>proc~atoi13</title>
 <g id="a_proc~~cal2jd~~CalledByGraph_node13"><a xlink:href=".././proc/atoi13.html" xlink:title="ATOI13">
-<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-160 0.5,-160 0.5,-136 54.5,-136 54.5,-160"/>
-<text text-anchor="middle" x="27.5" y="-145.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOI13</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-107 0.5,-107 0.5,-83 54.5,-83 54.5,-107"/>
+<text text-anchor="middle" x="27.5" y="-92.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOI13</text>
 </a>
 </g>
 </g>
 <!-- proc~atoi13&#45;&gt;proc~apio13 -->
-<g id="proc~~cal2jd~~CalledByGraph_edge14" class="edge">
+<g id="proc~~cal2jd~~CalledByGraph_edge15" class="edge">
 <title>proc~atoi13&#45;&gt;proc~apio13</title>
-<path fill="none" stroke="#000000" d="M54.72,-139.46C63.23,-136.68 72.82,-133.56 81.9,-130.6"/>
-<polygon fill="#000000" stroke="#000000" points="83.04,-133.91 91.47,-127.48 80.87,-127.25 83.04,-133.91"/>
+<path fill="none" stroke="#000000" d="M54.72,-101.19C63.14,-103.17 72.62,-105.41 81.61,-107.53"/>
+<polygon fill="#000000" stroke="#000000" points="80.93,-110.97 91.47,-109.86 82.54,-104.15 80.93,-110.97"/>
 </g>
-<!-- proc~atio13 -->
+<!-- proc~atco13 -->
 <g id="proc~~cal2jd~~CalledByGraph_node14" class="node">
-<title>proc~atio13</title>
-<g id="a_proc~~cal2jd~~CalledByGraph_node14"><a xlink:href=".././proc/atio13.html" xlink:title="ATIO13">
-<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-118 0.5,-118 0.5,-94 54.5,-94 54.5,-118"/>
-<text text-anchor="middle" x="27.5" y="-103.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATIO13</text>
+<title>proc~atco13</title>
+<g id="a_proc~~cal2jd~~CalledByGraph_node14"><a xlink:href=".././proc/atco13.html" xlink:title="ATCO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-210 0.5,-210 0.5,-186 54.5,-186 54.5,-210"/>
+<text text-anchor="middle" x="27.5" y="-195.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATCO13</text>
 </a>
 </g>
 </g>
-<!-- proc~atio13&#45;&gt;proc~apio13 -->
-<g id="proc~~cal2jd~~CalledByGraph_edge15" class="edge">
-<title>proc~atio13&#45;&gt;proc~apio13</title>
-<path fill="none" stroke="#000000" d="M54.72,-109.83C63.05,-111.05 72.41,-112.41 81.32,-113.71"/>
-<polygon fill="#000000" stroke="#000000" points="81.06,-117.22 91.47,-115.2 82.08,-110.29 81.06,-117.22"/>
+<!-- proc~atco13&#45;&gt;proc~apco13 -->
+<g id="proc~~cal2jd~~CalledByGraph_edge19" class="edge">
+<title>proc~atco13&#45;&gt;proc~apco13</title>
+<path fill="none" stroke="#000000" d="M54.72,-200.95C62.9,-201.87 72.08,-202.9 80.84,-203.88"/>
+<polygon fill="#000000" stroke="#000000" points="80.52,-207.37 90.85,-205.01 81.3,-200.41 80.52,-207.37"/>
 </g>
 </g>
 </svg>
@@ -671,34 +521,11 @@ public subroutine CAL2JD(iy, im, id, djm0, djm, j)
     </div></div></div></div>
       </div>
     </div>
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -706,119 +533,105 @@ public subroutine CAL2JD(iy, im, id, djm0, djm, j)
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">CAL2JD</span> <span class="p">(</span> <span class="n">iy</span><span class="p">,</span> <span class="n">im</span><span class="p">,</span> <span class="n">id</span><span class="p">,</span> <span class="n">djm0</span><span class="p">,</span> <span class="n">djm</span><span class="p">,</span> <span class="n">j</span> <span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">CAL2JD</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">iy</span><span class="p">,</span><span class="w"> </span><span class="n">im</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">djm0</span><span class="p">,</span><span class="w"> </span><span class="n">djm</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">iy</span> <span class="c">!! year in Gregorian calendar (Note 1)</span>
-    <span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">im</span> <span class="c">!! month in Gregorian calendar (Note 1)</span>
-    <span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">id</span> <span class="c">!! day in Gregorian calendar (Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">djm0</span> <span class="c">!! MJD zero-point: always 2400000.5</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">djm</span> <span class="c">!! Modified Julian Date for 0 hrs</span>
-    <span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">j</span> <span class="c">!! status:</span>
-                             <span class="c">!! *  0 = OK</span>
-                             <span class="c">!! * -1 = bad year   (Note 3: JD not computed)</span>
-                             <span class="c">!! * -2 = bad month  (JD not computed)</span>
-                             <span class="c">!! * -3 = bad day    (JD computed)</span>
+<span class="k">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iy</span><span class="w"> </span><span class="c">!! year in Gregorian calendar (Note 1)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">im</span><span class="w"> </span><span class="c">!! month in Gregorian calendar (Note 1)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="c">!! day in Gregorian calendar (Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">djm0</span><span class="w"> </span><span class="c">!! MJD zero-point: always 2400000.5</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">djm</span><span class="w"> </span><span class="c">!! Modified Julian Date for 0 hrs</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="c">!! status:</span>
+<span class="w">                             </span><span class="c">!! *  0 = OK</span>
+<span class="w">                             </span><span class="c">!! * -1 = bad year   (Note 3: JD not computed)</span>
+<span class="w">                             </span><span class="c">!! * -2 = bad month  (JD not computed)</span>
+<span class="w">                             </span><span class="c">!! * -3 = bad day    (JD computed)</span>
 
-    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">ndays</span><span class="p">,</span> <span class="n">my</span><span class="p">,</span> <span class="n">iypmy</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ndays</span><span class="p">,</span><span class="w"> </span><span class="n">my</span><span class="p">,</span><span class="w"> </span><span class="n">iypmy</span><span class="w"></span>
 
-    <span class="c">!  Earliest year allowed (4800BC)</span>
-    <span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">iymin</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4799</span>
+<span class="w">    </span><span class="c">!  Earliest year allowed (4800BC)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iymin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">4799</span><span class="w"></span>
 
-    <span class="c">!  Month lengths in days</span>
-    <span class="kt">integer</span><span class="p">,</span><span class="k">dimension</span><span class="p">(</span><span class="mi">12</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">mtab</span> <span class="o">=</span> <span class="p">[</span><span class="mi">31</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">31</span><span class="p">]</span>
+<span class="w">    </span><span class="c">!  Month lengths in days</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">dimension</span><span class="p">(</span><span class="mi">12</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">mtab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">31</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">31</span><span class="p">]</span><span class="w"></span>
 
-    <span class="c">!  Preset status.</span>
-    <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="w">    </span><span class="c">!  Preset status.</span>
+<span class="w">    </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
 
-    <span class="c">!  Validate year.</span>
-    <span class="k">if</span> <span class="p">(</span> <span class="n">iy</span><span class="o">&lt;</span><span class="n">iymin</span> <span class="p">)</span> <span class="k">then</span>
-<span class="k">       </span><span class="n">j</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-    <span class="k">else</span>
+<span class="w">    </span><span class="c">!  Validate year.</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">iy</span><span class="o">&lt;</span><span class="n">iymin</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">       </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"></span>
 
-       <span class="c">!  Validate month.</span>
-       <span class="k">if</span> <span class="p">(</span> <span class="n">im</span><span class="o">&gt;=</span><span class="mi">1</span> <span class="p">.</span><span class="nb">and</span><span class="p">.</span> <span class="n">im</span><span class="o">&lt;=</span><span class="mi">12</span> <span class="p">)</span> <span class="k">then</span>
+<span class="w">       </span><span class="c">!  Validate month.</span>
+<span class="w">       </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">im</span><span class="o">&gt;=</span><span class="mi">1</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w"> </span><span class="n">im</span><span class="o">&lt;=</span><span class="mi">12</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
 
-          <span class="c">!  Days in current month.</span>
-          <span class="n">ndays</span> <span class="o">=</span> <span class="n">mtab</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
+<span class="w">          </span><span class="c">!  Days in current month.</span>
+<span class="w">          </span><span class="n">ndays</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mtab</span><span class="p">(</span><span class="n">im</span><span class="p">)</span><span class="w"></span>
 
-          <span class="c">!  Allow for leap year.</span>
-          <span class="k">if</span> <span class="p">(</span> <span class="n">im</span> <span class="o">==</span> <span class="mi">2</span> <span class="p">)</span> <span class="k">then</span>
-<span class="k">             if</span> <span class="p">(</span> <span class="nb">mod</span><span class="p">(</span><span class="n">iy</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">)</span> <span class="n">ndays</span> <span class="o">=</span> <span class="mi">29</span>
-             <span class="k">if</span> <span class="p">(</span> <span class="nb">mod</span><span class="p">(</span><span class="n">iy</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span> <span class="p">.</span><span class="nb">and</span><span class="p">.</span> <span class="p">&amp;</span>
-                  <span class="nb">mod</span><span class="p">(</span><span class="n">iy</span><span class="p">,</span><span class="mi">400</span><span class="p">)</span><span class="o">/=</span><span class="mi">0</span> <span class="p">)</span> <span class="n">ndays</span> <span class="o">=</span> <span class="mi">28</span>
-          <span class="k">end if</span>
+<span class="w">          </span><span class="c">!  Allow for leap year.</span>
+<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">im</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">             if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">mod</span><span class="p">(</span><span class="n">iy</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">ndays</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">29</span><span class="w"></span>
+<span class="w">             </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">mod</span><span class="p">(</span><span class="n">iy</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                  </span><span class="nb">mod</span><span class="p">(</span><span class="n">iy</span><span class="p">,</span><span class="mi">400</span><span class="p">)</span><span class="o">/=</span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">ndays</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">28</span><span class="w"></span>
+<span class="w">          </span><span class="k">end if</span><span class="w"></span>
 
-          <span class="c">!  Validate day.</span>
-          <span class="k">if</span> <span class="p">(</span> <span class="n">id</span><span class="o">&lt;</span><span class="mi">1</span> <span class="p">.</span><span class="nb">or</span><span class="p">.</span> <span class="n">id</span><span class="o">&gt;</span><span class="n">ndays</span> <span class="p">)</span> <span class="n">j</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span>
+<span class="w">          </span><span class="c">!  Validate day.</span>
+<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">id</span><span class="o">&lt;</span><span class="mi">1</span><span class="w"> </span><span class="p">.</span><span class="nb">or</span><span class="p">.</span><span class="w"> </span><span class="n">id</span><span class="o">&gt;</span><span class="n">ndays</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">3</span><span class="w"></span>
 
-          <span class="c">!  Result.</span>
-          <span class="n">my</span> <span class="o">=</span> <span class="p">(</span> <span class="n">im</span> <span class="o">-</span> <span class="mi">14</span> <span class="p">)</span> <span class="o">/</span> <span class="mi">12</span>
-          <span class="n">iypmy</span> <span class="o">=</span> <span class="n">iy</span> <span class="o">+</span> <span class="n">my</span>
-          <span class="n">djm0</span> <span class="o">=</span> <span class="mi">240000</span><span class="mf">0.5_wp</span>
-          <span class="n">djm</span> <span class="o">=</span> <span class="kt">real</span><span class="p">(</span> <span class="p">(</span> <span class="mi">1461</span> <span class="o">*</span> <span class="p">(</span> <span class="n">iypmy</span> <span class="o">+</span> <span class="mi">4800</span> <span class="p">)</span> <span class="p">)</span> <span class="o">/</span> <span class="mi">4</span> <span class="p">&amp;</span>
-                    <span class="o">+</span> <span class="p">(</span>  <span class="mi">367</span> <span class="o">*</span> <span class="p">(</span> <span class="n">im</span><span class="o">-</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">12</span><span class="o">*</span><span class="n">my</span> <span class="p">)</span> <span class="p">)</span> <span class="o">/</span> <span class="mi">12</span> <span class="p">&amp;</span>
-                    <span class="o">-</span> <span class="p">(</span>    <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span> <span class="p">(</span> <span class="n">iypmy</span> <span class="o">+</span> <span class="mi">4900</span> <span class="p">)</span> <span class="o">/</span> <span class="mi">100</span> <span class="p">)</span> <span class="p">)</span> <span class="o">/</span> <span class="mi">4</span> <span class="p">&amp;</span>
-                    <span class="o">+</span> <span class="n">id</span> <span class="o">-</span> <span class="mi">2432076</span><span class="p">,</span> <span class="n">wp</span><span class="p">)</span>
+<span class="w">          </span><span class="c">!  Result.</span>
+<span class="w">          </span><span class="n">my</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">im</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">14</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">12</span><span class="w"></span>
+<span class="w">          </span><span class="n">iypmy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iy</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">my</span><span class="w"></span>
+<span class="w">          </span><span class="n">djm0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">240000</span><span class="mf">0.5_wp</span><span class="w"></span>
+<span class="w">          </span><span class="n">djm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">real</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="mi">1461</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">iypmy</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">4800</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                    </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="w">  </span><span class="mi">367</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">im</span><span class="o">-</span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">12</span><span class="o">*</span><span class="n">my</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                    </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="w">    </span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">iypmy</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">4900</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                    </span><span class="o">+</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2432076</span><span class="p">,</span><span class="w"> </span><span class="n">wp</span><span class="p">)</span><span class="w"></span>
 
-          <span class="c">!  Bad month</span>
-       <span class="k">else</span>
-<span class="k">          </span><span class="n">j</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>
-       <span class="k">end if</span>
+<span class="w">          </span><span class="c">!  Bad month</span>
+<span class="w">       </span><span class="k">else</span>
+<span class="k">          </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">2</span><span class="w"></span>
+<span class="w">       </span><span class="k">end if</span>
 <span class="k">    end if</span>
 
-<span class="k">    end subroutine </span><span class="n">CAL2JD</span>
+<span class="k">    end subroutine </span><span class="n">CAL2JD</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>astro-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -844,14 +657,11 @@ public subroutine CAL2JD(iy, im, id, djm0, djm, j)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

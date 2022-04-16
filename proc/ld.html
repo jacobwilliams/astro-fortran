@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,45 +43,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-        
+              
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                                       </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -95,50 +68,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>LD
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 0.4% of total for procedures.">23 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
-    
      <li><a href='../module/astro_module.html'>astro_module</a></li>
-    
-  
      <li class="active">LD</li>
   </ol>
 </div>
@@ -154,32 +106,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -187,24 +116,14 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-public subroutine LD(bm, p, q, e, em, dlim, p1)
+    <h2>public subroutine LD(bm, p, q, e, em, dlim, p1)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>Apply light deflection by a solar-system body, as part of
   transforming coordinate direction into natural direction.</p>
 <p>Status:  support routine.</p>
@@ -263,134 +182,57 @@ public subroutine LD(bm, p, q, e, em, dlim, p1)
 <ul>
 <li>IAU SOFA revision:  2013 September 3</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-bm"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>bm</strong></td><td><p>mass of the gravitating body (solar masses)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-p~3"></span>real(kind=wp),</td>
-  <td>intent(in),</td>
-  <td></td>
-  
-  <td>dimension(3)</td><td>::</td>
+<td>intent(in),</td>
+  <td></td>  <td>dimension(3)</td><td>::</td>
   <td><strong>p</strong></td><td><p>direction from observer to source (unit vector)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-q"></span>real(kind=wp),</td>
-  <td>intent(in),</td>
-  <td></td>
-  
-  <td>dimension(3)</td><td>::</td>
+<td>intent(in),</td>
+  <td></td>  <td>dimension(3)</td><td>::</td>
   <td><strong>q</strong></td><td><p>direction from body to source (unit vector)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-e"></span>real(kind=wp),</td>
-  <td>intent(in),</td>
-  <td></td>
-  
-  <td>dimension(3)</td><td>::</td>
+<td>intent(in),</td>
+  <td></td>  <td>dimension(3)</td><td>::</td>
   <td><strong>e</strong></td><td><p>direction from body to observer (unit vector)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-em"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>em</strong></td><td><p>distance from body to observer (au)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-dlim"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>dlim</strong></td><td><p>deflection limiter (Note 4)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-p1"></span>real(kind=wp),</td>
-  <td>intent(out),</td>
-  <td></td>
-  
-  <td>dimension(3)</td><td>::</td>
+<td>intent(out),</td>
+  <td></td>  <td>dimension(3)</td><td>::</td>
   <td><strong>p1</strong></td><td><p>observer to deflected source (unit vector)</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Calls</h3>
@@ -413,33 +255,33 @@ public subroutine LD(bm, p, q, e, em, dlim, p1)
 <polygon fill="none" stroke="black" points="54,-45 0,-45 0,-21 54,-21 54,-45"/>
 <text text-anchor="middle" x="27" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50">LD</text>
 </g>
-<!-- proc~pxp -->
-<g id="proc~~ld~~CallsGraph_node2" class="node">
-<title>proc~pxp</title>
-<g id="a_proc~~ld~~CallsGraph_node2"><a xlink:href=".././proc/pxp.html" xlink:title="PXP">
-<polygon fill="#d9534f" stroke="#d9534f" points="144,-66 90,-66 90,-42 144,-42 144,-66"/>
-<text text-anchor="middle" x="117" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PXP</text>
-</a>
-</g>
-</g>
-<!-- proc~ld&#45;&gt;proc~pxp -->
-<g id="proc~~ld~~CallsGraph_edge1" class="edge">
-<title>proc~ld&#45;&gt;proc~pxp</title>
-<path fill="none" stroke="#000000" d="M54.4,-39.3C62.48,-41.23 71.51,-43.38 80.1,-45.43"/>
-<polygon fill="#000000" stroke="#000000" points="79.38,-48.86 89.92,-47.78 81,-42.05 79.38,-48.86"/>
-</g>
 <!-- proc~pdp -->
-<g id="proc~~ld~~CallsGraph_node3" class="node">
+<g id="proc~~ld~~CallsGraph_node2" class="node">
 <title>proc~pdp</title>
-<g id="a_proc~~ld~~CallsGraph_node3"><a xlink:href=".././proc/pdp.html" xlink:title="PDP">
-<polygon fill="#d9534f" stroke="#d9534f" points="144,-24 90,-24 90,0 144,0 144,-24"/>
-<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PDP</text>
+<g id="a_proc~~ld~~CallsGraph_node2"><a xlink:href=".././proc/pdp.html" xlink:title="PDP">
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-66 90,-66 90,-42 144,-42 144,-66"/>
+<text text-anchor="middle" x="117" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PDP</text>
 </a>
 </g>
 </g>
 <!-- proc~ld&#45;&gt;proc~pdp -->
-<g id="proc~~ld~~CallsGraph_edge2" class="edge">
+<g id="proc~~ld~~CallsGraph_edge1" class="edge">
 <title>proc~ld&#45;&gt;proc~pdp</title>
+<path fill="none" stroke="#000000" d="M54.4,-39.3C62.48,-41.23 71.51,-43.38 80.1,-45.43"/>
+<polygon fill="#000000" stroke="#000000" points="79.38,-48.86 89.92,-47.78 81,-42.05 79.38,-48.86"/>
+</g>
+<!-- proc~pxp -->
+<g id="proc~~ld~~CallsGraph_node3" class="node">
+<title>proc~pxp</title>
+<g id="a_proc~~ld~~CallsGraph_node3"><a xlink:href=".././proc/pxp.html" xlink:title="PXP">
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-24 90,-24 90,0 144,0 144,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PXP</text>
+</a>
+</g>
+</g>
+<!-- proc~ld&#45;&gt;proc~pxp -->
+<g id="proc~~ld~~CallsGraph_edge2" class="edge">
+<title>proc~ld&#45;&gt;proc~pxp</title>
 <path fill="none" stroke="#000000" d="M54.4,-26.7C62.48,-24.77 71.51,-22.62 80.1,-20.57"/>
 <polygon fill="#000000" stroke="#000000" points="81,-23.95 89.92,-18.22 79.38,-17.14 81,-23.95"/>
 </g>
@@ -506,8 +348,6 @@ public subroutine LD(bm, p, q, e, em, dlim, p1)
     </div></div></div></div>
       </div>
     </div>
-     
-     
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Called by</h3>
@@ -519,31 +359,181 @@ public subroutine LD(bm, p, q, e, em, dlim, p1)
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: proc~~ld~~CalledByGraph Pages: 1 -->
-<svg id="procldCalledByGraph" width="152pt" height="32pt"
- viewBox="0.00 0.00 152.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="proc~~ld~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<svg id="procldCalledByGraph" width="333pt" height="231pt"
+ viewBox="0.00 0.00 333.00 231.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~ld~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 227)">
 <title>proc~~ld~~CalledByGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 148,-28 148,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-227 329,-227 329,4 -4,4"/>
 <!-- proc~ld -->
 <g id="proc~~ld~~CalledByGraph_node1" class="node">
 <title>proc~ld</title>
-<polygon fill="none" stroke="black" points="144,-24 90,-24 90,0 144,0 144,-24"/>
-<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">LD</text>
+<polygon fill="none" stroke="black" points="325,-87 271,-87 271,-63 325,-63 325,-87"/>
+<text text-anchor="middle" x="298" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50">LD</text>
 </g>
 <!-- proc~ldsun -->
 <g id="proc~~ld~~CalledByGraph_node2" class="node">
 <title>proc~ldsun</title>
 <g id="a_proc~~ld~~CalledByGraph_node2"><a xlink:href=".././proc/ldsun.html" xlink:title="LDSUN">
-<polygon fill="#d9534f" stroke="#d9534f" points="54,-24 0,-24 0,0 54,0 54,-24"/>
-<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">LDSUN</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="235,-129 181,-129 181,-105 235,-105 235,-129"/>
+<text text-anchor="middle" x="208" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">LDSUN</text>
 </a>
 </g>
 </g>
 <!-- proc~ldsun&#45;&gt;proc~ld -->
 <g id="proc~~ld~~CalledByGraph_edge1" class="edge">
 <title>proc~ldsun&#45;&gt;proc~ld</title>
-<path fill="none" stroke="#000000" d="M54.4,-12C62.39,-12 71.31,-12 79.82,-12"/>
-<polygon fill="#000000" stroke="#000000" points="79.92,-15.5 89.92,-12 79.92,-8.5 79.92,-15.5"/>
+<path fill="none" stroke="#000000" d="M234.45,-104.85C243.21,-100.67 253.17,-95.92 262.52,-91.46"/>
+<polygon fill="#000000" stroke="#000000" points="264.09,-94.59 271.6,-87.12 261.07,-88.27 264.09,-94.59"/>
+</g>
+<!-- proc~ldn -->
+<g id="proc~~ld~~CalledByGraph_node3" class="node">
+<title>proc~ldn</title>
+<g id="a_proc~~ld~~CalledByGraph_node3"><a xlink:href=".././proc/ldn.html" xlink:title="LDN">
+<polygon fill="#d9534f" stroke="#d9534f" points="235,-66 181,-66 181,-42 235,-42 235,-66"/>
+<text text-anchor="middle" x="208" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">LDN</text>
+</a>
+</g>
+</g>
+<!-- proc~ldn&#45;&gt;proc~ld -->
+<g id="proc~~ld~~CalledByGraph_edge2" class="edge">
+<title>proc~ldn&#45;&gt;proc~ld</title>
+<path fill="none" stroke="#000000" d="M235.4,-60.3C243.48,-62.23 252.51,-64.38 261.1,-66.43"/>
+<polygon fill="#000000" stroke="#000000" points="260.38,-69.86 270.92,-68.78 262,-63.05 260.38,-69.86"/>
+</g>
+<!-- proc~aticq -->
+<g id="proc~~ld~~CalledByGraph_node4" class="node">
+<title>proc~aticq</title>
+<g id="a_proc~~ld~~CalledByGraph_node4"><a xlink:href=".././proc/aticq.html" xlink:title="ATICQ">
+<polygon fill="#d9534f" stroke="#d9534f" points="145,-192 91,-192 91,-168 145,-168 145,-192"/>
+<text text-anchor="middle" x="118" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATICQ</text>
+</a>
+</g>
+</g>
+<!-- proc~aticq&#45;&gt;proc~ldsun -->
+<g id="proc~~ld~~CalledByGraph_edge3" class="edge">
+<title>proc~aticq&#45;&gt;proc~ldsun</title>
+<path fill="none" stroke="#000000" d="M135.97,-167.85C148.99,-158.53 167.18,-145.51 181.89,-134.98"/>
+<polygon fill="#000000" stroke="#000000" points="183.99,-137.78 190.08,-129.11 179.92,-132.09 183.99,-137.78"/>
+</g>
+<!-- proc~atciqz -->
+<g id="proc~~ld~~CalledByGraph_node5" class="node">
+<title>proc~atciqz</title>
+<g id="a_proc~~ld~~CalledByGraph_node5"><a xlink:href=".././proc/atciqz.html" xlink:title="ATCIQZ">
+<polygon fill="#d9534f" stroke="#d9534f" points="145,-150 91,-150 91,-126 145,-126 145,-150"/>
+<text text-anchor="middle" x="118" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATCIQZ</text>
+</a>
+</g>
+</g>
+<!-- proc~atciqz&#45;&gt;proc~ldsun -->
+<g id="proc~~ld~~CalledByGraph_edge5" class="edge">
+<title>proc~atciqz&#45;&gt;proc~ldsun</title>
+<path fill="none" stroke="#000000" d="M145.4,-131.7C153.48,-129.77 162.51,-127.62 171.1,-125.57"/>
+<polygon fill="#000000" stroke="#000000" points="172,-128.95 180.92,-123.22 170.38,-122.14 172,-128.95"/>
+</g>
+<!-- proc~aticqn -->
+<g id="proc~~ld~~CalledByGraph_node6" class="node">
+<title>proc~aticqn</title>
+<g id="a_proc~~ld~~CalledByGraph_node6"><a xlink:href=".././proc/aticqn.html" xlink:title="ATICQN">
+<polygon fill="#d9534f" stroke="#d9534f" points="145,-66 91,-66 91,-42 145,-42 145,-66"/>
+<text text-anchor="middle" x="118" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATICQN</text>
+</a>
+</g>
+</g>
+<!-- proc~aticqn&#45;&gt;proc~ldn -->
+<g id="proc~~ld~~CalledByGraph_edge6" class="edge">
+<title>proc~aticqn&#45;&gt;proc~ldn</title>
+<path fill="none" stroke="#000000" d="M145.4,-54C153.39,-54 162.31,-54 170.82,-54"/>
+<polygon fill="#000000" stroke="#000000" points="170.92,-57.5 180.92,-54 170.92,-50.5 170.92,-57.5"/>
+</g>
+<!-- proc~atciqn -->
+<g id="proc~~ld~~CalledByGraph_node7" class="node">
+<title>proc~atciqn</title>
+<g id="a_proc~~ld~~CalledByGraph_node7"><a xlink:href=".././proc/atciqn.html" xlink:title="ATCIQN">
+<polygon fill="#d9534f" stroke="#d9534f" points="145,-24 91,-24 91,0 145,0 145,-24"/>
+<text text-anchor="middle" x="118" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATCIQN</text>
+</a>
+</g>
+</g>
+<!-- proc~atciqn&#45;&gt;proc~ldn -->
+<g id="proc~~ld~~CalledByGraph_edge7" class="edge">
+<title>proc~atciqn&#45;&gt;proc~ldn</title>
+<path fill="none" stroke="#000000" d="M144.45,-24.15C153.21,-28.33 163.17,-33.08 172.52,-37.54"/>
+<polygon fill="#000000" stroke="#000000" points="171.07,-40.73 181.6,-41.88 174.09,-34.41 171.07,-40.73"/>
+</g>
+<!-- proc~atciq -->
+<g id="proc~~ld~~CalledByGraph_node8" class="node">
+<title>proc~atciq</title>
+<g id="a_proc~~ld~~CalledByGraph_node8"><a xlink:href=".././proc/atciq.html" xlink:title="ATCIQ">
+<polygon fill="#d9534f" stroke="#d9534f" points="145,-108 91,-108 91,-84 145,-84 145,-108"/>
+<text text-anchor="middle" x="118" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATCIQ</text>
+</a>
+</g>
+</g>
+<!-- proc~atciq&#45;&gt;proc~ldsun -->
+<g id="proc~~ld~~CalledByGraph_edge4" class="edge">
+<title>proc~atciq&#45;&gt;proc~ldsun</title>
+<path fill="none" stroke="#000000" d="M145.4,-102.3C153.48,-104.23 162.51,-106.38 171.1,-108.43"/>
+<polygon fill="#000000" stroke="#000000" points="170.38,-111.86 180.92,-110.78 172,-105.05 170.38,-111.86"/>
+</g>
+<!-- proc~atoc13 -->
+<g id="proc~~ld~~CalledByGraph_node9" class="node">
+<title>proc~atoc13</title>
+<g id="a_proc~~ld~~CalledByGraph_node9"><a xlink:href=".././proc/atoc13.html" xlink:title="ATOC13">
+<polygon fill="#d9534f" stroke="#d9534f" points="55,-223 0,-223 0,-199 55,-199 55,-223"/>
+<text text-anchor="middle" x="27.5" y="-208.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOC13</text>
+</a>
+</g>
+</g>
+<!-- proc~atoc13&#45;&gt;proc~aticq -->
+<g id="proc~~ld~~CalledByGraph_edge8" class="edge">
+<title>proc~atoc13&#45;&gt;proc~aticq</title>
+<path fill="none" stroke="#000000" d="M55.05,-201.7C63.27,-198.82 72.45,-195.6 81.18,-192.55"/>
+<polygon fill="#000000" stroke="#000000" points="82.49,-195.8 90.77,-189.19 80.18,-189.19 82.49,-195.8"/>
+</g>
+<!-- proc~atic13 -->
+<g id="proc~~ld~~CalledByGraph_node10" class="node">
+<title>proc~atic13</title>
+<g id="a_proc~~ld~~CalledByGraph_node10"><a xlink:href=".././proc/atic13.html" xlink:title="ATIC13">
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-181 0.5,-181 0.5,-157 54.5,-157 54.5,-181"/>
+<text text-anchor="middle" x="27.5" y="-166.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATIC13</text>
+</a>
+</g>
+</g>
+<!-- proc~atic13&#45;&gt;proc~aticq -->
+<g id="proc~~ld~~CalledByGraph_edge9" class="edge">
+<title>proc~atic13&#45;&gt;proc~aticq</title>
+<path fill="none" stroke="#000000" d="M54.57,-172.24C62.78,-173.26 72,-174.41 80.78,-175.5"/>
+<polygon fill="#000000" stroke="#000000" points="80.45,-178.98 90.81,-176.74 81.31,-172.04 80.45,-178.98"/>
+</g>
+<!-- proc~atci13 -->
+<g id="proc~~ld~~CalledByGraph_node11" class="node">
+<title>proc~atci13</title>
+<g id="a_proc~~ld~~CalledByGraph_node11"><a xlink:href=".././proc/atci13.html" xlink:title="ATCI13">
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-129 0.5,-129 0.5,-105 54.5,-105 54.5,-129"/>
+<text text-anchor="middle" x="27.5" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATCI13</text>
+</a>
+</g>
+</g>
+<!-- proc~atci13&#45;&gt;proc~atciq -->
+<g id="proc~~ld~~CalledByGraph_edge10" class="edge">
+<title>proc~atci13&#45;&gt;proc~atciq</title>
+<path fill="none" stroke="#000000" d="M54.57,-110.81C62.87,-108.84 72.2,-106.63 81.07,-104.53"/>
+<polygon fill="#000000" stroke="#000000" points="81.88,-107.93 90.81,-102.22 80.27,-101.12 81.88,-107.93"/>
+</g>
+<!-- proc~atco13 -->
+<g id="proc~~ld~~CalledByGraph_node12" class="node">
+<title>proc~atco13</title>
+<g id="a_proc~~ld~~CalledByGraph_node12"><a xlink:href=".././proc/atco13.html" xlink:title="ATCO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-87 0.5,-87 0.5,-63 54.5,-63 54.5,-87"/>
+<text text-anchor="middle" x="27.5" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATCO13</text>
+</a>
+</g>
+</g>
+<!-- proc~atco13&#45;&gt;proc~atciq -->
+<g id="proc~~ld~~CalledByGraph_edge11" class="edge">
+<title>proc~atco13&#45;&gt;proc~atciq</title>
+<path fill="none" stroke="#000000" d="M54.57,-81.19C62.87,-83.16 72.2,-85.37 81.07,-87.47"/>
+<polygon fill="#000000" stroke="#000000" points="80.27,-90.88 90.81,-89.78 81.88,-84.07 80.27,-90.88"/>
 </g>
 </g>
 </svg>
@@ -608,34 +598,11 @@ public subroutine LD(bm, p, q, e, em, dlim, p1)
     </div></div></div></div>
       </div>
     </div>
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -643,94 +610,80 @@ public subroutine LD(bm, p, q, e, em, dlim, p1)
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">LD</span> <span class="p">(</span> <span class="n">bm</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">em</span><span class="p">,</span> <span class="n">dlim</span><span class="p">,</span> <span class="n">p1</span> <span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">LD</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">bm</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">q</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">,</span><span class="w"> </span><span class="n">em</span><span class="p">,</span><span class="w"> </span><span class="n">dlim</span><span class="p">,</span><span class="w"> </span><span class="n">p1</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">bm</span> <span class="c">!! mass of the gravitating body (solar masses)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">p</span> <span class="c">!! direction from observer to source (unit vector)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">q</span> <span class="c">!! direction from body to source (unit vector)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">e</span> <span class="c">!! direction from body to observer (unit vector)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">em</span> <span class="c">!! distance from body to observer (au)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">dlim</span> <span class="c">!! deflection limiter (Note 4)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">p1</span> <span class="c">!! observer to deflected source (unit vector)</span>
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">bm</span><span class="w"> </span><span class="c">!! mass of the gravitating body (solar masses)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="c">!! direction from observer to source (unit vector)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">q</span><span class="w"> </span><span class="c">!! direction from body to source (unit vector)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="c">!! direction from body to observer (unit vector)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">em</span><span class="w"> </span><span class="c">!! distance from body to observer (au)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dlim</span><span class="w"> </span><span class="c">!! deflection limiter (Note 4)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">p1</span><span class="w"> </span><span class="c">!! observer to deflected source (unit vector)</span>
 
-    <span class="c">!  Schwarzschild radius of the Sun (au)</span>
-    <span class="c">!  = 2 * 1.32712440041 D20 / (2.99792458 D8)^2 / 1.49597870700 D11</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">srs</span> <span class="o">=</span> <span class="mf">1.97412574336e-08_wp</span>
+<span class="w">    </span><span class="c">!  Schwarzschild radius of the Sun (au)</span>
+<span class="w">    </span><span class="c">!  = 2 * 1.32712440041 D20 / (2.99792458 D8)^2 / 1.49597870700 D11</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">srs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.97412574336e-08_wp</span><span class="w"></span>
 
-    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">i</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">qpe</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">qdqpe</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">eq</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">peq</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="w"></span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">qpe</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">qdqpe</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">eq</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">peq</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Q . (Q + E).</span>
-    <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span>
-       <span class="n">qpe</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">q</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="n">e</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-    <span class="k">end do</span>
-<span class="k">    call </span><span class="n">PDP</span> <span class="p">(</span> <span class="n">q</span><span class="p">,</span> <span class="n">qpe</span><span class="p">,</span> <span class="n">qdqpe</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Q . (Q + E).</span>
+<span class="w">    </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="w"></span>
+<span class="w">       </span><span class="n">qpe</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">end do</span>
+<span class="k">    call </span><span class="n">PDP</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">q</span><span class="p">,</span><span class="w"> </span><span class="n">qpe</span><span class="p">,</span><span class="w"> </span><span class="n">qdqpe</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  2 x G x BM / ( EM x c^2 x ( Q . (Q + E) ) ).</span>
-    <span class="n">w</span> <span class="o">=</span> <span class="n">bm</span> <span class="o">*</span> <span class="n">srs</span> <span class="o">/</span> <span class="n">em</span> <span class="o">/</span> <span class="nb">max</span> <span class="p">(</span> <span class="n">qdqpe</span><span class="p">,</span> <span class="n">dlim</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  2 x G x BM / ( EM x c^2 x ( Q . (Q + E) ) ).</span>
+<span class="w">    </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bm</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">srs</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">em</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">max</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">qdqpe</span><span class="p">,</span><span class="w"> </span><span class="n">dlim</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  P x (E x Q).</span>
-    <span class="k">call </span><span class="n">PXP</span> <span class="p">(</span> <span class="n">e</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">eq</span> <span class="p">)</span>
-    <span class="k">call </span><span class="n">PXP</span> <span class="p">(</span> <span class="n">p</span><span class="p">,</span> <span class="n">eq</span><span class="p">,</span> <span class="n">peq</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  P x (E x Q).</span>
+<span class="w">    </span><span class="k">call </span><span class="n">PXP</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">e</span><span class="p">,</span><span class="w"> </span><span class="n">q</span><span class="p">,</span><span class="w"> </span><span class="n">eq</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">call </span><span class="n">PXP</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">eq</span><span class="p">,</span><span class="w"> </span><span class="n">peq</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Apply the deflection.</span>
-    <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="mi">3</span>
-       <span class="n">p1</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">p</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="n">w</span><span class="o">*</span><span class="n">peq</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-    <span class="k">end do</span>
+<span class="w">    </span><span class="c">!  Apply the deflection.</span>
+<span class="w">    </span><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="w"></span>
+<span class="w">       </span><span class="n">p1</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">w</span><span class="o">*</span><span class="n">peq</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">end do</span>
 
-<span class="k">    end subroutine </span><span class="n">LD</span>
+<span class="k">    end subroutine </span><span class="n">LD</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>astro-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -756,14 +709,11 @@ public subroutine LD(bm, p, q, e, em, dlim, p1)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

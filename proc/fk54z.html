@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,45 +43,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-        
+              
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                                       </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -95,50 +68,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>FK54Z
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 0.5% of total for procedures.">25 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
-    
      <li><a href='../module/astro_module.html'>astro_module</a></li>
-    
-  
      <li class="active">FK54Z</li>
   </ol>
 </div>
@@ -154,32 +106,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -187,24 +116,14 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-public subroutine FK54Z(r2000, d2000, bepoch, r1950, d1950, dr1950, dd1950)
+    <h2>public subroutine FK54Z(r2000, d2000, bepoch, r1950, d1950, dr1950, dd1950)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>Convert a J2000.0 FK5 star position to B1950.0 FK4, assuming zero
   proper motion in FK5 and parallax.</p>
 <p>Status:  support routine.</p>
@@ -244,134 +163,57 @@ public subroutine FK54Z(r2000, d2000, bepoch, r1950, d1950, dr1950, dd1950)
 <ul>
 <li>IAU SOFA revision:  2018 January 11</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-r2000~4"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>r2000</strong></td><td><p>J2000.0 FK5 RA (rad)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-d2000~4"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>d2000</strong></td><td><p>J2000.0 FK5 Dec (rad)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-bepoch~2"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>bepoch</strong></td><td><p>Besselian epoch (e.g. 1950D0)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-r1950~4"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>r1950</strong></td><td><p>B1950.0 FK4 RA (rad) at epoch BEPOCH</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-d1950~4"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>d1950</strong></td><td><p>B1950.0 FK4 Dec (rad) at epoch BEPOCH</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-dr1950~3"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>dr1950</strong></td><td><p>B1950.0 FK4 proper motions (rad/trop.yr)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-dd1950~3"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>dd1950</strong></td><td><p>B1950.0 FK4 proper motions (rad/trop.yr)</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Calls</h3>
@@ -404,7 +246,7 @@ public subroutine FK54Z(r2000, d2000, bepoch, r1950, d1950, dr1950, dd1950)
 </g>
 </g>
 <!-- proc~fk54z&#45;&gt;proc~c2s -->
-<g id="proc~~fk54z~~CallsGraph_edge1" class="edge">
+<g id="proc~~fk54z~~CallsGraph_edge3" class="edge">
 <title>proc~fk54z&#45;&gt;proc~c2s</title>
 <path fill="none" stroke="#000000" d="M45.39,-295.25C58.24,-304.31 75.96,-316.79 90.43,-326.99"/>
 <polygon fill="#000000" stroke="#000000" points="88.76,-330.09 98.95,-332.99 92.79,-324.37 88.76,-330.09"/>
@@ -419,40 +261,40 @@ public subroutine FK54Z(r2000, d2000, bepoch, r1950, d1950, dr1950, dd1950)
 </g>
 </g>
 <!-- proc~fk54z&#45;&gt;proc~s2c -->
-<g id="proc~~fk54z~~CallsGraph_edge2" class="edge">
+<g id="proc~~fk54z~~CallsGraph_edge1" class="edge">
 <title>proc~fk54z&#45;&gt;proc~s2c</title>
 <path fill="none" stroke="#000000" d="M54.4,-289C62.48,-290.84 71.51,-292.89 80.1,-294.84"/>
 <polygon fill="#000000" stroke="#000000" points="79.39,-298.27 89.92,-297.07 80.94,-291.44 79.39,-298.27"/>
 </g>
-<!-- proc~fk524 -->
-<g id="proc~~fk54z~~CallsGraph_node4" class="node">
-<title>proc~fk524</title>
-<g id="a_proc~~fk54z~~CallsGraph_node4"><a xlink:href=".././proc/fk524.html" xlink:title="FK524">
-<polygon fill="#d9534f" stroke="#d9534f" points="144,-192 90,-192 90,-168 144,-168 144,-192"/>
-<text text-anchor="middle" x="117" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FK524</text>
-</a>
-</g>
-</g>
-<!-- proc~fk54z&#45;&gt;proc~fk524 -->
-<g id="proc~~fk54z~~CallsGraph_edge3" class="edge">
-<title>proc~fk54z&#45;&gt;proc~fk524</title>
-<path fill="none" stroke="#000000" d="M38.44,-270.78C53.39,-253.28 81.07,-220.88 99,-199.9"/>
-<polygon fill="#000000" stroke="#000000" points="101.74,-202.08 105.57,-192.2 96.42,-197.53 101.74,-202.08"/>
-</g>
 <!-- proc~anp -->
-<g id="proc~~fk54z~~CallsGraph_node5" class="node">
+<g id="proc~~fk54z~~CallsGraph_node4" class="node">
 <title>proc~anp</title>
-<g id="a_proc~~fk54z~~CallsGraph_node5"><a xlink:href=".././proc/anp.html" xlink:title="ANP">
+<g id="a_proc~~fk54z~~CallsGraph_node4"><a xlink:href=".././proc/anp.html" xlink:title="ANP">
 <polygon fill="#d94e8f" stroke="#d94e8f" points="234,-318 180,-318 180,-294 234,-294 234,-318"/>
 <text text-anchor="middle" x="207" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ANP</text>
 </a>
 </g>
 </g>
 <!-- proc~fk54z&#45;&gt;proc~anp -->
-<g id="proc~~fk54z~~CallsGraph_edge4" class="edge">
+<g id="proc~~fk54z~~CallsGraph_edge2" class="edge">
 <title>proc~fk54z&#45;&gt;proc~anp</title>
 <path fill="none" stroke="#000000" d="M54.05,-279.94C77.73,-277.82 113.51,-276.31 144,-282 153.15,-283.71 162.69,-286.72 171.46,-290.05"/>
 <polygon fill="#000000" stroke="#000000" points="170.4,-293.4 180.98,-293.89 173.02,-286.9 170.4,-293.4"/>
+</g>
+<!-- proc~fk524 -->
+<g id="proc~~fk54z~~CallsGraph_node5" class="node">
+<title>proc~fk524</title>
+<g id="a_proc~~fk54z~~CallsGraph_node5"><a xlink:href=".././proc/fk524.html" xlink:title="FK524">
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-192 90,-192 90,-168 144,-168 144,-192"/>
+<text text-anchor="middle" x="117" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FK524</text>
+</a>
+</g>
+</g>
+<!-- proc~fk54z&#45;&gt;proc~fk524 -->
+<g id="proc~~fk54z~~CallsGraph_edge4" class="edge">
+<title>proc~fk54z&#45;&gt;proc~fk524</title>
+<path fill="none" stroke="#000000" d="M38.44,-270.78C53.39,-253.28 81.07,-220.88 99,-199.9"/>
+<polygon fill="#000000" stroke="#000000" points="101.74,-202.08 105.57,-192.2 96.42,-197.53 101.74,-202.08"/>
 </g>
 <!-- proc~fk524&#45;&gt;proc~anp -->
 <g id="proc~~fk54z~~CallsGraph_edge12" class="edge">
@@ -460,33 +302,33 @@ public subroutine FK54Z(r2000, d2000, bepoch, r1950, d1950, dr1950, dd1950)
 <path fill="none" stroke="#000000" d="M123.44,-192.24C132.97,-212.82 154.12,-255.04 180,-285 180.6,-285.69 181.22,-286.38 181.86,-287.06"/>
 <polygon fill="#000000" stroke="#000000" points="179.55,-289.68 189.25,-293.95 184.32,-284.57 179.55,-289.68"/>
 </g>
-<!-- proc~sxp -->
+<!-- proc~s2pv -->
 <g id="proc~~fk54z~~CallsGraph_node6" class="node">
-<title>proc~sxp</title>
-<g id="a_proc~~fk54z~~CallsGraph_node6"><a xlink:href=".././proc/sxp.html" xlink:title="SXP">
+<title>proc~s2pv</title>
+<g id="a_proc~~fk54z~~CallsGraph_node6"><a xlink:href=".././proc/s2pv.html" xlink:title="S2PV">
 <polygon fill="#d9534f" stroke="#d9534f" points="234,-276 180,-276 180,-252 234,-252 234,-276"/>
-<text text-anchor="middle" x="207" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SXP</text>
+<text text-anchor="middle" x="207" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">S2PV</text>
+</a>
+</g>
+</g>
+<!-- proc~fk524&#45;&gt;proc~s2pv -->
+<g id="proc~~fk54z~~CallsGraph_edge5" class="edge">
+<title>proc~fk524&#45;&gt;proc~s2pv</title>
+<path fill="none" stroke="#000000" d="M129.04,-192.01C141.15,-205 161.35,-226.1 180,-243 180.82,-243.74 181.66,-244.49 182.51,-245.23"/>
+<polygon fill="#000000" stroke="#000000" points="180.46,-248.08 190.36,-251.85 184.97,-242.73 180.46,-248.08"/>
+</g>
+<!-- proc~sxp -->
+<g id="proc~~fk54z~~CallsGraph_node7" class="node">
+<title>proc~sxp</title>
+<g id="a_proc~~fk54z~~CallsGraph_node7"><a xlink:href=".././proc/sxp.html" xlink:title="SXP">
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-234 180,-234 180,-210 234,-210 234,-234"/>
+<text text-anchor="middle" x="207" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SXP</text>
 </a>
 </g>
 </g>
 <!-- proc~fk524&#45;&gt;proc~sxp -->
-<g id="proc~~fk54z~~CallsGraph_edge5" class="edge">
-<title>proc~fk524&#45;&gt;proc~sxp</title>
-<path fill="none" stroke="#000000" d="M129.04,-192.01C141.15,-205 161.35,-226.1 180,-243 180.82,-243.74 181.66,-244.49 182.51,-245.23"/>
-<polygon fill="#000000" stroke="#000000" points="180.46,-248.08 190.36,-251.85 184.97,-242.73 180.46,-248.08"/>
-</g>
-<!-- proc~pmp -->
-<g id="proc~~fk54z~~CallsGraph_node7" class="node">
-<title>proc~pmp</title>
-<g id="a_proc~~fk54z~~CallsGraph_node7"><a xlink:href=".././proc/pmp.html" xlink:title="PMP">
-<polygon fill="#d9534f" stroke="#d9534f" points="234,-234 180,-234 180,-210 234,-210 234,-234"/>
-<text text-anchor="middle" x="207" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PMP</text>
-</a>
-</g>
-</g>
-<!-- proc~fk524&#45;&gt;proc~pmp -->
 <g id="proc~~fk54z~~CallsGraph_edge6" class="edge">
-<title>proc~fk524&#45;&gt;proc~pmp</title>
+<title>proc~fk524&#45;&gt;proc~sxp</title>
 <path fill="none" stroke="#000000" d="M143.45,-192.15C152.21,-196.33 162.17,-201.08 171.52,-205.54"/>
 <polygon fill="#000000" stroke="#000000" points="170.07,-208.73 180.6,-209.88 173.09,-202.41 170.07,-208.73"/>
 </g>
@@ -505,33 +347,33 @@ public subroutine FK54Z(r2000, d2000, bepoch, r1950, d1950, dr1950, dd1950)
 <path fill="none" stroke="#000000" d="M144.4,-180C152.39,-180 161.31,-180 169.82,-180"/>
 <polygon fill="#000000" stroke="#000000" points="169.92,-183.5 179.92,-180 169.92,-176.5 169.92,-183.5"/>
 </g>
-<!-- proc~ppp -->
-<g id="proc~~fk54z~~CallsGraph_node9" class="node">
-<title>proc~ppp</title>
-<g id="a_proc~~fk54z~~CallsGraph_node9"><a xlink:href=".././proc/ppp.html" xlink:title="PPP">
-<polygon fill="#d9534f" stroke="#d9534f" points="234,-150 180,-150 180,-126 234,-126 234,-150"/>
-<text text-anchor="middle" x="207" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PPP</text>
-</a>
-</g>
-</g>
-<!-- proc~fk524&#45;&gt;proc~ppp -->
-<g id="proc~~fk54z~~CallsGraph_edge8" class="edge">
-<title>proc~fk524&#45;&gt;proc~ppp</title>
-<path fill="none" stroke="#000000" d="M143.45,-167.85C152.21,-163.67 162.17,-158.92 171.52,-154.46"/>
-<polygon fill="#000000" stroke="#000000" points="173.09,-157.59 180.6,-150.12 170.07,-151.27 173.09,-157.59"/>
-</g>
 <!-- proc~pdp -->
-<g id="proc~~fk54z~~CallsGraph_node10" class="node">
+<g id="proc~~fk54z~~CallsGraph_node9" class="node">
 <title>proc~pdp</title>
-<g id="a_proc~~fk54z~~CallsGraph_node10"><a xlink:href=".././proc/pdp.html" xlink:title="PDP">
-<polygon fill="#d9534f" stroke="#d9534f" points="234,-108 180,-108 180,-84 234,-84 234,-108"/>
-<text text-anchor="middle" x="207" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PDP</text>
+<g id="a_proc~~fk54z~~CallsGraph_node9"><a xlink:href=".././proc/pdp.html" xlink:title="PDP">
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-150 180,-150 180,-126 234,-126 234,-150"/>
+<text text-anchor="middle" x="207" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PDP</text>
 </a>
 </g>
 </g>
 <!-- proc~fk524&#45;&gt;proc~pdp -->
-<g id="proc~~fk54z~~CallsGraph_edge9" class="edge">
+<g id="proc~~fk54z~~CallsGraph_edge8" class="edge">
 <title>proc~fk524&#45;&gt;proc~pdp</title>
+<path fill="none" stroke="#000000" d="M143.45,-167.85C152.21,-163.67 162.17,-158.92 171.52,-154.46"/>
+<polygon fill="#000000" stroke="#000000" points="173.09,-157.59 180.6,-150.12 170.07,-151.27 173.09,-157.59"/>
+</g>
+<!-- proc~ppp -->
+<g id="proc~~fk54z~~CallsGraph_node10" class="node">
+<title>proc~ppp</title>
+<g id="a_proc~~fk54z~~CallsGraph_node10"><a xlink:href=".././proc/ppp.html" xlink:title="PPP">
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-108 180,-108 180,-84 234,-84 234,-108"/>
+<text text-anchor="middle" x="207" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PPP</text>
+</a>
+</g>
+</g>
+<!-- proc~fk524&#45;&gt;proc~ppp -->
+<g id="proc~~fk54z~~CallsGraph_edge9" class="edge">
+<title>proc~fk524&#45;&gt;proc~ppp</title>
 <path fill="none" stroke="#000000" d="M129.04,-167.99C141.15,-155 161.35,-133.9 180,-117 180.82,-116.26 181.66,-115.51 182.51,-114.77"/>
 <polygon fill="#000000" stroke="#000000" points="184.97,-117.27 190.36,-108.15 180.46,-111.92 184.97,-117.27"/>
 </g>
@@ -550,18 +392,18 @@ public subroutine FK54Z(r2000, d2000, bepoch, r1950, d1950, dr1950, dd1950)
 <path fill="none" stroke="#000000" d="M123.44,-167.76C132.97,-147.18 154.12,-104.96 180,-75 180.6,-74.31 181.22,-73.62 181.86,-72.94"/>
 <polygon fill="#000000" stroke="#000000" points="184.32,-75.43 189.25,-66.05 179.55,-70.32 184.32,-75.43"/>
 </g>
-<!-- proc~s2pv -->
+<!-- proc~pmp -->
 <g id="proc~~fk54z~~CallsGraph_node12" class="node">
-<title>proc~s2pv</title>
-<g id="a_proc~~fk54z~~CallsGraph_node12"><a xlink:href=".././proc/s2pv.html" xlink:title="S2PV">
+<title>proc~pmp</title>
+<g id="a_proc~~fk54z~~CallsGraph_node12"><a xlink:href=".././proc/pmp.html" xlink:title="PMP">
 <polygon fill="#d9534f" stroke="#d9534f" points="234,-24 180,-24 180,0 234,0 234,-24"/>
-<text text-anchor="middle" x="207" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">S2PV</text>
+<text text-anchor="middle" x="207" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PMP</text>
 </a>
 </g>
 </g>
-<!-- proc~fk524&#45;&gt;proc~s2pv -->
+<!-- proc~fk524&#45;&gt;proc~pmp -->
 <g id="proc~~fk54z~~CallsGraph_edge11" class="edge">
-<title>proc~fk524&#45;&gt;proc~s2pv</title>
+<title>proc~fk524&#45;&gt;proc~pmp</title>
 <path fill="none" stroke="#000000" d="M120.92,-167.93C127.77,-141.44 146.85,-77.04 180,-33 180.46,-32.39 180.94,-31.79 181.43,-31.2"/>
 <polygon fill="#000000" stroke="#000000" points="184.03,-33.55 188.64,-24.01 179.09,-28.6 184.03,-33.55"/>
 </g>
@@ -628,35 +470,11 @@ public subroutine FK54Z(r2000, d2000, bepoch, r1950, d1950, dr1950, dd1950)
     </div></div></div></div>
       </div>
     </div>
-     
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -664,99 +482,85 @@ public subroutine FK54Z(r2000, d2000, bepoch, r1950, d1950, dr1950, dd1950)
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">FK54Z</span> <span class="p">(</span> <span class="n">r2000</span><span class="p">,</span> <span class="n">d2000</span><span class="p">,</span> <span class="n">bepoch</span><span class="p">,</span> <span class="p">&amp;</span>
-                       <span class="n">r1950</span><span class="p">,</span> <span class="n">d1950</span><span class="p">,</span> <span class="n">dr1950</span><span class="p">,</span> <span class="n">dd1950</span> <span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">FK54Z</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">r2000</span><span class="p">,</span><span class="w"> </span><span class="n">d2000</span><span class="p">,</span><span class="w"> </span><span class="n">bepoch</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                       </span><span class="n">r1950</span><span class="p">,</span><span class="w"> </span><span class="n">d1950</span><span class="p">,</span><span class="w"> </span><span class="n">dr1950</span><span class="p">,</span><span class="w"> </span><span class="n">dd1950</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">r2000</span> <span class="c">!! J2000.0 FK5 RA (rad)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">d2000</span> <span class="c">!! J2000.0 FK5 Dec (rad)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">bepoch</span> <span class="c">!! Besselian epoch (e.g. 1950D0)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">r1950</span> <span class="c">!! B1950.0 FK4 RA (rad) at epoch BEPOCH</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">d1950</span> <span class="c">!! B1950.0 FK4 Dec (rad) at epoch BEPOCH</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">dr1950</span> <span class="c">!! B1950.0 FK4 proper motions (rad/trop.yr)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">dd1950</span> <span class="c">!! B1950.0 FK4 proper motions (rad/trop.yr)</span>
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">r2000</span><span class="w"> </span><span class="c">!! J2000.0 FK5 RA (rad)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">d2000</span><span class="w"> </span><span class="c">!! J2000.0 FK5 Dec (rad)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">bepoch</span><span class="w"> </span><span class="c">!! Besselian epoch (e.g. 1950D0)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">r1950</span><span class="w"> </span><span class="c">!! B1950.0 FK4 RA (rad) at epoch BEPOCH</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">d1950</span><span class="w"> </span><span class="c">!! B1950.0 FK4 Dec (rad) at epoch BEPOCH</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dr1950</span><span class="w"> </span><span class="c">!! B1950.0 FK4 proper motions (rad/trop.yr)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dd1950</span><span class="w"> </span><span class="c">!! B1950.0 FK4 proper motions (rad/trop.yr)</span>
 
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">r</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">pr</span><span class="p">,</span> <span class="n">pd</span><span class="p">,</span> <span class="n">px</span><span class="p">,</span> <span class="n">rv</span><span class="p">,</span> <span class="n">p</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">w</span><span class="p">,</span> <span class="n">v</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">i</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="n">pr</span><span class="p">,</span><span class="w"> </span><span class="n">pd</span><span class="p">,</span><span class="w"> </span><span class="n">px</span><span class="p">,</span><span class="w"> </span><span class="n">rv</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="w"></span>
 
-    <span class="c">!  FK5 equinox J2000.0 to FK4 equinox B1950.0.</span>
-    <span class="k">call </span><span class="n">FK524</span> <span class="p">(</span> <span class="n">r2000</span><span class="p">,</span> <span class="n">d2000</span><span class="p">,</span> <span class="mf">0.0_wp</span><span class="p">,</span> <span class="mf">0.0_wp</span><span class="p">,</span> <span class="mf">0.0_wp</span><span class="p">,</span> <span class="mf">0.0_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-                 <span class="n">r</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">pr</span><span class="p">,</span> <span class="n">pd</span><span class="p">,</span> <span class="n">px</span><span class="p">,</span> <span class="n">rv</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  FK5 equinox J2000.0 to FK4 equinox B1950.0.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">FK524</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">r2000</span><span class="p">,</span><span class="w"> </span><span class="n">d2000</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0_wp</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0_wp</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0_wp</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                 </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="n">pr</span><span class="p">,</span><span class="w"> </span><span class="n">pd</span><span class="p">,</span><span class="w"> </span><span class="n">px</span><span class="p">,</span><span class="w"> </span><span class="n">rv</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Spherical to Cartesian.</span>
-    <span class="k">call </span><span class="n">S2C</span> <span class="p">(</span> <span class="n">r</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">p</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Spherical to Cartesian.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">S2C</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Fictitious proper motion (radians per year).</span>
-    <span class="n">v</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span> <span class="n">pr</span><span class="o">*</span><span class="n">p</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">pd</span><span class="o">*</span><span class="nb">cos</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
-    <span class="n">v</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span>   <span class="n">pr</span><span class="o">*</span><span class="n">p</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">pd</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
-    <span class="n">v</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span>             <span class="n">pd</span><span class="o">*</span><span class="nb">cos</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="w">    </span><span class="c">!  Fictitious proper motion (radians per year).</span>
+<span class="w">    </span><span class="n">v</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">pr</span><span class="o">*</span><span class="n">p</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">pd</span><span class="o">*</span><span class="nb">cos</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">v</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w">   </span><span class="n">pr</span><span class="o">*</span><span class="n">p</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">pd</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">v</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w">             </span><span class="n">pd</span><span class="o">*</span><span class="nb">cos</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Apply the motion.</span>
-    <span class="n">w</span> <span class="o">=</span> <span class="n">bepoch</span> <span class="o">-</span> <span class="mi">195</span><span class="mf">0.0_wp</span>
-    <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span>
-       <span class="n">p</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">p</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="n">w</span><span class="o">*</span><span class="n">v</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-    <span class="k">end do</span>
+<span class="w">    </span><span class="c">!  Apply the motion.</span>
+<span class="w">    </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bepoch</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">195</span><span class="mf">0.0_wp</span><span class="w"></span>
+<span class="w">    </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="w"></span>
+<span class="w">       </span><span class="n">p</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">w</span><span class="o">*</span><span class="n">v</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">end do</span><span class="w"></span>
 
-    <span class="c">!  Cartesian to spherical.</span>
-    <span class="k">call </span><span class="n">C2S</span> <span class="p">(</span> <span class="n">p</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">d1950</span> <span class="p">)</span>
-    <span class="n">r1950</span> <span class="o">=</span> <span class="n">ANP</span> <span class="p">(</span> <span class="n">w</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Cartesian to spherical.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">C2S</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">d1950</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">r1950</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ANP</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Fictitious proper motion.</span>
-    <span class="n">dr1950</span> <span class="o">=</span> <span class="n">pr</span>
-    <span class="n">dd1950</span> <span class="o">=</span> <span class="n">pd</span>
+<span class="w">    </span><span class="c">!  Fictitious proper motion.</span>
+<span class="w">    </span><span class="n">dr1950</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pr</span><span class="w"></span>
+<span class="w">    </span><span class="n">dd1950</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pd</span><span class="w"></span>
 
-    <span class="k">end subroutine </span><span class="n">FK54Z</span>
+<span class="w">    </span><span class="k">end subroutine </span><span class="n">FK54Z</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>astro-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -782,14 +586,11 @@ public subroutine FK54Z(r2000, d2000, bepoch, r1950, d1950, dr1950, dd1950)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

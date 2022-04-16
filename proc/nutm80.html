@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,45 +43,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-        
+              
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                                       </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -95,50 +68,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>NUTM80
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 0.2% of total for procedures.">10 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
-    
      <li><a href='../module/astro_module.html'>astro_module</a></li>
-    
-  
      <li class="active">NUTM80</li>
   </ol>
 </div>
@@ -154,32 +106,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -187,24 +116,14 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-public subroutine NUTM80(date1, date2, rmatn)
+    <h2>public subroutine NUTM80(date1, date2, rmatn)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>Form the matrix of nutation for a given date, IAU 1980 model.</p>
 <p>Status:  support routine.</p>
 <h3>Notes</h3>
@@ -240,74 +159,33 @@ public subroutine NUTM80(date1, date2, rmatn)
 <ul>
 <li>IAU SOFA revision: 2012 September 5</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-date1~46"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>date1</strong></td><td><p>TDB date (Note 1)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-date2~46"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>date2</strong></td><td><p>TDB date (Note 1)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-rmatn~5"></span>real(kind=wp),</td>
-  <td>intent(out),</td>
-  <td></td>
-  
-  <td>dimension(3,3)</td><td>::</td>
+<td>intent(out),</td>
+  <td></td>  <td>dimension(3,3)</td><td>::</td>
   <td><strong>rmatn</strong></td><td><p>nutation matrix</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Calls</h3>
@@ -376,9 +254,9 @@ public subroutine NUTM80(date1, date2, rmatn)
 <polygon fill="#000000" stroke="#000000" points="91.16,-95.23 98.04,-87.18 87.64,-89.17 91.16,-95.23"/>
 </g>
 <!-- proc~anpm -->
-<g id="proc~~nutm80~~CallsGraph_node5" class="node">
+<g id="proc~~nutm80~~CallsGraph_node7" class="node">
 <title>proc~anpm</title>
-<g id="a_proc~~nutm80~~CallsGraph_node5"><a xlink:href=".././proc/anpm.html" xlink:title="ANPM">
+<g id="a_proc~~nutm80~~CallsGraph_node7"><a xlink:href=".././proc/anpm.html" xlink:title="ANPM">
 <polygon fill="#d94e8f" stroke="#d94e8f" points="237,-150 183,-150 183,-126 237,-126 237,-150"/>
 <text text-anchor="middle" x="210" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ANPM</text>
 </a>
@@ -390,33 +268,33 @@ public subroutine NUTM80(date1, date2, rmatn)
 <path fill="none" stroke="#000000" d="M147.4,-130.3C155.39,-131.3 164.31,-132.41 172.82,-133.48"/>
 <polygon fill="#000000" stroke="#000000" points="172.56,-136.97 182.92,-134.74 173.43,-130.03 172.56,-136.97"/>
 </g>
-<!-- proc~rz -->
-<g id="proc~~nutm80~~CallsGraph_node6" class="node">
-<title>proc~rz</title>
-<g id="a_proc~~nutm80~~CallsGraph_node6"><a xlink:href=".././proc/rz.html" xlink:title="RZ">
-<polygon fill="#d9534f" stroke="#d9534f" points="237,-108 183,-108 183,-84 237,-84 237,-108"/>
-<text text-anchor="middle" x="210" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RZ</text>
-</a>
-</g>
-</g>
-<!-- proc~numat&#45;&gt;proc~rz -->
-<g id="proc~~nutm80~~CallsGraph_edge7" class="edge">
-<title>proc~numat&#45;&gt;proc~rz</title>
-<path fill="none" stroke="#000000" d="M147.4,-81.3C155.48,-83.23 164.51,-85.38 173.1,-87.43"/>
-<polygon fill="#000000" stroke="#000000" points="172.38,-90.86 182.92,-89.78 174,-84.05 172.38,-90.86"/>
-</g>
 <!-- proc~ir -->
-<g id="proc~~nutm80~~CallsGraph_node7" class="node">
+<g id="proc~~nutm80~~CallsGraph_node5" class="node">
 <title>proc~ir</title>
-<g id="a_proc~~nutm80~~CallsGraph_node7"><a xlink:href=".././proc/ir.html" xlink:title="IR">
-<polygon fill="#d9534f" stroke="#d9534f" points="237,-66 183,-66 183,-42 237,-42 237,-66"/>
-<text text-anchor="middle" x="210" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">IR</text>
+<g id="a_proc~~nutm80~~CallsGraph_node5"><a xlink:href=".././proc/ir.html" xlink:title="IR">
+<polygon fill="#d9534f" stroke="#d9534f" points="237,-108 183,-108 183,-84 237,-84 237,-108"/>
+<text text-anchor="middle" x="210" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">IR</text>
 </a>
 </g>
 </g>
 <!-- proc~numat&#45;&gt;proc~ir -->
-<g id="proc~~nutm80~~CallsGraph_edge6" class="edge">
+<g id="proc~~nutm80~~CallsGraph_edge5" class="edge">
 <title>proc~numat&#45;&gt;proc~ir</title>
+<path fill="none" stroke="#000000" d="M147.4,-81.3C155.48,-83.23 164.51,-85.38 173.1,-87.43"/>
+<polygon fill="#000000" stroke="#000000" points="172.38,-90.86 182.92,-89.78 174,-84.05 172.38,-90.86"/>
+</g>
+<!-- proc~rz -->
+<g id="proc~~nutm80~~CallsGraph_node6" class="node">
+<title>proc~rz</title>
+<g id="a_proc~~nutm80~~CallsGraph_node6"><a xlink:href=".././proc/rz.html" xlink:title="RZ">
+<polygon fill="#d9534f" stroke="#d9534f" points="237,-66 183,-66 183,-42 237,-42 237,-66"/>
+<text text-anchor="middle" x="210" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RZ</text>
+</a>
+</g>
+</g>
+<!-- proc~numat&#45;&gt;proc~rz -->
+<g id="proc~~nutm80~~CallsGraph_edge6" class="edge">
+<title>proc~numat&#45;&gt;proc~rz</title>
 <path fill="none" stroke="#000000" d="M147.4,-68.7C155.48,-66.77 164.51,-64.62 173.1,-62.57"/>
 <polygon fill="#000000" stroke="#000000" points="174,-65.95 182.92,-60.22 172.38,-59.14 174,-65.95"/>
 </g>
@@ -430,7 +308,7 @@ public subroutine NUTM80(date1, date2, rmatn)
 </g>
 </g>
 <!-- proc~numat&#45;&gt;proc~rx -->
-<g id="proc~~nutm80~~CallsGraph_edge5" class="edge">
+<g id="proc~~nutm80~~CallsGraph_edge7" class="edge">
 <title>proc~numat&#45;&gt;proc~rx</title>
 <path fill="none" stroke="#000000" d="M137.97,-62.85C150.99,-53.53 169.18,-40.51 183.89,-29.98"/>
 <polygon fill="#000000" stroke="#000000" points="185.99,-32.78 192.08,-24.11 181.92,-27.09 185.99,-32.78"/>
@@ -498,8 +376,6 @@ public subroutine NUTM80(date1, date2, rmatn)
     </div></div></div></div>
       </div>
     </div>
-     
-     
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Called by</h3>
@@ -600,34 +476,11 @@ public subroutine NUTM80(date1, date2, rmatn)
     </div></div></div></div>
       </div>
     </div>
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -635,74 +488,60 @@ public subroutine NUTM80(date1, date2, rmatn)
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">NUTM80</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span><span class="p">,</span> <span class="n">rmatn</span> <span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">NUTM80</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="p">,</span><span class="w"> </span><span class="n">date2</span><span class="p">,</span><span class="w"> </span><span class="n">rmatn</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date1</span> <span class="c">!! TDB date (Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date2</span> <span class="c">!! TDB date (Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">rmatn</span> <span class="c">!! nutation matrix</span>
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date1</span><span class="w"> </span><span class="c">!! TDB date (Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date2</span><span class="w"> </span><span class="c">!! TDB date (Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">rmatn</span><span class="w"> </span><span class="c">!! nutation matrix</span>
 
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">dpsi</span><span class="p">,</span> <span class="n">deps</span><span class="p">,</span> <span class="n">epsa</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dpsi</span><span class="p">,</span><span class="w"> </span><span class="n">deps</span><span class="p">,</span><span class="w"> </span><span class="n">epsa</span><span class="w"></span>
 
-    <span class="c">!  Nutation components and mean obliquity.</span>
-    <span class="k">call </span><span class="n">NUT80</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span><span class="p">,</span> <span class="n">dpsi</span><span class="p">,</span> <span class="n">deps</span> <span class="p">)</span>
-    <span class="n">epsa</span> <span class="o">=</span> <span class="n">OBL80</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Nutation components and mean obliquity.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">NUT80</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="p">,</span><span class="w"> </span><span class="n">date2</span><span class="p">,</span><span class="w"> </span><span class="n">dpsi</span><span class="p">,</span><span class="w"> </span><span class="n">deps</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">epsa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OBL80</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="p">,</span><span class="w"> </span><span class="n">date2</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Build the rotation matrix.</span>
-    <span class="k">call </span><span class="n">NUMAT</span> <span class="p">(</span> <span class="n">epsa</span><span class="p">,</span> <span class="n">dpsi</span><span class="p">,</span> <span class="n">deps</span><span class="p">,</span> <span class="n">rmatn</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Build the rotation matrix.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">NUMAT</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">epsa</span><span class="p">,</span><span class="w"> </span><span class="n">dpsi</span><span class="p">,</span><span class="w"> </span><span class="n">deps</span><span class="p">,</span><span class="w"> </span><span class="n">rmatn</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">end subroutine </span><span class="n">NUTM80</span>
+<span class="w">    </span><span class="k">end subroutine </span><span class="n">NUTM80</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>astro-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -728,14 +567,11 @@ public subroutine NUTM80(date1, date2, rmatn)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

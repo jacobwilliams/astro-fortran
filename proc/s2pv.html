@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,45 +43,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-        
+              
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                                       </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -95,50 +68,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>S2PV
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 0.5% of total for procedures.">26 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
-    
      <li><a href='../module/astro_module.html'>astro_module</a></li>
-    
-  
      <li class="active">S2PV</li>
   </ol>
 </div>
@@ -154,32 +106,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -187,159 +116,71 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-public subroutine S2PV(theta, phi, r, td, pd, rd, pv)
+    <h2>public subroutine S2PV(theta, phi, r, td, pd, rd, pv)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>Convert position/velocity from spherical to Cartesian coordinates.</p>
 <p>Status:  vector/matrix support routine.</p>
 <h3>History</h3>
 <ul>
 <li>IAU SOFA revision: 2000 November 25</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-theta~14"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>theta</strong></td><td><p>longitude angle (radians)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-phi~24"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>phi</strong></td><td><p>latitude angle (radians)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-r~17"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>r</strong></td><td><p>radial distance</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-td~2"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>td</strong></td><td><p>rate of change of THETA</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-pd~7"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>pd</strong></td><td><p>rate of change of PHI</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-rd~2"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>rd</strong></td><td><p>rate of change of R</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-pv~14"></span>real(kind=wp),</td>
-  <td>intent(out),</td>
-  <td></td>
-  
-  <td>dimension(3,2)</td><td>::</td>
+<td>intent(out),</td>
+  <td></td>  <td>dimension(3,2)</td><td>::</td>
   <td><strong>pv</strong></td><td><p>pv-vector</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
-     
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Called by</h3>
@@ -351,136 +192,136 @@ public subroutine S2PV(theta, phi, r, td, pd, rd, pv)
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: proc~~s2pv~~CalledByGraph Pages: 1 -->
-<svg id="procs2pvCalledByGraph" width="334pt" height="189pt"
- viewBox="0.00 0.00 334.00 189.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="proc~~s2pv~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 185)">
+<svg id="procs2pvCalledByGraph" width="334pt" height="158pt"
+ viewBox="0.00 0.00 334.00 158.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~s2pv~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 154)">
 <title>proc~~s2pv~~CalledByGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-185 330,-185 330,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-154 330,-154 330,4 -4,4"/>
 <!-- proc~s2pv -->
 <g id="proc~~s2pv~~CalledByGraph_node1" class="node">
 <title>proc~s2pv</title>
-<polygon fill="none" stroke="black" points="326,-66 272,-66 272,-42 326,-42 326,-66"/>
-<text text-anchor="middle" x="299" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50">S2PV</text>
+<polygon fill="none" stroke="black" points="326,-87 272,-87 272,-63 326,-63 326,-87"/>
+<text text-anchor="middle" x="299" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50">S2PV</text>
+</g>
+<!-- proc~fk425 -->
+<g id="proc~~s2pv~~CalledByGraph_node2" class="node">
+<title>proc~fk425</title>
+<g id="a_proc~~s2pv~~CalledByGraph_node2"><a xlink:href=".././proc/fk425.html" xlink:title="FK425">
+<polygon fill="#d9534f" stroke="#d9534f" points="236,-129 182,-129 182,-105 236,-105 236,-129"/>
+<text text-anchor="middle" x="209" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FK425</text>
+</a>
+</g>
+</g>
+<!-- proc~fk425&#45;&gt;proc~s2pv -->
+<g id="proc~~s2pv~~CalledByGraph_edge2" class="edge">
+<title>proc~fk425&#45;&gt;proc~s2pv</title>
+<path fill="none" stroke="#000000" d="M235.45,-104.85C244.21,-100.67 254.17,-95.92 263.52,-91.46"/>
+<polygon fill="#000000" stroke="#000000" points="265.09,-94.59 272.6,-87.12 262.07,-88.27 265.09,-94.59"/>
 </g>
 <!-- proc~starpv -->
-<g id="proc~~s2pv~~CalledByGraph_node2" class="node">
+<g id="proc~~s2pv~~CalledByGraph_node3" class="node">
 <title>proc~starpv</title>
-<g id="a_proc~~s2pv~~CalledByGraph_node2"><a xlink:href=".././proc/starpv.html" xlink:title="STARPV">
-<polygon fill="#d9534f" stroke="#d9534f" points="236,-129 182,-129 182,-105 236,-105 236,-129"/>
-<text text-anchor="middle" x="209" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">STARPV</text>
+<g id="a_proc~~s2pv~~CalledByGraph_node3"><a xlink:href=".././proc/starpv.html" xlink:title="STARPV">
+<polygon fill="#d9534f" stroke="#d9534f" points="236,-87 182,-87 182,-63 236,-63 236,-87"/>
+<text text-anchor="middle" x="209" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">STARPV</text>
 </a>
 </g>
 </g>
 <!-- proc~starpv&#45;&gt;proc~s2pv -->
 <g id="proc~~s2pv~~CalledByGraph_edge1" class="edge">
 <title>proc~starpv&#45;&gt;proc~s2pv</title>
-<path fill="none" stroke="#000000" d="M226.97,-104.85C239.99,-95.53 258.18,-82.51 272.89,-71.98"/>
-<polygon fill="#000000" stroke="#000000" points="274.99,-74.78 281.08,-66.11 270.92,-69.09 274.99,-74.78"/>
+<path fill="none" stroke="#000000" d="M236.4,-75C244.39,-75 253.31,-75 261.82,-75"/>
+<polygon fill="#000000" stroke="#000000" points="261.92,-78.5 271.92,-75 261.92,-71.5 261.92,-78.5"/>
 </g>
 <!-- proc~fk524 -->
-<g id="proc~~s2pv~~CalledByGraph_node3" class="node">
+<g id="proc~~s2pv~~CalledByGraph_node4" class="node">
 <title>proc~fk524</title>
-<g id="a_proc~~s2pv~~CalledByGraph_node3"><a xlink:href=".././proc/fk524.html" xlink:title="FK524">
-<polygon fill="#d9534f" stroke="#d9534f" points="236,-66 182,-66 182,-42 236,-42 236,-66"/>
-<text text-anchor="middle" x="209" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FK524</text>
+<g id="a_proc~~s2pv~~CalledByGraph_node4"><a xlink:href=".././proc/fk524.html" xlink:title="FK524">
+<polygon fill="#d9534f" stroke="#d9534f" points="236,-35 182,-35 182,-11 236,-11 236,-35"/>
+<text text-anchor="middle" x="209" y="-20.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FK524</text>
 </a>
 </g>
 </g>
 <!-- proc~fk524&#45;&gt;proc~s2pv -->
-<g id="proc~~s2pv~~CalledByGraph_edge2" class="edge">
-<title>proc~fk524&#45;&gt;proc~s2pv</title>
-<path fill="none" stroke="#000000" d="M236.4,-54C244.39,-54 253.31,-54 261.82,-54"/>
-<polygon fill="#000000" stroke="#000000" points="261.92,-57.5 271.92,-54 261.92,-50.5 261.92,-57.5"/>
-</g>
-<!-- proc~fk425 -->
-<g id="proc~~s2pv~~CalledByGraph_node4" class="node">
-<title>proc~fk425</title>
-<g id="a_proc~~s2pv~~CalledByGraph_node4"><a xlink:href=".././proc/fk425.html" xlink:title="FK425">
-<polygon fill="#d9534f" stroke="#d9534f" points="236,-24 182,-24 182,0 236,0 236,-24"/>
-<text text-anchor="middle" x="209" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FK425</text>
-</a>
-</g>
-</g>
-<!-- proc~fk425&#45;&gt;proc~s2pv -->
 <g id="proc~~s2pv~~CalledByGraph_edge3" class="edge">
-<title>proc~fk425&#45;&gt;proc~s2pv</title>
-<path fill="none" stroke="#000000" d="M235.45,-24.15C244.21,-28.33 254.17,-33.08 263.52,-37.54"/>
-<polygon fill="#000000" stroke="#000000" points="262.07,-40.73 272.6,-41.88 265.09,-34.41 262.07,-40.73"/>
-</g>
-<!-- proc~starpm -->
-<g id="proc~~s2pv~~CalledByGraph_node5" class="node">
-<title>proc~starpm</title>
-<g id="a_proc~~s2pv~~CalledByGraph_node5"><a xlink:href=".././proc/starpm.html" xlink:title="STARPM">
-<polygon fill="#d9534f" stroke="#d9534f" points="146,-181 91,-181 91,-157 146,-157 146,-181"/>
-<text text-anchor="middle" x="118.5" y="-166.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">STARPM</text>
-</a>
-</g>
-</g>
-<!-- proc~starpm&#45;&gt;proc~starpv -->
-<g id="proc~~s2pv~~CalledByGraph_edge4" class="edge">
-<title>proc~starpm&#45;&gt;proc~starpv</title>
-<path fill="none" stroke="#000000" d="M140.03,-156.94C151.45,-150.23 165.87,-141.76 178.48,-134.34"/>
-<polygon fill="#000000" stroke="#000000" points="180.43,-137.26 187.28,-129.18 176.88,-131.22 180.43,-137.26"/>
+<title>proc~fk524&#45;&gt;proc~s2pv</title>
+<path fill="none" stroke="#000000" d="M230.41,-35.06C241.77,-41.77 256.1,-50.24 268.65,-57.66"/>
+<polygon fill="#000000" stroke="#000000" points="267.01,-60.75 277.4,-62.82 270.57,-54.72 267.01,-60.75"/>
 </g>
 <!-- proc~h2fk5 -->
-<g id="proc~~s2pv~~CalledByGraph_node6" class="node">
+<g id="proc~~s2pv~~CalledByGraph_node5" class="node">
 <title>proc~h2fk5</title>
-<g id="a_proc~~s2pv~~CalledByGraph_node6"><a xlink:href=".././proc/h2fk5.html" xlink:title="H2FK5">
-<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-139 91.5,-139 91.5,-115 145.5,-115 145.5,-139"/>
-<text text-anchor="middle" x="118.5" y="-124.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">H2FK5</text>
+<g id="a_proc~~s2pv~~CalledByGraph_node5"><a xlink:href=".././proc/h2fk5.html" xlink:title="H2FK5">
+<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-150 91.5,-150 91.5,-126 145.5,-126 145.5,-150"/>
+<text text-anchor="middle" x="118.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">H2FK5</text>
 </a>
 </g>
 </g>
 <!-- proc~h2fk5&#45;&gt;proc~starpv -->
-<g id="proc~~s2pv~~CalledByGraph_edge6" class="edge">
+<g id="proc~~s2pv~~CalledByGraph_edge4" class="edge">
 <title>proc~h2fk5&#45;&gt;proc~starpv</title>
-<path fill="none" stroke="#000000" d="M145.57,-124.05C153.78,-123.13 163,-122.08 171.78,-121.09"/>
-<polygon fill="#000000" stroke="#000000" points="172.26,-124.56 181.81,-119.96 171.48,-117.6 172.26,-124.56"/>
-</g>
-<!-- proc~fk52h -->
-<g id="proc~~s2pv~~CalledByGraph_node7" class="node">
-<title>proc~fk52h</title>
-<g id="a_proc~~s2pv~~CalledByGraph_node7"><a xlink:href=".././proc/fk52h.html" xlink:title="FK52H">
-<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-97 91.5,-97 91.5,-73 145.5,-73 145.5,-97"/>
-<text text-anchor="middle" x="118.5" y="-82.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FK52H</text>
-</a>
-</g>
-</g>
-<!-- proc~fk52h&#45;&gt;proc~starpv -->
-<g id="proc~~s2pv~~CalledByGraph_edge5" class="edge">
-<title>proc~fk52h&#45;&gt;proc~starpv</title>
-<path fill="none" stroke="#000000" d="M145.57,-94.43C153.96,-97.46 163.4,-100.87 172.36,-104.11"/>
-<polygon fill="#000000" stroke="#000000" points="171.21,-107.42 181.81,-107.53 173.59,-100.84 171.21,-107.42"/>
+<path fill="none" stroke="#000000" d="M136.56,-125.85C149.66,-116.53 167.95,-103.51 182.75,-92.98"/>
+<polygon fill="#000000" stroke="#000000" points="184.87,-95.76 190.99,-87.11 180.81,-90.06 184.87,-95.76"/>
 </g>
 <!-- proc~fk54z -->
-<g id="proc~~s2pv~~CalledByGraph_node8" class="node">
+<g id="proc~~s2pv~~CalledByGraph_node6" class="node">
 <title>proc~fk54z</title>
-<g id="a_proc~~s2pv~~CalledByGraph_node8"><a xlink:href=".././proc/fk54z.html" xlink:title="FK54Z">
-<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-55 91.5,-55 91.5,-31 145.5,-31 145.5,-55"/>
-<text text-anchor="middle" x="118.5" y="-40.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FK54Z</text>
+<g id="a_proc~~s2pv~~CalledByGraph_node6"><a xlink:href=".././proc/fk54z.html" xlink:title="FK54Z">
+<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-24 91.5,-24 91.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="118.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FK54Z</text>
 </a>
 </g>
 </g>
 <!-- proc~fk54z&#45;&gt;proc~fk524 -->
 <g id="proc~~s2pv~~CalledByGraph_edge7" class="edge">
 <title>proc~fk54z&#45;&gt;proc~fk524</title>
-<path fill="none" stroke="#000000" d="M145.57,-46.24C153.78,-47.26 163,-48.41 171.78,-49.5"/>
-<polygon fill="#000000" stroke="#000000" points="171.45,-52.98 181.81,-50.74 172.31,-46.04 171.45,-52.98"/>
+<path fill="none" stroke="#000000" d="M145.57,-15.24C153.78,-16.26 163,-17.41 171.78,-18.5"/>
+<polygon fill="#000000" stroke="#000000" points="171.45,-21.98 181.81,-19.74 172.31,-15.04 171.45,-21.98"/>
+</g>
+<!-- proc~fk52h -->
+<g id="proc~~s2pv~~CalledByGraph_node7" class="node">
+<title>proc~fk52h</title>
+<g id="a_proc~~s2pv~~CalledByGraph_node7"><a xlink:href=".././proc/fk52h.html" xlink:title="FK52H">
+<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-108 91.5,-108 91.5,-84 145.5,-84 145.5,-108"/>
+<text text-anchor="middle" x="118.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FK52H</text>
+</a>
+</g>
+</g>
+<!-- proc~fk52h&#45;&gt;proc~starpv -->
+<g id="proc~~s2pv~~CalledByGraph_edge5" class="edge">
+<title>proc~fk52h&#45;&gt;proc~starpv</title>
+<path fill="none" stroke="#000000" d="M145.57,-89.81C153.87,-87.84 163.2,-85.63 172.07,-83.53"/>
+<polygon fill="#000000" stroke="#000000" points="172.88,-86.93 181.81,-81.22 171.27,-80.12 172.88,-86.93"/>
+</g>
+<!-- proc~starpm -->
+<g id="proc~~s2pv~~CalledByGraph_node8" class="node">
+<title>proc~starpm</title>
+<g id="a_proc~~s2pv~~CalledByGraph_node8"><a xlink:href=".././proc/starpm.html" xlink:title="STARPM">
+<polygon fill="#d9534f" stroke="#d9534f" points="146,-66 91,-66 91,-42 146,-42 146,-66"/>
+<text text-anchor="middle" x="118.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">STARPM</text>
+</a>
+</g>
+</g>
+<!-- proc~starpm&#45;&gt;proc~starpv -->
+<g id="proc~~s2pv~~CalledByGraph_edge6" class="edge">
+<title>proc~starpm&#45;&gt;proc~starpv</title>
+<path fill="none" stroke="#000000" d="M146.05,-60.3C154.18,-62.23 163.25,-64.38 171.9,-66.43"/>
+<polygon fill="#000000" stroke="#000000" points="171.23,-69.87 181.77,-68.78 172.85,-63.06 171.23,-69.87"/>
 </g>
 <!-- proc~pmsafe -->
 <g id="proc~~s2pv~~CalledByGraph_node9" class="node">
 <title>proc~pmsafe</title>
 <g id="a_proc~~s2pv~~CalledByGraph_node9"><a xlink:href=".././proc/pmsafe.html" xlink:title="PMSAFE">
-<polygon fill="#d9534f" stroke="#d9534f" points="55,-181 0,-181 0,-157 55,-157 55,-181"/>
-<text text-anchor="middle" x="27.5" y="-166.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PMSAFE</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="55,-66 0,-66 0,-42 55,-42 55,-66"/>
+<text text-anchor="middle" x="27.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PMSAFE</text>
 </a>
 </g>
 </g>
 <!-- proc~pmsafe&#45;&gt;proc~starpm -->
 <g id="proc~~s2pv~~CalledByGraph_edge8" class="edge">
 <title>proc~pmsafe&#45;&gt;proc~starpm</title>
-<path fill="none" stroke="#000000" d="M55.2,-169C63.21,-169 72.14,-169 80.68,-169"/>
-<polygon fill="#000000" stroke="#000000" points="80.82,-172.5 90.82,-169 80.82,-165.5 80.82,-172.5"/>
+<path fill="none" stroke="#000000" d="M55.2,-54C63.21,-54 72.14,-54 80.68,-54"/>
+<polygon fill="#000000" stroke="#000000" points="80.82,-57.5 90.82,-54 80.82,-50.5 80.82,-57.5"/>
 </g>
 </g>
 </svg>
@@ -545,34 +386,11 @@ public subroutine S2PV(theta, phi, r, td, pd, rd, pv)
     </div></div></div></div>
       </div>
     </div>
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -580,88 +398,74 @@ public subroutine S2PV(theta, phi, r, td, pd, rd, pv)
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">S2PV</span> <span class="p">(</span> <span class="n">theta</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">td</span><span class="p">,</span> <span class="n">pd</span><span class="p">,</span> <span class="n">rd</span><span class="p">,</span> <span class="n">pv</span> <span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">S2PV</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">theta</span><span class="p">,</span><span class="w"> </span><span class="n">phi</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">td</span><span class="p">,</span><span class="w"> </span><span class="n">pd</span><span class="p">,</span><span class="w"> </span><span class="n">rd</span><span class="p">,</span><span class="w"> </span><span class="n">pv</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">theta</span> <span class="c">!! longitude angle (radians)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">phi</span> <span class="c">!! latitude angle (radians)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">r</span> <span class="c">!! radial distance</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">td</span> <span class="c">!! rate of change of THETA</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">pd</span> <span class="c">!! rate of change of PHI</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">rd</span> <span class="c">!! rate of change of R</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">pv</span> <span class="c">!! pv-vector</span>
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">theta</span><span class="w"> </span><span class="c">!! longitude angle (radians)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">phi</span><span class="w"> </span><span class="c">!! latitude angle (radians)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="c">!! radial distance</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">td</span><span class="w"> </span><span class="c">!! rate of change of THETA</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">pd</span><span class="w"> </span><span class="c">!! rate of change of PHI</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">rd</span><span class="w"> </span><span class="c">!! rate of change of R</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">pv</span><span class="w"> </span><span class="c">!! pv-vector</span>
 
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">st</span><span class="p">,</span> <span class="n">ct</span><span class="p">,</span> <span class="n">sp</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="n">rcp</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rpd</span><span class="p">,</span> <span class="n">w</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">st</span><span class="p">,</span><span class="w"> </span><span class="n">ct</span><span class="p">,</span><span class="w"> </span><span class="n">sp</span><span class="p">,</span><span class="w"> </span><span class="n">cp</span><span class="p">,</span><span class="w"> </span><span class="n">rcp</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">rpd</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="w"></span>
 
-    <span class="n">st</span> <span class="o">=</span> <span class="nb">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
-    <span class="n">ct</span> <span class="o">=</span> <span class="nb">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
-    <span class="n">sp</span> <span class="o">=</span> <span class="nb">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
-    <span class="n">cp</span> <span class="o">=</span> <span class="nb">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
-    <span class="n">rcp</span> <span class="o">=</span> <span class="n">r</span><span class="o">*</span><span class="n">cp</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">rcp</span><span class="o">*</span><span class="n">ct</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">rcp</span><span class="o">*</span><span class="n">st</span>
-    <span class="n">rpd</span> <span class="o">=</span> <span class="n">r</span><span class="o">*</span><span class="n">pd</span>
-    <span class="n">w</span> <span class="o">=</span> <span class="n">rpd</span><span class="o">*</span><span class="n">sp</span> <span class="o">-</span> <span class="n">cp</span><span class="o">*</span><span class="n">rd</span>
+<span class="w">    </span><span class="n">st</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">ct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">sp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">cp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">rcp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="o">*</span><span class="n">cp</span><span class="w"></span>
+<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rcp</span><span class="o">*</span><span class="n">ct</span><span class="w"></span>
+<span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rcp</span><span class="o">*</span><span class="n">st</span><span class="w"></span>
+<span class="w">    </span><span class="n">rpd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="o">*</span><span class="n">pd</span><span class="w"></span>
+<span class="w">    </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rpd</span><span class="o">*</span><span class="n">sp</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">cp</span><span class="o">*</span><span class="n">rd</span><span class="w"></span>
 
-    <span class="n">pv</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span>
-    <span class="n">pv</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">y</span>
-    <span class="n">pv</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">r</span><span class="o">*</span><span class="n">sp</span>
-    <span class="n">pv</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span> <span class="n">y</span><span class="o">*</span><span class="n">td</span> <span class="o">-</span> <span class="n">w</span><span class="o">*</span><span class="n">ct</span>
-    <span class="n">pv</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span>   <span class="n">x</span><span class="o">*</span><span class="n">td</span> <span class="o">-</span> <span class="n">w</span><span class="o">*</span><span class="n">st</span>
-    <span class="n">pv</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">rpd</span><span class="o">*</span><span class="n">cp</span> <span class="o">+</span> <span class="n">sp</span><span class="o">*</span><span class="n">rd</span>
+<span class="w">    </span><span class="n">pv</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
+<span class="w">    </span><span class="n">pv</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="w"></span>
+<span class="w">    </span><span class="n">pv</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="o">*</span><span class="n">sp</span><span class="w"></span>
+<span class="w">    </span><span class="n">pv</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y</span><span class="o">*</span><span class="n">td</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">w</span><span class="o">*</span><span class="n">ct</span><span class="w"></span>
+<span class="w">    </span><span class="n">pv</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w">   </span><span class="n">x</span><span class="o">*</span><span class="n">td</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">w</span><span class="o">*</span><span class="n">st</span><span class="w"></span>
+<span class="w">    </span><span class="n">pv</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rpd</span><span class="o">*</span><span class="n">cp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sp</span><span class="o">*</span><span class="n">rd</span><span class="w"></span>
 
-    <span class="k">end subroutine </span><span class="n">S2PV</span>
+<span class="w">    </span><span class="k">end subroutine </span><span class="n">S2PV</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>astro-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -687,14 +491,11 @@ public subroutine S2PV(theta, phi, r, td, pd, rd, pv)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

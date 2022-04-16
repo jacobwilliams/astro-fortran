@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,45 +43,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-        
+              
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                                       </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -95,50 +68,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>P06E
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 0.7% of total for procedures.">39 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
-    
      <li><a href='../module/astro_module.html'>astro_module</a></li>
-    
-  
      <li class="active">P06E</li>
   </ol>
 </div>
@@ -154,32 +106,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -187,24 +116,14 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-public subroutine P06E(date1, date2, eps0, psia, oma, bpa, bqa, pia, bpia, epsa, chia, za, zetaa, thetaa, pa, gam, phi, psi)
+    <h2>public subroutine P06E(date1, date2, eps0, psia, oma, bpa, bqa, pia, bpia, epsa, chia, za, zetaa, thetaa, pa, gam, phi, psi)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>Precession angles, IAU 2006, equinox based.</p>
 <p>Status:  canonical models.</p>
 <h3>Notes</h3>
@@ -304,299 +223,123 @@ public subroutine P06E(date1, date2, eps0, psia, oma, bpa, bqa, pia, bpia, epsa,
 <ul>
 <li>IAU SOFA revision: 2011 December 6</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-date1~47"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>date1</strong></td><td><p>TT as a 2-part Julian Date (Note 1)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-date2~47"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>date2</strong></td><td><p>TT as a 2-part Julian Date (Note 1)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-eps0"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>eps0</strong></td><td><p>epsilon_0 [see Note 2]</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-psia"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>psia</strong></td><td><p>psi_A [see Note 2]</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-oma"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>oma</strong></td><td><p>omega_A [see Note 2]</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-bpa"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>bpa</strong></td><td><p>P_A [see Note 2]</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-bqa"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>bqa</strong></td><td><p>Q_A [see Note 2]</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-pia"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>pia</strong></td><td><p>pi_A [see Note 2]</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-bpia"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>bpia</strong></td><td><p>Pi_A [see Note 2]</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-epsa~3"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>epsa</strong></td><td><p>obliquity epsilon_A [see Note 2]</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-chia"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>chia</strong></td><td><p>chi_A [see Note 2]</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-za"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>za</strong></td><td><p>z_A [see Note 2]</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-zetaa"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>zetaa</strong></td><td><p>zeta_A [see Note 2]</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-thetaa"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>thetaa</strong></td><td><p>theta_A [see Note 2]</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-pa"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>pa</strong></td><td><p>p_A [see Note 2]</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-gam"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>gam</strong></td><td><p>F-W angle gamma_J2000 [see Note 2]</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-phi~17"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>phi</strong></td><td><p>F-W angle phi_J2000 [see Note 2]</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-psi~3"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>psi</strong></td><td><p>F-W angle psi_J2000 [see Note 2]</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Calls</h3>
@@ -697,35 +440,11 @@ public subroutine P06E(date1, date2, eps0, psia, oma, bpa, bqa, pia, bpia, epsa,
     </div></div></div></div>
       </div>
     </div>
-     
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -733,221 +452,207 @@ public subroutine P06E(date1, date2, eps0, psia, oma, bpa, bqa, pia, bpia, epsa,
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">P06E</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span><span class="p">,</span> <span class="p">&amp;</span>
-                      <span class="n">eps0</span><span class="p">,</span> <span class="n">psia</span><span class="p">,</span> <span class="n">oma</span><span class="p">,</span> <span class="n">bpa</span><span class="p">,</span> <span class="n">bqa</span><span class="p">,</span> <span class="n">pia</span><span class="p">,</span> <span class="n">bpia</span><span class="p">,</span> <span class="p">&amp;</span>
-                      <span class="n">epsa</span><span class="p">,</span> <span class="n">chia</span><span class="p">,</span> <span class="n">za</span><span class="p">,</span> <span class="n">zetaa</span><span class="p">,</span> <span class="n">thetaa</span><span class="p">,</span> <span class="n">pa</span><span class="p">,</span> <span class="p">&amp;</span>
-                      <span class="n">gam</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">psi</span> <span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">P06E</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="p">,</span><span class="w"> </span><span class="n">date2</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                      </span><span class="n">eps0</span><span class="p">,</span><span class="w"> </span><span class="n">psia</span><span class="p">,</span><span class="w"> </span><span class="n">oma</span><span class="p">,</span><span class="w"> </span><span class="n">bpa</span><span class="p">,</span><span class="w"> </span><span class="n">bqa</span><span class="p">,</span><span class="w"> </span><span class="n">pia</span><span class="p">,</span><span class="w"> </span><span class="n">bpia</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                      </span><span class="n">epsa</span><span class="p">,</span><span class="w"> </span><span class="n">chia</span><span class="p">,</span><span class="w"> </span><span class="n">za</span><span class="p">,</span><span class="w"> </span><span class="n">zetaa</span><span class="p">,</span><span class="w"> </span><span class="n">thetaa</span><span class="p">,</span><span class="w"> </span><span class="n">pa</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                      </span><span class="n">gam</span><span class="p">,</span><span class="w"> </span><span class="n">phi</span><span class="p">,</span><span class="w"> </span><span class="n">psi</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date1</span> <span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date2</span> <span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">eps0</span> <span class="c">!! epsilon_0 [see Note 2]</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">psia</span> <span class="c">!! psi_A [see Note 2]</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">oma</span> <span class="c">!! omega_A [see Note 2]</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">bpa</span> <span class="c">!! P_A [see Note 2]</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">bqa</span> <span class="c">!! Q_A [see Note 2]</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">pia</span> <span class="c">!! pi_A [see Note 2]</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">bpia</span> <span class="c">!! Pi_A [see Note 2]</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">epsa</span> <span class="c">!! obliquity epsilon_A [see Note 2]</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">chia</span> <span class="c">!! chi_A [see Note 2]</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">za</span> <span class="c">!! z_A [see Note 2]</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">zetaa</span> <span class="c">!! zeta_A [see Note 2]</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">thetaa</span> <span class="c">!! theta_A [see Note 2]</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">pa</span> <span class="c">!! p_A [see Note 2]</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">gam</span> <span class="c">!! F-W angle gamma_J2000 [see Note 2]</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">phi</span> <span class="c">!! F-W angle phi_J2000 [see Note 2]</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">psi</span> <span class="c">!! F-W angle psi_J2000 [see Note 2]</span>
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date1</span><span class="w"> </span><span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date2</span><span class="w"> </span><span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">eps0</span><span class="w"> </span><span class="c">!! epsilon_0 [see Note 2]</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">psia</span><span class="w"> </span><span class="c">!! psi_A [see Note 2]</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">oma</span><span class="w"> </span><span class="c">!! omega_A [see Note 2]</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">bpa</span><span class="w"> </span><span class="c">!! P_A [see Note 2]</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">bqa</span><span class="w"> </span><span class="c">!! Q_A [see Note 2]</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">pia</span><span class="w"> </span><span class="c">!! pi_A [see Note 2]</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">bpia</span><span class="w"> </span><span class="c">!! Pi_A [see Note 2]</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">epsa</span><span class="w"> </span><span class="c">!! obliquity epsilon_A [see Note 2]</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">chia</span><span class="w"> </span><span class="c">!! chi_A [see Note 2]</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">za</span><span class="w"> </span><span class="c">!! z_A [see Note 2]</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">zetaa</span><span class="w"> </span><span class="c">!! zeta_A [see Note 2]</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">thetaa</span><span class="w"> </span><span class="c">!! theta_A [see Note 2]</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">pa</span><span class="w"> </span><span class="c">!! p_A [see Note 2]</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">gam</span><span class="w"> </span><span class="c">!! F-W angle gamma_J2000 [see Note 2]</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">phi</span><span class="w"> </span><span class="c">!! F-W angle phi_J2000 [see Note 2]</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">psi</span><span class="w"> </span><span class="c">!! F-W angle psi_J2000 [see Note 2]</span>
 
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">t</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">t</span><span class="w"></span>
 
-    <span class="c">!  Interval between fundamental date J2000.0 and given date (JC).</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="p">(</span> <span class="p">(</span> <span class="n">date1</span><span class="o">-</span><span class="n">dj00</span> <span class="p">)</span> <span class="o">+</span> <span class="n">date2</span> <span class="p">)</span> <span class="o">/</span> <span class="n">djc</span>
+<span class="w">    </span><span class="c">!  Interval between fundamental date J2000.0 and given date (JC).</span>
+<span class="w">    </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="o">-</span><span class="n">dj00</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">date2</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">djc</span><span class="w"></span>
 
-    <span class="c">!  Obliquity at J2000.0.</span>
+<span class="w">    </span><span class="c">!  Obliquity at J2000.0.</span>
 
-    <span class="n">eps0</span> <span class="o">=</span> <span class="mi">8438</span><span class="mf">1.406_wp</span> <span class="o">*</span> <span class="n">das2r</span>
+<span class="w">    </span><span class="n">eps0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8438</span><span class="mf">1.406_wp</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">das2r</span><span class="w"></span>
 
-    <span class="c">!  Luni-solar precession.</span>
+<span class="w">    </span><span class="c">!  Luni-solar precession.</span>
 
-    <span class="n">psia</span> <span class="o">=</span> <span class="p">(</span> <span class="mi">503</span><span class="mf">8.481507_wp</span>     <span class="o">+</span> <span class="p">&amp;</span>
-           <span class="p">(</span>   <span class="o">-</span><span class="mf">1.0790069_wp</span>    <span class="o">+</span> <span class="p">&amp;</span>
-           <span class="p">(</span>   <span class="o">-</span><span class="mf">0.00114045_wp</span>   <span class="o">+</span> <span class="p">&amp;</span>
-           <span class="p">(</span>    <span class="mf">0.000132851_wp</span>  <span class="o">+</span> <span class="p">&amp;</span>
-           <span class="p">(</span>   <span class="o">-</span><span class="mf">0.0000000951_wp</span> <span class="p">)</span> <span class="p">&amp;</span>
-           <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">das2r</span>
+<span class="w">    </span><span class="n">psia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="mi">503</span><span class="mf">8.481507_wp</span><span class="w">     </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">           </span><span class="p">(</span><span class="w">   </span><span class="o">-</span><span class="mf">1.0790069_wp</span><span class="w">    </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">           </span><span class="p">(</span><span class="w">   </span><span class="o">-</span><span class="mf">0.00114045_wp</span><span class="w">   </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">           </span><span class="p">(</span><span class="w">    </span><span class="mf">0.000132851_wp</span><span class="w">  </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">           </span><span class="p">(</span><span class="w">   </span><span class="o">-</span><span class="mf">0.0000000951_wp</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">           </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">das2r</span><span class="w"></span>
 
-    <span class="c">!  Inclination of mean equator with respect to the J2000.0 ecliptic.</span>
+<span class="w">    </span><span class="c">!  Inclination of mean equator with respect to the J2000.0 ecliptic.</span>
 
-    <span class="n">oma</span> <span class="o">=</span> <span class="n">eps0</span> <span class="o">+</span> <span class="p">(</span> <span class="o">-</span><span class="mf">0.025754_wp</span>     <span class="o">+</span> <span class="p">&amp;</span>
-                 <span class="p">(</span>  <span class="mf">0.0512623_wp</span>    <span class="o">+</span> <span class="p">&amp;</span>
-                 <span class="p">(</span> <span class="o">-</span><span class="mf">0.00772503_wp</span>   <span class="o">+</span> <span class="p">&amp;</span>
-                 <span class="p">(</span> <span class="o">-</span><span class="mf">0.000000467_wp</span>  <span class="o">+</span> <span class="p">&amp;</span>
-                 <span class="p">(</span>  <span class="mf">0.0000003337_wp</span> <span class="p">)</span> <span class="p">&amp;</span>
-                 <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">das2r</span>
+<span class="w">    </span><span class="n">oma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eps0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="o">-</span><span class="mf">0.025754_wp</span><span class="w">     </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                 </span><span class="p">(</span><span class="w">  </span><span class="mf">0.0512623_wp</span><span class="w">    </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                 </span><span class="p">(</span><span class="w"> </span><span class="o">-</span><span class="mf">0.00772503_wp</span><span class="w">   </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                 </span><span class="p">(</span><span class="w"> </span><span class="o">-</span><span class="mf">0.000000467_wp</span><span class="w">  </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                 </span><span class="p">(</span><span class="w">  </span><span class="mf">0.0000003337_wp</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                 </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">das2r</span><span class="w"></span>
 
-    <span class="c">!  Ecliptic pole x, J2000.0 ecliptic triad.</span>
+<span class="w">    </span><span class="c">!  Ecliptic pole x, J2000.0 ecliptic triad.</span>
 
-    <span class="n">bpa</span> <span class="o">=</span> <span class="p">(</span>  <span class="mf">4.199094_wp</span>     <span class="o">+</span> <span class="p">&amp;</span>
-          <span class="p">(</span>  <span class="mf">0.1939873_wp</span>    <span class="o">+</span> <span class="p">&amp;</span>
-          <span class="p">(</span> <span class="o">-</span><span class="mf">0.00022466_wp</span>   <span class="o">+</span> <span class="p">&amp;</span>
-          <span class="p">(</span> <span class="o">-</span><span class="mf">0.000000912_wp</span>  <span class="o">+</span> <span class="p">&amp;</span>
-          <span class="p">(</span>  <span class="mf">0.0000000120_wp</span> <span class="p">)</span> <span class="p">&amp;</span>
-          <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">das2r</span>
+<span class="w">    </span><span class="n">bpa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w">  </span><span class="mf">4.199094_wp</span><span class="w">     </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="p">(</span><span class="w">  </span><span class="mf">0.1939873_wp</span><span class="w">    </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="p">(</span><span class="w"> </span><span class="o">-</span><span class="mf">0.00022466_wp</span><span class="w">   </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="p">(</span><span class="w"> </span><span class="o">-</span><span class="mf">0.000000912_wp</span><span class="w">  </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="p">(</span><span class="w">  </span><span class="mf">0.0000000120_wp</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">das2r</span><span class="w"></span>
 
-    <span class="c">!  Ecliptic pole -y, J2000.0 ecliptic triad.</span>
+<span class="w">    </span><span class="c">!  Ecliptic pole -y, J2000.0 ecliptic triad.</span>
 
-    <span class="n">bqa</span> <span class="o">=</span> <span class="p">(</span> <span class="o">-</span><span class="mi">4</span><span class="mf">6.811015_wp</span>     <span class="o">+</span> <span class="p">&amp;</span>
-          <span class="p">(</span>   <span class="mf">0.0510283_wp</span>    <span class="o">+</span> <span class="p">&amp;</span>
-          <span class="p">(</span>   <span class="mf">0.00052413_wp</span>   <span class="o">+</span> <span class="p">&amp;</span>
-          <span class="p">(</span>  <span class="o">-</span><span class="mf">0.000000646_wp</span>  <span class="o">+</span> <span class="p">&amp;</span>
-          <span class="p">(</span>  <span class="o">-</span><span class="mf">0.0000000172_wp</span> <span class="p">)</span> <span class="p">&amp;</span>
-          <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">das2r</span>
+<span class="w">    </span><span class="n">bqa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="o">-</span><span class="mi">4</span><span class="mf">6.811015_wp</span><span class="w">     </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="p">(</span><span class="w">   </span><span class="mf">0.0510283_wp</span><span class="w">    </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="p">(</span><span class="w">   </span><span class="mf">0.00052413_wp</span><span class="w">   </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="p">(</span><span class="w">  </span><span class="o">-</span><span class="mf">0.000000646_wp</span><span class="w">  </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="p">(</span><span class="w">  </span><span class="o">-</span><span class="mf">0.0000000172_wp</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">das2r</span><span class="w"></span>
 
-    <span class="c">!  Angle between moving and J2000.0 ecliptics.</span>
+<span class="w">    </span><span class="c">!  Angle between moving and J2000.0 ecliptics.</span>
 
-    <span class="n">pia</span> <span class="o">=</span> <span class="p">(</span> <span class="mi">4</span><span class="mf">6.998973_wp</span>     <span class="o">+</span> <span class="p">&amp;</span>
-          <span class="p">(</span> <span class="o">-</span><span class="mf">0.0334926_wp</span>    <span class="o">+</span> <span class="p">&amp;</span>
-          <span class="p">(</span> <span class="o">-</span><span class="mf">0.00012559_wp</span>   <span class="o">+</span> <span class="p">&amp;</span>
-          <span class="p">(</span>  <span class="mf">0.000000113_wp</span>  <span class="o">+</span> <span class="p">&amp;</span>
-          <span class="p">(</span> <span class="o">-</span><span class="mf">0.0000000022_wp</span> <span class="p">)</span> <span class="p">&amp;</span>
-          <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">das2r</span>
+<span class="w">    </span><span class="n">pia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="mi">4</span><span class="mf">6.998973_wp</span><span class="w">     </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="p">(</span><span class="w"> </span><span class="o">-</span><span class="mf">0.0334926_wp</span><span class="w">    </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="p">(</span><span class="w"> </span><span class="o">-</span><span class="mf">0.00012559_wp</span><span class="w">   </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="p">(</span><span class="w">  </span><span class="mf">0.000000113_wp</span><span class="w">  </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="p">(</span><span class="w"> </span><span class="o">-</span><span class="mf">0.0000000022_wp</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">das2r</span><span class="w"></span>
 
-    <span class="c">!  Longitude of ascending node of the moving ecliptic.</span>
+<span class="w">    </span><span class="c">!  Longitude of ascending node of the moving ecliptic.</span>
 
-    <span class="n">bpia</span> <span class="o">=</span> <span class="p">(</span> <span class="mi">62954</span><span class="mf">6.7936_wp</span>      <span class="o">+</span> <span class="p">&amp;</span>
-           <span class="p">(</span>   <span class="o">-</span><span class="mi">86</span><span class="mf">7.95758_wp</span>     <span class="o">+</span> <span class="p">&amp;</span>
-           <span class="p">(</span>      <span class="mf">0.157992_wp</span>    <span class="o">+</span> <span class="p">&amp;</span>
-           <span class="p">(</span>     <span class="o">-</span><span class="mf">0.0005371_wp</span>   <span class="o">+</span> <span class="p">&amp;</span>
-           <span class="p">(</span>     <span class="o">-</span><span class="mf">0.00004797_wp</span>  <span class="o">+</span> <span class="p">&amp;</span>
-           <span class="p">(</span>      <span class="mf">0.000000072_wp</span> <span class="p">)</span> <span class="p">&amp;</span>
-           <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">das2r</span>
+<span class="w">    </span><span class="n">bpia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="mi">62954</span><span class="mf">6.7936_wp</span><span class="w">      </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">           </span><span class="p">(</span><span class="w">   </span><span class="o">-</span><span class="mi">86</span><span class="mf">7.95758_wp</span><span class="w">     </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">           </span><span class="p">(</span><span class="w">      </span><span class="mf">0.157992_wp</span><span class="w">    </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">           </span><span class="p">(</span><span class="w">     </span><span class="o">-</span><span class="mf">0.0005371_wp</span><span class="w">   </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">           </span><span class="p">(</span><span class="w">     </span><span class="o">-</span><span class="mf">0.00004797_wp</span><span class="w">  </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">           </span><span class="p">(</span><span class="w">      </span><span class="mf">0.000000072_wp</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">           </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">das2r</span><span class="w"></span>
 
-    <span class="c">!  Mean obliquity of the ecliptic.</span>
+<span class="w">    </span><span class="c">!  Mean obliquity of the ecliptic.</span>
 
-    <span class="n">epsa</span> <span class="o">=</span> <span class="n">OBL06</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span> <span class="p">)</span>
+<span class="w">    </span><span class="n">epsa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OBL06</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="p">,</span><span class="w"> </span><span class="n">date2</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Planetary precession.</span>
+<span class="w">    </span><span class="c">!  Planetary precession.</span>
 
-    <span class="n">chia</span> <span class="o">=</span> <span class="p">(</span> <span class="mi">1</span><span class="mf">0.556403_wp</span>     <span class="o">+</span> <span class="p">&amp;</span>
-           <span class="p">(</span> <span class="o">-</span><span class="mf">2.3814292_wp</span>    <span class="o">+</span> <span class="p">&amp;</span>
-           <span class="p">(</span> <span class="o">-</span><span class="mf">0.00121197_wp</span>   <span class="o">+</span> <span class="p">&amp;</span>
-           <span class="p">(</span>  <span class="mf">0.000170663_wp</span>  <span class="o">+</span> <span class="p">&amp;</span>
-           <span class="p">(</span> <span class="o">-</span><span class="mf">0.0000000560_wp</span> <span class="p">)</span> <span class="p">&amp;</span>
-           <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">das2r</span>
+<span class="w">    </span><span class="n">chia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="mi">1</span><span class="mf">0.556403_wp</span><span class="w">     </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">           </span><span class="p">(</span><span class="w"> </span><span class="o">-</span><span class="mf">2.3814292_wp</span><span class="w">    </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">           </span><span class="p">(</span><span class="w"> </span><span class="o">-</span><span class="mf">0.00121197_wp</span><span class="w">   </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">           </span><span class="p">(</span><span class="w">  </span><span class="mf">0.000170663_wp</span><span class="w">  </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">           </span><span class="p">(</span><span class="w"> </span><span class="o">-</span><span class="mf">0.0000000560_wp</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">           </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">das2r</span><span class="w"></span>
 
-    <span class="c">!  Equatorial precession: minus the third of the 323 Euler angles.</span>
+<span class="w">    </span><span class="c">!  Equatorial precession: minus the third of the 323 Euler angles.</span>
 
-    <span class="n">za</span> <span class="o">=</span> <span class="p">(</span>   <span class="o">-</span><span class="mf">2.650545_wp</span>     <span class="o">+</span> <span class="p">&amp;</span>
-         <span class="p">(</span> <span class="mi">230</span><span class="mf">6.077181_wp</span>     <span class="o">+</span> <span class="p">&amp;</span>
-         <span class="p">(</span>    <span class="mf">1.0927348_wp</span>    <span class="o">+</span> <span class="p">&amp;</span>
-         <span class="p">(</span>    <span class="mf">0.01826837_wp</span>   <span class="o">+</span> <span class="p">&amp;</span>
-         <span class="p">(</span>   <span class="o">-</span><span class="mf">0.000028596_wp</span>  <span class="o">+</span> <span class="p">&amp;</span>
-         <span class="p">(</span>   <span class="o">-</span><span class="mf">0.0000002904_wp</span> <span class="p">)</span> <span class="p">&amp;</span>
-         <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">das2r</span>
+<span class="w">    </span><span class="n">za</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w">   </span><span class="o">-</span><span class="mf">2.650545_wp</span><span class="w">     </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">         </span><span class="p">(</span><span class="w"> </span><span class="mi">230</span><span class="mf">6.077181_wp</span><span class="w">     </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">         </span><span class="p">(</span><span class="w">    </span><span class="mf">1.0927348_wp</span><span class="w">    </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">         </span><span class="p">(</span><span class="w">    </span><span class="mf">0.01826837_wp</span><span class="w">   </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">         </span><span class="p">(</span><span class="w">   </span><span class="o">-</span><span class="mf">0.000028596_wp</span><span class="w">  </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">         </span><span class="p">(</span><span class="w">   </span><span class="o">-</span><span class="mf">0.0000002904_wp</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">         </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">das2r</span><span class="w"></span>
 
-    <span class="c">!  Equatorial precession: minus the first of the 323 Euler angles.</span>
+<span class="w">    </span><span class="c">!  Equatorial precession: minus the first of the 323 Euler angles.</span>
 
-    <span class="n">zetaa</span> <span class="o">=</span> <span class="p">(</span>    <span class="mf">2.650545_wp</span>     <span class="o">+</span> <span class="p">&amp;</span>
-            <span class="p">(</span> <span class="mi">230</span><span class="mf">6.083227_wp</span>     <span class="o">+</span> <span class="p">&amp;</span>
-            <span class="p">(</span>    <span class="mf">0.2988499_wp</span>    <span class="o">+</span> <span class="p">&amp;</span>
-            <span class="p">(</span>    <span class="mf">0.01801828_wp</span>   <span class="o">+</span> <span class="p">&amp;</span>
-            <span class="p">(</span>   <span class="o">-</span><span class="mf">0.000005971_wp</span>  <span class="o">+</span> <span class="p">&amp;</span>
-            <span class="p">(</span>   <span class="o">-</span><span class="mf">0.0000003173_wp</span> <span class="p">)</span> <span class="p">&amp;</span>
-            <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">das2r</span>
+<span class="w">    </span><span class="n">zetaa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w">    </span><span class="mf">2.650545_wp</span><span class="w">     </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">            </span><span class="p">(</span><span class="w"> </span><span class="mi">230</span><span class="mf">6.083227_wp</span><span class="w">     </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">            </span><span class="p">(</span><span class="w">    </span><span class="mf">0.2988499_wp</span><span class="w">    </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">            </span><span class="p">(</span><span class="w">    </span><span class="mf">0.01801828_wp</span><span class="w">   </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">            </span><span class="p">(</span><span class="w">   </span><span class="o">-</span><span class="mf">0.000005971_wp</span><span class="w">  </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">            </span><span class="p">(</span><span class="w">   </span><span class="o">-</span><span class="mf">0.0000003173_wp</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">            </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">das2r</span><span class="w"></span>
 
-    <span class="c">!  Equatorial precession: second of the 323 Euler angles.</span>
+<span class="w">    </span><span class="c">!  Equatorial precession: second of the 323 Euler angles.</span>
 
-    <span class="n">thetaa</span> <span class="o">=</span> <span class="p">(</span> <span class="mi">200</span><span class="mf">4.191903_wp</span>     <span class="o">+</span> <span class="p">&amp;</span>
-             <span class="p">(</span>   <span class="o">-</span><span class="mf">0.4294934_wp</span>    <span class="o">+</span> <span class="p">&amp;</span>
-             <span class="p">(</span>   <span class="o">-</span><span class="mf">0.04182264_wp</span>   <span class="o">+</span> <span class="p">&amp;</span>
-             <span class="p">(</span>   <span class="o">-</span><span class="mf">0.000007089_wp</span>  <span class="o">+</span> <span class="p">&amp;</span>
-             <span class="p">(</span>   <span class="o">-</span><span class="mf">0.0000001274_wp</span> <span class="p">)</span> <span class="p">&amp;</span>
-             <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">das2r</span>
+<span class="w">    </span><span class="n">thetaa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="mi">200</span><span class="mf">4.191903_wp</span><span class="w">     </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">             </span><span class="p">(</span><span class="w">   </span><span class="o">-</span><span class="mf">0.4294934_wp</span><span class="w">    </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">             </span><span class="p">(</span><span class="w">   </span><span class="o">-</span><span class="mf">0.04182264_wp</span><span class="w">   </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">             </span><span class="p">(</span><span class="w">   </span><span class="o">-</span><span class="mf">0.000007089_wp</span><span class="w">  </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">             </span><span class="p">(</span><span class="w">   </span><span class="o">-</span><span class="mf">0.0000001274_wp</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">             </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">das2r</span><span class="w"></span>
 
-    <span class="c">!  General precession.</span>
+<span class="w">    </span><span class="c">!  General precession.</span>
 
-    <span class="n">pa</span> <span class="o">=</span> <span class="p">(</span> <span class="mi">502</span><span class="mf">8.796195_wp</span>     <span class="o">+</span> <span class="p">&amp;</span>
-         <span class="p">(</span>    <span class="mf">1.1054348_wp</span>    <span class="o">+</span> <span class="p">&amp;</span>
-         <span class="p">(</span>    <span class="mf">0.00007964_wp</span>   <span class="o">+</span> <span class="p">&amp;</span>
-         <span class="p">(</span>   <span class="o">-</span><span class="mf">0.000023857_wp</span>  <span class="o">+</span> <span class="p">&amp;</span>
-         <span class="p">(</span>    <span class="mf">0.0000000383_wp</span> <span class="p">)</span> <span class="p">&amp;</span>
-         <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">das2r</span>
+<span class="w">    </span><span class="n">pa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="mi">502</span><span class="mf">8.796195_wp</span><span class="w">     </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">         </span><span class="p">(</span><span class="w">    </span><span class="mf">1.1054348_wp</span><span class="w">    </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">         </span><span class="p">(</span><span class="w">    </span><span class="mf">0.00007964_wp</span><span class="w">   </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">         </span><span class="p">(</span><span class="w">   </span><span class="o">-</span><span class="mf">0.000023857_wp</span><span class="w">  </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">         </span><span class="p">(</span><span class="w">    </span><span class="mf">0.0000000383_wp</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">         </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">das2r</span><span class="w"></span>
 
-    <span class="c">!  Fukushima-Williams angles for precession.</span>
+<span class="w">    </span><span class="c">!  Fukushima-Williams angles for precession.</span>
 
-    <span class="n">gam</span> <span class="o">=</span> <span class="p">(</span> <span class="mi">1</span><span class="mf">0.556403_wp</span>     <span class="o">+</span> <span class="p">&amp;</span>
-          <span class="p">(</span>  <span class="mf">0.4932044_wp</span>    <span class="o">+</span> <span class="p">&amp;</span>
-          <span class="p">(</span> <span class="o">-</span><span class="mf">0.00031238_wp</span>   <span class="o">+</span> <span class="p">&amp;</span>
-          <span class="p">(</span> <span class="o">-</span><span class="mf">0.000002788_wp</span>  <span class="o">+</span> <span class="p">&amp;</span>
-          <span class="p">(</span>  <span class="mf">0.0000000260_wp</span> <span class="p">)</span> <span class="p">&amp;</span>
-          <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">das2r</span>
+<span class="w">    </span><span class="n">gam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="mi">1</span><span class="mf">0.556403_wp</span><span class="w">     </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="p">(</span><span class="w">  </span><span class="mf">0.4932044_wp</span><span class="w">    </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="p">(</span><span class="w"> </span><span class="o">-</span><span class="mf">0.00031238_wp</span><span class="w">   </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="p">(</span><span class="w"> </span><span class="o">-</span><span class="mf">0.000002788_wp</span><span class="w">  </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="p">(</span><span class="w">  </span><span class="mf">0.0000000260_wp</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">das2r</span><span class="w"></span>
 
-    <span class="n">phi</span> <span class="o">=</span> <span class="n">eps0</span> <span class="o">+</span> <span class="p">(</span> <span class="o">-</span><span class="mi">4</span><span class="mf">6.811015_wp</span>     <span class="o">+</span> <span class="p">&amp;</span>
-                 <span class="p">(</span>   <span class="mf">0.0511269_wp</span>    <span class="o">+</span> <span class="p">&amp;</span>
-                 <span class="p">(</span>   <span class="mf">0.00053289_wp</span>   <span class="o">+</span> <span class="p">&amp;</span>
-                 <span class="p">(</span>  <span class="o">-</span><span class="mf">0.000000440_wp</span>  <span class="o">+</span> <span class="p">&amp;</span>
-                 <span class="p">(</span>  <span class="o">-</span><span class="mf">0.0000000176_wp</span> <span class="p">)</span> <span class="p">&amp;</span>
-                 <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">das2r</span>
+<span class="w">    </span><span class="n">phi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eps0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="o">-</span><span class="mi">4</span><span class="mf">6.811015_wp</span><span class="w">     </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                 </span><span class="p">(</span><span class="w">   </span><span class="mf">0.0511269_wp</span><span class="w">    </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                 </span><span class="p">(</span><span class="w">   </span><span class="mf">0.00053289_wp</span><span class="w">   </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                 </span><span class="p">(</span><span class="w">  </span><span class="o">-</span><span class="mf">0.000000440_wp</span><span class="w">  </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                 </span><span class="p">(</span><span class="w">  </span><span class="o">-</span><span class="mf">0.0000000176_wp</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                 </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">das2r</span><span class="w"></span>
 
-    <span class="n">psi</span> <span class="o">=</span> <span class="p">(</span> <span class="mi">503</span><span class="mf">8.481507_wp</span>     <span class="o">+</span> <span class="p">&amp;</span>
-          <span class="p">(</span>    <span class="mf">1.5584176_wp</span>    <span class="o">+</span> <span class="p">&amp;</span>
-          <span class="p">(</span>   <span class="o">-</span><span class="mf">0.00018522_wp</span>   <span class="o">+</span> <span class="p">&amp;</span>
-          <span class="p">(</span>   <span class="o">-</span><span class="mf">0.000026452_wp</span>  <span class="o">+</span> <span class="p">&amp;</span>
-          <span class="p">(</span>   <span class="o">-</span><span class="mf">0.0000000148_wp</span> <span class="p">)</span> <span class="p">&amp;</span>
-          <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">das2r</span>
+<span class="w">    </span><span class="n">psi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="mi">503</span><span class="mf">8.481507_wp</span><span class="w">     </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="p">(</span><span class="w">    </span><span class="mf">1.5584176_wp</span><span class="w">    </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="p">(</span><span class="w">   </span><span class="o">-</span><span class="mf">0.00018522_wp</span><span class="w">   </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="p">(</span><span class="w">   </span><span class="o">-</span><span class="mf">0.000026452_wp</span><span class="w">  </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="p">(</span><span class="w">   </span><span class="o">-</span><span class="mf">0.0000000148_wp</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">das2r</span><span class="w"></span>
 
-    <span class="k">end subroutine </span><span class="n">P06E</span>
+<span class="w">    </span><span class="k">end subroutine </span><span class="n">P06E</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>astro-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -973,14 +678,11 @@ public subroutine P06E(date1, date2, eps0, psia, oma, bpa, bqa, pia, bpia, epsa,
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

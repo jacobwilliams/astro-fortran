@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,45 +43,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-        
+              
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                                       </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -95,50 +68,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>C2IBPN
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 0.2% of total for procedures.">10 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
-    
      <li><a href='../module/astro_module.html'>astro_module</a></li>
-    
-  
      <li class="active">C2IBPN</li>
   </ol>
 </div>
@@ -154,32 +106,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -187,24 +116,14 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-public subroutine C2IBPN(date1, date2, rbpn, rc2i)
+    <h2>public subroutine C2IBPN(date1, date2, rbpn, rc2i)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>Form the celestial-to-intermediate matrix for a given date given
   the bias-precession-nutation matrix.  IAU 2000.</p>
 <p>Status:  support routine.</p>
@@ -237,9 +156,9 @@ public subroutine C2IBPN(date1, date2, rbpn, rc2i)
 <li>
 <p>The matrix RC2I is the first stage in the transformation from
      celestial to terrestrial coordinates:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">[TRS]  =  RPOM * R_3(ERA) * RC2I * [CRS]</span>
+<div class="codehilite"><pre><span></span><code><span class="k">[TRS]  =  RPOM * R_3(ERA) * RC2I * [CRS]</span><span class="w"></span>
 
-       <span class="o">=</span>  <span class="s">RC2T * [CRS]</span>
+<span class="w">       </span><span class="o">=</span><span class="w">  </span><span class="s">RC2T * [CRS]</span><span class="w"></span>
 </code></pre></div>
 
 <p>where [CRS] is a vector in the Geocentric Celestial Reference
@@ -273,89 +192,39 @@ public subroutine C2IBPN(date1, date2, rbpn, rc2i)
 <ul>
 <li>IAU SOFA revision: 2010 January 18</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-date1~31"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>date1</strong></td><td><p>TT as a 2-part Julian Date (Note 1)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-date2~31"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>date2</strong></td><td><p>TT as a 2-part Julian Date (Note 1)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-rbpn~2"></span>real(kind=wp),</td>
-  <td>intent(in),</td>
-  <td></td>
-  
-  <td>dimension(3,3)</td><td>::</td>
+<td>intent(in),</td>
+  <td></td>  <td>dimension(3,3)</td><td>::</td>
   <td><strong>rbpn</strong></td><td><p>celestial-to-true matrix (Note 2)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-rc2i~4"></span>real(kind=wp),</td>
-  <td>intent(out),</td>
-  <td></td>
-  
-  <td>dimension(3,3)</td><td>::</td>
+<td>intent(out),</td>
+  <td></td>  <td>dimension(3,3)</td><td>::</td>
   <td><strong>rc2i</strong></td><td><p>celestial-to-intermediate matrix (Note 3)</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Calls</h3>
@@ -367,181 +236,241 @@ public subroutine C2IBPN(date1, date2, rbpn, rc2i)
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: proc~~c2ibpn~~CallsGraph Pages: 1 -->
-<svg id="procc2ibpnCallsGraph" width="334pt" height="326pt"
- viewBox="0.00 0.00 334.00 326.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="proc~~c2ibpn~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 322)">
+<svg id="procc2ibpnCallsGraph" width="334pt" height="452pt"
+ viewBox="0.00 0.00 334.00 452.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~c2ibpn~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 448)">
 <title>proc~~c2ibpn~~CallsGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-322 330,-322 330,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-448 330,-448 330,4 -4,4"/>
 <!-- proc~c2ibpn -->
 <g id="proc~~c2ibpn~~CallsGraph_node1" class="node">
 <title>proc~c2ibpn</title>
-<polygon fill="none" stroke="black" points="54,-192 0,-192 0,-168 54,-168 54,-192"/>
-<text text-anchor="middle" x="27" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50">C2IBPN</text>
-</g>
-<!-- proc~bpn2xy -->
-<g id="proc~~c2ibpn~~CallsGraph_node2" class="node">
-<title>proc~bpn2xy</title>
-<g id="a_proc~~c2ibpn~~CallsGraph_node2"><a xlink:href=".././proc/bpn2xy.html" xlink:title="BPN2XY">
-<polygon fill="#d9534f" stroke="#d9534f" points="145,-213 90,-213 90,-189 145,-189 145,-213"/>
-<text text-anchor="middle" x="117.5" y="-198.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">BPN2XY</text>
-</a>
-</g>
-</g>
-<!-- proc~c2ibpn&#45;&gt;proc~bpn2xy -->
-<g id="proc~~c2ibpn~~CallsGraph_edge1" class="edge">
-<title>proc~c2ibpn&#45;&gt;proc~bpn2xy</title>
-<path fill="none" stroke="#000000" d="M54.07,-186.19C62.21,-188.12 71.34,-190.28 80.05,-192.35"/>
-<polygon fill="#000000" stroke="#000000" points="79.46,-195.81 90,-194.71 81.08,-189 79.46,-195.81"/>
+<polygon fill="none" stroke="black" points="54,-276 0,-276 0,-252 54,-252 54,-276"/>
+<text text-anchor="middle" x="27" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50">C2IBPN</text>
 </g>
 <!-- proc~c2ixy -->
-<g id="proc~~c2ibpn~~CallsGraph_node3" class="node">
+<g id="proc~~c2ibpn~~CallsGraph_node2" class="node">
 <title>proc~c2ixy</title>
-<g id="a_proc~~c2ibpn~~CallsGraph_node3"><a xlink:href=".././proc/c2ixy.html" xlink:title="C2IXY">
-<polygon fill="#d9534f" stroke="#d9534f" points="144.5,-171 90.5,-171 90.5,-147 144.5,-147 144.5,-171"/>
-<text text-anchor="middle" x="117.5" y="-156.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2IXY</text>
+<g id="a_proc~~c2ibpn~~CallsGraph_node2"><a xlink:href=".././proc/c2ixy.html" xlink:title="C2IXY">
+<polygon fill="#d9534f" stroke="#d9534f" points="144.5,-297 90.5,-297 90.5,-273 144.5,-273 144.5,-297"/>
+<text text-anchor="middle" x="117.5" y="-282.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2IXY</text>
 </a>
 </g>
 </g>
 <!-- proc~c2ibpn&#45;&gt;proc~c2ixy -->
-<g id="proc~~c2ibpn~~CallsGraph_edge2" class="edge">
+<g id="proc~~c2ibpn~~CallsGraph_edge1" class="edge">
 <title>proc~c2ibpn&#45;&gt;proc~c2ixy</title>
-<path fill="none" stroke="#000000" d="M54.07,-173.81C62.37,-171.84 71.7,-169.63 80.57,-167.53"/>
-<polygon fill="#000000" stroke="#000000" points="81.38,-170.93 90.31,-165.22 79.77,-164.12 81.38,-170.93"/>
+<path fill="none" stroke="#000000" d="M54.07,-270.19C62.37,-272.16 71.7,-274.37 80.57,-276.47"/>
+<polygon fill="#000000" stroke="#000000" points="79.77,-279.88 90.31,-278.78 81.38,-273.07 79.77,-279.88"/>
+</g>
+<!-- proc~bpn2xy -->
+<g id="proc~~c2ibpn~~CallsGraph_node3" class="node">
+<title>proc~bpn2xy</title>
+<g id="a_proc~~c2ibpn~~CallsGraph_node3"><a xlink:href=".././proc/bpn2xy.html" xlink:title="BPN2XY">
+<polygon fill="#d9534f" stroke="#d9534f" points="145,-255 90,-255 90,-231 145,-231 145,-255"/>
+<text text-anchor="middle" x="117.5" y="-240.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">BPN2XY</text>
+</a>
+</g>
+</g>
+<!-- proc~c2ibpn&#45;&gt;proc~bpn2xy -->
+<g id="proc~~c2ibpn~~CallsGraph_edge2" class="edge">
+<title>proc~c2ibpn&#45;&gt;proc~bpn2xy</title>
+<path fill="none" stroke="#000000" d="M54.07,-257.81C62.21,-255.88 71.34,-253.72 80.05,-251.65"/>
+<polygon fill="#000000" stroke="#000000" points="81.08,-255 90,-249.29 79.46,-248.19 81.08,-255"/>
+</g>
+<!-- proc~c2ixys -->
+<g id="proc~~c2ibpn~~CallsGraph_node4" class="node">
+<title>proc~c2ixys</title>
+<g id="a_proc~~c2ibpn~~CallsGraph_node4"><a xlink:href=".././proc/c2ixys.html" xlink:title="C2IXYS">
+<polygon fill="#d9534f" stroke="#d9534f" points="235,-381 181,-381 181,-357 235,-357 235,-381"/>
+<text text-anchor="middle" x="208" y="-366.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2IXYS</text>
+</a>
+</g>
+</g>
+<!-- proc~c2ixy&#45;&gt;proc~c2ixys -->
+<g id="proc~~c2ibpn~~CallsGraph_edge3" class="edge">
+<title>proc~c2ixy&#45;&gt;proc~c2ixys</title>
+<path fill="none" stroke="#000000" d="M131.18,-297.04C145.77,-310.88 169.91,-333.8 187.03,-350.05"/>
+<polygon fill="#000000" stroke="#000000" points="184.68,-352.64 194.34,-356.99 189.5,-347.56 184.68,-352.64"/>
 </g>
 <!-- proc~s00 -->
-<g id="proc~~c2ibpn~~CallsGraph_node4" class="node">
+<g id="proc~~c2ibpn~~CallsGraph_node5" class="node">
 <title>proc~s00</title>
-<g id="a_proc~~c2ibpn~~CallsGraph_node4"><a xlink:href=".././proc/s00.html" xlink:title="S00">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="235,-171 181,-171 181,-147 235,-147 235,-171"/>
-<text text-anchor="middle" x="208" y="-156.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">S00</text>
+<g id="a_proc~~c2ibpn~~CallsGraph_node5"><a xlink:href=".././proc/s00.html" xlink:title="S00">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="235,-192 181,-192 181,-168 235,-168 235,-192"/>
+<text text-anchor="middle" x="208" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">S00</text>
 </a>
 </g>
 </g>
 <!-- proc~c2ixy&#45;&gt;proc~s00 -->
-<g id="proc~~c2ibpn~~CallsGraph_edge3" class="edge">
-<title>proc~c2ixy&#45;&gt;proc~s00</title>
-<path fill="none" stroke="#000000" d="M144.57,-159C152.78,-159 162,-159 170.78,-159"/>
-<polygon fill="#000000" stroke="#000000" points="170.81,-162.5 180.81,-159 170.81,-155.5 170.81,-162.5"/>
-</g>
-<!-- proc~fal03 -->
-<g id="proc~~c2ibpn~~CallsGraph_node5" class="node">
-<title>proc~fal03</title>
-<g id="a_proc~~c2ibpn~~CallsGraph_node5"><a xlink:href=".././proc/fal03.html" xlink:title="FAL03">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="325.5,-318 271.5,-318 271.5,-294 325.5,-294 325.5,-318"/>
-<text text-anchor="middle" x="298.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAL03</text>
-</a>
-</g>
-</g>
-<!-- proc~s00&#45;&gt;proc~fal03 -->
 <g id="proc~~c2ibpn~~CallsGraph_edge4" class="edge">
-<title>proc~s00&#45;&gt;proc~fal03</title>
-<path fill="none" stroke="#000000" d="M212.92,-171.11C221.01,-194.81 241.3,-248.19 271,-285 271.48,-285.6 271.99,-286.19 272.51,-286.78"/>
-<polygon fill="#000000" stroke="#000000" points="270.31,-289.52 279.95,-293.92 275.15,-284.47 270.31,-289.52"/>
+<title>proc~c2ixy&#45;&gt;proc~s00</title>
+<path fill="none" stroke="#000000" d="M135.06,-272.99C138.49,-270.2 141.98,-267.12 145,-264 164.09,-244.24 182.31,-218.43 194,-200.66"/>
+<polygon fill="#000000" stroke="#000000" points="196.99,-202.48 199.48,-192.18 191.11,-198.68 196.99,-202.48"/>
 </g>
-<!-- proc~faf03 -->
-<g id="proc~~c2ibpn~~CallsGraph_node6" class="node">
-<title>proc~faf03</title>
-<g id="a_proc~~c2ibpn~~CallsGraph_node6"><a xlink:href=".././proc/faf03.html" xlink:title="FAF03">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="325.5,-276 271.5,-276 271.5,-252 325.5,-252 325.5,-276"/>
-<text text-anchor="middle" x="298.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAF03</text>
+<!-- proc~ir -->
+<g id="proc~~c2ibpn~~CallsGraph_node9" class="node">
+<title>proc~ir</title>
+<g id="a_proc~~c2ibpn~~CallsGraph_node9"><a xlink:href=".././proc/ir.html" xlink:title="IR">
+<polygon fill="#d9534f" stroke="#d9534f" points="325.5,-444 271.5,-444 271.5,-420 325.5,-420 325.5,-444"/>
+<text text-anchor="middle" x="298.5" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">IR</text>
 </a>
 </g>
 </g>
-<!-- proc~s00&#45;&gt;proc~faf03 -->
+<!-- proc~c2ixys&#45;&gt;proc~ir -->
 <g id="proc~~c2ibpn~~CallsGraph_edge5" class="edge">
-<title>proc~s00&#45;&gt;proc~faf03</title>
-<path fill="none" stroke="#000000" d="M216.52,-171.18C227.36,-188.25 248.58,-219.8 271,-243 271.75,-243.78 272.54,-244.56 273.34,-245.33"/>
-<polygon fill="#000000" stroke="#000000" points="271.11,-248.03 280.94,-251.99 275.73,-242.76 271.11,-248.03"/>
+<title>proc~c2ixys&#45;&gt;proc~ir</title>
+<path fill="none" stroke="#000000" d="M226.06,-381.15C239.16,-390.47 257.45,-403.49 272.25,-414.02"/>
+<polygon fill="#000000" stroke="#000000" points="270.31,-416.94 280.49,-419.89 274.37,-411.24 270.31,-416.94"/>
+</g>
+<!-- proc~ry -->
+<g id="proc~~c2ibpn~~CallsGraph_node11" class="node">
+<title>proc~ry</title>
+<g id="a_proc~~c2ibpn~~CallsGraph_node11"><a xlink:href=".././proc/ry.html" xlink:title="RY">
+<polygon fill="#d9534f" stroke="#d9534f" points="325.5,-402 271.5,-402 271.5,-378 325.5,-378 325.5,-402"/>
+<text text-anchor="middle" x="298.5" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RY</text>
+</a>
+</g>
+</g>
+<!-- proc~c2ixys&#45;&gt;proc~ry -->
+<g id="proc~~c2ibpn~~CallsGraph_edge7" class="edge">
+<title>proc~c2ixys&#45;&gt;proc~ry</title>
+<path fill="none" stroke="#000000" d="M235.07,-375.19C243.37,-377.16 252.7,-379.37 261.57,-381.47"/>
+<polygon fill="#000000" stroke="#000000" points="260.77,-384.88 271.31,-383.78 262.38,-378.07 260.77,-384.88"/>
+</g>
+<!-- proc~rz -->
+<g id="proc~~c2ibpn~~CallsGraph_node14" class="node">
+<title>proc~rz</title>
+<g id="a_proc~~c2ibpn~~CallsGraph_node14"><a xlink:href=".././proc/rz.html" xlink:title="RZ">
+<polygon fill="#d9534f" stroke="#d9534f" points="325.5,-360 271.5,-360 271.5,-336 325.5,-336 325.5,-360"/>
+<text text-anchor="middle" x="298.5" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RZ</text>
+</a>
+</g>
+</g>
+<!-- proc~c2ixys&#45;&gt;proc~rz -->
+<g id="proc~~c2ibpn~~CallsGraph_edge6" class="edge">
+<title>proc~c2ixys&#45;&gt;proc~rz</title>
+<path fill="none" stroke="#000000" d="M235.07,-362.81C243.37,-360.84 252.7,-358.63 261.57,-356.53"/>
+<polygon fill="#000000" stroke="#000000" points="262.38,-359.93 271.31,-354.22 260.77,-353.12 262.38,-359.93"/>
+</g>
+<!-- proc~faom03 -->
+<g id="proc~~c2ibpn~~CallsGraph_node6" class="node">
+<title>proc~faom03</title>
+<g id="a_proc~~c2ibpn~~CallsGraph_node6"><a xlink:href=".././proc/faom03.html" xlink:title="FAOM03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="326,-318 271,-318 271,-294 326,-294 326,-318"/>
+<text text-anchor="middle" x="298.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAOM03</text>
+</a>
+</g>
+</g>
+<!-- proc~s00&#45;&gt;proc~faom03 -->
+<g id="proc~~c2ibpn~~CallsGraph_edge8" class="edge">
+<title>proc~s00&#45;&gt;proc~faom03</title>
+<path fill="none" stroke="#000000" d="M214.41,-192.27C223.89,-212.89 244.98,-255.16 271,-285 271.61,-285.7 272.24,-286.39 272.89,-287.07"/>
+<polygon fill="#000000" stroke="#000000" points="270.68,-289.79 280.41,-293.99 275.42,-284.64 270.68,-289.79"/>
 </g>
 <!-- proc~fad03 -->
 <g id="proc~~c2ibpn~~CallsGraph_node7" class="node">
 <title>proc~fad03</title>
 <g id="a_proc~~c2ibpn~~CallsGraph_node7"><a xlink:href=".././proc/fad03.html" xlink:title="FAD03">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="325.5,-234 271.5,-234 271.5,-210 325.5,-210 325.5,-234"/>
-<text text-anchor="middle" x="298.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAD03</text>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="325.5,-276 271.5,-276 271.5,-252 325.5,-252 325.5,-276"/>
+<text text-anchor="middle" x="298.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAD03</text>
 </a>
 </g>
 </g>
 <!-- proc~s00&#45;&gt;proc~fad03 -->
-<g id="proc~~c2ibpn~~CallsGraph_edge6" class="edge">
+<g id="proc~~c2ibpn~~CallsGraph_edge9" class="edge">
 <title>proc~s00&#45;&gt;proc~fad03</title>
-<path fill="none" stroke="#000000" d="M226.06,-171.15C239.16,-180.47 257.45,-193.49 272.25,-204.02"/>
-<polygon fill="#000000" stroke="#000000" points="270.31,-206.94 280.49,-209.89 274.37,-201.24 270.31,-206.94"/>
-</g>
-<!-- proc~faom03 -->
-<g id="proc~~c2ibpn~~CallsGraph_node8" class="node">
-<title>proc~faom03</title>
-<g id="a_proc~~c2ibpn~~CallsGraph_node8"><a xlink:href=".././proc/faom03.html" xlink:title="FAOM03">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="326,-192 271,-192 271,-168 326,-168 326,-192"/>
-<text text-anchor="middle" x="298.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAOM03</text>
-</a>
-</g>
-</g>
-<!-- proc~s00&#45;&gt;proc~faom03 -->
-<g id="proc~~c2ibpn~~CallsGraph_edge11" class="edge">
-<title>proc~s00&#45;&gt;proc~faom03</title>
-<path fill="none" stroke="#000000" d="M235.07,-165.19C243.21,-167.12 252.34,-169.28 261.05,-171.35"/>
-<polygon fill="#000000" stroke="#000000" points="260.46,-174.81 271,-173.71 262.08,-168 260.46,-174.81"/>
-</g>
-<!-- proc~fapa03 -->
-<g id="proc~~c2ibpn~~CallsGraph_node9" class="node">
-<title>proc~fapa03</title>
-<g id="a_proc~~c2ibpn~~CallsGraph_node9"><a xlink:href=".././proc/fapa03.html" xlink:title="FAPA03">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="325.5,-150 271.5,-150 271.5,-126 325.5,-126 325.5,-150"/>
-<text text-anchor="middle" x="298.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAPA03</text>
-</a>
-</g>
-</g>
-<!-- proc~s00&#45;&gt;proc~fapa03 -->
-<g id="proc~~c2ibpn~~CallsGraph_edge7" class="edge">
-<title>proc~s00&#45;&gt;proc~fapa03</title>
-<path fill="none" stroke="#000000" d="M235.07,-152.81C243.37,-150.84 252.7,-148.63 261.57,-146.53"/>
-<polygon fill="#000000" stroke="#000000" points="262.38,-149.93 271.31,-144.22 260.77,-143.12 262.38,-149.93"/>
+<path fill="none" stroke="#000000" d="M220.01,-192.05C232.1,-205.06 252.28,-226.18 271,-243 271.83,-243.75 272.68,-244.5 273.55,-245.25"/>
+<polygon fill="#000000" stroke="#000000" points="271.61,-248.19 281.54,-251.87 276.08,-242.8 271.61,-248.19"/>
 </g>
 <!-- proc~falp03 -->
-<g id="proc~~c2ibpn~~CallsGraph_node10" class="node">
+<g id="proc~~c2ibpn~~CallsGraph_node8" class="node">
 <title>proc~falp03</title>
-<g id="a_proc~~c2ibpn~~CallsGraph_node10"><a xlink:href=".././proc/falp03.html" xlink:title="FALP03">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="325.5,-108 271.5,-108 271.5,-84 325.5,-84 325.5,-108"/>
-<text text-anchor="middle" x="298.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FALP03</text>
+<g id="a_proc~~c2ibpn~~CallsGraph_node8"><a xlink:href=".././proc/falp03.html" xlink:title="FALP03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="325.5,-234 271.5,-234 271.5,-210 325.5,-210 325.5,-234"/>
+<text text-anchor="middle" x="298.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FALP03</text>
 </a>
 </g>
 </g>
 <!-- proc~s00&#45;&gt;proc~falp03 -->
-<g id="proc~~c2ibpn~~CallsGraph_edge8" class="edge">
+<g id="proc~~c2ibpn~~CallsGraph_edge10" class="edge">
 <title>proc~s00&#45;&gt;proc~falp03</title>
-<path fill="none" stroke="#000000" d="M226.06,-146.85C239.16,-137.53 257.45,-124.51 272.25,-113.98"/>
-<polygon fill="#000000" stroke="#000000" points="274.37,-116.76 280.49,-108.11 270.31,-111.06 274.37,-116.76"/>
-</g>
-<!-- proc~fave03 -->
-<g id="proc~~c2ibpn~~CallsGraph_node11" class="node">
-<title>proc~fave03</title>
-<g id="a_proc~~c2ibpn~~CallsGraph_node11"><a xlink:href=".././proc/fave03.html" xlink:title="FAVE03">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="325.5,-66 271.5,-66 271.5,-42 325.5,-42 325.5,-66"/>
-<text text-anchor="middle" x="298.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAVE03</text>
-</a>
-</g>
-</g>
-<!-- proc~s00&#45;&gt;proc~fave03 -->
-<g id="proc~~c2ibpn~~CallsGraph_edge9" class="edge">
-<title>proc~s00&#45;&gt;proc~fave03</title>
-<path fill="none" stroke="#000000" d="M216.52,-146.82C227.36,-129.75 248.58,-98.2 271,-75 271.75,-74.22 272.54,-73.44 273.34,-72.67"/>
-<polygon fill="#000000" stroke="#000000" points="275.73,-75.24 280.94,-66.01 271.11,-69.97 275.73,-75.24"/>
+<path fill="none" stroke="#000000" d="M234.6,-192.15C243.4,-196.33 253.42,-201.08 262.82,-205.54"/>
+<polygon fill="#000000" stroke="#000000" points="261.42,-208.75 271.96,-209.88 264.43,-202.43 261.42,-208.75"/>
 </g>
 <!-- proc~fae03 -->
-<g id="proc~~c2ibpn~~CallsGraph_node12" class="node">
+<g id="proc~~c2ibpn~~CallsGraph_node10" class="node">
 <title>proc~fae03</title>
-<g id="a_proc~~c2ibpn~~CallsGraph_node12"><a xlink:href=".././proc/fae03.html" xlink:title="FAE03">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="325.5,-24 271.5,-24 271.5,0 325.5,0 325.5,-24"/>
-<text text-anchor="middle" x="298.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAE03</text>
+<g id="a_proc~~c2ibpn~~CallsGraph_node10"><a xlink:href=".././proc/fae03.html" xlink:title="FAE03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="325.5,-192 271.5,-192 271.5,-168 325.5,-168 325.5,-192"/>
+<text text-anchor="middle" x="298.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAE03</text>
 </a>
 </g>
 </g>
 <!-- proc~s00&#45;&gt;proc~fae03 -->
-<g id="proc~~c2ibpn~~CallsGraph_edge10" class="edge">
+<g id="proc~~c2ibpn~~CallsGraph_edge11" class="edge">
 <title>proc~s00&#45;&gt;proc~fae03</title>
-<path fill="none" stroke="#000000" d="M212.92,-146.89C221.01,-123.19 241.3,-69.81 271,-33 271.48,-32.4 271.99,-31.81 272.51,-31.22"/>
-<polygon fill="#000000" stroke="#000000" points="275.15,-33.53 279.95,-24.08 270.31,-28.48 275.15,-33.53"/>
+<path fill="none" stroke="#000000" d="M235.07,-180C243.28,-180 252.5,-180 261.28,-180"/>
+<polygon fill="#000000" stroke="#000000" points="261.31,-183.5 271.31,-180 261.31,-176.5 261.31,-183.5"/>
+</g>
+<!-- proc~fal03 -->
+<g id="proc~~c2ibpn~~CallsGraph_node12" class="node">
+<title>proc~fal03</title>
+<g id="a_proc~~c2ibpn~~CallsGraph_node12"><a xlink:href=".././proc/fal03.html" xlink:title="FAL03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="325.5,-150 271.5,-150 271.5,-126 325.5,-126 325.5,-150"/>
+<text text-anchor="middle" x="298.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAL03</text>
+</a>
+</g>
+</g>
+<!-- proc~s00&#45;&gt;proc~fal03 -->
+<g id="proc~~c2ibpn~~CallsGraph_edge12" class="edge">
+<title>proc~s00&#45;&gt;proc~fal03</title>
+<path fill="none" stroke="#000000" d="M234.6,-167.85C243.4,-163.67 253.42,-158.92 262.82,-154.46"/>
+<polygon fill="#000000" stroke="#000000" points="264.43,-157.57 271.96,-150.12 261.42,-151.25 264.43,-157.57"/>
+</g>
+<!-- proc~fapa03 -->
+<g id="proc~~c2ibpn~~CallsGraph_node13" class="node">
+<title>proc~fapa03</title>
+<g id="a_proc~~c2ibpn~~CallsGraph_node13"><a xlink:href=".././proc/fapa03.html" xlink:title="FAPA03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="325.5,-108 271.5,-108 271.5,-84 325.5,-84 325.5,-108"/>
+<text text-anchor="middle" x="298.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAPA03</text>
+</a>
+</g>
+</g>
+<!-- proc~s00&#45;&gt;proc~fapa03 -->
+<g id="proc~~c2ibpn~~CallsGraph_edge13" class="edge">
+<title>proc~s00&#45;&gt;proc~fapa03</title>
+<path fill="none" stroke="#000000" d="M220.01,-167.95C232.1,-154.94 252.28,-133.82 271,-117 271.83,-116.25 272.68,-115.5 273.55,-114.75"/>
+<polygon fill="#000000" stroke="#000000" points="276.08,-117.2 281.54,-108.13 271.61,-111.81 276.08,-117.2"/>
+</g>
+<!-- proc~faf03 -->
+<g id="proc~~c2ibpn~~CallsGraph_node15" class="node">
+<title>proc~faf03</title>
+<g id="a_proc~~c2ibpn~~CallsGraph_node15"><a xlink:href=".././proc/faf03.html" xlink:title="FAF03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="325.5,-66 271.5,-66 271.5,-42 325.5,-42 325.5,-66"/>
+<text text-anchor="middle" x="298.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAF03</text>
+</a>
+</g>
+</g>
+<!-- proc~s00&#45;&gt;proc~faf03 -->
+<g id="proc~~c2ibpn~~CallsGraph_edge14" class="edge">
+<title>proc~s00&#45;&gt;proc~faf03</title>
+<path fill="none" stroke="#000000" d="M214.41,-167.73C223.89,-147.11 244.98,-104.84 271,-75 271.61,-74.3 272.24,-73.61 272.89,-72.93"/>
+<polygon fill="#000000" stroke="#000000" points="275.42,-75.36 280.41,-66.01 270.68,-70.21 275.42,-75.36"/>
+</g>
+<!-- proc~fave03 -->
+<g id="proc~~c2ibpn~~CallsGraph_node16" class="node">
+<title>proc~fave03</title>
+<g id="a_proc~~c2ibpn~~CallsGraph_node16"><a xlink:href=".././proc/fave03.html" xlink:title="FAVE03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="325.5,-24 271.5,-24 271.5,0 325.5,0 325.5,-24"/>
+<text text-anchor="middle" x="298.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAVE03</text>
+</a>
+</g>
+</g>
+<!-- proc~s00&#45;&gt;proc~fave03 -->
+<g id="proc~~c2ibpn~~CallsGraph_edge15" class="edge">
+<title>proc~s00&#45;&gt;proc~fave03</title>
+<path fill="none" stroke="#000000" d="M211.89,-167.91C218.68,-141.37 237.65,-76.88 271,-33 271.38,-32.5 271.77,-32.01 272.17,-31.53"/>
+<polygon fill="#000000" stroke="#000000" points="274.91,-33.74 279.52,-24.2 269.97,-28.78 274.91,-33.74"/>
 </g>
 </g>
 </svg>
@@ -606,8 +535,6 @@ public subroutine C2IBPN(date1, date2, rbpn, rc2i)
     </div></div></div></div>
       </div>
     </div>
-     
-     
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Called by</h3>
@@ -630,63 +557,63 @@ public subroutine C2IBPN(date1, date2, rbpn, rc2i)
 <polygon fill="none" stroke="black" points="235,-45 181,-45 181,-21 235,-21 235,-45"/>
 <text text-anchor="middle" x="208" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50">C2IBPN</text>
 </g>
-<!-- proc~c2i00b -->
-<g id="proc~~c2ibpn~~CalledByGraph_node2" class="node">
-<title>proc~c2i00b</title>
-<g id="a_proc~~c2ibpn~~CalledByGraph_node2"><a xlink:href=".././proc/c2i00b.html" xlink:title="C2I00B">
-<polygon fill="#d9534f" stroke="#d9534f" points="145,-66 91,-66 91,-42 145,-42 145,-66"/>
-<text text-anchor="middle" x="118" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2I00B</text>
-</a>
-</g>
-</g>
-<!-- proc~c2i00b&#45;&gt;proc~c2ibpn -->
-<g id="proc~~c2ibpn~~CalledByGraph_edge1" class="edge">
-<title>proc~c2i00b&#45;&gt;proc~c2ibpn</title>
-<path fill="none" stroke="#000000" d="M145.4,-47.7C153.48,-45.77 162.51,-43.62 171.1,-41.57"/>
-<polygon fill="#000000" stroke="#000000" points="172,-44.95 180.92,-39.22 170.38,-38.14 172,-44.95"/>
-</g>
 <!-- proc~c2i00a -->
-<g id="proc~~c2ibpn~~CalledByGraph_node3" class="node">
+<g id="proc~~c2ibpn~~CalledByGraph_node2" class="node">
 <title>proc~c2i00a</title>
-<g id="a_proc~~c2ibpn~~CalledByGraph_node3"><a xlink:href=".././proc/c2i00a.html" xlink:title="C2I00A">
-<polygon fill="#d9534f" stroke="#d9534f" points="145,-24 91,-24 91,0 145,0 145,-24"/>
-<text text-anchor="middle" x="118" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2I00A</text>
+<g id="a_proc~~c2ibpn~~CalledByGraph_node2"><a xlink:href=".././proc/c2i00a.html" xlink:title="C2I00A">
+<polygon fill="#d9534f" stroke="#d9534f" points="145,-66 91,-66 91,-42 145,-42 145,-66"/>
+<text text-anchor="middle" x="118" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2I00A</text>
 </a>
 </g>
 </g>
 <!-- proc~c2i00a&#45;&gt;proc~c2ibpn -->
-<g id="proc~~c2ibpn~~CalledByGraph_edge2" class="edge">
+<g id="proc~~c2ibpn~~CalledByGraph_edge1" class="edge">
 <title>proc~c2i00a&#45;&gt;proc~c2ibpn</title>
-<path fill="none" stroke="#000000" d="M145.4,-18.3C153.48,-20.23 162.51,-22.38 171.1,-24.43"/>
-<polygon fill="#000000" stroke="#000000" points="170.38,-27.86 180.92,-26.78 172,-21.05 170.38,-27.86"/>
+<path fill="none" stroke="#000000" d="M145.4,-47.7C153.48,-45.77 162.51,-43.62 171.1,-41.57"/>
+<polygon fill="#000000" stroke="#000000" points="172,-44.95 180.92,-39.22 170.38,-38.14 172,-44.95"/>
 </g>
-<!-- proc~c2t00b -->
-<g id="proc~~c2ibpn~~CalledByGraph_node4" class="node">
-<title>proc~c2t00b</title>
-<g id="a_proc~~c2ibpn~~CalledByGraph_node4"><a xlink:href=".././proc/c2t00b.html" xlink:title="C2T00B">
-<polygon fill="#d9534f" stroke="#d9534f" points="55,-66 0,-66 0,-42 55,-42 55,-66"/>
-<text text-anchor="middle" x="27.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2T00B</text>
+<!-- proc~c2i00b -->
+<g id="proc~~c2ibpn~~CalledByGraph_node3" class="node">
+<title>proc~c2i00b</title>
+<g id="a_proc~~c2ibpn~~CalledByGraph_node3"><a xlink:href=".././proc/c2i00b.html" xlink:title="C2I00B">
+<polygon fill="#d9534f" stroke="#d9534f" points="145,-24 91,-24 91,0 145,0 145,-24"/>
+<text text-anchor="middle" x="118" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2I00B</text>
 </a>
 </g>
 </g>
-<!-- proc~c2t00b&#45;&gt;proc~c2i00b -->
-<g id="proc~~c2ibpn~~CalledByGraph_edge3" class="edge">
-<title>proc~c2t00b&#45;&gt;proc~c2i00b</title>
-<path fill="none" stroke="#000000" d="M55.05,-54C63.09,-54 72.06,-54 80.62,-54"/>
-<polygon fill="#000000" stroke="#000000" points="80.77,-57.5 90.77,-54 80.77,-50.5 80.77,-57.5"/>
+<!-- proc~c2i00b&#45;&gt;proc~c2ibpn -->
+<g id="proc~~c2ibpn~~CalledByGraph_edge2" class="edge">
+<title>proc~c2i00b&#45;&gt;proc~c2ibpn</title>
+<path fill="none" stroke="#000000" d="M145.4,-18.3C153.48,-20.23 162.51,-22.38 171.1,-24.43"/>
+<polygon fill="#000000" stroke="#000000" points="170.38,-27.86 180.92,-26.78 172,-21.05 170.38,-27.86"/>
 </g>
 <!-- proc~c2t00a -->
-<g id="proc~~c2ibpn~~CalledByGraph_node5" class="node">
+<g id="proc~~c2ibpn~~CalledByGraph_node4" class="node">
 <title>proc~c2t00a</title>
-<g id="a_proc~~c2ibpn~~CalledByGraph_node5"><a xlink:href=".././proc/c2t00a.html" xlink:title="C2T00A">
-<polygon fill="#d9534f" stroke="#d9534f" points="55,-24 0,-24 0,0 55,0 55,-24"/>
-<text text-anchor="middle" x="27.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2T00A</text>
+<g id="a_proc~~c2ibpn~~CalledByGraph_node4"><a xlink:href=".././proc/c2t00a.html" xlink:title="C2T00A">
+<polygon fill="#d9534f" stroke="#d9534f" points="55,-66 0,-66 0,-42 55,-42 55,-66"/>
+<text text-anchor="middle" x="27.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2T00A</text>
 </a>
 </g>
 </g>
 <!-- proc~c2t00a&#45;&gt;proc~c2i00a -->
-<g id="proc~~c2ibpn~~CalledByGraph_edge4" class="edge">
+<g id="proc~~c2ibpn~~CalledByGraph_edge3" class="edge">
 <title>proc~c2t00a&#45;&gt;proc~c2i00a</title>
+<path fill="none" stroke="#000000" d="M55.05,-54C63.09,-54 72.06,-54 80.62,-54"/>
+<polygon fill="#000000" stroke="#000000" points="80.77,-57.5 90.77,-54 80.77,-50.5 80.77,-57.5"/>
+</g>
+<!-- proc~c2t00b -->
+<g id="proc~~c2ibpn~~CalledByGraph_node5" class="node">
+<title>proc~c2t00b</title>
+<g id="a_proc~~c2ibpn~~CalledByGraph_node5"><a xlink:href=".././proc/c2t00b.html" xlink:title="C2T00B">
+<polygon fill="#d9534f" stroke="#d9534f" points="55,-24 0,-24 0,0 55,0 55,-24"/>
+<text text-anchor="middle" x="27.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2T00B</text>
+</a>
+</g>
+</g>
+<!-- proc~c2t00b&#45;&gt;proc~c2i00b -->
+<g id="proc~~c2ibpn~~CalledByGraph_edge4" class="edge">
+<title>proc~c2t00b&#45;&gt;proc~c2i00b</title>
 <path fill="none" stroke="#000000" d="M55.05,-12C63.09,-12 72.06,-12 80.62,-12"/>
 <polygon fill="#000000" stroke="#000000" points="80.77,-15.5 90.77,-12 80.77,-8.5 80.77,-15.5"/>
 </g>
@@ -753,34 +680,11 @@ public subroutine C2IBPN(date1, date2, rbpn, rc2i)
     </div></div></div></div>
       </div>
     </div>
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -788,74 +692,60 @@ public subroutine C2IBPN(date1, date2, rbpn, rc2i)
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">C2IBPN</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span><span class="p">,</span> <span class="n">rbpn</span><span class="p">,</span> <span class="n">rc2i</span> <span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">C2IBPN</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="p">,</span><span class="w"> </span><span class="n">date2</span><span class="p">,</span><span class="w"> </span><span class="n">rbpn</span><span class="p">,</span><span class="w"> </span><span class="n">rc2i</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date1</span> <span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date2</span> <span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">rbpn</span> <span class="c">!! celestial-to-true matrix (Note 2)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">rc2i</span> <span class="c">!! celestial-to-intermediate matrix (Note 3)</span>
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date1</span><span class="w"> </span><span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date2</span><span class="w"> </span><span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">rbpn</span><span class="w"> </span><span class="c">!! celestial-to-true matrix (Note 2)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">rc2i</span><span class="w"> </span><span class="c">!! celestial-to-intermediate matrix (Note 3)</span>
 
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"></span>
 
-    <span class="c">!  Extract the X,Y coordinates.</span>
-    <span class="k">call </span><span class="n">BPN2XY</span> <span class="p">(</span> <span class="n">rbpn</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Extract the X,Y coordinates.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">BPN2XY</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">rbpn</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Form the celestial-to-intermediate matrix (n.b. IAU 2000 specific).</span>
-    <span class="k">call </span><span class="n">C2IXY</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rc2i</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Form the celestial-to-intermediate matrix (n.b. IAU 2000 specific).</span>
+<span class="w">    </span><span class="k">call </span><span class="n">C2IXY</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="p">,</span><span class="w"> </span><span class="n">date2</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">rc2i</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">end subroutine </span><span class="n">C2IBPN</span>
+<span class="w">    </span><span class="k">end subroutine </span><span class="n">C2IBPN</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>astro-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -881,14 +771,11 @@ public subroutine C2IBPN(date1, date2, rbpn, rc2i)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

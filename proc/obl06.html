@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,45 +43,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-        
+              
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                                       </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -95,50 +68,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>OBL06
       <small>Function</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 0.2% of total for procedures.">9 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
-    
      <li><a href='../module/astro_module.html'>astro_module</a></li>
-    
-  
      <li class="active">OBL06</li>
   </ol>
 </div>
@@ -154,32 +106,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -187,24 +116,14 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-public function OBL06(date1, date2) result(obl)
+    <h2>public function OBL06(date1, date2) result(obl)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>Mean obliquity of the ecliptic, IAU 2006 precession model.</p>
 <p>Status:  canonical model.</p>
 <h3>Notes</h3>
@@ -242,69 +161,29 @@ public function OBL06(date1, date2) result(obl)
 <ul>
 <li>IAU SOFA revision: 2009 December 15</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-date1~9"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>date1</strong></td><td><p>TT as a 2-part Julian Date (Note 1)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-date2~9"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>date2</strong></td><td><p>TT as a 2-part Julian Date (Note 1)</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
-    
-    
-    
-    
-   <h3>Return Value <small><span class="anchor" id="variable-obl"></span>real(kind=wp)
-  </small></h3>
+   <h3>Return Value <small><span class="anchor" id="variable-obl"></span>real(kind=wp)</small></h3>
     <p>obliquity of the ecliptic (radians, Note 2)</p>
-    
-    
     <br>
-    
-    
-     
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Called by</h3>
@@ -316,243 +195,258 @@ public function OBL06(date1, date2) result(obl)
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: proc~~obl06~~CalledByGraph Pages: 1 -->
-<svg id="procobl06CalledByGraph" width="430pt" height="473pt"
- viewBox="0.00 0.00 430.00 473.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="proc~~obl06~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 469)">
+<svg id="procobl06CalledByGraph" width="430pt" height="488pt"
+ viewBox="0.00 0.00 430.00 488.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~obl06~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 484)">
 <title>proc~~obl06~~CalledByGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-469 426,-469 426,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-484 426,-484 426,4 -4,4"/>
 <!-- proc~obl06 -->
 <g id="proc~~obl06~~CalledByGraph_node1" class="node">
 <title>proc~obl06</title>
-<polygon fill="none" stroke="black" points="422,-339 368,-339 368,-315 422,-315 422,-339"/>
-<text text-anchor="middle" x="395" y="-324.6" font-family="Helvetica,sans-Serif" font-size="10.50">OBL06</text>
+<polygon fill="none" stroke="black" points="422,-410 368,-410 368,-386 422,-386 422,-410"/>
+<text text-anchor="middle" x="395" y="-395.6" font-family="Helvetica,sans-Serif" font-size="10.50">OBL06</text>
+</g>
+<!-- proc~num06a -->
+<g id="proc~~obl06~~CalledByGraph_node2" class="node">
+<title>proc~num06a</title>
+<g id="a_proc~~obl06~~CalledByGraph_node2"><a xlink:href=".././proc/num06a.html" xlink:title="NUM06A">
+<polygon fill="#d9534f" stroke="#d9534f" points="332,-480 274,-480 274,-456 332,-456 332,-480"/>
+<text text-anchor="middle" x="303" y="-465.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">NUM06A</text>
+</a>
+</g>
+</g>
+<!-- proc~num06a&#45;&gt;proc~obl06 -->
+<g id="proc~~obl06~~CalledByGraph_edge2" class="edge">
+<title>proc~num06a&#45;&gt;proc~obl06</title>
+<path fill="none" stroke="#000000" d="M319.68,-455.81C333.61,-444.97 354.2,-428.96 370.17,-416.53"/>
+<polygon fill="#000000" stroke="#000000" points="372.76,-418.96 378.5,-410.05 368.46,-413.43 372.76,-418.96"/>
 </g>
 <!-- proc~pfw06 -->
-<g id="proc~~obl06~~CalledByGraph_node2" class="node">
+<g id="proc~~obl06~~CalledByGraph_node3" class="node">
 <title>proc~pfw06</title>
-<g id="a_proc~~obl06~~CalledByGraph_node2"><a xlink:href=".././proc/pfw06.html" xlink:title="PFW06">
-<polygon fill="#d9534f" stroke="#d9534f" points="330,-360 276,-360 276,-336 330,-336 330,-360"/>
-<text text-anchor="middle" x="303" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PFW06</text>
+<g id="a_proc~~obl06~~CalledByGraph_node3"><a xlink:href=".././proc/pfw06.html" xlink:title="PFW06">
+<polygon fill="#d9534f" stroke="#d9534f" points="330,-380 276,-380 276,-356 330,-356 330,-380"/>
+<text text-anchor="middle" x="303" y="-365.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PFW06</text>
 </a>
 </g>
 </g>
 <!-- proc~pfw06&#45;&gt;proc~obl06 -->
-<g id="proc~~obl06~~CalledByGraph_edge1" class="edge">
+<g id="proc~~obl06~~CalledByGraph_edge4" class="edge">
 <title>proc~pfw06&#45;&gt;proc~obl06</title>
-<path fill="none" stroke="#000000" d="M330.03,-341.93C338.72,-339.9 348.57,-337.6 357.89,-335.43"/>
-<polygon fill="#000000" stroke="#000000" points="358.77,-338.81 367.71,-333.13 357.18,-332 358.77,-338.81"/>
+<path fill="none" stroke="#000000" d="M330.03,-376.68C338.82,-379.61 348.78,-382.93 358.19,-386.06"/>
+<polygon fill="#000000" stroke="#000000" points="357.12,-389.4 367.71,-389.24 359.33,-382.76 357.12,-389.4"/>
+</g>
+<!-- proc~p06e -->
+<g id="proc~~obl06~~CalledByGraph_node4" class="node">
+<title>proc~p06e</title>
+<g id="a_proc~~obl06~~CalledByGraph_node4"><a xlink:href=".././proc/p06e.html" xlink:title="P06E">
+<polygon fill="#d9534f" stroke="#d9534f" points="330,-338 276,-338 276,-314 330,-314 330,-338"/>
+<text text-anchor="middle" x="303" y="-323.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">P06E</text>
+</a>
+</g>
+</g>
+<!-- proc~p06e&#45;&gt;proc~obl06 -->
+<g id="proc~~obl06~~CalledByGraph_edge3" class="edge">
+<title>proc~p06e&#45;&gt;proc~obl06</title>
+<path fill="none" stroke="#000000" d="M320.38,-338.09C324.22,-340.98 328.27,-344.07 332,-347 345.32,-357.46 359.96,-369.48 371.67,-379.22"/>
+<polygon fill="#000000" stroke="#000000" points="369.7,-382.14 379.62,-385.86 374.19,-376.76 369.7,-382.14"/>
 </g>
 <!-- proc~ecm06 -->
-<g id="proc~~obl06~~CalledByGraph_node3" class="node">
+<g id="proc~~obl06~~CalledByGraph_node5" class="node">
 <title>proc~ecm06</title>
-<g id="a_proc~~obl06~~CalledByGraph_node3"><a xlink:href=".././proc/ecm06.html" xlink:title="ECM06">
+<g id="a_proc~~obl06~~CalledByGraph_node5"><a xlink:href=".././proc/ecm06.html" xlink:title="ECM06">
 <polygon fill="#d9534f" stroke="#d9534f" points="145.5,-444 91.5,-444 91.5,-420 145.5,-420 145.5,-444"/>
 <text text-anchor="middle" x="118.5" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ECM06</text>
 </a>
 </g>
 </g>
 <!-- proc~ecm06&#45;&gt;proc~obl06 -->
-<g id="proc~~obl06~~CalledByGraph_edge2" class="edge">
+<g id="proc~~obl06~~CalledByGraph_edge1" class="edge">
 <title>proc~ecm06&#45;&gt;proc~obl06</title>
-<path fill="none" stroke="#000000" d="M145.8,-428.87C170.09,-425.56 206.99,-419.5 238,-410 281.58,-396.64 292.07,-390.99 332,-369 344.85,-361.92 358.42,-352.93 369.57,-345.08"/>
-<polygon fill="#000000" stroke="#000000" points="371.85,-347.75 377.94,-339.08 367.77,-342.06 371.85,-347.75"/>
+<path fill="none" stroke="#000000" d="M145.82,-428.74C195.11,-422.63 301.42,-409.47 357.56,-402.51"/>
+<polygon fill="#000000" stroke="#000000" points="358.27,-405.95 367.76,-401.25 357.41,-399.01 358.27,-405.95"/>
 </g>
 <!-- proc~pmat06 -->
 <g id="proc~~obl06~~CalledByGraph_node6" class="node">
 <title>proc~pmat06</title>
 <g id="a_proc~~obl06~~CalledByGraph_node6"><a xlink:href=".././proc/pmat06.html" xlink:title="PMAT06">
-<polygon fill="#d9534f" stroke="#d9534f" points="237,-401 183,-401 183,-377 237,-377 237,-401"/>
-<text text-anchor="middle" x="210" y="-386.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PMAT06</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="237,-400 183,-400 183,-376 237,-376 237,-400"/>
+<text text-anchor="middle" x="210" y="-385.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PMAT06</text>
 </a>
 </g>
 </g>
 <!-- proc~ecm06&#45;&gt;proc~pmat06 -->
-<g id="proc~~obl06~~CalledByGraph_edge12" class="edge">
+<g id="proc~~obl06~~CalledByGraph_edge11" class="edge">
 <title>proc~ecm06&#45;&gt;proc~pmat06</title>
-<path fill="none" stroke="#000000" d="M144.91,-419.79C154.15,-415.35 164.76,-410.26 174.64,-405.51"/>
-<polygon fill="#000000" stroke="#000000" points="176.34,-408.57 183.84,-401.09 173.31,-402.26 176.34,-408.57"/>
-</g>
-<!-- proc~num06a -->
-<g id="proc~~obl06~~CalledByGraph_node4" class="node">
-<title>proc~num06a</title>
-<g id="a_proc~~obl06~~CalledByGraph_node4"><a xlink:href=".././proc/num06a.html" xlink:title="NUM06A">
-<polygon fill="#d9534f" stroke="#d9534f" points="332,-318 274,-318 274,-294 332,-294 332,-318"/>
-<text text-anchor="middle" x="303" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">NUM06A</text>
-</a>
-</g>
-</g>
-<!-- proc~num06a&#45;&gt;proc~obl06 -->
-<g id="proc~~obl06~~CalledByGraph_edge3" class="edge">
-<title>proc~num06a&#45;&gt;proc~obl06</title>
-<path fill="none" stroke="#000000" d="M332.48,-312.64C340.53,-314.52 349.41,-316.59 357.85,-318.56"/>
-<polygon fill="#000000" stroke="#000000" points="357.31,-322.03 367.85,-320.9 358.9,-315.22 357.31,-322.03"/>
-</g>
-<!-- proc~p06e -->
-<g id="proc~~obl06~~CalledByGraph_node5" class="node">
-<title>proc~p06e</title>
-<g id="a_proc~~obl06~~CalledByGraph_node5"><a xlink:href=".././proc/p06e.html" xlink:title="P06E">
-<polygon fill="#d9534f" stroke="#d9534f" points="330,-276 276,-276 276,-252 330,-252 330,-276"/>
-<text text-anchor="middle" x="303" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">P06E</text>
-</a>
-</g>
-</g>
-<!-- proc~p06e&#45;&gt;proc~obl06 -->
-<g id="proc~~obl06~~CalledByGraph_edge4" class="edge">
-<title>proc~p06e&#45;&gt;proc~obl06</title>
-<path fill="none" stroke="#000000" d="M321.35,-276.15C334.68,-285.47 353.28,-298.49 368.32,-309.02"/>
-<polygon fill="#000000" stroke="#000000" points="366.5,-312.02 376.7,-314.89 370.52,-306.29 366.5,-312.02"/>
+<path fill="none" stroke="#000000" d="M143.96,-419.98C153.63,-415.22 164.9,-409.68 175.32,-404.56"/>
+<polygon fill="#000000" stroke="#000000" points="177.14,-407.56 184.57,-400.01 174.05,-401.28 177.14,-407.56"/>
 </g>
 <!-- proc~pmat06&#45;&gt;proc~pfw06 -->
-<g id="proc~~obl06~~CalledByGraph_edge7" class="edge">
-<title>proc~pmat06&#45;&gt;proc~pfw06</title>
-<path fill="none" stroke="#000000" d="M237.32,-377.14C246.38,-373.06 256.67,-368.42 266.34,-364.07"/>
-<polygon fill="#000000" stroke="#000000" points="268.06,-367.13 275.74,-359.83 265.18,-360.75 268.06,-367.13"/>
-</g>
-<!-- proc~pn06 -->
-<g id="proc~~obl06~~CalledByGraph_node7" class="node">
-<title>proc~pn06</title>
-<g id="a_proc~~obl06~~CalledByGraph_node7"><a xlink:href=".././proc/pn06.html" xlink:title="PN06">
-<polygon fill="#d9534f" stroke="#d9534f" points="237,-319 183,-319 183,-295 237,-295 237,-319"/>
-<text text-anchor="middle" x="210" y="-304.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PN06</text>
-</a>
-</g>
-</g>
-<!-- proc~pn06&#45;&gt;proc~pfw06 -->
-<g id="proc~~obl06~~CalledByGraph_edge6" class="edge">
-<title>proc~pn06&#45;&gt;proc~pfw06</title>
-<path fill="none" stroke="#000000" d="M237.32,-318.86C246.38,-322.94 256.67,-327.58 266.34,-331.93"/>
-<polygon fill="#000000" stroke="#000000" points="265.18,-335.25 275.74,-336.17 268.06,-328.87 265.18,-335.25"/>
-</g>
-<!-- proc~eceq06 -->
-<g id="proc~~obl06~~CalledByGraph_node8" class="node">
-<title>proc~eceq06</title>
-<g id="a_proc~~obl06~~CalledByGraph_node8"><a xlink:href=".././proc/eceq06.html" xlink:title="ECEQ06">
-<polygon fill="#d9534f" stroke="#d9534f" points="55,-465 0,-465 0,-441 55,-441 55,-465"/>
-<text text-anchor="middle" x="27.5" y="-450.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ECEQ06</text>
-</a>
-</g>
-</g>
-<!-- proc~eceq06&#45;&gt;proc~ecm06 -->
-<g id="proc~~obl06~~CalledByGraph_edge10" class="edge">
-<title>proc~eceq06&#45;&gt;proc~ecm06</title>
-<path fill="none" stroke="#000000" d="M55.2,-446.7C63.45,-444.75 72.67,-442.58 81.43,-440.51"/>
-<polygon fill="#000000" stroke="#000000" points="82.5,-443.85 91.43,-438.15 80.89,-437.04 82.5,-443.85"/>
-</g>
-<!-- proc~bp06 -->
-<g id="proc~~obl06~~CalledByGraph_node9" class="node">
-<title>proc~bp06</title>
-<g id="a_proc~~obl06~~CalledByGraph_node9"><a xlink:href=".././proc/bp06.html" xlink:title="BP06">
-<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-360 91.5,-360 91.5,-336 145.5,-336 145.5,-360"/>
-<text text-anchor="middle" x="118.5" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">BP06</text>
-</a>
-</g>
-</g>
-<!-- proc~bp06&#45;&gt;proc~pfw06 -->
 <g id="proc~~obl06~~CalledByGraph_edge5" class="edge">
-<title>proc~bp06&#45;&gt;proc~pfw06</title>
-<path fill="none" stroke="#000000" d="M145.65,-348C177.09,-348 230.05,-348 265.5,-348"/>
-<polygon fill="#000000" stroke="#000000" points="265.9,-351.5 275.9,-348 265.9,-344.5 265.9,-351.5"/>
-</g>
-<!-- proc~bp06&#45;&gt;proc~pmat06 -->
-<g id="proc~~obl06~~CalledByGraph_edge11" class="edge">
-<title>proc~bp06&#45;&gt;proc~pmat06</title>
-<path fill="none" stroke="#000000" d="M145.87,-360.08C154.52,-364.04 164.28,-368.51 173.49,-372.73"/>
-<polygon fill="#000000" stroke="#000000" points="172.27,-376.02 182.82,-377.01 175.19,-369.66 172.27,-376.02"/>
+<title>proc~pmat06&#45;&gt;proc~pfw06</title>
+<path fill="none" stroke="#000000" d="M237.32,-382.22C246.19,-380.27 256.24,-378.06 265.74,-375.97"/>
+<polygon fill="#000000" stroke="#000000" points="266.72,-379.34 275.74,-373.77 265.22,-372.5 266.72,-379.34"/>
 </g>
 <!-- proc~eqec06 -->
-<g id="proc~~obl06~~CalledByGraph_node10" class="node">
+<g id="proc~~obl06~~CalledByGraph_node7" class="node">
 <title>proc~eqec06</title>
-<g id="a_proc~~obl06~~CalledByGraph_node10"><a xlink:href=".././proc/eqec06.html" xlink:title="EQEC06">
-<polygon fill="#d9534f" stroke="#d9534f" points="55,-423 0,-423 0,-399 55,-399 55,-423"/>
-<text text-anchor="middle" x="27.5" y="-408.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">EQEC06</text>
+<g id="a_proc~~obl06~~CalledByGraph_node7"><a xlink:href=".././proc/eqec06.html" xlink:title="EQEC06">
+<polygon fill="#d9534f" stroke="#d9534f" points="55,-465 0,-465 0,-441 55,-441 55,-465"/>
+<text text-anchor="middle" x="27.5" y="-450.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">EQEC06</text>
 </a>
 </g>
 </g>
 <!-- proc~eqec06&#45;&gt;proc~ecm06 -->
 <g id="proc~~obl06~~CalledByGraph_edge9" class="edge">
 <title>proc~eqec06&#45;&gt;proc~ecm06</title>
+<path fill="none" stroke="#000000" d="M55.2,-446.7C63.45,-444.75 72.67,-442.58 81.43,-440.51"/>
+<polygon fill="#000000" stroke="#000000" points="82.5,-443.85 91.43,-438.15 80.89,-437.04 82.5,-443.85"/>
+</g>
+<!-- proc~bp06 -->
+<g id="proc~~obl06~~CalledByGraph_node8" class="node">
+<title>proc~bp06</title>
+<g id="a_proc~~obl06~~CalledByGraph_node8"><a xlink:href=".././proc/bp06.html" xlink:title="BP06">
+<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-360 91.5,-360 91.5,-336 145.5,-336 145.5,-360"/>
+<text text-anchor="middle" x="118.5" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">BP06</text>
+</a>
+</g>
+</g>
+<!-- proc~bp06&#45;&gt;proc~pfw06 -->
+<g id="proc~~obl06~~CalledByGraph_edge8" class="edge">
+<title>proc~bp06&#45;&gt;proc~pfw06</title>
+<path fill="none" stroke="#000000" d="M145.65,-350.87C177.22,-354.33 230.5,-360.16 265.96,-364.05"/>
+<polygon fill="#000000" stroke="#000000" points="265.58,-367.53 275.9,-365.14 266.34,-360.57 265.58,-367.53"/>
+</g>
+<!-- proc~bp06&#45;&gt;proc~pmat06 -->
+<g id="proc~~obl06~~CalledByGraph_edge13" class="edge">
+<title>proc~bp06&#45;&gt;proc~pmat06</title>
+<path fill="none" stroke="#000000" d="M145.87,-359.78C154.52,-363.65 164.28,-368.01 173.49,-372.13"/>
+<polygon fill="#000000" stroke="#000000" points="172.26,-375.41 182.82,-376.3 175.12,-369.02 172.26,-375.41"/>
+</g>
+<!-- proc~eceq06 -->
+<g id="proc~~obl06~~CalledByGraph_node9" class="node">
+<title>proc~eceq06</title>
+<g id="a_proc~~obl06~~CalledByGraph_node9"><a xlink:href=".././proc/eceq06.html" xlink:title="ECEQ06">
+<polygon fill="#d9534f" stroke="#d9534f" points="55,-423 0,-423 0,-399 55,-399 55,-423"/>
+<text text-anchor="middle" x="27.5" y="-408.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ECEQ06</text>
+</a>
+</g>
+</g>
+<!-- proc~eceq06&#45;&gt;proc~ecm06 -->
+<g id="proc~~obl06~~CalledByGraph_edge10" class="edge">
+<title>proc~eceq06&#45;&gt;proc~ecm06</title>
 <path fill="none" stroke="#000000" d="M55.2,-417.3C63.45,-419.25 72.67,-421.42 81.43,-423.49"/>
 <polygon fill="#000000" stroke="#000000" points="80.89,-426.96 91.43,-425.85 82.5,-420.15 80.89,-426.96"/>
 </g>
 <!-- proc~pnm06a -->
-<g id="proc~~obl06~~CalledByGraph_node11" class="node">
+<g id="proc~~obl06~~CalledByGraph_node10" class="node">
 <title>proc~pnm06a</title>
-<g id="a_proc~~obl06~~CalledByGraph_node11"><a xlink:href=".././proc/pnm06a.html" xlink:title="PNM06A">
-<polygon fill="#d9534f" stroke="#d9534f" points="238,-171 182,-171 182,-147 238,-147 238,-171"/>
-<text text-anchor="middle" x="210" y="-156.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PNM06A</text>
+<g id="a_proc~~obl06~~CalledByGraph_node10"><a xlink:href=".././proc/pnm06a.html" xlink:title="PNM06A">
+<polygon fill="#d9534f" stroke="#d9534f" points="238,-213 182,-213 182,-189 238,-189 238,-213"/>
+<text text-anchor="middle" x="210" y="-198.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PNM06A</text>
 </a>
 </g>
 </g>
 <!-- proc~pnm06a&#45;&gt;proc~pfw06 -->
-<g id="proc~~obl06~~CalledByGraph_edge8" class="edge">
+<g id="proc~~obl06~~CalledByGraph_edge6" class="edge">
 <title>proc~pnm06a&#45;&gt;proc~pfw06</title>
-<path fill="none" stroke="#000000" d="M213.11,-171.11C218.69,-200.41 236.08,-276.39 274,-327 274.45,-327.6 274.92,-328.19 275.42,-328.78"/>
-<polygon fill="#000000" stroke="#000000" points="272.99,-331.3 282.6,-335.77 277.87,-326.29 272.99,-331.3"/>
+<path fill="none" stroke="#000000" d="M213.92,-213.07C220.79,-239.56 240,-303.85 274,-347 274.48,-347.61 274.98,-348.21 275.5,-348.8"/>
+<polygon fill="#000000" stroke="#000000" points="273.35,-351.58 283.01,-355.91 278.16,-346.49 273.35,-351.58"/>
 </g>
-<!-- proc~xys06a -->
-<g id="proc~~obl06~~CalledByGraph_node12" class="node">
-<title>proc~xys06a</title>
-<g id="a_proc~~obl06~~CalledByGraph_node12"><a xlink:href=".././proc/xys06a.html" xlink:title="XYS06A">
-<polygon fill="#d9534f" stroke="#d9534f" points="146,-276 91,-276 91,-252 146,-252 146,-276"/>
-<text text-anchor="middle" x="118.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">XYS06A</text>
+<!-- proc~pn06 -->
+<g id="proc~~obl06~~CalledByGraph_node11" class="node">
+<title>proc~pn06</title>
+<g id="a_proc~~obl06~~CalledByGraph_node11"><a xlink:href=".././proc/pn06.html" xlink:title="PN06">
+<polygon fill="#d9534f" stroke="#d9534f" points="237,-108 183,-108 183,-84 237,-84 237,-108"/>
+<text text-anchor="middle" x="210" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PN06</text>
 </a>
 </g>
 </g>
-<!-- proc~xys06a&#45;&gt;proc~pnm06a -->
-<g id="proc~~obl06~~CalledByGraph_edge15" class="edge">
-<title>proc~xys06a&#45;&gt;proc~pnm06a</title>
-<path fill="none" stroke="#000000" d="M136.04,-251.97C139.48,-249.18 142.97,-246.11 146,-243 165.28,-223.2 183.81,-197.4 195.73,-179.65"/>
-<polygon fill="#000000" stroke="#000000" points="198.73,-181.44 201.32,-171.17 192.89,-177.59 198.73,-181.44"/>
+<!-- proc~pn06&#45;&gt;proc~pfw06 -->
+<g id="proc~~obl06~~CalledByGraph_edge7" class="edge">
+<title>proc~pn06&#45;&gt;proc~pfw06</title>
+<path fill="none" stroke="#000000" d="M215.32,-108.13C220.99,-124.36 231.07,-154.11 238,-180 257.64,-253.34 233.04,-283.07 274,-347 274.33,-347.51 274.67,-348.02 275.03,-348.51"/>
+<polygon fill="#000000" stroke="#000000" points="272.51,-350.93 281.92,-355.81 277.6,-346.13 272.51,-350.93"/>
 </g>
 <!-- proc~pn06a -->
-<g id="proc~~obl06~~CalledByGraph_node13" class="node">
+<g id="proc~~obl06~~CalledByGraph_node12" class="node">
 <title>proc~pn06a</title>
-<g id="a_proc~~obl06~~CalledByGraph_node13"><a xlink:href=".././proc/pn06a.html" xlink:title="PN06A">
-<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-318 91.5,-318 91.5,-294 145.5,-294 145.5,-318"/>
-<text text-anchor="middle" x="118.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PN06A</text>
+<g id="a_proc~~obl06~~CalledByGraph_node12"><a xlink:href=".././proc/pn06a.html" xlink:title="PN06A">
+<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-24 91.5,-24 91.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="118.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PN06A</text>
 </a>
 </g>
 </g>
 <!-- proc~pn06a&#45;&gt;proc~pn06 -->
-<g id="proc~~obl06~~CalledByGraph_edge14" class="edge">
+<g id="proc~~obl06~~CalledByGraph_edge21" class="edge">
 <title>proc~pn06a&#45;&gt;proc~pn06</title>
-<path fill="none" stroke="#000000" d="M145.87,-306.29C154.24,-306.39 163.66,-306.49 172.61,-306.59"/>
-<polygon fill="#000000" stroke="#000000" points="172.78,-310.1 182.82,-306.71 172.86,-303.1 172.78,-310.1"/>
+<path fill="none" stroke="#000000" d="M135.44,-24.14C138.98,-26.98 142.67,-30.03 146,-33 161.69,-46.97 178.46,-63.85 190.75,-76.62"/>
+<polygon fill="#000000" stroke="#000000" points="188.34,-79.16 197.78,-83.98 193.4,-74.33 188.34,-79.16"/>
 </g>
-<!-- proc~c2i06a -->
-<g id="proc~~obl06~~CalledByGraph_node14" class="node">
-<title>proc~c2i06a</title>
-<g id="a_proc~~obl06~~CalledByGraph_node14"><a xlink:href=".././proc/c2i06a.html" xlink:title="C2I06A">
-<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-234 91.5,-234 91.5,-210 145.5,-210 145.5,-234"/>
-<text text-anchor="middle" x="118.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2I06A</text>
+<!-- proc~s06a -->
+<g id="proc~~obl06~~CalledByGraph_node13" class="node">
+<title>proc~s06a</title>
+<g id="a_proc~~obl06~~CalledByGraph_node13"><a xlink:href=".././proc/s06a.html" xlink:title="S06A">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="145.5,-318 91.5,-318 91.5,-294 145.5,-294 145.5,-318"/>
+<text text-anchor="middle" x="118.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">S06A</text>
 </a>
 </g>
 </g>
-<!-- proc~c2i06a&#45;&gt;proc~pnm06a -->
+<!-- proc~s06a&#45;&gt;proc~pnm06a -->
+<g id="proc~~obl06~~CalledByGraph_edge14" class="edge">
+<title>proc~s06a&#45;&gt;proc~pnm06a</title>
+<path fill="none" stroke="#000000" d="M136.04,-293.97C139.48,-291.18 142.97,-288.11 146,-285 165.28,-265.2 183.81,-239.4 195.73,-221.65"/>
+<polygon fill="#000000" stroke="#000000" points="198.73,-223.44 201.32,-213.17 192.89,-219.59 198.73,-223.44"/>
+</g>
+<!-- proc~eo06a -->
+<g id="proc~~obl06~~CalledByGraph_node14" class="node">
+<title>proc~eo06a</title>
+<g id="a_proc~~obl06~~CalledByGraph_node14"><a xlink:href=".././proc/eo06a.html" xlink:title="EO06A">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="145.5,-276 91.5,-276 91.5,-252 145.5,-252 145.5,-276"/>
+<text text-anchor="middle" x="118.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">EO06A</text>
+</a>
+</g>
+</g>
+<!-- proc~eo06a&#45;&gt;proc~pnm06a -->
 <g id="proc~~obl06~~CalledByGraph_edge16" class="edge">
-<title>proc~c2i06a&#45;&gt;proc~pnm06a</title>
-<path fill="none" stroke="#000000" d="M136.76,-209.85C150,-200.53 168.5,-187.51 183.46,-176.98"/>
-<polygon fill="#000000" stroke="#000000" points="185.63,-179.73 191.8,-171.11 181.6,-174 185.63,-179.73"/>
+<title>proc~eo06a&#45;&gt;proc~pnm06a</title>
+<path fill="none" stroke="#000000" d="M136.76,-251.85C150,-242.53 168.5,-229.51 183.46,-218.98"/>
+<polygon fill="#000000" stroke="#000000" points="185.63,-221.73 191.8,-213.11 181.6,-216 185.63,-221.73"/>
 </g>
 <!-- proc~apci13 -->
 <g id="proc~~obl06~~CalledByGraph_node15" class="node">
 <title>proc~apci13</title>
 <g id="a_proc~~obl06~~CalledByGraph_node15"><a xlink:href=".././proc/apci13.html" xlink:title="APCI13">
-<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-192 91.5,-192 91.5,-168 145.5,-168 145.5,-192"/>
-<text text-anchor="middle" x="118.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APCI13</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-234 91.5,-234 91.5,-210 145.5,-210 145.5,-234"/>
+<text text-anchor="middle" x="118.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APCI13</text>
 </a>
 </g>
 </g>
 <!-- proc~apci13&#45;&gt;proc~pnm06a -->
-<g id="proc~~obl06~~CalledByGraph_edge17" class="edge">
+<g id="proc~~obl06~~CalledByGraph_edge15" class="edge">
 <title>proc~apci13&#45;&gt;proc~pnm06a</title>
-<path fill="none" stroke="#000000" d="M145.87,-173.81C154.02,-171.9 163.16,-169.76 171.9,-167.71"/>
-<polygon fill="#000000" stroke="#000000" points="172.95,-171.05 181.89,-165.36 171.35,-164.24 172.95,-171.05"/>
+<path fill="none" stroke="#000000" d="M145.87,-215.81C154.02,-213.9 163.16,-211.76 171.9,-209.71"/>
+<polygon fill="#000000" stroke="#000000" points="172.95,-213.05 181.89,-207.36 171.35,-206.24 172.95,-213.05"/>
+</g>
+<!-- proc~apco13 -->
+<g id="proc~~obl06~~CalledByGraph_node16" class="node">
+<title>proc~apco13</title>
+<g id="a_proc~~obl06~~CalledByGraph_node16"><a xlink:href=".././proc/apco13.html" xlink:title="APCO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="146,-192 91,-192 91,-168 146,-168 146,-192"/>
+<text text-anchor="middle" x="118.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APCO13</text>
+</a>
+</g>
+</g>
+<!-- proc~apco13&#45;&gt;proc~pnm06a -->
+<g id="proc~~obl06~~CalledByGraph_edge17" class="edge">
+<title>proc~apco13&#45;&gt;proc~pnm06a</title>
+<path fill="none" stroke="#000000" d="M146.35,-186.3C154.42,-188.19 163.42,-190.3 172.02,-192.32"/>
+<polygon fill="#000000" stroke="#000000" points="171.32,-195.75 181.86,-194.63 172.92,-188.94 171.32,-195.75"/>
 </g>
 <!-- proc~gst06a -->
-<g id="proc~~obl06~~CalledByGraph_node16" class="node">
+<g id="proc~~obl06~~CalledByGraph_node17" class="node">
 <title>proc~gst06a</title>
-<g id="a_proc~~obl06~~CalledByGraph_node16"><a xlink:href=".././proc/gst06a.html" xlink:title="GST06A">
+<g id="a_proc~~obl06~~CalledByGraph_node17"><a xlink:href=".././proc/gst06a.html" xlink:title="GST06A">
 <polygon fill="#d94e8f" stroke="#d94e8f" points="146,-150 91,-150 91,-126 146,-126 146,-150"/>
 <text text-anchor="middle" x="118.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">GST06A</text>
 </a>
@@ -561,38 +455,23 @@ public function OBL06(date1, date2) result(obl)
 <!-- proc~gst06a&#45;&gt;proc~pnm06a -->
 <g id="proc~~obl06~~CalledByGraph_edge18" class="edge">
 <title>proc~gst06a&#45;&gt;proc~pnm06a</title>
-<path fill="none" stroke="#000000" d="M146.35,-144.3C154.42,-146.19 163.42,-148.3 172.02,-150.32"/>
-<polygon fill="#000000" stroke="#000000" points="171.32,-153.75 181.86,-152.63 172.92,-146.94 171.32,-153.75"/>
+<path fill="none" stroke="#000000" d="M136.76,-150.15C150,-159.47 168.5,-172.49 183.46,-183.02"/>
+<polygon fill="#000000" stroke="#000000" points="181.6,-186 191.8,-188.89 185.63,-180.27 181.6,-186"/>
 </g>
-<!-- proc~eo06a -->
-<g id="proc~~obl06~~CalledByGraph_node17" class="node">
-<title>proc~eo06a</title>
-<g id="a_proc~~obl06~~CalledByGraph_node17"><a xlink:href=".././proc/eo06a.html" xlink:title="EO06A">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="145.5,-108 91.5,-108 91.5,-84 145.5,-84 145.5,-108"/>
-<text text-anchor="middle" x="118.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">EO06A</text>
-</a>
-</g>
-</g>
-<!-- proc~eo06a&#45;&gt;proc~pnm06a -->
-<g id="proc~~obl06~~CalledByGraph_edge19" class="edge">
-<title>proc~eo06a&#45;&gt;proc~pnm06a</title>
-<path fill="none" stroke="#000000" d="M136.76,-108.15C150,-117.47 168.5,-130.49 183.46,-141.02"/>
-<polygon fill="#000000" stroke="#000000" points="181.6,-144 191.8,-146.89 185.63,-138.27 181.6,-144"/>
-</g>
-<!-- proc~apco13 -->
+<!-- proc~xys06a -->
 <g id="proc~~obl06~~CalledByGraph_node18" class="node">
-<title>proc~apco13</title>
-<g id="a_proc~~obl06~~CalledByGraph_node18"><a xlink:href=".././proc/apco13.html" xlink:title="APCO13">
-<polygon fill="#d9534f" stroke="#d9534f" points="146,-66 91,-66 91,-42 146,-42 146,-66"/>
-<text text-anchor="middle" x="118.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APCO13</text>
+<title>proc~xys06a</title>
+<g id="a_proc~~obl06~~CalledByGraph_node18"><a xlink:href=".././proc/xys06a.html" xlink:title="XYS06A">
+<polygon fill="#d9534f" stroke="#d9534f" points="146,-108 91,-108 91,-84 146,-84 146,-108"/>
+<text text-anchor="middle" x="118.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">XYS06A</text>
 </a>
 </g>
 </g>
-<!-- proc~apco13&#45;&gt;proc~pnm06a -->
-<g id="proc~~obl06~~CalledByGraph_edge20" class="edge">
-<title>proc~apco13&#45;&gt;proc~pnm06a</title>
-<path fill="none" stroke="#000000" d="M136.04,-66.03C139.48,-68.82 142.97,-71.89 146,-75 165.28,-94.8 183.81,-120.6 195.73,-138.35"/>
-<polygon fill="#000000" stroke="#000000" points="192.89,-140.41 201.32,-146.83 198.73,-136.56 192.89,-140.41"/>
+<!-- proc~xys06a&#45;&gt;proc~pnm06a -->
+<g id="proc~~obl06~~CalledByGraph_edge19" class="edge">
+<title>proc~xys06a&#45;&gt;proc~pnm06a</title>
+<path fill="none" stroke="#000000" d="M136.04,-108.03C139.48,-110.82 142.97,-113.89 146,-117 165.28,-136.8 183.81,-162.6 195.73,-180.35"/>
+<polygon fill="#000000" stroke="#000000" points="192.89,-182.41 201.32,-188.83 198.73,-178.56 192.89,-182.41"/>
 </g>
 <!-- proc~pb06 -->
 <g id="proc~~obl06~~CalledByGraph_node19" class="node">
@@ -604,115 +483,115 @@ public function OBL06(date1, date2) result(obl)
 </g>
 </g>
 <!-- proc~pb06&#45;&gt;proc~pmat06 -->
-<g id="proc~~obl06~~CalledByGraph_edge13" class="edge">
+<g id="proc~~obl06~~CalledByGraph_edge12" class="edge">
 <title>proc~pb06&#45;&gt;proc~pmat06</title>
-<path fill="none" stroke="#000000" d="M145.87,-389.71C154.24,-389.61 163.66,-389.51 172.61,-389.41"/>
-<polygon fill="#000000" stroke="#000000" points="172.86,-392.9 182.82,-389.29 172.78,-385.9 172.86,-392.9"/>
+<path fill="none" stroke="#000000" d="M145.87,-389.41C154.24,-389.22 163.66,-389.01 172.61,-388.81"/>
+<polygon fill="#000000" stroke="#000000" points="172.9,-392.31 182.82,-388.59 172.74,-385.31 172.9,-392.31"/>
 </g>
-<!-- proc~s06a -->
+<!-- proc~c2i06a -->
 <g id="proc~~obl06~~CalledByGraph_node20" class="node">
-<title>proc~s06a</title>
-<g id="a_proc~~obl06~~CalledByGraph_node20"><a xlink:href=".././proc/s06a.html" xlink:title="S06A">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="145.5,-24 91.5,-24 91.5,0 145.5,0 145.5,-24"/>
-<text text-anchor="middle" x="118.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">S06A</text>
+<title>proc~c2i06a</title>
+<g id="a_proc~~obl06~~CalledByGraph_node20"><a xlink:href=".././proc/c2i06a.html" xlink:title="C2I06A">
+<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-66 91.5,-66 91.5,-42 145.5,-42 145.5,-66"/>
+<text text-anchor="middle" x="118.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2I06A</text>
 </a>
 </g>
 </g>
-<!-- proc~s06a&#45;&gt;proc~pnm06a -->
-<g id="proc~~obl06~~CalledByGraph_edge21" class="edge">
-<title>proc~s06a&#45;&gt;proc~pnm06a</title>
-<path fill="none" stroke="#000000" d="M137.04,-24.1C140.25,-26.8 143.41,-29.81 146,-33 172.41,-65.51 191.68,-110.92 201.54,-137.41"/>
-<polygon fill="#000000" stroke="#000000" points="198.28,-138.67 204.97,-146.89 204.86,-136.29 198.28,-138.67"/>
+<!-- proc~c2i06a&#45;&gt;proc~pnm06a -->
+<g id="proc~~obl06~~CalledByGraph_edge20" class="edge">
+<title>proc~c2i06a&#45;&gt;proc~pnm06a</title>
+<path fill="none" stroke="#000000" d="M137.04,-66.1C140.25,-68.8 143.41,-71.81 146,-75 172.41,-107.51 191.68,-152.92 201.54,-179.41"/>
+<polygon fill="#000000" stroke="#000000" points="198.28,-180.67 204.97,-188.89 204.86,-178.29 198.28,-180.67"/>
 </g>
-<!-- proc~ee06a -->
+<!-- proc~atoc13 -->
 <g id="proc~~obl06~~CalledByGraph_node21" class="node">
-<title>proc~ee06a</title>
-<g id="a_proc~~obl06~~CalledByGraph_node21"><a xlink:href=".././proc/ee06a.html" xlink:title="EE06A">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="54.5,-129 0.5,-129 0.5,-105 54.5,-105 54.5,-129"/>
-<text text-anchor="middle" x="27.5" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">EE06A</text>
+<title>proc~atoc13</title>
+<g id="a_proc~~obl06~~CalledByGraph_node21"><a xlink:href=".././proc/atoc13.html" xlink:title="ATOC13">
+<polygon fill="#d9534f" stroke="#d9534f" points="55,-192 0,-192 0,-168 55,-168 55,-192"/>
+<text text-anchor="middle" x="27.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOC13</text>
 </a>
 </g>
 </g>
-<!-- proc~ee06a&#45;&gt;proc~gst06a -->
-<g id="proc~~obl06~~CalledByGraph_edge25" class="edge">
-<title>proc~ee06a&#45;&gt;proc~gst06a</title>
-<path fill="none" stroke="#000000" d="M54.72,-123.19C62.9,-125.12 72.08,-127.28 80.84,-129.35"/>
-<polygon fill="#000000" stroke="#000000" points="80.31,-132.82 90.85,-131.71 81.92,-126.01 80.31,-132.82"/>
-</g>
-<!-- proc~atic13 -->
-<g id="proc~~obl06~~CalledByGraph_node22" class="node">
-<title>proc~atic13</title>
-<g id="a_proc~~obl06~~CalledByGraph_node22"><a xlink:href=".././proc/atic13.html" xlink:title="ATIC13">
-<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-213 0.5,-213 0.5,-189 54.5,-189 54.5,-213"/>
-<text text-anchor="middle" x="27.5" y="-198.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATIC13</text>
-</a>
-</g>
-</g>
-<!-- proc~atic13&#45;&gt;proc~apci13 -->
+<!-- proc~atoc13&#45;&gt;proc~apco13 -->
 <g id="proc~~obl06~~CalledByGraph_edge24" class="edge">
-<title>proc~atic13&#45;&gt;proc~apci13</title>
-<path fill="none" stroke="#000000" d="M54.72,-194.81C63.14,-192.83 72.62,-190.59 81.61,-188.47"/>
-<polygon fill="#000000" stroke="#000000" points="82.54,-191.85 91.47,-186.14 80.93,-185.03 82.54,-191.85"/>
+<title>proc~atoc13&#45;&gt;proc~apco13</title>
+<path fill="none" stroke="#000000" d="M55.2,-180C63.21,-180 72.14,-180 80.68,-180"/>
+<polygon fill="#000000" stroke="#000000" points="80.82,-183.5 90.82,-180 80.82,-176.5 80.82,-183.5"/>
+</g>
+<!-- proc~atci13 -->
+<g id="proc~~obl06~~CalledByGraph_node22" class="node">
+<title>proc~atci13</title>
+<g id="a_proc~~obl06~~CalledByGraph_node22"><a xlink:href=".././proc/atci13.html" xlink:title="ATCI13">
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-276 0.5,-276 0.5,-252 54.5,-252 54.5,-276"/>
+<text text-anchor="middle" x="27.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATCI13</text>
+</a>
+</g>
+</g>
+<!-- proc~atci13&#45;&gt;proc~apci13 -->
+<g id="proc~~obl06~~CalledByGraph_edge22" class="edge">
+<title>proc~atci13&#45;&gt;proc~apci13</title>
+<path fill="none" stroke="#000000" d="M54.24,-251.85C63.1,-247.67 73.17,-242.92 82.63,-238.46"/>
+<polygon fill="#000000" stroke="#000000" points="84.27,-241.55 91.82,-234.12 81.28,-235.22 84.27,-241.55"/>
 </g>
 <!-- proc~c2t06a -->
 <g id="proc~~obl06~~CalledByGraph_node23" class="node">
 <title>proc~c2t06a</title>
 <g id="a_proc~~obl06~~CalledByGraph_node23"><a xlink:href=".././proc/c2t06a.html" xlink:title="C2T06A">
-<polygon fill="#d9534f" stroke="#d9534f" points="55,-255 0,-255 0,-231 55,-231 55,-255"/>
-<text text-anchor="middle" x="27.5" y="-240.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2T06A</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="55,-66 0,-66 0,-42 55,-42 55,-66"/>
+<text text-anchor="middle" x="27.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2T06A</text>
 </a>
 </g>
 </g>
 <!-- proc~c2t06a&#45;&gt;proc~c2i06a -->
-<g id="proc~~obl06~~CalledByGraph_edge22" class="edge">
-<title>proc~c2t06a&#45;&gt;proc~c2i06a</title>
-<path fill="none" stroke="#000000" d="M55.2,-236.7C63.45,-234.75 72.67,-232.58 81.43,-230.51"/>
-<polygon fill="#000000" stroke="#000000" points="82.5,-233.85 91.43,-228.15 80.89,-227.04 82.5,-233.85"/>
-</g>
-<!-- proc~atoc13 -->
-<g id="proc~~obl06~~CalledByGraph_node24" class="node">
-<title>proc~atoc13</title>
-<g id="a_proc~~obl06~~CalledByGraph_node24"><a xlink:href=".././proc/atoc13.html" xlink:title="ATOC13">
-<polygon fill="#d9534f" stroke="#d9534f" points="55,-87 0,-87 0,-63 55,-63 55,-87"/>
-<text text-anchor="middle" x="27.5" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOC13</text>
-</a>
-</g>
-</g>
-<!-- proc~atoc13&#45;&gt;proc~apco13 -->
 <g id="proc~~obl06~~CalledByGraph_edge27" class="edge">
-<title>proc~atoc13&#45;&gt;proc~apco13</title>
-<path fill="none" stroke="#000000" d="M55.2,-68.7C63.3,-66.79 72.34,-64.66 80.96,-62.62"/>
-<polygon fill="#000000" stroke="#000000" points="81.89,-66 90.82,-60.3 80.28,-59.19 81.89,-66"/>
+<title>proc~c2t06a&#45;&gt;proc~c2i06a</title>
+<path fill="none" stroke="#000000" d="M55.2,-54C63.36,-54 72.47,-54 81.15,-54"/>
+<polygon fill="#000000" stroke="#000000" points="81.43,-57.5 91.43,-54 81.43,-50.5 81.43,-57.5"/>
 </g>
-<!-- proc~atci13 -->
-<g id="proc~~obl06~~CalledByGraph_node25" class="node">
-<title>proc~atci13</title>
-<g id="a_proc~~obl06~~CalledByGraph_node25"><a xlink:href=".././proc/atci13.html" xlink:title="ATCI13">
-<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-171 0.5,-171 0.5,-147 54.5,-147 54.5,-171"/>
-<text text-anchor="middle" x="27.5" y="-156.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATCI13</text>
+<!-- proc~ee06a -->
+<g id="proc~~obl06~~CalledByGraph_node24" class="node">
+<title>proc~ee06a</title>
+<g id="a_proc~~obl06~~CalledByGraph_node24"><a xlink:href=".././proc/ee06a.html" xlink:title="EE06A">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="54.5,-108 0.5,-108 0.5,-84 54.5,-84 54.5,-108"/>
+<text text-anchor="middle" x="27.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">EE06A</text>
 </a>
 </g>
 </g>
-<!-- proc~atci13&#45;&gt;proc~apci13 -->
+<!-- proc~ee06a&#45;&gt;proc~gst06a -->
+<g id="proc~~obl06~~CalledByGraph_edge26" class="edge">
+<title>proc~ee06a&#45;&gt;proc~gst06a</title>
+<path fill="none" stroke="#000000" d="M54.24,-108.15C63.1,-112.33 73.17,-117.08 82.63,-121.54"/>
+<polygon fill="#000000" stroke="#000000" points="81.28,-124.78 91.82,-125.88 84.27,-118.45 81.28,-124.78"/>
+</g>
+<!-- proc~atic13 -->
+<g id="proc~~obl06~~CalledByGraph_node25" class="node">
+<title>proc~atic13</title>
+<g id="a_proc~~obl06~~CalledByGraph_node25"><a xlink:href=".././proc/atic13.html" xlink:title="ATIC13">
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-234 0.5,-234 0.5,-210 54.5,-210 54.5,-234"/>
+<text text-anchor="middle" x="27.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATIC13</text>
+</a>
+</g>
+</g>
+<!-- proc~atic13&#45;&gt;proc~apci13 -->
 <g id="proc~~obl06~~CalledByGraph_edge23" class="edge">
-<title>proc~atci13&#45;&gt;proc~apci13</title>
-<path fill="none" stroke="#000000" d="M54.72,-165.19C63.14,-167.17 72.62,-169.41 81.61,-171.53"/>
-<polygon fill="#000000" stroke="#000000" points="80.93,-174.97 91.47,-173.86 82.54,-168.15 80.93,-174.97"/>
+<title>proc~atic13&#45;&gt;proc~apci13</title>
+<path fill="none" stroke="#000000" d="M54.72,-222C63.05,-222 72.41,-222 81.32,-222"/>
+<polygon fill="#000000" stroke="#000000" points="81.47,-225.5 91.47,-222 81.47,-218.5 81.47,-225.5"/>
 </g>
 <!-- proc~atco13 -->
 <g id="proc~~obl06~~CalledByGraph_node26" class="node">
 <title>proc~atco13</title>
 <g id="a_proc~~obl06~~CalledByGraph_node26"><a xlink:href=".././proc/atco13.html" xlink:title="ATCO13">
-<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-45 0.5,-45 0.5,-21 54.5,-21 54.5,-45"/>
-<text text-anchor="middle" x="27.5" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATCO13</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-150 0.5,-150 0.5,-126 54.5,-126 54.5,-150"/>
+<text text-anchor="middle" x="27.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATCO13</text>
 </a>
 </g>
 </g>
 <!-- proc~atco13&#45;&gt;proc~apco13 -->
-<g id="proc~~obl06~~CalledByGraph_edge26" class="edge">
+<g id="proc~~obl06~~CalledByGraph_edge25" class="edge">
 <title>proc~atco13&#45;&gt;proc~apco13</title>
-<path fill="none" stroke="#000000" d="M54.72,-39.19C62.9,-41.12 72.08,-43.28 80.84,-45.35"/>
-<polygon fill="#000000" stroke="#000000" points="80.31,-48.82 90.85,-47.71 81.92,-42.01 80.31,-48.82"/>
+<path fill="none" stroke="#000000" d="M54.24,-150.15C63.1,-154.33 73.17,-159.08 82.63,-163.54"/>
+<polygon fill="#000000" stroke="#000000" points="81.28,-166.78 91.82,-167.88 84.27,-160.45 81.28,-166.78"/>
 </g>
 </g>
 </svg>
@@ -777,34 +656,11 @@ public function OBL06(date1, date2) result(obl)
     </div></div></div></div>
       </div>
     </div>
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -812,79 +668,65 @@ public function OBL06(date1, date2) result(obl)
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">function </span><span class="n">OBL06</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span> <span class="p">)</span> <span class="k">result</span><span class="p">(</span><span class="n">obl</span><span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">function </span><span class="n">OBL06</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="p">,</span><span class="w"> </span><span class="n">date2</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">obl</span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date1</span> <span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date2</span> <span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">obl</span> <span class="c">!! obliquity of the ecliptic (radians, Note 2)</span>
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date1</span><span class="w"> </span><span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date2</span><span class="w"> </span><span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">obl</span><span class="w"> </span><span class="c">!! obliquity of the ecliptic (radians, Note 2)</span>
 
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">t</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">t</span><span class="w"></span>
 
-    <span class="c">!  Interval between fundamental date J2000.0 and given date (JC).</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="p">(</span> <span class="p">(</span> <span class="n">date1</span><span class="o">-</span><span class="n">dj00</span> <span class="p">)</span> <span class="o">+</span> <span class="n">date2</span> <span class="p">)</span> <span class="o">/</span> <span class="n">djc</span>
+<span class="w">    </span><span class="c">!  Interval between fundamental date J2000.0 and given date (JC).</span>
+<span class="w">    </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="o">-</span><span class="n">dj00</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">date2</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">djc</span><span class="w"></span>
 
-    <span class="c">!  Mean obliquity.</span>
-    <span class="n">obl</span> <span class="o">=</span> <span class="p">(</span> <span class="mi">8438</span><span class="mf">1.406_wp</span>       <span class="o">+</span> <span class="p">&amp;</span>
-          <span class="p">(</span>   <span class="o">-</span><span class="mi">4</span><span class="mf">6.836769_wp</span>    <span class="o">+</span> <span class="p">&amp;</span>
-          <span class="p">(</span>    <span class="o">-</span><span class="mf">0.0001831_wp</span>   <span class="o">+</span> <span class="p">&amp;</span>
-          <span class="p">(</span>     <span class="mf">0.00200340_wp</span>  <span class="o">+</span> <span class="p">&amp;</span>
-          <span class="p">(</span>    <span class="o">-</span><span class="mf">0.000000576_wp</span> <span class="o">+</span> <span class="p">&amp;</span>
-          <span class="p">(</span>    <span class="o">-</span><span class="mf">0.0000000434_wp</span> <span class="p">)</span> <span class="p">&amp;</span>
-                      <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="p">)</span> <span class="o">*</span> <span class="n">das2r</span>
+<span class="w">    </span><span class="c">!  Mean obliquity.</span>
+<span class="w">    </span><span class="n">obl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="mi">8438</span><span class="mf">1.406_wp</span><span class="w">       </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="p">(</span><span class="w">   </span><span class="o">-</span><span class="mi">4</span><span class="mf">6.836769_wp</span><span class="w">    </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="p">(</span><span class="w">    </span><span class="o">-</span><span class="mf">0.0001831_wp</span><span class="w">   </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="p">(</span><span class="w">     </span><span class="mf">0.00200340_wp</span><span class="w">  </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="p">(</span><span class="w">    </span><span class="o">-</span><span class="mf">0.000000576_wp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">          </span><span class="p">(</span><span class="w">    </span><span class="o">-</span><span class="mf">0.0000000434_wp</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                      </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">das2r</span><span class="w"></span>
 
-    <span class="k">end function </span><span class="n">OBL06</span>
+<span class="w">    </span><span class="k">end function </span><span class="n">OBL06</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>astro-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -910,14 +752,11 @@ public function OBL06(date1, date2) result(obl)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

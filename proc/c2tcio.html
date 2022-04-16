@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,45 +43,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-        
+              
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                                       </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -95,50 +68,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>C2TCIO
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 0.2% of total for procedures.">11 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
-    
      <li><a href='../module/astro_module.html'>astro_module</a></li>
-    
-  
      <li class="active">C2TCIO</li>
   </ol>
 </div>
@@ -154,32 +106,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -187,24 +116,14 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-public subroutine C2TCIO(rc2i, era, rpom, rc2t)
+    <h2>public subroutine C2TCIO(rc2i, era, rpom, rc2t)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>Assemble the celestial to terrestrial matrix from CIO-based
   components (the celestial-to-intermediate matrix, the Earth Rotation
   Angle and the polar motion matrix).</p>
@@ -225,9 +144,9 @@ public subroutine C2TCIO(rc2i, era, rpom, rc2t)
 </li>
 <li>
 <p>The relationship between the arguments is as follows:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">[TRS]  =  RPOM * R_3(ERA) * RC2I * [CRS]</span>
+<div class="codehilite"><pre><span></span><code><span class="k">[TRS]  =  RPOM * R_3(ERA) * RC2I * [CRS]</span><span class="w"></span>
 
-       <span class="o">=</span>  <span class="s">RC2T * [CRS]</span>
+<span class="w">       </span><span class="o">=</span><span class="w">  </span><span class="s">RC2T * [CRS]</span><span class="w"></span>
 </code></pre></div>
 
 <p>where [CRS] is a vector in the Geocentric Celestial Reference
@@ -244,89 +163,39 @@ public subroutine C2TCIO(rc2i, era, rpom, rc2t)
 <ul>
 <li>IAU SOFA revision: 2013 August 24</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-rc2i~8"></span>real(kind=wp),</td>
-  <td>intent(in),</td>
-  <td></td>
-  
-  <td>dimension(3,3)</td><td>::</td>
+<td>intent(in),</td>
+  <td></td>  <td>dimension(3,3)</td><td>::</td>
   <td><strong>rc2i</strong></td><td><p>celestial-to-intermediate matrix</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-era~3"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>era</strong></td><td><p>Earth rotation angle (radians)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-rpom~2"></span>real(kind=wp),</td>
-  <td>intent(in),</td>
-  <td></td>
-  
-  <td>dimension(3,3)</td><td>::</td>
+<td>intent(in),</td>
+  <td></td>  <td>dimension(3,3)</td><td>::</td>
   <td><strong>rpom</strong></td><td><p>polar-motion matrix</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-rc2t~5"></span>real(kind=wp),</td>
-  <td>intent(out),</td>
-  <td></td>
-  
-  <td>dimension(3,3)</td><td>::</td>
+<td>intent(out),</td>
+  <td></td>  <td>dimension(3,3)</td><td>::</td>
   <td><strong>rc2t</strong></td><td><p>celestial-to-terrestrial matrix</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Calls</h3>
@@ -442,8 +311,6 @@ public subroutine C2TCIO(rc2i, era, rpom, rc2t)
     </div></div></div></div>
       </div>
     </div>
-     
-     
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Called by</h3>
@@ -466,33 +333,33 @@ public subroutine C2TCIO(rc2i, era, rpom, rc2t)
 <polygon fill="none" stroke="black" points="145,-108 91,-108 91,-84 145,-84 145,-108"/>
 <text text-anchor="middle" x="118" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50">C2TCIO</text>
 </g>
-<!-- proc~c2t00b -->
-<g id="proc~~c2tcio~~CalledByGraph_node2" class="node">
-<title>proc~c2t00b</title>
-<g id="a_proc~~c2tcio~~CalledByGraph_node2"><a xlink:href=".././proc/c2t00b.html" xlink:title="C2T00B">
-<polygon fill="#d9534f" stroke="#d9534f" points="55,-192 0,-192 0,-168 55,-168 55,-192"/>
-<text text-anchor="middle" x="27.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2T00B</text>
-</a>
-</g>
-</g>
-<!-- proc~c2t00b&#45;&gt;proc~c2tcio -->
-<g id="proc~~c2tcio~~CalledByGraph_edge1" class="edge">
-<title>proc~c2t00b&#45;&gt;proc~c2tcio</title>
-<path fill="none" stroke="#000000" d="M44.46,-167.87C48,-165.04 51.68,-161.98 55,-159 70.51,-145.07 87.01,-128.19 99.09,-115.41"/>
-<polygon fill="#000000" stroke="#000000" points="101.71,-117.74 105.99,-108.05 96.6,-112.95 101.71,-117.74"/>
-</g>
 <!-- proc~c2t00a -->
-<g id="proc~~c2tcio~~CalledByGraph_node3" class="node">
+<g id="proc~~c2tcio~~CalledByGraph_node2" class="node">
 <title>proc~c2t00a</title>
-<g id="a_proc~~c2tcio~~CalledByGraph_node3"><a xlink:href=".././proc/c2t00a.html" xlink:title="C2T00A">
-<polygon fill="#d9534f" stroke="#d9534f" points="55,-150 0,-150 0,-126 55,-126 55,-150"/>
-<text text-anchor="middle" x="27.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2T00A</text>
+<g id="a_proc~~c2tcio~~CalledByGraph_node2"><a xlink:href=".././proc/c2t00a.html" xlink:title="C2T00A">
+<polygon fill="#d9534f" stroke="#d9534f" points="55,-192 0,-192 0,-168 55,-168 55,-192"/>
+<text text-anchor="middle" x="27.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2T00A</text>
 </a>
 </g>
 </g>
 <!-- proc~c2t00a&#45;&gt;proc~c2tcio -->
-<g id="proc~~c2tcio~~CalledByGraph_edge2" class="edge">
+<g id="proc~~c2tcio~~CalledByGraph_edge1" class="edge">
 <title>proc~c2t00a&#45;&gt;proc~c2tcio</title>
+<path fill="none" stroke="#000000" d="M44.46,-167.87C48,-165.04 51.68,-161.98 55,-159 70.51,-145.07 87.01,-128.19 99.09,-115.41"/>
+<polygon fill="#000000" stroke="#000000" points="101.71,-117.74 105.99,-108.05 96.6,-112.95 101.71,-117.74"/>
+</g>
+<!-- proc~c2txy -->
+<g id="proc~~c2tcio~~CalledByGraph_node3" class="node">
+<title>proc~c2txy</title>
+<g id="a_proc~~c2tcio~~CalledByGraph_node3"><a xlink:href=".././proc/c2txy.html" xlink:title="C2TXY">
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-150 0.5,-150 0.5,-126 54.5,-126 54.5,-150"/>
+<text text-anchor="middle" x="27.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2TXY</text>
+</a>
+</g>
+</g>
+<!-- proc~c2txy&#45;&gt;proc~c2tcio -->
+<g id="proc~~c2tcio~~CalledByGraph_edge2" class="edge">
+<title>proc~c2txy&#45;&gt;proc~c2tcio</title>
 <path fill="none" stroke="#000000" d="M54.1,-125.85C62.9,-121.67 72.92,-116.92 82.32,-112.46"/>
 <polygon fill="#000000" stroke="#000000" points="83.93,-115.57 91.46,-108.12 80.92,-109.25 83.93,-115.57"/>
 </g>
@@ -526,18 +393,18 @@ public subroutine C2TCIO(rc2i, era, rpom, rc2t)
 <path fill="none" stroke="#000000" d="M54.1,-66.15C62.9,-70.33 72.92,-75.08 82.32,-79.54"/>
 <polygon fill="#000000" stroke="#000000" points="80.92,-82.75 91.46,-83.88 83.93,-76.43 80.92,-82.75"/>
 </g>
-<!-- proc~c2txy -->
+<!-- proc~c2t00b -->
 <g id="proc~~c2tcio~~CalledByGraph_node6" class="node">
-<title>proc~c2txy</title>
-<g id="a_proc~~c2tcio~~CalledByGraph_node6"><a xlink:href=".././proc/c2txy.html" xlink:title="C2TXY">
-<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-24 0.5,-24 0.5,0 54.5,0 54.5,-24"/>
-<text text-anchor="middle" x="27.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2TXY</text>
+<title>proc~c2t00b</title>
+<g id="a_proc~~c2tcio~~CalledByGraph_node6"><a xlink:href=".././proc/c2t00b.html" xlink:title="C2T00B">
+<polygon fill="#d9534f" stroke="#d9534f" points="55,-24 0,-24 0,0 55,0 55,-24"/>
+<text text-anchor="middle" x="27.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2T00B</text>
 </a>
 </g>
 </g>
-<!-- proc~c2txy&#45;&gt;proc~c2tcio -->
+<!-- proc~c2t00b&#45;&gt;proc~c2tcio -->
 <g id="proc~~c2tcio~~CalledByGraph_edge5" class="edge">
-<title>proc~c2txy&#45;&gt;proc~c2tcio</title>
+<title>proc~c2t00b&#45;&gt;proc~c2tcio</title>
 <path fill="none" stroke="#000000" d="M44.46,-24.13C48,-26.96 51.68,-30.02 55,-33 70.51,-46.93 87.01,-63.81 99.09,-76.59"/>
 <polygon fill="#000000" stroke="#000000" points="96.6,-79.05 105.99,-83.95 101.71,-74.26 96.6,-79.05"/>
 </g>
@@ -604,34 +471,11 @@ public subroutine C2TCIO(rc2i, era, rpom, rc2t)
     </div></div></div></div>
       </div>
     </div>
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -639,73 +483,59 @@ public subroutine C2TCIO(rc2i, era, rpom, rc2t)
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">C2TCIO</span> <span class="p">(</span> <span class="n">rc2i</span><span class="p">,</span> <span class="n">era</span><span class="p">,</span> <span class="n">rpom</span><span class="p">,</span> <span class="n">rc2t</span> <span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">C2TCIO</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">rc2i</span><span class="p">,</span><span class="w"> </span><span class="n">era</span><span class="p">,</span><span class="w"> </span><span class="n">rpom</span><span class="p">,</span><span class="w"> </span><span class="n">rc2t</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">rc2i</span> <span class="c">!! celestial-to-intermediate matrix</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">era</span> <span class="c">!! Earth rotation angle (radians)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">rpom</span> <span class="c">!! polar-motion matrix</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">rc2t</span> <span class="c">!! celestial-to-terrestrial matrix</span>
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">rc2i</span><span class="w"> </span><span class="c">!! celestial-to-intermediate matrix</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">era</span><span class="w"> </span><span class="c">!! Earth rotation angle (radians)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">rpom</span><span class="w"> </span><span class="c">!! polar-motion matrix</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">rc2t</span><span class="w"> </span><span class="c">!! celestial-to-terrestrial matrix</span>
 
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">r</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">r</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Construct the matrix.</span>
-    <span class="k">call </span><span class="n">CR</span> <span class="p">(</span> <span class="n">rc2i</span><span class="p">,</span> <span class="n">r</span> <span class="p">)</span>
-    <span class="k">call </span><span class="n">RZ</span> <span class="p">(</span> <span class="n">era</span><span class="p">,</span> <span class="n">r</span> <span class="p">)</span>
-    <span class="k">call </span><span class="n">RXR</span> <span class="p">(</span> <span class="n">rpom</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">rc2t</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Construct the matrix.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">CR</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">rc2i</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">call </span><span class="n">RZ</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">era</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">call </span><span class="n">RXR</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">rpom</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">rc2t</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">end subroutine </span><span class="n">C2TCIO</span>
+<span class="w">    </span><span class="k">end subroutine </span><span class="n">C2TCIO</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>astro-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -731,14 +561,11 @@ public subroutine C2TCIO(rc2i, era, rpom, rc2t)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

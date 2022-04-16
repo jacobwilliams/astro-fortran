@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,45 +43,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-        
+              
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                                       </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -95,50 +68,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>EE00
       <small>Function</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 0.2% of total for procedures.">9 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
-    
      <li><a href='../module/astro_module.html'>astro_module</a></li>
-    
-  
      <li class="active">EE00</li>
   </ol>
 </div>
@@ -154,32 +106,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -187,24 +116,14 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-public function EE00(date1, date2, epsa, dpsi) result(res)
+    <h2>public function EE00(date1, date2, epsa, dpsi) result(res)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>The equation of the equinoxes, compatible with IAU 2000 resolutions,
   given the nutation in longitude and the mean obliquity.</p>
 <p>Status:  canonical model.</p>
@@ -261,98 +180,41 @@ public function EE00(date1, date2, epsa, dpsi) result(res)
 <ul>
 <li>IAU SOFA revision: 2006 November 13</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-date1~2"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>date1</strong></td><td><p>TT as a 2-part Julian Date (Note 1)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-date2~2"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>date2</strong></td><td><p>TT as a 2-part Julian Date (Note 1)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-epsa"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>epsa</strong></td><td><p>mean obliquity (Note 2)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-dpsi"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>dpsi</strong></td><td><p>nutation in longitude (Note 3)</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
-    
-    
-    
-    
-   <h3>Return Value <small><span class="anchor" id="variable-res"></span>real(kind=wp)
-  </small></h3>
+   <h3>Return Value <small><span class="anchor" id="variable-res"></span>real(kind=wp)</small></h3>
     <p>equation of the equinoxes (Note 4)</p>
-    
-    
     <br>
-    
-    
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Calls</h3>
@@ -390,123 +252,123 @@ public function EE00(date1, date2, epsa, dpsi) result(res)
 <path fill="none" stroke="#000000" d="M54.4,-159C62.39,-159 71.31,-159 79.82,-159"/>
 <polygon fill="#000000" stroke="#000000" points="79.92,-162.5 89.92,-159 79.92,-155.5 79.92,-162.5"/>
 </g>
-<!-- proc~fal03 -->
-<g id="proc~~ee00~~CallsGraph_node3" class="node">
-<title>proc~fal03</title>
-<g id="a_proc~~ee00~~CallsGraph_node3"><a xlink:href=".././proc/fal03.html" xlink:title="FAL03">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="234.5,-318 180.5,-318 180.5,-294 234.5,-294 234.5,-318"/>
-<text text-anchor="middle" x="207.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAL03</text>
-</a>
-</g>
-</g>
-<!-- proc~eect00&#45;&gt;proc~fal03 -->
-<g id="proc~~ee00~~CallsGraph_edge2" class="edge">
-<title>proc~eect00&#45;&gt;proc~fal03</title>
-<path fill="none" stroke="#000000" d="M121.92,-171.11C130.01,-194.81 150.3,-248.19 180,-285 180.48,-285.6 180.99,-286.19 181.51,-286.78"/>
-<polygon fill="#000000" stroke="#000000" points="179.31,-289.52 188.95,-293.92 184.15,-284.47 179.31,-289.52"/>
-</g>
-<!-- proc~faf03 -->
-<g id="proc~~ee00~~CallsGraph_node4" class="node">
-<title>proc~faf03</title>
-<g id="a_proc~~ee00~~CallsGraph_node4"><a xlink:href=".././proc/faf03.html" xlink:title="FAF03">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="234.5,-276 180.5,-276 180.5,-252 234.5,-252 234.5,-276"/>
-<text text-anchor="middle" x="207.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAF03</text>
-</a>
-</g>
-</g>
-<!-- proc~eect00&#45;&gt;proc~faf03 -->
-<g id="proc~~ee00~~CallsGraph_edge3" class="edge">
-<title>proc~eect00&#45;&gt;proc~faf03</title>
-<path fill="none" stroke="#000000" d="M125.52,-171.18C136.36,-188.25 157.58,-219.8 180,-243 180.75,-243.78 181.54,-244.56 182.34,-245.33"/>
-<polygon fill="#000000" stroke="#000000" points="180.11,-248.03 189.94,-251.99 184.73,-242.76 180.11,-248.03"/>
-</g>
-<!-- proc~fad03 -->
-<g id="proc~~ee00~~CallsGraph_node5" class="node">
-<title>proc~fad03</title>
-<g id="a_proc~~ee00~~CallsGraph_node5"><a xlink:href=".././proc/fad03.html" xlink:title="FAD03">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="234.5,-234 180.5,-234 180.5,-210 234.5,-210 234.5,-234"/>
-<text text-anchor="middle" x="207.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAD03</text>
-</a>
-</g>
-</g>
-<!-- proc~eect00&#45;&gt;proc~fad03 -->
-<g id="proc~~ee00~~CallsGraph_edge4" class="edge">
-<title>proc~eect00&#45;&gt;proc~fad03</title>
-<path fill="none" stroke="#000000" d="M135.06,-171.15C148.16,-180.47 166.45,-193.49 181.25,-204.02"/>
-<polygon fill="#000000" stroke="#000000" points="179.31,-206.94 189.49,-209.89 183.37,-201.24 179.31,-206.94"/>
-</g>
 <!-- proc~faom03 -->
-<g id="proc~~ee00~~CallsGraph_node6" class="node">
+<g id="proc~~ee00~~CallsGraph_node3" class="node">
 <title>proc~faom03</title>
-<g id="a_proc~~ee00~~CallsGraph_node6"><a xlink:href=".././proc/faom03.html" xlink:title="FAOM03">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="235,-192 180,-192 180,-168 235,-168 235,-192"/>
-<text text-anchor="middle" x="207.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAOM03</text>
+<g id="a_proc~~ee00~~CallsGraph_node3"><a xlink:href=".././proc/faom03.html" xlink:title="FAOM03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="235,-318 180,-318 180,-294 235,-294 235,-318"/>
+<text text-anchor="middle" x="207.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAOM03</text>
 </a>
 </g>
 </g>
 <!-- proc~eect00&#45;&gt;proc~faom03 -->
-<g id="proc~~ee00~~CallsGraph_edge9" class="edge">
+<g id="proc~~ee00~~CallsGraph_edge2" class="edge">
 <title>proc~eect00&#45;&gt;proc~faom03</title>
-<path fill="none" stroke="#000000" d="M144.07,-165.19C152.21,-167.12 161.34,-169.28 170.05,-171.35"/>
-<polygon fill="#000000" stroke="#000000" points="169.46,-174.81 180,-173.71 171.08,-168 169.46,-174.81"/>
+<path fill="none" stroke="#000000" d="M121.92,-171.11C130.01,-194.81 150.3,-248.19 180,-285 180.48,-285.6 180.99,-286.19 181.51,-286.78"/>
+<polygon fill="#000000" stroke="#000000" points="179.31,-289.52 188.95,-293.92 184.15,-284.47 179.31,-289.52"/>
 </g>
-<!-- proc~fapa03 -->
-<g id="proc~~ee00~~CallsGraph_node7" class="node">
-<title>proc~fapa03</title>
-<g id="a_proc~~ee00~~CallsGraph_node7"><a xlink:href=".././proc/fapa03.html" xlink:title="FAPA03">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="234.5,-150 180.5,-150 180.5,-126 234.5,-126 234.5,-150"/>
-<text text-anchor="middle" x="207.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAPA03</text>
+<!-- proc~fad03 -->
+<g id="proc~~ee00~~CallsGraph_node4" class="node">
+<title>proc~fad03</title>
+<g id="a_proc~~ee00~~CallsGraph_node4"><a xlink:href=".././proc/fad03.html" xlink:title="FAD03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="234.5,-276 180.5,-276 180.5,-252 234.5,-252 234.5,-276"/>
+<text text-anchor="middle" x="207.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAD03</text>
 </a>
 </g>
 </g>
-<!-- proc~eect00&#45;&gt;proc~fapa03 -->
-<g id="proc~~ee00~~CallsGraph_edge5" class="edge">
-<title>proc~eect00&#45;&gt;proc~fapa03</title>
-<path fill="none" stroke="#000000" d="M144.07,-152.81C152.37,-150.84 161.7,-148.63 170.57,-146.53"/>
-<polygon fill="#000000" stroke="#000000" points="171.38,-149.93 180.31,-144.22 169.77,-143.12 171.38,-149.93"/>
+<!-- proc~eect00&#45;&gt;proc~fad03 -->
+<g id="proc~~ee00~~CallsGraph_edge3" class="edge">
+<title>proc~eect00&#45;&gt;proc~fad03</title>
+<path fill="none" stroke="#000000" d="M125.52,-171.18C136.36,-188.25 157.58,-219.8 180,-243 180.75,-243.78 181.54,-244.56 182.34,-245.33"/>
+<polygon fill="#000000" stroke="#000000" points="180.11,-248.03 189.94,-251.99 184.73,-242.76 180.11,-248.03"/>
 </g>
 <!-- proc~falp03 -->
-<g id="proc~~ee00~~CallsGraph_node8" class="node">
+<g id="proc~~ee00~~CallsGraph_node5" class="node">
 <title>proc~falp03</title>
-<g id="a_proc~~ee00~~CallsGraph_node8"><a xlink:href=".././proc/falp03.html" xlink:title="FALP03">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="234.5,-108 180.5,-108 180.5,-84 234.5,-84 234.5,-108"/>
-<text text-anchor="middle" x="207.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FALP03</text>
+<g id="a_proc~~ee00~~CallsGraph_node5"><a xlink:href=".././proc/falp03.html" xlink:title="FALP03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="234.5,-234 180.5,-234 180.5,-210 234.5,-210 234.5,-234"/>
+<text text-anchor="middle" x="207.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FALP03</text>
 </a>
 </g>
 </g>
 <!-- proc~eect00&#45;&gt;proc~falp03 -->
-<g id="proc~~ee00~~CallsGraph_edge6" class="edge">
+<g id="proc~~ee00~~CallsGraph_edge4" class="edge">
 <title>proc~eect00&#45;&gt;proc~falp03</title>
-<path fill="none" stroke="#000000" d="M135.06,-146.85C148.16,-137.53 166.45,-124.51 181.25,-113.98"/>
-<polygon fill="#000000" stroke="#000000" points="183.37,-116.76 189.49,-108.11 179.31,-111.06 183.37,-116.76"/>
-</g>
-<!-- proc~fave03 -->
-<g id="proc~~ee00~~CallsGraph_node9" class="node">
-<title>proc~fave03</title>
-<g id="a_proc~~ee00~~CallsGraph_node9"><a xlink:href=".././proc/fave03.html" xlink:title="FAVE03">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="234.5,-66 180.5,-66 180.5,-42 234.5,-42 234.5,-66"/>
-<text text-anchor="middle" x="207.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAVE03</text>
-</a>
-</g>
-</g>
-<!-- proc~eect00&#45;&gt;proc~fave03 -->
-<g id="proc~~ee00~~CallsGraph_edge7" class="edge">
-<title>proc~eect00&#45;&gt;proc~fave03</title>
-<path fill="none" stroke="#000000" d="M125.52,-146.82C136.36,-129.75 157.58,-98.2 180,-75 180.75,-74.22 181.54,-73.44 182.34,-72.67"/>
-<polygon fill="#000000" stroke="#000000" points="184.73,-75.24 189.94,-66.01 180.11,-69.97 184.73,-75.24"/>
+<path fill="none" stroke="#000000" d="M135.06,-171.15C148.16,-180.47 166.45,-193.49 181.25,-204.02"/>
+<polygon fill="#000000" stroke="#000000" points="179.31,-206.94 189.49,-209.89 183.37,-201.24 179.31,-206.94"/>
 </g>
 <!-- proc~fae03 -->
-<g id="proc~~ee00~~CallsGraph_node10" class="node">
+<g id="proc~~ee00~~CallsGraph_node6" class="node">
 <title>proc~fae03</title>
-<g id="a_proc~~ee00~~CallsGraph_node10"><a xlink:href=".././proc/fae03.html" xlink:title="FAE03">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="234.5,-24 180.5,-24 180.5,0 234.5,0 234.5,-24"/>
-<text text-anchor="middle" x="207.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAE03</text>
+<g id="a_proc~~ee00~~CallsGraph_node6"><a xlink:href=".././proc/fae03.html" xlink:title="FAE03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="234.5,-192 180.5,-192 180.5,-168 234.5,-168 234.5,-192"/>
+<text text-anchor="middle" x="207.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAE03</text>
 </a>
 </g>
 </g>
 <!-- proc~eect00&#45;&gt;proc~fae03 -->
-<g id="proc~~ee00~~CallsGraph_edge8" class="edge">
+<g id="proc~~ee00~~CallsGraph_edge5" class="edge">
 <title>proc~eect00&#45;&gt;proc~fae03</title>
+<path fill="none" stroke="#000000" d="M144.07,-165.19C152.37,-167.16 161.7,-169.37 170.57,-171.47"/>
+<polygon fill="#000000" stroke="#000000" points="169.77,-174.88 180.31,-173.78 171.38,-168.07 169.77,-174.88"/>
+</g>
+<!-- proc~fal03 -->
+<g id="proc~~ee00~~CallsGraph_node7" class="node">
+<title>proc~fal03</title>
+<g id="a_proc~~ee00~~CallsGraph_node7"><a xlink:href=".././proc/fal03.html" xlink:title="FAL03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="234.5,-150 180.5,-150 180.5,-126 234.5,-126 234.5,-150"/>
+<text text-anchor="middle" x="207.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAL03</text>
+</a>
+</g>
+</g>
+<!-- proc~eect00&#45;&gt;proc~fal03 -->
+<g id="proc~~ee00~~CallsGraph_edge6" class="edge">
+<title>proc~eect00&#45;&gt;proc~fal03</title>
+<path fill="none" stroke="#000000" d="M144.07,-152.81C152.37,-150.84 161.7,-148.63 170.57,-146.53"/>
+<polygon fill="#000000" stroke="#000000" points="171.38,-149.93 180.31,-144.22 169.77,-143.12 171.38,-149.93"/>
+</g>
+<!-- proc~fapa03 -->
+<g id="proc~~ee00~~CallsGraph_node8" class="node">
+<title>proc~fapa03</title>
+<g id="a_proc~~ee00~~CallsGraph_node8"><a xlink:href=".././proc/fapa03.html" xlink:title="FAPA03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="234.5,-108 180.5,-108 180.5,-84 234.5,-84 234.5,-108"/>
+<text text-anchor="middle" x="207.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAPA03</text>
+</a>
+</g>
+</g>
+<!-- proc~eect00&#45;&gt;proc~fapa03 -->
+<g id="proc~~ee00~~CallsGraph_edge7" class="edge">
+<title>proc~eect00&#45;&gt;proc~fapa03</title>
+<path fill="none" stroke="#000000" d="M135.06,-146.85C148.16,-137.53 166.45,-124.51 181.25,-113.98"/>
+<polygon fill="#000000" stroke="#000000" points="183.37,-116.76 189.49,-108.11 179.31,-111.06 183.37,-116.76"/>
+</g>
+<!-- proc~faf03 -->
+<g id="proc~~ee00~~CallsGraph_node9" class="node">
+<title>proc~faf03</title>
+<g id="a_proc~~ee00~~CallsGraph_node9"><a xlink:href=".././proc/faf03.html" xlink:title="FAF03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="234.5,-66 180.5,-66 180.5,-42 234.5,-42 234.5,-66"/>
+<text text-anchor="middle" x="207.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAF03</text>
+</a>
+</g>
+</g>
+<!-- proc~eect00&#45;&gt;proc~faf03 -->
+<g id="proc~~ee00~~CallsGraph_edge8" class="edge">
+<title>proc~eect00&#45;&gt;proc~faf03</title>
+<path fill="none" stroke="#000000" d="M125.52,-146.82C136.36,-129.75 157.58,-98.2 180,-75 180.75,-74.22 181.54,-73.44 182.34,-72.67"/>
+<polygon fill="#000000" stroke="#000000" points="184.73,-75.24 189.94,-66.01 180.11,-69.97 184.73,-75.24"/>
+</g>
+<!-- proc~fave03 -->
+<g id="proc~~ee00~~CallsGraph_node10" class="node">
+<title>proc~fave03</title>
+<g id="a_proc~~ee00~~CallsGraph_node10"><a xlink:href=".././proc/fave03.html" xlink:title="FAVE03">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="234.5,-24 180.5,-24 180.5,0 234.5,0 234.5,-24"/>
+<text text-anchor="middle" x="207.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FAVE03</text>
+</a>
+</g>
+</g>
+<!-- proc~eect00&#45;&gt;proc~fave03 -->
+<g id="proc~~ee00~~CallsGraph_edge9" class="edge">
+<title>proc~eect00&#45;&gt;proc~fave03</title>
 <path fill="none" stroke="#000000" d="M121.92,-146.89C130.01,-123.19 150.3,-69.81 180,-33 180.48,-32.4 180.99,-31.81 181.51,-31.22"/>
 <polygon fill="#000000" stroke="#000000" points="184.15,-33.53 188.95,-24.08 179.31,-28.48 184.15,-33.53"/>
 </g>
@@ -573,8 +435,6 @@ public function EE00(date1, date2, epsa, dpsi) result(res)
     </div></div></div></div>
       </div>
     </div>
-     
-     
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Called by</h3>
@@ -597,48 +457,48 @@ public function EE00(date1, date2, epsa, dpsi) result(res)
 <polygon fill="none" stroke="black" points="235,-66 181,-66 181,-42 235,-42 235,-66"/>
 <text text-anchor="middle" x="208" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50">EE00</text>
 </g>
-<!-- proc~ee00a -->
-<g id="proc~~ee00~~CalledByGraph_node2" class="node">
-<title>proc~ee00a</title>
-<g id="a_proc~~ee00~~CalledByGraph_node2"><a xlink:href=".././proc/ee00a.html" xlink:title="EE00A">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="145,-108 91,-108 91,-84 145,-84 145,-108"/>
-<text text-anchor="middle" x="118" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">EE00A</text>
-</a>
-</g>
-</g>
-<!-- proc~ee00a&#45;&gt;proc~ee00 -->
-<g id="proc~~ee00~~CalledByGraph_edge1" class="edge">
-<title>proc~ee00a&#45;&gt;proc~ee00</title>
-<path fill="none" stroke="#000000" d="M144.45,-83.85C153.21,-79.67 163.17,-74.92 172.52,-70.46"/>
-<polygon fill="#000000" stroke="#000000" points="174.09,-73.59 181.6,-66.12 171.07,-67.27 174.09,-73.59"/>
-</g>
-<!-- proc~ee00b -->
-<g id="proc~~ee00~~CalledByGraph_node3" class="node">
-<title>proc~ee00b</title>
-<g id="a_proc~~ee00~~CalledByGraph_node3"><a xlink:href=".././proc/ee00b.html" xlink:title="EE00B">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="145,-66 91,-66 91,-42 145,-42 145,-66"/>
-<text text-anchor="middle" x="118" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">EE00B</text>
-</a>
-</g>
-</g>
-<!-- proc~ee00b&#45;&gt;proc~ee00 -->
-<g id="proc~~ee00~~CalledByGraph_edge2" class="edge">
-<title>proc~ee00b&#45;&gt;proc~ee00</title>
-<path fill="none" stroke="#000000" d="M145.4,-54C153.39,-54 162.31,-54 170.82,-54"/>
-<polygon fill="#000000" stroke="#000000" points="170.92,-57.5 180.92,-54 170.92,-50.5 170.92,-57.5"/>
-</g>
 <!-- proc~c2tpe -->
-<g id="proc~~ee00~~CalledByGraph_node4" class="node">
+<g id="proc~~ee00~~CalledByGraph_node2" class="node">
 <title>proc~c2tpe</title>
-<g id="a_proc~~ee00~~CalledByGraph_node4"><a xlink:href=".././proc/c2tpe.html" xlink:title="C2TPE">
-<polygon fill="#d9534f" stroke="#d9534f" points="145,-24 91,-24 91,0 145,0 145,-24"/>
-<text text-anchor="middle" x="118" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2TPE</text>
+<g id="a_proc~~ee00~~CalledByGraph_node2"><a xlink:href=".././proc/c2tpe.html" xlink:title="C2TPE">
+<polygon fill="#d9534f" stroke="#d9534f" points="145,-108 91,-108 91,-84 145,-84 145,-108"/>
+<text text-anchor="middle" x="118" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2TPE</text>
 </a>
 </g>
 </g>
 <!-- proc~c2tpe&#45;&gt;proc~ee00 -->
-<g id="proc~~ee00~~CalledByGraph_edge3" class="edge">
+<g id="proc~~ee00~~CalledByGraph_edge1" class="edge">
 <title>proc~c2tpe&#45;&gt;proc~ee00</title>
+<path fill="none" stroke="#000000" d="M144.45,-83.85C153.21,-79.67 163.17,-74.92 172.52,-70.46"/>
+<polygon fill="#000000" stroke="#000000" points="174.09,-73.59 181.6,-66.12 171.07,-67.27 174.09,-73.59"/>
+</g>
+<!-- proc~ee00a -->
+<g id="proc~~ee00~~CalledByGraph_node3" class="node">
+<title>proc~ee00a</title>
+<g id="a_proc~~ee00~~CalledByGraph_node3"><a xlink:href=".././proc/ee00a.html" xlink:title="EE00A">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="145,-66 91,-66 91,-42 145,-42 145,-66"/>
+<text text-anchor="middle" x="118" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">EE00A</text>
+</a>
+</g>
+</g>
+<!-- proc~ee00a&#45;&gt;proc~ee00 -->
+<g id="proc~~ee00~~CalledByGraph_edge2" class="edge">
+<title>proc~ee00a&#45;&gt;proc~ee00</title>
+<path fill="none" stroke="#000000" d="M145.4,-54C153.39,-54 162.31,-54 170.82,-54"/>
+<polygon fill="#000000" stroke="#000000" points="170.92,-57.5 180.92,-54 170.92,-50.5 170.92,-57.5"/>
+</g>
+<!-- proc~ee00b -->
+<g id="proc~~ee00~~CalledByGraph_node4" class="node">
+<title>proc~ee00b</title>
+<g id="a_proc~~ee00~~CalledByGraph_node4"><a xlink:href=".././proc/ee00b.html" xlink:title="EE00B">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="145,-24 91,-24 91,0 145,0 145,-24"/>
+<text text-anchor="middle" x="118" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">EE00B</text>
+</a>
+</g>
+</g>
+<!-- proc~ee00b&#45;&gt;proc~ee00 -->
+<g id="proc~~ee00~~CalledByGraph_edge3" class="edge">
+<title>proc~ee00b&#45;&gt;proc~ee00</title>
 <path fill="none" stroke="#000000" d="M144.45,-24.15C153.21,-28.33 163.17,-33.08 172.52,-37.54"/>
 <polygon fill="#000000" stroke="#000000" points="171.07,-40.73 181.6,-41.88 174.09,-34.41 171.07,-40.73"/>
 </g>
@@ -646,31 +506,31 @@ public function EE00(date1, date2, epsa, dpsi) result(res)
 <g id="proc~~ee00~~CalledByGraph_node5" class="node">
 <title>proc~gst00b</title>
 <g id="a_proc~~ee00~~CalledByGraph_node5"><a xlink:href=".././proc/gst00b.html" xlink:title="GST00B">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="55,-66 0,-66 0,-42 55,-42 55,-66"/>
-<text text-anchor="middle" x="27.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">GST00B</text>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="55,-24 0,-24 0,0 55,0 55,-24"/>
+<text text-anchor="middle" x="27.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">GST00B</text>
 </a>
 </g>
 </g>
 <!-- proc~gst00b&#45;&gt;proc~ee00b -->
 <g id="proc~~ee00~~CalledByGraph_edge5" class="edge">
 <title>proc~gst00b&#45;&gt;proc~ee00b</title>
-<path fill="none" stroke="#000000" d="M55.05,-54C63.09,-54 72.06,-54 80.62,-54"/>
-<polygon fill="#000000" stroke="#000000" points="80.77,-57.5 90.77,-54 80.77,-50.5 80.77,-57.5"/>
+<path fill="none" stroke="#000000" d="M55.05,-12C63.09,-12 72.06,-12 80.62,-12"/>
+<polygon fill="#000000" stroke="#000000" points="80.77,-15.5 90.77,-12 80.77,-8.5 80.77,-15.5"/>
 </g>
 <!-- proc~gst00a -->
 <g id="proc~~ee00~~CalledByGraph_node6" class="node">
 <title>proc~gst00a</title>
 <g id="a_proc~~ee00~~CalledByGraph_node6"><a xlink:href=".././proc/gst00a.html" xlink:title="GST00A">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="55,-108 0,-108 0,-84 55,-84 55,-108"/>
-<text text-anchor="middle" x="27.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">GST00A</text>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="55,-66 0,-66 0,-42 55,-42 55,-66"/>
+<text text-anchor="middle" x="27.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">GST00A</text>
 </a>
 </g>
 </g>
 <!-- proc~gst00a&#45;&gt;proc~ee00a -->
 <g id="proc~~ee00~~CalledByGraph_edge4" class="edge">
 <title>proc~gst00a&#45;&gt;proc~ee00a</title>
-<path fill="none" stroke="#000000" d="M55.05,-96C63.09,-96 72.06,-96 80.62,-96"/>
-<polygon fill="#000000" stroke="#000000" points="80.77,-99.5 90.77,-96 80.77,-92.5 80.77,-99.5"/>
+<path fill="none" stroke="#000000" d="M55.05,-54C63.09,-54 72.06,-54 80.62,-54"/>
+<polygon fill="#000000" stroke="#000000" points="80.77,-57.5 90.77,-54 80.77,-50.5 80.77,-57.5"/>
 </g>
 </g>
 </svg>
@@ -735,34 +595,11 @@ public function EE00(date1, date2, epsa, dpsi) result(res)
     </div></div></div></div>
       </div>
     </div>
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -770,70 +607,56 @@ public function EE00(date1, date2, epsa, dpsi) result(res)
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">function </span><span class="n">EE00</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span><span class="p">,</span> <span class="n">epsa</span><span class="p">,</span> <span class="n">dpsi</span> <span class="p">)</span> <span class="k">result</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">function </span><span class="n">EE00</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="p">,</span><span class="w"> </span><span class="n">date2</span><span class="p">,</span><span class="w"> </span><span class="n">epsa</span><span class="p">,</span><span class="w"> </span><span class="n">dpsi</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">res</span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date1</span> <span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date2</span> <span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">epsa</span> <span class="c">!! mean obliquity (Note 2)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">dpsi</span> <span class="c">!! nutation in longitude (Note 3)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">res</span> <span class="c">!! equation of the equinoxes (Note 4)</span>
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date1</span><span class="w"> </span><span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date2</span><span class="w"> </span><span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">epsa</span><span class="w"> </span><span class="c">!! mean obliquity (Note 2)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dpsi</span><span class="w"> </span><span class="c">!! nutation in longitude (Note 3)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="c">!! equation of the equinoxes (Note 4)</span>
 
-    <span class="c">!  Equation of the equinoxes.</span>
-    <span class="n">res</span> <span class="o">=</span> <span class="n">dpsi</span> <span class="o">*</span> <span class="nb">cos</span><span class="p">(</span><span class="n">epsa</span><span class="p">)</span> <span class="o">+</span> <span class="n">EECT00</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Equation of the equinoxes.</span>
+<span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dpsi</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">cos</span><span class="p">(</span><span class="n">epsa</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">EECT00</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="p">,</span><span class="w"> </span><span class="n">date2</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">end function </span><span class="n">EE00</span>
+<span class="w">    </span><span class="k">end function </span><span class="n">EE00</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>astro-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -859,14 +682,11 @@ public function EE00(date1, date2, epsa, dpsi) result(res)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

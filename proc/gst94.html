@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,45 +43,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-        
+              
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                                       </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -95,50 +68,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>GST94
       <small>Function</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 0.1% of total for procedures.">7 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
-    
      <li><a href='../module/astro_module.html'>astro_module</a></li>
-    
-  
      <li class="active">GST94</li>
   </ol>
 </div>
@@ -154,32 +106,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -187,24 +116,14 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-public function GST94(uta, utb) result(gast)
+    <h2>public function GST94(uta, utb) result(gast)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>Greenwich Apparent Sidereal Time (consistent with IAU 1982/94
   resolutions).</p>
 <p>Status:  support routine.</p>
@@ -262,68 +181,29 @@ public function GST94(uta, utb) result(gast)
 <ul>
 <li>IAU SOFA revision: 2007 December 8</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-uta~7"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>uta</strong></td><td><p>UT1 as a 2-part Julian Date (Notes 1,2)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-utb~7"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>utb</strong></td><td><p>UT1 as a 2-part Julian Date (Notes 1,2)</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
-    
-    
-    
-    
-   <h3>Return Value <small><span class="anchor" id="variable-gast~5"></span>real(kind=wp)
-  </small></h3>
+   <h3>Return Value <small><span class="anchor" id="variable-gast~5"></span>real(kind=wp)</small></h3>
     <p>Greenwich apparent sidereal time (radians)</p>
-    
-    
     <br>
-    
-    
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Calls</h3>
@@ -335,118 +215,118 @@ public function GST94(uta, utb) result(gast)
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: proc~~gst94~~CallsGraph Pages: 1 -->
-<svg id="procgst94CallsGraph" width="335pt" height="128pt"
- viewBox="0.00 0.00 335.00 128.03" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="proc~~gst94~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 124.03)">
+<svg id="procgst94CallsGraph" width="335pt" height="154pt"
+ viewBox="0.00 0.00 335.00 154.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~gst94~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 150)">
 <title>proc~~gst94~~CallsGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-124.03 331,-124.03 331,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-150 331,-150 331,4 -4,4"/>
 <!-- proc~gst94 -->
 <g id="proc~~gst94~~CallsGraph_node1" class="node">
 <title>proc~gst94</title>
-<polygon fill="none" stroke="black" points="54,-64 0,-64 0,-40 54,-40 54,-64"/>
-<text text-anchor="middle" x="27" y="-49.6" font-family="Helvetica,sans-Serif" font-size="10.50">GST94</text>
-</g>
-<!-- proc~eqeq94 -->
-<g id="proc~~gst94~~CallsGraph_node2" class="node">
-<title>proc~eqeq94</title>
-<g id="a_proc~~gst94~~CallsGraph_node2"><a xlink:href=".././proc/eqeq94.html" xlink:title="EQEQ94">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="146.5,-107 90.5,-107 90.5,-83 146.5,-83 146.5,-107"/>
-<text text-anchor="middle" x="118.5" y="-92.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">EQEQ94</text>
-</a>
-</g>
-</g>
-<!-- proc~gst94&#45;&gt;proc~eqeq94 -->
-<g id="proc~~gst94~~CallsGraph_edge1" class="edge">
-<title>proc~gst94&#45;&gt;proc~eqeq94</title>
-<path fill="none" stroke="#000000" d="M53.41,-64.21C62.65,-68.65 73.26,-73.74 83.14,-78.49"/>
-<polygon fill="#000000" stroke="#000000" points="81.81,-81.74 92.34,-82.91 84.84,-75.43 81.81,-81.74"/>
+<polygon fill="none" stroke="black" points="54,-106 0,-106 0,-82 54,-82 54,-106"/>
+<text text-anchor="middle" x="27" y="-91.6" font-family="Helvetica,sans-Serif" font-size="10.50">GST94</text>
 </g>
 <!-- proc~gmst82 -->
-<g id="proc~~gst94~~CallsGraph_node3" class="node">
+<g id="proc~~gst94~~CallsGraph_node2" class="node">
 <title>proc~gmst82</title>
-<g id="a_proc~~gst94~~CallsGraph_node3"><a xlink:href=".././proc/gmst82.html" xlink:title="GMST82">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="147,-64 90,-64 90,-40 147,-40 147,-64"/>
-<text text-anchor="middle" x="118.5" y="-49.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">GMST82</text>
+<g id="a_proc~~gst94~~CallsGraph_node2"><a xlink:href=".././proc/gmst82.html" xlink:title="GMST82">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="147,-146 90,-146 90,-122 147,-122 147,-146"/>
+<text text-anchor="middle" x="118.5" y="-131.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">GMST82</text>
 </a>
 </g>
 </g>
 <!-- proc~gst94&#45;&gt;proc~gmst82 -->
-<g id="proc~~gst94~~CallsGraph_edge2" class="edge">
+<g id="proc~~gst94~~CallsGraph_edge1" class="edge">
 <title>proc~gst94&#45;&gt;proc~gmst82</title>
-<path fill="none" stroke="#000000" d="M54.37,-52C62.29,-52 71.13,-52 79.64,-52"/>
-<polygon fill="#000000" stroke="#000000" points="79.76,-55.5 89.76,-52 79.76,-48.5 79.76,-55.5"/>
+<path fill="none" stroke="#000000" d="M54.37,-105.78C62.79,-109.55 72.26,-113.78 81.25,-117.8"/>
+<polygon fill="#000000" stroke="#000000" points="79.83,-121 90.39,-121.88 82.69,-114.61 79.83,-121"/>
 </g>
 <!-- proc~anp -->
-<g id="proc~~gst94~~CallsGraph_node4" class="node">
+<g id="proc~~gst94~~CallsGraph_node3" class="node">
 <title>proc~anp</title>
-<g id="a_proc~~gst94~~CallsGraph_node4"><a xlink:href=".././proc/anp.html" xlink:title="ANP">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="237,-24 183,-24 183,0 237,0 237,-24"/>
-<text text-anchor="middle" x="210" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ANP</text>
+<g id="a_proc~~gst94~~CallsGraph_node3"><a xlink:href=".././proc/anp.html" xlink:title="ANP">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="237,-146 183,-146 183,-122 237,-122 237,-146"/>
+<text text-anchor="middle" x="210" y="-131.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ANP</text>
 </a>
 </g>
 </g>
 <!-- proc~gst94&#45;&gt;proc~anp -->
-<g id="proc~~gst94~~CallsGraph_edge3" class="edge">
+<g id="proc~~gst94~~CallsGraph_edge2" class="edge">
 <title>proc~gst94&#45;&gt;proc~anp</title>
-<path fill="none" stroke="#000000" d="M54.26,-42.01C65.19,-38.14 78.09,-33.95 90,-31 117.42,-24.22 149.02,-19.3 172.76,-16.18"/>
-<polygon fill="#000000" stroke="#000000" points="173.27,-19.64 182.75,-14.9 172.38,-12.7 173.27,-19.64"/>
+<path fill="none" stroke="#000000" d="M54.25,-96.9C78.54,-99.89 115.52,-105.21 147,-113 155.56,-115.12 164.63,-117.88 173.12,-120.71"/>
+<polygon fill="#000000" stroke="#000000" points="172.15,-124.07 182.74,-124.01 174.42,-117.45 172.15,-124.07"/>
 </g>
-<!-- proc~anpm -->
-<g id="proc~~gst94~~CallsGraph_node5" class="node">
-<title>proc~anpm</title>
-<g id="a_proc~~gst94~~CallsGraph_node5"><a xlink:href=".././proc/anpm.html" xlink:title="ANPM">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="327,-107 273,-107 273,-83 327,-83 327,-107"/>
-<text text-anchor="middle" x="300" y="-92.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ANPM</text>
+<!-- proc~eqeq94 -->
+<g id="proc~~gst94~~CallsGraph_node4" class="node">
+<title>proc~eqeq94</title>
+<g id="a_proc~~gst94~~CallsGraph_node4"><a xlink:href=".././proc/eqeq94.html" xlink:title="EQEQ94">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146.5,-65 90.5,-65 90.5,-41 146.5,-41 146.5,-65"/>
+<text text-anchor="middle" x="118.5" y="-50.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">EQEQ94</text>
 </a>
 </g>
 </g>
-<!-- proc~eqeq94&#45;&gt;proc~anpm -->
+<!-- proc~gst94&#45;&gt;proc~eqeq94 -->
+<g id="proc~~gst94~~CallsGraph_edge3" class="edge">
+<title>proc~gst94&#45;&gt;proc~eqeq94</title>
+<path fill="none" stroke="#000000" d="M54.37,-81.92C62.94,-77.99 72.6,-73.57 81.74,-69.38"/>
+<polygon fill="#000000" stroke="#000000" points="83.38,-72.48 91.01,-65.13 80.46,-66.12 83.38,-72.48"/>
+</g>
+<!-- proc~gmst82&#45;&gt;proc~anp -->
 <g id="proc~~gst94~~CallsGraph_edge4" class="edge">
-<title>proc~eqeq94&#45;&gt;proc~anpm</title>
-<path fill="none" stroke="#000000" d="M146.79,-106.69C157.82,-110.82 170.8,-114.95 183,-117 206.67,-120.98 213.35,-121.07 237,-117 245.74,-115.5 254.88,-112.88 263.37,-109.97"/>
-<polygon fill="#000000" stroke="#000000" points="264.79,-113.18 272.98,-106.46 262.39,-106.6 264.79,-113.18"/>
+<title>proc~gmst82&#45;&gt;proc~anp</title>
+<path fill="none" stroke="#000000" d="M147.33,-134C155.35,-134 164.23,-134 172.69,-134"/>
+<polygon fill="#000000" stroke="#000000" points="172.72,-137.5 182.72,-134 172.72,-130.5 172.72,-137.5"/>
 </g>
 <!-- proc~obl80 -->
-<g id="proc~~gst94~~CallsGraph_node6" class="node">
+<g id="proc~~gst94~~CallsGraph_node5" class="node">
 <title>proc~obl80</title>
-<g id="a_proc~~gst94~~CallsGraph_node6"><a xlink:href=".././proc/obl80.html" xlink:title="OBL80">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="237,-108 183,-108 183,-84 237,-84 237,-108"/>
-<text text-anchor="middle" x="210" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OBL80</text>
+<g id="a_proc~~gst94~~CallsGraph_node5"><a xlink:href=".././proc/obl80.html" xlink:title="OBL80">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="237,-104 183,-104 183,-80 237,-80 237,-104"/>
+<text text-anchor="middle" x="210" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OBL80</text>
 </a>
 </g>
 </g>
 <!-- proc~eqeq94&#45;&gt;proc~obl80 -->
 <g id="proc~~gst94~~CallsGraph_edge5" class="edge">
 <title>proc~eqeq94&#45;&gt;proc~obl80</title>
-<path fill="none" stroke="#000000" d="M146.84,-95.31C154.95,-95.4 163.97,-95.5 172.56,-95.59"/>
-<polygon fill="#000000" stroke="#000000" points="172.71,-99.09 182.75,-95.71 172.79,-92.1 172.71,-99.09"/>
+<path fill="none" stroke="#000000" d="M146.84,-64.91C155.22,-68.57 164.57,-72.64 173.41,-76.49"/>
+<polygon fill="#000000" stroke="#000000" points="172.18,-79.77 182.75,-80.56 174.98,-73.36 172.18,-79.77"/>
+</g>
+<!-- proc~anpm -->
+<g id="proc~~gst94~~CallsGraph_node6" class="node">
+<title>proc~anpm</title>
+<g id="a_proc~~gst94~~CallsGraph_node6"><a xlink:href=".././proc/anpm.html" xlink:title="ANPM">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="327,-44 273,-44 273,-20 327,-20 327,-44"/>
+<text text-anchor="middle" x="300" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ANPM</text>
+</a>
+</g>
+</g>
+<!-- proc~eqeq94&#45;&gt;proc~anpm -->
+<g id="proc~~gst94~~CallsGraph_edge6" class="edge">
+<title>proc~eqeq94&#45;&gt;proc~anpm</title>
+<path fill="none" stroke="#000000" d="M146.76,-49.81C177.78,-46.18 228.57,-40.24 262.87,-36.23"/>
+<polygon fill="#000000" stroke="#000000" points="263.42,-39.69 272.94,-35.05 262.6,-32.73 263.42,-39.69"/>
 </g>
 <!-- proc~nut80 -->
 <g id="proc~~gst94~~CallsGraph_node7" class="node">
 <title>proc~nut80</title>
 <g id="a_proc~~gst94~~CallsGraph_node7"><a xlink:href=".././proc/nut80.html" xlink:title="NUT80">
-<polygon fill="#d9534f" stroke="#d9534f" points="237,-66 183,-66 183,-42 237,-42 237,-66"/>
-<text text-anchor="middle" x="210" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">NUT80</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="237,-24 183,-24 183,0 237,0 237,-24"/>
+<text text-anchor="middle" x="210" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">NUT80</text>
 </a>
 </g>
 </g>
 <!-- proc~eqeq94&#45;&gt;proc~nut80 -->
-<g id="proc~~gst94~~CallsGraph_edge6" class="edge">
-<title>proc~eqeq94&#45;&gt;proc~nut80</title>
-<path fill="none" stroke="#000000" d="M145.87,-82.92C154.52,-78.96 164.28,-74.49 173.49,-70.27"/>
-<polygon fill="#000000" stroke="#000000" points="175.19,-73.34 182.82,-65.99 172.27,-66.98 175.19,-73.34"/>
-</g>
-<!-- proc~gmst82&#45;&gt;proc~anp -->
 <g id="proc~~gst94~~CallsGraph_edge7" class="edge">
-<title>proc~gmst82&#45;&gt;proc~anp</title>
-<path fill="none" stroke="#000000" d="M146.35,-40C154.91,-36.17 164.52,-31.88 173.59,-27.83"/>
-<polygon fill="#000000" stroke="#000000" points="175.08,-30.99 182.78,-23.72 172.22,-24.6 175.08,-30.99"/>
+<title>proc~eqeq94&#45;&gt;proc~nut80</title>
+<path fill="none" stroke="#000000" d="M145.87,-40.92C154.52,-36.96 164.28,-32.49 173.49,-28.27"/>
+<polygon fill="#000000" stroke="#000000" points="175.19,-31.34 182.82,-23.99 172.27,-24.98 175.19,-31.34"/>
 </g>
 <!-- proc~nut80&#45;&gt;proc~anpm -->
 <g id="proc~~gst94~~CallsGraph_edge8" class="edge">
 <title>proc~nut80&#45;&gt;proc~anpm</title>
-<path fill="none" stroke="#000000" d="M236.93,-66.08C245.36,-70.01 254.86,-74.43 263.84,-78.62"/>
-<polygon fill="#000000" stroke="#000000" points="262.41,-81.81 272.95,-82.87 265.37,-75.47 262.41,-81.81"/>
+<path fill="none" stroke="#000000" d="M237.4,-18C245.48,-19.84 254.51,-21.89 263.1,-23.84"/>
+<polygon fill="#000000" stroke="#000000" points="262.39,-27.27 272.92,-26.07 263.94,-20.44 262.39,-27.27"/>
 </g>
 </g>
 </svg>
@@ -511,35 +391,11 @@ public function GST94(uta, utb) result(gast)
     </div></div></div></div>
       </div>
     </div>
-     
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -547,67 +403,53 @@ public function GST94(uta, utb) result(gast)
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">function </span><span class="n">GST94</span> <span class="p">(</span> <span class="n">uta</span><span class="p">,</span> <span class="n">utb</span> <span class="p">)</span> <span class="k">result</span><span class="p">(</span><span class="n">gast</span><span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">function </span><span class="n">GST94</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">uta</span><span class="p">,</span><span class="w"> </span><span class="n">utb</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">gast</span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">uta</span> <span class="c">!! UT1 as a 2-part Julian Date (Notes 1,2)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">utb</span> <span class="c">!! UT1 as a 2-part Julian Date (Notes 1,2)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">gast</span> <span class="c">!! Greenwich apparent sidereal time (radians)</span>
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">uta</span><span class="w"> </span><span class="c">!! UT1 as a 2-part Julian Date (Notes 1,2)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">utb</span><span class="w"> </span><span class="c">!! UT1 as a 2-part Julian Date (Notes 1,2)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">gast</span><span class="w"> </span><span class="c">!! Greenwich apparent sidereal time (radians)</span>
 
-    <span class="n">gast</span> <span class="o">=</span> <span class="n">ANP</span> <span class="p">(</span> <span class="n">GMST82</span> <span class="p">(</span> <span class="n">uta</span><span class="p">,</span> <span class="n">utb</span> <span class="p">)</span> <span class="o">+</span> <span class="n">EQEQ94</span> <span class="p">(</span> <span class="n">uta</span><span class="p">,</span> <span class="n">utb</span> <span class="p">)</span> <span class="p">)</span>
+<span class="w">    </span><span class="n">gast</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ANP</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">GMST82</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">uta</span><span class="p">,</span><span class="w"> </span><span class="n">utb</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">EQEQ94</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">uta</span><span class="p">,</span><span class="w"> </span><span class="n">utb</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">end function </span><span class="n">GST94</span>
+<span class="w">    </span><span class="k">end function </span><span class="n">GST94</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>astro-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -633,14 +475,11 @@ public function GST94(uta, utb) result(gast)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

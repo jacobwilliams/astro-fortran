@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,45 +43,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-        
+              
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                                       </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -95,50 +68,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>ATICQ
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 1.2% of total for procedures.">64 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
-    
      <li><a href='../module/astro_module.html'>astro_module</a></li>
-    
-  
      <li class="active">ATICQ</li>
   </ol>
 </div>
@@ -154,32 +106,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -187,24 +116,14 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-public subroutine ATICQ(ri, di, astrom, rc, dc)
+    <h2>public subroutine ATICQ(ri, di, astrom, rc, dc)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>Quick CIRS RA,Dec to ICRS astrometric place, given the star-
   independent astrometry parameters.</p>
 <p>Use of this routine is appropriate when efficiency is important and
@@ -231,120 +150,61 @@ public subroutine ATICQ(ri, di, astrom, rc, dc)
 <ul>
 <li>IAU SOFA revision:  2013 August 3</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-ri~6"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>ri</strong></td><td><p>CIRS RA (radians)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-di~6"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>di</strong></td><td><p>CIRS Dec (radians)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-astrom~16"></span>real(kind=wp),</td>
-  <td>intent(in),</td>
-  <td></td>
-  
-  <td>dimension(30)</td><td>::</td>
+<td>intent(in),</td>
+  <td></td>  <td>dimension(30)</td><td>::</td>
   <td><strong>astrom</strong></td><td><p>star-independent astrometry parameters:
- (1)      PM time interval (SSB, Julian years)
- (2-4)    SSB to observer (vector, au)
- (5-7)    Sun to observer (unit vector)
- (8)      distance from Sun to observer (au)
- (9-11)   v: barycentric observer velocity (vector, c)
- (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
- (13-21)  bias-precession-nutation matrix
- (22)     longitude + s' (radians)
- (23)     polar motion xp wrt local meridian (radians)
- (24)     polar motion yp wrt local meridian (radians)
- (25)     sine of geodetic latitude
- (26)     cosine of geodetic latitude
- (27)     magnitude of diurnal aberration vector
- (28)     "local" Earth rotation angle (radians)
- (29)     refraction constant A (radians)
- (30)     refraction constant B (radians)</p></td>
-  
+(1)      PM time interval (SSB, Julian years)
+(2-4)    SSB to observer (vector, au)
+(5-7)    Sun to observer (unit vector)
+(8)      distance from Sun to observer (au)
+(9-11)   v: barycentric observer velocity (vector, c)
+(12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
+(13-21)  bias-precession-nutation matrix
+(22)     longitude + s' (radians)
+(23)     polar motion xp wrt local meridian (radians)
+(24)     polar motion yp wrt local meridian (radians)
+(25)     sine of geodetic latitude
+(26)     cosine of geodetic latitude
+(27)     magnitude of diurnal aberration vector
+(28)     "local" Earth rotation angle (radians)
+(29)     refraction constant A (radians)
+(30)     refraction constant B (radians)</p></td>
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-rc~7"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>rc</strong></td><td><p>ICRS astrometric RA (radians)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-dc~7"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>dc</strong></td><td><p>ICRS astrometric Dec (radians)</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Calls</h3>
@@ -356,76 +216,202 @@ public subroutine ATICQ(ri, di, astrom, rc, dc)
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: proc~~aticq~~CallsGraph Pages: 1 -->
-<svg id="procaticqCallsGraph" width="152pt" height="158pt"
- viewBox="0.00 0.00 152.00 158.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="proc~~aticq~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 154)">
+<svg id="procaticqCallsGraph" width="332pt" height="280pt"
+ viewBox="0.00 0.00 332.00 280.42" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~aticq~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 276.42)">
 <title>proc~~aticq~~CallsGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-154 148,-154 148,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-276.42 328,-276.42 328,4 -4,4"/>
 <!-- proc~aticq -->
 <g id="proc~~aticq~~CallsGraph_node1" class="node">
 <title>proc~aticq</title>
-<polygon fill="none" stroke="black" points="54,-87 0,-87 0,-63 54,-63 54,-87"/>
-<text text-anchor="middle" x="27" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50">ATICQ</text>
+<polygon fill="none" stroke="black" points="54,-171 0,-171 0,-147 54,-147 54,-171"/>
+<text text-anchor="middle" x="27" y="-156.6" font-family="Helvetica,sans-Serif" font-size="10.50">ATICQ</text>
 </g>
-<!-- proc~c2s -->
+<!-- proc~ab -->
 <g id="proc~~aticq~~CallsGraph_node2" class="node">
-<title>proc~c2s</title>
-<g id="a_proc~~aticq~~CallsGraph_node2"><a xlink:href=".././proc/c2s.html" xlink:title="C2S">
-<polygon fill="#d9534f" stroke="#d9534f" points="144,-150 90,-150 90,-126 144,-126 144,-150"/>
-<text text-anchor="middle" x="117" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2S</text>
+<title>proc~ab</title>
+<g id="a_proc~~aticq~~CallsGraph_node2"><a xlink:href=".././proc/ab.html" xlink:title="AB">
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-258 180,-258 180,-234 234,-234 234,-258"/>
+<text text-anchor="middle" x="207" y="-243.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">AB</text>
 </a>
 </g>
 </g>
-<!-- proc~aticq&#45;&gt;proc~c2s -->
-<g id="proc~~aticq~~CallsGraph_edge1" class="edge">
-<title>proc~aticq&#45;&gt;proc~c2s</title>
-<path fill="none" stroke="#000000" d="M44.97,-87.15C57.99,-96.47 76.18,-109.49 90.89,-120.02"/>
-<polygon fill="#000000" stroke="#000000" points="88.92,-122.91 99.08,-125.89 92.99,-117.22 88.92,-122.91"/>
-</g>
-<!-- proc~s2c -->
-<g id="proc~~aticq~~CallsGraph_node3" class="node">
-<title>proc~s2c</title>
-<g id="a_proc~~aticq~~CallsGraph_node3"><a xlink:href=".././proc/s2c.html" xlink:title="S2C">
-<polygon fill="#d9534f" stroke="#d9534f" points="144,-108 90,-108 90,-84 144,-84 144,-108"/>
-<text text-anchor="middle" x="117" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">S2C</text>
-</a>
-</g>
-</g>
-<!-- proc~aticq&#45;&gt;proc~s2c -->
+<!-- proc~aticq&#45;&gt;proc~ab -->
 <g id="proc~~aticq~~CallsGraph_edge2" class="edge">
-<title>proc~aticq&#45;&gt;proc~s2c</title>
-<path fill="none" stroke="#000000" d="M54.4,-81.3C62.48,-83.23 71.51,-85.38 80.1,-87.43"/>
-<polygon fill="#000000" stroke="#000000" points="79.38,-90.86 89.92,-89.78 81,-84.05 79.38,-90.86"/>
+<title>proc~aticq&#45;&gt;proc~ab</title>
+<path fill="none" stroke="#000000" d="M30.97,-171.27C37.3,-194.35 54.52,-243.74 90,-264 115.2,-278.39 148.25,-271.2 172.63,-261.99"/>
+<polygon fill="#000000" stroke="#000000" points="174.21,-265.12 182.16,-258.12 171.58,-258.64 174.21,-265.12"/>
+</g>
+<!-- proc~anp -->
+<g id="proc~~aticq~~CallsGraph_node3" class="node">
+<title>proc~anp</title>
+<g id="a_proc~~aticq~~CallsGraph_node3"><a xlink:href=".././proc/anp.html" xlink:title="ANP">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="144,-255 90,-255 90,-231 144,-231 144,-255"/>
+<text text-anchor="middle" x="117" y="-240.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ANP</text>
+</a>
+</g>
+</g>
+<!-- proc~aticq&#45;&gt;proc~anp -->
+<g id="proc~~aticq~~CallsGraph_edge4" class="edge">
+<title>proc~aticq&#45;&gt;proc~anp</title>
+<path fill="none" stroke="#000000" d="M39.04,-171.01C51.15,-184 71.35,-205.1 90,-222 90.82,-222.74 91.66,-223.49 92.51,-224.23"/>
+<polygon fill="#000000" stroke="#000000" points="90.46,-227.08 100.36,-230.85 94.97,-221.73 90.46,-227.08"/>
 </g>
 <!-- proc~zp -->
 <g id="proc~~aticq~~CallsGraph_node4" class="node">
 <title>proc~zp</title>
 <g id="a_proc~~aticq~~CallsGraph_node4"><a xlink:href=".././proc/zp.html" xlink:title="ZP">
-<polygon fill="#d9534f" stroke="#d9534f" points="144,-66 90,-66 90,-42 144,-42 144,-66"/>
-<text text-anchor="middle" x="117" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ZP</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-213 90,-213 90,-189 144,-189 144,-213"/>
+<text text-anchor="middle" x="117" y="-198.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ZP</text>
 </a>
 </g>
 </g>
 <!-- proc~aticq&#45;&gt;proc~zp -->
-<g id="proc~~aticq~~CallsGraph_edge4" class="edge">
+<g id="proc~~aticq~~CallsGraph_edge3" class="edge">
 <title>proc~aticq&#45;&gt;proc~zp</title>
-<path fill="none" stroke="#000000" d="M54.4,-68.7C62.48,-66.77 71.51,-64.62 80.1,-62.57"/>
-<polygon fill="#000000" stroke="#000000" points="81,-65.95 89.92,-60.22 79.38,-59.14 81,-65.95"/>
+<path fill="none" stroke="#000000" d="M53.45,-171.15C62.21,-175.33 72.17,-180.08 81.52,-184.54"/>
+<polygon fill="#000000" stroke="#000000" points="80.07,-187.73 90.6,-188.88 83.09,-181.41 80.07,-187.73"/>
 </g>
-<!-- proc~anp -->
+<!-- proc~c2s -->
 <g id="proc~~aticq~~CallsGraph_node5" class="node">
-<title>proc~anp</title>
-<g id="a_proc~~aticq~~CallsGraph_node5"><a xlink:href=".././proc/anp.html" xlink:title="ANP">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="144,-24 90,-24 90,0 144,0 144,-24"/>
-<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ANP</text>
+<title>proc~c2s</title>
+<g id="a_proc~~aticq~~CallsGraph_node5"><a xlink:href=".././proc/c2s.html" xlink:title="C2S">
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-171 90,-171 90,-147 144,-147 144,-171"/>
+<text text-anchor="middle" x="117" y="-156.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2S</text>
 </a>
 </g>
 </g>
-<!-- proc~aticq&#45;&gt;proc~anp -->
-<g id="proc~~aticq~~CallsGraph_edge3" class="edge">
-<title>proc~aticq&#45;&gt;proc~anp</title>
-<path fill="none" stroke="#000000" d="M44.97,-62.85C57.99,-53.53 76.18,-40.51 90.89,-29.98"/>
-<polygon fill="#000000" stroke="#000000" points="92.99,-32.78 99.08,-24.11 88.92,-27.09 92.99,-32.78"/>
+<!-- proc~aticq&#45;&gt;proc~c2s -->
+<g id="proc~~aticq~~CallsGraph_edge7" class="edge">
+<title>proc~aticq&#45;&gt;proc~c2s</title>
+<path fill="none" stroke="#000000" d="M54.4,-159C62.39,-159 71.31,-159 79.82,-159"/>
+<polygon fill="#000000" stroke="#000000" points="79.92,-162.5 89.92,-159 79.92,-155.5 79.92,-162.5"/>
+</g>
+<!-- proc~s2c -->
+<g id="proc~~aticq~~CallsGraph_node6" class="node">
+<title>proc~s2c</title>
+<g id="a_proc~~aticq~~CallsGraph_node6"><a xlink:href=".././proc/s2c.html" xlink:title="S2C">
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-129 90,-129 90,-105 144,-105 144,-129"/>
+<text text-anchor="middle" x="117" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">S2C</text>
+</a>
+</g>
+</g>
+<!-- proc~aticq&#45;&gt;proc~s2c -->
+<g id="proc~~aticq~~CallsGraph_edge5" class="edge">
+<title>proc~aticq&#45;&gt;proc~s2c</title>
+<path fill="none" stroke="#000000" d="M53.45,-146.85C62.21,-142.67 72.17,-137.92 81.52,-133.46"/>
+<polygon fill="#000000" stroke="#000000" points="83.09,-136.59 90.6,-129.12 80.07,-130.27 83.09,-136.59"/>
+</g>
+<!-- proc~ldsun -->
+<g id="proc~~aticq~~CallsGraph_node7" class="node">
+<title>proc~ldsun</title>
+<g id="a_proc~~aticq~~CallsGraph_node7"><a xlink:href=".././proc/ldsun.html" xlink:title="LDSUN">
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-87 90,-87 90,-63 144,-63 144,-87"/>
+<text text-anchor="middle" x="117" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">LDSUN</text>
+</a>
+</g>
+</g>
+<!-- proc~aticq&#45;&gt;proc~ldsun -->
+<g id="proc~~aticq~~CallsGraph_edge1" class="edge">
+<title>proc~aticq&#45;&gt;proc~ldsun</title>
+<path fill="none" stroke="#000000" d="M39.04,-146.99C51.15,-134 71.35,-112.9 90,-96 90.82,-95.26 91.66,-94.51 92.51,-93.77"/>
+<polygon fill="#000000" stroke="#000000" points="94.97,-96.27 100.36,-87.15 90.46,-90.92 94.97,-96.27"/>
+</g>
+<!-- proc~trxp -->
+<g id="proc~~aticq~~CallsGraph_node8" class="node">
+<title>proc~trxp</title>
+<g id="a_proc~~aticq~~CallsGraph_node8"><a xlink:href=".././proc/trxp.html" xlink:title="TRXP">
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-45 90,-45 90,-21 144,-21 144,-45"/>
+<text text-anchor="middle" x="117" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">TRXP</text>
+</a>
+</g>
+</g>
+<!-- proc~aticq&#45;&gt;proc~trxp -->
+<g id="proc~~aticq~~CallsGraph_edge6" class="edge">
+<title>proc~aticq&#45;&gt;proc~trxp</title>
+<path fill="none" stroke="#000000" d="M33.44,-146.76C42.97,-126.18 64.12,-83.96 90,-54 90.6,-53.31 91.22,-52.62 91.86,-51.94"/>
+<polygon fill="#000000" stroke="#000000" points="94.32,-54.43 99.25,-45.05 89.55,-49.32 94.32,-54.43"/>
+</g>
+<!-- proc~pdp -->
+<g id="proc~~aticq~~CallsGraph_node9" class="node">
+<title>proc~pdp</title>
+<g id="a_proc~~aticq~~CallsGraph_node9"><a xlink:href=".././proc/pdp.html" xlink:title="PDP">
+<polygon fill="#d9534f" stroke="#d9534f" points="324,-240 270,-240 270,-216 324,-216 324,-240"/>
+<text text-anchor="middle" x="297" y="-225.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PDP</text>
+</a>
+</g>
+</g>
+<!-- proc~ab&#45;&gt;proc~pdp -->
+<g id="proc~~aticq~~CallsGraph_edge8" class="edge">
+<title>proc~ab&#45;&gt;proc~pdp</title>
+<path fill="none" stroke="#000000" d="M234.4,-240.6C242.48,-238.95 251.51,-237.1 260.1,-235.34"/>
+<polygon fill="#000000" stroke="#000000" points="260.82,-238.77 269.92,-233.33 259.42,-231.91 260.82,-238.77"/>
+</g>
+<!-- proc~ld -->
+<g id="proc~~aticq~~CallsGraph_node11" class="node">
+<title>proc~ld</title>
+<g id="a_proc~~aticq~~CallsGraph_node11"><a xlink:href=".././proc/ld.html" xlink:title="LD">
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-180 180,-180 180,-156 234,-156 234,-180"/>
+<text text-anchor="middle" x="207" y="-165.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">LD</text>
+</a>
+</g>
+</g>
+<!-- proc~ldsun&#45;&gt;proc~ld -->
+<g id="proc~~aticq~~CallsGraph_edge9" class="edge">
+<title>proc~ldsun&#45;&gt;proc~ld</title>
+<path fill="none" stroke="#000000" d="M134.06,-87.22C137.44,-90 140.92,-93.01 144,-96 160.93,-112.41 178.29,-132.94 190.31,-147.88"/>
+<polygon fill="#000000" stroke="#000000" points="187.77,-150.3 196.73,-155.95 193.25,-145.95 187.77,-150.3"/>
+</g>
+<!-- proc~tr -->
+<g id="proc~~aticq~~CallsGraph_node10" class="node">
+<title>proc~tr</title>
+<g id="a_proc~~aticq~~CallsGraph_node10"><a xlink:href=".././proc/tr.html" xlink:title="TR">
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-66 180,-66 180,-42 234,-42 234,-66"/>
+<text text-anchor="middle" x="207" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">TR</text>
+</a>
+</g>
+</g>
+<!-- proc~trxp&#45;&gt;proc~tr -->
+<g id="proc~~aticq~~CallsGraph_edge10" class="edge">
+<title>proc~trxp&#45;&gt;proc~tr</title>
+<path fill="none" stroke="#000000" d="M144.4,-39.3C152.48,-41.23 161.51,-43.38 170.1,-45.43"/>
+<polygon fill="#000000" stroke="#000000" points="169.38,-48.86 179.92,-47.78 171,-42.05 169.38,-48.86"/>
+</g>
+<!-- proc~rxp -->
+<g id="proc~~aticq~~CallsGraph_node12" class="node">
+<title>proc~rxp</title>
+<g id="a_proc~~aticq~~CallsGraph_node12"><a xlink:href=".././proc/rxp.html" xlink:title="RXP">
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 180,-24 180,0 234,0 234,-24"/>
+<text text-anchor="middle" x="207" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RXP</text>
+</a>
+</g>
+</g>
+<!-- proc~trxp&#45;&gt;proc~rxp -->
+<g id="proc~~aticq~~CallsGraph_edge11" class="edge">
+<title>proc~trxp&#45;&gt;proc~rxp</title>
+<path fill="none" stroke="#000000" d="M144.4,-26.7C152.48,-24.77 161.51,-22.62 170.1,-20.57"/>
+<polygon fill="#000000" stroke="#000000" points="171,-23.95 179.92,-18.22 169.38,-17.14 171,-23.95"/>
+</g>
+<!-- proc~ld&#45;&gt;proc~pdp -->
+<g id="proc~~aticq~~CallsGraph_edge12" class="edge">
+<title>proc~ld&#45;&gt;proc~pdp</title>
+<path fill="none" stroke="#000000" d="M225.81,-180.14C238.45,-188.76 255.63,-200.48 269.83,-210.16"/>
+<polygon fill="#000000" stroke="#000000" points="267.98,-213.13 278.22,-215.88 271.93,-207.35 267.98,-213.13"/>
+</g>
+<!-- proc~pxp -->
+<g id="proc~~aticq~~CallsGraph_node13" class="node">
+<title>proc~pxp</title>
+<g id="a_proc~~aticq~~CallsGraph_node13"><a xlink:href=".././proc/pxp.html" xlink:title="PXP">
+<polygon fill="#d9534f" stroke="#d9534f" points="324,-180 270,-180 270,-156 324,-156 324,-180"/>
+<text text-anchor="middle" x="297" y="-165.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PXP</text>
+</a>
+</g>
+</g>
+<!-- proc~ld&#45;&gt;proc~pxp -->
+<g id="proc~~aticq~~CallsGraph_edge13" class="edge">
+<title>proc~ld&#45;&gt;proc~pxp</title>
+<path fill="none" stroke="#000000" d="M234.4,-168C242.39,-168 251.31,-168 259.82,-168"/>
+<polygon fill="#000000" stroke="#000000" points="259.92,-171.5 269.92,-168 259.92,-164.5 259.92,-171.5"/>
 </g>
 </g>
 </svg>
@@ -490,8 +476,6 @@ public subroutine ATICQ(ri, di, astrom, rc, dc)
     </div></div></div></div>
       </div>
     </div>
-     
-     
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Called by</h3>
@@ -607,34 +591,11 @@ public subroutine ATICQ(ri, di, astrom, rc, dc)
     </div></div></div></div>
       </div>
     </div>
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -642,151 +603,137 @@ public subroutine ATICQ(ri, di, astrom, rc, dc)
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">ATICQ</span> <span class="p">(</span> <span class="n">ri</span><span class="p">,</span> <span class="n">di</span><span class="p">,</span> <span class="n">astrom</span><span class="p">,</span> <span class="n">rc</span><span class="p">,</span> <span class="n">dc</span> <span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">ATICQ</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">ri</span><span class="p">,</span><span class="w"> </span><span class="n">di</span><span class="p">,</span><span class="w"> </span><span class="n">astrom</span><span class="p">,</span><span class="w"> </span><span class="n">rc</span><span class="p">,</span><span class="w"> </span><span class="n">dc</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">ri</span> <span class="c">!! CIRS RA (radians)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">di</span> <span class="c">!! CIRS Dec (radians)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">30</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">astrom</span> <span class="c">!! star-independent astrometry parameters:</span>
-                                                <span class="c">!! (1)      PM time interval (SSB, Julian years)</span>
-                                                <span class="c">!! (2-4)    SSB to observer (vector, au)</span>
-                                                <span class="c">!! (5-7)    Sun to observer (unit vector)</span>
-                                                <span class="c">!! (8)      distance from Sun to observer (au)</span>
-                                                <span class="c">!! (9-11)   v: barycentric observer velocity (vector, c)</span>
-                                                <span class="c">!! (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor</span>
-                                                <span class="c">!! (13-21)  bias-precession-nutation matrix</span>
-                                                <span class="c">!! (22)     longitude + s&#39; (radians)</span>
-                                                <span class="c">!! (23)     polar motion xp wrt local meridian (radians)</span>
-                                                <span class="c">!! (24)     polar motion yp wrt local meridian (radians)</span>
-                                                <span class="c">!! (25)     sine of geodetic latitude</span>
-                                                <span class="c">!! (26)     cosine of geodetic latitude</span>
-                                                <span class="c">!! (27)     magnitude of diurnal aberration vector</span>
-                                                <span class="c">!! (28)     &quot;local&quot; Earth rotation angle (radians)</span>
-                                                <span class="c">!! (29)     refraction constant A (radians)</span>
-                                                <span class="c">!! (30)     refraction constant B (radians)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">rc</span> <span class="c">!! ICRS astrometric RA (radians)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">dc</span> <span class="c">!! ICRS astrometric Dec (radians)</span>
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ri</span><span class="w"> </span><span class="c">!! CIRS RA (radians)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">di</span><span class="w"> </span><span class="c">!! CIRS Dec (radians)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">30</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">astrom</span><span class="w"> </span><span class="c">!! star-independent astrometry parameters:</span>
+<span class="w">                                                </span><span class="c">!! (1)      PM time interval (SSB, Julian years)</span>
+<span class="w">                                                </span><span class="c">!! (2-4)    SSB to observer (vector, au)</span>
+<span class="w">                                                </span><span class="c">!! (5-7)    Sun to observer (unit vector)</span>
+<span class="w">                                                </span><span class="c">!! (8)      distance from Sun to observer (au)</span>
+<span class="w">                                                </span><span class="c">!! (9-11)   v: barycentric observer velocity (vector, c)</span>
+<span class="w">                                                </span><span class="c">!! (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor</span>
+<span class="w">                                                </span><span class="c">!! (13-21)  bias-precession-nutation matrix</span>
+<span class="w">                                                </span><span class="c">!! (22)     longitude + s&#39; (radians)</span>
+<span class="w">                                                </span><span class="c">!! (23)     polar motion xp wrt local meridian (radians)</span>
+<span class="w">                                                </span><span class="c">!! (24)     polar motion yp wrt local meridian (radians)</span>
+<span class="w">                                                </span><span class="c">!! (25)     sine of geodetic latitude</span>
+<span class="w">                                                </span><span class="c">!! (26)     cosine of geodetic latitude</span>
+<span class="w">                                                </span><span class="c">!! (27)     magnitude of diurnal aberration vector</span>
+<span class="w">                                                </span><span class="c">!! (28)     &quot;local&quot; Earth rotation angle (radians)</span>
+<span class="w">                                                </span><span class="c">!! (29)     refraction constant A (radians)</span>
+<span class="w">                                                </span><span class="c">!! (30)     refraction constant B (radians)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">rc</span><span class="w"> </span><span class="c">!! ICRS astrometric RA (radians)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dc</span><span class="w"> </span><span class="c">!! ICRS astrometric Dec (radians)</span>
 
-    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">j</span><span class="p">,</span> <span class="n">i</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">pi</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">ppr</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">pnat</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">pco</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">w</span><span class="p">,</span> <span class="n">d</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="p">&amp;</span>
-                <span class="n">before</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">r2</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">after</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"></span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">pi</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">ppr</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">pnat</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">pco</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                </span><span class="n">before</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">r2</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">after</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  CIRS RA,Dec to Cartesian.</span>
-    <span class="k">call </span><span class="n">S2C</span> <span class="p">(</span> <span class="n">ri</span><span class="p">,</span> <span class="n">di</span><span class="p">,</span> <span class="n">pi</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  CIRS RA,Dec to Cartesian.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">S2C</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">ri</span><span class="p">,</span><span class="w"> </span><span class="n">di</span><span class="p">,</span><span class="w"> </span><span class="n">pi</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Bias-precession-nutation, giving GCRS proper direction.</span>
-    <span class="k">call </span><span class="n">TRXP</span> <span class="p">(</span> <span class="n">astrom</span><span class="p">(</span><span class="mi">13</span><span class="p">),</span> <span class="n">pi</span><span class="p">,</span> <span class="n">ppr</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Bias-precession-nutation, giving GCRS proper direction.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">TRXP</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">astrom</span><span class="p">(</span><span class="mi">13</span><span class="p">),</span><span class="w"> </span><span class="n">pi</span><span class="p">,</span><span class="w"> </span><span class="n">ppr</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Aberration, giving GCRS natural direction.</span>
-    <span class="k">call </span><span class="n">ZP</span> <span class="p">(</span> <span class="n">d</span> <span class="p">)</span>
-    <span class="k">do </span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span>
-       <span class="n">r2</span> <span class="o">=</span> <span class="mf">0.0_wp</span>
-       <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span>
-          <span class="n">w</span> <span class="o">=</span> <span class="n">ppr</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">-</span> <span class="n">d</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-          <span class="n">before</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">w</span>
-          <span class="n">r2</span> <span class="o">=</span> <span class="n">r2</span> <span class="o">+</span> <span class="n">w</span><span class="o">*</span><span class="n">w</span>
-       <span class="k">end do</span>
-<span class="k">       </span><span class="n">r</span> <span class="o">=</span> <span class="nb">sqrt</span> <span class="p">(</span> <span class="n">r2</span> <span class="p">)</span>
-       <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span>
-          <span class="n">before</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">before</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">/</span> <span class="n">r</span>
-       <span class="k">end do</span>
-<span class="k">       call </span><span class="n">AB</span> <span class="p">(</span> <span class="n">before</span><span class="p">,</span> <span class="n">astrom</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="n">astrom</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">astrom</span><span class="p">(</span><span class="mi">12</span><span class="p">),</span> <span class="n">after</span> <span class="p">)</span>
-       <span class="n">r2</span> <span class="o">=</span> <span class="mf">0.0_wp</span>
-       <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span>
-          <span class="n">d</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">after</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">-</span> <span class="n">before</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-          <span class="n">w</span> <span class="o">=</span> <span class="n">ppr</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">-</span> <span class="n">d</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-          <span class="n">pnat</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">w</span>
-          <span class="n">r2</span> <span class="o">=</span> <span class="n">r2</span> <span class="o">+</span> <span class="n">w</span><span class="o">*</span><span class="n">w</span>
-       <span class="k">end do</span>
-<span class="k">       </span><span class="n">r</span> <span class="o">=</span> <span class="nb">sqrt</span> <span class="p">(</span> <span class="n">r2</span> <span class="p">)</span>
-       <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span>
-          <span class="n">pnat</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">pnat</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">/</span> <span class="n">r</span>
-       <span class="k">end do</span>
-<span class="k">    end do</span>
+<span class="w">    </span><span class="c">!  Aberration, giving GCRS natural direction.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">ZP</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">do </span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="w"></span>
+<span class="w">       </span><span class="n">r2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_wp</span><span class="w"></span>
+<span class="w">       </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="w"></span>
+<span class="w">          </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ppr</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">d</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"></span>
+<span class="w">          </span><span class="n">before</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">w</span><span class="w"></span>
+<span class="w">          </span><span class="n">r2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">w</span><span class="o">*</span><span class="n">w</span><span class="w"></span>
+<span class="w">       </span><span class="k">end do</span>
+<span class="k">       </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">sqrt</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">r2</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">       </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="w"></span>
+<span class="w">          </span><span class="n">before</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">before</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">r</span><span class="w"></span>
+<span class="w">       </span><span class="k">end do</span>
+<span class="k">       call </span><span class="n">AB</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">before</span><span class="p">,</span><span class="w"> </span><span class="n">astrom</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span><span class="w"> </span><span class="n">astrom</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span><span class="w"> </span><span class="n">astrom</span><span class="p">(</span><span class="mi">12</span><span class="p">),</span><span class="w"> </span><span class="n">after</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">       </span><span class="n">r2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_wp</span><span class="w"></span>
+<span class="w">       </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="w"></span>
+<span class="w">          </span><span class="n">d</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">after</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">before</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"></span>
+<span class="w">          </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ppr</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">d</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"></span>
+<span class="w">          </span><span class="n">pnat</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">w</span><span class="w"></span>
+<span class="w">          </span><span class="n">r2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">w</span><span class="o">*</span><span class="n">w</span><span class="w"></span>
+<span class="w">       </span><span class="k">end do</span>
+<span class="k">       </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">sqrt</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">r2</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">       </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="w"></span>
+<span class="w">          </span><span class="n">pnat</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pnat</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">r</span><span class="w"></span>
+<span class="w">       </span><span class="k">end do</span>
+<span class="k">    end do</span><span class="w"></span>
 
-    <span class="c">!  Light deflection by the Sun, giving BCRS coordinate direction.</span>
-    <span class="k">call </span><span class="n">ZP</span> <span class="p">(</span> <span class="n">d</span> <span class="p">)</span>
-    <span class="k">do </span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span>
-       <span class="n">r2</span> <span class="o">=</span> <span class="mf">0.0_wp</span>
-       <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span>
-          <span class="n">w</span> <span class="o">=</span> <span class="n">pnat</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">-</span> <span class="n">d</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-          <span class="n">before</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">w</span>
-          <span class="n">r2</span> <span class="o">=</span> <span class="n">r2</span> <span class="o">+</span> <span class="n">w</span><span class="o">*</span><span class="n">w</span>
-       <span class="k">end do</span>
-<span class="k">       </span><span class="n">r</span> <span class="o">=</span> <span class="nb">sqrt</span> <span class="p">(</span> <span class="n">r2</span> <span class="p">)</span>
-       <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span>
-          <span class="n">before</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">before</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">/</span> <span class="n">r</span>
-       <span class="k">end do</span>
-<span class="k">       call </span><span class="n">LDSUN</span> <span class="p">(</span> <span class="n">before</span><span class="p">,</span> <span class="n">astrom</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">astrom</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">after</span> <span class="p">)</span>
-       <span class="n">r2</span> <span class="o">=</span> <span class="mf">0.0_wp</span>
-       <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span>
-          <span class="n">d</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">after</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">-</span> <span class="n">before</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-          <span class="n">w</span> <span class="o">=</span> <span class="n">pnat</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">-</span> <span class="n">d</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-          <span class="n">pco</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">w</span>
-          <span class="n">r2</span> <span class="o">=</span> <span class="n">r2</span> <span class="o">+</span> <span class="n">w</span><span class="o">*</span><span class="n">w</span>
-       <span class="k">end do</span>
-<span class="k">       </span><span class="n">r</span> <span class="o">=</span> <span class="nb">sqrt</span> <span class="p">(</span> <span class="n">r2</span> <span class="p">)</span>
-       <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span>
-          <span class="n">pco</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">pco</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">/</span> <span class="n">r</span>
-       <span class="k">end do</span>
-<span class="k">    end do</span>
+<span class="w">    </span><span class="c">!  Light deflection by the Sun, giving BCRS coordinate direction.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">ZP</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">do </span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="w"></span>
+<span class="w">       </span><span class="n">r2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_wp</span><span class="w"></span>
+<span class="w">       </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="w"></span>
+<span class="w">          </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pnat</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">d</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"></span>
+<span class="w">          </span><span class="n">before</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">w</span><span class="w"></span>
+<span class="w">          </span><span class="n">r2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">w</span><span class="o">*</span><span class="n">w</span><span class="w"></span>
+<span class="w">       </span><span class="k">end do</span>
+<span class="k">       </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">sqrt</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">r2</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">       </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="w"></span>
+<span class="w">          </span><span class="n">before</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">before</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">r</span><span class="w"></span>
+<span class="w">       </span><span class="k">end do</span>
+<span class="k">       call </span><span class="n">LDSUN</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">before</span><span class="p">,</span><span class="w"> </span><span class="n">astrom</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="w"> </span><span class="n">astrom</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span><span class="w"> </span><span class="n">after</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">       </span><span class="n">r2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_wp</span><span class="w"></span>
+<span class="w">       </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="w"></span>
+<span class="w">          </span><span class="n">d</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">after</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">before</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"></span>
+<span class="w">          </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pnat</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">d</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"></span>
+<span class="w">          </span><span class="n">pco</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">w</span><span class="w"></span>
+<span class="w">          </span><span class="n">r2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">w</span><span class="o">*</span><span class="n">w</span><span class="w"></span>
+<span class="w">       </span><span class="k">end do</span>
+<span class="k">       </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">sqrt</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">r2</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">       </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="w"></span>
+<span class="w">          </span><span class="n">pco</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pco</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">r</span><span class="w"></span>
+<span class="w">       </span><span class="k">end do</span>
+<span class="k">    end do</span><span class="w"></span>
 
-    <span class="c">!  ICRS astrometric RA,Dec.</span>
-    <span class="k">call </span><span class="n">C2S</span> <span class="p">(</span> <span class="n">pco</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">dc</span> <span class="p">)</span>
-    <span class="n">rc</span> <span class="o">=</span> <span class="n">ANP</span> <span class="p">(</span> <span class="n">w</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  ICRS astrometric RA,Dec.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">C2S</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">pco</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">dc</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">rc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ANP</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">end subroutine </span><span class="n">ATICQ</span>
+<span class="w">    </span><span class="k">end subroutine </span><span class="n">ATICQ</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>astro-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -812,14 +759,11 @@ public subroutine ATICQ(ri, di, astrom, rc, dc)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

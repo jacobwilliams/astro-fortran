@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,45 +43,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-        
+              
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                                       </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -95,50 +68,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>PVTOB
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 0.5% of total for procedures.">28 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
-    
      <li><a href='../module/astro_module.html'>astro_module</a></li>
-    
-  
      <li class="active">PVTOB</li>
   </ol>
 </div>
@@ -154,32 +106,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -187,24 +116,14 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-public subroutine PVTOB(elong, phi, hm, xp, yp, sp, theta, pv)
+    <h2>public subroutine PVTOB(elong, phi, hm, xp, yp, sp, theta, pv)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>Position and velocity of a terrestrial observing station.</p>
 <p>Status:  support routine.</p>
 <h3>Notes</h3>
@@ -255,149 +174,63 @@ public subroutine PVTOB(elong, phi, hm, xp, yp, sp, theta, pv)
 <ul>
 <li>IAU SOFA revision:  2013 June 25</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-elong~14"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>elong</strong></td><td><p>longitude (radians, east +ve, Note 1)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-phi~20"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>phi</strong></td><td><p>latitude (geodetic, radians, Note 1)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-hm~9"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>hm</strong></td><td><p>height above reference ellipsoid (geodetic, m)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-xp~15"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>xp</strong></td><td><p>coordinates of the pole (radians, Note 2)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-yp~15"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>yp</strong></td><td><p>coordinates of the pole (radians, Note 2)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-sp~5"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>sp</strong></td><td><p>the TIO locator s' (radians, Note 2)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-theta~10"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>theta</strong></td><td><p>Earth rotation angle (radians, Note 3)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-pv~10"></span>real(kind=wp),</td>
-  <td>intent(out),</td>
-  <td></td>
-  
-  <td>dimension(3,2)</td><td>::</td>
+<td>intent(out),</td>
+  <td></td>  <td>dimension(3,2)</td><td>::</td>
   <td><strong>pv</strong></td><td><p>position/velocity vector (m, m/s, CIRS)</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Calls</h3>
@@ -409,31 +242,31 @@ public subroutine PVTOB(elong, phi, hm, xp, yp, sp, theta, pv)
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: proc~~pvtob~~CallsGraph Pages: 1 -->
-<svg id="procpvtobCallsGraph" width="246pt" height="326pt"
- viewBox="0.00 0.00 246.00 326.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="proc~~pvtob~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 322)">
+<svg id="procpvtobCallsGraph" width="246pt" height="368pt"
+ viewBox="0.00 0.00 246.00 368.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~pvtob~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 364)">
 <title>proc~~pvtob~~CallsGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-322 242,-322 242,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-364 242,-364 242,4 -4,4"/>
 <!-- proc~pvtob -->
 <g id="proc~~pvtob~~CallsGraph_node1" class="node">
 <title>proc~pvtob</title>
 <polygon fill="none" stroke="black" points="54,-171 0,-171 0,-147 54,-147 54,-171"/>
 <text text-anchor="middle" x="27" y="-156.6" font-family="Helvetica,sans-Serif" font-size="10.50">PVTOB</text>
 </g>
-<!-- proc~trxp -->
+<!-- proc~gd2gc -->
 <g id="proc~~pvtob~~CallsGraph_node2" class="node">
-<title>proc~trxp</title>
-<g id="a_proc~~pvtob~~CallsGraph_node2"><a xlink:href=".././proc/trxp.html" xlink:title="TRXP">
-<polygon fill="#d9534f" stroke="#d9534f" points="144,-276 90,-276 90,-252 144,-252 144,-276"/>
-<text text-anchor="middle" x="117" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">TRXP</text>
+<title>proc~gd2gc</title>
+<g id="a_proc~~pvtob~~CallsGraph_node2"><a xlink:href=".././proc/gd2gc.html" xlink:title="GD2GC">
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-297 90,-297 90,-273 144,-273 144,-297"/>
+<text text-anchor="middle" x="117" y="-282.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">GD2GC</text>
 </a>
 </g>
 </g>
-<!-- proc~pvtob&#45;&gt;proc~trxp -->
+<!-- proc~pvtob&#45;&gt;proc~gd2gc -->
 <g id="proc~~pvtob~~CallsGraph_edge1" class="edge">
-<title>proc~pvtob&#45;&gt;proc~trxp</title>
-<path fill="none" stroke="#000000" d="M38.09,-171.04C53,-188.83 81.08,-222.33 99.14,-243.89"/>
-<polygon fill="#000000" stroke="#000000" points="96.65,-246.36 105.75,-251.77 102.01,-241.86 96.65,-246.36"/>
+<title>proc~pvtob&#45;&gt;proc~gd2gc</title>
+<path fill="none" stroke="#000000" d="M36.44,-171.08C51.51,-192.66 83.22,-238.06 101.73,-264.57"/>
+<polygon fill="#000000" stroke="#000000" points="98.86,-266.58 107.46,-272.77 104.6,-262.57 98.86,-266.58"/>
 </g>
 <!-- proc~pom00 -->
 <g id="proc~~pvtob~~CallsGraph_node3" class="node">
@@ -450,92 +283,107 @@ public subroutine PVTOB(elong, phi, hm, xp, yp, sp, theta, pv)
 <path fill="none" stroke="#000000" d="M54.4,-159C62.39,-159 71.31,-159 79.82,-159"/>
 <polygon fill="#000000" stroke="#000000" points="79.92,-162.5 89.92,-159 79.92,-155.5 79.92,-162.5"/>
 </g>
-<!-- proc~gd2gc -->
+<!-- proc~trxp -->
 <g id="proc~~pvtob~~CallsGraph_node4" class="node">
-<title>proc~gd2gc</title>
-<g id="a_proc~~pvtob~~CallsGraph_node4"><a xlink:href=".././proc/gd2gc.html" xlink:title="GD2GC">
+<title>proc~trxp</title>
+<g id="a_proc~~pvtob~~CallsGraph_node4"><a xlink:href=".././proc/trxp.html" xlink:title="TRXP">
 <polygon fill="#d9534f" stroke="#d9534f" points="144,-66 90,-66 90,-42 144,-42 144,-66"/>
-<text text-anchor="middle" x="117" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">GD2GC</text>
+<text text-anchor="middle" x="117" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">TRXP</text>
 </a>
 </g>
 </g>
-<!-- proc~pvtob&#45;&gt;proc~gd2gc -->
+<!-- proc~pvtob&#45;&gt;proc~trxp -->
 <g id="proc~~pvtob~~CallsGraph_edge3" class="edge">
-<title>proc~pvtob&#45;&gt;proc~gd2gc</title>
+<title>proc~pvtob&#45;&gt;proc~trxp</title>
 <path fill="none" stroke="#000000" d="M38.09,-146.96C53,-129.17 81.08,-95.67 99.14,-74.11"/>
 <polygon fill="#000000" stroke="#000000" points="102.01,-76.14 105.75,-66.23 96.65,-71.64 102.01,-76.14"/>
 </g>
-<!-- proc~rxp -->
-<g id="proc~~pvtob~~CallsGraph_node7" class="node">
-<title>proc~rxp</title>
-<g id="a_proc~~pvtob~~CallsGraph_node7"><a xlink:href=".././proc/rxp.html" xlink:title="RXP">
+<!-- proc~gd2gce -->
+<g id="proc~~pvtob~~CallsGraph_node5" class="node">
+<title>proc~gd2gce</title>
+<g id="a_proc~~pvtob~~CallsGraph_node5"><a xlink:href=".././proc/gd2gce.html" xlink:title="GD2GCE">
+<polygon fill="#d9534f" stroke="#d9534f" points="238,-360 180,-360 180,-336 238,-336 238,-360"/>
+<text text-anchor="middle" x="209" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">GD2GCE</text>
+</a>
+</g>
+</g>
+<!-- proc~gd2gc&#45;&gt;proc~gd2gce -->
+<g id="proc~~pvtob~~CallsGraph_edge6" class="edge">
+<title>proc~gd2gc&#45;&gt;proc~gd2gce</title>
+<path fill="none" stroke="#000000" d="M135.35,-297.15C148.68,-306.47 167.28,-319.49 182.32,-330.02"/>
+<polygon fill="#000000" stroke="#000000" points="180.5,-333.02 190.7,-335.89 184.52,-327.29 180.5,-333.02"/>
+</g>
+<!-- proc~zp -->
+<g id="proc~~pvtob~~CallsGraph_node10" class="node">
+<title>proc~zp</title>
+<g id="a_proc~~pvtob~~CallsGraph_node10"><a xlink:href=".././proc/zp.html" xlink:title="ZP">
 <polygon fill="#d9534f" stroke="#d9534f" points="236,-318 182,-318 182,-294 236,-294 236,-318"/>
-<text text-anchor="middle" x="209" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RXP</text>
+<text text-anchor="middle" x="209" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ZP</text>
 </a>
 </g>
 </g>
-<!-- proc~trxp&#45;&gt;proc~rxp -->
+<!-- proc~gd2gc&#45;&gt;proc~zp -->
 <g id="proc~~pvtob~~CallsGraph_edge4" class="edge">
-<title>proc~trxp&#45;&gt;proc~rxp</title>
-<path fill="none" stroke="#000000" d="M144.03,-276.15C152.99,-280.33 163.17,-285.08 172.73,-289.54"/>
-<polygon fill="#000000" stroke="#000000" points="171.48,-292.82 182.03,-293.88 174.45,-286.48 171.48,-292.82"/>
+<title>proc~gd2gc&#45;&gt;proc~zp</title>
+<path fill="none" stroke="#000000" d="M144.03,-291.07C152.72,-293.1 162.57,-295.4 171.89,-297.57"/>
+<polygon fill="#000000" stroke="#000000" points="171.18,-301 181.71,-299.87 172.77,-294.19 171.18,-301"/>
 </g>
-<!-- proc~tr -->
+<!-- proc~eform -->
 <g id="proc~~pvtob~~CallsGraph_node11" class="node">
-<title>proc~tr</title>
-<g id="a_proc~~pvtob~~CallsGraph_node11"><a xlink:href=".././proc/tr.html" xlink:title="TR">
+<title>proc~eform</title>
+<g id="a_proc~~pvtob~~CallsGraph_node11"><a xlink:href=".././proc/eform.html" xlink:title="EFORM">
 <polygon fill="#d9534f" stroke="#d9534f" points="236,-276 182,-276 182,-252 236,-252 236,-276"/>
-<text text-anchor="middle" x="209" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">TR</text>
+<text text-anchor="middle" x="209" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">EFORM</text>
 </a>
 </g>
 </g>
-<!-- proc~trxp&#45;&gt;proc~tr -->
+<!-- proc~gd2gc&#45;&gt;proc~eform -->
 <g id="proc~~pvtob~~CallsGraph_edge5" class="edge">
-<title>proc~trxp&#45;&gt;proc~tr</title>
-<path fill="none" stroke="#000000" d="M144.03,-264C152.63,-264 162.36,-264 171.59,-264"/>
-<polygon fill="#000000" stroke="#000000" points="171.72,-267.5 181.71,-264 171.71,-260.5 171.72,-267.5"/>
+<title>proc~gd2gc&#45;&gt;proc~eform</title>
+<path fill="none" stroke="#000000" d="M144.03,-278.93C152.72,-276.9 162.57,-274.6 171.89,-272.43"/>
+<polygon fill="#000000" stroke="#000000" points="172.77,-275.81 181.71,-270.13 171.18,-269 172.77,-275.81"/>
 </g>
 <!-- proc~rx -->
-<g id="proc~~pvtob~~CallsGraph_node5" class="node">
+<g id="proc~~pvtob~~CallsGraph_node7" class="node">
 <title>proc~rx</title>
-<g id="a_proc~~pvtob~~CallsGraph_node5"><a xlink:href=".././proc/rx.html" xlink:title="RX">
+<g id="a_proc~~pvtob~~CallsGraph_node7"><a xlink:href=".././proc/rx.html" xlink:title="RX">
 <polygon fill="#d9534f" stroke="#d9534f" points="236,-234 182,-234 182,-210 236,-210 236,-234"/>
 <text text-anchor="middle" x="209" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RX</text>
 </a>
 </g>
 </g>
 <!-- proc~pom00&#45;&gt;proc~rx -->
-<g id="proc~~pvtob~~CallsGraph_edge7" class="edge">
+<g id="proc~~pvtob~~CallsGraph_edge10" class="edge">
 <title>proc~pom00&#45;&gt;proc~rx</title>
 <path fill="none" stroke="#000000" d="M135.35,-171.15C148.68,-180.47 167.28,-193.49 182.32,-204.02"/>
 <polygon fill="#000000" stroke="#000000" points="180.5,-207.02 190.7,-209.89 184.52,-201.29 180.5,-207.02"/>
 </g>
 <!-- proc~ir -->
-<g id="proc~~pvtob~~CallsGraph_node9" class="node">
+<g id="proc~~pvtob~~CallsGraph_node8" class="node">
 <title>proc~ir</title>
-<g id="a_proc~~pvtob~~CallsGraph_node9"><a xlink:href=".././proc/ir.html" xlink:title="IR">
+<g id="a_proc~~pvtob~~CallsGraph_node8"><a xlink:href=".././proc/ir.html" xlink:title="IR">
 <polygon fill="#d9534f" stroke="#d9534f" points="236,-192 182,-192 182,-168 236,-168 236,-192"/>
 <text text-anchor="middle" x="209" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">IR</text>
 </a>
 </g>
 </g>
 <!-- proc~pom00&#45;&gt;proc~ir -->
-<g id="proc~~pvtob~~CallsGraph_edge8" class="edge">
+<g id="proc~~pvtob~~CallsGraph_edge7" class="edge">
 <title>proc~pom00&#45;&gt;proc~ir</title>
 <path fill="none" stroke="#000000" d="M144.03,-165.07C152.72,-167.1 162.57,-169.4 171.89,-171.57"/>
 <polygon fill="#000000" stroke="#000000" points="171.18,-175 181.71,-173.87 172.77,-168.19 171.18,-175"/>
 </g>
 <!-- proc~ry -->
-<g id="proc~~pvtob~~CallsGraph_node10" class="node">
+<g id="proc~~pvtob~~CallsGraph_node9" class="node">
 <title>proc~ry</title>
-<g id="a_proc~~pvtob~~CallsGraph_node10"><a xlink:href=".././proc/ry.html" xlink:title="RY">
+<g id="a_proc~~pvtob~~CallsGraph_node9"><a xlink:href=".././proc/ry.html" xlink:title="RY">
 <polygon fill="#d9534f" stroke="#d9534f" points="236,-150 182,-150 182,-126 236,-126 236,-150"/>
 <text text-anchor="middle" x="209" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RY</text>
 </a>
 </g>
 </g>
 <!-- proc~pom00&#45;&gt;proc~ry -->
-<g id="proc~~pvtob~~CallsGraph_edge6" class="edge">
+<g id="proc~~pvtob~~CallsGraph_edge9" class="edge">
 <title>proc~pom00&#45;&gt;proc~ry</title>
 <path fill="none" stroke="#000000" d="M144.03,-152.93C152.72,-150.9 162.57,-148.6 171.89,-146.43"/>
 <polygon fill="#000000" stroke="#000000" points="172.77,-149.81 181.71,-144.13 171.18,-143 172.77,-149.81"/>
@@ -550,38 +398,38 @@ public subroutine PVTOB(elong, phi, hm, xp, yp, sp, theta, pv)
 </g>
 </g>
 <!-- proc~pom00&#45;&gt;proc~rz -->
-<g id="proc~~pvtob~~CallsGraph_edge9" class="edge">
+<g id="proc~~pvtob~~CallsGraph_edge8" class="edge">
 <title>proc~pom00&#45;&gt;proc~rz</title>
 <path fill="none" stroke="#000000" d="M135.35,-146.85C148.68,-137.53 167.28,-124.51 182.32,-113.98"/>
 <polygon fill="#000000" stroke="#000000" points="184.52,-116.71 190.7,-108.11 180.5,-110.98 184.52,-116.71"/>
 </g>
-<!-- proc~eform -->
+<!-- proc~tr -->
 <g id="proc~~pvtob~~CallsGraph_node6" class="node">
-<title>proc~eform</title>
-<g id="a_proc~~pvtob~~CallsGraph_node6"><a xlink:href=".././proc/eform.html" xlink:title="EFORM">
+<title>proc~tr</title>
+<g id="a_proc~~pvtob~~CallsGraph_node6"><a xlink:href=".././proc/tr.html" xlink:title="TR">
 <polygon fill="#d9534f" stroke="#d9534f" points="236,-66 182,-66 182,-42 236,-42 236,-66"/>
-<text text-anchor="middle" x="209" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">EFORM</text>
+<text text-anchor="middle" x="209" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">TR</text>
 </a>
 </g>
 </g>
-<!-- proc~gd2gc&#45;&gt;proc~eform -->
+<!-- proc~trxp&#45;&gt;proc~tr -->
 <g id="proc~~pvtob~~CallsGraph_edge11" class="edge">
-<title>proc~gd2gc&#45;&gt;proc~eform</title>
+<title>proc~trxp&#45;&gt;proc~tr</title>
 <path fill="none" stroke="#000000" d="M144.03,-54C152.63,-54 162.36,-54 171.59,-54"/>
 <polygon fill="#000000" stroke="#000000" points="171.72,-57.5 181.71,-54 171.71,-50.5 171.72,-57.5"/>
 </g>
-<!-- proc~gd2gce -->
-<g id="proc~~pvtob~~CallsGraph_node8" class="node">
-<title>proc~gd2gce</title>
-<g id="a_proc~~pvtob~~CallsGraph_node8"><a xlink:href=".././proc/gd2gce.html" xlink:title="GD2GCE">
-<polygon fill="#d9534f" stroke="#d9534f" points="238,-24 180,-24 180,0 238,0 238,-24"/>
-<text text-anchor="middle" x="209" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">GD2GCE</text>
+<!-- proc~rxp -->
+<g id="proc~~pvtob~~CallsGraph_node13" class="node">
+<title>proc~rxp</title>
+<g id="a_proc~~pvtob~~CallsGraph_node13"><a xlink:href=".././proc/rxp.html" xlink:title="RXP">
+<polygon fill="#d9534f" stroke="#d9534f" points="236,-24 182,-24 182,0 236,0 236,-24"/>
+<text text-anchor="middle" x="209" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RXP</text>
 </a>
 </g>
 </g>
-<!-- proc~gd2gc&#45;&gt;proc~gd2gce -->
-<g id="proc~~pvtob~~CallsGraph_edge10" class="edge">
-<title>proc~gd2gc&#45;&gt;proc~gd2gce</title>
+<!-- proc~trxp&#45;&gt;proc~rxp -->
+<g id="proc~~pvtob~~CallsGraph_edge12" class="edge">
+<title>proc~trxp&#45;&gt;proc~rxp</title>
 <path fill="none" stroke="#000000" d="M144.03,-41.85C152.99,-37.67 163.17,-32.92 172.73,-28.46"/>
 <polygon fill="#000000" stroke="#000000" points="174.45,-31.52 182.03,-24.12 171.48,-25.18 174.45,-31.52"/>
 </g>
@@ -648,8 +496,6 @@ public subroutine PVTOB(elong, phi, hm, xp, yp, sp, theta, pv)
     </div></div></div></div>
       </div>
     </div>
-     
-     
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Called by</h3>
@@ -702,25 +548,10 @@ public subroutine PVTOB(elong, phi, hm, xp, yp, sp, theta, pv)
 <path fill="none" stroke="#000000" d="M236.4,-60.3C244.48,-62.23 253.51,-64.38 262.1,-66.43"/>
 <polygon fill="#000000" stroke="#000000" points="261.38,-69.86 271.92,-68.78 263,-63.05 261.38,-69.86"/>
 </g>
-<!-- proc~apco13 -->
-<g id="proc~~pvtob~~CalledByGraph_node4" class="node">
-<title>proc~apco13</title>
-<g id="a_proc~~pvtob~~CalledByGraph_node4"><a xlink:href=".././proc/apco13.html" xlink:title="APCO13">
-<polygon fill="#d9534f" stroke="#d9534f" points="146,-108 91,-108 91,-84 146,-84 146,-108"/>
-<text text-anchor="middle" x="118.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APCO13</text>
-</a>
-</g>
-</g>
-<!-- proc~apco13&#45;&gt;proc~apco -->
-<g id="proc~~pvtob~~CalledByGraph_edge3" class="edge">
-<title>proc~apco13&#45;&gt;proc~apco</title>
-<path fill="none" stroke="#000000" d="M146.05,-96C154.09,-96 163.06,-96 171.62,-96"/>
-<polygon fill="#000000" stroke="#000000" points="171.77,-99.5 181.77,-96 171.77,-92.5 171.77,-99.5"/>
-</g>
 <!-- proc~apio13 -->
-<g id="proc~~pvtob~~CalledByGraph_node5" class="node">
+<g id="proc~~pvtob~~CalledByGraph_node4" class="node">
 <title>proc~apio13</title>
-<g id="a_proc~~pvtob~~CalledByGraph_node5"><a xlink:href=".././proc/apio13.html" xlink:title="APIO13">
+<g id="a_proc~~pvtob~~CalledByGraph_node4"><a xlink:href=".././proc/apio13.html" xlink:title="APIO13">
 <polygon fill="#d9534f" stroke="#d9534f" points="145.5,-66 91.5,-66 91.5,-42 145.5,-42 145.5,-66"/>
 <text text-anchor="middle" x="118.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APIO13</text>
 </a>
@@ -732,65 +563,80 @@ public subroutine PVTOB(elong, phi, hm, xp, yp, sp, theta, pv)
 <path fill="none" stroke="#000000" d="M145.57,-54C153.78,-54 163,-54 171.78,-54"/>
 <polygon fill="#000000" stroke="#000000" points="171.81,-57.5 181.81,-54 171.81,-50.5 171.81,-57.5"/>
 </g>
-<!-- proc~atco13 -->
-<g id="proc~~pvtob~~CalledByGraph_node6" class="node">
-<title>proc~atco13</title>
-<g id="a_proc~~pvtob~~CalledByGraph_node6"><a xlink:href=".././proc/atco13.html" xlink:title="ATCO13">
-<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-150 0.5,-150 0.5,-126 54.5,-126 54.5,-150"/>
-<text text-anchor="middle" x="27.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATCO13</text>
+<!-- proc~apco13 -->
+<g id="proc~~pvtob~~CalledByGraph_node5" class="node">
+<title>proc~apco13</title>
+<g id="a_proc~~pvtob~~CalledByGraph_node5"><a xlink:href=".././proc/apco13.html" xlink:title="APCO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="146,-108 91,-108 91,-84 146,-84 146,-108"/>
+<text text-anchor="middle" x="118.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APCO13</text>
 </a>
 </g>
 </g>
-<!-- proc~atco13&#45;&gt;proc~apco13 -->
-<g id="proc~~pvtob~~CalledByGraph_edge5" class="edge">
-<title>proc~atco13&#45;&gt;proc~apco13</title>
-<path fill="none" stroke="#000000" d="M54.24,-125.85C63.1,-121.67 73.17,-116.92 82.63,-112.46"/>
-<polygon fill="#000000" stroke="#000000" points="84.27,-115.55 91.82,-108.12 81.28,-109.22 84.27,-115.55"/>
+<!-- proc~apco13&#45;&gt;proc~apco -->
+<g id="proc~~pvtob~~CalledByGraph_edge3" class="edge">
+<title>proc~apco13&#45;&gt;proc~apco</title>
+<path fill="none" stroke="#000000" d="M146.05,-96C154.09,-96 163.06,-96 171.62,-96"/>
+<polygon fill="#000000" stroke="#000000" points="171.77,-99.5 181.77,-96 171.77,-92.5 171.77,-99.5"/>
 </g>
 <!-- proc~atoc13 -->
-<g id="proc~~pvtob~~CalledByGraph_node7" class="node">
+<g id="proc~~pvtob~~CalledByGraph_node6" class="node">
 <title>proc~atoc13</title>
-<g id="a_proc~~pvtob~~CalledByGraph_node7"><a xlink:href=".././proc/atoc13.html" xlink:title="ATOC13">
-<polygon fill="#d9534f" stroke="#d9534f" points="55,-108 0,-108 0,-84 55,-84 55,-108"/>
-<text text-anchor="middle" x="27.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOC13</text>
+<g id="a_proc~~pvtob~~CalledByGraph_node6"><a xlink:href=".././proc/atoc13.html" xlink:title="ATOC13">
+<polygon fill="#d9534f" stroke="#d9534f" points="55,-150 0,-150 0,-126 55,-126 55,-150"/>
+<text text-anchor="middle" x="27.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOC13</text>
 </a>
 </g>
 </g>
 <!-- proc~atoc13&#45;&gt;proc~apco13 -->
-<g id="proc~~pvtob~~CalledByGraph_edge6" class="edge">
+<g id="proc~~pvtob~~CalledByGraph_edge7" class="edge">
 <title>proc~atoc13&#45;&gt;proc~apco13</title>
-<path fill="none" stroke="#000000" d="M55.2,-96C63.21,-96 72.14,-96 80.68,-96"/>
-<polygon fill="#000000" stroke="#000000" points="80.82,-99.5 90.82,-96 80.82,-92.5 80.82,-99.5"/>
+<path fill="none" stroke="#000000" d="M54.24,-125.85C63.1,-121.67 73.17,-116.92 82.63,-112.46"/>
+<polygon fill="#000000" stroke="#000000" points="84.27,-115.55 91.82,-108.12 81.28,-109.22 84.27,-115.55"/>
+</g>
+<!-- proc~atio13 -->
+<g id="proc~~pvtob~~CalledByGraph_node7" class="node">
+<title>proc~atio13</title>
+<g id="a_proc~~pvtob~~CalledByGraph_node7"><a xlink:href=".././proc/atio13.html" xlink:title="ATIO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-66 0.5,-66 0.5,-42 54.5,-42 54.5,-66"/>
+<text text-anchor="middle" x="27.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATIO13</text>
+</a>
+</g>
+</g>
+<!-- proc~atio13&#45;&gt;proc~apio13 -->
+<g id="proc~~pvtob~~CalledByGraph_edge5" class="edge">
+<title>proc~atio13&#45;&gt;proc~apio13</title>
+<path fill="none" stroke="#000000" d="M54.72,-54C63.05,-54 72.41,-54 81.32,-54"/>
+<polygon fill="#000000" stroke="#000000" points="81.47,-57.5 91.47,-54 81.47,-50.5 81.47,-57.5"/>
 </g>
 <!-- proc~atoi13 -->
 <g id="proc~~pvtob~~CalledByGraph_node8" class="node">
 <title>proc~atoi13</title>
 <g id="a_proc~~pvtob~~CalledByGraph_node8"><a xlink:href=".././proc/atoi13.html" xlink:title="ATOI13">
-<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-66 0.5,-66 0.5,-42 54.5,-42 54.5,-66"/>
-<text text-anchor="middle" x="27.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOI13</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-24 0.5,-24 0.5,0 54.5,0 54.5,-24"/>
+<text text-anchor="middle" x="27.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOI13</text>
 </a>
 </g>
 </g>
 <!-- proc~atoi13&#45;&gt;proc~apio13 -->
-<g id="proc~~pvtob~~CalledByGraph_edge7" class="edge">
+<g id="proc~~pvtob~~CalledByGraph_edge6" class="edge">
 <title>proc~atoi13&#45;&gt;proc~apio13</title>
-<path fill="none" stroke="#000000" d="M54.72,-54C63.05,-54 72.41,-54 81.32,-54"/>
-<polygon fill="#000000" stroke="#000000" points="81.47,-57.5 91.47,-54 81.47,-50.5 81.47,-57.5"/>
+<path fill="none" stroke="#000000" d="M54.24,-24.15C63.1,-28.33 73.17,-33.08 82.63,-37.54"/>
+<polygon fill="#000000" stroke="#000000" points="81.28,-40.78 91.82,-41.88 84.27,-34.45 81.28,-40.78"/>
 </g>
-<!-- proc~atio13 -->
+<!-- proc~atco13 -->
 <g id="proc~~pvtob~~CalledByGraph_node9" class="node">
-<title>proc~atio13</title>
-<g id="a_proc~~pvtob~~CalledByGraph_node9"><a xlink:href=".././proc/atio13.html" xlink:title="ATIO13">
-<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-24 0.5,-24 0.5,0 54.5,0 54.5,-24"/>
-<text text-anchor="middle" x="27.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATIO13</text>
+<title>proc~atco13</title>
+<g id="a_proc~~pvtob~~CalledByGraph_node9"><a xlink:href=".././proc/atco13.html" xlink:title="ATCO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-108 0.5,-108 0.5,-84 54.5,-84 54.5,-108"/>
+<text text-anchor="middle" x="27.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATCO13</text>
 </a>
 </g>
 </g>
-<!-- proc~atio13&#45;&gt;proc~apio13 -->
+<!-- proc~atco13&#45;&gt;proc~apco13 -->
 <g id="proc~~pvtob~~CalledByGraph_edge8" class="edge">
-<title>proc~atio13&#45;&gt;proc~apio13</title>
-<path fill="none" stroke="#000000" d="M54.24,-24.15C63.1,-28.33 73.17,-33.08 82.63,-37.54"/>
-<polygon fill="#000000" stroke="#000000" points="81.28,-40.78 91.82,-41.88 84.27,-34.45 81.28,-40.78"/>
+<title>proc~atco13&#45;&gt;proc~apco13</title>
+<path fill="none" stroke="#000000" d="M54.72,-96C62.9,-96 72.08,-96 80.84,-96"/>
+<polygon fill="#000000" stroke="#000000" points="80.85,-99.5 90.85,-96 80.85,-92.5 80.85,-99.5"/>
 </g>
 </g>
 </svg>
@@ -855,34 +701,11 @@ public subroutine PVTOB(elong, phi, hm, xp, yp, sp, theta, pv)
     </div></div></div></div>
       </div>
     </div>
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -890,100 +713,86 @@ public subroutine PVTOB(elong, phi, hm, xp, yp, sp, theta, pv)
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">PVTOB</span> <span class="p">(</span> <span class="n">elong</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">hm</span><span class="p">,</span> <span class="n">xp</span><span class="p">,</span> <span class="n">yp</span><span class="p">,</span> <span class="n">sp</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">pv</span> <span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">PVTOB</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">elong</span><span class="p">,</span><span class="w"> </span><span class="n">phi</span><span class="p">,</span><span class="w"> </span><span class="n">hm</span><span class="p">,</span><span class="w"> </span><span class="n">xp</span><span class="p">,</span><span class="w"> </span><span class="n">yp</span><span class="p">,</span><span class="w"> </span><span class="n">sp</span><span class="p">,</span><span class="w"> </span><span class="n">theta</span><span class="p">,</span><span class="w"> </span><span class="n">pv</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">elong</span> <span class="c">!! longitude (radians, east +ve, Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">phi</span> <span class="c">!! latitude (geodetic, radians, Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">hm</span> <span class="c">!! height above reference ellipsoid (geodetic, m)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">xp</span> <span class="c">!! coordinates of the pole (radians, Note 2)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">yp</span> <span class="c">!! coordinates of the pole (radians, Note 2)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">sp</span> <span class="c">!! the TIO locator s&#39; (radians, Note 2)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">theta</span> <span class="c">!! Earth rotation angle (radians, Note 3)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">pv</span> <span class="c">!! position/velocity vector (m, m/s, CIRS)</span>
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">elong</span><span class="w"> </span><span class="c">!! longitude (radians, east +ve, Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">phi</span><span class="w"> </span><span class="c">!! latitude (geodetic, radians, Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">hm</span><span class="w"> </span><span class="c">!! height above reference ellipsoid (geodetic, m)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">xp</span><span class="w"> </span><span class="c">!! coordinates of the pole (radians, Note 2)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">yp</span><span class="w"> </span><span class="c">!! coordinates of the pole (radians, Note 2)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">sp</span><span class="w"> </span><span class="c">!! the TIO locator s&#39; (radians, Note 2)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">theta</span><span class="w"> </span><span class="c">!! Earth rotation angle (radians, Note 3)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">pv</span><span class="w"> </span><span class="c">!! position/velocity vector (m, m/s, CIRS)</span>
 
-    <span class="c">!  Earth rotation rate in radians per UT1 second</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">om</span> <span class="o">=</span> <span class="mf">1.00273781191135448_wp</span> <span class="o">*</span> <span class="n">d2pi</span> <span class="o">/</span> <span class="n">d2s</span>
+<span class="w">    </span><span class="c">!  Earth rotation rate in radians per UT1 second</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">om</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.00273781191135448_wp</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">d2pi</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">d2s</span><span class="w"></span>
 
-    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">j</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">xyzm</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">rpm</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">xyz</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">c</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">j</span><span class="w"></span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">xyzm</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">rpm</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">xyz</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="w"></span>
 
-    <span class="c">!  Geodetic to geocentric transformation (WGS84).</span>
-    <span class="k">call </span><span class="n">GD2GC</span> <span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="n">elong</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">hm</span><span class="p">,</span> <span class="n">xyzm</span><span class="p">,</span> <span class="n">j</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Geodetic to geocentric transformation (WGS84).</span>
+<span class="w">    </span><span class="k">call </span><span class="n">GD2GC</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">elong</span><span class="p">,</span><span class="w"> </span><span class="n">phi</span><span class="p">,</span><span class="w"> </span><span class="n">hm</span><span class="p">,</span><span class="w"> </span><span class="n">xyzm</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Polar motion and TIO position.</span>
-    <span class="k">call </span><span class="n">POM00</span> <span class="p">(</span> <span class="n">xp</span><span class="p">,</span> <span class="n">yp</span><span class="p">,</span> <span class="n">sp</span><span class="p">,</span> <span class="n">rpm</span> <span class="p">)</span>
-    <span class="k">call </span><span class="n">TRXP</span> <span class="p">(</span> <span class="n">rpm</span><span class="p">,</span> <span class="n">xyzm</span><span class="p">,</span> <span class="n">xyz</span> <span class="p">)</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">xyz</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">xyz</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-    <span class="n">z</span> <span class="o">=</span> <span class="n">xyz</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="w">    </span><span class="c">!  Polar motion and TIO position.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">POM00</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">xp</span><span class="p">,</span><span class="w"> </span><span class="n">yp</span><span class="p">,</span><span class="w"> </span><span class="n">sp</span><span class="p">,</span><span class="w"> </span><span class="n">rpm</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">call </span><span class="n">TRXP</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">rpm</span><span class="p">,</span><span class="w"> </span><span class="n">xyzm</span><span class="p">,</span><span class="w"> </span><span class="n">xyz</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xyz</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xyz</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xyz</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  routines of ERA.</span>
-    <span class="n">s</span> <span class="o">=</span> <span class="nb">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
-    <span class="n">c</span> <span class="o">=</span> <span class="nb">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+<span class="w">    </span><span class="c">!  routines of ERA.</span>
+<span class="w">    </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Position.</span>
-    <span class="n">pv</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">c</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="n">s</span><span class="o">*</span><span class="n">y</span>
-    <span class="n">pv</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">s</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">c</span><span class="o">*</span><span class="n">y</span>
-    <span class="n">pv</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">z</span>
+<span class="w">    </span><span class="c">!  Position.</span>
+<span class="w">    </span><span class="n">pv</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">s</span><span class="o">*</span><span class="n">y</span><span class="w"></span>
+<span class="w">    </span><span class="n">pv</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c</span><span class="o">*</span><span class="n">y</span><span class="w"></span>
+<span class="w">    </span><span class="n">pv</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">z</span><span class="w"></span>
 
-    <span class="c">!  Velocity.</span>
-    <span class="n">pv</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">om</span> <span class="o">*</span> <span class="p">(</span> <span class="o">-</span><span class="n">s</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="n">c</span><span class="o">*</span><span class="n">y</span> <span class="p">)</span>
-    <span class="n">pv</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">om</span> <span class="o">*</span> <span class="p">(</span>  <span class="n">c</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="n">s</span><span class="o">*</span><span class="n">y</span> <span class="p">)</span>
-    <span class="n">pv</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0_wp</span>
+<span class="w">    </span><span class="c">!  Velocity.</span>
+<span class="w">    </span><span class="n">pv</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">om</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="o">-</span><span class="n">s</span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">c</span><span class="o">*</span><span class="n">y</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">pv</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">om</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="w">  </span><span class="n">c</span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">s</span><span class="o">*</span><span class="n">y</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">pv</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_wp</span><span class="w"></span>
 
-    <span class="k">end subroutine </span><span class="n">PVTOB</span>
+<span class="w">    </span><span class="k">end subroutine </span><span class="n">PVTOB</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>astro-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -1009,14 +818,11 @@ public subroutine PVTOB(elong, phi, hm, xp, yp, sp, theta, pv)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

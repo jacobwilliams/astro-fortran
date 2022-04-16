@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,45 +43,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-        
+              
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                                       </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -95,50 +68,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>PMAT00
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 0.1% of total for procedures.">8 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
-    
      <li><a href='../module/astro_module.html'>astro_module</a></li>
-    
-  
      <li class="active">PMAT00</li>
   </ol>
 </div>
@@ -154,32 +106,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -187,24 +116,14 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-public subroutine PMAT00(date1, date2, rbp)
+    <h2>public subroutine PMAT00(date1, date2, rbp)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>Precession matrix (including frame bias) from GCRS to a specified
   date, IAU 2000 model.</p>
 <p>Status:  support routine.</p>
@@ -247,74 +166,33 @@ public subroutine PMAT00(date1, date2, rbp)
 <ul>
 <li>IAU SOFA revision: 2009 December 21</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-date1~51"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>date1</strong></td><td><p>TT as a 2-part Julian Date (Note 1)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-date2~51"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>date2</strong></td><td><p>TT as a 2-part Julian Date (Note 1)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-rbp~3"></span>real(kind=wp),</td>
-  <td>intent(out),</td>
-  <td></td>
-  
-  <td>dimension(3,3)</td><td>::</td>
+<td>intent(out),</td>
+  <td></td>  <td>dimension(3,3)</td><td>::</td>
   <td><strong>rbp</strong></td><td><p>bias-precession matrix (Note 2)</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Calls</h3>
@@ -326,121 +204,136 @@ public subroutine PMAT00(date1, date2, rbp)
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: proc~~pmat00~~CallsGraph Pages: 1 -->
-<svg id="procpmat00CallsGraph" width="242pt" height="242pt"
- viewBox="0.00 0.00 242.00 242.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="proc~~pmat00~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 238)">
+<svg id="procpmat00CallsGraph" width="242pt" height="284pt"
+ viewBox="0.00 0.00 242.00 284.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~pmat00~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 280)">
 <title>proc~~pmat00~~CallsGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-238 238,-238 238,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-280 238,-280 238,4 -4,4"/>
 <!-- proc~pmat00 -->
 <g id="proc~~pmat00~~CallsGraph_node1" class="node">
 <title>proc~pmat00</title>
-<polygon fill="none" stroke="black" points="54,-129 0,-129 0,-105 54,-105 54,-129"/>
-<text text-anchor="middle" x="27" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50">PMAT00</text>
+<polygon fill="none" stroke="black" points="54,-150 0,-150 0,-126 54,-126 54,-150"/>
+<text text-anchor="middle" x="27" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50">PMAT00</text>
 </g>
 <!-- proc~bp00 -->
 <g id="proc~~pmat00~~CallsGraph_node2" class="node">
 <title>proc~bp00</title>
 <g id="a_proc~~pmat00~~CallsGraph_node2"><a xlink:href=".././proc/bp00.html" xlink:title="BP00">
-<polygon fill="#d9534f" stroke="#d9534f" points="144,-129 90,-129 90,-105 144,-105 144,-129"/>
-<text text-anchor="middle" x="117" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">BP00</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-150 90,-150 90,-126 144,-126 144,-150"/>
+<text text-anchor="middle" x="117" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">BP00</text>
 </a>
 </g>
 </g>
 <!-- proc~pmat00&#45;&gt;proc~bp00 -->
 <g id="proc~~pmat00~~CallsGraph_edge1" class="edge">
 <title>proc~pmat00&#45;&gt;proc~bp00</title>
-<path fill="none" stroke="#000000" d="M54.4,-117C62.39,-117 71.31,-117 79.82,-117"/>
-<polygon fill="#000000" stroke="#000000" points="79.92,-120.5 89.92,-117 79.92,-113.5 79.92,-120.5"/>
+<path fill="none" stroke="#000000" d="M54.4,-138C62.39,-138 71.31,-138 79.82,-138"/>
+<polygon fill="#000000" stroke="#000000" points="79.92,-141.5 89.92,-138 79.92,-134.5 79.92,-141.5"/>
+</g>
+<!-- proc~bi00 -->
+<g id="proc~~pmat00~~CallsGraph_node3" class="node">
+<title>proc~bi00</title>
+<g id="a_proc~~pmat00~~CallsGraph_node3"><a xlink:href=".././proc/bi00.html" xlink:title="BI00">
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-276 180,-276 180,-252 234,-252 234,-276"/>
+<text text-anchor="middle" x="207" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">BI00</text>
+</a>
+</g>
+</g>
+<!-- proc~bp00&#45;&gt;proc~bi00 -->
+<g id="proc~~pmat00~~CallsGraph_edge2" class="edge">
+<title>proc~bp00&#45;&gt;proc~bi00</title>
+<path fill="none" stroke="#000000" d="M123.44,-150.24C132.97,-170.82 154.12,-213.04 180,-243 180.6,-243.69 181.22,-244.38 181.86,-245.06"/>
+<polygon fill="#000000" stroke="#000000" points="179.55,-247.68 189.25,-251.95 184.32,-242.57 179.55,-247.68"/>
 </g>
 <!-- proc~rx -->
-<g id="proc~~pmat00~~CallsGraph_node3" class="node">
+<g id="proc~~pmat00~~CallsGraph_node4" class="node">
 <title>proc~rx</title>
-<g id="a_proc~~pmat00~~CallsGraph_node3"><a xlink:href=".././proc/rx.html" xlink:title="RX">
+<g id="a_proc~~pmat00~~CallsGraph_node4"><a xlink:href=".././proc/rx.html" xlink:title="RX">
 <polygon fill="#d9534f" stroke="#d9534f" points="234,-234 180,-234 180,-210 234,-210 234,-234"/>
 <text text-anchor="middle" x="207" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RX</text>
 </a>
 </g>
 </g>
 <!-- proc~bp00&#45;&gt;proc~rx -->
-<g id="proc~~pmat00~~CallsGraph_edge2" class="edge">
+<g id="proc~~pmat00~~CallsGraph_edge3" class="edge">
 <title>proc~bp00&#45;&gt;proc~rx</title>
-<path fill="none" stroke="#000000" d="M125.55,-129.15C136.43,-146.19 157.69,-177.69 180,-201 180.65,-201.68 181.32,-202.36 182.01,-203.03"/>
-<polygon fill="#000000" stroke="#000000" points="179.97,-205.9 189.76,-209.95 184.64,-200.68 179.97,-205.9"/>
+<path fill="none" stroke="#000000" d="M129.04,-150.01C141.15,-163 161.35,-184.1 180,-201 180.82,-201.74 181.66,-202.49 182.51,-203.23"/>
+<polygon fill="#000000" stroke="#000000" points="180.46,-206.08 190.36,-209.85 184.97,-200.73 180.46,-206.08"/>
 </g>
 <!-- proc~ir -->
-<g id="proc~~pmat00~~CallsGraph_node4" class="node">
+<g id="proc~~pmat00~~CallsGraph_node5" class="node">
 <title>proc~ir</title>
-<g id="a_proc~~pmat00~~CallsGraph_node4"><a xlink:href=".././proc/ir.html" xlink:title="IR">
+<g id="a_proc~~pmat00~~CallsGraph_node5"><a xlink:href=".././proc/ir.html" xlink:title="IR">
 <polygon fill="#d9534f" stroke="#d9534f" points="234,-192 180,-192 180,-168 234,-168 234,-192"/>
 <text text-anchor="middle" x="207" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">IR</text>
 </a>
 </g>
 </g>
 <!-- proc~bp00&#45;&gt;proc~ir -->
-<g id="proc~~pmat00~~CallsGraph_edge3" class="edge">
+<g id="proc~~pmat00~~CallsGraph_edge4" class="edge">
 <title>proc~bp00&#45;&gt;proc~ir</title>
-<path fill="none" stroke="#000000" d="M134.97,-129.15C147.99,-138.47 166.18,-151.49 180.89,-162.02"/>
-<polygon fill="#000000" stroke="#000000" points="178.92,-164.91 189.08,-167.89 182.99,-159.22 178.92,-164.91"/>
+<path fill="none" stroke="#000000" d="M143.45,-150.15C152.21,-154.33 162.17,-159.08 171.52,-163.54"/>
+<polygon fill="#000000" stroke="#000000" points="170.07,-166.73 180.6,-167.88 173.09,-160.41 170.07,-166.73"/>
+</g>
+<!-- proc~ry -->
+<g id="proc~~pmat00~~CallsGraph_node6" class="node">
+<title>proc~ry</title>
+<g id="a_proc~~pmat00~~CallsGraph_node6"><a xlink:href=".././proc/ry.html" xlink:title="RY">
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-150 180,-150 180,-126 234,-126 234,-150"/>
+<text text-anchor="middle" x="207" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RY</text>
+</a>
+</g>
+</g>
+<!-- proc~bp00&#45;&gt;proc~ry -->
+<g id="proc~~pmat00~~CallsGraph_edge5" class="edge">
+<title>proc~bp00&#45;&gt;proc~ry</title>
+<path fill="none" stroke="#000000" d="M144.4,-138C152.39,-138 161.31,-138 169.82,-138"/>
+<polygon fill="#000000" stroke="#000000" points="169.92,-141.5 179.92,-138 169.92,-134.5 169.92,-141.5"/>
 </g>
 <!-- proc~rxr -->
-<g id="proc~~pmat00~~CallsGraph_node5" class="node">
+<g id="proc~~pmat00~~CallsGraph_node7" class="node">
 <title>proc~rxr</title>
-<g id="a_proc~~pmat00~~CallsGraph_node5"><a xlink:href=".././proc/rxr.html" xlink:title="RXR">
-<polygon fill="#d9534f" stroke="#d9534f" points="234,-150 180,-150 180,-126 234,-126 234,-150"/>
-<text text-anchor="middle" x="207" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RXR</text>
+<g id="a_proc~~pmat00~~CallsGraph_node7"><a xlink:href=".././proc/rxr.html" xlink:title="RXR">
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-108 180,-108 180,-84 234,-84 234,-108"/>
+<text text-anchor="middle" x="207" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RXR</text>
 </a>
 </g>
 </g>
 <!-- proc~bp00&#45;&gt;proc~rxr -->
-<g id="proc~~pmat00~~CallsGraph_edge5" class="edge">
-<title>proc~bp00&#45;&gt;proc~rxr</title>
-<path fill="none" stroke="#000000" d="M144.4,-123.3C152.48,-125.23 161.51,-127.38 170.1,-129.43"/>
-<polygon fill="#000000" stroke="#000000" points="169.38,-132.86 179.92,-131.78 171,-126.05 169.38,-132.86"/>
-</g>
-<!-- proc~bi00 -->
-<g id="proc~~pmat00~~CallsGraph_node6" class="node">
-<title>proc~bi00</title>
-<g id="a_proc~~pmat00~~CallsGraph_node6"><a xlink:href=".././proc/bi00.html" xlink:title="BI00">
-<polygon fill="#d9534f" stroke="#d9534f" points="234,-108 180,-108 180,-84 234,-84 234,-108"/>
-<text text-anchor="middle" x="207" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">BI00</text>
-</a>
-</g>
-</g>
-<!-- proc~bp00&#45;&gt;proc~bi00 -->
-<g id="proc~~pmat00~~CallsGraph_edge4" class="edge">
-<title>proc~bp00&#45;&gt;proc~bi00</title>
-<path fill="none" stroke="#000000" d="M144.4,-110.7C152.48,-108.77 161.51,-106.62 170.1,-104.57"/>
-<polygon fill="#000000" stroke="#000000" points="171,-107.95 179.92,-102.22 169.38,-101.14 171,-107.95"/>
-</g>
-<!-- proc~pr00 -->
-<g id="proc~~pmat00~~CallsGraph_node7" class="node">
-<title>proc~pr00</title>
-<g id="a_proc~~pmat00~~CallsGraph_node7"><a xlink:href=".././proc/pr00.html" xlink:title="PR00">
-<polygon fill="#d9534f" stroke="#d9534f" points="234,-66 180,-66 180,-42 234,-42 234,-66"/>
-<text text-anchor="middle" x="207" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PR00</text>
-</a>
-</g>
-</g>
-<!-- proc~bp00&#45;&gt;proc~pr00 -->
 <g id="proc~~pmat00~~CallsGraph_edge6" class="edge">
-<title>proc~bp00&#45;&gt;proc~pr00</title>
-<path fill="none" stroke="#000000" d="M134.97,-104.85C147.99,-95.53 166.18,-82.51 180.89,-71.98"/>
-<polygon fill="#000000" stroke="#000000" points="182.99,-74.78 189.08,-66.11 178.92,-69.09 182.99,-74.78"/>
+<title>proc~bp00&#45;&gt;proc~rxr</title>
+<path fill="none" stroke="#000000" d="M143.45,-125.85C152.21,-121.67 162.17,-116.92 171.52,-112.46"/>
+<polygon fill="#000000" stroke="#000000" points="173.09,-115.59 180.6,-108.12 170.07,-109.27 173.09,-115.59"/>
 </g>
 <!-- proc~rz -->
 <g id="proc~~pmat00~~CallsGraph_node8" class="node">
 <title>proc~rz</title>
 <g id="a_proc~~pmat00~~CallsGraph_node8"><a xlink:href=".././proc/rz.html" xlink:title="RZ">
-<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 180,-24 180,0 234,0 234,-24"/>
-<text text-anchor="middle" x="207" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RZ</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-66 180,-66 180,-42 234,-42 234,-66"/>
+<text text-anchor="middle" x="207" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RZ</text>
 </a>
 </g>
 </g>
 <!-- proc~bp00&#45;&gt;proc~rz -->
 <g id="proc~~pmat00~~CallsGraph_edge7" class="edge">
 <title>proc~bp00&#45;&gt;proc~rz</title>
-<path fill="none" stroke="#000000" d="M125.55,-104.85C136.43,-87.81 157.69,-56.31 180,-33 180.65,-32.32 181.32,-31.64 182.01,-30.97"/>
-<polygon fill="#000000" stroke="#000000" points="184.64,-33.32 189.76,-24.05 179.97,-28.1 184.64,-33.32"/>
+<path fill="none" stroke="#000000" d="M129.04,-125.99C141.15,-113 161.35,-91.9 180,-75 180.82,-74.26 181.66,-73.51 182.51,-72.77"/>
+<polygon fill="#000000" stroke="#000000" points="184.97,-75.27 190.36,-66.15 180.46,-69.92 184.97,-75.27"/>
+</g>
+<!-- proc~pr00 -->
+<g id="proc~~pmat00~~CallsGraph_node9" class="node">
+<title>proc~pr00</title>
+<g id="a_proc~~pmat00~~CallsGraph_node9"><a xlink:href=".././proc/pr00.html" xlink:title="PR00">
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 180,-24 180,0 234,0 234,-24"/>
+<text text-anchor="middle" x="207" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PR00</text>
+</a>
+</g>
+</g>
+<!-- proc~bp00&#45;&gt;proc~pr00 -->
+<g id="proc~~pmat00~~CallsGraph_edge8" class="edge">
+<title>proc~bp00&#45;&gt;proc~pr00</title>
+<path fill="none" stroke="#000000" d="M123.44,-125.76C132.97,-105.18 154.12,-62.96 180,-33 180.6,-32.31 181.22,-31.62 181.86,-30.94"/>
+<polygon fill="#000000" stroke="#000000" points="184.32,-33.43 189.25,-24.05 179.55,-28.32 184.32,-33.43"/>
 </g>
 </g>
 </svg>
@@ -505,35 +398,11 @@ public subroutine PMAT00(date1, date2, rbp)
     </div></div></div></div>
       </div>
     </div>
-     
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -541,70 +410,56 @@ public subroutine PMAT00(date1, date2, rbp)
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">PMAT00</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span><span class="p">,</span> <span class="n">rbp</span> <span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">PMAT00</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="p">,</span><span class="w"> </span><span class="n">date2</span><span class="p">,</span><span class="w"> </span><span class="n">rbp</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date1</span> <span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date2</span> <span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">rbp</span> <span class="c">!! bias-precession matrix (Note 2)</span>
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date1</span><span class="w"> </span><span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date2</span><span class="w"> </span><span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">rbp</span><span class="w"> </span><span class="c">!! bias-precession matrix (Note 2)</span>
 
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">rb</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">rp</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">rb</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">rp</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Obtain the required matrix (discarding others).</span>
-    <span class="k">call </span><span class="n">BP00</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span><span class="p">,</span> <span class="n">rb</span><span class="p">,</span> <span class="n">rp</span><span class="p">,</span> <span class="n">rbp</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Obtain the required matrix (discarding others).</span>
+<span class="w">    </span><span class="k">call </span><span class="n">BP00</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="p">,</span><span class="w"> </span><span class="n">date2</span><span class="p">,</span><span class="w"> </span><span class="n">rb</span><span class="p">,</span><span class="w"> </span><span class="n">rp</span><span class="p">,</span><span class="w"> </span><span class="n">rbp</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">end subroutine </span><span class="n">PMAT00</span>
+<span class="w">    </span><span class="k">end subroutine </span><span class="n">PMAT00</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>astro-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -630,14 +485,11 @@ public subroutine PMAT00(date1, date2, rbp)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

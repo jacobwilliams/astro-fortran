@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,45 +43,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-        
+              
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                                       </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -95,50 +68,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>PNM80
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 0.2% of total for procedures.">10 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
-    
      <li><a href='../module/astro_module.html'>astro_module</a></li>
-    
-  
      <li class="active">PNM80</li>
   </ol>
 </div>
@@ -154,32 +106,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -187,24 +116,14 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-public subroutine PNM80(date1, date2, rmatpn)
+    <h2>public subroutine PNM80(date1, date2, rmatpn)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>Form the matrix of precession/nutation for a given date, IAU 1976
   precession model, IAU 1980 nutation model.</p>
 <p>Status:  support routine.</p>
@@ -248,74 +167,33 @@ public subroutine PNM80(date1, date2, rmatpn)
 <ul>
 <li>IAU SOFA revision: 2012 September 5</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-date1~62"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>date1</strong></td><td><p>TDB date (Note 1)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-date2~62"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>date2</strong></td><td><p>TDB date (Note 1)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-rmatpn"></span>real(kind=wp),</td>
-  <td>intent(out),</td>
-  <td></td>
-  
-  <td>dimension(3,3)</td><td>::</td>
+<td>intent(out),</td>
+  <td></td>  <td>dimension(3,3)</td><td>::</td>
   <td><strong>rmatpn</strong></td><td><p>combined precession/nutation matrix</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Calls</h3>
@@ -335,143 +213,98 @@ public subroutine PNM80(date1, date2, rmatpn)
 <!-- proc~pnm80 -->
 <g id="proc~~pnm80~~CallsGraph_node1" class="node">
 <title>proc~pnm80</title>
-<polygon fill="none" stroke="black" points="54,-98 0,-98 0,-74 54,-74 54,-98"/>
-<text text-anchor="middle" x="27" y="-83.6" font-family="Helvetica,sans-Serif" font-size="10.50">PNM80</text>
+<polygon fill="none" stroke="black" points="54,-159 0,-159 0,-135 54,-135 54,-159"/>
+<text text-anchor="middle" x="27" y="-144.6" font-family="Helvetica,sans-Serif" font-size="10.50">PNM80</text>
 </g>
-<!-- proc~nutm80 -->
+<!-- proc~rxr -->
 <g id="proc~~pnm80~~CallsGraph_node2" class="node">
-<title>proc~nutm80</title>
-<g id="a_proc~~pnm80~~CallsGraph_node2"><a xlink:href=".././proc/nutm80.html" xlink:title="NUTM80">
-<polygon fill="#d9534f" stroke="#d9534f" points="147,-160 90,-160 90,-136 147,-136 147,-160"/>
-<text text-anchor="middle" x="118.5" y="-145.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">NUTM80</text>
+<title>proc~rxr</title>
+<g id="a_proc~~pnm80~~CallsGraph_node2"><a xlink:href=".././proc/rxr.html" xlink:title="RXR">
+<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-199 91.5,-199 91.5,-175 145.5,-175 145.5,-199"/>
+<text text-anchor="middle" x="118.5" y="-184.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RXR</text>
 </a>
 </g>
 </g>
-<!-- proc~pnm80&#45;&gt;proc~nutm80 -->
+<!-- proc~pnm80&#45;&gt;proc~rxr -->
 <g id="proc~~pnm80~~CallsGraph_edge1" class="edge">
-<title>proc~pnm80&#45;&gt;proc~nutm80</title>
-<path fill="none" stroke="#000000" d="M45.68,-98.25C58.88,-107.39 77.12,-120.03 91.91,-130.27"/>
-<polygon fill="#000000" stroke="#000000" points="89.95,-133.17 100.16,-135.99 93.93,-127.42 89.95,-133.17"/>
+<title>proc~pnm80&#45;&gt;proc~rxr</title>
+<path fill="none" stroke="#000000" d="M54.37,-158.78C63.02,-162.65 72.78,-167.01 81.99,-171.13"/>
+<polygon fill="#000000" stroke="#000000" points="80.76,-174.41 91.32,-175.3 83.62,-168.02 80.76,-174.41"/>
 </g>
 <!-- proc~pmat76 -->
 <g id="proc~~pnm80~~CallsGraph_node3" class="node">
 <title>proc~pmat76</title>
 <g id="a_proc~~pnm80~~CallsGraph_node3"><a xlink:href=".././proc/pmat76.html" xlink:title="PMAT76">
-<polygon fill="#d9534f" stroke="#d9534f" points="237,-87 183,-87 183,-63 237,-63 237,-87"/>
-<text text-anchor="middle" x="210" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PMAT76</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="237,-171 183,-171 183,-147 237,-147 237,-171"/>
+<text text-anchor="middle" x="210" y="-156.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PMAT76</text>
 </a>
 </g>
 </g>
 <!-- proc~pnm80&#45;&gt;proc~pmat76 -->
-<g id="proc~~pnm80~~CallsGraph_edge3" class="edge">
-<title>proc~pnm80&#45;&gt;proc~pmat76</title>
-<path fill="none" stroke="#000000" d="M54.32,-84.4C85.51,-82.51 137.65,-79.34 172.67,-77.21"/>
-<polygon fill="#000000" stroke="#000000" points="173.17,-80.68 182.94,-76.58 172.75,-73.7 173.17,-80.68"/>
-</g>
-<!-- proc~rxr -->
-<g id="proc~~pnm80~~CallsGraph_node4" class="node">
-<title>proc~rxr</title>
-<g id="a_proc~~pnm80~~CallsGraph_node4"><a xlink:href=".././proc/rxr.html" xlink:title="RXR">
-<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-58 91.5,-58 91.5,-34 145.5,-34 145.5,-58"/>
-<text text-anchor="middle" x="118.5" y="-43.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RXR</text>
-</a>
-</g>
-</g>
-<!-- proc~pnm80&#45;&gt;proc~rxr -->
 <g id="proc~~pnm80~~CallsGraph_edge2" class="edge">
-<title>proc~pnm80&#45;&gt;proc~rxr</title>
-<path fill="none" stroke="#000000" d="M54.37,-74.22C63.02,-70.35 72.78,-65.99 81.99,-61.87"/>
-<polygon fill="#000000" stroke="#000000" points="83.62,-64.98 91.32,-57.7 80.76,-58.59 83.62,-64.98"/>
+<title>proc~pnm80&#45;&gt;proc~pmat76</title>
+<path fill="none" stroke="#000000" d="M54.32,-148.74C85.51,-150.81 137.65,-154.27 172.67,-156.59"/>
+<polygon fill="#000000" stroke="#000000" points="172.73,-160.1 182.94,-157.27 173.2,-153.12 172.73,-160.1"/>
 </g>
-<!-- proc~nut80 -->
-<g id="proc~~pnm80~~CallsGraph_node5" class="node">
-<title>proc~nut80</title>
-<g id="a_proc~~pnm80~~CallsGraph_node5"><a xlink:href=".././proc/nut80.html" xlink:title="NUT80">
-<polygon fill="#d9534f" stroke="#d9534f" points="237,-223 183,-223 183,-199 237,-199 237,-223"/>
-<text text-anchor="middle" x="210" y="-208.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">NUT80</text>
+<!-- proc~nutm80 -->
+<g id="proc~~pnm80~~CallsGraph_node4" class="node">
+<title>proc~nutm80</title>
+<g id="a_proc~~pnm80~~CallsGraph_node4"><a xlink:href=".././proc/nutm80.html" xlink:title="NUTM80">
+<polygon fill="#d9534f" stroke="#d9534f" points="147,-108 90,-108 90,-84 147,-84 147,-108"/>
+<text text-anchor="middle" x="118.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">NUTM80</text>
 </a>
 </g>
 </g>
-<!-- proc~nutm80&#45;&gt;proc~nut80 -->
-<g id="proc~~pnm80~~CallsGraph_edge5" class="edge">
-<title>proc~nutm80&#45;&gt;proc~nut80</title>
-<path fill="none" stroke="#000000" d="M136.76,-160.15C150,-169.47 168.5,-182.49 183.46,-193.02"/>
-<polygon fill="#000000" stroke="#000000" points="181.6,-196 191.8,-198.89 185.63,-190.27 181.6,-196"/>
-</g>
-<!-- proc~numat -->
-<g id="proc~~pnm80~~CallsGraph_node6" class="node">
-<title>proc~numat</title>
-<g id="a_proc~~pnm80~~CallsGraph_node6"><a xlink:href=".././proc/numat.html" xlink:title="NUMAT">
-<polygon fill="#d9534f" stroke="#d9534f" points="237,-171 183,-171 183,-147 237,-147 237,-171"/>
-<text text-anchor="middle" x="210" y="-156.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">NUMAT</text>
-</a>
-</g>
-</g>
-<!-- proc~nutm80&#45;&gt;proc~numat -->
-<g id="proc~~pnm80~~CallsGraph_edge6" class="edge">
-<title>proc~nutm80&#45;&gt;proc~numat</title>
-<path fill="none" stroke="#000000" d="M147.33,-151.42C155.35,-152.41 164.23,-153.5 172.69,-154.54"/>
-<polygon fill="#000000" stroke="#000000" points="172.37,-158.02 182.72,-155.77 173.22,-151.08 172.37,-158.02"/>
-</g>
-<!-- proc~obl80 -->
-<g id="proc~~pnm80~~CallsGraph_node7" class="node">
-<title>proc~obl80</title>
-<g id="a_proc~~pnm80~~CallsGraph_node7"><a xlink:href=".././proc/obl80.html" xlink:title="OBL80">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="237,-129 183,-129 183,-105 237,-105 237,-129"/>
-<text text-anchor="middle" x="210" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OBL80</text>
-</a>
-</g>
-</g>
-<!-- proc~nutm80&#45;&gt;proc~obl80 -->
-<g id="proc~~pnm80~~CallsGraph_edge4" class="edge">
-<title>proc~nutm80&#45;&gt;proc~obl80</title>
-<path fill="none" stroke="#000000" d="M147.33,-138.36C155.53,-135.52 164.62,-132.37 173.25,-129.38"/>
-<polygon fill="#000000" stroke="#000000" points="174.41,-132.68 182.72,-126.1 172.12,-126.07 174.41,-132.68"/>
+<!-- proc~pnm80&#45;&gt;proc~nutm80 -->
+<g id="proc~~pnm80~~CallsGraph_edge3" class="edge">
+<title>proc~pnm80&#45;&gt;proc~nutm80</title>
+<path fill="none" stroke="#000000" d="M49.21,-134.91C60.61,-128.42 74.85,-120.3 87.38,-113.16"/>
+<polygon fill="#000000" stroke="#000000" points="89.18,-116.17 96.13,-108.18 85.71,-110.09 89.18,-116.17"/>
 </g>
 <!-- proc~ir -->
-<g id="proc~~pnm80~~CallsGraph_node8" class="node">
+<g id="proc~~pnm80~~CallsGraph_node7" class="node">
 <title>proc~ir</title>
-<g id="a_proc~~pnm80~~CallsGraph_node8"><a xlink:href=".././proc/ir.html" xlink:title="IR">
+<g id="a_proc~~pnm80~~CallsGraph_node7"><a xlink:href=".././proc/ir.html" xlink:title="IR">
 <polygon fill="#d9534f" stroke="#d9534f" points="327,-150 273,-150 273,-126 327,-126 327,-150"/>
 <text text-anchor="middle" x="300" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">IR</text>
 </a>
 </g>
 </g>
 <!-- proc~pmat76&#45;&gt;proc~ir -->
-<g id="proc~~pnm80~~CallsGraph_edge7" class="edge">
+<g id="proc~~pnm80~~CallsGraph_edge4" class="edge">
 <title>proc~pmat76&#45;&gt;proc~ir</title>
-<path fill="none" stroke="#000000" d="M227.97,-87.15C240.99,-96.47 259.18,-109.49 273.89,-120.02"/>
-<polygon fill="#000000" stroke="#000000" points="271.92,-122.91 282.08,-125.89 275.99,-117.22 271.92,-122.91"/>
+<path fill="none" stroke="#000000" d="M237.4,-152.7C245.48,-150.77 254.51,-148.62 263.1,-146.57"/>
+<polygon fill="#000000" stroke="#000000" points="264,-149.95 272.92,-144.22 262.38,-143.14 264,-149.95"/>
+</g>
+<!-- proc~prec76 -->
+<g id="proc~~pnm80~~CallsGraph_node8" class="node">
+<title>proc~prec76</title>
+<g id="a_proc~~pnm80~~CallsGraph_node8"><a xlink:href=".././proc/prec76.html" xlink:title="PREC76">
+<polygon fill="#d9534f" stroke="#d9534f" points="327,-234 273,-234 273,-210 327,-210 327,-234"/>
+<text text-anchor="middle" x="300" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PREC76</text>
+</a>
+</g>
+</g>
+<!-- proc~pmat76&#45;&gt;proc~prec76 -->
+<g id="proc~~pnm80~~CallsGraph_edge6" class="edge">
+<title>proc~pmat76&#45;&gt;proc~prec76</title>
+<path fill="none" stroke="#000000" d="M227.97,-171.15C240.99,-180.47 259.18,-193.49 273.89,-204.02"/>
+<polygon fill="#000000" stroke="#000000" points="271.92,-206.91 282.08,-209.89 275.99,-201.22 271.92,-206.91"/>
 </g>
 <!-- proc~ry -->
 <g id="proc~~pnm80~~CallsGraph_node9" class="node">
 <title>proc~ry</title>
 <g id="a_proc~~pnm80~~CallsGraph_node9"><a xlink:href=".././proc/ry.html" xlink:title="RY">
-<polygon fill="#d9534f" stroke="#d9534f" points="327,-66 273,-66 273,-42 327,-42 327,-66"/>
-<text text-anchor="middle" x="300" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RY</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="327,-192 273,-192 273,-168 327,-168 327,-192"/>
+<text text-anchor="middle" x="300" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RY</text>
 </a>
 </g>
 </g>
 <!-- proc~pmat76&#45;&gt;proc~ry -->
-<g id="proc~~pnm80~~CallsGraph_edge8" class="edge">
+<g id="proc~~pnm80~~CallsGraph_edge7" class="edge">
 <title>proc~pmat76&#45;&gt;proc~ry</title>
-<path fill="none" stroke="#000000" d="M237.4,-68.7C245.48,-66.77 254.51,-64.62 263.1,-62.57"/>
-<polygon fill="#000000" stroke="#000000" points="264,-65.95 272.92,-60.22 262.38,-59.14 264,-65.95"/>
-</g>
-<!-- proc~prec76 -->
-<g id="proc~~pnm80~~CallsGraph_node10" class="node">
-<title>proc~prec76</title>
-<g id="a_proc~~pnm80~~CallsGraph_node10"><a xlink:href=".././proc/prec76.html" xlink:title="PREC76">
-<polygon fill="#d9534f" stroke="#d9534f" points="327,-24 273,-24 273,0 327,0 327,-24"/>
-<text text-anchor="middle" x="300" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PREC76</text>
-</a>
-</g>
-</g>
-<!-- proc~pmat76&#45;&gt;proc~prec76 -->
-<g id="proc~~pnm80~~CallsGraph_edge9" class="edge">
-<title>proc~pmat76&#45;&gt;proc~prec76</title>
-<path fill="none" stroke="#000000" d="M227.97,-62.85C240.99,-53.53 259.18,-40.51 273.89,-29.98"/>
-<polygon fill="#000000" stroke="#000000" points="275.99,-32.78 282.08,-24.11 271.92,-27.09 275.99,-32.78"/>
+<path fill="none" stroke="#000000" d="M237.4,-165.3C245.48,-167.23 254.51,-169.38 263.1,-171.43"/>
+<polygon fill="#000000" stroke="#000000" points="262.38,-174.86 272.92,-173.78 264,-168.05 262.38,-174.86"/>
 </g>
 <!-- proc~rz -->
 <g id="proc~~pnm80~~CallsGraph_node11" class="node">
@@ -483,52 +316,97 @@ public subroutine PNM80(date1, date2, rmatpn)
 </g>
 </g>
 <!-- proc~pmat76&#45;&gt;proc~rz -->
-<g id="proc~~pnm80~~CallsGraph_edge10" class="edge">
+<g id="proc~~pnm80~~CallsGraph_edge5" class="edge">
 <title>proc~pmat76&#45;&gt;proc~rz</title>
-<path fill="none" stroke="#000000" d="M237.4,-81.3C245.48,-83.23 254.51,-85.38 263.1,-87.43"/>
-<polygon fill="#000000" stroke="#000000" points="262.38,-90.86 272.92,-89.78 264,-84.05 262.38,-90.86"/>
+<path fill="none" stroke="#000000" d="M227.97,-146.85C240.99,-137.53 259.18,-124.51 273.89,-113.98"/>
+<polygon fill="#000000" stroke="#000000" points="275.99,-116.78 282.08,-108.11 271.92,-111.09 275.99,-116.78"/>
+</g>
+<!-- proc~obl80 -->
+<g id="proc~~pnm80~~CallsGraph_node5" class="node">
+<title>proc~obl80</title>
+<g id="a_proc~~pnm80~~CallsGraph_node5"><a xlink:href=".././proc/obl80.html" xlink:title="OBL80">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="237,-129 183,-129 183,-105 237,-105 237,-129"/>
+<text text-anchor="middle" x="210" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OBL80</text>
+</a>
+</g>
+</g>
+<!-- proc~nutm80&#45;&gt;proc~obl80 -->
+<g id="proc~~pnm80~~CallsGraph_edge8" class="edge">
+<title>proc~nutm80&#45;&gt;proc~obl80</title>
+<path fill="none" stroke="#000000" d="M147.33,-102.53C155.44,-104.43 164.43,-106.54 172.97,-108.55"/>
+<polygon fill="#000000" stroke="#000000" points="172.18,-111.96 182.72,-110.83 173.78,-105.14 172.18,-111.96"/>
+</g>
+<!-- proc~nut80 -->
+<g id="proc~~pnm80~~CallsGraph_node6" class="node">
+<title>proc~nut80</title>
+<g id="a_proc~~pnm80~~CallsGraph_node6"><a xlink:href=".././proc/nut80.html" xlink:title="NUT80">
+<polygon fill="#d9534f" stroke="#d9534f" points="237,-45 183,-45 183,-21 237,-21 237,-45"/>
+<text text-anchor="middle" x="210" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">NUT80</text>
+</a>
+</g>
+</g>
+<!-- proc~nutm80&#45;&gt;proc~nut80 -->
+<g id="proc~~pnm80~~CallsGraph_edge9" class="edge">
+<title>proc~nutm80&#45;&gt;proc~nut80</title>
+<path fill="none" stroke="#000000" d="M136.76,-83.85C150,-74.53 168.5,-61.51 183.46,-50.98"/>
+<polygon fill="#000000" stroke="#000000" points="185.63,-53.73 191.8,-45.11 181.6,-48 185.63,-53.73"/>
+</g>
+<!-- proc~numat -->
+<g id="proc~~pnm80~~CallsGraph_node10" class="node">
+<title>proc~numat</title>
+<g id="a_proc~~pnm80~~CallsGraph_node10"><a xlink:href=".././proc/numat.html" xlink:title="NUMAT">
+<polygon fill="#d9534f" stroke="#d9534f" points="237,-87 183,-87 183,-63 237,-63 237,-87"/>
+<text text-anchor="middle" x="210" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">NUMAT</text>
+</a>
+</g>
+</g>
+<!-- proc~nutm80&#45;&gt;proc~numat -->
+<g id="proc~~pnm80~~CallsGraph_edge10" class="edge">
+<title>proc~nutm80&#45;&gt;proc~numat</title>
+<path fill="none" stroke="#000000" d="M147.33,-89.47C155.44,-87.57 164.43,-85.46 172.97,-83.45"/>
+<polygon fill="#000000" stroke="#000000" points="173.78,-86.86 182.72,-81.17 172.18,-80.04 173.78,-86.86"/>
 </g>
 <!-- proc~anpm -->
 <g id="proc~~pnm80~~CallsGraph_node12" class="node">
 <title>proc~anpm</title>
 <g id="a_proc~~pnm80~~CallsGraph_node12"><a xlink:href=".././proc/anpm.html" xlink:title="ANPM">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="327,-234 273,-234 273,-210 327,-210 327,-234"/>
-<text text-anchor="middle" x="300" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ANPM</text>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="327,-24 273,-24 273,0 327,0 327,-24"/>
+<text text-anchor="middle" x="300" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ANPM</text>
 </a>
 </g>
 </g>
 <!-- proc~nut80&#45;&gt;proc~anpm -->
 <g id="proc~~pnm80~~CallsGraph_edge11" class="edge">
 <title>proc~nut80&#45;&gt;proc~anpm</title>
-<path fill="none" stroke="#000000" d="M237.4,-214.3C245.39,-215.3 254.31,-216.41 262.82,-217.48"/>
-<polygon fill="#000000" stroke="#000000" points="262.56,-220.97 272.92,-218.74 263.43,-214.03 262.56,-220.97"/>
+<path fill="none" stroke="#000000" d="M237.4,-26.7C245.48,-24.77 254.51,-22.62 263.1,-20.57"/>
+<polygon fill="#000000" stroke="#000000" points="264,-23.95 272.92,-18.22 262.38,-17.14 264,-23.95"/>
 </g>
 <!-- proc~numat&#45;&gt;proc~ir -->
-<g id="proc~~pnm80~~CallsGraph_edge13" class="edge">
+<g id="proc~~pnm80~~CallsGraph_edge12" class="edge">
 <title>proc~numat&#45;&gt;proc~ir</title>
-<path fill="none" stroke="#000000" d="M237.4,-152.7C245.48,-150.77 254.51,-148.62 263.1,-146.57"/>
-<polygon fill="#000000" stroke="#000000" points="264,-149.95 272.92,-144.22 262.38,-143.14 264,-149.95"/>
+<path fill="none" stroke="#000000" d="M227.97,-87.15C240.99,-96.47 259.18,-109.49 273.89,-120.02"/>
+<polygon fill="#000000" stroke="#000000" points="271.92,-122.91 282.08,-125.89 275.99,-117.22 271.92,-122.91"/>
 </g>
 <!-- proc~numat&#45;&gt;proc~rz -->
-<g id="proc~~pnm80~~CallsGraph_edge14" class="edge">
+<g id="proc~~pnm80~~CallsGraph_edge13" class="edge">
 <title>proc~numat&#45;&gt;proc~rz</title>
-<path fill="none" stroke="#000000" d="M227.97,-146.85C240.99,-137.53 259.18,-124.51 273.89,-113.98"/>
-<polygon fill="#000000" stroke="#000000" points="275.99,-116.78 282.08,-108.11 271.92,-111.09 275.99,-116.78"/>
+<path fill="none" stroke="#000000" d="M237.4,-81.3C245.48,-83.23 254.51,-85.38 263.1,-87.43"/>
+<polygon fill="#000000" stroke="#000000" points="262.38,-90.86 272.92,-89.78 264,-84.05 262.38,-90.86"/>
 </g>
 <!-- proc~rx -->
 <g id="proc~~pnm80~~CallsGraph_node13" class="node">
 <title>proc~rx</title>
 <g id="a_proc~~pnm80~~CallsGraph_node13"><a xlink:href=".././proc/rx.html" xlink:title="RX">
-<polygon fill="#d9534f" stroke="#d9534f" points="327,-192 273,-192 273,-168 327,-168 327,-192"/>
-<text text-anchor="middle" x="300" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RX</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="327,-66 273,-66 273,-42 327,-42 327,-66"/>
+<text text-anchor="middle" x="300" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RX</text>
 </a>
 </g>
 </g>
 <!-- proc~numat&#45;&gt;proc~rx -->
-<g id="proc~~pnm80~~CallsGraph_edge12" class="edge">
+<g id="proc~~pnm80~~CallsGraph_edge14" class="edge">
 <title>proc~numat&#45;&gt;proc~rx</title>
-<path fill="none" stroke="#000000" d="M237.4,-165.3C245.48,-167.23 254.51,-169.38 263.1,-171.43"/>
-<polygon fill="#000000" stroke="#000000" points="262.38,-174.86 272.92,-173.78 264,-168.05 262.38,-174.86"/>
+<path fill="none" stroke="#000000" d="M237.4,-68.7C245.48,-66.77 254.51,-64.62 263.1,-62.57"/>
+<polygon fill="#000000" stroke="#000000" points="264,-65.95 272.92,-60.22 262.38,-59.14 264,-65.95"/>
 </g>
 </g>
 </svg>
@@ -593,35 +471,11 @@ public subroutine PNM80(date1, date2, rmatpn)
     </div></div></div></div>
       </div>
     </div>
-     
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -629,76 +483,62 @@ public subroutine PNM80(date1, date2, rmatpn)
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">PNM80</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span><span class="p">,</span> <span class="n">rmatpn</span> <span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">PNM80</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="p">,</span><span class="w"> </span><span class="n">date2</span><span class="p">,</span><span class="w"> </span><span class="n">rmatpn</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date1</span> <span class="c">!! TDB date (Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date2</span> <span class="c">!! TDB date (Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">rmatpn</span> <span class="c">!! combined precession/nutation matrix</span>
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date1</span><span class="w"> </span><span class="c">!! TDB date (Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date2</span><span class="w"> </span><span class="c">!! TDB date (Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">rmatpn</span><span class="w"> </span><span class="c">!! combined precession/nutation matrix</span>
 
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">rmatp</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">rmatn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">rmatp</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">rmatn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Precession matrix, J2000.0 to date.</span>
-    <span class="k">call </span><span class="n">PMAT76</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span><span class="p">,</span> <span class="n">rmatp</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Precession matrix, J2000.0 to date.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">PMAT76</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="p">,</span><span class="w"> </span><span class="n">date2</span><span class="p">,</span><span class="w"> </span><span class="n">rmatp</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Nutation matrix.</span>
-    <span class="k">call </span><span class="n">NUTM80</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span><span class="p">,</span> <span class="n">rmatn</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Nutation matrix.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">NUTM80</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="p">,</span><span class="w"> </span><span class="n">date2</span><span class="p">,</span><span class="w"> </span><span class="n">rmatn</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Combine the matrices:  PN = N x P.</span>
-    <span class="k">call </span><span class="n">RXR</span> <span class="p">(</span> <span class="n">rmatn</span><span class="p">,</span> <span class="n">rmatp</span><span class="p">,</span> <span class="n">rmatpn</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Combine the matrices:  PN = N x P.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">RXR</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">rmatn</span><span class="p">,</span><span class="w"> </span><span class="n">rmatp</span><span class="p">,</span><span class="w"> </span><span class="n">rmatpn</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">end subroutine </span><span class="n">PNM80</span>
+<span class="w">    </span><span class="k">end subroutine </span><span class="n">PNM80</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>astro-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -724,14 +564,11 @@ public subroutine PNM80(date1, date2, rmatpn)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

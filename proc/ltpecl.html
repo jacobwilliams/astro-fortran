@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,45 +43,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-        
+              
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                                       </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -95,50 +68,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>LTPECL
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 0.7% of total for procedures.">37 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
-    
      <li><a href='../module/astro_module.html'>astro_module</a></li>
-    
-  
      <li class="active">LTPECL</li>
   </ol>
 </div>
@@ -154,32 +106,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -187,24 +116,14 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-public subroutine LTPECL(epj, vec)
+    <h2>public subroutine LTPECL(epj, vec)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>Long-term precession of the ecliptic.</p>
 <p>Status:  support routine.</p>
 <h3>Notes</h3>
@@ -239,60 +158,27 @@ public subroutine LTPECL(epj, vec)
 <ul>
 <li>IAU SOFA revision: 2016 February 9</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-epj~7"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>epj</strong></td><td><p>Julian epoch (TT)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-vec"></span>real(kind=wp),</td>
-  <td>intent(out),</td>
-  <td></td>
-  
-  <td>dimension(3)</td><td>::</td>
+<td>intent(out),</td>
+  <td></td>  <td>dimension(3)</td><td>::</td>
   <td><strong>vec</strong></td><td><p>ecliptic pole unit vector</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
-     
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Called by</h3>
@@ -360,33 +246,33 @@ public subroutine LTPECL(epj, vec)
 <path fill="none" stroke="#000000" d="M54.4,-12C62.39,-12 71.31,-12 79.82,-12"/>
 <polygon fill="#000000" stroke="#000000" points="79.92,-15.5 89.92,-12 79.92,-8.5 79.92,-15.5"/>
 </g>
-<!-- proc~lteceq -->
-<g id="proc~~ltpecl~~CalledByGraph_node5" class="node">
-<title>proc~lteceq</title>
-<g id="a_proc~~ltpecl~~CalledByGraph_node5"><a xlink:href=".././proc/lteceq.html" xlink:title="LTECEQ">
-<polygon fill="#d9534f" stroke="#d9534f" points="54,-108 0,-108 0,-84 54,-84 54,-108"/>
-<text text-anchor="middle" x="27" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">LTECEQ</text>
-</a>
-</g>
-</g>
-<!-- proc~lteceq&#45;&gt;proc~ltecm -->
-<g id="proc~~ltpecl~~CalledByGraph_edge4" class="edge">
-<title>proc~lteceq&#45;&gt;proc~ltecm</title>
-<path fill="none" stroke="#000000" d="M53.45,-83.85C62.21,-79.67 72.17,-74.92 81.52,-70.46"/>
-<polygon fill="#000000" stroke="#000000" points="83.09,-73.59 90.6,-66.12 80.07,-67.27 83.09,-73.59"/>
-</g>
 <!-- proc~lteqec -->
-<g id="proc~~ltpecl~~CalledByGraph_node6" class="node">
+<g id="proc~~ltpecl~~CalledByGraph_node5" class="node">
 <title>proc~lteqec</title>
-<g id="a_proc~~ltpecl~~CalledByGraph_node6"><a xlink:href=".././proc/lteqec.html" xlink:title="LTEQEC">
-<polygon fill="#d9534f" stroke="#d9534f" points="54,-66 0,-66 0,-42 54,-42 54,-66"/>
-<text text-anchor="middle" x="27" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">LTEQEC</text>
+<g id="a_proc~~ltpecl~~CalledByGraph_node5"><a xlink:href=".././proc/lteqec.html" xlink:title="LTEQEC">
+<polygon fill="#d9534f" stroke="#d9534f" points="54,-108 0,-108 0,-84 54,-84 54,-108"/>
+<text text-anchor="middle" x="27" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">LTEQEC</text>
 </a>
 </g>
 </g>
 <!-- proc~lteqec&#45;&gt;proc~ltecm -->
 <g id="proc~~ltpecl~~CalledByGraph_edge3" class="edge">
 <title>proc~lteqec&#45;&gt;proc~ltecm</title>
+<path fill="none" stroke="#000000" d="M53.45,-83.85C62.21,-79.67 72.17,-74.92 81.52,-70.46"/>
+<polygon fill="#000000" stroke="#000000" points="83.09,-73.59 90.6,-66.12 80.07,-67.27 83.09,-73.59"/>
+</g>
+<!-- proc~lteceq -->
+<g id="proc~~ltpecl~~CalledByGraph_node6" class="node">
+<title>proc~lteceq</title>
+<g id="a_proc~~ltpecl~~CalledByGraph_node6"><a xlink:href=".././proc/lteceq.html" xlink:title="LTECEQ">
+<polygon fill="#d9534f" stroke="#d9534f" points="54,-66 0,-66 0,-42 54,-42 54,-66"/>
+<text text-anchor="middle" x="27" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">LTECEQ</text>
+</a>
+</g>
+</g>
+<!-- proc~lteceq&#45;&gt;proc~ltecm -->
+<g id="proc~~ltpecl~~CalledByGraph_edge4" class="edge">
+<title>proc~lteceq&#45;&gt;proc~ltecm</title>
 <path fill="none" stroke="#000000" d="M54.4,-54C62.39,-54 71.31,-54 79.82,-54"/>
 <polygon fill="#000000" stroke="#000000" points="79.92,-57.5 89.92,-54 79.92,-50.5 79.92,-57.5"/>
 </g>
@@ -453,34 +339,11 @@ public subroutine LTPECL(epj, vec)
     </div></div></div></div>
       </div>
     </div>
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -488,146 +351,132 @@ public subroutine LTPECL(epj, vec)
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">LTPECL</span> <span class="p">(</span> <span class="n">epj</span><span class="p">,</span> <span class="n">vec</span> <span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">LTPECL</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">epj</span><span class="p">,</span><span class="w"> </span><span class="n">vec</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">epj</span> <span class="c">!! Julian epoch (TT)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">vec</span> <span class="c">!! ecliptic pole unit vector</span>
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">epj</span><span class="w"> </span><span class="c">!! Julian epoch (TT)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">vec</span><span class="w"> </span><span class="c">!! ecliptic pole unit vector</span>
 
-    <span class="c">!  Obliquity at J2000.0 (radians).</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">eps0</span> <span class="o">=</span> <span class="mi">8438</span><span class="mf">1.406_wp</span> <span class="o">*</span> <span class="n">das2r</span>
+<span class="w">    </span><span class="c">!  Obliquity at J2000.0 (radians).</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">eps0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8438</span><span class="mf">1.406_wp</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">das2r</span><span class="w"></span>
 
-    <span class="c">!  Number of polynomial terms</span>
-    <span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">npol</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="w">    </span><span class="c">!  Number of polynomial terms</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">npol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"></span>
 
-    <span class="c">!  Number of periodic terms</span>
-    <span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">nper</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="w">    </span><span class="c">!  Number of periodic terms</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
 
-    <span class="c">!  Miscellaneous</span>
-    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">c</span>
+<span class="w">    </span><span class="c">!  Miscellaneous</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="w"></span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">q</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="w"></span>
 
-    <span class="c">!  Polynomial and periodic coefficients</span>
+<span class="w">    </span><span class="c">!  Polynomial and periodic coefficients</span>
 
-    <span class="c">!  Polynomials</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="n">npol</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">pqpol</span> <span class="o">=</span> <span class="nb">reshape</span><span class="p">([&amp;</span>
-           <span class="o">+</span><span class="mi">585</span><span class="mf">1.607687_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-              <span class="o">-</span><span class="mf">0.1189000_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-              <span class="o">-</span><span class="mf">0.00028913_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-              <span class="o">+</span><span class="mf">0.000000101_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-           <span class="o">-</span><span class="mi">160</span><span class="mf">0.886300_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-              <span class="o">+</span><span class="mf">1.1689818_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-              <span class="o">-</span><span class="mf">0.00000020_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-              <span class="o">-</span><span class="mf">0.000000437_wp</span> <span class="p">],</span> <span class="p">[</span><span class="n">npol</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="w">    </span><span class="c">!  Polynomials</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="n">npol</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">pqpol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">reshape</span><span class="p">([&amp;</span><span class="w"></span>
+<span class="w">           </span><span class="o">+</span><span class="mi">585</span><span class="mf">1.607687_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">              </span><span class="o">-</span><span class="mf">0.1189000_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">              </span><span class="o">-</span><span class="mf">0.00028913_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">              </span><span class="o">+</span><span class="mf">0.000000101_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">           </span><span class="o">-</span><span class="mi">160</span><span class="mf">0.886300_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">              </span><span class="o">+</span><span class="mf">1.1689818_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">              </span><span class="o">-</span><span class="mf">0.00000020_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">              </span><span class="o">-</span><span class="mf">0.000000437_wp</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="n">npol</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span><span class="w"></span>
 
-    <span class="c">!  Periodics</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="n">nper</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">pqper</span> <span class="o">=</span> <span class="nb">reshape</span><span class="p">([&amp;</span>
-       <span class="mi">70</span><span class="mf">8.15_wp</span><span class="p">,</span>  <span class="o">-</span><span class="mi">548</span><span class="mf">6.751211_wp</span><span class="p">,</span>   <span class="o">-</span><span class="mi">68</span><span class="mf">4.661560_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-                     <span class="mi">66</span><span class="mf">7.666730_wp</span><span class="p">,</span>  <span class="o">-</span><span class="mi">552</span><span class="mf">3.863691_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-      <span class="mi">230</span><span class="mf">9.00_wp</span><span class="p">,</span>    <span class="o">-</span><span class="mi">1</span><span class="mf">7.127623_wp</span><span class="p">,</span>   <span class="mi">244</span><span class="mf">6.283880_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-                   <span class="o">-</span><span class="mi">235</span><span class="mf">4.886252_wp</span><span class="p">,</span>   <span class="o">-</span><span class="mi">54</span><span class="mf">9.747450_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-      <span class="mi">162</span><span class="mf">0.00_wp</span><span class="p">,</span>   <span class="o">-</span><span class="mi">61</span><span class="mf">7.517403_wp</span><span class="p">,</span>    <span class="mi">39</span><span class="mf">9.671049_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-                    <span class="o">-</span><span class="mi">42</span><span class="mf">8.152441_wp</span><span class="p">,</span>   <span class="o">-</span><span class="mi">31</span><span class="mf">0.998056_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-       <span class="mi">49</span><span class="mf">2.20_wp</span><span class="p">,</span>    <span class="mi">41</span><span class="mf">3.442940_wp</span><span class="p">,</span>   <span class="o">-</span><span class="mi">35</span><span class="mf">6.652376_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-                     <span class="mi">37</span><span class="mf">6.202861_wp</span><span class="p">,</span>    <span class="mi">42</span><span class="mf">1.535876_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-      <span class="mi">118</span><span class="mf">3.00_wp</span><span class="p">,</span>     <span class="mi">7</span><span class="mf">8.614193_wp</span><span class="p">,</span>   <span class="o">-</span><span class="mi">18</span><span class="mf">6.387003_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-                     <span class="mi">18</span><span class="mf">4.778874_wp</span><span class="p">,</span>    <span class="o">-</span><span class="mi">3</span><span class="mf">6.776172_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-       <span class="mi">62</span><span class="mf">2.00_wp</span><span class="p">,</span>   <span class="o">-</span><span class="mi">18</span><span class="mf">0.732815_wp</span><span class="p">,</span>   <span class="o">-</span><span class="mi">31</span><span class="mf">6.800070_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-                     <span class="mi">33</span><span class="mf">5.321713_wp</span><span class="p">,</span>   <span class="o">-</span><span class="mi">14</span><span class="mf">5.278396_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-       <span class="mi">88</span><span class="mf">2.00_wp</span><span class="p">,</span>    <span class="o">-</span><span class="mi">8</span><span class="mf">7.676083_wp</span><span class="p">,</span>    <span class="mi">19</span><span class="mf">8.296701_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-                    <span class="o">-</span><span class="mi">18</span><span class="mf">5.138669_wp</span><span class="p">,</span>    <span class="o">-</span><span class="mi">3</span><span class="mf">4.744450_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-       <span class="mi">54</span><span class="mf">7.00_wp</span><span class="p">,</span>     <span class="mi">4</span><span class="mf">6.140315_wp</span><span class="p">,</span>    <span class="mi">10</span><span class="mf">1.135679_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-                    <span class="o">-</span><span class="mi">12</span><span class="mf">0.972830_wp</span><span class="p">,</span>     <span class="mi">2</span><span class="mf">2.885731_wp</span> <span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="n">nper</span><span class="p">])</span>
+<span class="w">    </span><span class="c">!  Periodics</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="n">nper</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">pqper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">reshape</span><span class="p">([&amp;</span><span class="w"></span>
+<span class="w">       </span><span class="mi">70</span><span class="mf">8.15_wp</span><span class="p">,</span><span class="w">  </span><span class="o">-</span><span class="mi">548</span><span class="mf">6.751211_wp</span><span class="p">,</span><span class="w">   </span><span class="o">-</span><span class="mi">68</span><span class="mf">4.661560_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                     </span><span class="mi">66</span><span class="mf">7.666730_wp</span><span class="p">,</span><span class="w">  </span><span class="o">-</span><span class="mi">552</span><span class="mf">3.863691_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">      </span><span class="mi">230</span><span class="mf">9.00_wp</span><span class="p">,</span><span class="w">    </span><span class="o">-</span><span class="mi">1</span><span class="mf">7.127623_wp</span><span class="p">,</span><span class="w">   </span><span class="mi">244</span><span class="mf">6.283880_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                   </span><span class="o">-</span><span class="mi">235</span><span class="mf">4.886252_wp</span><span class="p">,</span><span class="w">   </span><span class="o">-</span><span class="mi">54</span><span class="mf">9.747450_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">      </span><span class="mi">162</span><span class="mf">0.00_wp</span><span class="p">,</span><span class="w">   </span><span class="o">-</span><span class="mi">61</span><span class="mf">7.517403_wp</span><span class="p">,</span><span class="w">    </span><span class="mi">39</span><span class="mf">9.671049_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                    </span><span class="o">-</span><span class="mi">42</span><span class="mf">8.152441_wp</span><span class="p">,</span><span class="w">   </span><span class="o">-</span><span class="mi">31</span><span class="mf">0.998056_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">       </span><span class="mi">49</span><span class="mf">2.20_wp</span><span class="p">,</span><span class="w">    </span><span class="mi">41</span><span class="mf">3.442940_wp</span><span class="p">,</span><span class="w">   </span><span class="o">-</span><span class="mi">35</span><span class="mf">6.652376_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                     </span><span class="mi">37</span><span class="mf">6.202861_wp</span><span class="p">,</span><span class="w">    </span><span class="mi">42</span><span class="mf">1.535876_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">      </span><span class="mi">118</span><span class="mf">3.00_wp</span><span class="p">,</span><span class="w">     </span><span class="mi">7</span><span class="mf">8.614193_wp</span><span class="p">,</span><span class="w">   </span><span class="o">-</span><span class="mi">18</span><span class="mf">6.387003_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                     </span><span class="mi">18</span><span class="mf">4.778874_wp</span><span class="p">,</span><span class="w">    </span><span class="o">-</span><span class="mi">3</span><span class="mf">6.776172_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">       </span><span class="mi">62</span><span class="mf">2.00_wp</span><span class="p">,</span><span class="w">   </span><span class="o">-</span><span class="mi">18</span><span class="mf">0.732815_wp</span><span class="p">,</span><span class="w">   </span><span class="o">-</span><span class="mi">31</span><span class="mf">6.800070_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                     </span><span class="mi">33</span><span class="mf">5.321713_wp</span><span class="p">,</span><span class="w">   </span><span class="o">-</span><span class="mi">14</span><span class="mf">5.278396_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">       </span><span class="mi">88</span><span class="mf">2.00_wp</span><span class="p">,</span><span class="w">    </span><span class="o">-</span><span class="mi">8</span><span class="mf">7.676083_wp</span><span class="p">,</span><span class="w">    </span><span class="mi">19</span><span class="mf">8.296701_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                    </span><span class="o">-</span><span class="mi">18</span><span class="mf">5.138669_wp</span><span class="p">,</span><span class="w">    </span><span class="o">-</span><span class="mi">3</span><span class="mf">4.744450_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">       </span><span class="mi">54</span><span class="mf">7.00_wp</span><span class="p">,</span><span class="w">     </span><span class="mi">4</span><span class="mf">6.140315_wp</span><span class="p">,</span><span class="w">    </span><span class="mi">10</span><span class="mf">1.135679_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                    </span><span class="o">-</span><span class="mi">12</span><span class="mf">0.972830_wp</span><span class="p">,</span><span class="w">     </span><span class="mi">2</span><span class="mf">2.885731_wp</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="n">nper</span><span class="p">])</span><span class="w"></span>
 
-    <span class="c">!  Centuries since J2000.</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="n">epj</span><span class="o">-</span><span class="mi">200</span><span class="mf">0.0_wp</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="mf">0.0_wp</span>
+<span class="w">    </span><span class="c">!  Centuries since J2000.</span>
+<span class="w">    </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">epj</span><span class="o">-</span><span class="mi">200</span><span class="mf">0.0_wp</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="mf">0.0_wp</span><span class="w"></span>
 
-    <span class="c">!  Initialize P_A and Q_A accumulators.</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="mf">0.0_wp</span>
-    <span class="n">q</span> <span class="o">=</span> <span class="mf">0.0_wp</span>
+<span class="w">    </span><span class="c">!  Initialize P_A and Q_A accumulators.</span>
+<span class="w">    </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_wp</span><span class="w"></span>
+<span class="w">    </span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_wp</span><span class="w"></span>
 
-    <span class="c">!  Periodic terms.</span>
-    <span class="n">w</span> <span class="o">=</span> <span class="n">d2pi</span><span class="o">*</span><span class="n">t</span>
-    <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">nper</span>
-       <span class="n">a</span> <span class="o">=</span> <span class="n">w</span><span class="o">/</span><span class="n">pqper</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
-       <span class="n">s</span> <span class="o">=</span> <span class="nb">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-       <span class="n">c</span> <span class="o">=</span> <span class="nb">cos</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-       <span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="n">c</span><span class="o">*</span><span class="n">pqper</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="n">s</span><span class="o">*</span><span class="n">pqper</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
-       <span class="n">q</span> <span class="o">=</span> <span class="n">q</span> <span class="o">+</span> <span class="n">c</span><span class="o">*</span><span class="n">pqper</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="n">s</span><span class="o">*</span><span class="n">pqper</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
-    <span class="k">end do</span>
+<span class="w">    </span><span class="c">!  Periodic terms.</span>
+<span class="w">    </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d2pi</span><span class="o">*</span><span class="n">t</span><span class="w"></span>
+<span class="w">    </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">nper</span><span class="w"></span>
+<span class="w">       </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">w</span><span class="o">/</span><span class="n">pqper</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="p">)</span><span class="w"></span>
+<span class="w">       </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="w"></span>
+<span class="w">       </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">cos</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="w"></span>
+<span class="w">       </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c</span><span class="o">*</span><span class="n">pqper</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s</span><span class="o">*</span><span class="n">pqper</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="n">i</span><span class="p">)</span><span class="w"></span>
+<span class="w">       </span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c</span><span class="o">*</span><span class="n">pqper</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s</span><span class="o">*</span><span class="n">pqper</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="n">i</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">end do</span><span class="w"></span>
 
-    <span class="c">!  Polynomial terms.</span>
-    <span class="n">w</span> <span class="o">=</span> <span class="mf">1.0_wp</span>
-    <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">npol</span>
-       <span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="n">pqpol</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">w</span>
-       <span class="n">q</span> <span class="o">=</span> <span class="n">q</span> <span class="o">+</span> <span class="n">pqpol</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">w</span>
-       <span class="n">w</span> <span class="o">=</span> <span class="n">w</span><span class="o">*</span><span class="n">t</span>
-    <span class="k">end do</span>
+<span class="w">    </span><span class="c">!  Polynomial terms.</span>
+<span class="w">    </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0_wp</span><span class="w"></span>
+<span class="w">    </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">npol</span><span class="w"></span>
+<span class="w">       </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">pqpol</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">w</span><span class="w"></span>
+<span class="w">       </span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">pqpol</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">w</span><span class="w"></span>
+<span class="w">       </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">w</span><span class="o">*</span><span class="n">t</span><span class="w"></span>
+<span class="w">    </span><span class="k">end do</span><span class="w"></span>
 
-    <span class="c">!  P_A and Q_A (radians).</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">*</span><span class="n">das2r</span>
-    <span class="n">q</span> <span class="o">=</span> <span class="n">q</span><span class="o">*</span><span class="n">das2r</span>
+<span class="w">    </span><span class="c">!  P_A and Q_A (radians).</span>
+<span class="w">    </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">*</span><span class="n">das2r</span><span class="w"></span>
+<span class="w">    </span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q</span><span class="o">*</span><span class="n">das2r</span><span class="w"></span>
 
-    <span class="c">!  Form the ecliptic pole vector.</span>
-    <span class="n">w</span> <span class="o">=</span> <span class="nb">sqrt</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="mf">1.0_wp</span><span class="o">-</span><span class="n">p</span><span class="o">*</span><span class="n">p</span><span class="o">-</span><span class="n">q</span><span class="o">*</span><span class="n">q</span><span class="p">,</span><span class="mf">0.0_wp</span><span class="p">))</span>
-    <span class="n">s</span> <span class="o">=</span> <span class="nb">sin</span><span class="p">(</span><span class="n">eps0</span><span class="p">)</span>
-    <span class="n">c</span> <span class="o">=</span> <span class="nb">cos</span><span class="p">(</span><span class="n">eps0</span><span class="p">)</span>
-    <span class="n">vec</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">p</span>
-    <span class="n">vec</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span> <span class="n">q</span><span class="o">*</span><span class="n">c</span> <span class="o">-</span> <span class="n">w</span><span class="o">*</span><span class="n">s</span>
-    <span class="n">vec</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span> <span class="n">q</span><span class="o">*</span><span class="n">s</span> <span class="o">+</span> <span class="n">w</span><span class="o">*</span><span class="n">c</span>
+<span class="w">    </span><span class="c">!  Form the ecliptic pole vector.</span>
+<span class="w">    </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="mf">1.0_wp</span><span class="o">-</span><span class="n">p</span><span class="o">*</span><span class="n">p</span><span class="o">-</span><span class="n">q</span><span class="o">*</span><span class="n">q</span><span class="p">,</span><span class="mf">0.0_wp</span><span class="p">))</span><span class="w"></span>
+<span class="w">    </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="n">eps0</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">cos</span><span class="p">(</span><span class="n">eps0</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">vec</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="w"></span>
+<span class="w">    </span><span class="n">vec</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">q</span><span class="o">*</span><span class="n">c</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">w</span><span class="o">*</span><span class="n">s</span><span class="w"></span>
+<span class="w">    </span><span class="n">vec</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">q</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">w</span><span class="o">*</span><span class="n">c</span><span class="w"></span>
 
-    <span class="k">end subroutine </span><span class="n">LTPECL</span>
+<span class="w">    </span><span class="k">end subroutine </span><span class="n">LTPECL</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>astro-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -653,14 +502,11 @@ public subroutine LTPECL(epj, vec)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

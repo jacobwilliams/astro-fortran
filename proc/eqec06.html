@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,45 +43,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-        
+              
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                                       </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -95,50 +68,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>EQEC06
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 0.3% of total for procedures.">16 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
-    
      <li><a href='../module/astro_module.html'>astro_module</a></li>
-    
-  
      <li class="active">EQEC06</li>
   </ol>
 </div>
@@ -154,32 +106,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -187,24 +116,14 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-public subroutine EQEC06(date1, date2, dr, dd, dl, db)
+    <h2>public subroutine EQEC06(date1, date2, dr, dd, dl, db)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>Transformation from ICRS equatorial coordinates to ecliptic
   coordinates (mean equinox and ecliptic of date) using IAU 2006
   precession model.</p>
@@ -247,119 +166,51 @@ public subroutine EQEC06(date1, date2, dr, dd, dl, db)
 <ul>
 <li>IAU SOFA revision: 2016 February 9</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-date1~36"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>date1</strong></td><td><p>TT as a 2-part Julian Date (Note 1)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-date2~36"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>date2</strong></td><td><p>TT as a 2-part Julian Date (Note 1)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-dr~2"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>dr</strong></td><td><p>ICRS right ascension (radians)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-dd~2"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>dd</strong></td><td><p>ICRS declination (radians)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-dl~2"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>dl</strong></td><td><p>ecliptic longitude (radians)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-db~2"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>db</strong></td><td><p>ecliptic latitude (radians)</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Calls</h3>
@@ -371,151 +222,151 @@ public subroutine EQEC06(date1, date2, dr, dd, dl, db)
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: proc~~eqec06~~CallsGraph Pages: 1 -->
-<svg id="proceqec06CallsGraph" width="423pt" height="301pt"
- viewBox="0.00 0.00 423.00 301.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="proc~~eqec06~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 297)">
+<svg id="proceqec06CallsGraph" width="423pt" height="343pt"
+ viewBox="0.00 0.00 423.00 343.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~eqec06~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 339)">
 <title>proc~~eqec06~~CallsGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-297 419,-297 419,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-339 419,-339 419,4 -4,4"/>
 <!-- proc~eqec06 -->
 <g id="proc~~eqec06~~CallsGraph_node1" class="node">
 <title>proc~eqec06</title>
-<polygon fill="none" stroke="black" points="55,-188 0,-188 0,-164 55,-164 55,-188"/>
-<text text-anchor="middle" x="27.5" y="-173.6" font-family="Helvetica,sans-Serif" font-size="10.50">EQEC06</text>
-</g>
-<!-- proc~rxp -->
-<g id="proc~~eqec06~~CallsGraph_node2" class="node">
-<title>proc~rxp</title>
-<g id="a_proc~~eqec06~~CallsGraph_node2"><a xlink:href=".././proc/rxp.html" xlink:title="RXP">
-<polygon fill="#d9534f" stroke="#d9534f" points="145,-293 91,-293 91,-269 145,-269 145,-293"/>
-<text text-anchor="middle" x="118" y="-278.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RXP</text>
-</a>
-</g>
-</g>
-<!-- proc~eqec06&#45;&gt;proc~rxp -->
-<g id="proc~~eqec06~~CallsGraph_edge1" class="edge">
-<title>proc~eqec06&#45;&gt;proc~rxp</title>
-<path fill="none" stroke="#000000" d="M36.13,-188.15C47.12,-205.17 68.58,-236.67 91,-260 91.65,-260.68 92.32,-261.35 93.01,-262.02"/>
-<polygon fill="#000000" stroke="#000000" points="90.98,-264.9 100.77,-268.94 95.64,-259.68 90.98,-264.9"/>
+<polygon fill="none" stroke="black" points="55,-230 0,-230 0,-206 55,-206 55,-230"/>
+<text text-anchor="middle" x="27.5" y="-215.6" font-family="Helvetica,sans-Serif" font-size="10.50">EQEC06</text>
 </g>
 <!-- proc~s2c -->
-<g id="proc~~eqec06~~CallsGraph_node3" class="node">
+<g id="proc~~eqec06~~CallsGraph_node2" class="node">
 <title>proc~s2c</title>
-<g id="a_proc~~eqec06~~CallsGraph_node3"><a xlink:href=".././proc/s2c.html" xlink:title="S2C">
-<polygon fill="#d9534f" stroke="#d9534f" points="145,-251 91,-251 91,-227 145,-227 145,-251"/>
-<text text-anchor="middle" x="118" y="-236.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">S2C</text>
+<g id="a_proc~~eqec06~~CallsGraph_node2"><a xlink:href=".././proc/s2c.html" xlink:title="S2C">
+<polygon fill="#d9534f" stroke="#d9534f" points="145,-335 91,-335 91,-311 145,-311 145,-335"/>
+<text text-anchor="middle" x="118" y="-320.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">S2C</text>
 </a>
 </g>
 </g>
 <!-- proc~eqec06&#45;&gt;proc~s2c -->
-<g id="proc~~eqec06~~CallsGraph_edge2" class="edge">
+<g id="proc~~eqec06~~CallsGraph_edge3" class="edge">
 <title>proc~eqec06&#45;&gt;proc~s2c</title>
-<path fill="none" stroke="#000000" d="M45.56,-188.15C58.66,-197.47 76.95,-210.49 91.75,-221.02"/>
-<polygon fill="#000000" stroke="#000000" points="89.81,-223.94 99.99,-226.89 93.87,-218.24 89.81,-223.94"/>
+<path fill="none" stroke="#000000" d="M36.13,-230.15C47.12,-247.17 68.58,-278.67 91,-302 91.65,-302.68 92.32,-303.35 93.01,-304.02"/>
+<polygon fill="#000000" stroke="#000000" points="90.98,-306.9 100.77,-310.94 95.64,-301.68 90.98,-306.9"/>
+</g>
+<!-- proc~anp -->
+<g id="proc~~eqec06~~CallsGraph_node3" class="node">
+<title>proc~anp</title>
+<g id="a_proc~~eqec06~~CallsGraph_node3"><a xlink:href=".././proc/anp.html" xlink:title="ANP">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="145,-293 91,-293 91,-269 145,-269 145,-293"/>
+<text text-anchor="middle" x="118" y="-278.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ANP</text>
+</a>
+</g>
+</g>
+<!-- proc~eqec06&#45;&gt;proc~anp -->
+<g id="proc~~eqec06~~CallsGraph_edge2" class="edge">
+<title>proc~eqec06&#45;&gt;proc~anp</title>
+<path fill="none" stroke="#000000" d="M45.56,-230.15C58.66,-239.47 76.95,-252.49 91.75,-263.02"/>
+<polygon fill="#000000" stroke="#000000" points="89.81,-265.94 99.99,-268.89 93.87,-260.24 89.81,-265.94"/>
 </g>
 <!-- proc~anpm -->
 <g id="proc~~eqec06~~CallsGraph_node4" class="node">
 <title>proc~anpm</title>
 <g id="a_proc~~eqec06~~CallsGraph_node4"><a xlink:href=".././proc/anpm.html" xlink:title="ANPM">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="145,-209 91,-209 91,-185 145,-185 145,-209"/>
-<text text-anchor="middle" x="118" y="-194.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ANPM</text>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="145,-251 91,-251 91,-227 145,-227 145,-251"/>
+<text text-anchor="middle" x="118" y="-236.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ANPM</text>
 </a>
 </g>
 </g>
 <!-- proc~eqec06&#45;&gt;proc~anpm -->
-<g id="proc~~eqec06~~CallsGraph_edge3" class="edge">
+<g id="proc~~eqec06~~CallsGraph_edge1" class="edge">
 <title>proc~eqec06&#45;&gt;proc~anpm</title>
-<path fill="none" stroke="#000000" d="M55.05,-182.3C63.18,-184.23 72.25,-186.38 80.9,-188.43"/>
-<polygon fill="#000000" stroke="#000000" points="80.23,-191.87 90.77,-190.78 81.85,-185.06 80.23,-191.87"/>
+<path fill="none" stroke="#000000" d="M55.05,-224.3C63.18,-226.23 72.25,-228.38 80.9,-230.43"/>
+<polygon fill="#000000" stroke="#000000" points="80.23,-233.87 90.77,-232.78 81.85,-227.06 80.23,-233.87"/>
+</g>
+<!-- proc~rxp -->
+<g id="proc~~eqec06~~CallsGraph_node5" class="node">
+<title>proc~rxp</title>
+<g id="a_proc~~eqec06~~CallsGraph_node5"><a xlink:href=".././proc/rxp.html" xlink:title="RXP">
+<polygon fill="#d9534f" stroke="#d9534f" points="145,-209 91,-209 91,-185 145,-185 145,-209"/>
+<text text-anchor="middle" x="118" y="-194.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RXP</text>
+</a>
+</g>
+</g>
+<!-- proc~eqec06&#45;&gt;proc~rxp -->
+<g id="proc~~eqec06~~CallsGraph_edge4" class="edge">
+<title>proc~eqec06&#45;&gt;proc~rxp</title>
+<path fill="none" stroke="#000000" d="M55.05,-211.7C63.18,-209.77 72.25,-207.62 80.9,-205.57"/>
+<polygon fill="#000000" stroke="#000000" points="81.85,-208.94 90.77,-203.22 80.23,-202.13 81.85,-208.94"/>
 </g>
 <!-- proc~c2s -->
-<g id="proc~~eqec06~~CallsGraph_node5" class="node">
+<g id="proc~~eqec06~~CallsGraph_node6" class="node">
 <title>proc~c2s</title>
-<g id="a_proc~~eqec06~~CallsGraph_node5"><a xlink:href=".././proc/c2s.html" xlink:title="C2S">
+<g id="a_proc~~eqec06~~CallsGraph_node6"><a xlink:href=".././proc/c2s.html" xlink:title="C2S">
 <polygon fill="#d9534f" stroke="#d9534f" points="145,-167 91,-167 91,-143 145,-143 145,-167"/>
 <text text-anchor="middle" x="118" y="-152.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2S</text>
 </a>
 </g>
 </g>
 <!-- proc~eqec06&#45;&gt;proc~c2s -->
-<g id="proc~~eqec06~~CallsGraph_edge4" class="edge">
+<g id="proc~~eqec06~~CallsGraph_edge5" class="edge">
 <title>proc~eqec06&#45;&gt;proc~c2s</title>
-<path fill="none" stroke="#000000" d="M55.05,-169.7C63.18,-167.77 72.25,-165.62 80.9,-163.57"/>
-<polygon fill="#000000" stroke="#000000" points="81.85,-166.94 90.77,-161.22 80.23,-160.13 81.85,-166.94"/>
+<path fill="none" stroke="#000000" d="M45.56,-205.85C58.66,-196.53 76.95,-183.51 91.75,-172.98"/>
+<polygon fill="#000000" stroke="#000000" points="93.87,-175.76 99.99,-167.11 89.81,-170.06 93.87,-175.76"/>
 </g>
 <!-- proc~ecm06 -->
-<g id="proc~~eqec06~~CallsGraph_node6" class="node">
+<g id="proc~~eqec06~~CallsGraph_node7" class="node">
 <title>proc~ecm06</title>
-<g id="a_proc~~eqec06~~CallsGraph_node6"><a xlink:href=".././proc/ecm06.html" xlink:title="ECM06">
+<g id="a_proc~~eqec06~~CallsGraph_node7"><a xlink:href=".././proc/ecm06.html" xlink:title="ECM06">
 <polygon fill="#d9534f" stroke="#d9534f" points="145,-125 91,-125 91,-101 145,-101 145,-125"/>
 <text text-anchor="middle" x="118" y="-110.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ECM06</text>
 </a>
 </g>
 </g>
 <!-- proc~eqec06&#45;&gt;proc~ecm06 -->
-<g id="proc~~eqec06~~CallsGraph_edge5" class="edge">
-<title>proc~eqec06&#45;&gt;proc~ecm06</title>
-<path fill="none" stroke="#000000" d="M45.56,-163.85C58.66,-154.53 76.95,-141.51 91.75,-130.98"/>
-<polygon fill="#000000" stroke="#000000" points="93.87,-133.76 99.99,-125.11 89.81,-128.06 93.87,-133.76"/>
-</g>
-<!-- proc~anp -->
-<g id="proc~~eqec06~~CallsGraph_node7" class="node">
-<title>proc~anp</title>
-<g id="a_proc~~eqec06~~CallsGraph_node7"><a xlink:href=".././proc/anp.html" xlink:title="ANP">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="145,-83 91,-83 91,-59 145,-59 145,-83"/>
-<text text-anchor="middle" x="118" y="-68.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ANP</text>
-</a>
-</g>
-</g>
-<!-- proc~eqec06&#45;&gt;proc~anp -->
 <g id="proc~~eqec06~~CallsGraph_edge6" class="edge">
-<title>proc~eqec06&#45;&gt;proc~anp</title>
-<path fill="none" stroke="#000000" d="M36.13,-163.85C47.12,-146.83 68.58,-115.33 91,-92 91.65,-91.32 92.32,-90.65 93.01,-89.98"/>
-<polygon fill="#000000" stroke="#000000" points="95.64,-92.32 100.77,-83.06 90.98,-87.1 95.64,-92.32"/>
-</g>
-<!-- proc~rx -->
-<g id="proc~~eqec06~~CallsGraph_node8" class="node">
-<title>proc~rx</title>
-<g id="a_proc~~eqec06~~CallsGraph_node8"><a xlink:href=".././proc/rx.html" xlink:title="RX">
-<polygon fill="#d9534f" stroke="#d9534f" points="415,-224 361,-224 361,-200 415,-200 415,-224"/>
-<text text-anchor="middle" x="388" y="-209.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RX</text>
-</a>
-</g>
-</g>
-<!-- proc~ecm06&#45;&gt;proc~rx -->
-<g id="proc~~eqec06~~CallsGraph_edge7" class="edge">
-<title>proc~ecm06&#45;&gt;proc~rx</title>
-<path fill="none" stroke="#000000" d="M134.52,-125.23C146.6,-134.26 164.1,-146.26 181,-154 237.68,-179.95 308.55,-196.8 350.66,-205.33"/>
-<polygon fill="#000000" stroke="#000000" points="350.24,-208.81 360.72,-207.32 351.59,-201.95 350.24,-208.81"/>
+<title>proc~eqec06&#45;&gt;proc~ecm06</title>
+<path fill="none" stroke="#000000" d="M36.13,-205.85C47.12,-188.83 68.58,-157.33 91,-134 91.65,-133.32 92.32,-132.65 93.01,-131.98"/>
+<polygon fill="#000000" stroke="#000000" points="95.64,-134.32 100.77,-125.06 90.98,-129.1 95.64,-134.32"/>
 </g>
 <!-- proc~pmat06 -->
-<g id="proc~~eqec06~~CallsGraph_node9" class="node">
+<g id="proc~~eqec06~~CallsGraph_node8" class="node">
 <title>proc~pmat06</title>
-<g id="a_proc~~eqec06~~CallsGraph_node9"><a xlink:href=".././proc/pmat06.html" xlink:title="PMAT06">
+<g id="a_proc~~eqec06~~CallsGraph_node8"><a xlink:href=".././proc/pmat06.html" xlink:title="PMAT06">
 <polygon fill="#d9534f" stroke="#d9534f" points="235,-125 181,-125 181,-101 235,-101 235,-125"/>
 <text text-anchor="middle" x="208" y="-110.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PMAT06</text>
 </a>
 </g>
 </g>
 <!-- proc~ecm06&#45;&gt;proc~pmat06 -->
-<g id="proc~~eqec06~~CallsGraph_edge8" class="edge">
+<g id="proc~~eqec06~~CallsGraph_edge7" class="edge">
 <title>proc~ecm06&#45;&gt;proc~pmat06</title>
 <path fill="none" stroke="#000000" d="M145.4,-113C153.39,-113 162.31,-113 170.82,-113"/>
 <polygon fill="#000000" stroke="#000000" points="170.92,-116.5 180.92,-113 170.92,-109.5 170.92,-116.5"/>
 </g>
 <!-- proc~obl06 -->
-<g id="proc~~eqec06~~CallsGraph_node10" class="node">
+<g id="proc~~eqec06~~CallsGraph_node9" class="node">
 <title>proc~obl06</title>
-<g id="a_proc~~eqec06~~CallsGraph_node10"><a xlink:href=".././proc/obl06.html" xlink:title="OBL06">
+<g id="a_proc~~eqec06~~CallsGraph_node9"><a xlink:href=".././proc/obl06.html" xlink:title="OBL06">
 <polygon fill="#d94e8f" stroke="#d94e8f" points="415,-81 361,-81 361,-57 415,-57 415,-81"/>
 <text text-anchor="middle" x="388" y="-66.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OBL06</text>
 </a>
 </g>
 </g>
 <!-- proc~ecm06&#45;&gt;proc~obl06 -->
-<g id="proc~~eqec06~~CallsGraph_edge9" class="edge">
+<g id="proc~~eqec06~~CallsGraph_edge8" class="edge">
 <title>proc~ecm06&#45;&gt;proc~obl06</title>
 <path fill="none" stroke="#000000" d="M145.07,-103.54C156.08,-99.71 169.09,-95.4 181,-92 220.5,-80.73 230.24,-76.05 271,-71 297.4,-67.73 327.44,-67.3 350.33,-67.65"/>
 <polygon fill="#000000" stroke="#000000" points="350.56,-71.16 360.63,-67.87 350.7,-64.16 350.56,-71.16"/>
+</g>
+<!-- proc~rx -->
+<g id="proc~~eqec06~~CallsGraph_node10" class="node">
+<title>proc~rx</title>
+<g id="a_proc~~eqec06~~CallsGraph_node10"><a xlink:href=".././proc/rx.html" xlink:title="RX">
+<polygon fill="#d9534f" stroke="#d9534f" points="415,-224 361,-224 361,-200 415,-200 415,-224"/>
+<text text-anchor="middle" x="388" y="-209.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RX</text>
+</a>
+</g>
+</g>
+<!-- proc~ecm06&#45;&gt;proc~rx -->
+<g id="proc~~eqec06~~CallsGraph_edge9" class="edge">
+<title>proc~ecm06&#45;&gt;proc~rx</title>
+<path fill="none" stroke="#000000" d="M134.52,-125.23C146.6,-134.26 164.1,-146.26 181,-154 237.68,-179.95 308.55,-196.8 350.66,-205.33"/>
+<polygon fill="#000000" stroke="#000000" points="350.24,-208.81 360.72,-207.32 351.59,-201.95 350.24,-208.81"/>
 </g>
 <!-- proc~ir -->
 <g id="proc~~eqec06~~CallsGraph_node11" class="node">
@@ -544,53 +395,47 @@ public subroutine EQEC06(date1, date2, dr, dd, dl, db)
 <!-- proc~ecm06&#45;&gt;proc~rxr -->
 <g id="proc~~eqec06~~CallsGraph_edge11" class="edge">
 <title>proc~ecm06&#45;&gt;proc~rxr</title>
-<path fill="none" stroke="#000000" d="M135.62,-100.83C138.9,-98.1 142.18,-95.09 145,-92 164.44,-70.69 162.71,-60.31 181,-38 182.7,-35.93 184.54,-33.83 186.43,-31.78"/>
-<polygon fill="#000000" stroke="#000000" points="189.32,-33.83 193.78,-24.22 184.3,-28.95 189.32,-33.83"/>
-</g>
-<!-- proc~pfw06 -->
-<g id="proc~~eqec06~~CallsGraph_node13" class="node">
-<title>proc~pfw06</title>
-<g id="a_proc~~eqec06~~CallsGraph_node13"><a xlink:href=".././proc/pfw06.html" xlink:title="PFW06">
-<polygon fill="#d9534f" stroke="#d9534f" points="325,-104 271,-104 271,-80 325,-80 325,-104"/>
-<text text-anchor="middle" x="298" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PFW06</text>
-</a>
-</g>
-</g>
-<!-- proc~pmat06&#45;&gt;proc~pfw06 -->
-<g id="proc~~eqec06~~CallsGraph_edge12" class="edge">
-<title>proc~pmat06&#45;&gt;proc~pfw06</title>
-<path fill="none" stroke="#000000" d="M235.4,-106.7C243.48,-104.77 252.51,-102.62 261.1,-100.57"/>
-<polygon fill="#000000" stroke="#000000" points="262,-103.95 270.92,-98.22 260.38,-97.14 262,-103.95"/>
+<path fill="none" stroke="#000000" d="M128.54,-100.75C140.43,-85.65 161.56,-59.37 181,-38 182.97,-35.83 185.08,-33.6 187.2,-31.41"/>
+<polygon fill="#000000" stroke="#000000" points="189.78,-33.77 194.32,-24.2 184.8,-28.85 189.78,-33.77"/>
 </g>
 <!-- proc~fw2m -->
-<g id="proc~~eqec06~~CallsGraph_node14" class="node">
+<g id="proc~~eqec06~~CallsGraph_node13" class="node">
 <title>proc~fw2m</title>
-<g id="a_proc~~eqec06~~CallsGraph_node14"><a xlink:href=".././proc/fw2m.html" xlink:title="FW2M">
+<g id="a_proc~~eqec06~~CallsGraph_node13"><a xlink:href=".././proc/fw2m.html" xlink:title="FW2M">
 <polygon fill="#d9534f" stroke="#d9534f" points="325,-146 271,-146 271,-122 325,-122 325,-146"/>
 <text text-anchor="middle" x="298" y="-131.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FW2M</text>
 </a>
 </g>
 </g>
 <!-- proc~pmat06&#45;&gt;proc~fw2m -->
-<g id="proc~~eqec06~~CallsGraph_edge13" class="edge">
+<g id="proc~~eqec06~~CallsGraph_edge12" class="edge">
 <title>proc~pmat06&#45;&gt;proc~fw2m</title>
 <path fill="none" stroke="#000000" d="M235.4,-119.3C243.48,-121.23 252.51,-123.38 261.1,-125.43"/>
 <polygon fill="#000000" stroke="#000000" points="260.38,-128.86 270.92,-127.78 262,-122.05 260.38,-128.86"/>
 </g>
-<!-- proc~pfw06&#45;&gt;proc~obl06 -->
-<g id="proc~~eqec06~~CallsGraph_edge14" class="edge">
-<title>proc~pfw06&#45;&gt;proc~obl06</title>
-<path fill="none" stroke="#000000" d="M325.4,-85.1C333.48,-82.99 342.51,-80.63 351.1,-78.38"/>
-<polygon fill="#000000" stroke="#000000" points="352.13,-81.73 360.92,-75.82 350.36,-74.96 352.13,-81.73"/>
+<!-- proc~pfw06 -->
+<g id="proc~~eqec06~~CallsGraph_node14" class="node">
+<title>proc~pfw06</title>
+<g id="a_proc~~eqec06~~CallsGraph_node14"><a xlink:href=".././proc/pfw06.html" xlink:title="PFW06">
+<polygon fill="#d9534f" stroke="#d9534f" points="325,-104 271,-104 271,-80 325,-80 325,-104"/>
+<text text-anchor="middle" x="298" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PFW06</text>
+</a>
+</g>
+</g>
+<!-- proc~pmat06&#45;&gt;proc~pfw06 -->
+<g id="proc~~eqec06~~CallsGraph_edge13" class="edge">
+<title>proc~pmat06&#45;&gt;proc~pfw06</title>
+<path fill="none" stroke="#000000" d="M235.4,-106.7C243.48,-104.77 252.51,-102.62 261.1,-100.57"/>
+<polygon fill="#000000" stroke="#000000" points="262,-103.95 270.92,-98.22 260.38,-97.14 262,-103.95"/>
 </g>
 <!-- proc~fw2m&#45;&gt;proc~rx -->
-<g id="proc~~eqec06~~CallsGraph_edge15" class="edge">
+<g id="proc~~eqec06~~CallsGraph_edge16" class="edge">
 <title>proc~fw2m&#45;&gt;proc~rx</title>
 <path fill="none" stroke="#000000" d="M311.61,-146.03C323.99,-157.74 343.5,-175.92 361,-191 361.96,-191.83 362.95,-192.67 363.96,-193.52"/>
 <polygon fill="#000000" stroke="#000000" points="361.8,-196.28 371.74,-199.95 366.26,-190.88 361.8,-196.28"/>
 </g>
 <!-- proc~fw2m&#45;&gt;proc~ir -->
-<g id="proc~~eqec06~~CallsGraph_edge16" class="edge">
+<g id="proc~~eqec06~~CallsGraph_edge14" class="edge">
 <title>proc~fw2m&#45;&gt;proc~ir</title>
 <path fill="none" stroke="#000000" d="M325.4,-144.8C333.57,-148.14 342.7,-151.88 351.38,-155.43"/>
 <polygon fill="#000000" stroke="#000000" points="350.34,-158.78 360.92,-159.33 352.99,-152.3 350.34,-158.78"/>
@@ -605,10 +450,16 @@ public subroutine EQEC06(date1, date2, dr, dd, dl, db)
 </g>
 </g>
 <!-- proc~fw2m&#45;&gt;proc~rz -->
-<g id="proc~~eqec06~~CallsGraph_edge17" class="edge">
+<g id="proc~~eqec06~~CallsGraph_edge15" class="edge">
 <title>proc~fw2m&#45;&gt;proc~rz</title>
 <path fill="none" stroke="#000000" d="M325.4,-132.2C333.39,-131.66 342.31,-131.05 350.82,-130.47"/>
 <polygon fill="#000000" stroke="#000000" points="351.18,-133.95 360.92,-129.78 350.7,-126.97 351.18,-133.95"/>
+</g>
+<!-- proc~pfw06&#45;&gt;proc~obl06 -->
+<g id="proc~~eqec06~~CallsGraph_edge17" class="edge">
+<title>proc~pfw06&#45;&gt;proc~obl06</title>
+<path fill="none" stroke="#000000" d="M325.4,-85.1C333.48,-82.99 342.51,-80.63 351.1,-78.38"/>
+<polygon fill="#000000" stroke="#000000" points="352.13,-81.73 360.92,-75.82 350.36,-74.96 352.13,-81.73"/>
 </g>
 </g>
 </svg>
@@ -673,35 +524,11 @@ public subroutine EQEC06(date1, date2, dr, dd, dl, db)
     </div></div></div></div>
       </div>
     </div>
-     
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -709,86 +536,72 @@ public subroutine EQEC06(date1, date2, dr, dd, dl, db)
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">EQEC06</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span><span class="p">,</span> <span class="n">dr</span><span class="p">,</span> <span class="n">dd</span><span class="p">,</span> <span class="n">dl</span><span class="p">,</span> <span class="n">db</span> <span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">EQEC06</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="p">,</span><span class="w"> </span><span class="n">date2</span><span class="p">,</span><span class="w"> </span><span class="n">dr</span><span class="p">,</span><span class="w"> </span><span class="n">dd</span><span class="p">,</span><span class="w"> </span><span class="n">dl</span><span class="p">,</span><span class="w"> </span><span class="n">db</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date1</span> <span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date2</span> <span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">dr</span> <span class="c">!! ICRS right ascension (radians)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">dd</span> <span class="c">!! ICRS declination (radians)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">dl</span> <span class="c">!! ecliptic longitude (radians)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">db</span> <span class="c">!! ecliptic latitude (radians)</span>
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date1</span><span class="w"> </span><span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date2</span><span class="w"> </span><span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dr</span><span class="w"> </span><span class="c">!! ICRS right ascension (radians)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dd</span><span class="w"> </span><span class="c">!! ICRS declination (radians)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dl</span><span class="w"> </span><span class="c">!! ecliptic longitude (radians)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">db</span><span class="w"> </span><span class="c">!! ecliptic latitude (radians)</span>
 
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">rm</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">v1</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">v2</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">rm</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">v1</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">v2</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"></span>
 
-    <span class="c">!  Spherical to Cartesian.</span>
-    <span class="k">call </span><span class="n">S2C</span> <span class="p">(</span> <span class="n">dr</span><span class="p">,</span> <span class="n">dd</span><span class="p">,</span> <span class="n">v1</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Spherical to Cartesian.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">S2C</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">dr</span><span class="p">,</span><span class="w"> </span><span class="n">dd</span><span class="p">,</span><span class="w"> </span><span class="n">v1</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Rotation matrix, ICRS equatorial to ecliptic.</span>
-    <span class="k">call </span><span class="n">ECM06</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span><span class="p">,</span> <span class="n">rm</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Rotation matrix, ICRS equatorial to ecliptic.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">ECM06</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="p">,</span><span class="w"> </span><span class="n">date2</span><span class="p">,</span><span class="w"> </span><span class="n">rm</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  The transformation from ICRS to ecliptic.</span>
-    <span class="k">call </span><span class="n">RXP</span> <span class="p">(</span> <span class="n">rm</span><span class="p">,</span> <span class="n">v1</span><span class="p">,</span> <span class="n">v2</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  The transformation from ICRS to ecliptic.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">RXP</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">rm</span><span class="p">,</span><span class="w"> </span><span class="n">v1</span><span class="p">,</span><span class="w"> </span><span class="n">v2</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Cartesian to spherical.</span>
-    <span class="k">call </span><span class="n">C2S</span> <span class="p">(</span> <span class="n">v2</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Cartesian to spherical.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">C2S</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">v2</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Express in conventional ranges.</span>
-    <span class="n">dl</span> <span class="o">=</span> <span class="n">ANP</span> <span class="p">(</span> <span class="n">a</span> <span class="p">)</span>
-    <span class="n">db</span> <span class="o">=</span> <span class="n">ANPM</span> <span class="p">(</span> <span class="n">b</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Express in conventional ranges.</span>
+<span class="w">    </span><span class="n">dl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ANP</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">db</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ANPM</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">end subroutine </span><span class="n">EQEC06</span>
+<span class="w">    </span><span class="k">end subroutine </span><span class="n">EQEC06</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>astro-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -814,14 +627,11 @@ public subroutine EQEC06(date1, date2, dr, dd, dl, db)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

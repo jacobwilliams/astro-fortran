@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,45 +43,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-        
+              
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                                       </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -95,50 +68,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>APCG
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 0.2% of total for procedures.">11 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
-    
      <li><a href='../module/astro_module.html'>astro_module</a></li>
-    
-  
      <li class="active">APCG</li>
   </ol>
 </div>
@@ -154,32 +106,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -187,24 +116,14 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-public subroutine APCG(date1, date2, ebpv, ehp, astrom)
+    <h2>public subroutine APCG(date1, date2, ebpv, ehp, astrom)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>For a geocentric observer, prepare star-independent astrometry
   parameters for transformations between ICRS and GCRS coordinates.
   The Earth ephemeris is supplied by the caller.</p>
@@ -276,120 +195,61 @@ public subroutine APCG(date1, date2, ebpv, ehp, astrom)
 <ul>
 <li>IAU SOFA revision:  2017 March 12</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-date1~17"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>date1</strong></td><td><p>TDB as a 2-part...</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-date2~17"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>date2</strong></td><td><p>...Julian Date (Note 1)</p></td>
-  
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
+  <td><strong>date2</strong></td><td></td>
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-ebpv"></span>real(kind=wp),</td>
-  <td>intent(in),</td>
-  <td></td>
-  
-  <td>dimension(3,2)</td><td>::</td>
+<td>intent(in),</td>
+  <td></td>  <td>dimension(3,2)</td><td>::</td>
   <td><strong>ebpv</strong></td><td><p>Earth barycentric position/velocity (au, au/day)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-ehp"></span>real(kind=wp),</td>
-  <td>intent(in),</td>
-  <td></td>
-  
-  <td>dimension(3)</td><td>::</td>
+<td>intent(in),</td>
+  <td></td>  <td>dimension(3)</td><td>::</td>
   <td><strong>ehp</strong></td><td><p>Earth heliocentric position (au)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-astrom"></span>real(kind=wp),</td>
-  <td>intent(inout),</td>
-  <td></td>
-  
-  <td>dimension(30)</td><td>::</td>
+<td>intent(inout),</td>
+  <td></td>  <td>dimension(30)</td><td>::</td>
   <td><strong>astrom</strong></td><td><p>star-independent astrometry parameters:</p>
 <p>(1)      PM time interval (SSB, Julian years)
- (2-4)    SSB to observer (vector, au)
- (5-7)    Sun to observer (unit vector)
- (8)      distance from Sun to observer (au)
- (9-11)   v: barycentric observer velocity (vector, c)
- (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
- (13-21)  bias-precession-nutation matrix
- (22)     unchanged
- (23)     unchanged
- (24)     unchanged
- (25)     unchanged
- (26)     unchanged
- (27)     unchanged
- (28)     unchanged
- (29)     unchanged
- (30)     unchanged</p></td>
-  
+(2-4)    SSB to observer (vector, au)
+(5-7)    Sun to observer (unit vector)
+(8)      distance from Sun to observer (au)
+(9-11)   v: barycentric observer velocity (vector, c)
+(12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
+(13-21)  bias-precession-nutation matrix
+(22)     unchanged
+(23)     unchanged
+(24)     unchanged
+(25)     unchanged
+(26)     unchanged
+(27)     unchanged
+(28)     unchanged
+(29)     unchanged
+(30)     unchanged</p></td>
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Calls</h3>
@@ -401,46 +261,112 @@ public subroutine APCG(date1, date2, ebpv, ehp, astrom)
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: proc~~apcg~~CallsGraph Pages: 1 -->
-<svg id="procapcgCallsGraph" width="152pt" height="74pt"
- viewBox="0.00 0.00 152.00 74.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="proc~~apcg~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 70)">
+<svg id="procapcgCallsGraph" width="332pt" height="115pt"
+ viewBox="0.00 0.00 332.00 115.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~apcg~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 111)">
 <title>proc~~apcg~~CallsGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-70 148,-70 148,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-111 328,-111 328,4 -4,4"/>
 <!-- proc~apcg -->
 <g id="proc~~apcg~~CallsGraph_node1" class="node">
 <title>proc~apcg</title>
-<polygon fill="none" stroke="black" points="54,-45 0,-45 0,-21 54,-21 54,-45"/>
-<text text-anchor="middle" x="27" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50">APCG</text>
-</g>
-<!-- proc~apcs -->
-<g id="proc~~apcg~~CallsGraph_node2" class="node">
-<title>proc~apcs</title>
-<g id="a_proc~~apcg~~CallsGraph_node2"><a xlink:href=".././proc/apcs.html" xlink:title="APCS">
-<polygon fill="#d9534f" stroke="#d9534f" points="144,-66 90,-66 90,-42 144,-42 144,-66"/>
-<text text-anchor="middle" x="117" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APCS</text>
-</a>
-</g>
-</g>
-<!-- proc~apcg&#45;&gt;proc~apcs -->
-<g id="proc~~apcg~~CallsGraph_edge1" class="edge">
-<title>proc~apcg&#45;&gt;proc~apcs</title>
-<path fill="none" stroke="#000000" d="M54.4,-39.3C62.48,-41.23 71.51,-43.38 80.1,-45.43"/>
-<polygon fill="#000000" stroke="#000000" points="79.38,-48.86 89.92,-47.78 81,-42.05 79.38,-48.86"/>
+<polygon fill="none" stroke="black" points="54,-86 0,-86 0,-62 54,-62 54,-86"/>
+<text text-anchor="middle" x="27" y="-71.6" font-family="Helvetica,sans-Serif" font-size="10.50">APCG</text>
 </g>
 <!-- proc~zpv -->
-<g id="proc~~apcg~~CallsGraph_node3" class="node">
+<g id="proc~~apcg~~CallsGraph_node2" class="node">
 <title>proc~zpv</title>
-<g id="a_proc~~apcg~~CallsGraph_node3"><a xlink:href=".././proc/zpv.html" xlink:title="ZPV">
-<polygon fill="#d9534f" stroke="#d9534f" points="144,-24 90,-24 90,0 144,0 144,-24"/>
-<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ZPV</text>
+<g id="a_proc~~apcg~~CallsGraph_node2"><a xlink:href=".././proc/zpv.html" xlink:title="ZPV">
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-107 90,-107 90,-83 144,-83 144,-107"/>
+<text text-anchor="middle" x="117" y="-92.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ZPV</text>
 </a>
 </g>
 </g>
 <!-- proc~apcg&#45;&gt;proc~zpv -->
-<g id="proc~~apcg~~CallsGraph_edge2" class="edge">
+<g id="proc~~apcg~~CallsGraph_edge1" class="edge">
 <title>proc~apcg&#45;&gt;proc~zpv</title>
-<path fill="none" stroke="#000000" d="M54.4,-26.7C62.48,-24.77 71.51,-22.62 80.1,-20.57"/>
-<polygon fill="#000000" stroke="#000000" points="81,-23.95 89.92,-18.22 79.38,-17.14 81,-23.95"/>
+<path fill="none" stroke="#000000" d="M54.4,-80.3C62.48,-82.23 71.51,-84.38 80.1,-86.43"/>
+<polygon fill="#000000" stroke="#000000" points="79.38,-89.86 89.92,-88.78 81,-83.05 79.38,-89.86"/>
+</g>
+<!-- proc~apcs -->
+<g id="proc~~apcg~~CallsGraph_node3" class="node">
+<title>proc~apcs</title>
+<g id="a_proc~~apcg~~CallsGraph_node3"><a xlink:href=".././proc/apcs.html" xlink:title="APCS">
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-65 90,-65 90,-41 144,-41 144,-65"/>
+<text text-anchor="middle" x="117" y="-50.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APCS</text>
+</a>
+</g>
+</g>
+<!-- proc~apcg&#45;&gt;proc~apcs -->
+<g id="proc~~apcg~~CallsGraph_edge2" class="edge">
+<title>proc~apcg&#45;&gt;proc~apcs</title>
+<path fill="none" stroke="#000000" d="M54.4,-67.7C62.48,-65.77 71.51,-63.62 80.1,-61.57"/>
+<polygon fill="#000000" stroke="#000000" points="81,-64.95 89.92,-59.22 79.38,-58.14 81,-64.95"/>
+</g>
+<!-- proc~zp -->
+<g id="proc~~apcg~~CallsGraph_node6" class="node">
+<title>proc~zp</title>
+<g id="a_proc~~apcg~~CallsGraph_node6"><a xlink:href=".././proc/zp.html" xlink:title="ZP">
+<polygon fill="#d9534f" stroke="#d9534f" points="324,-107 270,-107 270,-83 324,-83 324,-107"/>
+<text text-anchor="middle" x="297" y="-92.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ZP</text>
+</a>
+</g>
+</g>
+<!-- proc~zpv&#45;&gt;proc~zp -->
+<g id="proc~~apcg~~CallsGraph_edge3" class="edge">
+<title>proc~zpv&#45;&gt;proc~zp</title>
+<path fill="none" stroke="#000000" d="M144.26,-95C174.85,-95 225.55,-95 259.84,-95"/>
+<polygon fill="#000000" stroke="#000000" points="259.92,-98.5 269.92,-95 259.92,-91.5 259.92,-98.5"/>
+</g>
+<!-- proc~pn -->
+<g id="proc~~apcg~~CallsGraph_node4" class="node">
+<title>proc~pn</title>
+<g id="a_proc~~apcg~~CallsGraph_node4"><a xlink:href=".././proc/pn.html" xlink:title="PN">
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-66 180,-66 180,-42 234,-42 234,-66"/>
+<text text-anchor="middle" x="207" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PN</text>
+</a>
+</g>
+</g>
+<!-- proc~apcs&#45;&gt;proc~pn -->
+<g id="proc~~apcg~~CallsGraph_edge4" class="edge">
+<title>proc~apcs&#45;&gt;proc~pn</title>
+<path fill="none" stroke="#000000" d="M144.4,-53.3C152.39,-53.39 161.31,-53.49 169.82,-53.59"/>
+<polygon fill="#000000" stroke="#000000" points="169.88,-57.09 179.92,-53.7 169.96,-50.09 169.88,-57.09"/>
+</g>
+<!-- proc~ir -->
+<g id="proc~~apcg~~CallsGraph_node5" class="node">
+<title>proc~ir</title>
+<g id="a_proc~~apcg~~CallsGraph_node5"><a xlink:href=".././proc/ir.html" xlink:title="IR">
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 180,-24 180,0 234,0 234,-24"/>
+<text text-anchor="middle" x="207" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">IR</text>
+</a>
+</g>
+</g>
+<!-- proc~apcs&#45;&gt;proc~ir -->
+<g id="proc~~apcg~~CallsGraph_edge5" class="edge">
+<title>proc~apcs&#45;&gt;proc~ir</title>
+<path fill="none" stroke="#000000" d="M143.93,-40.92C152.36,-36.99 161.86,-32.57 170.84,-28.38"/>
+<polygon fill="#000000" stroke="#000000" points="172.37,-31.53 179.95,-24.13 169.41,-25.19 172.37,-31.53"/>
+</g>
+<!-- proc~pn&#45;&gt;proc~zp -->
+<g id="proc~~apcg~~CallsGraph_edge6" class="edge">
+<title>proc~pn&#45;&gt;proc~zp</title>
+<path fill="none" stroke="#000000" d="M233.93,-66.08C242.36,-70.01 251.86,-74.43 260.84,-78.62"/>
+<polygon fill="#000000" stroke="#000000" points="259.41,-81.81 269.95,-82.87 262.37,-75.47 259.41,-81.81"/>
+</g>
+<!-- proc~sxp -->
+<g id="proc~~apcg~~CallsGraph_node7" class="node">
+<title>proc~sxp</title>
+<g id="a_proc~~apcg~~CallsGraph_node7"><a xlink:href=".././proc/sxp.html" xlink:title="SXP">
+<polygon fill="#d9534f" stroke="#d9534f" points="324,-65 270,-65 270,-41 324,-41 324,-65"/>
+<text text-anchor="middle" x="297" y="-50.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SXP</text>
+</a>
+</g>
+</g>
+<!-- proc~pn&#45;&gt;proc~sxp -->
+<g id="proc~~apcg~~CallsGraph_edge7" class="edge">
+<title>proc~pn&#45;&gt;proc~sxp</title>
+<path fill="none" stroke="#000000" d="M234.4,-53.7C242.39,-53.61 251.31,-53.51 259.82,-53.41"/>
+<polygon fill="#000000" stroke="#000000" points="259.96,-56.91 269.92,-53.3 259.88,-49.91 259.96,-56.91"/>
 </g>
 </g>
 </svg>
@@ -505,8 +431,6 @@ public subroutine APCG(date1, date2, ebpv, ehp, astrom)
     </div></div></div></div>
       </div>
     </div>
-     
-     
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Called by</h3>
@@ -667,34 +591,11 @@ public subroutine APCG(date1, date2, ebpv, ehp, astrom)
     </div></div></div></div>
       </div>
     </div>
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -702,92 +603,78 @@ public subroutine APCG(date1, date2, ebpv, ehp, astrom)
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">APCG</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span><span class="p">,</span> <span class="n">ebpv</span><span class="p">,</span> <span class="n">ehp</span><span class="p">,</span> <span class="n">astrom</span> <span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">APCG</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="p">,</span><span class="w"> </span><span class="n">date2</span><span class="p">,</span><span class="w"> </span><span class="n">ebpv</span><span class="p">,</span><span class="w"> </span><span class="n">ehp</span><span class="p">,</span><span class="w"> </span><span class="n">astrom</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date1</span> <span class="c">!! TDB as a 2-part...</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date2</span> <span class="c">!! ...Julian Date (Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">ebpv</span> <span class="c">!! Earth barycentric position/velocity (au, au/day)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">ehp</span> <span class="c">!! Earth heliocentric position (au)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">30</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span> <span class="kd">::</span> <span class="n">astrom</span> <span class="c">!! star-independent astrometry parameters:</span>
-                                                   <span class="c">!!</span>
-                                                   <span class="c">!! (1)      PM time interval (SSB, Julian years)</span>
-                                                   <span class="c">!! (2-4)    SSB to observer (vector, au)</span>
-                                                   <span class="c">!! (5-7)    Sun to observer (unit vector)</span>
-                                                   <span class="c">!! (8)      distance from Sun to observer (au)</span>
-                                                   <span class="c">!! (9-11)   v: barycentric observer velocity (vector, c)</span>
-                                                   <span class="c">!! (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor</span>
-                                                   <span class="c">!! (13-21)  bias-precession-nutation matrix</span>
-                                                   <span class="c">!! (22)     unchanged</span>
-                                                   <span class="c">!! (23)     unchanged</span>
-                                                   <span class="c">!! (24)     unchanged</span>
-                                                   <span class="c">!! (25)     unchanged</span>
-                                                   <span class="c">!! (26)     unchanged</span>
-                                                   <span class="c">!! (27)     unchanged</span>
-                                                   <span class="c">!! (28)     unchanged</span>
-                                                   <span class="c">!! (29)     unchanged</span>
-                                                   <span class="c">!! (30)     unchanged</span>
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date1</span><span class="w"> </span><span class="c">!! TDB as a 2-part...</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date2</span><span class="w"> </span><span class="c">!! ...Julian Date (Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ebpv</span><span class="w"> </span><span class="c">!! Earth barycentric position/velocity (au, au/day)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ehp</span><span class="w"> </span><span class="c">!! Earth heliocentric position (au)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">30</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">astrom</span><span class="w"> </span><span class="c">!! star-independent astrometry parameters:</span>
+<span class="w">                                                   </span><span class="c">!!</span>
+<span class="w">                                                   </span><span class="c">!! (1)      PM time interval (SSB, Julian years)</span>
+<span class="w">                                                   </span><span class="c">!! (2-4)    SSB to observer (vector, au)</span>
+<span class="w">                                                   </span><span class="c">!! (5-7)    Sun to observer (unit vector)</span>
+<span class="w">                                                   </span><span class="c">!! (8)      distance from Sun to observer (au)</span>
+<span class="w">                                                   </span><span class="c">!! (9-11)   v: barycentric observer velocity (vector, c)</span>
+<span class="w">                                                   </span><span class="c">!! (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor</span>
+<span class="w">                                                   </span><span class="c">!! (13-21)  bias-precession-nutation matrix</span>
+<span class="w">                                                   </span><span class="c">!! (22)     unchanged</span>
+<span class="w">                                                   </span><span class="c">!! (23)     unchanged</span>
+<span class="w">                                                   </span><span class="c">!! (24)     unchanged</span>
+<span class="w">                                                   </span><span class="c">!! (25)     unchanged</span>
+<span class="w">                                                   </span><span class="c">!! (26)     unchanged</span>
+<span class="w">                                                   </span><span class="c">!! (27)     unchanged</span>
+<span class="w">                                                   </span><span class="c">!! (28)     unchanged</span>
+<span class="w">                                                   </span><span class="c">!! (29)     unchanged</span>
+<span class="w">                                                   </span><span class="c">!! (30)     unchanged</span>
 
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">pv</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">pv</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Geocentric observer.</span>
-    <span class="k">call </span><span class="n">ZPV</span> <span class="p">(</span> <span class="n">pv</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Geocentric observer.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">ZPV</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">pv</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Compute the star-independent astrometry parameters.</span>
-    <span class="k">call </span><span class="n">APCS</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span><span class="p">,</span> <span class="n">pv</span><span class="p">,</span> <span class="n">ebpv</span><span class="p">,</span> <span class="n">ehp</span><span class="p">,</span> <span class="n">astrom</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Compute the star-independent astrometry parameters.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">APCS</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="p">,</span><span class="w"> </span><span class="n">date2</span><span class="p">,</span><span class="w"> </span><span class="n">pv</span><span class="p">,</span><span class="w"> </span><span class="n">ebpv</span><span class="p">,</span><span class="w"> </span><span class="n">ehp</span><span class="p">,</span><span class="w"> </span><span class="n">astrom</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">end subroutine </span><span class="n">APCG</span>
+<span class="w">    </span><span class="k">end subroutine </span><span class="n">APCG</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>astro-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -813,14 +700,11 @@ public subroutine APCG(date1, date2, ebpv, ehp, astrom)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

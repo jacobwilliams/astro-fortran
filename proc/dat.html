@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,45 +43,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-        
+              
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                                       </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -95,50 +68,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>DAT
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 0.9% of total for procedures.">50 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
-    
      <li><a href='../module/astro_module.html'>astro_module</a></li>
-    
-  
      <li class="active">DAT</li>
   </ol>
 </div>
@@ -154,32 +106,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -187,24 +116,14 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-public subroutine DAT(iy, im, id, fd, deltat, j)
+    <h2>public subroutine DAT(iy, im, id, fd, deltat, j)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>For a given UTC date, calculate Delta(AT) = TAI-UTC.</p>
 <div class="codehilite"><pre><span></span><code> <span class="p">:-</span><span class="s s-Atom">-----------------------------------------:</span>
  <span class="s s-Atom">:</span>                                          <span class="s s-Atom">:</span>
@@ -307,106 +226,45 @@ public subroutine DAT(iy, im, id, fd, deltat, j)
 <ul>
 <li>IAU SOFA revision: 2019 July 5</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-iy~3"></span>integer,</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>iy</strong></td><td><p>UTC:  year (Notes 1 and 2)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-im~3"></span>integer,</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>im</strong></td><td><p>UTC:  month (Note 2)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-id~3"></span>integer,</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>id</strong></td><td><p>UTC:  day (Notes 2 and 3)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-fd"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>fd</strong></td><td><p>UTC:  fraction of day (Note 4)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-deltat"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>deltat</strong></td><td><p>TAI minus UTC, seconds</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-j~10"></span>integer,</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>j</strong></td><td><p>status (Note 5):</p>
 <ul>
 <li>1 = dubious year (Note 1)</li>
@@ -417,18 +275,11 @@ public subroutine DAT(iy, im, id, fd, deltat, j)
 <li>-4 = bad fraction (Note 4)</li>
 <li>-5 = internal error (Note 5)</li>
 </ul></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Calls</h3>
@@ -529,8 +380,6 @@ public subroutine DAT(iy, im, id, fd, deltat, j)
     </div></div></div></div>
       </div>
     </div>
-     
-     
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Called by</h3>
@@ -542,214 +391,214 @@ public subroutine DAT(iy, im, id, fd, deltat, j)
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: proc~~dat~~CalledByGraph Pages: 1 -->
-<svg id="procdatCalledByGraph" width="426pt" height="236pt"
- viewBox="0.00 0.00 426.00 236.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="proc~~dat~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 232)">
+<svg id="procdatCalledByGraph" width="426pt" height="243pt"
+ viewBox="0.00 0.00 426.00 243.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~dat~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 239)">
 <title>proc~~dat~~CalledByGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-232 422,-232 422,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-239 422,-239 422,4 -4,4"/>
 <!-- proc~dat -->
 <g id="proc~~dat~~CalledByGraph_node1" class="node">
 <title>proc~dat</title>
-<polygon fill="none" stroke="black" points="418,-146 364,-146 364,-122 418,-122 418,-146"/>
-<text text-anchor="middle" x="391" y="-131.6" font-family="Helvetica,sans-Serif" font-size="10.50">DAT</text>
-</g>
-<!-- proc~d2dtf -->
-<g id="proc~~dat~~CalledByGraph_node2" class="node">
-<title>proc~d2dtf</title>
-<g id="a_proc~~dat~~CalledByGraph_node2"><a xlink:href=".././proc/d2dtf.html" xlink:title="D2DTF">
-<polygon fill="#d9534f" stroke="#d9534f" points="327.5,-228 273.5,-228 273.5,-204 327.5,-204 327.5,-228"/>
-<text text-anchor="middle" x="300.5" y="-213.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">D2DTF</text>
-</a>
-</g>
-</g>
-<!-- proc~d2dtf&#45;&gt;proc~dat -->
-<g id="proc~~dat~~CalledByGraph_edge1" class="edge">
-<title>proc~d2dtf&#45;&gt;proc~dat</title>
-<path fill="none" stroke="#000000" d="M317.42,-203.83C320.96,-201.01 324.66,-197.95 328,-195 343.04,-181.71 359.17,-165.78 371.21,-153.53"/>
-<polygon fill="#000000" stroke="#000000" points="374,-155.68 378.48,-146.08 368.99,-150.8 374,-155.68"/>
-</g>
-<!-- proc~ut1utc -->
-<g id="proc~~dat~~CalledByGraph_node3" class="node">
-<title>proc~ut1utc</title>
-<g id="a_proc~~dat~~CalledByGraph_node3"><a xlink:href=".././proc/ut1utc.html" xlink:title="UT1UTC">
-<polygon fill="#d9534f" stroke="#d9534f" points="328,-186 273,-186 273,-162 328,-162 328,-186"/>
-<text text-anchor="middle" x="300.5" y="-171.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">UT1UTC</text>
-</a>
-</g>
-</g>
-<!-- proc~ut1utc&#45;&gt;proc~dat -->
-<g id="proc~~dat~~CalledByGraph_edge2" class="edge">
-<title>proc~ut1utc&#45;&gt;proc~dat</title>
-<path fill="none" stroke="#000000" d="M328.05,-162C336.35,-158.25 345.65,-154.05 354.46,-150.06"/>
-<polygon fill="#000000" stroke="#000000" points="356.1,-153.16 363.77,-145.86 353.22,-146.78 356.1,-153.16"/>
+<polygon fill="none" stroke="black" points="418,-108 364,-108 364,-84 418,-84 418,-108"/>
+<text text-anchor="middle" x="391" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50">DAT</text>
 </g>
 <!-- proc~utctai -->
-<g id="proc~~dat~~CalledByGraph_node4" class="node">
+<g id="proc~~dat~~CalledByGraph_node2" class="node">
 <title>proc~utctai</title>
-<g id="a_proc~~dat~~CalledByGraph_node4"><a xlink:href=".././proc/utctai.html" xlink:title="UTCTAI">
-<polygon fill="#d9534f" stroke="#d9534f" points="327.5,-64 273.5,-64 273.5,-40 327.5,-40 327.5,-64"/>
-<text text-anchor="middle" x="300.5" y="-49.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">UTCTAI</text>
+<g id="a_proc~~dat~~CalledByGraph_node2"><a xlink:href=".././proc/utctai.html" xlink:title="UTCTAI">
+<polygon fill="#d9534f" stroke="#d9534f" points="327.5,-150 273.5,-150 273.5,-126 327.5,-126 327.5,-150"/>
+<text text-anchor="middle" x="300.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">UTCTAI</text>
 </a>
 </g>
 </g>
 <!-- proc~utctai&#45;&gt;proc~dat -->
-<g id="proc~~dat~~CalledByGraph_edge3" class="edge">
+<g id="proc~~dat~~CalledByGraph_edge1" class="edge">
 <title>proc~utctai&#45;&gt;proc~dat</title>
-<path fill="none" stroke="#000000" d="M317.42,-64.17C320.96,-66.99 324.66,-70.05 328,-73 343.04,-86.29 359.17,-102.22 371.21,-114.47"/>
-<polygon fill="#000000" stroke="#000000" points="368.99,-117.2 378.48,-121.92 374,-112.32 368.99,-117.2"/>
-</g>
-<!-- proc~dtf2d -->
-<g id="proc~~dat~~CalledByGraph_node5" class="node">
-<title>proc~dtf2d</title>
-<g id="a_proc~~dat~~CalledByGraph_node5"><a xlink:href=".././proc/dtf2d.html" xlink:title="DTF2D">
-<polygon fill="#d9534f" stroke="#d9534f" points="327.5,-106 273.5,-106 273.5,-82 327.5,-82 327.5,-106"/>
-<text text-anchor="middle" x="300.5" y="-91.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">DTF2D</text>
-</a>
-</g>
-</g>
-<!-- proc~dtf2d&#45;&gt;proc~dat -->
-<g id="proc~~dat~~CalledByGraph_edge4" class="edge">
-<title>proc~dtf2d&#45;&gt;proc~dat</title>
-<path fill="none" stroke="#000000" d="M327.57,-105.78C336.05,-109.62 345.6,-113.93 354.64,-118.02"/>
-<polygon fill="#000000" stroke="#000000" points="353.25,-121.23 363.81,-122.16 356.14,-114.85 353.25,-121.23"/>
+<path fill="none" stroke="#000000" d="M327.1,-125.85C335.9,-121.67 345.92,-116.92 355.32,-112.46"/>
+<polygon fill="#000000" stroke="#000000" points="356.93,-115.57 364.46,-108.12 353.92,-109.25 356.93,-115.57"/>
 </g>
 <!-- proc~utcut1 -->
-<g id="proc~~dat~~CalledByGraph_node6" class="node">
+<g id="proc~~dat~~CalledByGraph_node3" class="node">
 <title>proc~utcut1</title>
-<g id="a_proc~~dat~~CalledByGraph_node6"><a xlink:href=".././proc/utcut1.html" xlink:title="UTCUT1">
-<polygon fill="#d9534f" stroke="#d9534f" points="237,-104 182,-104 182,-80 237,-80 237,-104"/>
-<text text-anchor="middle" x="209.5" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">UTCUT1</text>
+<g id="a_proc~~dat~~CalledByGraph_node3"><a xlink:href=".././proc/utcut1.html" xlink:title="UTCUT1">
+<polygon fill="#d9534f" stroke="#d9534f" points="237,-190 182,-190 182,-166 237,-166 237,-190"/>
+<text text-anchor="middle" x="209.5" y="-175.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">UTCUT1</text>
 </a>
 </g>
 </g>
 <!-- proc~utcut1&#45;&gt;proc~dat -->
-<g id="proc~~dat~~CalledByGraph_edge5" class="edge">
+<g id="proc~~dat~~CalledByGraph_edge2" class="edge">
 <title>proc~utcut1&#45;&gt;proc~dat</title>
-<path fill="none" stroke="#000000" d="M237.21,-103.11C248.15,-107.32 261.03,-111.86 273,-115 299.58,-121.98 330.27,-126.85 353.55,-129.91"/>
-<polygon fill="#000000" stroke="#000000" points="353.32,-133.41 363.68,-131.19 354.19,-126.46 353.32,-133.41"/>
+<path fill="none" stroke="#000000" d="M237.17,-178.34C261.99,-177.61 299.36,-173.8 328,-159 347.31,-149.03 364.23,-130.81 375.49,-116.52"/>
+<polygon fill="#000000" stroke="#000000" points="378.51,-118.33 381.74,-108.24 372.92,-114.11 378.51,-118.33"/>
 </g>
 <!-- proc~utcut1&#45;&gt;proc~utctai -->
-<g id="proc~~dat~~CalledByGraph_edge6" class="edge">
+<g id="proc~~dat~~CalledByGraph_edge7" class="edge">
 <title>proc~utcut1&#45;&gt;proc~utctai</title>
-<path fill="none" stroke="#000000" d="M237.2,-80C245.72,-76.17 255.27,-71.88 264.29,-67.83"/>
-<polygon fill="#000000" stroke="#000000" points="265.74,-71.01 273.43,-63.72 262.87,-64.62 265.74,-71.01"/>
+<path fill="none" stroke="#000000" d="M237.2,-166C245.72,-162.17 255.27,-157.88 264.29,-153.83"/>
+<polygon fill="#000000" stroke="#000000" points="265.74,-157.01 273.43,-149.72 262.87,-150.62 265.74,-157.01"/>
 </g>
-<!-- proc~taiutc -->
-<g id="proc~~dat~~CalledByGraph_node7" class="node">
-<title>proc~taiutc</title>
-<g id="a_proc~~dat~~CalledByGraph_node7"><a xlink:href=".././proc/taiutc.html" xlink:title="TAIUTC">
-<polygon fill="#d9534f" stroke="#d9534f" points="236.5,-24 182.5,-24 182.5,0 236.5,0 236.5,-24"/>
-<text text-anchor="middle" x="209.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">TAIUTC</text>
+<!-- proc~dtf2d -->
+<g id="proc~~dat~~CalledByGraph_node4" class="node">
+<title>proc~dtf2d</title>
+<g id="a_proc~~dat~~CalledByGraph_node4"><a xlink:href=".././proc/dtf2d.html" xlink:title="DTF2D">
+<polygon fill="#d9534f" stroke="#d9534f" points="327.5,-108 273.5,-108 273.5,-84 327.5,-84 327.5,-108"/>
+<text text-anchor="middle" x="300.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">DTF2D</text>
 </a>
 </g>
 </g>
-<!-- proc~taiutc&#45;&gt;proc~utctai -->
-<g id="proc~~dat~~CalledByGraph_edge7" class="edge">
-<title>proc~taiutc&#45;&gt;proc~utctai</title>
-<path fill="none" stroke="#000000" d="M236.72,-23.78C245.32,-27.65 255.03,-32.01 264.19,-36.13"/>
-<polygon fill="#000000" stroke="#000000" points="262.91,-39.39 273.47,-40.3 265.78,-33.01 262.91,-39.39"/>
+<!-- proc~dtf2d&#45;&gt;proc~dat -->
+<g id="proc~~dat~~CalledByGraph_edge3" class="edge">
+<title>proc~dtf2d&#45;&gt;proc~dat</title>
+<path fill="none" stroke="#000000" d="M327.57,-96C335.78,-96 345,-96 353.78,-96"/>
+<polygon fill="#000000" stroke="#000000" points="353.81,-99.5 363.81,-96 353.81,-92.5 353.81,-99.5"/>
+</g>
+<!-- proc~d2dtf -->
+<g id="proc~~dat~~CalledByGraph_node5" class="node">
+<title>proc~d2dtf</title>
+<g id="a_proc~~dat~~CalledByGraph_node5"><a xlink:href=".././proc/d2dtf.html" xlink:title="D2DTF">
+<polygon fill="#d9534f" stroke="#d9534f" points="327.5,-66 273.5,-66 273.5,-42 327.5,-42 327.5,-66"/>
+<text text-anchor="middle" x="300.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">D2DTF</text>
+</a>
+</g>
+</g>
+<!-- proc~d2dtf&#45;&gt;proc~dat -->
+<g id="proc~~dat~~CalledByGraph_edge4" class="edge">
+<title>proc~d2dtf&#45;&gt;proc~dat</title>
+<path fill="none" stroke="#000000" d="M327.1,-66.15C335.9,-70.33 345.92,-75.08 355.32,-79.54"/>
+<polygon fill="#000000" stroke="#000000" points="353.92,-82.75 364.46,-83.88 356.93,-76.43 353.92,-82.75"/>
+</g>
+<!-- proc~ut1utc -->
+<g id="proc~~dat~~CalledByGraph_node6" class="node">
+<title>proc~ut1utc</title>
+<g id="a_proc~~dat~~CalledByGraph_node6"><a xlink:href=".././proc/ut1utc.html" xlink:title="UT1UTC">
+<polygon fill="#d9534f" stroke="#d9534f" points="328,-24 273,-24 273,0 328,0 328,-24"/>
+<text text-anchor="middle" x="300.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">UT1UTC</text>
+</a>
+</g>
+</g>
+<!-- proc~ut1utc&#45;&gt;proc~dat -->
+<g id="proc~~dat~~CalledByGraph_edge5" class="edge">
+<title>proc~ut1utc&#45;&gt;proc~dat</title>
+<path fill="none" stroke="#000000" d="M317.46,-24.13C321,-26.96 324.68,-30.02 328,-33 343.51,-46.93 360.01,-63.81 372.09,-76.59"/>
+<polygon fill="#000000" stroke="#000000" points="369.6,-79.05 378.99,-83.95 374.71,-74.26 369.6,-79.05"/>
+</g>
+<!-- proc~apio13 -->
+<g id="proc~~dat~~CalledByGraph_node7" class="node">
+<title>proc~apio13</title>
+<g id="a_proc~~dat~~CalledByGraph_node7"><a xlink:href=".././proc/apio13.html" xlink:title="APIO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-206 91.5,-206 91.5,-182 145.5,-182 145.5,-206"/>
+<text text-anchor="middle" x="118.5" y="-191.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APIO13</text>
+</a>
+</g>
+</g>
+<!-- proc~apio13&#45;&gt;proc~utctai -->
+<g id="proc~~dat~~CalledByGraph_edge6" class="edge">
+<title>proc~apio13&#45;&gt;proc~utctai</title>
+<path fill="none" stroke="#000000" d="M145.78,-201.19C170.32,-206.53 207.5,-211.01 237,-199 257,-190.86 274.09,-172.89 285.32,-158.55"/>
+<polygon fill="#000000" stroke="#000000" points="288.37,-160.33 291.53,-150.22 282.75,-156.15 288.37,-160.33"/>
+</g>
+<!-- proc~apio13&#45;&gt;proc~utcut1 -->
+<g id="proc~~dat~~CalledByGraph_edge10" class="edge">
+<title>proc~apio13&#45;&gt;proc~utcut1</title>
+<path fill="none" stroke="#000000" d="M145.72,-189.29C153.9,-187.82 163.08,-186.16 171.84,-184.59"/>
+<polygon fill="#000000" stroke="#000000" points="172.63,-188.01 181.85,-182.79 171.39,-181.12 172.63,-188.01"/>
 </g>
 <!-- proc~apco13 -->
 <g id="proc~~dat~~CalledByGraph_node8" class="node">
 <title>proc~apco13</title>
 <g id="a_proc~~dat~~CalledByGraph_node8"><a xlink:href=".././proc/apco13.html" xlink:title="APCO13">
-<polygon fill="#d9534f" stroke="#d9534f" points="146,-141 91,-141 91,-117 146,-117 146,-141"/>
-<text text-anchor="middle" x="118.5" y="-126.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APCO13</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="146,-128 91,-128 91,-104 146,-104 146,-128"/>
+<text text-anchor="middle" x="118.5" y="-113.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APCO13</text>
 </a>
 </g>
 </g>
 <!-- proc~apco13&#45;&gt;proc~utctai -->
 <g id="proc~~dat~~CalledByGraph_edge8" class="edge">
 <title>proc~apco13&#45;&gt;proc~utctai</title>
-<path fill="none" stroke="#000000" d="M146.29,-130.46C171.19,-130.68 208.61,-128.02 237,-113 258.14,-101.81 255.57,-89.37 273,-73 273.81,-72.24 274.65,-71.47 275.51,-70.71"/>
-<polygon fill="#000000" stroke="#000000" points="278.05,-73.14 283.44,-64.02 273.54,-67.79 278.05,-73.14"/>
+<path fill="none" stroke="#000000" d="M146.33,-112.99C170.3,-110.95 206.27,-109.53 237,-115 245.93,-116.59 255.26,-119.37 263.9,-122.45"/>
+<polygon fill="#000000" stroke="#000000" points="262.72,-125.75 273.31,-126.02 265.2,-119.2 262.72,-125.75"/>
 </g>
 <!-- proc~apco13&#45;&gt;proc~utcut1 -->
-<g id="proc~~dat~~CalledByGraph_edge10" class="edge">
-<title>proc~apco13&#45;&gt;proc~utcut1</title>
-<path fill="none" stroke="#000000" d="M146.2,-117.9C154.48,-114.46 163.73,-110.61 172.52,-106.96"/>
-<polygon fill="#000000" stroke="#000000" points="173.93,-110.16 181.82,-103.09 171.24,-103.7 173.93,-110.16"/>
-</g>
-<!-- proc~apio13 -->
-<g id="proc~~dat~~CalledByGraph_node9" class="node">
-<title>proc~apio13</title>
-<g id="a_proc~~dat~~CalledByGraph_node9"><a xlink:href=".././proc/apio13.html" xlink:title="APIO13">
-<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-69 91.5,-69 91.5,-45 145.5,-45 145.5,-69"/>
-<text text-anchor="middle" x="118.5" y="-54.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APIO13</text>
-</a>
-</g>
-</g>
-<!-- proc~apio13&#45;&gt;proc~utctai -->
-<g id="proc~~dat~~CalledByGraph_edge9" class="edge">
-<title>proc~apio13&#45;&gt;proc~utctai</title>
-<path fill="none" stroke="#000000" d="M145.67,-56.27C176.6,-55.41 228.25,-53.98 263.07,-53.01"/>
-<polygon fill="#000000" stroke="#000000" points="263.4,-56.5 273.29,-52.73 263.2,-49.51 263.4,-56.5"/>
-</g>
-<!-- proc~apio13&#45;&gt;proc~utcut1 -->
 <g id="proc~~dat~~CalledByGraph_edge11" class="edge">
-<title>proc~apio13&#45;&gt;proc~utcut1</title>
-<path fill="none" stroke="#000000" d="M145.72,-67.31C154.08,-70.6 163.48,-74.3 172.41,-77.81"/>
-<polygon fill="#000000" stroke="#000000" points="171.26,-81.12 181.85,-81.52 173.82,-74.6 171.26,-81.12"/>
+<title>proc~apco13&#45;&gt;proc~utcut1</title>
+<path fill="none" stroke="#000000" d="M137.08,-128.25C150.09,-137.31 168.01,-149.79 182.64,-159.99"/>
+<polygon fill="#000000" stroke="#000000" points="181.05,-163.14 191.26,-165.99 185.05,-157.4 181.05,-163.14"/>
 </g>
-<!-- proc~atco13 -->
-<g id="proc~~dat~~CalledByGraph_node10" class="node">
-<title>proc~atco13</title>
-<g id="a_proc~~dat~~CalledByGraph_node10"><a xlink:href=".././proc/atco13.html" xlink:title="ATCO13">
-<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-181 0.5,-181 0.5,-157 54.5,-157 54.5,-181"/>
-<text text-anchor="middle" x="27.5" y="-166.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATCO13</text>
+<!-- proc~taiutc -->
+<g id="proc~~dat~~CalledByGraph_node9" class="node">
+<title>proc~taiutc</title>
+<g id="a_proc~~dat~~CalledByGraph_node9"><a xlink:href=".././proc/taiutc.html" xlink:title="TAIUTC">
+<polygon fill="#d9534f" stroke="#d9534f" points="236.5,-148 182.5,-148 182.5,-124 236.5,-124 236.5,-148"/>
+<text text-anchor="middle" x="209.5" y="-133.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">TAIUTC</text>
 </a>
 </g>
 </g>
-<!-- proc~atco13&#45;&gt;proc~apco13 -->
-<g id="proc~~dat~~CalledByGraph_edge12" class="edge">
-<title>proc~atco13&#45;&gt;proc~apco13</title>
-<path fill="none" stroke="#000000" d="M54.72,-157.22C63.17,-153.42 72.68,-149.14 81.7,-145.09"/>
-<polygon fill="#000000" stroke="#000000" points="83.16,-148.27 90.85,-140.98 80.29,-141.88 83.16,-148.27"/>
+<!-- proc~taiutc&#45;&gt;proc~utctai -->
+<g id="proc~~dat~~CalledByGraph_edge9" class="edge">
+<title>proc~taiutc&#45;&gt;proc~utctai</title>
+<path fill="none" stroke="#000000" d="M236.72,-136.59C245.05,-136.78 254.41,-136.99 263.32,-137.19"/>
+<polygon fill="#000000" stroke="#000000" points="263.39,-140.69 273.47,-137.41 263.55,-133.69 263.39,-140.69"/>
 </g>
 <!-- proc~atoc13 -->
-<g id="proc~~dat~~CalledByGraph_node11" class="node">
+<g id="proc~~dat~~CalledByGraph_node10" class="node">
 <title>proc~atoc13</title>
-<g id="a_proc~~dat~~CalledByGraph_node11"><a xlink:href=".././proc/atoc13.html" xlink:title="ATOC13">
-<polygon fill="#d9534f" stroke="#d9534f" points="55,-139 0,-139 0,-115 55,-115 55,-139"/>
-<text text-anchor="middle" x="27.5" y="-124.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOC13</text>
+<g id="a_proc~~dat~~CalledByGraph_node10"><a xlink:href=".././proc/atoc13.html" xlink:title="ATOC13">
+<polygon fill="#d9534f" stroke="#d9534f" points="55,-141 0,-141 0,-117 55,-117 55,-141"/>
+<text text-anchor="middle" x="27.5" y="-126.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOC13</text>
 </a>
 </g>
 </g>
 <!-- proc~atoc13&#45;&gt;proc~apco13 -->
-<g id="proc~~dat~~CalledByGraph_edge13" class="edge">
+<g id="proc~~dat~~CalledByGraph_edge14" class="edge">
 <title>proc~atoc13&#45;&gt;proc~apco13</title>
-<path fill="none" stroke="#000000" d="M55.2,-127.6C63.21,-127.78 72.14,-127.98 80.68,-128.17"/>
-<polygon fill="#000000" stroke="#000000" points="80.74,-131.67 90.82,-128.4 80.9,-124.68 80.74,-131.67"/>
+<path fill="none" stroke="#000000" d="M55.2,-125.1C63.21,-123.93 72.14,-122.63 80.68,-121.38"/>
+<polygon fill="#000000" stroke="#000000" points="81.43,-124.81 90.82,-119.9 80.42,-117.88 81.43,-124.81"/>
+</g>
+<!-- proc~atio13 -->
+<g id="proc~~dat~~CalledByGraph_node11" class="node">
+<title>proc~atio13</title>
+<g id="a_proc~~dat~~CalledByGraph_node11"><a xlink:href=".././proc/atio13.html" xlink:title="ATIO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-235 0.5,-235 0.5,-211 54.5,-211 54.5,-235"/>
+<text text-anchor="middle" x="27.5" y="-220.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATIO13</text>
+</a>
+</g>
+</g>
+<!-- proc~atio13&#45;&gt;proc~apio13 -->
+<g id="proc~~dat~~CalledByGraph_edge12" class="edge">
+<title>proc~atio13&#45;&gt;proc~apio13</title>
+<path fill="none" stroke="#000000" d="M54.72,-214.46C63.23,-211.68 72.82,-208.56 81.9,-205.6"/>
+<polygon fill="#000000" stroke="#000000" points="83.04,-208.91 91.47,-202.48 80.87,-202.25 83.04,-208.91"/>
 </g>
 <!-- proc~atoi13 -->
 <g id="proc~~dat~~CalledByGraph_node12" class="node">
 <title>proc~atoi13</title>
 <g id="a_proc~~dat~~CalledByGraph_node12"><a xlink:href=".././proc/atoi13.html" xlink:title="ATOI13">
-<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-78 0.5,-78 0.5,-54 54.5,-54 54.5,-78"/>
-<text text-anchor="middle" x="27.5" y="-63.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOI13</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-193 0.5,-193 0.5,-169 54.5,-169 54.5,-193"/>
+<text text-anchor="middle" x="27.5" y="-178.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOI13</text>
 </a>
 </g>
 </g>
 <!-- proc~atoi13&#45;&gt;proc~apio13 -->
-<g id="proc~~dat~~CalledByGraph_edge14" class="edge">
+<g id="proc~~dat~~CalledByGraph_edge13" class="edge">
 <title>proc~atoi13&#45;&gt;proc~apio13</title>
-<path fill="none" stroke="#000000" d="M54.72,-63.35C63.05,-62.51 72.41,-61.56 81.32,-60.66"/>
-<polygon fill="#000000" stroke="#000000" points="81.87,-64.12 91.47,-59.63 81.16,-57.16 81.87,-64.12"/>
+<path fill="none" stroke="#000000" d="M54.72,-184.83C63.05,-186.05 72.41,-187.41 81.32,-188.71"/>
+<polygon fill="#000000" stroke="#000000" points="81.06,-192.22 91.47,-190.2 82.08,-185.29 81.06,-192.22"/>
 </g>
-<!-- proc~atio13 -->
+<!-- proc~atco13 -->
 <g id="proc~~dat~~CalledByGraph_node13" class="node">
-<title>proc~atio13</title>
-<g id="a_proc~~dat~~CalledByGraph_node13"><a xlink:href=".././proc/atio13.html" xlink:title="ATIO13">
-<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-36 0.5,-36 0.5,-12 54.5,-12 54.5,-36"/>
-<text text-anchor="middle" x="27.5" y="-21.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATIO13</text>
+<title>proc~atco13</title>
+<g id="a_proc~~dat~~CalledByGraph_node13"><a xlink:href=".././proc/atco13.html" xlink:title="ATCO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-99 0.5,-99 0.5,-75 54.5,-75 54.5,-99"/>
+<text text-anchor="middle" x="27.5" y="-84.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATCO13</text>
 </a>
 </g>
 </g>
-<!-- proc~atio13&#45;&gt;proc~apio13 -->
+<!-- proc~atco13&#45;&gt;proc~apco13 -->
 <g id="proc~~dat~~CalledByGraph_edge15" class="edge">
-<title>proc~atio13&#45;&gt;proc~apio13</title>
-<path fill="none" stroke="#000000" d="M54.72,-33.72C63.23,-36.88 72.82,-40.43 81.9,-43.8"/>
-<polygon fill="#000000" stroke="#000000" points="80.87,-47.15 91.47,-47.35 83.31,-40.59 80.87,-47.15"/>
+<title>proc~atco13&#45;&gt;proc~apco13</title>
+<path fill="none" stroke="#000000" d="M54.72,-95.54C62.99,-98.24 72.28,-101.27 81.13,-104.15"/>
+<polygon fill="#000000" stroke="#000000" points="80.26,-107.55 90.85,-107.32 82.43,-100.89 80.26,-107.55"/>
 </g>
 </g>
 </svg>
@@ -814,34 +663,11 @@ public subroutine DAT(iy, im, id, fd, deltat, j)
     </div></div></div></div>
       </div>
     </div>
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -849,253 +675,239 @@ public subroutine DAT(iy, im, id, fd, deltat, j)
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">DAT</span> <span class="p">(</span> <span class="n">iy</span><span class="p">,</span> <span class="n">im</span><span class="p">,</span> <span class="n">id</span><span class="p">,</span> <span class="n">fd</span><span class="p">,</span> <span class="n">deltat</span><span class="p">,</span> <span class="n">j</span> <span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">DAT</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">iy</span><span class="p">,</span><span class="w"> </span><span class="n">im</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">deltat</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">iy</span> <span class="c">!! UTC:  year (Notes 1 and 2)</span>
-    <span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">im</span> <span class="c">!! UTC:  month (Note 2)</span>
-    <span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">id</span> <span class="c">!! UTC:  day (Notes 2 and 3)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">fd</span> <span class="c">!! UTC:  fraction of day (Note 4)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">deltat</span> <span class="c">!! TAI minus UTC, seconds</span>
-    <span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">j</span> <span class="c">!! status (Note 5):</span>
-                             <span class="c">!!</span>
-                             <span class="c">!!  *  1 = dubious year (Note 1)</span>
-                             <span class="c">!!  *  0 = OK</span>
-                             <span class="c">!!  * -1 = bad year</span>
-                             <span class="c">!!  * -2 = bad month</span>
-                             <span class="c">!!  * -3 = bad day (Note 3)</span>
-                             <span class="c">!!  * -4 = bad fraction (Note 4)</span>
-                             <span class="c">!!  * -5 = internal error (Note 5)</span>
+<span class="k">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iy</span><span class="w"> </span><span class="c">!! UTC:  year (Notes 1 and 2)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">im</span><span class="w"> </span><span class="c">!! UTC:  month (Note 2)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="c">!! UTC:  day (Notes 2 and 3)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">fd</span><span class="w"> </span><span class="c">!! UTC:  fraction of day (Note 4)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">deltat</span><span class="w"> </span><span class="c">!! TAI minus UTC, seconds</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="c">!! status (Note 5):</span>
+<span class="w">                             </span><span class="c">!!</span>
+<span class="w">                             </span><span class="c">!!  *  1 = dubious year (Note 1)</span>
+<span class="w">                             </span><span class="c">!!  *  0 = OK</span>
+<span class="w">                             </span><span class="c">!!  * -1 = bad year</span>
+<span class="w">                             </span><span class="c">!!  * -2 = bad month</span>
+<span class="w">                             </span><span class="c">!!  * -3 = bad day (Note 3)</span>
+<span class="w">                             </span><span class="c">!!  * -4 = bad fraction (Note 4)</span>
+<span class="w">                             </span><span class="c">!!  * -5 = internal error (Note 5)</span>
 
-    <span class="c">!  Release year for this version of DAT</span>
-    <span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">iyv</span> <span class="o">=</span> <span class="mi">2019</span>
+<span class="w">    </span><span class="c">!  Release year for this version of DAT</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iyv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2019</span><span class="w"></span>
 
-    <span class="c">!  Number of Delta(AT) changes (increase by 1 for each new leap second)</span>
-    <span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">ndat</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="w">    </span><span class="c">!  Number of Delta(AT) changes (increase by 1 for each new leap second)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ndat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span><span class="w"></span>
 
-    <span class="c">!  Number of Delta(AT) expressions before leap seconds were introduced</span>
-    <span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">nera1</span> <span class="o">=</span> <span class="mi">14</span>
+<span class="w">    </span><span class="c">!  Number of Delta(AT) expressions before leap seconds were introduced</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nera1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">14</span><span class="w"></span>
 
-    <span class="c">!  Dates (year, month) on which new Delta(AT) came into force</span>
-    <span class="kt">integer</span><span class="p">,</span><span class="k">dimension</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">ndat</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">idat</span> <span class="o">=</span> <span class="nb">reshape</span><span class="p">([</span> <span class="mi">1960</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1961</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1961</span><span class="p">,</span>  <span class="mi">8</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1962</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1963</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1964</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1964</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1964</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1965</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1965</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1965</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1965</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1966</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1968</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1972</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1972</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1973</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1974</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1975</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1976</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1977</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1978</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1979</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1980</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1981</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1982</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1983</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1985</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1988</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1990</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1991</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1992</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1993</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1994</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1996</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1997</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">1999</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">2006</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">2009</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">2012</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">2015</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                            <span class="mi">2017</span><span class="p">,</span>  <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="n">ndat</span><span class="p">])</span>
+<span class="w">    </span><span class="c">!  Dates (year, month) on which new Delta(AT) came into force</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">dimension</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">ndat</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">idat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">reshape</span><span class="p">([</span><span class="w"> </span><span class="mi">1960</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1961</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1961</span><span class="p">,</span><span class="w">  </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1962</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1963</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1964</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1964</span><span class="p">,</span><span class="w">  </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1964</span><span class="p">,</span><span class="w">  </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1965</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1965</span><span class="p">,</span><span class="w">  </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1965</span><span class="p">,</span><span class="w">  </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1965</span><span class="p">,</span><span class="w">  </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1966</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1968</span><span class="p">,</span><span class="w">  </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1972</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1972</span><span class="p">,</span><span class="w">  </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1973</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1974</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1975</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1976</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1977</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1978</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1979</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1980</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1981</span><span class="p">,</span><span class="w">  </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1982</span><span class="p">,</span><span class="w">  </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1983</span><span class="p">,</span><span class="w">  </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1985</span><span class="p">,</span><span class="w">  </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1988</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1990</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1991</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1992</span><span class="p">,</span><span class="w">  </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1993</span><span class="p">,</span><span class="w">  </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1994</span><span class="p">,</span><span class="w">  </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1996</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1997</span><span class="p">,</span><span class="w">  </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">1999</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">2006</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">2009</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">2012</span><span class="p">,</span><span class="w">  </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">2015</span><span class="p">,</span><span class="w">  </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                            </span><span class="mi">2017</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="n">ndat</span><span class="p">])</span><span class="w"></span>
 
-    <span class="c">!  New Delta(AT) which came into force on the given dates</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="n">ndat</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">dats</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.4178180_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mf">1.4228180_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mf">1.3728180_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mf">1.8458580_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mf">1.9458580_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mf">3.2401300_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mf">3.3401300_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mf">3.4401300_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mf">3.5401300_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mf">3.6401300_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mf">3.7401300_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mf">3.8401300_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mf">4.3131700_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mf">4.2131700_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mi">1</span><span class="mf">0.0_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mi">1</span><span class="mf">1.0_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mi">1</span><span class="mf">2.0_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mi">1</span><span class="mf">3.0_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mi">1</span><span class="mf">4.0_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mi">1</span><span class="mf">5.0_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mi">1</span><span class="mf">6.0_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mi">1</span><span class="mf">7.0_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mi">1</span><span class="mf">8.0_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mi">1</span><span class="mf">9.0_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mi">2</span><span class="mf">0.0_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mi">2</span><span class="mf">1.0_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mi">2</span><span class="mf">2.0_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mi">2</span><span class="mf">3.0_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mi">2</span><span class="mf">4.0_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mi">2</span><span class="mf">5.0_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mi">2</span><span class="mf">6.0_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mi">2</span><span class="mf">7.0_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mi">2</span><span class="mf">8.0_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mi">2</span><span class="mf">9.0_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mi">3</span><span class="mf">0.0_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mi">3</span><span class="mf">1.0_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mi">3</span><span class="mf">2.0_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mi">3</span><span class="mf">3.0_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mi">3</span><span class="mf">4.0_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mi">3</span><span class="mf">5.0_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mi">3</span><span class="mf">6.0_wp</span><span class="p">,&amp;</span>
-                                                  <span class="mi">3</span><span class="mf">7.0_wp</span><span class="p">]</span>
+<span class="w">    </span><span class="c">!  New Delta(AT) which came into force on the given dates</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="n">ndat</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dats</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1.4178180_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mf">1.4228180_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mf">1.3728180_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mf">1.8458580_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mf">1.9458580_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mf">3.2401300_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mf">3.3401300_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mf">3.4401300_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mf">3.5401300_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mf">3.6401300_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mf">3.7401300_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mf">3.8401300_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mf">4.3131700_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mf">4.2131700_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mi">1</span><span class="mf">0.0_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mi">1</span><span class="mf">1.0_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mi">1</span><span class="mf">2.0_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mi">1</span><span class="mf">3.0_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mi">1</span><span class="mf">4.0_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mi">1</span><span class="mf">5.0_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mi">1</span><span class="mf">6.0_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mi">1</span><span class="mf">7.0_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mi">1</span><span class="mf">8.0_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mi">1</span><span class="mf">9.0_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mi">2</span><span class="mf">0.0_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mi">2</span><span class="mf">1.0_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mi">2</span><span class="mf">2.0_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mi">2</span><span class="mf">3.0_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mi">2</span><span class="mf">4.0_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mi">2</span><span class="mf">5.0_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mi">2</span><span class="mf">6.0_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mi">2</span><span class="mf">7.0_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mi">2</span><span class="mf">8.0_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mi">2</span><span class="mf">9.0_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mi">3</span><span class="mf">0.0_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mi">3</span><span class="mf">1.0_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mi">3</span><span class="mf">2.0_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mi">3</span><span class="mf">3.0_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mi">3</span><span class="mf">4.0_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mi">3</span><span class="mf">5.0_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mi">3</span><span class="mf">6.0_wp</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">                                                  </span><span class="mi">3</span><span class="mf">7.0_wp</span><span class="p">]</span><span class="w"></span>
 
-    <span class="c">!  Reference dates (MJD) and drift rates (s/day), pre leap seconds</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">nera1</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">drift</span> <span class="o">=</span> <span class="nb">reshape</span><span class="p">([</span><span class="mi">3730</span><span class="mf">0.0_wp</span><span class="p">,</span> <span class="mf">0.001296_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                              <span class="mi">3730</span><span class="mf">0.0_wp</span><span class="p">,</span> <span class="mf">0.001296_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                              <span class="mi">3730</span><span class="mf">0.0_wp</span><span class="p">,</span> <span class="mf">0.001296_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                              <span class="mi">3766</span><span class="mf">5.0_wp</span><span class="p">,</span> <span class="mf">0.0011232_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                              <span class="mi">3766</span><span class="mf">5.0_wp</span><span class="p">,</span> <span class="mf">0.0011232_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                              <span class="mi">3876</span><span class="mf">1.0_wp</span><span class="p">,</span> <span class="mf">0.001296_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                              <span class="mi">3876</span><span class="mf">1.0_wp</span><span class="p">,</span> <span class="mf">0.001296_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                              <span class="mi">3876</span><span class="mf">1.0_wp</span><span class="p">,</span> <span class="mf">0.001296_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                              <span class="mi">3876</span><span class="mf">1.0_wp</span><span class="p">,</span> <span class="mf">0.001296_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                              <span class="mi">3876</span><span class="mf">1.0_wp</span><span class="p">,</span> <span class="mf">0.001296_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                              <span class="mi">3876</span><span class="mf">1.0_wp</span><span class="p">,</span> <span class="mf">0.001296_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                              <span class="mi">3876</span><span class="mf">1.0_wp</span><span class="p">,</span> <span class="mf">0.001296_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                              <span class="mi">3912</span><span class="mf">6.0_wp</span><span class="p">,</span> <span class="mf">0.002592_wp</span><span class="p">,</span> <span class="p">&amp;</span>
-                                                              <span class="mi">3912</span><span class="mf">6.0_wp</span><span class="p">,</span> <span class="mf">0.002592_wp</span> <span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="n">nera1</span><span class="p">])</span>
+<span class="w">    </span><span class="c">!  Reference dates (MJD) and drift rates (s/day), pre leap seconds</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">nera1</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">drift</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">reshape</span><span class="p">([</span><span class="mi">3730</span><span class="mf">0.0_wp</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001296_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                              </span><span class="mi">3730</span><span class="mf">0.0_wp</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001296_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                              </span><span class="mi">3730</span><span class="mf">0.0_wp</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001296_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                              </span><span class="mi">3766</span><span class="mf">5.0_wp</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0011232_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                              </span><span class="mi">3766</span><span class="mf">5.0_wp</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0011232_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                              </span><span class="mi">3876</span><span class="mf">1.0_wp</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001296_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                              </span><span class="mi">3876</span><span class="mf">1.0_wp</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001296_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                              </span><span class="mi">3876</span><span class="mf">1.0_wp</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001296_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                              </span><span class="mi">3876</span><span class="mf">1.0_wp</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001296_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                              </span><span class="mi">3876</span><span class="mf">1.0_wp</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001296_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                              </span><span class="mi">3876</span><span class="mf">1.0_wp</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001296_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                              </span><span class="mi">3876</span><span class="mf">1.0_wp</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001296_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                              </span><span class="mi">3912</span><span class="mf">6.0_wp</span><span class="p">,</span><span class="w"> </span><span class="mf">0.002592_wp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                                              </span><span class="mi">3912</span><span class="mf">6.0_wp</span><span class="p">,</span><span class="w"> </span><span class="mf">0.002592_wp</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="n">nera1</span><span class="p">])</span><span class="w"></span>
 
-    <span class="c">!  Miscellaneous local variables</span>
-    <span class="kt">logical</span> <span class="kd">::</span> <span class="n">more</span>
-    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">js</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="k">is</span>
-<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">da</span><span class="p">,</span> <span class="n">djm0</span><span class="p">,</span> <span class="n">djm</span>
+<span class="w">    </span><span class="c">!  Miscellaneous local variables</span>
+<span class="w">    </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">more</span><span class="w"></span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">js</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="k">is</span>
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">da</span><span class="p">,</span><span class="w"> </span><span class="n">djm0</span><span class="p">,</span><span class="w"> </span><span class="n">djm</span><span class="w"></span>
 
-    <span class="n">main</span> <span class="p">:</span> <span class="k">block</span>
+<span class="w">    </span><span class="n">main</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="k">block</span><span class="w"></span>
 
-      <span class="c">!  Initialize the result to zero and the status to OK.</span>
-      <span class="n">da</span> <span class="o">=</span> <span class="mf">0.0_wp</span>
-      <span class="n">js</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="w">      </span><span class="c">!  Initialize the result to zero and the status to OK.</span>
+<span class="w">      </span><span class="n">da</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_wp</span><span class="w"></span>
+<span class="w">      </span><span class="n">js</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
 
-      <span class="c">!  If invalid fraction of a day, set error status and give up.</span>
-      <span class="k">if</span> <span class="p">(</span> <span class="n">fd</span><span class="o">&lt;</span><span class="mf">0.0_wp</span> <span class="p">.</span><span class="nb">or</span><span class="p">.</span> <span class="n">fd</span><span class="o">&gt;</span><span class="mf">1.0_wp</span> <span class="p">)</span> <span class="k">then</span>
-<span class="k">        </span><span class="n">js</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span>
-        <span class="k">exit </span><span class="n">main</span>
-      <span class="k">end if</span>
+<span class="w">      </span><span class="c">!  If invalid fraction of a day, set error status and give up.</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">fd</span><span class="o">&lt;</span><span class="mf">0.0_wp</span><span class="w"> </span><span class="p">.</span><span class="nb">or</span><span class="p">.</span><span class="w"> </span><span class="n">fd</span><span class="o">&gt;</span><span class="mf">1.0_wp</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">js</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">4</span><span class="w"></span>
+<span class="w">        </span><span class="k">exit </span><span class="n">main</span><span class="w"></span>
+<span class="w">      </span><span class="k">end if</span><span class="w"></span>
 
-      <span class="c">!  Convert the date into an MJD.</span>
-      <span class="k">call </span><span class="n">CAL2JD</span> <span class="p">(</span> <span class="n">iy</span><span class="p">,</span> <span class="n">im</span><span class="p">,</span> <span class="n">id</span><span class="p">,</span> <span class="n">djm0</span><span class="p">,</span> <span class="n">djm</span><span class="p">,</span> <span class="n">js</span> <span class="p">)</span>
+<span class="w">      </span><span class="c">!  Convert the date into an MJD.</span>
+<span class="w">      </span><span class="k">call </span><span class="n">CAL2JD</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">iy</span><span class="p">,</span><span class="w"> </span><span class="n">im</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">djm0</span><span class="p">,</span><span class="w"> </span><span class="n">djm</span><span class="p">,</span><span class="w"> </span><span class="n">js</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-      <span class="c">!  If invalid year, month, or day, give up.</span>
-      <span class="k">if</span> <span class="p">(</span> <span class="n">js</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">)</span> <span class="k">exit </span><span class="n">main</span>
+<span class="w">      </span><span class="c">!  If invalid year, month, or day, give up.</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">js</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">exit </span><span class="n">main</span><span class="w"></span>
 
-      <span class="c">!  If pre-UTC year, set warning status and give up.</span>
-      <span class="k">if</span> <span class="p">(</span> <span class="n">iy</span> <span class="o">&lt;</span> <span class="n">idat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">)</span> <span class="k">then</span>
-<span class="k">        </span><span class="n">js</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="k">exit </span><span class="n">main</span>
-      <span class="k">end if</span>
+<span class="w">      </span><span class="c">!  If pre-UTC year, set warning status and give up.</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">iy</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">idat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">js</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">        </span><span class="k">exit </span><span class="n">main</span><span class="w"></span>
+<span class="w">      </span><span class="k">end if</span><span class="w"></span>
 
-      <span class="c">!  If suspiciously late year, set warning status but proceed.</span>
-      <span class="k">if</span> <span class="p">(</span> <span class="n">iy</span> <span class="o">&gt;</span> <span class="n">iyv</span><span class="o">+</span><span class="mi">5</span> <span class="p">)</span> <span class="n">js</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="w">      </span><span class="c">!  If suspiciously late year, set warning status but proceed.</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">iy</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">iyv</span><span class="o">+</span><span class="mi">5</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">js</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
 
-      <span class="c">!  Combine year and month.</span>
-      <span class="n">m</span> <span class="o">=</span> <span class="mi">12</span><span class="o">*</span><span class="n">iy</span><span class="o">+</span><span class="n">im</span>
+<span class="w">      </span><span class="c">!  Combine year and month.</span>
+<span class="w">      </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">12</span><span class="o">*</span><span class="n">iy</span><span class="o">+</span><span class="n">im</span><span class="w"></span>
 
-      <span class="c">!  Find the most recent table entry.</span>
-      <span class="k">is</span> <span class="o">=</span> <span class="mi">0</span>
-      <span class="n">more</span> <span class="o">=</span> <span class="p">.</span><span class="n">true</span><span class="p">.</span>
-      <span class="k">do </span><span class="n">n</span><span class="o">=</span><span class="n">ndat</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span>
-        <span class="k">if</span> <span class="p">(</span> <span class="n">more</span> <span class="p">)</span> <span class="k">then</span>
-<span class="k">            is</span> <span class="o">=</span> <span class="n">n</span>
-            <span class="n">more</span> <span class="o">=</span> <span class="n">m</span> <span class="o">&lt;</span> <span class="p">(</span> <span class="mi">12</span><span class="o">*</span><span class="n">idat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="n">idat</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="p">)</span>
-        <span class="k">end if</span>
-<span class="k">      end do</span>
+<span class="w">      </span><span class="c">!  Find the most recent table entry.</span>
+<span class="w">      </span><span class="k">is</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="w">      </span><span class="n">more</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.</span><span class="w"></span>
+<span class="w">      </span><span class="k">do </span><span class="n">n</span><span class="o">=</span><span class="n">ndat</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">more</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            is</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
+<span class="w">            </span><span class="n">more</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="mi">12</span><span class="o">*</span><span class="n">idat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">idat</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">end if</span>
+<span class="k">      end do</span><span class="w"></span>
 
-      <span class="c">!  Prevent underflow warnings.</span>
-      <span class="k">if</span> <span class="p">(</span> <span class="k">is</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="p">)</span> <span class="k">then</span>
-<span class="k">        </span><span class="n">js</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span>
-        <span class="k">exit </span><span class="n">main</span>
-      <span class="k">end if</span>
+<span class="w">      </span><span class="c">!  Prevent underflow warnings.</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">js</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">5</span><span class="w"></span>
+<span class="w">        </span><span class="k">exit </span><span class="n">main</span><span class="w"></span>
+<span class="w">      </span><span class="k">end if</span><span class="w"></span>
 
-      <span class="c">!  Get the Delta(AT).</span>
-      <span class="n">da</span> <span class="o">=</span> <span class="n">dats</span><span class="p">(</span><span class="k">is</span><span class="p">)</span>
+<span class="w">      </span><span class="c">!  Get the Delta(AT).</span>
+<span class="w">      </span><span class="n">da</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dats</span><span class="p">(</span><span class="k">is</span><span class="p">)</span><span class="w"></span>
 
-      <span class="c">!  If pre-1972, adjust for drift.</span>
-      <span class="k">if</span> <span class="p">(</span> <span class="k">is</span> <span class="o">&lt;=</span> <span class="n">nera1</span> <span class="p">)</span> <span class="n">da</span> <span class="o">=</span> <span class="n">da</span> <span class="o">+</span> <span class="p">&amp;</span>
-                                <span class="p">(</span> <span class="n">djm</span> <span class="o">+</span> <span class="n">fd</span> <span class="o">-</span> <span class="n">drift</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="k">is</span><span class="p">)</span> <span class="p">)</span> <span class="o">*</span> <span class="n">drift</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="k">is</span><span class="p">)</span>
+<span class="w">      </span><span class="c">!  If pre-1972, adjust for drift.</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">nera1</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">da</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">da</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                                </span><span class="p">(</span><span class="w"> </span><span class="n">djm</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fd</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">drift</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="k">is</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">drift</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="k">is</span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">end block </span><span class="n">main</span>
+<span class="w">    </span><span class="k">end block </span><span class="n">main</span><span class="w"></span>
 
-    <span class="c">!  Return the Delta(AT) value and the status.</span>
-    <span class="n">deltat</span> <span class="o">=</span> <span class="n">da</span>
-    <span class="n">j</span> <span class="o">=</span> <span class="n">js</span>
+<span class="w">    </span><span class="c">!  Return the Delta(AT) value and the status.</span>
+<span class="w">    </span><span class="n">deltat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">da</span><span class="w"></span>
+<span class="w">    </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">js</span><span class="w"></span>
 
-    <span class="k">end subroutine </span><span class="n">DAT</span>
+<span class="w">    </span><span class="k">end subroutine </span><span class="n">DAT</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>astro-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -1121,14 +933,11 @@ public subroutine DAT(iy, im, id, fd, deltat, j)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

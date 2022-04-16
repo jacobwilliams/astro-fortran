@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,45 +43,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-        
+              
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                                       </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -95,50 +68,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>APCG13
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 0.2% of total for procedures.">10 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
-    
      <li><a href='../module/astro_module.html'>astro_module</a></li>
-    
-  
      <li class="active">APCG13</li>
   </ol>
 </div>
@@ -154,32 +106,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -187,24 +116,14 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-public subroutine APCG13(date1, date2, astrom)
+    <h2>public subroutine APCG13(date1, date2, astrom)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>For a geocentric observer, prepare star-independent astrometry
   parameters for transformations between ICRS and GCRS coordinates.
   The caller supplies the date, and SOFA models are used to predict
@@ -282,90 +201,49 @@ public subroutine APCG13(date1, date2, astrom)
 <ul>
 <li>IAU SOFA revision:  2017 March 12</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-date1~18"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>date1</strong></td><td><p>TDB as a 2-part...</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-date2~18"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>date2</strong></td><td><p>...Julian Date (Note 1)</p></td>
-  
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
+  <td><strong>date2</strong></td><td></td>
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-astrom~2"></span>real(kind=wp),</td>
-  <td>intent(inout),</td>
-  <td></td>
-  
-  <td>dimension(30)</td><td>::</td>
+<td>intent(inout),</td>
+  <td></td>  <td>dimension(30)</td><td>::</td>
   <td><strong>astrom</strong></td><td><p>star-independent astrometry parameters:</p>
 <p>(1)      PM time interval (SSB, Julian years)
- (2-4)    SSB to observer (vector, au)
- (5-7)    Sun to observer (unit vector)
- (8)      distance from Sun to observer (au)
- (9-11)   v: barycentric observer velocity (vector, c)
- (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
- (13-21)  bias-precession-nutation matrix
- (22)     unchanged
- (23)     unchanged
- (24)     unchanged
- (25)     unchanged
- (26)     unchanged
- (27)     unchanged
- (28)     unchanged
- (29)     unchanged
- (30)     unchanged</p></td>
-  
+(2-4)    SSB to observer (vector, au)
+(5-7)    Sun to observer (unit vector)
+(8)      distance from Sun to observer (au)
+(9-11)   v: barycentric observer velocity (vector, c)
+(12)     sqrt(1-|v|^2): reciprocal of Lorenz factor
+(13-21)  bias-precession-nutation matrix
+(22)     unchanged
+(23)     unchanged
+(24)     unchanged
+(25)     unchanged
+(26)     unchanged
+(27)     unchanged
+(28)     unchanged
+(29)     unchanged
+(30)     unchanged</p></td>
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Calls</h3>
@@ -377,76 +255,142 @@ public subroutine APCG13(date1, date2, astrom)
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: proc~~apcg13~~CallsGraph Pages: 1 -->
-<svg id="procapcg13CallsGraph" width="243pt" height="95pt"
- viewBox="0.00 0.00 243.00 95.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="proc~~apcg13~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 91)">
+<svg id="procapcg13CallsGraph" width="423pt" height="115pt"
+ viewBox="0.00 0.00 423.00 115.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~apcg13~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 111)">
 <title>proc~~apcg13~~CallsGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-91 239,-91 239,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-111 419,-111 419,4 -4,4"/>
 <!-- proc~apcg13 -->
 <g id="proc~~apcg13~~CallsGraph_node1" class="node">
 <title>proc~apcg13</title>
-<polygon fill="none" stroke="black" points="55,-45 0,-45 0,-21 55,-21 55,-45"/>
-<text text-anchor="middle" x="27.5" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50">APCG13</text>
+<polygon fill="none" stroke="black" points="55,-65 0,-65 0,-41 55,-41 55,-65"/>
+<text text-anchor="middle" x="27.5" y="-50.6" font-family="Helvetica,sans-Serif" font-size="10.50">APCG13</text>
 </g>
 <!-- proc~apcg -->
 <g id="proc~~apcg13~~CallsGraph_node2" class="node">
 <title>proc~apcg</title>
 <g id="a_proc~~apcg13~~CallsGraph_node2"><a xlink:href=".././proc/apcg.html" xlink:title="APCG">
-<polygon fill="#d9534f" stroke="#d9534f" points="145,-66 91,-66 91,-42 145,-42 145,-66"/>
-<text text-anchor="middle" x="118" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APCG</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="145,-86 91,-86 91,-62 145,-62 145,-86"/>
+<text text-anchor="middle" x="118" y="-71.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APCG</text>
 </a>
 </g>
 </g>
 <!-- proc~apcg13&#45;&gt;proc~apcg -->
 <g id="proc~~apcg13~~CallsGraph_edge1" class="edge">
 <title>proc~apcg13&#45;&gt;proc~apcg</title>
-<path fill="none" stroke="#000000" d="M55.05,-39.3C63.18,-41.23 72.25,-43.38 80.9,-45.43"/>
-<polygon fill="#000000" stroke="#000000" points="80.23,-48.87 90.77,-47.78 81.85,-42.06 80.23,-48.87"/>
+<path fill="none" stroke="#000000" d="M55.05,-59.3C63.18,-61.23 72.25,-63.38 80.9,-65.43"/>
+<polygon fill="#000000" stroke="#000000" points="80.23,-68.87 90.77,-67.78 81.85,-62.06 80.23,-68.87"/>
 </g>
 <!-- proc~epv00 -->
 <g id="proc~~apcg13~~CallsGraph_node3" class="node">
 <title>proc~epv00</title>
 <g id="a_proc~~apcg13~~CallsGraph_node3"><a xlink:href=".././proc/epv00.html" xlink:title="EPV00">
-<polygon fill="#d9534f" stroke="#d9534f" points="145,-24 91,-24 91,0 145,0 145,-24"/>
-<text text-anchor="middle" x="118" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">EPV00</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="145,-44 91,-44 91,-20 145,-20 145,-44"/>
+<text text-anchor="middle" x="118" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">EPV00</text>
 </a>
 </g>
 </g>
 <!-- proc~apcg13&#45;&gt;proc~epv00 -->
 <g id="proc~~apcg13~~CallsGraph_edge2" class="edge">
 <title>proc~apcg13&#45;&gt;proc~epv00</title>
-<path fill="none" stroke="#000000" d="M55.05,-26.7C63.18,-24.77 72.25,-22.62 80.9,-20.57"/>
-<polygon fill="#000000" stroke="#000000" points="81.85,-23.94 90.77,-18.22 80.23,-17.13 81.85,-23.94"/>
-</g>
-<!-- proc~apcs -->
-<g id="proc~~apcg13~~CallsGraph_node4" class="node">
-<title>proc~apcs</title>
-<g id="a_proc~~apcg13~~CallsGraph_node4"><a xlink:href=".././proc/apcs.html" xlink:title="APCS">
-<polygon fill="#d9534f" stroke="#d9534f" points="235,-87 181,-87 181,-63 235,-63 235,-87"/>
-<text text-anchor="middle" x="208" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APCS</text>
-</a>
-</g>
-</g>
-<!-- proc~apcg&#45;&gt;proc~apcs -->
-<g id="proc~~apcg13~~CallsGraph_edge3" class="edge">
-<title>proc~apcg&#45;&gt;proc~apcs</title>
-<path fill="none" stroke="#000000" d="M145.4,-60.3C153.48,-62.23 162.51,-64.38 171.1,-66.43"/>
-<polygon fill="#000000" stroke="#000000" points="170.38,-69.86 180.92,-68.78 172,-63.05 170.38,-69.86"/>
+<path fill="none" stroke="#000000" d="M55.05,-46.7C63.18,-44.77 72.25,-42.62 80.9,-40.57"/>
+<polygon fill="#000000" stroke="#000000" points="81.85,-43.94 90.77,-38.22 80.23,-37.13 81.85,-43.94"/>
 </g>
 <!-- proc~zpv -->
-<g id="proc~~apcg13~~CallsGraph_node5" class="node">
+<g id="proc~~apcg13~~CallsGraph_node4" class="node">
 <title>proc~zpv</title>
-<g id="a_proc~~apcg13~~CallsGraph_node5"><a xlink:href=".././proc/zpv.html" xlink:title="ZPV">
-<polygon fill="#d9534f" stroke="#d9534f" points="235,-45 181,-45 181,-21 235,-21 235,-45"/>
-<text text-anchor="middle" x="208" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ZPV</text>
+<g id="a_proc~~apcg13~~CallsGraph_node4"><a xlink:href=".././proc/zpv.html" xlink:title="ZPV">
+<polygon fill="#d9534f" stroke="#d9534f" points="235,-107 181,-107 181,-83 235,-83 235,-107"/>
+<text text-anchor="middle" x="208" y="-92.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ZPV</text>
 </a>
 </g>
 </g>
 <!-- proc~apcg&#45;&gt;proc~zpv -->
-<g id="proc~~apcg13~~CallsGraph_edge4" class="edge">
+<g id="proc~~apcg13~~CallsGraph_edge3" class="edge">
 <title>proc~apcg&#45;&gt;proc~zpv</title>
-<path fill="none" stroke="#000000" d="M145.4,-47.7C153.48,-45.77 162.51,-43.62 171.1,-41.57"/>
-<polygon fill="#000000" stroke="#000000" points="172,-44.95 180.92,-39.22 170.38,-38.14 172,-44.95"/>
+<path fill="none" stroke="#000000" d="M145.4,-80.3C153.48,-82.23 162.51,-84.38 171.1,-86.43"/>
+<polygon fill="#000000" stroke="#000000" points="170.38,-89.86 180.92,-88.78 172,-83.05 170.38,-89.86"/>
+</g>
+<!-- proc~apcs -->
+<g id="proc~~apcg13~~CallsGraph_node5" class="node">
+<title>proc~apcs</title>
+<g id="a_proc~~apcg13~~CallsGraph_node5"><a xlink:href=".././proc/apcs.html" xlink:title="APCS">
+<polygon fill="#d9534f" stroke="#d9534f" points="235,-65 181,-65 181,-41 235,-41 235,-65"/>
+<text text-anchor="middle" x="208" y="-50.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APCS</text>
+</a>
+</g>
+</g>
+<!-- proc~apcg&#45;&gt;proc~apcs -->
+<g id="proc~~apcg13~~CallsGraph_edge4" class="edge">
+<title>proc~apcg&#45;&gt;proc~apcs</title>
+<path fill="none" stroke="#000000" d="M145.4,-67.7C153.48,-65.77 162.51,-63.62 171.1,-61.57"/>
+<polygon fill="#000000" stroke="#000000" points="172,-64.95 180.92,-59.22 170.38,-58.14 172,-64.95"/>
+</g>
+<!-- proc~zp -->
+<g id="proc~~apcg13~~CallsGraph_node8" class="node">
+<title>proc~zp</title>
+<g id="a_proc~~apcg13~~CallsGraph_node8"><a xlink:href=".././proc/zp.html" xlink:title="ZP">
+<polygon fill="#d9534f" stroke="#d9534f" points="415,-107 361,-107 361,-83 415,-83 415,-107"/>
+<text text-anchor="middle" x="388" y="-92.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ZP</text>
+</a>
+</g>
+</g>
+<!-- proc~zpv&#45;&gt;proc~zp -->
+<g id="proc~~apcg13~~CallsGraph_edge5" class="edge">
+<title>proc~zpv&#45;&gt;proc~zp</title>
+<path fill="none" stroke="#000000" d="M235.26,-95C265.85,-95 316.55,-95 350.84,-95"/>
+<polygon fill="#000000" stroke="#000000" points="350.92,-98.5 360.92,-95 350.92,-91.5 350.92,-98.5"/>
+</g>
+<!-- proc~pn -->
+<g id="proc~~apcg13~~CallsGraph_node6" class="node">
+<title>proc~pn</title>
+<g id="a_proc~~apcg13~~CallsGraph_node6"><a xlink:href=".././proc/pn.html" xlink:title="PN">
+<polygon fill="#d9534f" stroke="#d9534f" points="325,-66 271,-66 271,-42 325,-42 325,-66"/>
+<text text-anchor="middle" x="298" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PN</text>
+</a>
+</g>
+</g>
+<!-- proc~apcs&#45;&gt;proc~pn -->
+<g id="proc~~apcg13~~CallsGraph_edge6" class="edge">
+<title>proc~apcs&#45;&gt;proc~pn</title>
+<path fill="none" stroke="#000000" d="M235.4,-53.3C243.39,-53.39 252.31,-53.49 260.82,-53.59"/>
+<polygon fill="#000000" stroke="#000000" points="260.88,-57.09 270.92,-53.7 260.96,-50.09 260.88,-57.09"/>
+</g>
+<!-- proc~ir -->
+<g id="proc~~apcg13~~CallsGraph_node7" class="node">
+<title>proc~ir</title>
+<g id="a_proc~~apcg13~~CallsGraph_node7"><a xlink:href=".././proc/ir.html" xlink:title="IR">
+<polygon fill="#d9534f" stroke="#d9534f" points="325,-24 271,-24 271,0 325,0 325,-24"/>
+<text text-anchor="middle" x="298" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">IR</text>
+</a>
+</g>
+</g>
+<!-- proc~apcs&#45;&gt;proc~ir -->
+<g id="proc~~apcg13~~CallsGraph_edge7" class="edge">
+<title>proc~apcs&#45;&gt;proc~ir</title>
+<path fill="none" stroke="#000000" d="M234.93,-40.92C243.36,-36.99 252.86,-32.57 261.84,-28.38"/>
+<polygon fill="#000000" stroke="#000000" points="263.37,-31.53 270.95,-24.13 260.41,-25.19 263.37,-31.53"/>
+</g>
+<!-- proc~pn&#45;&gt;proc~zp -->
+<g id="proc~~apcg13~~CallsGraph_edge8" class="edge">
+<title>proc~pn&#45;&gt;proc~zp</title>
+<path fill="none" stroke="#000000" d="M324.93,-66.08C333.36,-70.01 342.86,-74.43 351.84,-78.62"/>
+<polygon fill="#000000" stroke="#000000" points="350.41,-81.81 360.95,-82.87 353.37,-75.47 350.41,-81.81"/>
+</g>
+<!-- proc~sxp -->
+<g id="proc~~apcg13~~CallsGraph_node9" class="node">
+<title>proc~sxp</title>
+<g id="a_proc~~apcg13~~CallsGraph_node9"><a xlink:href=".././proc/sxp.html" xlink:title="SXP">
+<polygon fill="#d9534f" stroke="#d9534f" points="415,-65 361,-65 361,-41 415,-41 415,-65"/>
+<text text-anchor="middle" x="388" y="-50.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">SXP</text>
+</a>
+</g>
+</g>
+<!-- proc~pn&#45;&gt;proc~sxp -->
+<g id="proc~~apcg13~~CallsGraph_edge9" class="edge">
+<title>proc~pn&#45;&gt;proc~sxp</title>
+<path fill="none" stroke="#000000" d="M325.4,-53.7C333.39,-53.61 342.31,-53.51 350.82,-53.41"/>
+<polygon fill="#000000" stroke="#000000" points="350.96,-56.91 360.92,-53.3 350.88,-49.91 350.96,-56.91"/>
 </g>
 </g>
 </svg>
@@ -511,35 +455,11 @@ public subroutine APCG13(date1, date2, astrom)
     </div></div></div></div>
       </div>
     </div>
-     
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -547,91 +467,77 @@ public subroutine APCG13(date1, date2, astrom)
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">APCG13</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span><span class="p">,</span> <span class="n">astrom</span> <span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">APCG13</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="p">,</span><span class="w"> </span><span class="n">date2</span><span class="p">,</span><span class="w"> </span><span class="n">astrom</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date1</span> <span class="c">!! TDB as a 2-part...</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date2</span> <span class="c">!! ...Julian Date (Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">30</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span> <span class="kd">::</span> <span class="n">astrom</span> <span class="c">!! star-independent astrometry parameters:</span>
-                                                   <span class="c">!!</span>
-                                                   <span class="c">!! (1)      PM time interval (SSB, Julian years)</span>
-                                                   <span class="c">!! (2-4)    SSB to observer (vector, au)</span>
-                                                   <span class="c">!! (5-7)    Sun to observer (unit vector)</span>
-                                                   <span class="c">!! (8)      distance from Sun to observer (au)</span>
-                                                   <span class="c">!! (9-11)   v: barycentric observer velocity (vector, c)</span>
-                                                   <span class="c">!! (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor</span>
-                                                   <span class="c">!! (13-21)  bias-precession-nutation matrix</span>
-                                                   <span class="c">!! (22)     unchanged</span>
-                                                   <span class="c">!! (23)     unchanged</span>
-                                                   <span class="c">!! (24)     unchanged</span>
-                                                   <span class="c">!! (25)     unchanged</span>
-                                                   <span class="c">!! (26)     unchanged</span>
-                                                   <span class="c">!! (27)     unchanged</span>
-                                                   <span class="c">!! (28)     unchanged</span>
-                                                   <span class="c">!! (29)     unchanged</span>
-                                                   <span class="c">!! (30)     unchanged</span>
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date1</span><span class="w"> </span><span class="c">!! TDB as a 2-part...</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date2</span><span class="w"> </span><span class="c">!! ...Julian Date (Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">30</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">astrom</span><span class="w"> </span><span class="c">!! star-independent astrometry parameters:</span>
+<span class="w">                                                   </span><span class="c">!!</span>
+<span class="w">                                                   </span><span class="c">!! (1)      PM time interval (SSB, Julian years)</span>
+<span class="w">                                                   </span><span class="c">!! (2-4)    SSB to observer (vector, au)</span>
+<span class="w">                                                   </span><span class="c">!! (5-7)    Sun to observer (unit vector)</span>
+<span class="w">                                                   </span><span class="c">!! (8)      distance from Sun to observer (au)</span>
+<span class="w">                                                   </span><span class="c">!! (9-11)   v: barycentric observer velocity (vector, c)</span>
+<span class="w">                                                   </span><span class="c">!! (12)     sqrt(1-|v|^2): reciprocal of Lorenz factor</span>
+<span class="w">                                                   </span><span class="c">!! (13-21)  bias-precession-nutation matrix</span>
+<span class="w">                                                   </span><span class="c">!! (22)     unchanged</span>
+<span class="w">                                                   </span><span class="c">!! (23)     unchanged</span>
+<span class="w">                                                   </span><span class="c">!! (24)     unchanged</span>
+<span class="w">                                                   </span><span class="c">!! (25)     unchanged</span>
+<span class="w">                                                   </span><span class="c">!! (26)     unchanged</span>
+<span class="w">                                                   </span><span class="c">!! (27)     unchanged</span>
+<span class="w">                                                   </span><span class="c">!! (28)     unchanged</span>
+<span class="w">                                                   </span><span class="c">!! (29)     unchanged</span>
+<span class="w">                                                   </span><span class="c">!! (30)     unchanged</span>
 
-    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">j</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">ehpv</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">ebpv</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">j</span><span class="w"></span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ehpv</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">ebpv</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Earth barycentric &amp; heliocentric position/velocity (au, au/d).</span>
-    <span class="k">call </span><span class="n">EPV00</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span><span class="p">,</span> <span class="n">ehpv</span><span class="p">,</span> <span class="n">ebpv</span><span class="p">,</span> <span class="n">j</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Earth barycentric &amp; heliocentric position/velocity (au, au/d).</span>
+<span class="w">    </span><span class="k">call </span><span class="n">EPV00</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="p">,</span><span class="w"> </span><span class="n">date2</span><span class="p">,</span><span class="w"> </span><span class="n">ehpv</span><span class="p">,</span><span class="w"> </span><span class="n">ebpv</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Compute the star-independent astrometry parameters.</span>
-    <span class="k">call </span><span class="n">APCG</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span><span class="p">,</span> <span class="n">ebpv</span><span class="p">,</span> <span class="n">ehpv</span><span class="p">,</span> <span class="n">astrom</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Compute the star-independent astrometry parameters.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">APCG</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="p">,</span><span class="w"> </span><span class="n">date2</span><span class="p">,</span><span class="w"> </span><span class="n">ebpv</span><span class="p">,</span><span class="w"> </span><span class="n">ehpv</span><span class="p">,</span><span class="w"> </span><span class="n">astrom</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">end subroutine </span><span class="n">APCG13</span>
+<span class="w">    </span><span class="k">end subroutine </span><span class="n">APCG13</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>astro-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -657,14 +563,11 @@ public subroutine APCG13(date1, date2, astrom)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

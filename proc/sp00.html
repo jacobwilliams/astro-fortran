@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,45 +43,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-        
+              
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                                       </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -95,50 +68,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>SP00
       <small>Function</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 0.2% of total for procedures.">9 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
-    
      <li><a href='../module/astro_module.html'>astro_module</a></li>
-    
-  
      <li class="active">SP00</li>
   </ol>
 </div>
@@ -154,32 +106,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -187,24 +116,14 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-public function SP00(date1, date2) result(sp)
+    <h2>public function SP00(date1, date2) result(sp)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>The TIO locator s', positioning the Terrestrial Intermediate Origin
   on the equator of the Celestial Intermediate Pole.</p>
 <p>Status:  canonical model.</p>
@@ -247,69 +166,29 @@ public function SP00(date1, date2) result(sp)
 <ul>
 <li>IAU SOFA revision: 2009 December 15</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-date1~16"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>date1</strong></td><td><p>TT as a 2-part Julian Date (Note 1)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-date2~16"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>date2</strong></td><td><p>TT as a 2-part Julian Date (Note 1)</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
-    
-    
-    
-    
-   <h3>Return Value <small><span class="anchor" id="variable-sp"></span>real(kind=wp)
-  </small></h3>
+   <h3>Return Value <small><span class="anchor" id="variable-sp"></span>real(kind=wp)</small></h3>
     <p>the TIO locator s' in radians (Note 2)</p>
-    
-    
     <br>
-    
-    
-     
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Called by</h3>
@@ -321,166 +200,166 @@ public function SP00(date1, date2) result(sp)
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: proc~~sp00~~CalledByGraph Pages: 1 -->
-<svg id="procsp00CalledByGraph" width="244pt" height="284pt"
- viewBox="0.00 0.00 244.00 284.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="proc~~sp00~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 280)">
+<svg id="procsp00CalledByGraph" width="244pt" height="242pt"
+ viewBox="0.00 0.00 244.00 242.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~sp00~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 238)">
 <title>proc~~sp00~~CalledByGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-280 240,-280 240,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-238 240,-238 240,4 -4,4"/>
 <!-- proc~sp00 -->
 <g id="proc~~sp00~~CalledByGraph_node1" class="node">
 <title>proc~sp00</title>
-<polygon fill="none" stroke="black" points="236,-150 182,-150 182,-126 236,-126 236,-150"/>
-<text text-anchor="middle" x="209" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50">SP00</text>
-</g>
-<!-- proc~apio13 -->
-<g id="proc~~sp00~~CalledByGraph_node2" class="node">
-<title>proc~apio13</title>
-<g id="a_proc~~sp00~~CalledByGraph_node2"><a xlink:href=".././proc/apio13.html" xlink:title="APIO13">
-<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-255 91.5,-255 91.5,-231 145.5,-231 145.5,-255"/>
-<text text-anchor="middle" x="118.5" y="-240.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APIO13</text>
-</a>
-</g>
-</g>
-<!-- proc~apio13&#45;&gt;proc~sp00 -->
-<g id="proc~~sp00~~CalledByGraph_edge1" class="edge">
-<title>proc~apio13&#45;&gt;proc~sp00</title>
-<path fill="none" stroke="#000000" d="M136.06,-230.99C139.49,-228.2 142.98,-225.12 146,-222 165.09,-202.24 183.31,-176.43 195,-158.66"/>
-<polygon fill="#000000" stroke="#000000" points="197.99,-160.48 200.48,-150.18 192.11,-156.68 197.99,-160.48"/>
+<polygon fill="none" stroke="black" points="236,-129 182,-129 182,-105 236,-105 236,-129"/>
+<text text-anchor="middle" x="209" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50">SP00</text>
 </g>
 <!-- proc~c2tpe -->
-<g id="proc~~sp00~~CalledByGraph_node3" class="node">
+<g id="proc~~sp00~~CalledByGraph_node2" class="node">
 <title>proc~c2tpe</title>
-<g id="a_proc~~sp00~~CalledByGraph_node3"><a xlink:href=".././proc/c2tpe.html" xlink:title="C2TPE">
-<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-213 91.5,-213 91.5,-189 145.5,-189 145.5,-213"/>
-<text text-anchor="middle" x="118.5" y="-198.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2TPE</text>
+<g id="a_proc~~sp00~~CalledByGraph_node2"><a xlink:href=".././proc/c2tpe.html" xlink:title="C2TPE">
+<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-234 91.5,-234 91.5,-210 145.5,-210 145.5,-234"/>
+<text text-anchor="middle" x="118.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2TPE</text>
 </a>
 </g>
 </g>
 <!-- proc~c2tpe&#45;&gt;proc~sp00 -->
-<g id="proc~~sp00~~CalledByGraph_edge2" class="edge">
+<g id="proc~~sp00~~CalledByGraph_edge1" class="edge">
 <title>proc~c2tpe&#45;&gt;proc~sp00</title>
-<path fill="none" stroke="#000000" d="M136.56,-188.85C149.66,-179.53 167.95,-166.51 182.75,-155.98"/>
-<polygon fill="#000000" stroke="#000000" points="184.87,-158.76 190.99,-150.11 180.81,-153.06 184.87,-158.76"/>
+<path fill="none" stroke="#000000" d="M136.06,-209.99C139.49,-207.2 142.98,-204.12 146,-201 165.09,-181.24 183.31,-155.43 195,-137.66"/>
+<polygon fill="#000000" stroke="#000000" points="197.99,-139.48 200.48,-129.18 192.11,-135.68 197.99,-139.48"/>
+</g>
+<!-- proc~apio13 -->
+<g id="proc~~sp00~~CalledByGraph_node3" class="node">
+<title>proc~apio13</title>
+<g id="a_proc~~sp00~~CalledByGraph_node3"><a xlink:href=".././proc/apio13.html" xlink:title="APIO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-192 91.5,-192 91.5,-168 145.5,-168 145.5,-192"/>
+<text text-anchor="middle" x="118.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APIO13</text>
+</a>
+</g>
+</g>
+<!-- proc~apio13&#45;&gt;proc~sp00 -->
+<g id="proc~~sp00~~CalledByGraph_edge2" class="edge">
+<title>proc~apio13&#45;&gt;proc~sp00</title>
+<path fill="none" stroke="#000000" d="M136.56,-167.85C149.66,-158.53 167.95,-145.51 182.75,-134.98"/>
+<polygon fill="#000000" stroke="#000000" points="184.87,-137.76 190.99,-129.11 180.81,-132.06 184.87,-137.76"/>
 </g>
 <!-- proc~c2t00a -->
 <g id="proc~~sp00~~CalledByGraph_node4" class="node">
 <title>proc~c2t00a</title>
 <g id="a_proc~~sp00~~CalledByGraph_node4"><a xlink:href=".././proc/c2t00a.html" xlink:title="C2T00A">
-<polygon fill="#d9534f" stroke="#d9534f" points="146,-171 91,-171 91,-147 146,-147 146,-171"/>
-<text text-anchor="middle" x="118.5" y="-156.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2T00A</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="146,-150 91,-150 91,-126 146,-126 146,-150"/>
+<text text-anchor="middle" x="118.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2T00A</text>
 </a>
 </g>
 </g>
 <!-- proc~c2t00a&#45;&gt;proc~sp00 -->
 <g id="proc~~sp00~~CalledByGraph_edge3" class="edge">
 <title>proc~c2t00a&#45;&gt;proc~sp00</title>
-<path fill="none" stroke="#000000" d="M146.05,-152.7C154.18,-150.77 163.25,-148.62 171.9,-146.57"/>
-<polygon fill="#000000" stroke="#000000" points="172.85,-149.94 181.77,-144.22 171.23,-143.13 172.85,-149.94"/>
-</g>
-<!-- proc~c2t06a -->
-<g id="proc~~sp00~~CalledByGraph_node5" class="node">
-<title>proc~c2t06a</title>
-<g id="a_proc~~sp00~~CalledByGraph_node5"><a xlink:href=".././proc/c2t06a.html" xlink:title="C2T06A">
-<polygon fill="#d9534f" stroke="#d9534f" points="146,-129 91,-129 91,-105 146,-105 146,-129"/>
-<text text-anchor="middle" x="118.5" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2T06A</text>
-</a>
-</g>
-</g>
-<!-- proc~c2t06a&#45;&gt;proc~sp00 -->
-<g id="proc~~sp00~~CalledByGraph_edge4" class="edge">
-<title>proc~c2t06a&#45;&gt;proc~sp00</title>
-<path fill="none" stroke="#000000" d="M146.05,-123.3C154.18,-125.23 163.25,-127.38 171.9,-129.43"/>
-<polygon fill="#000000" stroke="#000000" points="171.23,-132.87 181.77,-131.78 172.85,-126.06 171.23,-132.87"/>
+<path fill="none" stroke="#000000" d="M146.05,-131.7C154.18,-129.77 163.25,-127.62 171.9,-125.57"/>
+<polygon fill="#000000" stroke="#000000" points="172.85,-128.94 181.77,-123.22 171.23,-122.13 172.85,-128.94"/>
 </g>
 <!-- proc~c2txy -->
-<g id="proc~~sp00~~CalledByGraph_node6" class="node">
+<g id="proc~~sp00~~CalledByGraph_node5" class="node">
 <title>proc~c2txy</title>
-<g id="a_proc~~sp00~~CalledByGraph_node6"><a xlink:href=".././proc/c2txy.html" xlink:title="C2TXY">
-<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-87 91.5,-87 91.5,-63 145.5,-63 145.5,-87"/>
-<text text-anchor="middle" x="118.5" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2TXY</text>
+<g id="a_proc~~sp00~~CalledByGraph_node5"><a xlink:href=".././proc/c2txy.html" xlink:title="C2TXY">
+<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-108 91.5,-108 91.5,-84 145.5,-84 145.5,-108"/>
+<text text-anchor="middle" x="118.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2TXY</text>
 </a>
 </g>
 </g>
 <!-- proc~c2txy&#45;&gt;proc~sp00 -->
-<g id="proc~~sp00~~CalledByGraph_edge5" class="edge">
+<g id="proc~~sp00~~CalledByGraph_edge4" class="edge">
 <title>proc~c2txy&#45;&gt;proc~sp00</title>
-<path fill="none" stroke="#000000" d="M136.56,-87.15C149.66,-96.47 167.95,-109.49 182.75,-120.02"/>
-<polygon fill="#000000" stroke="#000000" points="180.81,-122.94 190.99,-125.89 184.87,-117.24 180.81,-122.94"/>
+<path fill="none" stroke="#000000" d="M145.57,-102.19C153.87,-104.16 163.2,-106.37 172.07,-108.47"/>
+<polygon fill="#000000" stroke="#000000" points="171.27,-111.88 181.81,-110.78 172.88,-105.07 171.27,-111.88"/>
 </g>
 <!-- proc~apco13 -->
-<g id="proc~~sp00~~CalledByGraph_node7" class="node">
+<g id="proc~~sp00~~CalledByGraph_node6" class="node">
 <title>proc~apco13</title>
-<g id="a_proc~~sp00~~CalledByGraph_node7"><a xlink:href=".././proc/apco13.html" xlink:title="APCO13">
-<polygon fill="#d9534f" stroke="#d9534f" points="146,-45 91,-45 91,-21 146,-21 146,-45"/>
-<text text-anchor="middle" x="118.5" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APCO13</text>
+<g id="a_proc~~sp00~~CalledByGraph_node6"><a xlink:href=".././proc/apco13.html" xlink:title="APCO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="146,-66 91,-66 91,-42 146,-42 146,-66"/>
+<text text-anchor="middle" x="118.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">APCO13</text>
 </a>
 </g>
 </g>
 <!-- proc~apco13&#45;&gt;proc~sp00 -->
-<g id="proc~~sp00~~CalledByGraph_edge6" class="edge">
+<g id="proc~~sp00~~CalledByGraph_edge5" class="edge">
 <title>proc~apco13&#45;&gt;proc~sp00</title>
-<path fill="none" stroke="#000000" d="M136.06,-45.01C139.49,-47.8 142.98,-50.88 146,-54 165.09,-73.76 183.31,-99.57 195,-117.34"/>
-<polygon fill="#000000" stroke="#000000" points="192.11,-119.32 200.48,-125.82 197.99,-115.52 192.11,-119.32"/>
+<path fill="none" stroke="#000000" d="M136.56,-66.15C149.66,-75.47 167.95,-88.49 182.75,-99.02"/>
+<polygon fill="#000000" stroke="#000000" points="180.81,-101.94 190.99,-104.89 184.87,-96.24 180.81,-101.94"/>
 </g>
-<!-- proc~atco13 -->
-<g id="proc~~sp00~~CalledByGraph_node8" class="node">
-<title>proc~atco13</title>
-<g id="a_proc~~sp00~~CalledByGraph_node8"><a xlink:href=".././proc/atco13.html" xlink:title="ATCO13">
-<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-66 0.5,-66 0.5,-42 54.5,-42 54.5,-66"/>
-<text text-anchor="middle" x="27.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATCO13</text>
+<!-- proc~c2t06a -->
+<g id="proc~~sp00~~CalledByGraph_node7" class="node">
+<title>proc~c2t06a</title>
+<g id="a_proc~~sp00~~CalledByGraph_node7"><a xlink:href=".././proc/c2t06a.html" xlink:title="C2T06A">
+<polygon fill="#d9534f" stroke="#d9534f" points="146,-24 91,-24 91,0 146,0 146,-24"/>
+<text text-anchor="middle" x="118.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2T06A</text>
 </a>
 </g>
 </g>
-<!-- proc~atco13&#45;&gt;proc~apco13 -->
-<g id="proc~~sp00~~CalledByGraph_edge9" class="edge">
-<title>proc~atco13&#45;&gt;proc~apco13</title>
-<path fill="none" stroke="#000000" d="M54.72,-47.81C62.9,-45.88 72.08,-43.72 80.84,-41.65"/>
-<polygon fill="#000000" stroke="#000000" points="81.92,-44.99 90.85,-39.29 80.31,-38.18 81.92,-44.99"/>
+<!-- proc~c2t06a&#45;&gt;proc~sp00 -->
+<g id="proc~~sp00~~CalledByGraph_edge6" class="edge">
+<title>proc~c2t06a&#45;&gt;proc~sp00</title>
+<path fill="none" stroke="#000000" d="M136.06,-24.01C139.49,-26.8 142.98,-29.88 146,-33 165.09,-52.76 183.31,-78.57 195,-96.34"/>
+<polygon fill="#000000" stroke="#000000" points="192.11,-98.32 200.48,-104.82 197.99,-94.52 192.11,-98.32"/>
 </g>
 <!-- proc~atoc13 -->
-<g id="proc~~sp00~~CalledByGraph_node9" class="node">
+<g id="proc~~sp00~~CalledByGraph_node8" class="node">
 <title>proc~atoc13</title>
-<g id="a_proc~~sp00~~CalledByGraph_node9"><a xlink:href=".././proc/atoc13.html" xlink:title="ATOC13">
-<polygon fill="#d9534f" stroke="#d9534f" points="55,-24 0,-24 0,0 55,0 55,-24"/>
-<text text-anchor="middle" x="27.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOC13</text>
+<g id="a_proc~~sp00~~CalledByGraph_node8"><a xlink:href=".././proc/atoc13.html" xlink:title="ATOC13">
+<polygon fill="#d9534f" stroke="#d9534f" points="55,-97 0,-97 0,-73 55,-73 55,-97"/>
+<text text-anchor="middle" x="27.5" y="-82.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOC13</text>
 </a>
 </g>
 </g>
 <!-- proc~atoc13&#45;&gt;proc~apco13 -->
-<g id="proc~~sp00~~CalledByGraph_edge10" class="edge">
+<g id="proc~~sp00~~CalledByGraph_edge9" class="edge">
 <title>proc~atoc13&#45;&gt;proc~apco13</title>
-<path fill="none" stroke="#000000" d="M55.2,-18.3C63.3,-20.21 72.34,-22.34 80.96,-24.38"/>
-<polygon fill="#000000" stroke="#000000" points="80.28,-27.81 90.82,-26.7 81.89,-21 80.28,-27.81"/>
+<path fill="none" stroke="#000000" d="M55.2,-75.7C63.39,-72.85 72.53,-69.66 81.24,-66.63"/>
+<polygon fill="#000000" stroke="#000000" points="82.52,-69.89 90.82,-63.29 80.22,-63.28 82.52,-69.89"/>
+</g>
+<!-- proc~atio13 -->
+<g id="proc~~sp00~~CalledByGraph_node9" class="node">
+<title>proc~atio13</title>
+<g id="a_proc~~sp00~~CalledByGraph_node9"><a xlink:href=".././proc/atio13.html" xlink:title="ATIO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-202 0.5,-202 0.5,-178 54.5,-178 54.5,-202"/>
+<text text-anchor="middle" x="27.5" y="-187.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATIO13</text>
+</a>
+</g>
+</g>
+<!-- proc~atio13&#45;&gt;proc~apio13 -->
+<g id="proc~~sp00~~CalledByGraph_edge7" class="edge">
+<title>proc~atio13&#45;&gt;proc~apio13</title>
+<path fill="none" stroke="#000000" d="M54.72,-187.05C63.05,-186.12 72.41,-185.07 81.32,-184.07"/>
+<polygon fill="#000000" stroke="#000000" points="81.92,-187.52 91.47,-182.93 81.14,-180.56 81.92,-187.52"/>
 </g>
 <!-- proc~atoi13 -->
 <g id="proc~~sp00~~CalledByGraph_node10" class="node">
 <title>proc~atoi13</title>
 <g id="a_proc~~sp00~~CalledByGraph_node10"><a xlink:href=".././proc/atoi13.html" xlink:title="ATOI13">
-<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-276 0.5,-276 0.5,-252 54.5,-252 54.5,-276"/>
-<text text-anchor="middle" x="27.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOI13</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-160 0.5,-160 0.5,-136 54.5,-136 54.5,-160"/>
+<text text-anchor="middle" x="27.5" y="-145.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATOI13</text>
 </a>
 </g>
 </g>
 <!-- proc~atoi13&#45;&gt;proc~apio13 -->
-<g id="proc~~sp00~~CalledByGraph_edge7" class="edge">
+<g id="proc~~sp00~~CalledByGraph_edge8" class="edge">
 <title>proc~atoi13&#45;&gt;proc~apio13</title>
-<path fill="none" stroke="#000000" d="M54.72,-257.81C63.14,-255.83 72.62,-253.59 81.61,-251.47"/>
-<polygon fill="#000000" stroke="#000000" points="82.54,-254.85 91.47,-249.14 80.93,-248.03 82.54,-254.85"/>
+<path fill="none" stroke="#000000" d="M54.72,-157.43C63.23,-160.49 72.82,-163.94 81.9,-167.2"/>
+<polygon fill="#000000" stroke="#000000" points="80.87,-170.55 91.47,-170.64 83.24,-163.96 80.87,-170.55"/>
 </g>
-<!-- proc~atio13 -->
+<!-- proc~atco13 -->
 <g id="proc~~sp00~~CalledByGraph_node11" class="node">
-<title>proc~atio13</title>
-<g id="a_proc~~sp00~~CalledByGraph_node11"><a xlink:href=".././proc/atio13.html" xlink:title="ATIO13">
-<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-234 0.5,-234 0.5,-210 54.5,-210 54.5,-234"/>
-<text text-anchor="middle" x="27.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATIO13</text>
+<title>proc~atco13</title>
+<g id="a_proc~~sp00~~CalledByGraph_node11"><a xlink:href=".././proc/atco13.html" xlink:title="ATCO13">
+<polygon fill="#d9534f" stroke="#d9534f" points="54.5,-55 0.5,-55 0.5,-31 54.5,-31 54.5,-55"/>
+<text text-anchor="middle" x="27.5" y="-40.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ATCO13</text>
 </a>
 </g>
 </g>
-<!-- proc~atio13&#45;&gt;proc~apio13 -->
-<g id="proc~~sp00~~CalledByGraph_edge8" class="edge">
-<title>proc~atio13&#45;&gt;proc~apio13</title>
-<path fill="none" stroke="#000000" d="M54.72,-228.19C63.14,-230.17 72.62,-232.41 81.61,-234.53"/>
-<polygon fill="#000000" stroke="#000000" points="80.93,-237.97 91.47,-236.86 82.54,-231.15 80.93,-237.97"/>
+<!-- proc~atco13&#45;&gt;proc~apco13 -->
+<g id="proc~~sp00~~CalledByGraph_edge10" class="edge">
+<title>proc~atco13&#45;&gt;proc~apco13</title>
+<path fill="none" stroke="#000000" d="M54.72,-46.24C62.9,-47.25 72.08,-48.39 80.84,-49.47"/>
+<polygon fill="#000000" stroke="#000000" points="80.5,-52.95 90.85,-50.71 81.35,-46.01 80.5,-52.95"/>
 </g>
 </g>
 </svg>
@@ -545,34 +424,11 @@ public function SP00(date1, date2) result(sp)
     </div></div></div></div>
       </div>
     </div>
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -580,74 +436,60 @@ public function SP00(date1, date2) result(sp)
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">function </span><span class="n">SP00</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span> <span class="p">)</span> <span class="k">result</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">function </span><span class="n">SP00</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="p">,</span><span class="w"> </span><span class="n">date2</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date1</span> <span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date2</span> <span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">sp</span> <span class="c">!! the TIO locator s&#39; in radians (Note 2)</span>
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date1</span><span class="w"> </span><span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date2</span><span class="w"> </span><span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">sp</span><span class="w"> </span><span class="c">!! the TIO locator s&#39; in radians (Note 2)</span>
 
-    <span class="c">!  Time since J2000.0, in Julian centuries</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">t</span>
+<span class="w">    </span><span class="c">!  Time since J2000.0, in Julian centuries</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">t</span><span class="w"></span>
 
-    <span class="c">!  Interval between fundamental epoch J2000.0 and current date (JC).</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="p">(</span> <span class="p">(</span> <span class="n">date1</span><span class="o">-</span><span class="n">dj00</span> <span class="p">)</span> <span class="o">+</span> <span class="n">date2</span> <span class="p">)</span> <span class="o">/</span> <span class="n">djc</span>
+<span class="w">    </span><span class="c">!  Interval between fundamental epoch J2000.0 and current date (JC).</span>
+<span class="w">    </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="o">-</span><span class="n">dj00</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">date2</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">djc</span><span class="w"></span>
 
-    <span class="c">!  Approximate s&#39;.</span>
-    <span class="n">sp</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span><span class="mf">7.0e-6_wp</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">das2r</span>
+<span class="w">    </span><span class="c">!  Approximate s&#39;.</span>
+<span class="w">    </span><span class="n">sp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">4</span><span class="mf">7.0e-6_wp</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">das2r</span><span class="w"></span>
 
-    <span class="k">end function </span><span class="n">SP00</span>
+<span class="w">    </span><span class="k">end function </span><span class="n">SP00</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>astro-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -673,14 +515,11 @@ public function SP00(date1, date2) result(sp)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

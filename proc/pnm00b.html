@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,45 +43,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-        
+              
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                                       </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -95,50 +68,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>PNM00B
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 0.1% of total for procedures.">8 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
-    
      <li><a href='../module/astro_module.html'>astro_module</a></li>
-    
-  
      <li class="active">PNM00B</li>
   </ol>
 </div>
@@ -154,32 +106,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -187,24 +116,14 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-public subroutine PNM00B(date1, date2, rbpn)
+    <h2>public subroutine PNM00B(date1, date2, rbpn)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>Form the matrix of precession-nutation for a given date (including
   frame bias), equinox-based, IAU 2000B model.</p>
 <p>Status:  support routine.</p>
@@ -251,74 +170,33 @@ public subroutine PNM00B(date1, date2, rbpn)
 <ul>
 <li>IAU SOFA revision: 2009 December 21</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-date1~60"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>date1</strong></td><td><p>TT as a 2-part Julian Date (Note 1)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-date2~60"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>date2</strong></td><td><p>TT as a 2-part Julian Date (Note 1)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-rbpn~10"></span>real(kind=wp),</td>
-  <td>intent(out),</td>
-  <td></td>
-  
-  <td>dimension(3,3)</td><td>::</td>
+<td>intent(out),</td>
+  <td></td>  <td>dimension(3,3)</td><td>::</td>
   <td><strong>rbpn</strong></td><td><p>bias-precession-nutation matrix (Note 2)</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Calls</h3>
@@ -330,226 +208,241 @@ public subroutine PNM00B(date1, date2, rbpn)
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: proc~~pnm00b~~CallsGraph Pages: 1 -->
-<svg id="procpnm00bCallsGraph" width="425pt" height="242pt"
- viewBox="0.00 0.00 425.00 242.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="proc~~pnm00b~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 238)">
+<svg id="procpnm00bCallsGraph" width="425pt" height="303pt"
+ viewBox="0.00 0.00 425.00 303.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~pnm00b~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 299)">
 <title>proc~~pnm00b~~CallsGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-238 421,-238 421,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-299 421,-299 421,4 -4,4"/>
 <!-- proc~pnm00b -->
 <g id="proc~~pnm00b~~CallsGraph_node1" class="node">
 <title>proc~pnm00b</title>
-<polygon fill="none" stroke="black" points="56,-129 0,-129 0,-105 56,-105 56,-129"/>
-<text text-anchor="middle" x="28" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50">PNM00B</text>
+<polygon fill="none" stroke="black" points="56,-196 0,-196 0,-172 56,-172 56,-196"/>
+<text text-anchor="middle" x="28" y="-181.6" font-family="Helvetica,sans-Serif" font-size="10.50">PNM00B</text>
 </g>
 <!-- proc~pn00b -->
 <g id="proc~~pnm00b~~CallsGraph_node2" class="node">
 <title>proc~pn00b</title>
 <g id="a_proc~~pnm00b~~CallsGraph_node2"><a xlink:href=".././proc/pn00b.html" xlink:title="PN00B">
-<polygon fill="#d9534f" stroke="#d9534f" points="146,-129 92,-129 92,-105 146,-105 146,-129"/>
-<text text-anchor="middle" x="119" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PN00B</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="146,-196 92,-196 92,-172 146,-172 146,-196"/>
+<text text-anchor="middle" x="119" y="-181.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PN00B</text>
 </a>
 </g>
 </g>
 <!-- proc~pnm00b&#45;&gt;proc~pn00b -->
 <g id="proc~~pnm00b~~CallsGraph_edge1" class="edge">
 <title>proc~pnm00b&#45;&gt;proc~pn00b</title>
-<path fill="none" stroke="#000000" d="M56.19,-117C64.25,-117 73.22,-117 81.77,-117"/>
-<polygon fill="#000000" stroke="#000000" points="81.89,-120.5 91.89,-117 81.89,-113.5 81.89,-120.5"/>
-</g>
-<!-- proc~nut00b -->
-<g id="proc~~pnm00b~~CallsGraph_node3" class="node">
-<title>proc~nut00b</title>
-<g id="a_proc~~pnm00b~~CallsGraph_node3"><a xlink:href=".././proc/nut00b.html" xlink:title="NUT00B">
-<polygon fill="#d9534f" stroke="#d9534f" points="237,-150 182,-150 182,-126 237,-126 237,-150"/>
-<text text-anchor="middle" x="209.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">NUT00B</text>
-</a>
-</g>
-</g>
-<!-- proc~pn00b&#45;&gt;proc~nut00b -->
-<g id="proc~~pnm00b~~CallsGraph_edge2" class="edge">
-<title>proc~pn00b&#45;&gt;proc~nut00b</title>
-<path fill="none" stroke="#000000" d="M146.07,-123.19C154.21,-125.12 163.34,-127.28 172.05,-129.35"/>
-<polygon fill="#000000" stroke="#000000" points="171.46,-132.81 182,-131.71 173.08,-126 171.46,-132.81"/>
+<path fill="none" stroke="#000000" d="M56.19,-184C64.25,-184 73.22,-184 81.77,-184"/>
+<polygon fill="#000000" stroke="#000000" points="81.89,-187.5 91.89,-184 81.89,-180.5 81.89,-187.5"/>
 </g>
 <!-- proc~pn00 -->
-<g id="proc~~pnm00b~~CallsGraph_node4" class="node">
+<g id="proc~~pnm00b~~CallsGraph_node3" class="node">
 <title>proc~pn00</title>
-<g id="a_proc~~pnm00b~~CallsGraph_node4"><a xlink:href=".././proc/pn00.html" xlink:title="PN00">
-<polygon fill="#d9534f" stroke="#d9534f" points="236.5,-108 182.5,-108 182.5,-84 236.5,-84 236.5,-108"/>
-<text text-anchor="middle" x="209.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PN00</text>
+<g id="a_proc~~pnm00b~~CallsGraph_node3"><a xlink:href=".././proc/pn00.html" xlink:title="PN00">
+<polygon fill="#d9534f" stroke="#d9534f" points="236.5,-217 182.5,-217 182.5,-193 236.5,-193 236.5,-217"/>
+<text text-anchor="middle" x="209.5" y="-202.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PN00</text>
 </a>
 </g>
 </g>
 <!-- proc~pn00b&#45;&gt;proc~pn00 -->
-<g id="proc~~pnm00b~~CallsGraph_edge3" class="edge">
+<g id="proc~~pnm00b~~CallsGraph_edge2" class="edge">
 <title>proc~pn00b&#45;&gt;proc~pn00</title>
-<path fill="none" stroke="#000000" d="M146.07,-110.81C154.37,-108.84 163.7,-106.63 172.57,-104.53"/>
-<polygon fill="#000000" stroke="#000000" points="173.38,-107.93 182.31,-102.22 171.77,-101.12 173.38,-107.93"/>
+<path fill="none" stroke="#000000" d="M146.07,-190.19C154.37,-192.16 163.7,-194.37 172.57,-196.47"/>
+<polygon fill="#000000" stroke="#000000" points="171.77,-199.88 182.31,-198.78 173.38,-193.07 171.77,-199.88"/>
 </g>
-<!-- proc~numat -->
-<g id="proc~~pnm00b~~CallsGraph_node5" class="node">
-<title>proc~numat</title>
-<g id="a_proc~~pnm00b~~CallsGraph_node5"><a xlink:href=".././proc/numat.html" xlink:title="NUMAT">
-<polygon fill="#d9534f" stroke="#d9534f" points="327,-192 273,-192 273,-168 327,-168 327,-192"/>
-<text text-anchor="middle" x="300" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">NUMAT</text>
+<!-- proc~nut00b -->
+<g id="proc~~pnm00b~~CallsGraph_node4" class="node">
+<title>proc~nut00b</title>
+<g id="a_proc~~pnm00b~~CallsGraph_node4"><a xlink:href=".././proc/nut00b.html" xlink:title="NUT00B">
+<polygon fill="#d9534f" stroke="#d9534f" points="237,-175 182,-175 182,-151 237,-151 237,-175"/>
+<text text-anchor="middle" x="209.5" y="-160.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">NUT00B</text>
 </a>
 </g>
 </g>
-<!-- proc~pn00&#45;&gt;proc~numat -->
-<g id="proc~~pnm00b~~CallsGraph_edge4" class="edge">
-<title>proc~pn00&#45;&gt;proc~numat</title>
-<path fill="none" stroke="#000000" d="M226.89,-108.18C230.34,-110.96 233.87,-113.99 237,-117 254.72,-134.05 255.36,-141.87 273,-159 273.67,-159.65 274.37,-160.31 275.07,-160.96"/>
-<polygon fill="#000000" stroke="#000000" points="273.09,-163.87 282.93,-167.79 277.67,-158.59 273.09,-163.87"/>
+<!-- proc~pn00b&#45;&gt;proc~nut00b -->
+<g id="proc~~pnm00b~~CallsGraph_edge3" class="edge">
+<title>proc~pn00b&#45;&gt;proc~nut00b</title>
+<path fill="none" stroke="#000000" d="M146.07,-177.81C154.21,-175.88 163.34,-173.72 172.05,-171.65"/>
+<polygon fill="#000000" stroke="#000000" points="173.08,-175 182,-169.29 171.46,-168.19 173.08,-175"/>
 </g>
 <!-- proc~obl80 -->
-<g id="proc~~pnm00b~~CallsGraph_node6" class="node">
+<g id="proc~~pnm00b~~CallsGraph_node5" class="node">
 <title>proc~obl80</title>
-<g id="a_proc~~pnm00b~~CallsGraph_node6"><a xlink:href=".././proc/obl80.html" xlink:title="OBL80">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="327,-150 273,-150 273,-126 327,-126 327,-150"/>
-<text text-anchor="middle" x="300" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OBL80</text>
+<g id="a_proc~~pnm00b~~CallsGraph_node5"><a xlink:href=".././proc/obl80.html" xlink:title="OBL80">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="327,-295 273,-295 273,-271 327,-271 327,-295"/>
+<text text-anchor="middle" x="300" y="-280.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OBL80</text>
 </a>
 </g>
 </g>
 <!-- proc~pn00&#45;&gt;proc~obl80 -->
-<g id="proc~~pnm00b~~CallsGraph_edge5" class="edge">
+<g id="proc~~pnm00b~~CallsGraph_edge4" class="edge">
 <title>proc~pn00&#45;&gt;proc~obl80</title>
-<path fill="none" stroke="#000000" d="M236.1,-108.15C244.9,-112.33 254.92,-117.08 264.32,-121.54"/>
-<polygon fill="#000000" stroke="#000000" points="262.92,-124.75 273.46,-125.88 265.93,-118.43 262.92,-124.75"/>
-</g>
-<!-- proc~rxr -->
-<g id="proc~~pnm00b~~CallsGraph_node7" class="node">
-<title>proc~rxr</title>
-<g id="a_proc~~pnm00b~~CallsGraph_node7"><a xlink:href=".././proc/rxr.html" xlink:title="RXR">
-<polygon fill="#d9534f" stroke="#d9534f" points="417,-66 363,-66 363,-42 417,-42 417,-66"/>
-<text text-anchor="middle" x="390" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RXR</text>
-</a>
-</g>
-</g>
-<!-- proc~pn00&#45;&gt;proc~rxr -->
-<g id="proc~~pnm00b~~CallsGraph_edge6" class="edge">
-<title>proc~pn00&#45;&gt;proc~rxr</title>
-<path fill="none" stroke="#000000" d="M236.7,-86.25C247.79,-82.37 260.92,-78.11 273,-75 299.47,-68.2 329.89,-62.78 352.94,-59.15"/>
-<polygon fill="#000000" stroke="#000000" points="353.61,-62.58 362.97,-57.61 352.55,-55.67 353.61,-62.58"/>
+<path fill="none" stroke="#000000" d="M224.33,-217.19C238.62,-229.78 261.11,-249.6 277.67,-264.2"/>
+<polygon fill="#000000" stroke="#000000" points="275.45,-266.91 285.27,-270.9 280.08,-261.66 275.45,-266.91"/>
 </g>
 <!-- proc~bp00 -->
-<g id="proc~~pnm00b~~CallsGraph_node8" class="node">
+<g id="proc~~pnm00b~~CallsGraph_node6" class="node">
 <title>proc~bp00</title>
-<g id="a_proc~~pnm00b~~CallsGraph_node8"><a xlink:href=".././proc/bp00.html" xlink:title="BP00">
-<polygon fill="#d9534f" stroke="#d9534f" points="327,-108 273,-108 273,-84 327,-84 327,-108"/>
-<text text-anchor="middle" x="300" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">BP00</text>
+<g id="a_proc~~pnm00b~~CallsGraph_node6"><a xlink:href=".././proc/bp00.html" xlink:title="BP00">
+<polygon fill="#d9534f" stroke="#d9534f" points="327,-160 273,-160 273,-136 327,-136 327,-160"/>
+<text text-anchor="middle" x="300" y="-145.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">BP00</text>
 </a>
 </g>
 </g>
 <!-- proc~pn00&#45;&gt;proc~bp00 -->
-<g id="proc~~pnm00b~~CallsGraph_edge7" class="edge">
+<g id="proc~~pnm00b~~CallsGraph_edge5" class="edge">
 <title>proc~pn00&#45;&gt;proc~bp00</title>
-<path fill="none" stroke="#000000" d="M236.57,-96C244.78,-96 254,-96 262.78,-96"/>
-<polygon fill="#000000" stroke="#000000" points="262.81,-99.5 272.81,-96 262.81,-92.5 262.81,-99.5"/>
+<path fill="none" stroke="#000000" d="M229.27,-192.91C241.59,-184.98 257.91,-174.47 271.66,-165.61"/>
+<polygon fill="#000000" stroke="#000000" points="273.75,-168.43 280.26,-160.07 269.96,-162.54 273.75,-168.43"/>
+</g>
+<!-- proc~numat -->
+<g id="proc~~pnm00b~~CallsGraph_node7" class="node">
+<title>proc~numat</title>
+<g id="a_proc~~pnm00b~~CallsGraph_node7"><a xlink:href=".././proc/numat.html" xlink:title="NUMAT">
+<polygon fill="#d9534f" stroke="#d9534f" points="327,-97 273,-97 273,-73 327,-73 327,-97"/>
+<text text-anchor="middle" x="300" y="-82.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">NUMAT</text>
+</a>
+</g>
+</g>
+<!-- proc~pn00&#45;&gt;proc~numat -->
+<g id="proc~~pnm00b~~CallsGraph_edge6" class="edge">
+<title>proc~pn00&#45;&gt;proc~numat</title>
+<path fill="none" stroke="#000000" d="M227.52,-192.93C230.85,-190.19 234.18,-187.15 237,-184 238.51,-182.31 268.15,-134.69 285.89,-106.12"/>
+<polygon fill="#000000" stroke="#000000" points="289.1,-107.6 291.4,-97.26 283.15,-103.91 289.1,-107.6"/>
+</g>
+<!-- proc~rxr -->
+<g id="proc~~pnm00b~~CallsGraph_node8" class="node">
+<title>proc~rxr</title>
+<g id="a_proc~~pnm00b~~CallsGraph_node8"><a xlink:href=".././proc/rxr.html" xlink:title="RXR">
+<polygon fill="#d9534f" stroke="#d9534f" points="417,-276 363,-276 363,-252 417,-252 417,-276"/>
+<text text-anchor="middle" x="390" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RXR</text>
+</a>
+</g>
+</g>
+<!-- proc~pn00&#45;&gt;proc~rxr -->
+<g id="proc~~pnm00b~~CallsGraph_edge7" class="edge">
+<title>proc~pn00&#45;&gt;proc~rxr</title>
+<path fill="none" stroke="#000000" d="M236.59,-214.38C247.78,-218.35 261,-222.98 273,-227 299.71,-235.96 330.05,-245.62 353,-252.82"/>
+<polygon fill="#000000" stroke="#000000" points="352.08,-256.2 362.67,-255.85 354.17,-249.52 352.08,-256.2"/>
 </g>
 <!-- proc~pr00 -->
 <g id="proc~~pnm00b~~CallsGraph_node9" class="node">
 <title>proc~pr00</title>
 <g id="a_proc~~pnm00b~~CallsGraph_node9"><a xlink:href=".././proc/pr00.html" xlink:title="PR00">
-<polygon fill="#d9534f" stroke="#d9534f" points="417,-24 363,-24 363,0 417,0 417,-24"/>
-<text text-anchor="middle" x="390" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PR00</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="417,-234 363,-234 363,-210 417,-210 417,-234"/>
+<text text-anchor="middle" x="390" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PR00</text>
 </a>
 </g>
 </g>
 <!-- proc~pn00&#45;&gt;proc~pr00 -->
 <g id="proc~~pnm00b~~CallsGraph_edge8" class="edge">
 <title>proc~pn00&#45;&gt;proc~pr00</title>
-<path fill="none" stroke="#000000" d="M229.24,-83.91C241.44,-76.28 257.86,-66.5 273,-59 299.24,-46.01 330,-33.67 353.24,-24.9"/>
-<polygon fill="#000000" stroke="#000000" points="354.57,-28.14 362.71,-21.37 352.12,-21.58 354.57,-28.14"/>
-</g>
-<!-- proc~rx -->
-<g id="proc~~pnm00b~~CallsGraph_node10" class="node">
-<title>proc~rx</title>
-<g id="a_proc~~pnm00b~~CallsGraph_node10"><a xlink:href=".././proc/rx.html" xlink:title="RX">
-<polygon fill="#d9534f" stroke="#d9534f" points="417,-234 363,-234 363,-210 417,-210 417,-234"/>
-<text text-anchor="middle" x="390" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RX</text>
-</a>
-</g>
-</g>
-<!-- proc~numat&#45;&gt;proc~rx -->
-<g id="proc~~pnm00b~~CallsGraph_edge9" class="edge">
-<title>proc~numat&#45;&gt;proc~rx</title>
-<path fill="none" stroke="#000000" d="M326.45,-192.15C335.21,-196.33 345.17,-201.08 354.52,-205.54"/>
-<polygon fill="#000000" stroke="#000000" points="353.07,-208.73 363.6,-209.88 356.09,-202.41 353.07,-208.73"/>
-</g>
-<!-- proc~ir -->
-<g id="proc~~pnm00b~~CallsGraph_node11" class="node">
-<title>proc~ir</title>
-<g id="a_proc~~pnm00b~~CallsGraph_node11"><a xlink:href=".././proc/ir.html" xlink:title="IR">
-<polygon fill="#d9534f" stroke="#d9534f" points="417,-192 363,-192 363,-168 417,-168 417,-192"/>
-<text text-anchor="middle" x="390" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">IR</text>
-</a>
-</g>
-</g>
-<!-- proc~numat&#45;&gt;proc~ir -->
-<g id="proc~~pnm00b~~CallsGraph_edge10" class="edge">
-<title>proc~numat&#45;&gt;proc~ir</title>
-<path fill="none" stroke="#000000" d="M327.4,-180C335.39,-180 344.31,-180 352.82,-180"/>
-<polygon fill="#000000" stroke="#000000" points="352.92,-183.5 362.92,-180 352.92,-176.5 352.92,-183.5"/>
-</g>
-<!-- proc~rz -->
-<g id="proc~~pnm00b~~CallsGraph_node13" class="node">
-<title>proc~rz</title>
-<g id="a_proc~~pnm00b~~CallsGraph_node13"><a xlink:href=".././proc/rz.html" xlink:title="RZ">
-<polygon fill="#d9534f" stroke="#d9534f" points="417,-150 363,-150 363,-126 417,-126 417,-150"/>
-<text text-anchor="middle" x="390" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RZ</text>
-</a>
-</g>
-</g>
-<!-- proc~numat&#45;&gt;proc~rz -->
-<g id="proc~~pnm00b~~CallsGraph_edge11" class="edge">
-<title>proc~numat&#45;&gt;proc~rz</title>
-<path fill="none" stroke="#000000" d="M326.45,-167.85C335.21,-163.67 345.17,-158.92 354.52,-154.46"/>
-<polygon fill="#000000" stroke="#000000" points="356.09,-157.59 363.6,-150.12 353.07,-151.27 356.09,-157.59"/>
+<path fill="none" stroke="#000000" d="M236.84,-207.51C267.51,-210.43 318.35,-215.27 352.74,-218.55"/>
+<polygon fill="#000000" stroke="#000000" points="352.56,-222.05 362.84,-219.51 353.22,-215.08 352.56,-222.05"/>
 </g>
 <!-- proc~bp00&#45;&gt;proc~rxr -->
-<g id="proc~~pnm00b~~CallsGraph_edge15" class="edge">
+<g id="proc~~pnm00b~~CallsGraph_edge13" class="edge">
 <title>proc~bp00&#45;&gt;proc~rxr</title>
-<path fill="none" stroke="#000000" d="M326.45,-83.85C335.21,-79.67 345.17,-74.92 354.52,-70.46"/>
-<polygon fill="#000000" stroke="#000000" points="356.09,-73.59 363.6,-66.12 353.07,-67.27 356.09,-73.59"/>
+<path fill="none" stroke="#000000" d="M307.35,-160.25C317.54,-179.2 338.84,-216.26 363,-243 363.61,-243.68 364.25,-244.35 364.9,-245.02"/>
+<polygon fill="#000000" stroke="#000000" points="362.62,-247.67 372.35,-251.85 367.35,-242.51 362.62,-247.67"/>
 </g>
 <!-- proc~bp00&#45;&gt;proc~pr00 -->
-<g id="proc~~pnm00b~~CallsGraph_edge16" class="edge">
+<g id="proc~~pnm00b~~CallsGraph_edge15" class="edge">
 <title>proc~bp00&#45;&gt;proc~pr00</title>
-<path fill="none" stroke="#000000" d="M312.04,-83.99C324.15,-71 344.35,-49.9 363,-33 363.82,-32.26 364.66,-31.51 365.51,-30.77"/>
-<polygon fill="#000000" stroke="#000000" points="367.97,-33.27 373.36,-24.15 363.46,-27.92 367.97,-33.27"/>
-</g>
-<!-- proc~bp00&#45;&gt;proc~rx -->
-<g id="proc~~pnm00b~~CallsGraph_edge12" class="edge">
-<title>proc~bp00&#45;&gt;proc~rx</title>
-<path fill="none" stroke="#000000" d="M318.35,-108.02C321.49,-110.72 324.55,-113.76 327,-117 351.52,-149.38 338.48,-168.62 363,-201 363.46,-201.61 363.94,-202.21 364.44,-202.8"/>
-<polygon fill="#000000" stroke="#000000" points="362.1,-205.4 371.65,-209.98 367.03,-200.44 362.1,-205.4"/>
-</g>
-<!-- proc~bp00&#45;&gt;proc~ir -->
-<g id="proc~~pnm00b~~CallsGraph_edge13" class="edge">
-<title>proc~bp00&#45;&gt;proc~ir</title>
-<path fill="none" stroke="#000000" d="M317.07,-108.21C320.45,-110.99 323.92,-114.01 327,-117 344.64,-134.13 345.36,-141.87 363,-159 363.67,-159.65 364.37,-160.31 365.07,-160.96"/>
-<polygon fill="#000000" stroke="#000000" points="363.09,-163.87 372.93,-167.79 367.67,-158.59 363.09,-163.87"/>
+<path fill="none" stroke="#000000" d="M315.19,-160.32C327.69,-171.14 346.45,-187.24 363,-201 363.98,-201.81 364.98,-202.64 366,-203.48"/>
+<polygon fill="#000000" stroke="#000000" points="363.86,-206.25 373.82,-209.86 368.28,-200.82 363.86,-206.25"/>
 </g>
 <!-- proc~bi00 -->
-<g id="proc~~pnm00b~~CallsGraph_node12" class="node">
+<g id="proc~~pnm00b~~CallsGraph_node10" class="node">
 <title>proc~bi00</title>
-<g id="a_proc~~pnm00b~~CallsGraph_node12"><a xlink:href=".././proc/bi00.html" xlink:title="BI00">
-<polygon fill="#d9534f" stroke="#d9534f" points="417,-108 363,-108 363,-84 417,-84 417,-108"/>
-<text text-anchor="middle" x="390" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">BI00</text>
+<g id="a_proc~~pnm00b~~CallsGraph_node10"><a xlink:href=".././proc/bi00.html" xlink:title="BI00">
+<polygon fill="#d9534f" stroke="#d9534f" points="417,-150 363,-150 363,-126 417,-126 417,-150"/>
+<text text-anchor="middle" x="390" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">BI00</text>
 </a>
 </g>
 </g>
 <!-- proc~bp00&#45;&gt;proc~bi00 -->
-<g id="proc~~pnm00b~~CallsGraph_edge14" class="edge">
+<g id="proc~~pnm00b~~CallsGraph_edge9" class="edge">
 <title>proc~bp00&#45;&gt;proc~bi00</title>
-<path fill="none" stroke="#000000" d="M327.4,-96C335.39,-96 344.31,-96 352.82,-96"/>
-<polygon fill="#000000" stroke="#000000" points="352.92,-99.5 362.92,-96 352.92,-92.5 352.92,-99.5"/>
+<path fill="none" stroke="#000000" d="M327.4,-145C335.39,-144.09 344.31,-143.08 352.82,-142.11"/>
+<polygon fill="#000000" stroke="#000000" points="353.38,-145.57 362.92,-140.96 352.59,-138.62 353.38,-145.57"/>
+</g>
+<!-- proc~rx -->
+<g id="proc~~pnm00b~~CallsGraph_node11" class="node">
+<title>proc~rx</title>
+<g id="a_proc~~pnm00b~~CallsGraph_node11"><a xlink:href=".././proc/rx.html" xlink:title="RX">
+<polygon fill="#d9534f" stroke="#d9534f" points="417,-108 363,-108 363,-84 417,-84 417,-108"/>
+<text text-anchor="middle" x="390" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RX</text>
+</a>
+</g>
+</g>
+<!-- proc~bp00&#45;&gt;proc~rx -->
+<g id="proc~~pnm00b~~CallsGraph_edge10" class="edge">
+<title>proc~bp00&#45;&gt;proc~rx</title>
+<path fill="none" stroke="#000000" d="M321.41,-135.94C332.77,-129.23 347.1,-120.76 359.65,-113.34"/>
+<polygon fill="#000000" stroke="#000000" points="361.57,-116.28 368.4,-108.18 358.01,-110.25 361.57,-116.28"/>
+</g>
+<!-- proc~ir -->
+<g id="proc~~pnm00b~~CallsGraph_node12" class="node">
+<title>proc~ir</title>
+<g id="a_proc~~pnm00b~~CallsGraph_node12"><a xlink:href=".././proc/ir.html" xlink:title="IR">
+<polygon fill="#d9534f" stroke="#d9534f" points="417,-66 363,-66 363,-42 417,-42 417,-66"/>
+<text text-anchor="middle" x="390" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">IR</text>
+</a>
+</g>
+</g>
+<!-- proc~bp00&#45;&gt;proc~ir -->
+<g id="proc~~pnm00b~~CallsGraph_edge11" class="edge">
+<title>proc~bp00&#45;&gt;proc~ir</title>
+<path fill="none" stroke="#000000" d="M310.24,-135.77C321.82,-120.76 342.65,-94.86 363,-75 363.67,-74.34 364.36,-73.69 365.07,-73.03"/>
+<polygon fill="#000000" stroke="#000000" points="367.67,-75.41 372.92,-66.2 363.08,-70.12 367.67,-75.41"/>
+</g>
+<!-- proc~ry -->
+<g id="proc~~pnm00b~~CallsGraph_node13" class="node">
+<title>proc~ry</title>
+<g id="a_proc~~pnm00b~~CallsGraph_node13"><a xlink:href=".././proc/ry.html" xlink:title="RY">
+<polygon fill="#d9534f" stroke="#d9534f" points="417,-192 363,-192 363,-168 417,-168 417,-192"/>
+<text text-anchor="middle" x="390" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RY</text>
+</a>
+</g>
+</g>
+<!-- proc~bp00&#45;&gt;proc~ry -->
+<g id="proc~~pnm00b~~CallsGraph_edge12" class="edge">
+<title>proc~bp00&#45;&gt;proc~ry</title>
+<path fill="none" stroke="#000000" d="M327.4,-157.6C335.57,-160.57 344.7,-163.89 353.38,-167.05"/>
+<polygon fill="#000000" stroke="#000000" points="352.32,-170.39 362.92,-170.52 354.72,-163.81 352.32,-170.39"/>
+</g>
+<!-- proc~rz -->
+<g id="proc~~pnm00b~~CallsGraph_node14" class="node">
+<title>proc~rz</title>
+<g id="a_proc~~pnm00b~~CallsGraph_node14"><a xlink:href=".././proc/rz.html" xlink:title="RZ">
+<polygon fill="#d9534f" stroke="#d9534f" points="417,-24 363,-24 363,0 417,0 417,-24"/>
+<text text-anchor="middle" x="390" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RZ</text>
+</a>
+</g>
 </g>
 <!-- proc~bp00&#45;&gt;proc~rz -->
-<g id="proc~~pnm00b~~CallsGraph_edge17" class="edge">
+<g id="proc~~pnm00b~~CallsGraph_edge14" class="edge">
 <title>proc~bp00&#45;&gt;proc~rz</title>
-<path fill="none" stroke="#000000" d="M326.45,-108.15C335.21,-112.33 345.17,-117.08 354.52,-121.54"/>
-<polygon fill="#000000" stroke="#000000" points="353.07,-124.73 363.6,-125.88 356.09,-118.41 353.07,-124.73"/>
+<path fill="none" stroke="#000000" d="M309.06,-135.69C314.36,-127.42 321.34,-116.2 327,-106 344.54,-74.36 340.4,-61.25 363,-33 363.48,-32.41 363.97,-31.82 364.48,-31.23"/>
+<polygon fill="#000000" stroke="#000000" points="367.06,-33.61 371.79,-24.13 362.18,-28.59 367.06,-33.61"/>
+</g>
+<!-- proc~numat&#45;&gt;proc~rx -->
+<g id="proc~~pnm00b~~CallsGraph_edge18" class="edge">
+<title>proc~numat&#45;&gt;proc~rx</title>
+<path fill="none" stroke="#000000" d="M327.4,-88.3C335.39,-89.3 344.31,-90.41 352.82,-91.48"/>
+<polygon fill="#000000" stroke="#000000" points="352.56,-94.97 362.92,-92.74 353.43,-88.03 352.56,-94.97"/>
+</g>
+<!-- proc~numat&#45;&gt;proc~ir -->
+<g id="proc~~pnm00b~~CallsGraph_edge16" class="edge">
+<title>proc~numat&#45;&gt;proc~ir</title>
+<path fill="none" stroke="#000000" d="M327.4,-75.7C335.57,-72.82 344.7,-69.6 353.38,-66.55"/>
+<polygon fill="#000000" stroke="#000000" points="354.65,-69.81 362.92,-63.19 352.32,-63.21 354.65,-69.81"/>
+</g>
+<!-- proc~numat&#45;&gt;proc~rz -->
+<g id="proc~~pnm00b~~CallsGraph_edge17" class="edge">
+<title>proc~numat&#45;&gt;proc~rz</title>
+<path fill="none" stroke="#000000" d="M315.22,-72.95C327.75,-62.36 346.51,-46.57 363,-33 363.98,-32.19 364.99,-31.37 366,-30.54"/>
+<polygon fill="#000000" stroke="#000000" points="368.29,-33.19 373.84,-24.17 363.87,-27.76 368.29,-33.19"/>
 </g>
 </g>
 </svg>
@@ -614,8 +507,6 @@ public subroutine PNM00B(date1, date2, rbpn)
     </div></div></div></div>
       </div>
     </div>
-     
-     
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Called by</h3>
@@ -638,35 +529,35 @@ public subroutine PNM00B(date1, date2, rbpn)
 <polygon fill="none" stroke="black" points="238,-66 182,-66 182,-42 238,-42 238,-66"/>
 <text text-anchor="middle" x="210" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50">PNM00B</text>
 </g>
-<!-- proc~c2i00b -->
-<g id="proc~~pnm00b~~CalledByGraph_node2" class="node">
-<title>proc~c2i00b</title>
-<g id="a_proc~~pnm00b~~CalledByGraph_node2"><a xlink:href=".././proc/c2i00b.html" xlink:title="C2I00B">
-<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-108 91.5,-108 91.5,-84 145.5,-84 145.5,-108"/>
-<text text-anchor="middle" x="118.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2I00B</text>
-</a>
-</g>
-</g>
-<!-- proc~c2i00b&#45;&gt;proc~pnm00b -->
-<g id="proc~~pnm00b~~CalledByGraph_edge1" class="edge">
-<title>proc~c2i00b&#45;&gt;proc~pnm00b</title>
-<path fill="none" stroke="#000000" d="M145.39,-83.85C154.29,-79.67 164.42,-74.92 173.93,-70.46"/>
-<polygon fill="#000000" stroke="#000000" points="175.61,-73.54 183.17,-66.12 172.63,-67.2 175.61,-73.54"/>
-</g>
 <!-- proc~xys00b -->
-<g id="proc~~pnm00b~~CalledByGraph_node3" class="node">
+<g id="proc~~pnm00b~~CalledByGraph_node2" class="node">
 <title>proc~xys00b</title>
-<g id="a_proc~~pnm00b~~CalledByGraph_node3"><a xlink:href=".././proc/xys00b.html" xlink:title="XYS00B">
-<polygon fill="#d9534f" stroke="#d9534f" points="146,-66 91,-66 91,-42 146,-42 146,-66"/>
-<text text-anchor="middle" x="118.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">XYS00B</text>
+<g id="a_proc~~pnm00b~~CalledByGraph_node2"><a xlink:href=".././proc/xys00b.html" xlink:title="XYS00B">
+<polygon fill="#d9534f" stroke="#d9534f" points="146,-108 91,-108 91,-84 146,-84 146,-108"/>
+<text text-anchor="middle" x="118.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">XYS00B</text>
 </a>
 </g>
 </g>
 <!-- proc~xys00b&#45;&gt;proc~pnm00b -->
-<g id="proc~~pnm00b~~CalledByGraph_edge2" class="edge">
+<g id="proc~~pnm00b~~CalledByGraph_edge1" class="edge">
 <title>proc~xys00b&#45;&gt;proc~pnm00b</title>
-<path fill="none" stroke="#000000" d="M146.35,-54C154.33,-54 163.22,-54 171.74,-54"/>
-<polygon fill="#000000" stroke="#000000" points="171.86,-57.5 181.86,-54 171.86,-50.5 171.86,-57.5"/>
+<path fill="none" stroke="#000000" d="M145.39,-83.85C154.29,-79.67 164.42,-74.92 173.93,-70.46"/>
+<polygon fill="#000000" stroke="#000000" points="175.61,-73.54 183.17,-66.12 172.63,-67.2 175.61,-73.54"/>
+</g>
+<!-- proc~c2i00b -->
+<g id="proc~~pnm00b~~CalledByGraph_node3" class="node">
+<title>proc~c2i00b</title>
+<g id="a_proc~~pnm00b~~CalledByGraph_node3"><a xlink:href=".././proc/c2i00b.html" xlink:title="C2I00B">
+<polygon fill="#d9534f" stroke="#d9534f" points="145.5,-66 91.5,-66 91.5,-42 145.5,-42 145.5,-66"/>
+<text text-anchor="middle" x="118.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2I00B</text>
+</a>
+</g>
+</g>
+<!-- proc~c2i00b&#45;&gt;proc~pnm00b -->
+<g id="proc~~pnm00b~~CalledByGraph_edge2" class="edge">
+<title>proc~c2i00b&#45;&gt;proc~pnm00b</title>
+<path fill="none" stroke="#000000" d="M145.87,-54C153.93,-54 162.96,-54 171.61,-54"/>
+<polygon fill="#000000" stroke="#000000" points="171.89,-57.5 181.89,-54 171.89,-50.5 171.89,-57.5"/>
 </g>
 <!-- proc~s00b -->
 <g id="proc~~pnm00b~~CalledByGraph_node4" class="node">
@@ -687,16 +578,16 @@ public subroutine PNM00B(date1, date2, rbpn)
 <g id="proc~~pnm00b~~CalledByGraph_node5" class="node">
 <title>proc~c2t00b</title>
 <g id="a_proc~~pnm00b~~CalledByGraph_node5"><a xlink:href=".././proc/c2t00b.html" xlink:title="C2T00B">
-<polygon fill="#d9534f" stroke="#d9534f" points="55,-108 0,-108 0,-84 55,-84 55,-108"/>
-<text text-anchor="middle" x="27.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2T00B</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="55,-66 0,-66 0,-42 55,-42 55,-66"/>
+<text text-anchor="middle" x="27.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">C2T00B</text>
 </a>
 </g>
 </g>
 <!-- proc~c2t00b&#45;&gt;proc~c2i00b -->
 <g id="proc~~pnm00b~~CalledByGraph_edge4" class="edge">
 <title>proc~c2t00b&#45;&gt;proc~c2i00b</title>
-<path fill="none" stroke="#000000" d="M55.2,-96C63.36,-96 72.47,-96 81.15,-96"/>
-<polygon fill="#000000" stroke="#000000" points="81.43,-99.5 91.43,-96 81.43,-92.5 81.43,-99.5"/>
+<path fill="none" stroke="#000000" d="M55.2,-54C63.36,-54 72.47,-54 81.15,-54"/>
+<polygon fill="#000000" stroke="#000000" points="81.43,-57.5 91.43,-54 81.43,-50.5 81.43,-57.5"/>
 </g>
 </g>
 </svg>
@@ -761,34 +652,11 @@ public subroutine PNM00B(date1, date2, rbpn)
     </div></div></div></div>
       </div>
     </div>
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -796,72 +664,58 @@ public subroutine PNM00B(date1, date2, rbpn)
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">PNM00B</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span><span class="p">,</span> <span class="n">rbpn</span> <span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">PNM00B</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="p">,</span><span class="w"> </span><span class="n">date2</span><span class="p">,</span><span class="w"> </span><span class="n">rbpn</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date1</span> <span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date2</span> <span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">rbpn</span> <span class="c">!! bias-precession-nutation matrix (Note 2)</span>
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date1</span><span class="w"> </span><span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date2</span><span class="w"> </span><span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">rbpn</span><span class="w"> </span><span class="c">!! bias-precession-nutation matrix (Note 2)</span>
 
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span>  <span class="n">dpsi</span><span class="p">,</span> <span class="n">deps</span><span class="p">,</span> <span class="n">epsa</span><span class="p">,</span> <span class="p">&amp;</span>
-                 <span class="n">rb</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">rp</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">rbp</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">rn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w">  </span><span class="n">dpsi</span><span class="p">,</span><span class="w"> </span><span class="n">deps</span><span class="p">,</span><span class="w"> </span><span class="n">epsa</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                 </span><span class="n">rb</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">rp</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">rbp</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">rn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Obtain the required matrix (discarding other results).</span>
-    <span class="k">call </span><span class="n">PN00B</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span><span class="p">,</span> <span class="p">&amp;</span>
-                 <span class="n">dpsi</span><span class="p">,</span> <span class="n">deps</span><span class="p">,</span> <span class="n">epsa</span><span class="p">,</span> <span class="n">rb</span><span class="p">,</span> <span class="n">rp</span><span class="p">,</span> <span class="n">rbp</span><span class="p">,</span> <span class="n">rn</span><span class="p">,</span> <span class="n">rbpn</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Obtain the required matrix (discarding other results).</span>
+<span class="w">    </span><span class="k">call </span><span class="n">PN00B</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="p">,</span><span class="w"> </span><span class="n">date2</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                 </span><span class="n">dpsi</span><span class="p">,</span><span class="w"> </span><span class="n">deps</span><span class="p">,</span><span class="w"> </span><span class="n">epsa</span><span class="p">,</span><span class="w"> </span><span class="n">rb</span><span class="p">,</span><span class="w"> </span><span class="n">rp</span><span class="p">,</span><span class="w"> </span><span class="n">rbp</span><span class="p">,</span><span class="w"> </span><span class="n">rn</span><span class="p">,</span><span class="w"> </span><span class="n">rbpn</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">end subroutine </span><span class="n">PNM00B</span>
+<span class="w">    </span><span class="k">end subroutine </span><span class="n">PNM00B</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>astro-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -887,14 +741,11 @@ public subroutine PNM00B(date1, date2, rbpn)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

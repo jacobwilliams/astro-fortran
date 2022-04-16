@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="astro-fortran -- Modern Fortran implementations of standard models used in fundamental astronomy">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
-    
     <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,45 +43,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="../lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
-        
-               
-        
+              
             </ul>
-            </li>
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
-
-
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
-
-                             
-
-          </ul>
         
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/astro_module.f90.html">Source File</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                                       </ul>
         <form action="../search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -95,50 +68,29 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
-  
   <div class="row">
     <h1>PN06
       <small>Subroutine</small>
-    
     </h1>
-    
-<div class="row">
+    <div class="row">
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     
-     
-     
-     
-    
-    
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
     title=" 0.5% of total for procedures.">26 statements</a>
      </li> 
-     
-     
-     
     <li><i class="fa fa-code"></i><a href="../src/astro_module.f90"> Source File</a></li>
-     
-     
   </ul>
   <ol class="breadcrumb in-well text-right">
-  
-    
      <li><a href='../sourcefile/astro_module.f90.html'>astro_module.f90</a></li>
-    
      <li><a href='../module/astro_module.html'>astro_module</a></li>
-    
-  
      <li class="active">PN06</li>
   </ol>
 </div>
@@ -154,32 +106,9 @@
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    
-<div id="sidebar">
-  
-<h3>Contents</h3>
+    <div id="sidebar">
+  <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -187,24 +116,14 @@
   </div>
 </div>
 
-
-
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-public subroutine PN06(date1, date2, dpsi, deps, epsa, rb, rp, rbp, rn, rbpn)
+    <h2>public subroutine PN06(date1, date2, dpsi, deps, epsa, rb, rp, rbp, rn, rbpn)</h2>
     
-    
-   
-</h2>
-    
-  
 
-
-    
     <p>Precession-nutation, IAU 2006 model:  a multi-purpose routine,
   supporting classical (equinox-based) use directly and CIO-based use
   indirectly.</p>
@@ -281,179 +200,75 @@ public subroutine PN06(date1, date2, dpsi, deps, epsa, rb, rp, rbp, rn, rbpn)
 <ul>
 <li>IAU SOFA revision: 2013 November 14</li>
 </ul>
-    
 
     <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
 <tbody>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-date1~57"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>date1</strong></td><td><p>TT as a 2-part Julian Date (Note 1)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-date2~57"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>date2</strong></td><td><p>TT as a 2-part Julian Date (Note 1)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-dpsi~11"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>dpsi</strong></td><td><p>nutation (Note 2)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-deps~10"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>deps</strong></td><td><p>nutation (Note 2)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-epsa~8"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
   <td><strong>epsa</strong></td><td><p>mean obliquity (Note 3)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-rb~6"></span>real(kind=wp),</td>
-  <td>intent(out),</td>
-  <td></td>
-  
-  <td>dimension(3,3)</td><td>::</td>
+<td>intent(out),</td>
+  <td></td>  <td>dimension(3,3)</td><td>::</td>
   <td><strong>rb</strong></td><td><p>frame bias matrix (Note 4)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-rp~7"></span>real(kind=wp),</td>
-  <td>intent(out),</td>
-  <td></td>
-  
-  <td>dimension(3,3)</td><td>::</td>
+<td>intent(out),</td>
+  <td></td>  <td>dimension(3,3)</td><td>::</td>
   <td><strong>rp</strong></td><td><p>precession matrix (Note 5)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-rbp~8"></span>real(kind=wp),</td>
-  <td>intent(out),</td>
-  <td></td>
-  
-  <td>dimension(3,3)</td><td>::</td>
+<td>intent(out),</td>
+  <td></td>  <td>dimension(3,3)</td><td>::</td>
   <td><strong>rbp</strong></td><td><p>bias-precession matrix (Note 6)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-rn~4"></span>real(kind=wp),</td>
-  <td>intent(out),</td>
-  <td></td>
-  
-  <td>dimension(3,3)</td><td>::</td>
+<td>intent(out),</td>
+  <td></td>  <td>dimension(3,3)</td><td>::</td>
   <td><strong>rn</strong></td><td><p>nutation matrix (Note 7)</p></td>
-  
 </tr>
-
-  
-  
-  
-  
 <tr>
-  
   <td><span class="anchor" id="variable-rbpn~7"></span>real(kind=wp),</td>
-  <td>intent(out),</td>
-  <td></td>
-  
-  <td>dimension(3,3)</td><td>::</td>
+<td>intent(out),</td>
+  <td></td>  <td>dimension(3,3)</td><td>::</td>
   <td><strong>rbpn</strong></td><td><p>GCRS-to-true matrix (Note 8)</p></td>
-  
 </tr>
-
 </tbody>
 </table>
 
-    
-    
-    
     <br>
-    
-    
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Calls</h3>
@@ -465,91 +280,91 @@ public subroutine PN06(date1, date2, dpsi, deps, epsa, rb, rp, rbp, rn, rbpn)
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: proc~~pn06~~CallsGraph Pages: 1 -->
-<svg id="procpn06CallsGraph" width="242pt" height="158pt"
- viewBox="0.00 0.00 242.00 158.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="proc~~pn06~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 154)">
+<svg id="procpn06CallsGraph" width="242pt" height="189pt"
+ viewBox="0.00 0.00 242.00 189.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~pn06~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 185)">
 <title>proc~~pn06~~CallsGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-154 238,-154 238,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-185 238,-185 238,4 -4,4"/>
 <!-- proc~pn06 -->
 <g id="proc~~pn06~~CallsGraph_node1" class="node">
 <title>proc~pn06</title>
-<polygon fill="none" stroke="black" points="54,-87 0,-87 0,-63 54,-63 54,-87"/>
-<text text-anchor="middle" x="27" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50">PN06</text>
+<polygon fill="none" stroke="black" points="54,-118 0,-118 0,-94 54,-94 54,-118"/>
+<text text-anchor="middle" x="27" y="-103.6" font-family="Helvetica,sans-Serif" font-size="10.50">PN06</text>
 </g>
-<!-- proc~pfw06 -->
+<!-- proc~rxr -->
 <g id="proc~~pn06~~CallsGraph_node2" class="node">
-<title>proc~pfw06</title>
-<g id="a_proc~~pn06~~CallsGraph_node2"><a xlink:href=".././proc/pfw06.html" xlink:title="PFW06">
-<polygon fill="#d9534f" stroke="#d9534f" points="144,-150 90,-150 90,-126 144,-126 144,-150"/>
-<text text-anchor="middle" x="117" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PFW06</text>
+<title>proc~rxr</title>
+<g id="a_proc~~pn06~~CallsGraph_node2"><a xlink:href=".././proc/rxr.html" xlink:title="RXR">
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-181 90,-181 90,-157 144,-157 144,-181"/>
+<text text-anchor="middle" x="117" y="-166.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RXR</text>
 </a>
 </g>
 </g>
-<!-- proc~pn06&#45;&gt;proc~pfw06 -->
+<!-- proc~pn06&#45;&gt;proc~rxr -->
 <g id="proc~~pn06~~CallsGraph_edge1" class="edge">
-<title>proc~pn06&#45;&gt;proc~pfw06</title>
-<path fill="none" stroke="#000000" d="M44.97,-87.15C57.99,-96.47 76.18,-109.49 90.89,-120.02"/>
-<polygon fill="#000000" stroke="#000000" points="88.92,-122.91 99.08,-125.89 92.99,-117.22 88.92,-122.91"/>
+<title>proc~pn06&#45;&gt;proc~rxr</title>
+<path fill="none" stroke="#000000" d="M44.97,-118.15C57.99,-127.47 76.18,-140.49 90.89,-151.02"/>
+<polygon fill="#000000" stroke="#000000" points="88.92,-153.91 99.08,-156.89 92.99,-148.22 88.92,-153.91"/>
 </g>
 <!-- proc~tr -->
 <g id="proc~~pn06~~CallsGraph_node3" class="node">
 <title>proc~tr</title>
 <g id="a_proc~~pn06~~CallsGraph_node3"><a xlink:href=".././proc/tr.html" xlink:title="TR">
-<polygon fill="#d9534f" stroke="#d9534f" points="144,-108 90,-108 90,-84 144,-84 144,-108"/>
-<text text-anchor="middle" x="117" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">TR</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-139 90,-139 90,-115 144,-115 144,-139"/>
+<text text-anchor="middle" x="117" y="-124.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">TR</text>
 </a>
 </g>
 </g>
 <!-- proc~pn06&#45;&gt;proc~tr -->
 <g id="proc~~pn06~~CallsGraph_edge2" class="edge">
 <title>proc~pn06&#45;&gt;proc~tr</title>
-<path fill="none" stroke="#000000" d="M54.4,-81.3C62.48,-83.23 71.51,-85.38 80.1,-87.43"/>
-<polygon fill="#000000" stroke="#000000" points="79.38,-90.86 89.92,-89.78 81,-84.05 79.38,-90.86"/>
+<path fill="none" stroke="#000000" d="M54.4,-112.3C62.48,-114.23 71.51,-116.38 80.1,-118.43"/>
+<polygon fill="#000000" stroke="#000000" points="79.38,-121.86 89.92,-120.78 81,-115.05 79.38,-121.86"/>
 </g>
 <!-- proc~fw2m -->
 <g id="proc~~pn06~~CallsGraph_node4" class="node">
 <title>proc~fw2m</title>
 <g id="a_proc~~pn06~~CallsGraph_node4"><a xlink:href=".././proc/fw2m.html" xlink:title="FW2M">
-<polygon fill="#d9534f" stroke="#d9534f" points="144,-66 90,-66 90,-42 144,-42 144,-66"/>
-<text text-anchor="middle" x="117" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FW2M</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-97 90,-97 90,-73 144,-73 144,-97"/>
+<text text-anchor="middle" x="117" y="-82.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">FW2M</text>
 </a>
 </g>
 </g>
 <!-- proc~pn06&#45;&gt;proc~fw2m -->
 <g id="proc~~pn06~~CallsGraph_edge3" class="edge">
 <title>proc~pn06&#45;&gt;proc~fw2m</title>
-<path fill="none" stroke="#000000" d="M54.4,-68.7C62.48,-66.77 71.51,-64.62 80.1,-62.57"/>
-<polygon fill="#000000" stroke="#000000" points="81,-65.95 89.92,-60.22 79.38,-59.14 81,-65.95"/>
+<path fill="none" stroke="#000000" d="M54.4,-99.7C62.48,-97.77 71.51,-95.62 80.1,-93.57"/>
+<polygon fill="#000000" stroke="#000000" points="81,-96.95 89.92,-91.22 79.38,-90.14 81,-96.95"/>
 </g>
-<!-- proc~rxr -->
+<!-- proc~pfw06 -->
 <g id="proc~~pn06~~CallsGraph_node5" class="node">
-<title>proc~rxr</title>
-<g id="a_proc~~pn06~~CallsGraph_node5"><a xlink:href=".././proc/rxr.html" xlink:title="RXR">
-<polygon fill="#d9534f" stroke="#d9534f" points="144,-24 90,-24 90,0 144,0 144,-24"/>
-<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RXR</text>
+<title>proc~pfw06</title>
+<g id="a_proc~~pn06~~CallsGraph_node5"><a xlink:href=".././proc/pfw06.html" xlink:title="PFW06">
+<polygon fill="#d9534f" stroke="#d9534f" points="144,-45 90,-45 90,-21 144,-21 144,-45"/>
+<text text-anchor="middle" x="117" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">PFW06</text>
 </a>
 </g>
 </g>
-<!-- proc~pn06&#45;&gt;proc~rxr -->
+<!-- proc~pn06&#45;&gt;proc~pfw06 -->
 <g id="proc~~pn06~~CallsGraph_edge4" class="edge">
-<title>proc~pn06&#45;&gt;proc~rxr</title>
-<path fill="none" stroke="#000000" d="M44.97,-62.85C57.99,-53.53 76.18,-40.51 90.89,-29.98"/>
-<polygon fill="#000000" stroke="#000000" points="92.99,-32.78 99.08,-24.11 88.92,-27.09 92.99,-32.78"/>
+<title>proc~pn06&#45;&gt;proc~pfw06</title>
+<path fill="none" stroke="#000000" d="M42.53,-93.95C56.42,-82.43 77.55,-64.9 93.59,-51.59"/>
+<polygon fill="#000000" stroke="#000000" points="95.99,-54.15 101.45,-45.07 91.52,-48.76 95.99,-54.15"/>
 </g>
-<!-- proc~obl06 -->
+<!-- proc~ir -->
 <g id="proc~~pn06~~CallsGraph_node6" class="node">
-<title>proc~obl06</title>
-<g id="a_proc~~pn06~~CallsGraph_node6"><a xlink:href=".././proc/obl06.html" xlink:title="OBL06">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="234,-150 180,-150 180,-126 234,-126 234,-150"/>
-<text text-anchor="middle" x="207" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OBL06</text>
+<title>proc~ir</title>
+<g id="a_proc~~pn06~~CallsGraph_node6"><a xlink:href=".././proc/ir.html" xlink:title="IR">
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-150 180,-150 180,-126 234,-126 234,-150"/>
+<text text-anchor="middle" x="207" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">IR</text>
 </a>
 </g>
 </g>
-<!-- proc~pfw06&#45;&gt;proc~obl06 -->
+<!-- proc~fw2m&#45;&gt;proc~ir -->
 <g id="proc~~pn06~~CallsGraph_edge5" class="edge">
-<title>proc~pfw06&#45;&gt;proc~obl06</title>
-<path fill="none" stroke="#000000" d="M144.4,-138C152.39,-138 161.31,-138 169.82,-138"/>
-<polygon fill="#000000" stroke="#000000" points="169.92,-141.5 179.92,-138 169.92,-134.5 169.92,-141.5"/>
+<title>proc~fw2m&#45;&gt;proc~ir</title>
+<path fill="none" stroke="#000000" d="M137.97,-97.03C149.48,-103.96 164.15,-112.79 176.92,-120.48"/>
+<polygon fill="#000000" stroke="#000000" points="175.43,-123.68 185.81,-125.84 179.05,-117.68 175.43,-123.68"/>
 </g>
 <!-- proc~rz -->
 <g id="proc~~pn06~~CallsGraph_node7" class="node">
@@ -561,40 +376,40 @@ public subroutine PN06(date1, date2, dpsi, deps, epsa, rb, rp, rbp, rn, rbpn)
 </g>
 </g>
 <!-- proc~fw2m&#45;&gt;proc~rz -->
-<g id="proc~~pn06~~CallsGraph_edge8" class="edge">
+<g id="proc~~pn06~~CallsGraph_edge6" class="edge">
 <title>proc~fw2m&#45;&gt;proc~rz</title>
-<path fill="none" stroke="#000000" d="M143.45,-66.15C152.21,-70.33 162.17,-75.08 171.52,-79.54"/>
-<polygon fill="#000000" stroke="#000000" points="170.07,-82.73 180.6,-83.88 173.09,-76.41 170.07,-82.73"/>
-</g>
-<!-- proc~ir -->
-<g id="proc~~pn06~~CallsGraph_node8" class="node">
-<title>proc~ir</title>
-<g id="a_proc~~pn06~~CallsGraph_node8"><a xlink:href=".././proc/ir.html" xlink:title="IR">
-<polygon fill="#d9534f" stroke="#d9534f" points="234,-66 180,-66 180,-42 234,-42 234,-66"/>
-<text text-anchor="middle" x="207" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">IR</text>
-</a>
-</g>
-</g>
-<!-- proc~fw2m&#45;&gt;proc~ir -->
-<g id="proc~~pn06~~CallsGraph_edge7" class="edge">
-<title>proc~fw2m&#45;&gt;proc~ir</title>
-<path fill="none" stroke="#000000" d="M144.4,-54C152.39,-54 161.31,-54 169.82,-54"/>
-<polygon fill="#000000" stroke="#000000" points="169.92,-57.5 179.92,-54 169.92,-50.5 169.92,-57.5"/>
+<path fill="none" stroke="#000000" d="M144.4,-88.3C152.39,-89.3 161.31,-90.41 169.82,-91.48"/>
+<polygon fill="#000000" stroke="#000000" points="169.56,-94.97 179.92,-92.74 170.43,-88.03 169.56,-94.97"/>
 </g>
 <!-- proc~rx -->
 <g id="proc~~pn06~~CallsGraph_node9" class="node">
 <title>proc~rx</title>
 <g id="a_proc~~pn06~~CallsGraph_node9"><a xlink:href=".././proc/rx.html" xlink:title="RX">
-<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 180,-24 180,0 234,0 234,-24"/>
-<text text-anchor="middle" x="207" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RX</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-66 180,-66 180,-42 234,-42 234,-66"/>
+<text text-anchor="middle" x="207" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">RX</text>
 </a>
 </g>
 </g>
 <!-- proc~fw2m&#45;&gt;proc~rx -->
-<g id="proc~~pn06~~CallsGraph_edge6" class="edge">
+<g id="proc~~pn06~~CallsGraph_edge7" class="edge">
 <title>proc~fw2m&#45;&gt;proc~rx</title>
-<path fill="none" stroke="#000000" d="M143.45,-41.85C152.21,-37.67 162.17,-32.92 171.52,-28.46"/>
-<polygon fill="#000000" stroke="#000000" points="173.09,-31.59 180.6,-24.12 170.07,-25.27 173.09,-31.59"/>
+<path fill="none" stroke="#000000" d="M144.4,-75.7C152.57,-72.82 161.7,-69.6 170.38,-66.55"/>
+<polygon fill="#000000" stroke="#000000" points="171.65,-69.81 179.92,-63.19 169.32,-63.21 171.65,-69.81"/>
+</g>
+<!-- proc~obl06 -->
+<g id="proc~~pn06~~CallsGraph_node8" class="node">
+<title>proc~obl06</title>
+<g id="a_proc~~pn06~~CallsGraph_node8"><a xlink:href=".././proc/obl06.html" xlink:title="OBL06">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="234,-24 180,-24 180,0 234,0 234,-24"/>
+<text text-anchor="middle" x="207" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">OBL06</text>
+</a>
+</g>
+</g>
+<!-- proc~pfw06&#45;&gt;proc~obl06 -->
+<g id="proc~~pn06~~CallsGraph_edge8" class="edge">
+<title>proc~pfw06&#45;&gt;proc~obl06</title>
+<path fill="none" stroke="#000000" d="M144.4,-26.7C152.48,-24.77 161.51,-22.62 170.1,-20.57"/>
+<polygon fill="#000000" stroke="#000000" points="171,-23.95 179.92,-18.22 169.38,-17.14 171,-23.95"/>
 </g>
 </g>
 </svg>
@@ -659,8 +474,6 @@ public subroutine PN06(date1, date2, dpsi, deps, epsa, rb, rp, rbp, rn, rbpn)
     </div></div></div></div>
       </div>
     </div>
-     
-     
     <div class="panel panel-default">
       <div class="panel-heading">
   <h3 class="panel-title">Called by</h3>
@@ -761,34 +574,11 @@ public subroutine PN06(date1, date2, dpsi, deps, epsa, rb, rp, rbp, rn, rbpn)
     </div></div></div></div>
       </div>
     </div>
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      
-<h3>Contents</h3>
+      <h3>Contents</h3>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
@@ -796,107 +586,93 @@ public subroutine PN06(date1, date2, dpsi, deps, epsa, rb, rp, rbp, rn, rbpn)
   </div>
 </div>
 
-
-
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
 
-    
-    
-    
     
     
 
     
     
-    
-    
-    
 
 
-    
-    
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">subroutine </span><span class="n">PN06</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span><span class="p">,</span> <span class="n">dpsi</span><span class="p">,</span> <span class="n">deps</span><span class="p">,</span> <span class="p">&amp;</span>
-                      <span class="n">epsa</span><span class="p">,</span> <span class="n">rb</span><span class="p">,</span> <span class="n">rp</span><span class="p">,</span> <span class="n">rbp</span><span class="p">,</span> <span class="n">rn</span><span class="p">,</span> <span class="n">rbpn</span> <span class="p">)</span>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">PN06</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="p">,</span><span class="w"> </span><span class="n">date2</span><span class="p">,</span><span class="w"> </span><span class="n">dpsi</span><span class="p">,</span><span class="w"> </span><span class="n">deps</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                      </span><span class="n">epsa</span><span class="p">,</span><span class="w"> </span><span class="n">rb</span><span class="p">,</span><span class="w"> </span><span class="n">rp</span><span class="p">,</span><span class="w"> </span><span class="n">rbp</span><span class="p">,</span><span class="w"> </span><span class="n">rn</span><span class="p">,</span><span class="w"> </span><span class="n">rbpn</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="k">implicit none</span>
+<span class="w">    </span><span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date1</span> <span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">date2</span> <span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">dpsi</span> <span class="c">!! nutation (Note 2)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">deps</span> <span class="c">!! nutation (Note 2)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">epsa</span> <span class="c">!! mean obliquity (Note 3)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">rb</span> <span class="c">!! frame bias matrix (Note 4)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">rp</span> <span class="c">!! precession matrix (Note 5)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">rbp</span> <span class="c">!! bias-precession matrix (Note 6)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">rn</span> <span class="c">!! nutation matrix (Note 7)</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">rbpn</span> <span class="c">!! GCRS-to-true matrix (Note 8)</span>
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date1</span><span class="w"> </span><span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date2</span><span class="w"> </span><span class="c">!! TT as a 2-part Julian Date (Note 1)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dpsi</span><span class="w"> </span><span class="c">!! nutation (Note 2)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">deps</span><span class="w"> </span><span class="c">!! nutation (Note 2)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">epsa</span><span class="w"> </span><span class="c">!! mean obliquity (Note 3)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">rb</span><span class="w"> </span><span class="c">!! frame bias matrix (Note 4)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">rp</span><span class="w"> </span><span class="c">!! precession matrix (Note 5)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">rbp</span><span class="w"> </span><span class="c">!! bias-precession matrix (Note 6)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">rn</span><span class="w"> </span><span class="c">!! nutation matrix (Note 7)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">rbpn</span><span class="w"> </span><span class="c">!! GCRS-to-true matrix (Note 8)</span>
 
-    <span class="c">!  JD for MJD 0</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">djm0</span> <span class="o">=</span> <span class="mi">240000</span><span class="mf">0.5_wp</span>
+<span class="w">    </span><span class="c">!  JD for MJD 0</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">djm0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">240000</span><span class="mf">0.5_wp</span><span class="w"></span>
 
-    <span class="c">!  Reference epoch (J2000.0), MJD</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">djm00</span> <span class="o">=</span> <span class="mi">5154</span><span class="mf">4.5_wp</span>
+<span class="w">    </span><span class="c">!  Reference epoch (J2000.0), MJD</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">djm00</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5154</span><span class="mf">4.5_wp</span><span class="w"></span>
 
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">gamb</span><span class="p">,</span> <span class="n">phib</span><span class="p">,</span> <span class="n">psib</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">rt</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">gamb</span><span class="p">,</span><span class="w"> </span><span class="n">phib</span><span class="p">,</span><span class="w"> </span><span class="n">psib</span><span class="p">,</span><span class="w"> </span><span class="n">eps</span><span class="p">,</span><span class="w"> </span><span class="n">rt</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Bias-precession Fukushima-Williams angles of J2000.0 = frame bias.</span>
-    <span class="k">call </span><span class="n">PFW06</span> <span class="p">(</span> <span class="n">djm0</span><span class="p">,</span> <span class="n">djm00</span><span class="p">,</span> <span class="n">gamb</span><span class="p">,</span> <span class="n">phib</span><span class="p">,</span> <span class="n">psib</span><span class="p">,</span> <span class="n">eps</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Bias-precession Fukushima-Williams angles of J2000.0 = frame bias.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">PFW06</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">djm0</span><span class="p">,</span><span class="w"> </span><span class="n">djm00</span><span class="p">,</span><span class="w"> </span><span class="n">gamb</span><span class="p">,</span><span class="w"> </span><span class="n">phib</span><span class="p">,</span><span class="w"> </span><span class="n">psib</span><span class="p">,</span><span class="w"> </span><span class="n">eps</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  B matrix.</span>
-    <span class="k">call </span><span class="n">FW2M</span> <span class="p">(</span> <span class="n">gamb</span><span class="p">,</span> <span class="n">phib</span><span class="p">,</span> <span class="n">psib</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">rb</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  B matrix.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">FW2M</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">gamb</span><span class="p">,</span><span class="w"> </span><span class="n">phib</span><span class="p">,</span><span class="w"> </span><span class="n">psib</span><span class="p">,</span><span class="w"> </span><span class="n">eps</span><span class="p">,</span><span class="w"> </span><span class="n">rb</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Bias-precession Fukushima-Williams angles of date.</span>
-    <span class="k">call </span><span class="n">PFW06</span> <span class="p">(</span> <span class="n">date1</span><span class="p">,</span> <span class="n">date2</span><span class="p">,</span> <span class="n">gamb</span><span class="p">,</span> <span class="n">phib</span><span class="p">,</span> <span class="n">psib</span><span class="p">,</span> <span class="n">eps</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Bias-precession Fukushima-Williams angles of date.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">PFW06</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">date1</span><span class="p">,</span><span class="w"> </span><span class="n">date2</span><span class="p">,</span><span class="w"> </span><span class="n">gamb</span><span class="p">,</span><span class="w"> </span><span class="n">phib</span><span class="p">,</span><span class="w"> </span><span class="n">psib</span><span class="p">,</span><span class="w"> </span><span class="n">eps</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Bias-precession matrix.</span>
-    <span class="k">call </span><span class="n">FW2M</span> <span class="p">(</span> <span class="n">gamb</span><span class="p">,</span> <span class="n">phib</span><span class="p">,</span> <span class="n">psib</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">rbp</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Bias-precession matrix.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">FW2M</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">gamb</span><span class="p">,</span><span class="w"> </span><span class="n">phib</span><span class="p">,</span><span class="w"> </span><span class="n">psib</span><span class="p">,</span><span class="w"> </span><span class="n">eps</span><span class="p">,</span><span class="w"> </span><span class="n">rbp</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Solve for precession matrix.</span>
-    <span class="k">call </span><span class="n">TR</span> <span class="p">(</span> <span class="n">rb</span><span class="p">,</span> <span class="n">rt</span> <span class="p">)</span>
-    <span class="k">call </span><span class="n">RXR</span> <span class="p">(</span> <span class="n">rbp</span><span class="p">,</span> <span class="n">rt</span><span class="p">,</span> <span class="n">rp</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Solve for precession matrix.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">TR</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">rb</span><span class="p">,</span><span class="w"> </span><span class="n">rt</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">call </span><span class="n">RXR</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">rbp</span><span class="p">,</span><span class="w"> </span><span class="n">rt</span><span class="p">,</span><span class="w"> </span><span class="n">rp</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Equinox-based bias-precession-nutation matrix.</span>
-    <span class="k">call </span><span class="n">FW2M</span> <span class="p">(</span> <span class="n">gamb</span><span class="p">,</span> <span class="n">phib</span><span class="p">,</span> <span class="n">psib</span><span class="o">+</span><span class="n">dpsi</span><span class="p">,</span> <span class="n">eps</span><span class="o">+</span><span class="n">deps</span><span class="p">,</span> <span class="n">rbpn</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Equinox-based bias-precession-nutation matrix.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">FW2M</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">gamb</span><span class="p">,</span><span class="w"> </span><span class="n">phib</span><span class="p">,</span><span class="w"> </span><span class="n">psib</span><span class="o">+</span><span class="n">dpsi</span><span class="p">,</span><span class="w"> </span><span class="n">eps</span><span class="o">+</span><span class="n">deps</span><span class="p">,</span><span class="w"> </span><span class="n">rbpn</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Solve for nutation matrix.</span>
-    <span class="k">call </span><span class="n">TR</span> <span class="p">(</span> <span class="n">rbp</span><span class="p">,</span> <span class="n">rt</span> <span class="p">)</span>
-    <span class="k">call </span><span class="n">RXR</span> <span class="p">(</span> <span class="n">rbpn</span><span class="p">,</span> <span class="n">rt</span><span class="p">,</span> <span class="n">rn</span> <span class="p">)</span>
+<span class="w">    </span><span class="c">!  Solve for nutation matrix.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">TR</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">rbp</span><span class="p">,</span><span class="w"> </span><span class="n">rt</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">call </span><span class="n">RXR</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">rbpn</span><span class="p">,</span><span class="w"> </span><span class="n">rt</span><span class="p">,</span><span class="w"> </span><span class="n">rn</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 
-    <span class="c">!  Obliquity, mean of date.</span>
-    <span class="n">epsa</span> <span class="o">=</span> <span class="n">eps</span>
+<span class="w">    </span><span class="c">!  Obliquity, mean of date.</span>
+<span class="w">    </span><span class="n">epsa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eps</span><span class="w"></span>
 
-    <span class="k">end subroutine </span><span class="n">PN06</span>
+<span class="w">    </span><span class="k">end subroutine </span><span class="n">PN06</span><span class="w"></span>
 </pre></div>
 
     </section>
     <br>
     
-    
     </div>
   </div>
-
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>astro-fortran was developed by Jacob Williams<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
-            
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> astro-fortran was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
@@ -922,14 +698,11 @@ public subroutine PN06(date1, date2, dpsi, deps, epsa, rb, rp, rbp, rn, rbpn)
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="../tipuesearch/tipuesearch_content.js"></script>
     <script src="../tipuesearch/tipuesearch_set.js"></script>
     <script src="../tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>
