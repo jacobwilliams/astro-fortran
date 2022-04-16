@@ -1,0 +1,18 @@
+name = "astro-fortran"
+author = "Jacob Williams"
+copyright  = "Copyright (c) 2019-2022, Jacob Williams. Copyright (C) 2019 Standards Of Fundamental Astronomy Board of the International Astronomical Union."
+license = "BSD-3"
+description = "A refactoring of the IAU SOFA library to modern Fortran standards"
+homepage = "https://github.com/jacobwilliams/astro-fortran"
+keywords = ["astrometry"]
+
+[build]
+auto-executables = false
+auto-examples = false
+auto-tests = true
+
+[library]
+source-dir = "src"
+
+[install]
+library = true

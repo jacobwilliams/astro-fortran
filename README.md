@@ -7,26 +7,35 @@ This is based on the 2019-07-22 Fortran 77 SOFA Release.
 
 ### Status
 
-![CI Status](https://github.com/jacobwilliams/astro-fortran/actions/workflows/CI.yml/badge.svg)
+[![GitHub release](https://img.shields.io/github/release/jacobwilliams/astro-fortran.svg)](https://github.com/jacobwilliams/astro-fortran/releases/latest)
+[![Build Status](https://github.com/jacobwilliams/astro-fortran/actions/workflows/CI.yml/badge.svg)](https://github.com/jacobwilliams/astro-fortran/actions)
+[![codecov](https://codecov.io/gh/jacobwilliams/astro-fortran/branch/master/graph/badge.svg?token=43HK33CSMY)](https://codecov.io/gh/jacobwilliams/astro-fortran)
+[![last-commit](https://img.shields.io/github/last-commit/jacobwilliams/astro-fortran)](https://github.com/jacobwilliams/astro-fortran/commits/master)
 
-## Building
+### Compiling
 
-A [FoBiS](https://github.com/szaghi/FoBiS) configuration file (`astro-fortran.fobis`) is also provided that can also build the library and examples. Use the `mode` flag to indicate what to build. For example:
+A [Fortran Package Manager](https://github.com/fortran-lang/fpm) manifest file is included, so that the library and tests cases can be compiled with FPM. For example:
 
-  * To build all the examples using gfortran: `FoBiS.py build -f astro-fortran.fobis -mode tests-gnu`
-  * To build all the examples using ifort: `FoBiS.py build -f astro-fortran.fobis -mode tests-intel`
-  * To build a static library using gfortran: `FoBiS.py build -f astro-fortran.fobis -mode static-gnu`
-  * To build a static library using ifort: `FoBiS.py build -f astro-fortran.fobis -mode static-intel`
+```
+fpm build --profile release
+fpm test --profile release
+```
 
-  The full set of modes are: `static-gnu`, `static-gnu-debug`, `static-intel`, `static-intel-debug`, `shared-gnu`, `shared-gnu-debug`, `shared-intel`, `shared-intel-debug`, `tests-gnu`, `tests-gnu-debug`, `tests-intel`, `tests-intel-debug`
+To use `astro-fortran` within your FPM project, add the following to your `fpm.toml` file:
+```toml
+[dependencies]
+astro-fortran = { git="https://github.com/jacobwilliams/astro-fortran.git" }
+```
 
-  To generate the documentation using [ford](https://github.com/Fortran-FOSS-Programmers/ford), run: ```FoBis.py rule --execute makedoc -f astro-fortran.fobis```
+To generate the documentation using [FORD](https://github.com/Fortran-FOSS-Programmers/ford), run:
 
-  To run the test programs, run: ```FoBis.py rule --execute tests -f astro-fortran.fobis```
+```
+  ford astro-fortran.md
+```
 
-## Documentation
+### Documentation
 
-The latest API documentation can be found [here](http://jacobwilliams.github.io/astro-fortran/). This was generated from the source code using [FORD](https://github.com/Fortran-FOSS-Programmers/ford).
+The latest API documentation can be found [here](https://jacobwilliams.github.io/astro-fortran/). This was generated from the source code using [FORD](https://github.com/Fortran-FOSS-Programmers/ford).
 
 ### License
 
