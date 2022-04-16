@@ -1,7 +1,7 @@
 ASTRO-FORTRAN: Modern Fortran implementations of standard models used in fundamental astronomy
 https://github.com/jacobwilliams/astro-fortran
 
-Copyright (c) 2019-2021, Jacob Williams
+Copyright (c) 2019-2022, Jacob Williams
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
