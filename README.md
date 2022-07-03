@@ -45,5 +45,5 @@ The astro-fortran source code and related files and documentation are distribute
 
  * [SPICE](http://naif.jpl.nasa.gov/naif/toolkit.html)
  * [NOVAS](http://aa.usno.navy.mil/software/novas/novas_info.php)
- * [SOFA](http://www.iausofa.org)
+ * [SOFA](http://www.iausofa.org) (mirrored [here](https://github.com/jacobwilliams/IAU_SOFA) on GitHub)
  * [Fortran Astrodynamics Toolkit](https://github.com/jacobwilliams/Fortran-Astrodynamics-Toolkit)
